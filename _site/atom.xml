@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>New jekyll site part 3 - errors with deployment</title>
+        
+          <description>&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 08 Apr 2020 16:03:00 -0600</pubDate>
+        <link>
+        /new-jekyll-site-3</link>
+        <guid isPermaLink="true">/new-jekyll-site-3</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>C# definitions cheatsheet</title>
         
           <description>&lt;p&gt;Here is some info I compiled as I worked my way through &lt;a href=&quot;https://www.codecademy.com/catalog/language/c-sharp&quot;&gt;Codecademy’s C# course&lt;/a&gt;.&lt;/p&gt;
@@ -33,21 +48,6 @@
         <link>
         /new-jekyll-site-2</link>
         <guid isPermaLink="true">/new-jekyll-site-2</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>New jekyll site part 3 - errors with deployment</title>
-        
-          <description>&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Sat, 04 Apr 2020 16:03:00 -0600</pubDate>
-        <link>
-        /new-jekyll-site-3</link>
-        <guid isPermaLink="true">/new-jekyll-site-3</guid>
       </item>
       
     

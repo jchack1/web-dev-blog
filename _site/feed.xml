@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-04-08T17:36:34-06:00</updated><id>/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">C# definitions cheatsheet</title><link href="/csharpdefinitions" rel="alternate" type="text/html" title="C# definitions cheatsheet" /><published>2020-04-06T17:50:00-06:00</published><updated>2020-04-06T17:50:00-06:00</updated><id>/csharpdefinitions</id><content type="html" xml:base="/csharpdefinitions">&lt;p&gt;Here is some info I compiled as I worked my way through &lt;a href=&quot;https://www.codecademy.com/catalog/language/c-sharp&quot;&gt;Codecademy’s C# course&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-04-08T17:46:49-06:00</updated><id>/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">New jekyll site part 3 - errors with deployment</title><link href="/new-jekyll-site-3" rel="alternate" type="text/html" title="New jekyll site part 3 - errors with deployment" /><published>2020-04-08T16:03:00-06:00</published><updated>2020-04-08T16:03:00-06:00</updated><id>/new-jekyll-site-3</id><content type="html" xml:base="/new-jekyll-site-3">&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
+
+&lt;p&gt;Of course there have been errors with this as well. As expected.&lt;/p&gt;
+
+&lt;p&gt;I created my github repo and pushed my code using command line. I used the following commands and this worked without errors:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;git init&lt;/li&gt;
+  &lt;li&gt;git add .&lt;/li&gt;
+  &lt;li&gt;git commit -m “first commit”&lt;/li&gt;
+  &lt;li&gt;git remote add origin https://github.com/jchack1/julia-blog2.git&lt;/li&gt;
+  &lt;li&gt;git push -u origin master&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I decided to deploy with Netlify, which is my go to for any deployment. It’s usually pretty straightforward, &lt;a href=&quot;https://www.netlify.com/blog/2015/10/28/a-step-by-step-guide-jekyll-3.0-on-netlify/&quot;&gt;and you can find the instructions for deploying Jekyll with Netlify here.&lt;/a&gt;  I selected my github repo and clicked deploy. After a few minutes I got an error, saying the build failed.&lt;/p&gt;
+
+&lt;p&gt;That is because Netlify was looking for the _site folder.  I checked my files and I saw that I did not have this.  By now I’m getting pretty frustrated with this theme because it feels like there was a lot missing and unexplained. Why isn’t there a _site folder?&lt;/p&gt;
+
+&lt;p&gt;I went to the &lt;a href=&quot;https://jekyllrb.com/docs/step-by-step/01-setup/&quot;&gt;Jekyll docs&lt;/a&gt; looking for any information about the _site folder.  I saw that when you use the command “jekyll build”, Jekyll builds the site and outputs it to a directory called _site, which is viewable in the browser at localhost:4000. I have used the “jekyll build” command many times so far, so I was unsure why it’s not in my files.  And why I was able to serve my site to localhost:4000.  I decided to see what would happen if I make a new Jekyll folder from scratch and run “jekyll build”. In my previous sites I always had a _site folder and never gave any thought to how it was created.&lt;/p&gt;
+
+&lt;p&gt;This time I decided to just follow my old notes rather than just copy-paste from my theme. I went into the Jekyll folder I already have on my machine and opened command line. I used the following commands:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;jekyll new julia-blog3&lt;/li&gt;
+  &lt;li&gt;cd julia-blog3&lt;/li&gt;
+  &lt;li&gt;bundle exec jekyll build&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I watched the files in the folders and there it was. Once I used the jekyll build command, my _site folder appeared. Perhaps this was my mistake from the beginning. I never intiallized my folder properly.&lt;/p&gt;
+
+&lt;p&gt;I decided to check both folders now, to see if I could either update my blog scripts to create the _site file, or if I’d need to copy everything over into my new folder. Whatever I tried in my old folder did not work, so I ended up copying everything over into my new folder. I set up gulp, which was really quick this time since I knew what I was doing. When I executed “bundle exec jekyll build” I now ended up with a _site folder, and it was filled with the proper files.&lt;/p&gt;
+
+&lt;p&gt;Now I will upload this new folder to github and deploy. It should work now that I have a proper _site folder.&lt;/p&gt;
+
+&lt;p&gt;I just have to remember to always “bundle exec jekyll build” when I make changes. But only after I execute “gulp”. Hopefull I will quickly get used to this workflow.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="debugging" /><category term="deployment" /><summary type="html">I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.</summary></entry><entry><title type="html">C# definitions cheatsheet</title><link href="/csharpdefinitions" rel="alternate" type="text/html" title="C# definitions cheatsheet" /><published>2020-04-06T17:50:00-06:00</published><updated>2020-04-06T17:50:00-06:00</updated><id>/csharpdefinitions</id><content type="html" xml:base="/csharpdefinitions">&lt;p&gt;Here is some info I compiled as I worked my way through &lt;a href=&quot;https://www.codecademy.com/catalog/language/c-sharp&quot;&gt;Codecademy’s C# course&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I chose the codecademy course because I could work on it at my office during my practicum. My work computer wouldn’t play audio for some reason, so video tutorials weren’t an option while I was there. I also found the Microsoft documentation to be not very beginner friendly in its language, and it was the same with many other article style tutorials. The codecademy course was very beginner friendly and interactive so it held my attention better than just reading.&lt;/p&gt;
 
@@ -179,39 +211,7 @@ ReferenceError: primordials is not defined&quot;
 
 &lt;p&gt;I believe there is a way to make gulp watch for changes, but I haven’t figured out how to make that work with jekyll. For now though this works just fine, despite the extra typing.&lt;/p&gt;
 
-&lt;p&gt;Okay. Now I think it’s time to finally make my changes to CSS, as well as research markdown in order to clean up my blog posts.  See you in the next one.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="gulp" /><category term="debugging" /><summary type="html">Continuing from my last post, where I began to describe the process of making this blog.</summary></entry><entry><title type="html">New jekyll site part 3 - errors with deployment</title><link href="/new-jekyll-site-3" rel="alternate" type="text/html" title="New jekyll site part 3 - errors with deployment" /><published>2020-04-04T16:03:00-06:00</published><updated>2020-04-04T16:03:00-06:00</updated><id>/new-jekyll-site-3</id><content type="html" xml:base="/new-jekyll-site-3">&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
-
-&lt;p&gt;Of course there have been errors with this as well. As expected.&lt;/p&gt;
-
-&lt;p&gt;I created my github repo and pushed my code using command line. I used the following commands and this worked without errors:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;git init&lt;/li&gt;
-  &lt;li&gt;git add .&lt;/li&gt;
-  &lt;li&gt;git commit -m “first commit”&lt;/li&gt;
-  &lt;li&gt;git remote add origin https://github.com/jchack1/julia-blog2.git&lt;/li&gt;
-  &lt;li&gt;git push -u origin master&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I decided to deploy with Netlify, which is my go to for any deployment. It’s usually pretty straightforward, &lt;a href=&quot;https://www.netlify.com/blog/2015/10/28/a-step-by-step-guide-jekyll-3.0-on-netlify/&quot;&gt;and you can find the instructions for deploying Jekyll with Netlify here.&lt;/a&gt;  I selected my github repo and clicked deploy. After a few minutes I got an error, saying the build failed.&lt;/p&gt;
-
-&lt;p&gt;That is because Netlify was looking for the _site folder.  I checked my files and I saw that I did not have this.  By now I’m getting pretty frustrated with this theme because it feels like there was a lot missing and unexplained. Why isn’t there a _site folder?&lt;/p&gt;
-
-&lt;p&gt;I went to the &lt;a href=&quot;https://jekyllrb.com/docs/step-by-step/01-setup/&quot;&gt;Jekyll docs&lt;/a&gt; looking for any information about the _site folder.  I saw that when you use the command “jekyll build”, Jekyll builds the site and outputs it to a directory called _site, which is viewable in the browser at localhost:4000. I have used the “jekyll build” command many times so far, so I was unsure why it’s not in my files.  And why I was able to serve my site to localhost:4000.  I decided to see what would happen if I make a new Jekyll folder from scratch and run “jekyll build”. In my previous sites I always had a _site folder and never gave any thought to how it was created.&lt;/p&gt;
-
-&lt;p&gt;This time I decided to just follow my old notes rather than just copy-paste from my theme. I went into the Jekyll folder I already have on my machine and opened command line. I used the following commands:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;jekyll new julia-blog3&lt;/li&gt;
-  &lt;li&gt;cd julia-blog3&lt;/li&gt;
-  &lt;li&gt;bundle exec jekyll build&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I watched the files in the folders and there it was. Once I used the jekyll build command, my _site folder appeared. Perhaps this was my mistake from the beginning. I never intiallized my folder properly.&lt;/p&gt;
-
-&lt;p&gt;I decided to check both folders now, to see if I could either update my blog scripts to create the _site file, or if I’d need to copy everything over into my new folder. Whatever I tried in my old folder did not work, so I ended up copying everything over into my new folder. I set up gulp, which was really quick this time since I knew what I was doing. When I executed “bundle exec jekyll build” I now ended up with a _site folder, and it was filled with the proper files.&lt;/p&gt;
-
-&lt;p&gt;Now I will upload this new folder to github and deploy. It should work now that I have a proper _site folder.&lt;/p&gt;
-
-&lt;p&gt;I just have to remember to always “bundle exec jekyll build” when I make changes. But only after I execute “gulp”. Hopefull I will quickly get used to this workflow.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="debugging" /><category term="deployment" /><summary type="html">I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.</summary></entry><entry><title type="html">Making a new jekyll site - this one, actually</title><link href="/making-another-jekyll-site" rel="alternate" type="text/html" title="Making a new jekyll site - this one, actually" /><published>2020-04-02T16:50:00-06:00</published><updated>2020-04-02T16:50:00-06:00</updated><id>/making-another-jekyll-site</id><content type="html" xml:base="/making-another-jekyll-site">&lt;p&gt;Well, I’m going to do that thing again where I blog my experience of making a blog. At least I can feel like I am writing something for a reader, a pretend social interaction during week 3 of social distancing, though I suspect no one will read this except myself.&lt;/p&gt;
+&lt;p&gt;Okay. Now I think it’s time to finally make my changes to CSS, as well as research markdown in order to clean up my blog posts.  See you in the next one.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="gulp" /><category term="debugging" /><summary type="html">Continuing from my last post, where I began to describe the process of making this blog.</summary></entry><entry><title type="html">Making a new jekyll site - this one, actually</title><link href="/making-another-jekyll-site" rel="alternate" type="text/html" title="Making a new jekyll site - this one, actually" /><published>2020-04-02T16:50:00-06:00</published><updated>2020-04-02T16:50:00-06:00</updated><id>/making-another-jekyll-site</id><content type="html" xml:base="/making-another-jekyll-site">&lt;p&gt;Well, I’m going to do that thing again where I blog my experience of making a blog. At least I can feel like I am writing something for a reader, a pretend social interaction during week 3 of social distancing, though I suspect no one will read this except myself.&lt;/p&gt;
 
 &lt;p&gt;I’m already part way through making this blog, as you may have gathered from my first post on this site.  My first blog was pretty straight-forward, despite jekyll being new to me. I assumed this time around would be simpler, but now that I am really diving into the functionality of my chosen theme Jasper2 from Ghost, I’m realizing there is actually a lot I can do with this platform. Which means there is a lot to learn.  But at this stage in my web development journey, I realize there is always more to learn.&lt;/p&gt;
 
