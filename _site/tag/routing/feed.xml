@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="/tag/routing/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2020-04-08T17:36:34-06:00</updated>
+  <id>/tag/routing/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Julia Hack | </title>
+  
+
+  
+    <subtitle>Web development blog</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Update and Routing</title>
+      <link href="/routing" rel="alternate" type="text/html" title="Update and Routing" />
+      <published>2020-03-18T17:12:00-06:00</published>
+      <updated>2020-03-18T17:12:00-06:00</updated>
+      <id>/routing</id>
+      <content type="html" xml:base="/routing">&lt;p&gt;A lot has happened in the month since I last wrote.  I was very busy with my practicum and neglected some of my own projects.  I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum.  I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time.  Let’s go with that.&lt;/p&gt;
+
+&lt;p&gt;I’m going to try writing posts with one topic only, for now. This post will explain what I know about routing in .NET.&lt;/p&gt;
+
+&lt;p&gt;One definition I will use:
+Overload: in C#, some methods will have the same name but can accept different parameters(aka arguements, in other languages). These different options are called “overloads”. You overload one method, rather than writing multiple methods that do the same thing but use different parameters.&lt;/p&gt;
+
+&lt;p&gt;You deal with routing in your RouteConfig.cs file. To create custom routes you have 2 main approaches: Convention-based and Attribute routing. Attribute routing is cleaner and is the recommended way.&lt;/p&gt;
+
+&lt;p&gt;Convention-based:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;in RegisterRoutes, put routes in order of most specific to most generic&lt;/li&gt;
+  &lt;li&gt;create routes.MapRoute(); before default route&lt;/li&gt;
+  &lt;li&gt;the most commonly used overload accepts 3 parameters: name, url, and default&lt;/li&gt;
+  &lt;li&gt;default defines the controller and action that you will use&lt;/li&gt;
+  &lt;li&gt;once you create this, you go to the corresponding controller and create the action result&lt;/li&gt;
+  &lt;li&gt;MapRoute() can accept another argument for constraints (like number of digits in a year or month) - can define using regular expressions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For large applications, you can accumulate many custom routes in your RouteConfig.cs file, so you can use attribute routing to make it cleaner.&lt;/p&gt;
+
+&lt;p&gt;Attribute routing:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;use attribute above action in controller, rather than creating it in RouteConfig.cs&lt;/li&gt;
+  &lt;li&gt;in RouteConfig.cs, add routes.MapMvcAttributeRoutes();&lt;/li&gt;
+  &lt;li&gt;for example, in controller type the following above your action [Route(“movies/release/{year}/{month:regex(\d{2}”)})]&lt;/li&gt;
+  &lt;li&gt;constraints placed directly in attribute&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term=".NET" />
+      
+        <category term="MVC" />
+      
+        <category term="routing" />
+      
+
+      
+        <summary type="html">A lot has happened in the month since I last wrote. I was very busy with my practicum and neglected some of my own projects. I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum. I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time. Let’s go with that.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

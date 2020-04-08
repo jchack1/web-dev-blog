@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> - Articles</title>
+    <description>Web development blog</description>
+    <link>
+    </link>
+    
+      
+      <item>
+        <title>C# definitions cheatsheet</title>
+        
+          <description>&lt;p&gt;Here is some info I compiled as I worked my way through &lt;a href=&quot;https://www.codecademy.com/catalog/language/c-sharp&quot;&gt;Codecademy’s C# course&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 06 Apr 2020 17:50:00 -0600</pubDate>
+        <link>
+        /csharpdefinitions</link>
+        <guid isPermaLink="true">/csharpdefinitions</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>New jekyll site part 2 - errors with Gulp</title>
+        
+          <description>&lt;p&gt;Continuing from my last post, where I began to describe the process of making this blog.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 04 Apr 2020 17:31:00 -0600</pubDate>
+        <link>
+        /new-jekyll-site-2</link>
+        <guid isPermaLink="true">/new-jekyll-site-2</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>New jekyll site part 3 - errors with deployment</title>
+        
+          <description>&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 04 Apr 2020 16:03:00 -0600</pubDate>
+        <link>
+        /new-jekyll-site-3</link>
+        <guid isPermaLink="true">/new-jekyll-site-3</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Making a new jekyll site - this one, actually</title>
+        
+          <description>&lt;p&gt;Well, I’m going to do that thing again where I blog my experience of making a blog. At least I can feel like I am writing something for a reader, a pretend social interaction during week 3 of social distancing, though I suspect no one will read this except myself.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 02 Apr 2020 16:50:00 -0600</pubDate>
+        <link>
+        /making-another-jekyll-site</link>
+        <guid isPermaLink="true">/making-another-jekyll-site</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>The importance of a hard refresh</title>
+        
+          <description>&lt;p&gt;Recently I was working on a task for my practicum.  The task was to add a delete button to two of the pages and ensure it redirected to the correct page once an item was deleted.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 02 Apr 2020 12:12:00 -0600</pubDate>
+        <link>
+        /importance-of-hard-refresh</link>
+        <guid isPermaLink="true">/importance-of-hard-refresh</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>A few .NET errors and solutions</title>
+        
+          <description>&lt;p&gt;Here are a few errors I received while working on a .NET application, and how I solved them.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 02 Apr 2020 01:11:00 -0600</pubDate>
+        <link>
+        /dotnet-errors-and-solutions</link>
+        <guid isPermaLink="true">/dotnet-errors-and-solutions</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Entity Framework, workflows, databases, and migrations</title>
+        
+          <description>&lt;p&gt;When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 18 Mar 2020 17:50:00 -0600</pubDate>
+        <link>
+        /entityframework</link>
+        <guid isPermaLink="true">/entityframework</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Update and Routing</title>
+        
+          <description>&lt;p&gt;A lot has happened in the month since I last wrote.  I was very busy with my practicum and neglected some of my own projects.  I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum.  I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time.  Let’s go with that.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 18 Mar 2020 17:12:00 -0600</pubDate>
+        <link>
+        /routing</link>
+        <guid isPermaLink="true">/routing</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Beginning to learn .NET</title>
+        
+          <description>&lt;p&gt;I am currently in the middle of the practicum component of my program. I am entering week 3 of 8, and to be honest I still have a lot of learning to do in order to be useful here.  I have already learned a lot of things that were not taught in my program, which I guess is the point of working in a real office. It hasn’t been easy and I suspect it will continue that way.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 17 Feb 2020 22:30:00 -0700</pubDate>
+        <link>
+        /learningdotnet</link>
+        <guid isPermaLink="true">/learningdotnet</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Welcome to my new web dev blog!</title>
+        
+          <description>&lt;p&gt;Hello!  This is the first post in my new blog. My intention for this blog is to create a place for me to document everything that I am learning as a new web developer. I started my certificate program in September 2019, and I want to be able to look back on all I have learned, and have a centralized space for notes. Here I will make notes of the things I’m learning, the challenges I face, and how I solved any issues that arise. I came up with the idea when I created my first Jekyll blog for an assignment in my CMS class. I needed to create blog posts, so I decided to live-blog my experience using Jekyll. I ended up having a lot of fun with this, and I had notes for myself for the future.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 17 Feb 2020 00:30:00 -0700</pubDate>
+        <link>
+        /first-post</link>
+        <guid isPermaLink="true">/first-post</guid>
+      </item>
+      
+    
+  </channel>
+</rss>

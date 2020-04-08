@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-04-08T17:36:34-06:00</updated><id>/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">C# definitions cheatsheet</title><link href="/csharpdefinitions" rel="alternate" type="text/html" title="C# definitions cheatsheet" /><published>2020-04-06T17:50:00-06:00</published><updated>2020-04-06T17:50:00-06:00</updated><id>/csharpdefinitions</id><content type="html" xml:base="/csharpdefinitions">&lt;p&gt;Here is some info I compiled as I worked my way through &lt;a href=&quot;https://www.codecademy.com/catalog/language/c-sharp&quot;&gt;Codecademy’s C# course&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I chose the codecademy course because I could work on it at my office during my practicum. My work computer wouldn’t play audio for some reason, so video tutorials weren’t an option while I was there. I also found the Microsoft documentation to be not very beginner friendly in its language, and it was the same with many other article style tutorials. The codecademy course was very beginner friendly and interactive so it held my attention better than just reading.&lt;/p&gt;
+
+&lt;p&gt;That wasn’t an ad or anything, just wanted to share something I found genuinely helpful. Moving on to the definitions…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Class:&lt;/strong&gt; custom data type, defines info and methods &lt;br /&gt;
+&lt;strong&gt;Object:&lt;/strong&gt; each &lt;em&gt;instance&lt;/em&gt; of a particular class&lt;/p&gt;
+
+&lt;p&gt;We can make many instances of a class, each with unique values of their own&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Fields:&lt;/strong&gt; pieces of data, like size and name&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;basically like variables&lt;/li&gt;
+  &lt;li&gt;these start with a lowercase letter eg. name&lt;/li&gt;
+  &lt;li&gt;fields can have different values in each object/instance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Class &lt;strong&gt;member&lt;/strong&gt;: a general term for the building blocks of a class&lt;/p&gt;
+
+&lt;p&gt;Some default values in C#:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;string: null&lt;/li&gt;
+  &lt;li&gt;int: 0&lt;/li&gt;
+  &lt;li&gt;bool: false&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Properties:&lt;/strong&gt; control access to a field&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;another kind of class member&lt;/li&gt;
+  &lt;li&gt;use the { get; } and { set; } methods&lt;/li&gt;
+  &lt;li&gt;start with an uppercase letter eg. Name&lt;/li&gt;
+  &lt;li&gt;inside the set method you can include validation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Access modifiers:&lt;/strong&gt; defines how a type or member can be accessed&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;public: can be accessed by ANY class&lt;/li&gt;
+  &lt;li&gt;private: can only be accessed by code in the SAME class&lt;/li&gt;
+  &lt;li&gt;protected: can be accessed by the current class and any class that inherits from it&lt;/li&gt;
+  &lt;li&gt;override/virtual: override an inherited method. Use “override” in subclass, “virtual” in base class&lt;/li&gt;
+  &lt;li&gt;abstract: use when there is no implementation in base class, but it must be in the subclass&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Methods:&lt;/strong&gt; actions an object can perform&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;if familiar with JavaScript, they are like functions&lt;/li&gt;
+  &lt;li&gt;most belong to a class&lt;/li&gt;
+  &lt;li&gt;define how an instance of the class behaves&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Constructor:&lt;/strong&gt; type of method that sets values of fields when you create a new instance. See below for an example of a constructor:&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//define a constructor in your class&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//again, codecademy example&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Forest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;biome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//whatever values you input as parameters are assigned to the below properties&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Biome&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;biome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Age&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//age starts at 0 for all new forests&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Use the constructor with the &lt;strong&gt;“new”&lt;/strong&gt; keyword to make a new instance, as per below:&lt;/p&gt;
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Forest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Forest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//example from codecademy&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;In the above example, “Forest” is the type, “f” is the name of the new object/instance you are making, Forest(); is the constructor that makes the new instance.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;this&lt;/strong&gt;: refers to the &lt;em&gt;current instance&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;it’s good to use this and be more explicit in your code; less chance for misinterpretation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Static:&lt;/strong&gt; information that is related to a class, but is not an instance of the class&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;something that applies to all instances and there should only be one value for the whole class&lt;/li&gt;
+  &lt;li&gt;a static member is accessed from the class, not an instance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Forest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Definition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Overload:&lt;/strong&gt; two or more methods that have the same name, but different parameters&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Interfaces:&lt;/strong&gt; sets of properties, methods, and other members that tell us how a class can be used&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;helps check that we are using our types correctly&lt;/li&gt;
+  &lt;li&gt;helps minimize bugs&lt;/li&gt;
+  &lt;li&gt;doesn’t specify how they work, just that a class MUST have them&lt;/li&gt;
+  &lt;li&gt;guarantee certain functionality across multiple classes&lt;/li&gt;
+  &lt;li&gt;all start with “I”&lt;/li&gt;
+  &lt;li&gt;the class must implement properties and methods in the interface&lt;/li&gt;
+  &lt;li&gt;cannot specify constructors or fields&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sedan&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IAutomobile&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//the interface says the sedan must have a &quot;Honk&quot; method, so we must include one in the sedan class&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//must be &quot;public&quot;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//interface doesn't care what &quot;Honk&quot; actually does &lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Inheritance:&lt;/strong&gt; a subclass/derived class inherits members of a superclass/base class&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sedan&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Vehicle&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//subclass Sedan inherits from base class Vehicle&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//must use &quot;:&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Both of the below are variables:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Reference types:&lt;/strong&gt; refer to a place in memory&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Value types:&lt;/strong&gt; hold actual data&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Classes are reference types. When we create an instance of an object, and store it in a variable, it is a reference to the original object.&lt;/p&gt;
+
+&lt;p&gt;It may seem obvious when written this way, but a “reference” is not an object, it is a &lt;em&gt;reference to&lt;/em&gt; an object.&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Dissertation&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diss1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Dissertation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//from codecademy&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//diss1 is a reference to the object Dissertation&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s all I have for now. As I continue going through my notes I will add to this post.&lt;/p&gt;</content><author><name></name></author><category term="csharp" /><summary type="html">Here is some info I compiled as I worked my way through Codecademy’s C# course.</summary></entry><entry><title type="html">New jekyll site part 2 - errors with Gulp</title><link href="/new-jekyll-site-2" rel="alternate" type="text/html" title="New jekyll site part 2 - errors with Gulp" /><published>2020-04-04T17:31:00-06:00</published><updated>2020-04-04T17:31:00-06:00</updated><id>/new-jekyll-site-2</id><content type="html" xml:base="/new-jekyll-site-2">&lt;p&gt;Continuing from my last post, where I began to describe the process of making this blog.&lt;/p&gt;
+
+&lt;p&gt;I’m at the point of self-isolation where I’m starting to forget what day it is.  I believe I spent the past 3 days or so trying to figure out this problem, though at this point I’ve lost track.&lt;/p&gt;
+
+&lt;p&gt;I left off describing my issue of CSS not compiling the way I expected it to.  I admit I should have checked the instructions on the Jasper2 theme’s github in the very beginning so I would be aware that they use gulp. I followed the instructions to install gulp, but it still didn’t work. I spent many more hours fiddling around with it, then I decided to look up a tutorial on gulp in case my issue was simply not knowing enough about gulp.&lt;/p&gt;
+
+&lt;p&gt;I saw that gulp utilizes command line.  You can create functions in your gulpfile.js that can be executed in the command line; in my case, the gulpfile was already created. Below is an example function that was included with my theme:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'build'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'css'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;cm&quot;&gt;/* cb */&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nodemonServerInit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Above is a gulp task, named build.  To run this code I would type “gulp build” in the command line. If you name a task “default”, all you need to type in command line is “gulp”, and your default task is run.&lt;/p&gt;
+
+&lt;p&gt;Once I learned this I was getting much closer to figuring out my problem.  However when I ran “gulp” or “gulp build”, I got an error:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;fs.js:27
+const { Math, Object } = primordials;
+                         ^
+
+ReferenceError: primordials is not defined&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I searched online for a solution to this error as kind of a last ditch effort. Up until this point, I could not find any solutions at all, and there were no issues of this kind brought up by users on Jasper2’s github page.  Of course, stack overflow gave me a solution, which I would never have thought of myself unless I looked it up. I believe it was the second answer on this page that helped me: https://stackoverflow.com/questions/55921442/how-to-fix-referenceerror-primordials-is-not-defined-in-node&lt;/p&gt;
+
+&lt;p&gt;The issue is that the node.js and gulp versions were incompatible. Remember my last post, where I wondered if I had an issue with my package versions? In a way I was right, just not in the way I expected. Node version 11.5 and higher, and gulp 3.9.1 are not compatible. This version of gulp depends on graceful-fs version 3.0.0, which is something I’m still unfamiliar with.&lt;/p&gt;
+
+&lt;p&gt;To fix this I had to:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;add the below code to my package.json, and run “npm install” in command line&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;preinstall&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;npx npm-force-resolutions&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;resolutions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;graceful-fs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;4.2.3&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;All this just to be able to tweak the CSS in my blog.&lt;/p&gt;
+
+&lt;p&gt;Now, whenever I make a change to CSS, I execute the following commands:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;gulp&lt;/li&gt;
+  &lt;li&gt;bundle exec jekyll serve&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(If I really want to be thorough, I will add in “bundle exec jekyll build” before I serve the site)&lt;/p&gt;
+
+&lt;p&gt;I believe there is a way to make gulp watch for changes, but I haven’t figured out how to make that work with jekyll. For now though this works just fine, despite the extra typing.&lt;/p&gt;
+
+&lt;p&gt;Okay. Now I think it’s time to finally make my changes to CSS, as well as research markdown in order to clean up my blog posts.  See you in the next one.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="gulp" /><category term="debugging" /><summary type="html">Continuing from my last post, where I began to describe the process of making this blog.</summary></entry><entry><title type="html">New jekyll site part 3 - errors with deployment</title><link href="/new-jekyll-site-3" rel="alternate" type="text/html" title="New jekyll site part 3 - errors with deployment" /><published>2020-04-04T16:03:00-06:00</published><updated>2020-04-04T16:03:00-06:00</updated><id>/new-jekyll-site-3</id><content type="html" xml:base="/new-jekyll-site-3">&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
+
+&lt;p&gt;Of course there have been errors with this as well. As expected.&lt;/p&gt;
+
+&lt;p&gt;I created my github repo and pushed my code using command line. I used the following commands and this worked without errors:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;git init&lt;/li&gt;
+  &lt;li&gt;git add .&lt;/li&gt;
+  &lt;li&gt;git commit -m “first commit”&lt;/li&gt;
+  &lt;li&gt;git remote add origin https://github.com/jchack1/julia-blog2.git&lt;/li&gt;
+  &lt;li&gt;git push -u origin master&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I decided to deploy with Netlify, which is my go to for any deployment. It’s usually pretty straightforward, &lt;a href=&quot;https://www.netlify.com/blog/2015/10/28/a-step-by-step-guide-jekyll-3.0-on-netlify/&quot;&gt;and you can find the instructions for deploying Jekyll with Netlify here.&lt;/a&gt;  I selected my github repo and clicked deploy. After a few minutes I got an error, saying the build failed.&lt;/p&gt;
+
+&lt;p&gt;That is because Netlify was looking for the _site folder.  I checked my files and I saw that I did not have this.  By now I’m getting pretty frustrated with this theme because it feels like there was a lot missing and unexplained. Why isn’t there a _site folder?&lt;/p&gt;
+
+&lt;p&gt;I went to the &lt;a href=&quot;https://jekyllrb.com/docs/step-by-step/01-setup/&quot;&gt;Jekyll docs&lt;/a&gt; looking for any information about the _site folder.  I saw that when you use the command “jekyll build”, Jekyll builds the site and outputs it to a directory called _site, which is viewable in the browser at localhost:4000. I have used the “jekyll build” command many times so far, so I was unsure why it’s not in my files.  And why I was able to serve my site to localhost:4000.  I decided to see what would happen if I make a new Jekyll folder from scratch and run “jekyll build”. In my previous sites I always had a _site folder and never gave any thought to how it was created.&lt;/p&gt;
+
+&lt;p&gt;This time I decided to just follow my old notes rather than just copy-paste from my theme. I went into the Jekyll folder I already have on my machine and opened command line. I used the following commands:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;jekyll new julia-blog3&lt;/li&gt;
+  &lt;li&gt;cd julia-blog3&lt;/li&gt;
+  &lt;li&gt;bundle exec jekyll build&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I watched the files in the folders and there it was. Once I used the jekyll build command, my _site folder appeared. Perhaps this was my mistake from the beginning. I never intiallized my folder properly.&lt;/p&gt;
+
+&lt;p&gt;I decided to check both folders now, to see if I could either update my blog scripts to create the _site file, or if I’d need to copy everything over into my new folder. Whatever I tried in my old folder did not work, so I ended up copying everything over into my new folder. I set up gulp, which was really quick this time since I knew what I was doing. When I executed “bundle exec jekyll build” I now ended up with a _site folder, and it was filled with the proper files.&lt;/p&gt;
+
+&lt;p&gt;Now I will upload this new folder to github and deploy. It should work now that I have a proper _site folder.&lt;/p&gt;
+
+&lt;p&gt;I just have to remember to always “bundle exec jekyll build” when I make changes. But only after I execute “gulp”. Hopefull I will quickly get used to this workflow.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="debugging" /><category term="deployment" /><summary type="html">I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.</summary></entry><entry><title type="html">Making a new jekyll site - this one, actually</title><link href="/making-another-jekyll-site" rel="alternate" type="text/html" title="Making a new jekyll site - this one, actually" /><published>2020-04-02T16:50:00-06:00</published><updated>2020-04-02T16:50:00-06:00</updated><id>/making-another-jekyll-site</id><content type="html" xml:base="/making-another-jekyll-site">&lt;p&gt;Well, I’m going to do that thing again where I blog my experience of making a blog. At least I can feel like I am writing something for a reader, a pretend social interaction during week 3 of social distancing, though I suspect no one will read this except myself.&lt;/p&gt;
+
+&lt;p&gt;I’m already part way through making this blog, as you may have gathered from my first post on this site.  My first blog was pretty straight-forward, despite jekyll being new to me. I assumed this time around would be simpler, but now that I am really diving into the functionality of my chosen theme Jasper2 from Ghost, I’m realizing there is actually a lot I can do with this platform. Which means there is a lot to learn.  But at this stage in my web development journey, I realize there is always more to learn.&lt;/p&gt;
+
+&lt;p&gt;As an aside, after building several websites from scratch with HTML, CSS, and vanilla JavaScript, using a theme like this feels a bit like cheating. I don’t have to fully understand what the code does for it to work and give a beautiful result. But I guess I’m not doing school projects anymore; there are no requirements other than those I place on myself.&lt;/p&gt;
+
+&lt;p&gt;I already screwed up my home page by playing around with the index.html code, so I’d like to make sure I know what I’m doing when I start making new changes.&lt;/p&gt;
+
+&lt;p&gt;Next is adding my own logo. I remember from last time I need to stay well away from the _site folder. You can check out my old blog to learn more about that.  This time I will go straight to assets, plus I’ll have a look at the index page and the layouts to see where the reference the logo. I already know that it is not mentioned in the navigation include.&lt;/p&gt;
+
+&lt;p&gt;It looks like the original logo is in assets -&amp;gt; images -&amp;gt; blog-icon.png.  I replaced the logo in this folder with my own and now it shows up on the site. However, it is much smaller than I’d like. I adjusted the max-height property for the site-logo class in screen.css, but this did nothing to change the size of the logo. The browser still displays the CSS with the original size.&lt;/p&gt;
+
+&lt;p&gt;I then found out that jasper2 requires the use of gulp to be able to change the CSS. I installed gulp globally and tried again. The CSS changes still did not show up. At this point I’m wondering if the version of gulp that I have is not compatible with my gemfile or gulpfile.&lt;/p&gt;
+
+&lt;p&gt;In my theme you should be able to edit assets/css, and then the gulp.js file automatically updates the css file in assets/built.&lt;/p&gt;
+
+&lt;p&gt;It took my a while to figure out what was going on, so I’ll continue in the next post.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><summary type="html">Well, I’m going to do that thing again where I blog my experience of making a blog. At least I can feel like I am writing something for a reader, a pretend social interaction during week 3 of social distancing, though I suspect no one will read this except myself.</summary></entry><entry><title type="html">The importance of a hard refresh</title><link href="/importance-of-hard-refresh" rel="alternate" type="text/html" title="The importance of a hard refresh" /><published>2020-04-02T12:12:00-06:00</published><updated>2020-04-02T12:12:00-06:00</updated><id>/importance-of-hard-refresh</id><content type="html" xml:base="/importance-of-hard-refresh">&lt;p&gt;Recently I was working on a task for my practicum.  The task was to add a delete button to two of the pages and ensure it redirected to the correct page once an item was deleted.&lt;/p&gt;
+
+&lt;p&gt;This was fairly straight-forward, though it did take some time as I was still in the process of learning the set-up of their project. Since the delete button existed elsewhere in the application, I could copy and paste the code into my cshtml file and make a few minor adjustments. Redirecting the page was handled by a javascript file. I made a new function, which was basically a copy of an already existing function, but tweaked the code so it would redirect to a particular overview page.&lt;/p&gt;
+
+&lt;p&gt;I opened the application in debug mode (in Visual Studio, the F5 key). Everything worked. I was excited that I may be nearly done my task.&lt;/p&gt;
+
+&lt;p&gt;Then I ran the code normally (Ctrl + F5), not in debug mode.  And it didn’t work - the page contents would not appear, and none of the buttons worked.&lt;/p&gt;
+
+&lt;p&gt;I couldn’t understand why this would happen.  I searched for answers online. Stack overflow suggested that it in normal mode, certain variables aren’t being initialized, but in debug mode variables default to zero. I scanned my code to see where there could be uninitialized variables but couldn’t find anything helpful.  I got onto discord and asked my web developer friends, who suggested the delete button was not properly connected to the necessary function in the javascript file. Once again I scanned my code, but there were no typos, everything was connected properly.&lt;/p&gt;
+
+&lt;p&gt;At this point I was becoming very frustrated, feeling like I was missing something important. That I just didn’t understand some important feature of .NET, and that this was going to take ages to dig into and fix.&lt;/p&gt;
+
+&lt;p&gt;I tried testing it again. In Visual Studio I did a clean and build. In the browser I did a hard refresh (Ctrl + Shift + R).&lt;/p&gt;
+
+&lt;p&gt;…and it worked.&lt;/p&gt;
+
+&lt;p&gt;I was surprised and a little suspicious. I didn’t think it would be that easy, but it was.  Previously, the old javascript file was saved in the cache, not my new updated one. Once it had the new file it worked like a charm.&lt;/p&gt;
+
+&lt;p&gt;So, all of that to say, I learned the importance of trying the simple solutions first. Restart Visual Studio. Restart your computer.  And if working with javascript, just try a hard refresh.&lt;/p&gt;</content><author><name></name></author><category term=".NET" /><category term="javascript" /><category term="debugging" /><summary type="html">Recently I was working on a task for my practicum. The task was to add a delete button to two of the pages and ensure it redirected to the correct page once an item was deleted.</summary></entry><entry><title type="html">A few .NET errors and solutions</title><link href="/dotnet-errors-and-solutions" rel="alternate" type="text/html" title="A few .NET errors and solutions" /><published>2020-04-02T01:11:00-06:00</published><updated>2020-04-02T01:11:00-06:00</updated><id>/dotnet-errors-and-solutions</id><content type="html" xml:base="/dotnet-errors-and-solutions">&lt;p&gt;Here are a few errors I received while working on a .NET application, and how I solved them.&lt;/p&gt;
+
+&lt;h3 id=&quot;unable-to-determine-composite-primary-key-ordering-for-type-use-the-columnattribute-or-the-haskey-method&quot;&gt;“Unable to determine composite primary key ordering for type… Use the ColumnAttribute or the HasKey method…”&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;
+This occured because I tried to assign more than one [Key] in a C# class file, as per below:&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whatever&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherOne&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The microsoft docs actually helped me here: &lt;a href=&quot;https://docs.microsoft.com/en-ca/ef/ef6/modeling/code-first/data-annotations?redirectedfrom=MSDN#composite-keys&quot;&gt;Microsoft docs on data annotation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Basically, if you have more than one primary key, you need to give them an order using the column attribute, like below:&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;[Column(Order=1)]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whatever&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;[Column(Order=2)]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherOne&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that the order doesn’t have to start at zero like an index, the order is just relative.&lt;/p&gt;
+
+&lt;h3 id=&quot;this-operation-requires-a-connection-to-master-database&quot;&gt;“This operation requires a connection to master database”&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;There was an issue connecting to my database, and this was fixed by adding “Integrated Security=True;” to the connection string in my Web.config file.  This is what stack overflow suggested you do when you’re connecting to the database with Windows Authentication, rather than a separate username and password.&lt;/p&gt;
+
+&lt;h3 id=&quot;cannot-insert-null-value-into-column-id&quot;&gt;“Cannot insert null value into column id”&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;The application uses a database of students. If you create a new student in the application it should add to the students table in the database. The problem was the student id number wasn’t being assigned.&lt;/p&gt;
+
+&lt;p&gt;Back to Stack Overflow. Assuming you want the id to automatically increment, this is what you do.&lt;/p&gt;
+
+&lt;p&gt;In SQL Server Management Studio:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;open table in Design&lt;/li&gt;
+  &lt;li&gt;select your column, go to Column Properties&lt;/li&gt;
+  &lt;li&gt;check Identity Specification&lt;/li&gt;
+  &lt;li&gt;set “IsIdentity” to “yes”&lt;/li&gt;
+  &lt;li&gt;set “IdentityIncrement” to “1”, so it increments by 1 each time you add a new student&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term=".NET" /><category term="debugging" /><category term="csharp" /><category term="SQL" /><summary type="html">Here are a few errors I received while working on a .NET application, and how I solved them.</summary></entry><entry><title type="html">Entity Framework, workflows, databases, and migrations</title><link href="/entityframework" rel="alternate" type="text/html" title="Entity Framework, workflows, databases, and migrations" /><published>2020-03-18T17:50:00-06:00</published><updated>2020-03-18T17:50:00-06:00</updated><id>/entityframework</id><content type="html" xml:base="/entityframework">&lt;p&gt;When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.&lt;/p&gt;
+
+&lt;h3 id=&quot;entity-framework-a-tool-we-use-to-access-a-database&quot;&gt;Entity Framework: a tool we use to access a database&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;it’s an object relational mapper (ORM)&lt;/li&gt;
+  &lt;li&gt;it maps data from a relational database to objects in our app&lt;/li&gt;
+  &lt;li&gt;allows you to work at a higher level of abstraction compared to manual mapping&lt;/li&gt;
+  &lt;li&gt;involves:
+    &lt;ul&gt;
+      &lt;li&gt;opening a connection to the databae&lt;/li&gt;
+      &lt;li&gt;executing a command&lt;/li&gt;
+      &lt;li&gt;reading the data&lt;/li&gt;
+      &lt;li&gt;closing the connection&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;relational-vs-non-relational-databases&quot;&gt;Relational vs Non-relational databases&lt;/h4&gt;
+
+&lt;p&gt;As an aside, it might be helpful to define these as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@zhenwu93/relational-vs-non-relational-databases-8336870da8bc&quot;&gt;This Medium article helped me quite a bit&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://www.pluralsight.com/blog/software-development/relational-non-relational-databases&quot;&gt;As well as this PluralSite article&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Relational databases: data stored in tables of rows and columns, and relationships between tables are established using primary and foreign keys. Uses SQL. You have to spend time in the beginning intentionally designing the structure of your database.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;good for complex queries&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Non-relational databases: (aka NoSQL) doesn’t use tables, doesn’t need a lot of structure. Data stored in collections of JSON documents.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;good for storing large amounts of data, and for flexibility&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dbcontext-the-connection-to-the-database&quot;&gt;DbContext: the connection to the database&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;a class provided by Entity Framework&lt;/li&gt;
+  &lt;li&gt;a DbContext class file has one or more DbSet&lt;/li&gt;
+  &lt;li&gt;DbSet represent tables in the database&lt;/li&gt;
+  &lt;li&gt;can use LINQ to query DbSet, and at runtime Entity Framework translates LINQ queries to SQL queries&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;See the DbContext class example below. Each DbSet corresponds to a table in the database.&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;D2LDbContext&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbContext&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Students&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//&amp;lt;Student&amp;gt; is a type parameter, Students is the property name in plural form&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//the whole line is a property of D2LDbContext&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Teacher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Teachers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+        
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Course&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Courses&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StudentCourse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StudentCourse&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TeacherCourse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TeacherCourse&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You use a DbContext object to access tables, and you use DbSet to modify table data.&lt;/p&gt;
+
+&lt;p&gt;Important takeaway: DbContext is a database connection, and DbSet represents a table in the database&lt;/p&gt;
+
+&lt;p&gt;Entity Framework opens the connection to the database, reads the data, maps it to objects, and adds them to DbSet. Entity Framework also keeps track of changes, like when we add, delete, or modify.  When we ask to persist these changes, Entity Framework automatically generates SQL statements and executes them on the database.&lt;/p&gt;
+
+&lt;p&gt;At this point during my reading, I asked myself what “persistence” actually means. I had to read a few different sources to really get it.&lt;/p&gt;
+
+&lt;h4 id=&quot;persistence&quot;&gt;Persistence&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;(techopedia) in terms of data, persistence means an object should not be erased until it is ready to be deleted&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Persistent data definitions:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;does not change and is not accessed frequently&lt;/li&gt;
+  &lt;li&gt;master data that’s stable&lt;/li&gt;
+  &lt;li&gt;exists from once instance to another&lt;/li&gt;
+  &lt;li&gt;stored in an actual format and stays there, like a hard drive; by contrast in memory, when you close the file the data is gone&lt;/li&gt;
+  &lt;li&gt;can retrieve the data again and again&lt;/li&gt;
+  &lt;li&gt;the ability of the object state to be saved to a database, so the state of the object “persists” whether the app is running or not (stack overflow def.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;entity-framework-workflows&quot;&gt;Entity Framework workflows&lt;/h3&gt;
+
+&lt;p&gt;Two main workflows for Entity Framework: database first and code first&lt;/p&gt;
+
+&lt;p&gt;First, definitions:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;domain class: models your data, used to map data from a database to an in-memory object&lt;/li&gt;
+  &lt;li&gt;“versioning” a database: sharing all versions of a database that are necessary for other team members to get a project up and running&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Database first:&lt;/strong&gt; design database tables first, then have Entity Framework create the corresponding domain classes&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Code first:&lt;/strong&gt; create your domain classes then have Entity Framework generate the database tables for us&lt;/p&gt;
+
+&lt;p&gt;Advantages of a code first workflow:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;faster to code, more productive&lt;/li&gt;
+  &lt;li&gt;full versioning of database - can migrate to any version of the database at any point in time&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;database-migrations&quot;&gt;Database migrations&lt;/h3&gt;
+
+&lt;p&gt;Database migrations track changes to your database schema. A database migration is moving your data from one platform to another.&lt;/p&gt;
+
+&lt;p&gt;Database schema: the structure/organization of a database, how it is contructed&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a description of the data&lt;/li&gt;
+  &lt;li&gt;defines attributes of a database like tables, columns, properties&lt;/li&gt;
+  &lt;li&gt;structure that represents the logical view of the database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;here-are-the-steps-to-a-code-first-migration-in-visual-studio&quot;&gt;Here are the steps to a code first migration in Visual Studio&lt;/h4&gt;
+
+&lt;p&gt;Go to: Tools -&amp;gt; NuGet Package Manager -&amp;gt; Package Manager Console&lt;/p&gt;
+
+&lt;p&gt;Type in console:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;enable-migrations
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This generates a Migrations folder in your solution.&lt;/p&gt;
+
+&lt;p&gt;Then in console:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;add-migration &quot;YourMigrationName&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This generates a new C# class in the Migrations folder&lt;/p&gt;
+
+&lt;p&gt;Finally,&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;update-database
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now if you go to App_Data in your solution, you have a new database file.&lt;/p&gt;</content><author><name></name></author><category term=".NET" /><category term="MVC" /><category term="database" /><category term="migrations" /><category term="EntityFramework" /><summary type="html">When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers. I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me. In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.</summary></entry><entry><title type="html">Update and Routing</title><link href="/routing" rel="alternate" type="text/html" title="Update and Routing" /><published>2020-03-18T17:12:00-06:00</published><updated>2020-03-18T17:12:00-06:00</updated><id>/routing</id><content type="html" xml:base="/routing">&lt;p&gt;A lot has happened in the month since I last wrote.  I was very busy with my practicum and neglected some of my own projects.  I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum.  I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time.  Let’s go with that.&lt;/p&gt;
+
+&lt;p&gt;I’m going to try writing posts with one topic only, for now. This post will explain what I know about routing in .NET.&lt;/p&gt;
+
+&lt;p&gt;One definition I will use:
+Overload: in C#, some methods will have the same name but can accept different parameters(aka arguements, in other languages). These different options are called “overloads”. You overload one method, rather than writing multiple methods that do the same thing but use different parameters.&lt;/p&gt;
+
+&lt;p&gt;You deal with routing in your RouteConfig.cs file. To create custom routes you have 2 main approaches: Convention-based and Attribute routing. Attribute routing is cleaner and is the recommended way.&lt;/p&gt;
+
+&lt;p&gt;Convention-based:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;in RegisterRoutes, put routes in order of most specific to most generic&lt;/li&gt;
+  &lt;li&gt;create routes.MapRoute(); before default route&lt;/li&gt;
+  &lt;li&gt;the most commonly used overload accepts 3 parameters: name, url, and default&lt;/li&gt;
+  &lt;li&gt;default defines the controller and action that you will use&lt;/li&gt;
+  &lt;li&gt;once you create this, you go to the corresponding controller and create the action result&lt;/li&gt;
+  &lt;li&gt;MapRoute() can accept another argument for constraints (like number of digits in a year or month) - can define using regular expressions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For large applications, you can accumulate many custom routes in your RouteConfig.cs file, so you can use attribute routing to make it cleaner.&lt;/p&gt;
+
+&lt;p&gt;Attribute routing:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;use attribute above action in controller, rather than creating it in RouteConfig.cs&lt;/li&gt;
+  &lt;li&gt;in RouteConfig.cs, add routes.MapMvcAttributeRoutes();&lt;/li&gt;
+  &lt;li&gt;for example, in controller type the following above your action [Route(“movies/release/{year}/{month:regex(\d{2}”)})]&lt;/li&gt;
+  &lt;li&gt;constraints placed directly in attribute&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term=".NET" /><category term="MVC" /><category term="routing" /><summary type="html">A lot has happened in the month since I last wrote. I was very busy with my practicum and neglected some of my own projects. I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum. I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time. Let’s go with that.</summary></entry><entry><title type="html">Beginning to learn .NET</title><link href="/learningdotnet" rel="alternate" type="text/html" title="Beginning to learn .NET" /><published>2020-02-17T22:30:00-07:00</published><updated>2020-02-17T22:30:00-07:00</updated><id>/learningdotnet</id><content type="html" xml:base="/learningdotnet">&lt;p&gt;I am currently in the middle of the practicum component of my program. I am entering week 3 of 8, and to be honest I still have a lot of learning to do in order to be useful here.  I have already learned a lot of things that were not taught in my program, which I guess is the point of working in a real office. It hasn’t been easy and I suspect it will continue that way.&lt;/p&gt;
+
+&lt;p&gt;The source of all my trouble is the fact that until now I never learned C# or .NET, and we spent maybe half and hour in class on MVC.  I consider myself to be more skilled at front end development, but my job is almost entirely back end. At least so far. Having knowledge of ASP.NET and MVC applications beforehand would have been extremely helpful. I believe the most helpful information will be anything to do with the structure of MVC applications, so I can understand how to navigate my company’s project. One challenge I have found is that tutorials and articles relating to MVC assume a basic to intermediate knowledge of C# already. And the C# tutorials start out at a level that is too beginner for me, given that I already know how to add, subtract, use logical operators and conditionals… I’m on a bit of a time crunch to learn MVC and .NET. And yet my progress feels too slow given that my practicum is only 2 months long.&lt;/p&gt;
+
+&lt;p&gt;Anyway, I’ll get into some of the things I’ve learned so far.  My work notebook is filling up very quickly, but perhaps I’ll just compile what I’ve learned through my studies at home.&lt;/p&gt;
+
+&lt;p&gt;There are many, many, many definitions online of the model, view and controller. On a code analogies blog the author related it to ordering a drink at a bar. Your order is the request, the bartender (and the drink recipe they memorized) is the controller, the ingredients are the model, and the finished drink is the view. Actually very helpful. His blog is here: https://blog.codeanalogies.com/2016/05/02/model-view-controller-mvc-explained-through-ordering-drinks-at-the-bar/&lt;/p&gt;
+
+&lt;p&gt;Here are more notes and definitions I’ve been able to compile from various courses and articles, including my Udemy course on ASP.NET MVC Applications:&lt;/p&gt;
+
+&lt;p&gt;Model:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;the application data and behavior&lt;/li&gt;
+  &lt;li&gt;is independent of UI&lt;/li&gt;
+  &lt;li&gt;independent of data persistence&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;View:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;the HTML displayed to the user&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Controller:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;handles the HTTP request&lt;/li&gt;
+  &lt;li&gt;used to define and group a set of actions together - see more on actions below&lt;/li&gt;
+  &lt;li&gt;any instantiable class ending in “Controller”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(bonus)Router:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;selects which controller will be used, based on the the request that comes in&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Also a little bit about Entity Framework, which I have learned is important but can’t seem to find plain English definitions of:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;need a persistence framework to access the database in an app&lt;/li&gt;
+  &lt;li&gt;helps to load objects from a database, and save to a database&lt;/li&gt;
+  &lt;li&gt;need this to use dbcontext in your files&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Yeah, I don’t know. We’ll revist later, maybe with my work notes. Onward!&lt;/p&gt;
+
+&lt;p&gt;Creating a new controller:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;very important fact! When you create a new controller in Visual Studio, you will automatically get a new folder created in Views with the same name&lt;/li&gt;
+  &lt;li&gt;when it needs to return a view, the controller will search for the view in a folder with the same name!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Client side stuff/CSS:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;ASP.NET uses Bootstrap for CSS.  This is pretty obvious if you have used Bootstrap, when you see the ASP.NET default page… It’s fine.  It’s good if you don’t have time/don’t like/aren’t good at front end.&lt;/li&gt;
+  &lt;li&gt;You can use bootswatch.com to get Bootstrap templates to use in your application if you don’t like the default.&lt;/li&gt;
+  &lt;li&gt;Go to bootswatch and download the bootstrap.css file for your preferred theme. You can rename if you like. Place in your Content folder of your MVC project&lt;/li&gt;
+  &lt;li&gt;You will need to update your Bundle config file if you want to use your new theme, and the file name is different. Go to App_Start -&amp;gt; BundleConfig.cs.  Scroll and look for Content/bootstrap.css, and update the path name if necessary&lt;/li&gt;
+  &lt;li&gt;FYI, the BundleConfig.cs file is where you define client-side bundles and assets.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Action and ActionResult&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;An action is a method in a controller responsible for handling incoming requests&lt;/li&gt;
+  &lt;li&gt;Routing maps the requests to our actions&lt;/li&gt;
+  &lt;li&gt;An ActionResult is the output of our actions&lt;/li&gt;
+  &lt;li&gt;Action Parameters are the inputs for our actions&lt;/li&gt;
+  &lt;li&gt;Any public method on a controller type is an action&lt;/li&gt;
+  &lt;li&gt;Actions are basically the final destination of our requests in an MVC app&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To rename a parameter:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Hit F2&lt;/li&gt;
+  &lt;li&gt;Type new name&lt;/li&gt;
+  &lt;li&gt;All references are now updated automatically in Visual Studio&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Nullable: to make a parameter nullable means it’s ok for it to have no value passed it - it’s ok for it to be “null”&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;for int and double data types, put “?” afterwards&lt;/li&gt;
+  &lt;li&gt;for example: int? = …&lt;/li&gt;
+  &lt;li&gt;don’t need to put “?” after strings, because apparently they are already nullable in C#&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ok, that’s all for this post. I will write more as I continue with my courses, and when I remember to bring home my work notebook.&lt;/p&gt;</content><author><name></name></author><category term=".NET" /><category term="MVC" /><summary type="html">I am currently in the middle of the practicum component of my program. I am entering week 3 of 8, and to be honest I still have a lot of learning to do in order to be useful here. I have already learned a lot of things that were not taught in my program, which I guess is the point of working in a real office. It hasn’t been easy and I suspect it will continue that way.</summary></entry><entry><title type="html">Welcome to my new web dev blog!</title><link href="/first-post" rel="alternate" type="text/html" title="Welcome to my new web dev blog!" /><published>2020-02-17T00:30:00-07:00</published><updated>2020-02-17T00:30:00-07:00</updated><id>/first-post</id><content type="html" xml:base="/first-post">&lt;p&gt;Hello!  This is the first post in my new blog. My intention for this blog is to create a place for me to document everything that I am learning as a new web developer. I started my certificate program in September 2019, and I want to be able to look back on all I have learned, and have a centralized space for notes. Here I will make notes of the things I’m learning, the challenges I face, and how I solved any issues that arise. I came up with the idea when I created my first Jekyll blog for an assignment in my CMS class. I needed to create blog posts, so I decided to live-blog my experience using Jekyll. I ended up having a lot of fun with this, and I had notes for myself for the future.&lt;/p&gt;
+
+&lt;p&gt;Today’s blog will talk about the steps I took to do the initial set up for this blog.&lt;/p&gt;
+
+&lt;p&gt;To get started, I:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;navigated into old jekyll directory on my machine&lt;/li&gt;
+  &lt;li&gt;executed command jekyll new julia-blog&lt;/li&gt;
+  &lt;li&gt;cd julia-blog&lt;/li&gt;
+  &lt;li&gt;bundle exec jekyll serve&lt;/li&gt;
+  &lt;li&gt;navigated in browser to localhost:4000&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is pretty straight forward and you can find these instructions in the Jekyll docs.&lt;/p&gt;
+
+&lt;p&gt;Next I wanted to install I theme. In my blog from school, I wrote that I did this by:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;finding a theme and downloading the files from github&lt;/li&gt;
+  &lt;li&gt;copying over the files that I didn’t already have in my directory from creating the new blog&lt;/li&gt;
+  &lt;li&gt;bundle install&lt;/li&gt;
+  &lt;li&gt;bundle exec jekyll serve&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(At this point I’d like to leave a note to self: ensure I categorize these posts into topics for easier navigation later)&lt;/p&gt;
+
+&lt;p&gt;When I did this, I got a page with the theme working. But I got the 404 page. Now I am looking in the config file to see if I can find out why. This config file came from my theme, which is Jasper 2.  The baseurl was set to “/jasper2”, which doesn’t exist in my root folder, so I changed it to “/”, which the config file instructed you to do.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;jekyll serve&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This gave me an error. The error message suggested the following (something to do with the gem file, I will look into this later), which I executed:&lt;/p&gt;
+
+&lt;p&gt;-bundle exec jekyll serve&lt;/p&gt;
+
+&lt;p&gt;This worked, but it took me to my boring index page with no styling. I noticed that the 404.html page that came with my theme had layout: default in the front matter, so I added this to my index. The site regenerated, and now I have styling.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><summary type="html">Hello! This is the first post in my new blog. My intention for this blog is to create a place for me to document everything that I am learning as a new web developer. I started my certificate program in September 2019, and I want to be able to look back on all I have learned, and have a centralized space for notes. Here I will make notes of the things I’m learning, the challenges I face, and how I solved any issues that arise. I came up with the idea when I created my first Jekyll blog for an assignment in my CMS class. I needed to create blog posts, so I decided to live-blog my experience using Jekyll. I ended up having a lot of fun with this, and I had notes for myself for the future.</summary></entry></feed>

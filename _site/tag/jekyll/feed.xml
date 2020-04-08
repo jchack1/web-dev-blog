@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="/tag/jekyll/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2020-04-08T17:36:34-06:00</updated>
+  <id>/tag/jekyll/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Julia Hack | </title>
+  
+
+  
+    <subtitle>Web development blog</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">New jekyll site part 2 - errors with Gulp</title>
+      <link href="/new-jekyll-site-2" rel="alternate" type="text/html" title="New jekyll site part 2 - errors with Gulp" />
+      <published>2020-04-04T17:31:00-06:00</published>
+      <updated>2020-04-04T17:31:00-06:00</updated>
+      <id>/new-jekyll-site-2</id>
+      <content type="html" xml:base="/new-jekyll-site-2">&lt;p&gt;Continuing from my last post, where I began to describe the process of making this blog.&lt;/p&gt;
+
+&lt;p&gt;I’m at the point of self-isolation where I’m starting to forget what day it is.  I believe I spent the past 3 days or so trying to figure out this problem, though at this point I’ve lost track.&lt;/p&gt;
+
+&lt;p&gt;I left off describing my issue of CSS not compiling the way I expected it to.  I admit I should have checked the instructions on the Jasper2 theme’s github in the very beginning so I would be aware that they use gulp. I followed the instructions to install gulp, but it still didn’t work. I spent many more hours fiddling around with it, then I decided to look up a tutorial on gulp in case my issue was simply not knowing enough about gulp.&lt;/p&gt;
+
+&lt;p&gt;I saw that gulp utilizes command line.  You can create functions in your gulpfile.js that can be executed in the command line; in my case, the gulpfile was already created. Below is an example function that was included with my theme:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'build'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'css'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;cm&quot;&gt;/* cb */&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nodemonServerInit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Above is a gulp task, named build.  To run this code I would type “gulp build” in the command line. If you name a task “default”, all you need to type in command line is “gulp”, and your default task is run.&lt;/p&gt;
+
+&lt;p&gt;Once I learned this I was getting much closer to figuring out my problem.  However when I ran “gulp” or “gulp build”, I got an error:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;fs.js:27
+const { Math, Object } = primordials;
+                         ^
+
+ReferenceError: primordials is not defined&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I searched online for a solution to this error as kind of a last ditch effort. Up until this point, I could not find any solutions at all, and there were no issues of this kind brought up by users on Jasper2’s github page.  Of course, stack overflow gave me a solution, which I would never have thought of myself unless I looked it up. I believe it was the second answer on this page that helped me: https://stackoverflow.com/questions/55921442/how-to-fix-referenceerror-primordials-is-not-defined-in-node&lt;/p&gt;
+
+&lt;p&gt;The issue is that the node.js and gulp versions were incompatible. Remember my last post, where I wondered if I had an issue with my package versions? In a way I was right, just not in the way I expected. Node version 11.5 and higher, and gulp 3.9.1 are not compatible. This version of gulp depends on graceful-fs version 3.0.0, which is something I’m still unfamiliar with.&lt;/p&gt;
+
+&lt;p&gt;To fix this I had to:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;add the below code to my package.json, and run “npm install” in command line&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;preinstall&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;npx npm-force-resolutions&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;resolutions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;graceful-fs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;4.2.3&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;All this just to be able to tweak the CSS in my blog.&lt;/p&gt;
+
+&lt;p&gt;Now, whenever I make a change to CSS, I execute the following commands:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;gulp&lt;/li&gt;
+  &lt;li&gt;bundle exec jekyll serve&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(If I really want to be thorough, I will add in “bundle exec jekyll build” before I serve the site)&lt;/p&gt;
+
+&lt;p&gt;I believe there is a way to make gulp watch for changes, but I haven’t figured out how to make that work with jekyll. For now though this works just fine, despite the extra typing.&lt;/p&gt;
+
+&lt;p&gt;Okay. Now I think it’s time to finally make my changes to CSS, as well as research markdown in order to clean up my blog posts.  See you in the next one.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="jekyll" />
+      
+        <category term="gulp" />
+      
+        <category term="debugging" />
+      
+
+      
+        <summary type="html">Continuing from my last post, where I began to describe the process of making this blog.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">New jekyll site part 3 - errors with deployment</title>
+      <link href="/new-jekyll-site-3" rel="alternate" type="text/html" title="New jekyll site part 3 - errors with deployment" />
+      <published>2020-04-04T16:03:00-06:00</published>
+      <updated>2020-04-04T16:03:00-06:00</updated>
+      <id>/new-jekyll-site-3</id>
+      <content type="html" xml:base="/new-jekyll-site-3">&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
+
+&lt;p&gt;Of course there have been errors with this as well. As expected.&lt;/p&gt;
+
+&lt;p&gt;I created my github repo and pushed my code using command line. I used the following commands and this worked without errors:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;git init&lt;/li&gt;
+  &lt;li&gt;git add .&lt;/li&gt;
+  &lt;li&gt;git commit -m “first commit”&lt;/li&gt;
+  &lt;li&gt;git remote add origin https://github.com/jchack1/julia-blog2.git&lt;/li&gt;
+  &lt;li&gt;git push -u origin master&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I decided to deploy with Netlify, which is my go to for any deployment. It’s usually pretty straightforward, &lt;a href=&quot;https://www.netlify.com/blog/2015/10/28/a-step-by-step-guide-jekyll-3.0-on-netlify/&quot;&gt;and you can find the instructions for deploying Jekyll with Netlify here.&lt;/a&gt;  I selected my github repo and clicked deploy. After a few minutes I got an error, saying the build failed.&lt;/p&gt;
+
+&lt;p&gt;That is because Netlify was looking for the _site folder.  I checked my files and I saw that I did not have this.  By now I’m getting pretty frustrated with this theme because it feels like there was a lot missing and unexplained. Why isn’t there a _site folder?&lt;/p&gt;
+
+&lt;p&gt;I went to the &lt;a href=&quot;https://jekyllrb.com/docs/step-by-step/01-setup/&quot;&gt;Jekyll docs&lt;/a&gt; looking for any information about the _site folder.  I saw that when you use the command “jekyll build”, Jekyll builds the site and outputs it to a directory called _site, which is viewable in the browser at localhost:4000. I have used the “jekyll build” command many times so far, so I was unsure why it’s not in my files.  And why I was able to serve my site to localhost:4000.  I decided to see what would happen if I make a new Jekyll folder from scratch and run “jekyll build”. In my previous sites I always had a _site folder and never gave any thought to how it was created.&lt;/p&gt;
+
+&lt;p&gt;This time I decided to just follow my old notes rather than just copy-paste from my theme. I went into the Jekyll folder I already have on my machine and opened command line. I used the following commands:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;jekyll new julia-blog3&lt;/li&gt;
+  &lt;li&gt;cd julia-blog3&lt;/li&gt;
+  &lt;li&gt;bundle exec jekyll build&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I watched the files in the folders and there it was. Once I used the jekyll build command, my _site folder appeared. Perhaps this was my mistake from the beginning. I never intiallized my folder properly.&lt;/p&gt;
+
+&lt;p&gt;I decided to check both folders now, to see if I could either update my blog scripts to create the _site file, or if I’d need to copy everything over into my new folder. Whatever I tried in my old folder did not work, so I ended up copying everything over into my new folder. I set up gulp, which was really quick this time since I knew what I was doing. When I executed “bundle exec jekyll build” I now ended up with a _site folder, and it was filled with the proper files.&lt;/p&gt;
+
+&lt;p&gt;Now I will upload this new folder to github and deploy. It should work now that I have a proper _site folder.&lt;/p&gt;
+
+&lt;p&gt;I just have to remember to always “bundle exec jekyll build” when I make changes. But only after I execute “gulp”. Hopefull I will quickly get used to this workflow.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="jekyll" />
+      
+        <category term="debugging" />
+      
+        <category term="deployment" />
+      
+
+      
+        <summary type="html">I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Making a new jekyll site - this one, actually</title>
+      <link href="/making-another-jekyll-site" rel="alternate" type="text/html" title="Making a new jekyll site - this one, actually" />
+      <published>2020-04-02T16:50:00-06:00</published>
+      <updated>2020-04-02T16:50:00-06:00</updated>
+      <id>/making-another-jekyll-site</id>
+      <content type="html" xml:base="/making-another-jekyll-site">&lt;p&gt;Well, I’m going to do that thing again where I blog my experience of making a blog. At least I can feel like I am writing something for a reader, a pretend social interaction during week 3 of social distancing, though I suspect no one will read this except myself.&lt;/p&gt;
+
+&lt;p&gt;I’m already part way through making this blog, as you may have gathered from my first post on this site.  My first blog was pretty straight-forward, despite jekyll being new to me. I assumed this time around would be simpler, but now that I am really diving into the functionality of my chosen theme Jasper2 from Ghost, I’m realizing there is actually a lot I can do with this platform. Which means there is a lot to learn.  But at this stage in my web development journey, I realize there is always more to learn.&lt;/p&gt;
+
+&lt;p&gt;As an aside, after building several websites from scratch with HTML, CSS, and vanilla JavaScript, using a theme like this feels a bit like cheating. I don’t have to fully understand what the code does for it to work and give a beautiful result. But I guess I’m not doing school projects anymore; there are no requirements other than those I place on myself.&lt;/p&gt;
+
+&lt;p&gt;I already screwed up my home page by playing around with the index.html code, so I’d like to make sure I know what I’m doing when I start making new changes.&lt;/p&gt;
+
+&lt;p&gt;Next is adding my own logo. I remember from last time I need to stay well away from the _site folder. You can check out my old blog to learn more about that.  This time I will go straight to assets, plus I’ll have a look at the index page and the layouts to see where the reference the logo. I already know that it is not mentioned in the navigation include.&lt;/p&gt;
+
+&lt;p&gt;It looks like the original logo is in assets -&amp;gt; images -&amp;gt; blog-icon.png.  I replaced the logo in this folder with my own and now it shows up on the site. However, it is much smaller than I’d like. I adjusted the max-height property for the site-logo class in screen.css, but this did nothing to change the size of the logo. The browser still displays the CSS with the original size.&lt;/p&gt;
+
+&lt;p&gt;I then found out that jasper2 requires the use of gulp to be able to change the CSS. I installed gulp globally and tried again. The CSS changes still did not show up. At this point I’m wondering if the version of gulp that I have is not compatible with my gemfile or gulpfile.&lt;/p&gt;
+
+&lt;p&gt;In my theme you should be able to edit assets/css, and then the gulp.js file automatically updates the css file in assets/built.&lt;/p&gt;
+
+&lt;p&gt;It took my a while to figure out what was going on, so I’ll continue in the next post.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="jekyll" />
+      
+
+      
+        <summary type="html">Well, I’m going to do that thing again where I blog my experience of making a blog. At least I can feel like I am writing something for a reader, a pretend social interaction during week 3 of social distancing, though I suspect no one will read this except myself.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Welcome to my new web dev blog!</title>
+      <link href="/first-post" rel="alternate" type="text/html" title="Welcome to my new web dev blog!" />
+      <published>2020-02-17T00:30:00-07:00</published>
+      <updated>2020-02-17T00:30:00-07:00</updated>
+      <id>/first-post</id>
+      <content type="html" xml:base="/first-post">&lt;p&gt;Hello!  This is the first post in my new blog. My intention for this blog is to create a place for me to document everything that I am learning as a new web developer. I started my certificate program in September 2019, and I want to be able to look back on all I have learned, and have a centralized space for notes. Here I will make notes of the things I’m learning, the challenges I face, and how I solved any issues that arise. I came up with the idea when I created my first Jekyll blog for an assignment in my CMS class. I needed to create blog posts, so I decided to live-blog my experience using Jekyll. I ended up having a lot of fun with this, and I had notes for myself for the future.&lt;/p&gt;
+
+&lt;p&gt;Today’s blog will talk about the steps I took to do the initial set up for this blog.&lt;/p&gt;
+
+&lt;p&gt;To get started, I:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;navigated into old jekyll directory on my machine&lt;/li&gt;
+  &lt;li&gt;executed command jekyll new julia-blog&lt;/li&gt;
+  &lt;li&gt;cd julia-blog&lt;/li&gt;
+  &lt;li&gt;bundle exec jekyll serve&lt;/li&gt;
+  &lt;li&gt;navigated in browser to localhost:4000&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is pretty straight forward and you can find these instructions in the Jekyll docs.&lt;/p&gt;
+
+&lt;p&gt;Next I wanted to install I theme. In my blog from school, I wrote that I did this by:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;finding a theme and downloading the files from github&lt;/li&gt;
+  &lt;li&gt;copying over the files that I didn’t already have in my directory from creating the new blog&lt;/li&gt;
+  &lt;li&gt;bundle install&lt;/li&gt;
+  &lt;li&gt;bundle exec jekyll serve&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(At this point I’d like to leave a note to self: ensure I categorize these posts into topics for easier navigation later)&lt;/p&gt;
+
+&lt;p&gt;When I did this, I got a page with the theme working. But I got the 404 page. Now I am looking in the config file to see if I can find out why. This config file came from my theme, which is Jasper 2.  The baseurl was set to “/jasper2”, which doesn’t exist in my root folder, so I changed it to “/”, which the config file instructed you to do.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;jekyll serve&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This gave me an error. The error message suggested the following (something to do with the gem file, I will look into this later), which I executed:&lt;/p&gt;
+
+&lt;p&gt;-bundle exec jekyll serve&lt;/p&gt;
+
+&lt;p&gt;This worked, but it took me to my boring index page with no styling. I noticed that the 404.html page that came with my theme had layout: default in the front matter, so I added this to my index. The site regenerated, and now I have styling.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="jekyll" />
+      
+
+      
+        <summary type="html">Hello! This is the first post in my new blog. My intention for this blog is to create a place for me to document everything that I am learning as a new web developer. I started my certificate program in September 2019, and I want to be able to look back on all I have learned, and have a centralized space for notes. Here I will make notes of the things I’m learning, the challenges I face, and how I solved any issues that arise. I came up with the idea when I created my first Jekyll blog for an assignment in my CMS class. I needed to create blog posts, so I decided to live-blog my experience using Jekyll. I ended up having a lot of fun with this, and I had notes for myself for the future.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

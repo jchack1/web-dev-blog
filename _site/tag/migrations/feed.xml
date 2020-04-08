@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="/tag/migrations/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2020-04-08T17:36:34-06:00</updated>
+  <id>/tag/migrations/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Julia Hack | </title>
+  
+
+  
+    <subtitle>Web development blog</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Entity Framework, workflows, databases, and migrations</title>
+      <link href="/entityframework" rel="alternate" type="text/html" title="Entity Framework, workflows, databases, and migrations" />
+      <published>2020-03-18T17:50:00-06:00</published>
+      <updated>2020-03-18T17:50:00-06:00</updated>
+      <id>/entityframework</id>
+      <content type="html" xml:base="/entityframework">&lt;p&gt;When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.&lt;/p&gt;
+
+&lt;h3 id=&quot;entity-framework-a-tool-we-use-to-access-a-database&quot;&gt;Entity Framework: a tool we use to access a database&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;it’s an object relational mapper (ORM)&lt;/li&gt;
+  &lt;li&gt;it maps data from a relational database to objects in our app&lt;/li&gt;
+  &lt;li&gt;allows you to work at a higher level of abstraction compared to manual mapping&lt;/li&gt;
+  &lt;li&gt;involves:
+    &lt;ul&gt;
+      &lt;li&gt;opening a connection to the databae&lt;/li&gt;
+      &lt;li&gt;executing a command&lt;/li&gt;
+      &lt;li&gt;reading the data&lt;/li&gt;
+      &lt;li&gt;closing the connection&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;relational-vs-non-relational-databases&quot;&gt;Relational vs Non-relational databases&lt;/h4&gt;
+
+&lt;p&gt;As an aside, it might be helpful to define these as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@zhenwu93/relational-vs-non-relational-databases-8336870da8bc&quot;&gt;This Medium article helped me quite a bit&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://www.pluralsight.com/blog/software-development/relational-non-relational-databases&quot;&gt;As well as this PluralSite article&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Relational databases: data stored in tables of rows and columns, and relationships between tables are established using primary and foreign keys. Uses SQL. You have to spend time in the beginning intentionally designing the structure of your database.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;good for complex queries&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Non-relational databases: (aka NoSQL) doesn’t use tables, doesn’t need a lot of structure. Data stored in collections of JSON documents.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;good for storing large amounts of data, and for flexibility&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dbcontext-the-connection-to-the-database&quot;&gt;DbContext: the connection to the database&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;a class provided by Entity Framework&lt;/li&gt;
+  &lt;li&gt;a DbContext class file has one or more DbSet&lt;/li&gt;
+  &lt;li&gt;DbSet represent tables in the database&lt;/li&gt;
+  &lt;li&gt;can use LINQ to query DbSet, and at runtime Entity Framework translates LINQ queries to SQL queries&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;See the DbContext class example below. Each DbSet corresponds to a table in the database.&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;D2LDbContext&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbContext&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Students&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//&amp;lt;Student&amp;gt; is a type parameter, Students is the property name in plural form&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//the whole line is a property of D2LDbContext&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Teacher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Teachers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+        
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Course&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Courses&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StudentCourse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StudentCourse&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TeacherCourse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TeacherCourse&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You use a DbContext object to access tables, and you use DbSet to modify table data.&lt;/p&gt;
+
+&lt;p&gt;Important takeaway: DbContext is a database connection, and DbSet represents a table in the database&lt;/p&gt;
+
+&lt;p&gt;Entity Framework opens the connection to the database, reads the data, maps it to objects, and adds them to DbSet. Entity Framework also keeps track of changes, like when we add, delete, or modify.  When we ask to persist these changes, Entity Framework automatically generates SQL statements and executes them on the database.&lt;/p&gt;
+
+&lt;p&gt;At this point during my reading, I asked myself what “persistence” actually means. I had to read a few different sources to really get it.&lt;/p&gt;
+
+&lt;h4 id=&quot;persistence&quot;&gt;Persistence&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;(techopedia) in terms of data, persistence means an object should not be erased until it is ready to be deleted&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Persistent data definitions:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;does not change and is not accessed frequently&lt;/li&gt;
+  &lt;li&gt;master data that’s stable&lt;/li&gt;
+  &lt;li&gt;exists from once instance to another&lt;/li&gt;
+  &lt;li&gt;stored in an actual format and stays there, like a hard drive; by contrast in memory, when you close the file the data is gone&lt;/li&gt;
+  &lt;li&gt;can retrieve the data again and again&lt;/li&gt;
+  &lt;li&gt;the ability of the object state to be saved to a database, so the state of the object “persists” whether the app is running or not (stack overflow def.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;entity-framework-workflows&quot;&gt;Entity Framework workflows&lt;/h3&gt;
+
+&lt;p&gt;Two main workflows for Entity Framework: database first and code first&lt;/p&gt;
+
+&lt;p&gt;First, definitions:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;domain class: models your data, used to map data from a database to an in-memory object&lt;/li&gt;
+  &lt;li&gt;“versioning” a database: sharing all versions of a database that are necessary for other team members to get a project up and running&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Database first:&lt;/strong&gt; design database tables first, then have Entity Framework create the corresponding domain classes&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Code first:&lt;/strong&gt; create your domain classes then have Entity Framework generate the database tables for us&lt;/p&gt;
+
+&lt;p&gt;Advantages of a code first workflow:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;faster to code, more productive&lt;/li&gt;
+  &lt;li&gt;full versioning of database - can migrate to any version of the database at any point in time&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;database-migrations&quot;&gt;Database migrations&lt;/h3&gt;
+
+&lt;p&gt;Database migrations track changes to your database schema. A database migration is moving your data from one platform to another.&lt;/p&gt;
+
+&lt;p&gt;Database schema: the structure/organization of a database, how it is contructed&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a description of the data&lt;/li&gt;
+  &lt;li&gt;defines attributes of a database like tables, columns, properties&lt;/li&gt;
+  &lt;li&gt;structure that represents the logical view of the database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;here-are-the-steps-to-a-code-first-migration-in-visual-studio&quot;&gt;Here are the steps to a code first migration in Visual Studio&lt;/h4&gt;
+
+&lt;p&gt;Go to: Tools -&amp;gt; NuGet Package Manager -&amp;gt; Package Manager Console&lt;/p&gt;
+
+&lt;p&gt;Type in console:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;enable-migrations
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This generates a Migrations folder in your solution.&lt;/p&gt;
+
+&lt;p&gt;Then in console:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;add-migration &quot;YourMigrationName&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This generates a new C# class in the Migrations folder&lt;/p&gt;
+
+&lt;p&gt;Finally,&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;update-database
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now if you go to App_Data in your solution, you have a new database file.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term=".NET" />
+      
+        <category term="MVC" />
+      
+        <category term="database" />
+      
+        <category term="migrations" />
+      
+        <category term="EntityFramework" />
+      
+
+      
+        <summary type="html">When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers. I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me. In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

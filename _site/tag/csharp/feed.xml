@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="/tag/csharp/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2020-04-08T17:36:34-06:00</updated>
+  <id>/tag/csharp/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Julia Hack | </title>
+  
+
+  
+    <subtitle>Web development blog</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">C# definitions cheatsheet</title>
+      <link href="/csharpdefinitions" rel="alternate" type="text/html" title="C# definitions cheatsheet" />
+      <published>2020-04-06T17:50:00-06:00</published>
+      <updated>2020-04-06T17:50:00-06:00</updated>
+      <id>/csharpdefinitions</id>
+      <content type="html" xml:base="/csharpdefinitions">&lt;p&gt;Here is some info I compiled as I worked my way through &lt;a href=&quot;https://www.codecademy.com/catalog/language/c-sharp&quot;&gt;Codecademy’s C# course&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I chose the codecademy course because I could work on it at my office during my practicum. My work computer wouldn’t play audio for some reason, so video tutorials weren’t an option while I was there. I also found the Microsoft documentation to be not very beginner friendly in its language, and it was the same with many other article style tutorials. The codecademy course was very beginner friendly and interactive so it held my attention better than just reading.&lt;/p&gt;
+
+&lt;p&gt;That wasn’t an ad or anything, just wanted to share something I found genuinely helpful. Moving on to the definitions…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Class:&lt;/strong&gt; custom data type, defines info and methods &lt;br /&gt;
+&lt;strong&gt;Object:&lt;/strong&gt; each &lt;em&gt;instance&lt;/em&gt; of a particular class&lt;/p&gt;
+
+&lt;p&gt;We can make many instances of a class, each with unique values of their own&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Fields:&lt;/strong&gt; pieces of data, like size and name&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;basically like variables&lt;/li&gt;
+  &lt;li&gt;these start with a lowercase letter eg. name&lt;/li&gt;
+  &lt;li&gt;fields can have different values in each object/instance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Class &lt;strong&gt;member&lt;/strong&gt;: a general term for the building blocks of a class&lt;/p&gt;
+
+&lt;p&gt;Some default values in C#:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;string: null&lt;/li&gt;
+  &lt;li&gt;int: 0&lt;/li&gt;
+  &lt;li&gt;bool: false&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Properties:&lt;/strong&gt; control access to a field&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;another kind of class member&lt;/li&gt;
+  &lt;li&gt;use the { get; } and { set; } methods&lt;/li&gt;
+  &lt;li&gt;start with an uppercase letter eg. Name&lt;/li&gt;
+  &lt;li&gt;inside the set method you can include validation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Access modifiers:&lt;/strong&gt; defines how a type or member can be accessed&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;public: can be accessed by ANY class&lt;/li&gt;
+  &lt;li&gt;private: can only be accessed by code in the SAME class&lt;/li&gt;
+  &lt;li&gt;protected: can be accessed by the current class and any class that inherits from it&lt;/li&gt;
+  &lt;li&gt;override/virtual: override an inherited method. Use “override” in subclass, “virtual” in base class&lt;/li&gt;
+  &lt;li&gt;abstract: use when there is no implementation in base class, but it must be in the subclass&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Methods:&lt;/strong&gt; actions an object can perform&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;if familiar with JavaScript, they are like functions&lt;/li&gt;
+  &lt;li&gt;most belong to a class&lt;/li&gt;
+  &lt;li&gt;define how an instance of the class behaves&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Constructor:&lt;/strong&gt; type of method that sets values of fields when you create a new instance. See below for an example of a constructor:&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//define a constructor in your class&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//again, codecademy example&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Forest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;biome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//whatever values you input as parameters are assigned to the below properties&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Biome&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;biome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Age&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//age starts at 0 for all new forests&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Use the constructor with the &lt;strong&gt;“new”&lt;/strong&gt; keyword to make a new instance, as per below:&lt;/p&gt;
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Forest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Forest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//example from codecademy&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;In the above example, “Forest” is the type, “f” is the name of the new object/instance you are making, Forest(); is the constructor that makes the new instance.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;this&lt;/strong&gt;: refers to the &lt;em&gt;current instance&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;it’s good to use this and be more explicit in your code; less chance for misinterpretation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Static:&lt;/strong&gt; information that is related to a class, but is not an instance of the class&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;something that applies to all instances and there should only be one value for the whole class&lt;/li&gt;
+  &lt;li&gt;a static member is accessed from the class, not an instance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Forest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Definition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Overload:&lt;/strong&gt; two or more methods that have the same name, but different parameters&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Interfaces:&lt;/strong&gt; sets of properties, methods, and other members that tell us how a class can be used&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;helps check that we are using our types correctly&lt;/li&gt;
+  &lt;li&gt;helps minimize bugs&lt;/li&gt;
+  &lt;li&gt;doesn’t specify how they work, just that a class MUST have them&lt;/li&gt;
+  &lt;li&gt;guarantee certain functionality across multiple classes&lt;/li&gt;
+  &lt;li&gt;all start with “I”&lt;/li&gt;
+  &lt;li&gt;the class must implement properties and methods in the interface&lt;/li&gt;
+  &lt;li&gt;cannot specify constructors or fields&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sedan&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IAutomobile&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//the interface says the sedan must have a &quot;Honk&quot; method, so we must include one in the sedan class&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//must be &quot;public&quot;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//interface doesn't care what &quot;Honk&quot; actually does &lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Inheritance:&lt;/strong&gt; a subclass/derived class inherits members of a superclass/base class&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sedan&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Vehicle&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//subclass Sedan inherits from base class Vehicle&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//must use &quot;:&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Both of the below are variables:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Reference types:&lt;/strong&gt; refer to a place in memory&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Value types:&lt;/strong&gt; hold actual data&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Classes are reference types. When we create an instance of an object, and store it in a variable, it is a reference to the original object.&lt;/p&gt;
+
+&lt;p&gt;It may seem obvious when written this way, but a “reference” is not an object, it is a &lt;em&gt;reference to&lt;/em&gt; an object.&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Dissertation&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diss1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Dissertation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//from codecademy&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//diss1 is a reference to the object Dissertation&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s all I have for now. As I continue going through my notes I will add to this post.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="csharp" />
+      
+
+      
+        <summary type="html">Here is some info I compiled as I worked my way through Codecademy’s C# course.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">A few .NET errors and solutions</title>
+      <link href="/dotnet-errors-and-solutions" rel="alternate" type="text/html" title="A few .NET errors and solutions" />
+      <published>2020-04-02T01:11:00-06:00</published>
+      <updated>2020-04-02T01:11:00-06:00</updated>
+      <id>/dotnet-errors-and-solutions</id>
+      <content type="html" xml:base="/dotnet-errors-and-solutions">&lt;p&gt;Here are a few errors I received while working on a .NET application, and how I solved them.&lt;/p&gt;
+
+&lt;h3 id=&quot;unable-to-determine-composite-primary-key-ordering-for-type-use-the-columnattribute-or-the-haskey-method&quot;&gt;“Unable to determine composite primary key ordering for type… Use the ColumnAttribute or the HasKey method…”&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;
+This occured because I tried to assign more than one [Key] in a C# class file, as per below:&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whatever&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherOne&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The microsoft docs actually helped me here: &lt;a href=&quot;https://docs.microsoft.com/en-ca/ef/ef6/modeling/code-first/data-annotations?redirectedfrom=MSDN#composite-keys&quot;&gt;Microsoft docs on data annotation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Basically, if you have more than one primary key, you need to give them an order using the column attribute, like below:&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;[Column(Order=1)]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whatever&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;[Column(Order=2)]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherOne&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that the order doesn’t have to start at zero like an index, the order is just relative.&lt;/p&gt;
+
+&lt;h3 id=&quot;this-operation-requires-a-connection-to-master-database&quot;&gt;“This operation requires a connection to master database”&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;There was an issue connecting to my database, and this was fixed by adding “Integrated Security=True;” to the connection string in my Web.config file.  This is what stack overflow suggested you do when you’re connecting to the database with Windows Authentication, rather than a separate username and password.&lt;/p&gt;
+
+&lt;h3 id=&quot;cannot-insert-null-value-into-column-id&quot;&gt;“Cannot insert null value into column id”&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;The application uses a database of students. If you create a new student in the application it should add to the students table in the database. The problem was the student id number wasn’t being assigned.&lt;/p&gt;
+
+&lt;p&gt;Back to Stack Overflow. Assuming you want the id to automatically increment, this is what you do.&lt;/p&gt;
+
+&lt;p&gt;In SQL Server Management Studio:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;open table in Design&lt;/li&gt;
+  &lt;li&gt;select your column, go to Column Properties&lt;/li&gt;
+  &lt;li&gt;check Identity Specification&lt;/li&gt;
+  &lt;li&gt;set “IsIdentity” to “yes”&lt;/li&gt;
+  &lt;li&gt;set “IdentityIncrement” to “1”, so it increments by 1 each time you add a new student&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term=".NET" />
+      
+        <category term="debugging" />
+      
+        <category term="csharp" />
+      
+        <category term="SQL" />
+      
+
+      
+        <summary type="html">Here are a few errors I received while working on a .NET application, and how I solved them.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
