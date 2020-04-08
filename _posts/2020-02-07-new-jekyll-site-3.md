@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "New jekyll site part 3 - errors with deployment"
-date:   2020-04-04 16:03
+date:   2020-04-08 16:03
 tags: jekyll debugging deployment
 navigation: true
 class: post-template
