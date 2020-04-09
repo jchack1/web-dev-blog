@@ -22,6 +22,9 @@ logo: 'assets/images/ghost.png'
             
             {% if page.tag == "csharp" %}
                 <h1 class="site-title tag-title">C#</h1>
+            {% elsif page.tag == "dotnet" %}
+                <h1 class="site-title tag-title">.NET</h1>
+
             {% else %}
                 <h1 class="site-title tag-title">{{ page.tag | capitalizeall }}</h1>
             {% endif %}

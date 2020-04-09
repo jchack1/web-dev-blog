@@ -2,7 +2,7 @@
 layout: post
 title:  "A few .NET errors and solutions"
 date:   2020-04-02 1:11
-tags: .NET debugging csharp SQL
+tags: dotnet debugging csharp SQL
 navigation: true
 class: post-template
 current: post

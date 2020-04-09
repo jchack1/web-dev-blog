@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="/tag/gulp/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="/" rel="alternate" type="text/html" />
-  <updated>2020-04-08T17:46:49-06:00</updated>
-  <id>/tag/gulp/feed.xml</id>
+  <link href="http://localhost:4000/tag/gulp/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2020-04-09T10:23:30-06:00</updated>
+  <id>http://localhost:4000/tag/gulp/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">New jekyll site part 2 - errors with Gulp</title>
-      <link href="/new-jekyll-site-2" rel="alternate" type="text/html" title="New jekyll site part 2 - errors with Gulp" />
+      <link href="http://localhost:4000/new-jekyll-site-2" rel="alternate" type="text/html" title="New jekyll site part 2 - errors with Gulp" />
       <published>2020-04-04T17:31:00-06:00</published>
       <updated>2020-04-04T17:31:00-06:00</updated>
-      <id>/new-jekyll-site-2</id>
-      <content type="html" xml:base="/new-jekyll-site-2">&lt;p&gt;Continuing from my last post, where I began to describe the process of making this blog.&lt;/p&gt;
+      <id>http://localhost:4000/new-jekyll-site-2</id>
+      <content type="html" xml:base="http://localhost:4000/new-jekyll-site-2">&lt;p&gt;Continuing from my last post, where I began to describe the process of making this blog.&lt;/p&gt;
 
 &lt;p&gt;I’m at the point of self-isolation where I’m starting to forget what day it is.  I believe I spent the past 3 days or so trying to figure out this problem, though at this point I’ve lost track.&lt;/p&gt;
 

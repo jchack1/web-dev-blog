@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="/tag/mvc/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="/" rel="alternate" type="text/html" />
-  <updated>2020-04-08T17:46:49-06:00</updated>
-  <id>/tag/mvc/feed.xml</id>
+  <link href="http://localhost:4000/tag/mvc/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2020-04-09T10:23:30-06:00</updated>
+  <id>http://localhost:4000/tag/mvc/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Entity Framework, workflows, databases, and migrations</title>
-      <link href="/entityframework" rel="alternate" type="text/html" title="Entity Framework, workflows, databases, and migrations" />
+      <link href="http://localhost:4000/entityframework" rel="alternate" type="text/html" title="Entity Framework, workflows, databases, and migrations" />
       <published>2020-03-18T17:50:00-06:00</published>
       <updated>2020-03-18T17:50:00-06:00</updated>
-      <id>/entityframework</id>
-      <content type="html" xml:base="/entityframework">&lt;p&gt;When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.&lt;/p&gt;
+      <id>http://localhost:4000/entityframework</id>
+      <content type="html" xml:base="http://localhost:4000/entityframework">&lt;p&gt;When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.&lt;/p&gt;
 
 &lt;h3 id=&quot;entity-framework-a-tool-we-use-to-access-a-database&quot;&gt;Entity Framework: a tool we use to access a database&lt;/h3&gt;
 &lt;ul&gt;
@@ -200,7 +200,7 @@
       
 
       
-        <category term=".NET" />
+        <category term="dotnet" />
       
         <category term="MVC" />
       
@@ -221,11 +221,11 @@
   
     <entry>
       <title type="html">Update and Routing</title>
-      <link href="/routing" rel="alternate" type="text/html" title="Update and Routing" />
+      <link href="http://localhost:4000/routing" rel="alternate" type="text/html" title="Update and Routing" />
       <published>2020-03-18T17:12:00-06:00</published>
       <updated>2020-03-18T17:12:00-06:00</updated>
-      <id>/routing</id>
-      <content type="html" xml:base="/routing">&lt;p&gt;A lot has happened in the month since I last wrote.  I was very busy with my practicum and neglected some of my own projects.  I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum.  I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time.  Let’s go with that.&lt;/p&gt;
+      <id>http://localhost:4000/routing</id>
+      <content type="html" xml:base="http://localhost:4000/routing">&lt;p&gt;A lot has happened in the month since I last wrote.  I was very busy with my practicum and neglected some of my own projects.  I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum.  I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time.  Let’s go with that.&lt;/p&gt;
 
 &lt;p&gt;I’m going to try writing posts with one topic only, for now. This post will explain what I know about routing in .NET.&lt;/p&gt;
 
@@ -269,7 +269,7 @@ Overload: in C#, some methods will have the same name but can accept different p
       
 
       
-        <category term=".NET" />
+        <category term="dotnet" />
       
         <category term="MVC" />
       
@@ -286,11 +286,11 @@ Overload: in C#, some methods will have the same name but can accept different p
   
     <entry>
       <title type="html">Beginning to learn .NET</title>
-      <link href="/learningdotnet" rel="alternate" type="text/html" title="Beginning to learn .NET" />
+      <link href="http://localhost:4000/learningdotnet" rel="alternate" type="text/html" title="Beginning to learn .NET" />
       <published>2020-02-17T22:30:00-07:00</published>
       <updated>2020-02-17T22:30:00-07:00</updated>
-      <id>/learningdotnet</id>
-      <content type="html" xml:base="/learningdotnet">&lt;p&gt;I am currently in the middle of the practicum component of my program. I am entering week 3 of 8, and to be honest I still have a lot of learning to do in order to be useful here.  I have already learned a lot of things that were not taught in my program, which I guess is the point of working in a real office. It hasn’t been easy and I suspect it will continue that way.&lt;/p&gt;
+      <id>http://localhost:4000/learningdotnet</id>
+      <content type="html" xml:base="http://localhost:4000/learningdotnet">&lt;p&gt;I am currently in the middle of the practicum component of my program. I am entering week 3 of 8, and to be honest I still have a lot of learning to do in order to be useful here.  I have already learned a lot of things that were not taught in my program, which I guess is the point of working in a real office. It hasn’t been easy and I suspect it will continue that way.&lt;/p&gt;
 
 &lt;p&gt;The source of all my trouble is the fact that until now I never learned C# or .NET, and we spent maybe half and hour in class on MVC.  I consider myself to be more skilled at front end development, but my job is almost entirely back end. At least so far. Having knowledge of ASP.NET and MVC applications beforehand would have been extremely helpful. I believe the most helpful information will be anything to do with the structure of MVC applications, so I can understand how to navigate my company’s project. One challenge I have found is that tutorials and articles relating to MVC assume a basic to intermediate knowledge of C# already. And the C# tutorials start out at a level that is too beginner for me, given that I already know how to add, subtract, use logical operators and conditionals… I’m on a bit of a time crunch to learn MVC and .NET. And yet my progress feels too slow given that my practicum is only 2 months long.&lt;/p&gt;
 
@@ -389,7 +389,7 @@ Overload: in C#, some methods will have the same name but can accept different p
       
 
       
-        <category term=".NET" />
+        <category term="dotnet" />
       
         <category term="MVC" />
       

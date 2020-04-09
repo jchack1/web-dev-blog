@@ -2,7 +2,7 @@
 layout: post
 title:  "Beginning to learn .NET"
 date:   2020-02-17 22:30
-tags: .NET MVC
+tags: dotnet MVC
 navigation: true
 class: post-template
 current: post

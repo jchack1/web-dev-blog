@@ -4,7 +4,7 @@
     <title> - Articles</title>
     <description>Web development blog</description>
     <link>
-    </link>
+    http://localhost:4000</link>
     
       
       <item>
@@ -16,8 +16,8 @@
         
         <pubDate>Wed, 08 Apr 2020 16:03:00 -0600</pubDate>
         <link>
-        /new-jekyll-site-3</link>
-        <guid isPermaLink="true">/new-jekyll-site-3</guid>
+        http://localhost:4000/new-jekyll-site-3</link>
+        <guid isPermaLink="true">http://localhost:4000/new-jekyll-site-3</guid>
       </item>
       
     
@@ -31,8 +31,8 @@
         
         <pubDate>Mon, 06 Apr 2020 17:50:00 -0600</pubDate>
         <link>
-        /csharpdefinitions</link>
-        <guid isPermaLink="true">/csharpdefinitions</guid>
+        http://localhost:4000/csharpdefinitions</link>
+        <guid isPermaLink="true">http://localhost:4000/csharpdefinitions</guid>
       </item>
       
     
@@ -46,8 +46,8 @@
         
         <pubDate>Sat, 04 Apr 2020 17:31:00 -0600</pubDate>
         <link>
-        /new-jekyll-site-2</link>
-        <guid isPermaLink="true">/new-jekyll-site-2</guid>
+        http://localhost:4000/new-jekyll-site-2</link>
+        <guid isPermaLink="true">http://localhost:4000/new-jekyll-site-2</guid>
       </item>
       
     
@@ -61,8 +61,8 @@
         
         <pubDate>Thu, 02 Apr 2020 16:50:00 -0600</pubDate>
         <link>
-        /making-another-jekyll-site</link>
-        <guid isPermaLink="true">/making-another-jekyll-site</guid>
+        http://localhost:4000/making-another-jekyll-site</link>
+        <guid isPermaLink="true">http://localhost:4000/making-another-jekyll-site</guid>
       </item>
       
     
@@ -76,8 +76,8 @@
         
         <pubDate>Thu, 02 Apr 2020 12:12:00 -0600</pubDate>
         <link>
-        /importance-of-hard-refresh</link>
-        <guid isPermaLink="true">/importance-of-hard-refresh</guid>
+        http://localhost:4000/importance-of-hard-refresh</link>
+        <guid isPermaLink="true">http://localhost:4000/importance-of-hard-refresh</guid>
       </item>
       
     
@@ -91,8 +91,8 @@
         
         <pubDate>Thu, 02 Apr 2020 01:11:00 -0600</pubDate>
         <link>
-        /dotnet-errors-and-solutions</link>
-        <guid isPermaLink="true">/dotnet-errors-and-solutions</guid>
+        http://localhost:4000/dotnet-errors-and-solutions</link>
+        <guid isPermaLink="true">http://localhost:4000/dotnet-errors-and-solutions</guid>
       </item>
       
     
@@ -106,8 +106,8 @@
         
         <pubDate>Wed, 18 Mar 2020 17:50:00 -0600</pubDate>
         <link>
-        /entityframework</link>
-        <guid isPermaLink="true">/entityframework</guid>
+        http://localhost:4000/entityframework</link>
+        <guid isPermaLink="true">http://localhost:4000/entityframework</guid>
       </item>
       
     
@@ -121,8 +121,8 @@
         
         <pubDate>Wed, 18 Mar 2020 17:12:00 -0600</pubDate>
         <link>
-        /routing</link>
-        <guid isPermaLink="true">/routing</guid>
+        http://localhost:4000/routing</link>
+        <guid isPermaLink="true">http://localhost:4000/routing</guid>
       </item>
       
     
@@ -136,8 +136,8 @@
         
         <pubDate>Mon, 17 Feb 2020 22:30:00 -0700</pubDate>
         <link>
-        /learningdotnet</link>
-        <guid isPermaLink="true">/learningdotnet</guid>
+        http://localhost:4000/learningdotnet</link>
+        <guid isPermaLink="true">http://localhost:4000/learningdotnet</guid>
       </item>
       
     
@@ -151,8 +151,8 @@
         
         <pubDate>Mon, 17 Feb 2020 00:30:00 -0700</pubDate>
         <link>
-        /first-post</link>
-        <guid isPermaLink="true">/first-post</guid>
+        http://localhost:4000/first-post</link>
+        <guid isPermaLink="true">http://localhost:4000/first-post</guid>
       </item>
       
     

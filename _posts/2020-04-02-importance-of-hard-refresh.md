@@ -2,7 +2,7 @@
 layout: post
 title:  "The importance of a hard refresh"
 date:   2020-04-02 12:12
-tags: .NET javascript debugging
+tags: dotnet javascript debugging
 navigation: true
 class: post-template
 current: post

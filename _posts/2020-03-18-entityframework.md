@@ -2,7 +2,7 @@
 layout: post
 title:  "Entity Framework, workflows, databases, and migrations"
 date:   2020-03-18 17:50
-tags: .NET MVC database migrations EntityFramework
+tags: dotnet MVC database migrations EntityFramework
 navigation: true
 class: post-template
 current: post

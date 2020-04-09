@@ -51,6 +51,8 @@ subclass: 'post page'
 
                                 {% if tag[0]=="csharp" %}
                                     <h2 class="post-card-title">C#</h2>
+                                {% elsif tag[0]=="dotnet" %}
+                                    <h2 class="post-card-title">.NET</h2>
                                 {% else %}
                                     <h2 class="post-card-title">{{ tag[0] }}</h2>
                                 {% endif %}
