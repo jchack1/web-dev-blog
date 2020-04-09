@@ -14,7 +14,7 @@ The source of all my trouble is the fact that until now I never learned C# or .N
 
 Anyway, I'll get into some of the things I've learned so far.  My work notebook is filling up very quickly, but perhaps I'll just compile what I've learned through my studies at home.
 
-There are many, many, many definitions online of the model, view and controller. On a code analogies blog the author related it to ordering a drink at a bar. Your order is the request, the bartender (and the drink recipe they memorized) is the controller, the ingredients are the model, and the finished drink is the view. Actually very helpful. His blog is here: https://blog.codeanalogies.com/2016/05/02/model-view-controller-mvc-explained-through-ordering-drinks-at-the-bar/
+There are many, many, many definitions online of the model, view and controller. On a [code analogies blog](https://blog.codeanalogies.com/2016/05/02/model-view-controller-mvc-explained-through-ordering-drinks-at-the-bar/) the author related it to ordering a drink at a bar. Your order is the request, the bartender (and the drink recipe they memorized) is the controller, the ingredients are the model, and the finished drink is the view. Actually very helpful. 
 
 Here are more notes and definitions I've been able to compile from various courses and articles, including my Udemy course on ASP.NET MVC Applications:
 
