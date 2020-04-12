@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="/tag/dotnet/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="/" rel="alternate" type="text/html" />
-  <updated>2020-04-11T18:19:13-06:00</updated>
-  <id>/tag/dotnet/feed.xml</id>
+  <link href="http://localhost:4000/tag/dotnet/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2020-04-11T19:27:01-06:00</updated>
+  <id>http://localhost:4000/tag/dotnet/feed.xml</id>
 
   
   
@@ -44,12 +44,74 @@
 
   
     <entry>
+      <title type="html">Last ditch effort – I deleted my database</title>
+      <link href="http://localhost:4000/deleting-my-database" rel="alternate" type="text/html" title="Last ditch effort – I deleted my database" />
+      <published>2020-04-11T18:30:00-06:00</published>
+      <updated>2020-04-11T18:30:00-06:00</updated>
+      <id>http://localhost:4000/deleting-my-database</id>
+      <content type="html" xml:base="http://localhost:4000/deleting-my-database">&lt;p&gt;I have been working on my Udemy courses again, currently hoping to finish my MVC course.
+Sometimes I really don’t like .NET.  I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course though, because I’m sure it will be useful at my next job, or somewhere down the line.&lt;/p&gt;
+
+&lt;p&gt;Since I was away from this course for a while I forgot where I was and some of what I had learned. I started a new section, followed all the instructions exactly, attempting to create a dropdown menu. Of course, none of the options showed up in the menu.&lt;/p&gt;
+
+&lt;p&gt;The first thing I did was check the code for typos. There were none. I thought this was a mistake so I checked again, and compared it to the instructor’s code on github. Nope, still correct.&lt;/p&gt;
+
+&lt;p&gt;Perhaps I made an error with the earlier exercises in the course. There were no review videos, and I had to use some of the code from github. This was necessary in order to have the same code as the instructor throughout the course.  If it was an error with my migrations, a topic I still don’t quite get, maybe the dropdown menu items just didn’t make it into my database.&lt;/p&gt;
+
+&lt;p&gt;I’m also not yet an expert in SQL, so I used the below query to check the table for my data:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TOP&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MembershipTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This showed me the rows that were in my table, and the menu items were there.&lt;/p&gt;
+
+&lt;p&gt;At this point I spent about 2 days trying various things to fix the problem. I tried to simply update the database, using the update-database command in package manager console. Didn’t work. I realized some of my files may have been missing from the earlier exercises, so I added the code to my solution. Also didn’t help. I updated the DbContext to what I saw on the github code. Didn’t help, at least not immediately. After lots of experimenting and searching, I was ready to start a new solution and rebuild it from scratch, which meant having to watch a few hours of video again. It would maybe help solidify what I was learning but that was not ideal.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/16035333/how-to-delete-and-recreate-from-scratch-an-existing-ef-code-first-database&quot;&gt;Somewhere on Stack Overflow&lt;/a&gt; someone suggested to manually delete the database to start fresh. I decided to try this, but I did not follow their instructions exactly.&lt;/p&gt;
+
+&lt;p&gt;First I deleted the database connections in Server Explorer. I then deleted the database files under the App_Data folder in Solution Explorer. I added a new migration using “add-migration” in package manager console, then “update-database”.
+I cleaned and built my solution again, then opened the page I had originally been working on.  The dropdown was now working properly and all menu items showed up!&lt;/p&gt;
+
+&lt;p&gt;I can’t help but feel there is still going to be something wrong with my database, migrations, or project in general and it will come back to bite me later on. But for now I will continue on with the course and take this as a learning opportunity.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="dotnet" />
+      
+        <category term="database" />
+      
+        <category term="migrations" />
+      
+
+      
+        <summary type="html">I have been working on my Udemy courses again, currently hoping to finish my MVC course. Sometimes I really don’t like .NET. I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course though, because I’m sure it will be useful at my next job, or somewhere down the line.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
       <title type="html">The importance of a hard refresh</title>
-      <link href="/importance-of-hard-refresh" rel="alternate" type="text/html" title="The importance of a hard refresh" />
+      <link href="http://localhost:4000/importance-of-hard-refresh" rel="alternate" type="text/html" title="The importance of a hard refresh" />
       <published>2020-04-02T12:12:00-06:00</published>
       <updated>2020-04-02T12:12:00-06:00</updated>
-      <id>/importance-of-hard-refresh</id>
-      <content type="html" xml:base="/importance-of-hard-refresh">&lt;p&gt;Recently I was working on a task for my practicum.  The task was to add a delete button to two of the pages and ensure it redirected to the correct page once an item was deleted.&lt;/p&gt;
+      <id>http://localhost:4000/importance-of-hard-refresh</id>
+      <content type="html" xml:base="http://localhost:4000/importance-of-hard-refresh">&lt;p&gt;Recently I was working on a task for my practicum.  The task was to add a delete button to two of the pages and ensure it redirected to the correct page once an item was deleted.&lt;/p&gt;
 
 &lt;p&gt;This was fairly straight-forward, though it did take some time as I was still in the process of learning the set-up of their project. Since the delete button existed elsewhere in the application, I could copy and paste the code into my cshtml file and make a few minor adjustments. Redirecting the page was handled by a javascript file. I made a new function, which was basically a copy of an already existing function, but tweaked the code so it would redirect to a particular overview page.&lt;/p&gt;
 
@@ -101,11 +163,11 @@
   
     <entry>
       <title type="html">A few .NET errors and solutions</title>
-      <link href="/dotnet-errors-and-solutions" rel="alternate" type="text/html" title="A few .NET errors and solutions" />
+      <link href="http://localhost:4000/dotnet-errors-and-solutions" rel="alternate" type="text/html" title="A few .NET errors and solutions" />
       <published>2020-04-02T01:11:00-06:00</published>
       <updated>2020-04-02T01:11:00-06:00</updated>
-      <id>/dotnet-errors-and-solutions</id>
-      <content type="html" xml:base="/dotnet-errors-and-solutions">&lt;p&gt;Here are a few errors I received while working on a .NET application, and how I solved them.&lt;/p&gt;
+      <id>http://localhost:4000/dotnet-errors-and-solutions</id>
+      <content type="html" xml:base="http://localhost:4000/dotnet-errors-and-solutions">&lt;p&gt;Here are a few errors I received while working on a .NET application, and how I solved them.&lt;/p&gt;
 
 &lt;h3 id=&quot;unable-to-determine-composite-primary-key-ordering-for-type-use-the-columnattribute-or-the-haskey-method&quot;&gt;“Unable to determine composite primary key ordering for type… Use the ColumnAttribute or the HasKey method…”&lt;/h3&gt;
 &lt;p&gt;&lt;br /&gt;
@@ -188,11 +250,11 @@ This occured because I tried to assign more than one [Key] in a C# class file, a
   
     <entry>
       <title type="html">Entity Framework, workflows, databases, and migrations</title>
-      <link href="/entityframework" rel="alternate" type="text/html" title="Entity Framework, workflows, databases, and migrations" />
+      <link href="http://localhost:4000/entityframework" rel="alternate" type="text/html" title="Entity Framework, workflows, databases, and migrations" />
       <published>2020-03-18T17:50:00-06:00</published>
       <updated>2020-03-18T17:50:00-06:00</updated>
-      <id>/entityframework</id>
-      <content type="html" xml:base="/entityframework">&lt;p&gt;When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.&lt;/p&gt;
+      <id>http://localhost:4000/entityframework</id>
+      <content type="html" xml:base="http://localhost:4000/entityframework">&lt;p&gt;When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.&lt;/p&gt;
 
 &lt;h3 id=&quot;entity-framework-a-tool-we-use-to-access-a-database&quot;&gt;Entity Framework: a tool we use to access a database&lt;/h3&gt;
 &lt;ul&gt;
@@ -364,11 +426,11 @@ This occured because I tried to assign more than one [Key] in a C# class file, a
   
     <entry>
       <title type="html">Update and Routing</title>
-      <link href="/routing" rel="alternate" type="text/html" title="Update and Routing" />
+      <link href="http://localhost:4000/routing" rel="alternate" type="text/html" title="Update and Routing" />
       <published>2020-03-18T17:12:00-06:00</published>
       <updated>2020-03-18T17:12:00-06:00</updated>
-      <id>/routing</id>
-      <content type="html" xml:base="/routing">&lt;p&gt;A lot has happened in the month since I last wrote.  I was very busy with my practicum and neglected some of my own projects.  I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum.  I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time.  Let’s go with that.&lt;/p&gt;
+      <id>http://localhost:4000/routing</id>
+      <content type="html" xml:base="http://localhost:4000/routing">&lt;p&gt;A lot has happened in the month since I last wrote.  I was very busy with my practicum and neglected some of my own projects.  I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum.  I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time.  Let’s go with that.&lt;/p&gt;
 
 &lt;p&gt;I’m going to try writing posts with one topic only, for now. This post will explain what I know about routing in .NET.&lt;/p&gt;
 
@@ -429,11 +491,11 @@ Overload: in C#, some methods will have the same name but can accept different p
   
     <entry>
       <title type="html">Beginning to learn .NET</title>
-      <link href="/learningdotnet" rel="alternate" type="text/html" title="Beginning to learn .NET" />
+      <link href="http://localhost:4000/learningdotnet" rel="alternate" type="text/html" title="Beginning to learn .NET" />
       <published>2020-02-17T22:30:00-07:00</published>
       <updated>2020-02-17T22:30:00-07:00</updated>
-      <id>/learningdotnet</id>
-      <content type="html" xml:base="/learningdotnet">&lt;p&gt;I am currently in the middle of the practicum component of my program. I am entering week 3 of 8, and to be honest I still have a lot of learning to do in order to be useful here.  I have already learned a lot of things that were not taught in my program, which I guess is the point of working in a real office. It hasn’t been easy and I suspect it will continue that way.&lt;/p&gt;
+      <id>http://localhost:4000/learningdotnet</id>
+      <content type="html" xml:base="http://localhost:4000/learningdotnet">&lt;p&gt;I am currently in the middle of the practicum component of my program. I am entering week 3 of 8, and to be honest I still have a lot of learning to do in order to be useful here.  I have already learned a lot of things that were not taught in my program, which I guess is the point of working in a real office. It hasn’t been easy and I suspect it will continue that way.&lt;/p&gt;
 
 &lt;p&gt;The source of all my trouble is the fact that until now I never learned C# or .NET, and we spent maybe half and hour in class on MVC.  I consider myself to be more skilled at front end development, but my job is almost entirely back end. At least so far. Having knowledge of ASP.NET and MVC applications beforehand would have been extremely helpful. I believe the most helpful information will be anything to do with the structure of MVC applications, so I can understand how to navigate my company’s project. One challenge I have found is that tutorials and articles relating to MVC assume a basic to intermediate knowledge of C# already. And the C# tutorials start out at a level that is too beginner for me, given that I already know how to add, subtract, use logical operators and conditionals… I’m on a bit of a time crunch to learn MVC and .NET. And yet my progress feels too slow given that my practicum is only 2 months long.&lt;/p&gt;
 
