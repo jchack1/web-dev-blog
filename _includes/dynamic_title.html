@@ -2,6 +2,8 @@
 {% if page.url %}
   {% if page.url contains "tag/csharp" %}
     {% assign title = "C#" %}
+  {% elsif page.url contains "tag/dotnet" %}
+    {% assign title = ".NET" %}
   {% elsif page.url contains "tag/" %}
       {% assign title = page.url | remove: 'tag' | remove: '/' | replace: '-', ' ' | capitalizeall %}
   {% elsif page.url contains "author/" %}
