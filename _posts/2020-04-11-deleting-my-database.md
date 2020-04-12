@@ -10,6 +10,7 @@ current: post
 
 
 I have been working on my Udemy courses again, currently hoping to finish my MVC course.
+
 Sometimes I really don’t like .NET.  I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course though, because I’m sure it will be useful at my next job, or somewhere down the line.
 
 Since I was away from this course for a while I forgot where I was and some of what I had learned. I started a new section, followed all the instructions exactly, attempting to create a dropdown menu. Of course, none of the options showed up in the menu.

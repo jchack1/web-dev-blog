@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/debugging/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2020-04-11T19:36:21-06:00</updated>
+  <updated>2020-04-11T19:41:59-06:00</updated>
   <id>http://localhost:4000/tag/debugging/feed.xml</id>
 
   
@@ -81,7 +81,7 @@
 
 &lt;p&gt;Now I will upload this new folder to github and deploy. It should work now that I have a proper _site folder.&lt;/p&gt;
 
-&lt;p&gt;I just have to remember to always “bundle exec jekyll build” when I make changes. But only after I execute “gulp”. Hopefull I will quickly get used to this workflow.&lt;/p&gt;</content>
+&lt;p&gt;I just have to remember to always “bundle exec jekyll build” and “bundle exec jekyll serve”(to generate files in _site folder) when I make changes. But only after I execute “gulp”. Hopefully I will quickly get used to this workflow.&lt;/p&gt;</content>
 
       
       
