@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-11T19:41:59-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Last ditch effort – I deleted my database</title><link href="http://localhost:4000/deleting-my-database" rel="alternate" type="text/html" title="Last ditch effort – I deleted my database" /><published>2020-04-11T18:30:00-06:00</published><updated>2020-04-11T18:30:00-06:00</updated><id>http://localhost:4000/deleting-my-database</id><content type="html" xml:base="http://localhost:4000/deleting-my-database">&lt;p&gt;I have been working on my Udemy courses again, currently hoping to finish my MVC course.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-12T15:13:11-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Last ditch effort – I deleted my database</title><link href="http://localhost:4000/deleting-my-database" rel="alternate" type="text/html" title="Last ditch effort – I deleted my database" /><published>2020-04-11T18:30:00-06:00</published><updated>2020-04-11T18:30:00-06:00</updated><id>http://localhost:4000/deleting-my-database</id><content type="html" xml:base="http://localhost:4000/deleting-my-database">&lt;p&gt;I have been working on my Udemy courses again, currently hoping to finish my MVC course.&lt;/p&gt;
 
 &lt;p&gt;Sometimes I really don’t like .NET.  I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course though, because I’m sure it will be useful at my next job, or somewhere down the line.&lt;/p&gt;
 
@@ -8,7 +8,7 @@
 
 &lt;p&gt;Perhaps I made an error with the earlier exercises in the course. There were no review videos, and I had to use some of the code from github. This was necessary in order to have the same code as the instructor throughout the course.  If it was an error with my migrations, a topic I still don’t quite get, maybe the dropdown menu items just didn’t make it into my database.&lt;/p&gt;
 
-&lt;p&gt;I’m also not yet an expert in SQL, so I used the below query to check the table for my data:&lt;/p&gt;
+&lt;p&gt;I’m also not yet an expert in SQL, so I just used the below query to check the table for my data:&lt;/p&gt;
 
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TOP&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MembershipTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
@@ -20,8 +20,17 @@
 
 &lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/16035333/how-to-delete-and-recreate-from-scratch-an-existing-ef-code-first-database&quot;&gt;Somewhere on Stack Overflow&lt;/a&gt; someone suggested to manually delete the database to start fresh. I decided to try this, but I did not follow their instructions exactly.&lt;/p&gt;
 
-&lt;p&gt;First I deleted the database connections in Server Explorer. I then deleted the database files under the App_Data folder in Solution Explorer. I added a new migration using “add-migration” in package manager console, then “update-database”.
-I cleaned and built my solution again, then opened the page I had originally been working on.  The dropdown was now working properly and all menu items showed up!&lt;/p&gt;
+&lt;p&gt;Here are my steps:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;deleted the database connections in Server Explorer&lt;/li&gt;
+  &lt;li&gt;deleted the database files under the App_Data folder in Solution Explorer&lt;/li&gt;
+  &lt;li&gt;made a change in the code - I made change in one of the models and saved, but it didn’t matter what changed, just that something &lt;em&gt;had&lt;/em&gt; changed; this was important for the next step to work properly&lt;/li&gt;
+  &lt;li&gt;added a new migration using “add-migration” in package manager console&lt;/li&gt;
+  &lt;li&gt;then “update-database”&lt;/li&gt;
+  &lt;li&gt;cleaned and built my solution again&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then I opened the page I had originally been working on.  The dropdown was now working properly and all menu items showed up!&lt;/p&gt;
 
 &lt;p&gt;I can’t help but feel there is still going to be something wrong with my database, migrations, or project in general and it will come back to bite me later on. But for now I will continue on with the course and take this as a learning opportunity.&lt;/p&gt;</content><author><name></name></author><category term="dotnet" /><category term="database" /><category term="migrations" /><summary type="html">I have been working on my Udemy courses again, currently hoping to finish my MVC course.</summary></entry><entry><title type="html">New jekyll site part 3 - errors with deployment</title><link href="http://localhost:4000/new-jekyll-site-3" rel="alternate" type="text/html" title="New jekyll site part 3 - errors with deployment" /><published>2020-04-08T16:03:00-06:00</published><updated>2020-04-08T16:03:00-06:00</updated><id>http://localhost:4000/new-jekyll-site-3</id><content type="html" xml:base="http://localhost:4000/new-jekyll-site-3">&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
 

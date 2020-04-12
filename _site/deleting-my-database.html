@@ -188,7 +188,7 @@ into the {body} of the default.hbs template -->
 
 <p>Perhaps I made an error with the earlier exercises in the course. There were no review videos, and I had to use some of the code from github. This was necessary in order to have the same code as the instructor throughout the course.  If it was an error with my migrations, a topic I still don’t quite get, maybe the dropdown menu items just didn’t make it into my database.</p>
 
-<p>I’m also not yet an expert in SQL, so I used the below query to check the table for my data:</p>
+<p>I’m also not yet an expert in SQL, so I just used the below query to check the table for my data:</p>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">TOP</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="p">[</span><span class="n">Name</span><span class="p">]</span>
 <span class="k">FROM</span> <span class="p">[</span><span class="n">MembershipTypes</span><span class="p">]</span>
@@ -200,8 +200,17 @@ into the {body} of the default.hbs template -->
 
 <p><a href="https://stackoverflow.com/questions/16035333/how-to-delete-and-recreate-from-scratch-an-existing-ef-code-first-database">Somewhere on Stack Overflow</a> someone suggested to manually delete the database to start fresh. I decided to try this, but I did not follow their instructions exactly.</p>
 
-<p>First I deleted the database connections in Server Explorer. I then deleted the database files under the App_Data folder in Solution Explorer. I added a new migration using “add-migration” in package manager console, then “update-database”.
-I cleaned and built my solution again, then opened the page I had originally been working on.  The dropdown was now working properly and all menu items showed up!</p>
+<p>Here are my steps:</p>
+<ul>
+  <li>deleted the database connections in Server Explorer</li>
+  <li>deleted the database files under the App_Data folder in Solution Explorer</li>
+  <li>made a change in the code - I made change in one of the models and saved, but it didn’t matter what changed, just that something <em>had</em> changed; this was important for the next step to work properly</li>
+  <li>added a new migration using “add-migration” in package manager console</li>
+  <li>then “update-database”</li>
+  <li>cleaned and built my solution again</li>
+</ul>
+
+<p>Then I opened the page I had originally been working on.  The dropdown was now working properly and all menu items showed up!</p>
 
 <p>I can’t help but feel there is still going to be something wrong with my database, migrations, or project in general and it will come back to bite me later on. But for now I will continue on with the course and take this as a learning opportunity.</p>
 
