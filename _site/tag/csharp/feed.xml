@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/csharp/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2020-04-09T13:37:53-06:00</updated>
-  <id>http://localhost:4000/tag/csharp/feed.xml</id>
+  <link href="/tag/csharp/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2020-04-11T18:19:13-06:00</updated>
+  <id>/tag/csharp/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">C# definitions cheatsheet</title>
-      <link href="http://localhost:4000/csharpdefinitions" rel="alternate" type="text/html" title="C# definitions cheatsheet" />
+      <link href="/csharpdefinitions" rel="alternate" type="text/html" title="C# definitions cheatsheet" />
       <published>2020-04-06T17:50:00-06:00</published>
       <updated>2020-04-06T17:50:00-06:00</updated>
-      <id>http://localhost:4000/csharpdefinitions</id>
-      <content type="html" xml:base="http://localhost:4000/csharpdefinitions">&lt;p&gt;Here is some info I compiled as I worked my way through &lt;a href=&quot;https://www.codecademy.com/catalog/language/c-sharp&quot;&gt;Codecademy’s C# course&lt;/a&gt;.&lt;/p&gt;
+      <id>/csharpdefinitions</id>
+      <content type="html" xml:base="/csharpdefinitions">&lt;p&gt;Here is some info I compiled as I worked my way through &lt;a href=&quot;https://www.codecademy.com/catalog/language/c-sharp&quot;&gt;Codecademy’s C# course&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I chose the codecademy course because I could work on it at my office during my practicum. My work computer wouldn’t play audio for some reason, so video tutorials weren’t an option while I was there. I also found the Microsoft documentation to be not very beginner friendly in its language, and it was the same with many other article style tutorials. The codecademy course was very beginner friendly and interactive so it held my attention better than just reading.&lt;/p&gt;
 
@@ -207,11 +207,11 @@
   
     <entry>
       <title type="html">A few .NET errors and solutions</title>
-      <link href="http://localhost:4000/dotnet-errors-and-solutions" rel="alternate" type="text/html" title="A few .NET errors and solutions" />
+      <link href="/dotnet-errors-and-solutions" rel="alternate" type="text/html" title="A few .NET errors and solutions" />
       <published>2020-04-02T01:11:00-06:00</published>
       <updated>2020-04-02T01:11:00-06:00</updated>
-      <id>http://localhost:4000/dotnet-errors-and-solutions</id>
-      <content type="html" xml:base="http://localhost:4000/dotnet-errors-and-solutions">&lt;p&gt;Here are a few errors I received while working on a .NET application, and how I solved them.&lt;/p&gt;
+      <id>/dotnet-errors-and-solutions</id>
+      <content type="html" xml:base="/dotnet-errors-and-solutions">&lt;p&gt;Here are a few errors I received while working on a .NET application, and how I solved them.&lt;/p&gt;
 
 &lt;h3 id=&quot;unable-to-determine-composite-primary-key-ordering-for-type-use-the-columnattribute-or-the-haskey-method&quot;&gt;“Unable to determine composite primary key ordering for type… Use the ColumnAttribute or the HasKey method…”&lt;/h3&gt;
 &lt;p&gt;&lt;br /&gt;

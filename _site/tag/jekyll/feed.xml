@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/jekyll/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2020-04-09T13:37:53-06:00</updated>
-  <id>http://localhost:4000/tag/jekyll/feed.xml</id>
+  <link href="/tag/jekyll/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2020-04-11T18:19:13-06:00</updated>
+  <id>/tag/jekyll/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">New jekyll site part 3 - errors with deployment</title>
-      <link href="http://localhost:4000/new-jekyll-site-3" rel="alternate" type="text/html" title="New jekyll site part 3 - errors with deployment" />
+      <link href="/new-jekyll-site-3" rel="alternate" type="text/html" title="New jekyll site part 3 - errors with deployment" />
       <published>2020-04-08T16:03:00-06:00</published>
       <updated>2020-04-08T16:03:00-06:00</updated>
-      <id>http://localhost:4000/new-jekyll-site-3</id>
-      <content type="html" xml:base="http://localhost:4000/new-jekyll-site-3">&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
+      <id>/new-jekyll-site-3</id>
+      <content type="html" xml:base="/new-jekyll-site-3">&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
 
 &lt;p&gt;Of course there have been errors with this as well. As expected.&lt;/p&gt;
 
@@ -115,11 +115,11 @@
   
     <entry>
       <title type="html">New jekyll site part 2 - errors with Gulp</title>
-      <link href="http://localhost:4000/new-jekyll-site-2" rel="alternate" type="text/html" title="New jekyll site part 2 - errors with Gulp" />
+      <link href="/new-jekyll-site-2" rel="alternate" type="text/html" title="New jekyll site part 2 - errors with Gulp" />
       <published>2020-04-04T17:31:00-06:00</published>
       <updated>2020-04-04T17:31:00-06:00</updated>
-      <id>http://localhost:4000/new-jekyll-site-2</id>
-      <content type="html" xml:base="http://localhost:4000/new-jekyll-site-2">&lt;p&gt;Continuing from my last post, where I began to describe the process of making this blog.&lt;/p&gt;
+      <id>/new-jekyll-site-2</id>
+      <content type="html" xml:base="/new-jekyll-site-2">&lt;p&gt;Continuing from my last post, where I began to describe the process of making this blog.&lt;/p&gt;
 
 &lt;p&gt;I’m at the point of self-isolation where I’m starting to forget what day it is.  I believe I spent the past 3 days or so trying to figure out this problem, though at this point I’ve lost track.&lt;/p&gt;
 
@@ -206,11 +206,11 @@ ReferenceError: primordials is not defined&quot;
   
     <entry>
       <title type="html">Making a new jekyll site - this one, actually</title>
-      <link href="http://localhost:4000/making-another-jekyll-site" rel="alternate" type="text/html" title="Making a new jekyll site - this one, actually" />
+      <link href="/making-another-jekyll-site" rel="alternate" type="text/html" title="Making a new jekyll site - this one, actually" />
       <published>2020-04-02T16:50:00-06:00</published>
       <updated>2020-04-02T16:50:00-06:00</updated>
-      <id>http://localhost:4000/making-another-jekyll-site</id>
-      <content type="html" xml:base="http://localhost:4000/making-another-jekyll-site">&lt;p&gt;Well, I’m going to do that thing again where I blog my experience of making a blog. At least I can feel like I am writing something for a reader, a pretend social interaction during week 3 of social distancing, though I suspect no one will read this except myself.&lt;/p&gt;
+      <id>/making-another-jekyll-site</id>
+      <content type="html" xml:base="/making-another-jekyll-site">&lt;p&gt;Well, I’m going to do that thing again where I blog my experience of making a blog. At least I can feel like I am writing something for a reader, a pretend social interaction during week 3 of social distancing, though I suspect no one will read this except myself.&lt;/p&gt;
 
 &lt;p&gt;I’m already part way through making this blog, as you may have gathered from my first post on this site.  My first blog was pretty straight-forward, despite jekyll being new to me. I assumed this time around would be simpler, but now that I am really diving into the functionality of my chosen theme Jasper2 from Ghost, I’m realizing there is actually a lot I can do with this platform. Which means there is a lot to learn.  But at this stage in my web development journey, I realize there is always more to learn.&lt;/p&gt;
 
@@ -256,11 +256,11 @@ ReferenceError: primordials is not defined&quot;
   
     <entry>
       <title type="html">Welcome to my new web dev blog!</title>
-      <link href="http://localhost:4000/first-post" rel="alternate" type="text/html" title="Welcome to my new web dev blog!" />
+      <link href="/first-post" rel="alternate" type="text/html" title="Welcome to my new web dev blog!" />
       <published>2020-02-17T00:30:00-07:00</published>
       <updated>2020-02-17T00:30:00-07:00</updated>
-      <id>http://localhost:4000/first-post</id>
-      <content type="html" xml:base="http://localhost:4000/first-post">&lt;p&gt;Hello!  This is the first post in my new blog. My intention for this blog is to create a place for me to document everything that I am learning as a new web developer. I started my certificate program in September 2019, and I want to be able to look back on all I have learned, and have a centralized space for notes. Here I will make notes of the things I’m learning, the challenges I face, and how I solved any issues that arise. I came up with the idea when I created my first Jekyll blog for an assignment in my CMS class. I needed to create blog posts, so I decided to live-blog my experience using Jekyll. I ended up having a lot of fun with this, and I had notes for myself for the future.&lt;/p&gt;
+      <id>/first-post</id>
+      <content type="html" xml:base="/first-post">&lt;p&gt;Hello!  This is the first post in my new blog. My intention for this blog is to create a place for me to document everything that I am learning as a new web developer. I started my certificate program in September 2019, and I want to be able to look back on all I have learned, and have a centralized space for notes. Here I will make notes of the things I’m learning, the challenges I face, and how I solved any issues that arise. I came up with the idea when I created my first Jekyll blog for an assignment in my CMS class. I needed to create blog posts, so I decided to live-blog my experience using Jekyll. I ended up having a lot of fun with this, and I had notes for myself for the future.&lt;/p&gt;
 
 &lt;p&gt;Today’s blog will talk about the steps I took to do the initial set up for this blog.&lt;/p&gt;
 

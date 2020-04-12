@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/javascript/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2020-04-09T13:37:53-06:00</updated>
-  <id>http://localhost:4000/tag/javascript/feed.xml</id>
+  <link href="/tag/javascript/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2020-04-11T18:19:13-06:00</updated>
+  <id>/tag/javascript/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">The importance of a hard refresh</title>
-      <link href="http://localhost:4000/importance-of-hard-refresh" rel="alternate" type="text/html" title="The importance of a hard refresh" />
+      <link href="/importance-of-hard-refresh" rel="alternate" type="text/html" title="The importance of a hard refresh" />
       <published>2020-04-02T12:12:00-06:00</published>
       <updated>2020-04-02T12:12:00-06:00</updated>
-      <id>http://localhost:4000/importance-of-hard-refresh</id>
-      <content type="html" xml:base="http://localhost:4000/importance-of-hard-refresh">&lt;p&gt;Recently I was working on a task for my practicum.  The task was to add a delete button to two of the pages and ensure it redirected to the correct page once an item was deleted.&lt;/p&gt;
+      <id>/importance-of-hard-refresh</id>
+      <content type="html" xml:base="/importance-of-hard-refresh">&lt;p&gt;Recently I was working on a task for my practicum.  The task was to add a delete button to two of the pages and ensure it redirected to the correct page once an item was deleted.&lt;/p&gt;
 
 &lt;p&gt;This was fairly straight-forward, though it did take some time as I was still in the process of learning the set-up of their project. Since the delete button existed elsewhere in the application, I could copy and paste the code into my cshtml file and make a few minor adjustments. Redirecting the page was handled by a javascript file. I made a new function, which was basically a copy of an already existing function, but tweaked the code so it would redirect to a particular overview page.&lt;/p&gt;
 
