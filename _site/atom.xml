@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Notes on the DOM</title>
+        
+          <description>&lt;p&gt;I finished my .NET MVC Udemy course and have gone back to my Web Developer Bootcamp Udemy course that I started before going to school.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 19 Apr 2020 11:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/dom-notes</link>
+        <guid isPermaLink="true">http://localhost:4000/dom-notes</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Last ditch effort – I deleted my database</title>
         
           <description>&lt;p&gt;I have been working on my Udemy courses again, currently hoping to finish my MVC course.&lt;/p&gt;

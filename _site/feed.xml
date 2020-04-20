@@ -1,4 +1,100 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-12T15:13:11-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Last ditch effort – I deleted my database</title><link href="http://localhost:4000/deleting-my-database" rel="alternate" type="text/html" title="Last ditch effort – I deleted my database" /><published>2020-04-11T18:30:00-06:00</published><updated>2020-04-11T18:30:00-06:00</updated><id>http://localhost:4000/deleting-my-database</id><content type="html" xml:base="http://localhost:4000/deleting-my-database">&lt;p&gt;I have been working on my Udemy courses again, currently hoping to finish my MVC course.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-20T15:59:20-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Notes on the DOM</title><link href="http://localhost:4000/dom-notes" rel="alternate" type="text/html" title="Notes on the DOM" /><published>2020-04-19T11:30:00-06:00</published><updated>2020-04-19T11:30:00-06:00</updated><id>http://localhost:4000/dom-notes</id><content type="html" xml:base="http://localhost:4000/dom-notes">&lt;p&gt;I finished my .NET MVC Udemy course and have gone back to my Web Developer Bootcamp Udemy course that I started before going to school.&lt;/p&gt;
+
+&lt;p&gt;I should have completed this before starting my program; it would have made life so much easier if I already had some exposure to these topics.&lt;/p&gt;
+
+&lt;p&gt;The nice thing about completing this now, however, is that I’m breezing right through the content. It’s actually a really good opportunity to review the fundamentals, hear the content explained from another perspective, and pick up some new things I didn’t learn the first time around.&lt;/p&gt;
+
+&lt;p&gt;Today I am working through the section on the DOM. The instructor is really good at highlighting and organizing the most important concepts, so I figured it would help me to make some notes here.&lt;/p&gt;
+
+&lt;h3 id=&quot;important-dom-selector-methods&quot;&gt;Important DOM Selector Methods&lt;/h3&gt;
+
+&lt;p&gt;These return HTML elements as &lt;em&gt;objects&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;document.getElementById()&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;pretty obvious, select the element with this id&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;document.getElementsByClassName()&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;returns a list of all elements with this class name&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;document.getElementsByTagName()&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g. to select the body of a page use document.getElementsByTagName(“body”)[0];&lt;/li&gt;
+  &lt;li&gt;I have tried using the TagName selector in the past but I could never get it to work. It was only when I saw the index of 0 ([0]) being used that I understood my problem&lt;/li&gt;
+  &lt;li&gt;this selector returns all the elements in a &lt;em&gt;list&lt;/em&gt;, and I needed to select the first one - in the case of body, it’s the only one&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;document.querySelector()&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;important note!! only returns the &lt;em&gt;first element&lt;/em&gt; it comes across with this selector&lt;/li&gt;
+  &lt;li&gt;can use any CSS selector you could use in a CSS file, like “.some-class h1”, using the same syntax you use in a CSS file&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;document.querySelectorAll()&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;returns a list of elements that match the selector&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;important-ways-to-manipulate-the-dom&quot;&gt;Important ways to manipulate the DOM&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;changing the style of an element
+    &lt;ul&gt;
+      &lt;li&gt;can use the “&lt;strong&gt;style&lt;/strong&gt;” property in javascript&lt;/li&gt;
+      &lt;li&gt;e.g. tag.style.border = “1px solid black”;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;add/remove classes with javascript
+    &lt;ul&gt;
+      &lt;li&gt;use javascript “&lt;strong&gt;classList&lt;/strong&gt;” property&lt;/li&gt;
+      &lt;li&gt;classList.add, classList.remove, classList.toggle&lt;/li&gt;
+      &lt;li&gt;classList is not technically an array&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;changing content of a tag
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;textContent&lt;/strong&gt; to extract and change the text inside an element, treats it like text&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;innerHtml&lt;/strong&gt;, however, maintains what’s inside the HTML, safer to use, treats it like HTML&lt;/li&gt;
+      &lt;li&gt;these override what’s already inside the tag&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;changing tag attributes
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;getAttribute()&lt;/strong&gt; and &lt;strong&gt;setAttribute()&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;e.g. link.getAttribute(“href”);&lt;/li&gt;
+      &lt;li&gt;e.g. link.setAttribute(“src”, “imgs/whatever.jpg”);&lt;/li&gt;
+      &lt;li&gt;can even use to change an id or a class&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dom-events&quot;&gt;DOM events&lt;/h3&gt;
+
+&lt;p&gt;Add event listeners to specific elements.&lt;/p&gt;
+
+&lt;p&gt;Important method: &lt;strong&gt;addEventListener(type, functionToCall)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Type = type of event we’re listening for&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;“click” is a common one&lt;/li&gt;
+  &lt;li&gt;“change” will fire whenever there is any sort of change, like typing into an input&lt;/li&gt;
+  &lt;li&gt;“mouseover” for when you hover over an element&lt;/li&gt;
+  &lt;li&gt;“mouseout” for when you move your mouse away from the element; can use with “mouseover” to create hover effect&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;functionToCall = callback function we want to run when event happens&lt;/p&gt;
+
+&lt;h3 id=&quot;html-inputs-give-you-strings&quot;&gt;HTML inputs give you strings&lt;/h3&gt;
+
+&lt;p&gt;Let’s say you want to use an input field for a number. Even if you input a number, and have the input type=”number”, the value you get will be a string. Like “7” instead of 7. Unless you are using a “==” and type coersion, javascript won’t be able to use this as a number.&lt;/p&gt;
+
+&lt;p&gt;It took me a while to figure this out on my own, and it came up in my course.  The instructor’s solution for this was to place the input value inside the Number() method:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;winningScore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;numInput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="javascript" /><category term="dom" /><summary type="html">I finished my .NET MVC Udemy course and have gone back to my Web Developer Bootcamp Udemy course that I started before going to school.</summary></entry><entry><title type="html">Last ditch effort – I deleted my database</title><link href="http://localhost:4000/deleting-my-database" rel="alternate" type="text/html" title="Last ditch effort – I deleted my database" /><published>2020-04-11T18:30:00-06:00</published><updated>2020-04-11T18:30:00-06:00</updated><id>http://localhost:4000/deleting-my-database</id><content type="html" xml:base="http://localhost:4000/deleting-my-database">&lt;p&gt;I have been working on my Udemy courses again, currently hoping to finish my MVC course.&lt;/p&gt;
 
 &lt;p&gt;Sometimes I really don’t like .NET.  I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course though, because I’m sure it will be useful at my next job, or somewhere down the line.&lt;/p&gt;
 
@@ -487,86 +583,4 @@ Overload: in C#, some methods will have the same name but can accept different p
   &lt;li&gt;in RouteConfig.cs, add routes.MapMvcAttributeRoutes();&lt;/li&gt;
   &lt;li&gt;for example, in controller type the following above your action [Route(“movies/release/{year}/{month:regex(\d{2}”)})]&lt;/li&gt;
   &lt;li&gt;constraints placed directly in attribute&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="dotnet" /><category term="MVC" /><category term="routing" /><summary type="html">A lot has happened in the month since I last wrote. I was very busy with my practicum and neglected some of my own projects. I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum. I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time. Let’s go with that.</summary></entry><entry><title type="html">Beginning to learn .NET</title><link href="http://localhost:4000/learningdotnet" rel="alternate" type="text/html" title="Beginning to learn .NET" /><published>2020-02-17T22:30:00-07:00</published><updated>2020-02-17T22:30:00-07:00</updated><id>http://localhost:4000/learningdotnet</id><content type="html" xml:base="http://localhost:4000/learningdotnet">&lt;p&gt;I am currently in the middle of the practicum component of my program. I am entering week 3 of 8, and to be honest I still have a lot of learning to do in order to be useful here.  I have already learned a lot of things that were not taught in my program, which I guess is the point of working in a real office. It hasn’t been easy and I suspect it will continue that way.&lt;/p&gt;
-
-&lt;p&gt;The source of all my trouble is the fact that until now I never learned C# or .NET, and we spent maybe half and hour in class on MVC.  I consider myself to be more skilled at front end development, but my job is almost entirely back end. At least so far. Having knowledge of ASP.NET and MVC applications beforehand would have been extremely helpful. I believe the most helpful information will be anything to do with the structure of MVC applications, so I can understand how to navigate my company’s project. One challenge I have found is that tutorials and articles relating to MVC assume a basic to intermediate knowledge of C# already. And the C# tutorials start out at a level that is too beginner for me, given that I already know how to add, subtract, use logical operators and conditionals… I’m on a bit of a time crunch to learn MVC and .NET. And yet my progress feels too slow given that my practicum is only 2 months long.&lt;/p&gt;
-
-&lt;p&gt;Anyway, I’ll get into some of the things I’ve learned so far.  My work notebook is filling up very quickly, but perhaps I’ll just compile what I’ve learned through my studies at home.&lt;/p&gt;
-
-&lt;p&gt;There are many, many, many definitions online of the model, view and controller. On a &lt;a href=&quot;https://blog.codeanalogies.com/2016/05/02/model-view-controller-mvc-explained-through-ordering-drinks-at-the-bar/&quot;&gt;code analogies blog&lt;/a&gt; the author related it to ordering a drink at a bar. Your order is the request, the bartender (and the drink recipe they memorized) is the controller, the ingredients are the model, and the finished drink is the view. Actually very helpful.&lt;/p&gt;
-
-&lt;p&gt;Here are more notes and definitions I’ve been able to compile from various courses and articles, including my Udemy course on ASP.NET MVC Applications:&lt;/p&gt;
-
-&lt;p&gt;Model:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;the application data and behavior&lt;/li&gt;
-  &lt;li&gt;is independent of UI&lt;/li&gt;
-  &lt;li&gt;independent of data persistence&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;View:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;the HTML displayed to the user&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Controller:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;handles the HTTP request&lt;/li&gt;
-  &lt;li&gt;used to define and group a set of actions together - see more on actions below&lt;/li&gt;
-  &lt;li&gt;any instantiable class ending in “Controller”&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;(bonus)Router:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;selects which controller will be used, based on the the request that comes in&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Also a little bit about Entity Framework, which I have learned is important but can’t seem to find plain English definitions of:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;need a persistence framework to access the database in an app&lt;/li&gt;
-  &lt;li&gt;helps to load objects from a database, and save to a database&lt;/li&gt;
-  &lt;li&gt;need this to use dbcontext in your files&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Yeah, I don’t know. We’ll revist later, maybe with my work notes. Onward!&lt;/p&gt;
-
-&lt;p&gt;Creating a new controller:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;very important fact! When you create a new controller in Visual Studio, you will automatically get a new folder created in Views with the same name&lt;/li&gt;
-  &lt;li&gt;when it needs to return a view, the controller will search for the view in a folder with the same name!&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Client side stuff/CSS:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;ASP.NET uses Bootstrap for CSS.  This is pretty obvious if you have used Bootstrap, when you see the ASP.NET default page… It’s fine.  It’s good if you don’t have time/don’t like/aren’t good at front end.&lt;/li&gt;
-  &lt;li&gt;You can use bootswatch.com to get Bootstrap templates to use in your application if you don’t like the default.&lt;/li&gt;
-  &lt;li&gt;Go to bootswatch and download the bootstrap.css file for your preferred theme. You can rename if you like. Place in your Content folder of your MVC project&lt;/li&gt;
-  &lt;li&gt;You will need to update your Bundle config file if you want to use your new theme, and the file name is different. Go to App_Start -&amp;gt; BundleConfig.cs.  Scroll and look for Content/bootstrap.css, and update the path name if necessary&lt;/li&gt;
-  &lt;li&gt;FYI, the BundleConfig.cs file is where you define client-side bundles and assets.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Action and ActionResult&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;An action is a method in a controller responsible for handling incoming requests&lt;/li&gt;
-  &lt;li&gt;Routing maps the requests to our actions&lt;/li&gt;
-  &lt;li&gt;An ActionResult is the output of our actions&lt;/li&gt;
-  &lt;li&gt;Action Parameters are the inputs for our actions&lt;/li&gt;
-  &lt;li&gt;Any public method on a controller type is an action&lt;/li&gt;
-  &lt;li&gt;Actions are basically the final destination of our requests in an MVC app&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;To rename a parameter:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Hit F2&lt;/li&gt;
-  &lt;li&gt;Type new name&lt;/li&gt;
-  &lt;li&gt;All references are now updated automatically in Visual Studio&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Nullable: to make a parameter nullable means it’s ok for it to have no value passed it - it’s ok for it to be “null”&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;for int and double data types, put “?” afterwards&lt;/li&gt;
-  &lt;li&gt;for example: int? = …&lt;/li&gt;
-  &lt;li&gt;don’t need to put “?” after strings, because apparently they are already nullable in C#&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ok, that’s all for this post. I will write more as I continue with my courses, and when I remember to bring home my work notebook.&lt;/p&gt;</content><author><name></name></author><category term="dotnet" /><category term="MVC" /><summary type="html">I am currently in the middle of the practicum component of my program. I am entering week 3 of 8, and to be honest I still have a lot of learning to do in order to be useful here. I have already learned a lot of things that were not taught in my program, which I guess is the point of working in a real office. It hasn’t been easy and I suspect it will continue that way.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><category term="dotnet" /><category term="MVC" /><category term="routing" /><summary type="html">A lot has happened in the month since I last wrote. I was very busy with my practicum and neglected some of my own projects. I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum. I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time. Let’s go with that.</summary></entry></feed>
