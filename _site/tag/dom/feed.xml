@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/dom/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2020-04-20T15:59:20-06:00</updated>
+  <updated>2020-05-06T09:26:04-06:00</updated>
   <id>http://localhost:4000/tag/dom/feed.xml</id>
 
   
@@ -44,107 +44,177 @@
 
   
     <entry>
-      <title type="html">Notes on the DOM</title>
-      <link href="http://localhost:4000/dom-notes" rel="alternate" type="text/html" title="Notes on the DOM" />
-      <published>2020-04-19T11:30:00-06:00</published>
-      <updated>2020-04-19T11:30:00-06:00</updated>
-      <id>http://localhost:4000/dom-notes</id>
-      <content type="html" xml:base="http://localhost:4000/dom-notes">&lt;p&gt;I finished my .NET MVC Udemy course and have gone back to my Web Developer Bootcamp Udemy course that I started before going to school.&lt;/p&gt;
+      <title type="html">Notes on jQuery</title>
+      <link href="http://localhost:4000/jquery-notes" rel="alternate" type="text/html" title="Notes on jQuery" />
+      <published>2020-04-20T21:30:00-06:00</published>
+      <updated>2020-04-20T21:30:00-06:00</updated>
+      <id>http://localhost:4000/jquery-notes</id>
+      <content type="html" xml:base="http://localhost:4000/jquery-notes">&lt;p&gt;I have seen jQuery all over the place, including at work, but I have never taken the time to learn it in depth.  I figured I needed to do this soon, and there happens to be a section in my current Web Developer Bootcamp Udemy course. Here are some of my notes.&lt;/p&gt;
 
-&lt;p&gt;I should have completed this before starting my program; it would have made life so much easier if I already had some exposure to these topics.&lt;/p&gt;
+&lt;p&gt;jQuery is a javascript library that helps us manipulate the DOM.&lt;/p&gt;
 
-&lt;p&gt;The nice thing about completing this now, however, is that I’m breezing right through the content. It’s actually a really good opportunity to review the fundamentals, hear the content explained from another perspective, and pick up some new things I didn’t learn the first time around.&lt;/p&gt;
-
-&lt;p&gt;Today I am working through the section on the DOM. The instructor is really good at highlighting and organizing the most important concepts, so I figured it would help me to make some notes here.&lt;/p&gt;
-
-&lt;h3 id=&quot;important-dom-selector-methods&quot;&gt;Important DOM Selector Methods&lt;/h3&gt;
-
-&lt;p&gt;These return HTML elements as &lt;em&gt;objects&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;document.getElementById()&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Pros:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;pretty obvious, select the element with this id&lt;/li&gt;
+  &lt;li&gt;shorter code, easier to access dom&lt;/li&gt;
+  &lt;li&gt;cross-browser support&lt;/li&gt;
+  &lt;li&gt;ajax&lt;/li&gt;
+  &lt;li&gt;strong community&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;document.getElementsByClassName()&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Cons:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;returns a list of all elements with this class name&lt;/li&gt;
+  &lt;li&gt;everything you can do with jQuery you can use without it&lt;/li&gt;
+  &lt;li&gt;including lots of extra methods even if you are only using a couple, could have performance issues&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;document.getElementsByTagName()&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Two ways to include jQuery in your app:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;e.g. to select the body of a page use document.getElementsByTagName(“body”)[0];&lt;/li&gt;
-  &lt;li&gt;I have tried using the TagName selector in the past but I could never get it to work. It was only when I saw the index of 0 ([0]) being used that I understood my problem&lt;/li&gt;
-  &lt;li&gt;this selector returns all the elements in a &lt;em&gt;list&lt;/em&gt;, and I needed to select the first one - in the case of body, it’s the only one&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;document.querySelector()&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;important note!! only returns the &lt;em&gt;first element&lt;/em&gt; it comes across with this selector&lt;/li&gt;
-  &lt;li&gt;can use any CSS selector you could use in a CSS file, like “.some-class h1”, using the same syntax you use in a CSS file&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;document.querySelectorAll()&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;returns a list of elements that match the selector&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;important-ways-to-manipulate-the-dom&quot;&gt;Important ways to manipulate the DOM&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;changing the style of an element
+  &lt;li&gt;download code for jQuery, link to it in html file
     &lt;ul&gt;
-      &lt;li&gt;can use the “&lt;strong&gt;style&lt;/strong&gt;” property in javascript&lt;/li&gt;
-      &lt;li&gt;e.g. tag.style.border = “1px solid black”;&lt;/li&gt;
+      &lt;li&gt;there’s a full 9000 line file, and also a minified file&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;add/remove classes with javascript
+  &lt;li&gt;include CDN in html file
     &lt;ul&gt;
-      &lt;li&gt;use javascript “&lt;strong&gt;classList&lt;/strong&gt;” property&lt;/li&gt;
-      &lt;li&gt;classList.add, classList.remove, classList.toggle&lt;/li&gt;
-      &lt;li&gt;classList is not technically an array&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;changing content of a tag
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;textContent&lt;/strong&gt; to extract and change the text inside an element, treats it like text&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;innerHtml&lt;/strong&gt;, however, maintains what’s inside the HTML, safer to use, treats it like HTML&lt;/li&gt;
-      &lt;li&gt;these override what’s already inside the tag&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;changing tag attributes
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;getAttribute()&lt;/strong&gt; and &lt;strong&gt;setAttribute()&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;e.g. link.getAttribute(“href”);&lt;/li&gt;
-      &lt;li&gt;e.g. link.setAttribute(“src”, “imgs/whatever.jpg”);&lt;/li&gt;
-      &lt;li&gt;can even use to change an id or a class&lt;/li&gt;
+      &lt;li&gt;linking to jQuery file online rather than downloading it to your machine&lt;/li&gt;
+      &lt;li&gt;slightly slower performance than having it locally&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;dom-events&quot;&gt;DOM events&lt;/h3&gt;
+&lt;p&gt;Make sure your jQuery libraries are included &lt;strong&gt;before&lt;/strong&gt; your own script files in your HTML. If you are depending on them in your own javascript file, they must be loaded first, otherwise your file can’t find the jQuery methods it is supposed to use.&lt;/p&gt;
 
-&lt;p&gt;Add event listeners to specific elements.&lt;/p&gt;
+&lt;h3 id=&quot;selecting-elements&quot;&gt;Selecting elements&lt;/h3&gt;
 
-&lt;p&gt;Important method: &lt;strong&gt;addEventListener(type, functionToCall)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Use the $ function to select things:  $()&lt;/p&gt;
 
-&lt;p&gt;Type = type of event we’re listening for&lt;/p&gt;
+&lt;p&gt;This is like using document.querySelectorAll() in vanilla JS. Inside the function use a CSS selector. This function returns all the elements that match the selector. e.g. $(“.someClass”);&lt;/p&gt;
+
+&lt;h3 id=&quot;important-methods&quot;&gt;Important methods&lt;/h3&gt;
+
+&lt;p&gt;For styling: $(selector).css(property, value)&lt;/p&gt;
+
+&lt;p&gt;val(): to get value from an input, can also set the value&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;“click” is a common one&lt;/li&gt;
-  &lt;li&gt;“change” will fire whenever there is any sort of change, like typing into an input&lt;/li&gt;
-  &lt;li&gt;“mouseover” for when you hover over an element&lt;/li&gt;
-  &lt;li&gt;“mouseout” for when you move your mouse away from the element; can use with “mouseover” to create hover effect&lt;/li&gt;
+  &lt;li&gt;e.g. set the input’s value to an empty string to clear the input field&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;functionToCall = callback function we want to run when event happens&lt;/p&gt;
+&lt;p&gt;text(): gets text content in set of matched elements, and can set text content of an element&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;like textContent in vanilla javascript&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h3 id=&quot;html-inputs-give-you-strings&quot;&gt;HTML inputs give you strings&lt;/h3&gt;
+&lt;p&gt;attr(): get the value of an attribute for first matched element, set the value for all matched elements&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g. to set,  $(#myPhoto).attr(“alt”, “Photo of my dog”);&lt;/li&gt;
+  &lt;li&gt;can also set several attributes at once using a javascript object&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Let’s say you want to use an input field for a number. Even if you input a number, and have the input type=”number”, the value you get will be a string. Like “7” instead of 7. Unless you are using a “==” and type coersion, javascript won’t be able to use this as a number.&lt;/p&gt;
+&lt;p&gt;html(): is like innerHTML in vanilla javascript, gets HTML content of first matched element or sets HTML content of all matched elements&lt;/p&gt;
 
-&lt;p&gt;It took me a while to figure this out on my own, and it came up in my course.  The instructor’s solution for this was to place the input value inside the Number() method:&lt;/p&gt;
+&lt;p&gt;Below are like the classList properties in vanilla javascript:&lt;/p&gt;
 
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;winningScore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;numInput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;p&gt;addClass(): add a class or classes to matched elements&lt;/p&gt;
+
+&lt;p&gt;removeClass(): remove a class or classes to matched elements&lt;/p&gt;
+
+&lt;p&gt;toggleClass(): add a class if the matched element doesn’t have it, removes a class if the element has it&lt;/p&gt;
+
+&lt;p&gt;remove(): removes element from the DOM&lt;/p&gt;
+
+&lt;h3 id=&quot;important-jquery-events&quot;&gt;Important jQuery events&lt;/h3&gt;
+
+&lt;p&gt;click(): add a click listener to an element or colection of elements&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;callback function goes in the parentheses&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;keypress(): fires in between key being pressed down and coming back up&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;every key has its own code, access it with keyword “which”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;input&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keypress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;which&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;you hit enter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;keydown(): fired when key is pressed down&lt;/p&gt;
+
+&lt;p&gt;keyup(): fired when a pressed key is released&lt;/p&gt;
+
+&lt;p&gt;on(): most used jQuery event method&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;similar to vanilla js addEventListener,&lt;/li&gt;
+  &lt;li&gt;used most of the time&lt;/li&gt;
+  &lt;li&gt;include the type of event, and a callback function&lt;/li&gt;
+  &lt;li&gt;adds listeners for all potential items that aren’t there when the page loads
+    &lt;ul&gt;
+      &lt;li&gt;“click”, on the other hand, only creates listeners for things that are on the page when it loads&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mouseenter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;font-weight&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;bold&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;this-in-jquery&quot;&gt;“this” in jQuery&lt;/h3&gt;
+
+&lt;p&gt;In jQuery you need to wrap “this” in a jQuery selector, so it knows we’re using a jQuery object, like so:  $(this)&lt;/p&gt;
+
+&lt;p&gt;If you use just plain this, like you would in vanilla javascript, it will not work.&lt;/p&gt;
+
+&lt;h3 id=&quot;common-jquery-effects&quot;&gt;Common jQuery effects&lt;/h3&gt;
+
+&lt;p&gt;fadeOut(): current opacity to transparent, can specify the speed&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;elements are hidden, not deleted&lt;/li&gt;
+  &lt;li&gt;can include a callback function, because we often want something to happen &lt;em&gt;after&lt;/em&gt; the the fade has completed. If you include this in a separate line of code after fadeOut, it will execute right away, possibly before the fade is even complete&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;fadeIn(): similar to fadeOut&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;element should start out as display none; it gets changed to display block when you use the function&lt;/li&gt;
+  &lt;li&gt;also include callback functions inside, for same reason as above fadeOut()&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;fadeToggle(): will know if it needs to fade in or out depending if element is currently displayed&lt;/p&gt;
+
+&lt;p&gt;slideDown(), slideUp(), slideToggle(): height of an element is animated as up or down&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;also have optional callback and ability to specify timing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;parent-elements&quot;&gt;Parent elements&lt;/h3&gt;
+
+&lt;h4 id=&quot;event-bubbling&quot;&gt;Event bubbling&lt;/h4&gt;
+
+&lt;p&gt;If you have a click event on a particular element, it will bubble up into parent elements, triggering any click events on the parents.&lt;/p&gt;
+
+&lt;p&gt;You can tell it not to bubble by adding the following to your click event:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;add “event” (or whatever keyword you choose) as an argument to your callback function&lt;/li&gt;
+  &lt;li&gt;add a line inside your callback function: event.stopPropagation();&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;span&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;clicked on a span&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stopPropagation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;removing-parent-elements&quot;&gt;Removing parent elements&lt;/h3&gt;
+
+&lt;p&gt;Quite simple, as per below:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;span&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stopPropagation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
 
       
@@ -164,11 +234,13 @@
       
         <category term="javascript" />
       
-        <category term="dom" />
+        <category term="jquery" />
+      
+        <category term="DOM" />
       
 
       
-        <summary type="html">I finished my .NET MVC Udemy course and have gone back to my Web Developer Bootcamp Udemy course that I started before going to school.</summary>
+        <summary type="html">I have seen jQuery all over the place, including at work, but I have never taken the time to learn it in depth. I figured I needed to do this soon, and there happens to be a section in my current Web Developer Bootcamp Udemy course. Here are some of my notes.</summary>
       
 
       
