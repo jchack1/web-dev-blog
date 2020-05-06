@@ -2,7 +2,7 @@
 layout: post
 title:  "Notes on jQuery"
 date:   2020-04-20 21:30
-tags: javascript jquery DOM
+tags: javascript jquery dom
 navigation: true
 class: post-template
 current: post
