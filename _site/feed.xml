@@ -1,4 +1,119 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-06T09:30:21-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Notes on jQuery</title><link href="http://localhost:4000/jquery-notes" rel="alternate" type="text/html" title="Notes on jQuery" /><published>2020-04-20T21:30:00-06:00</published><updated>2020-04-20T21:30:00-06:00</updated><id>http://localhost:4000/jquery-notes</id><content type="html" xml:base="http://localhost:4000/jquery-notes">&lt;p&gt;I have seen jQuery all over the place, including at work, but I have never taken the time to learn it in depth.  I figured I needed to do this soon, and there happens to be a section in my current Web Developer Bootcamp Udemy course. Here are some of my notes.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-24T21:27:56-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">500 server error and the csproj file</title><link href="http://localhost:4000/errors-csproj" rel="alternate" type="text/html" title="500 server error and the csproj file" /><published>2020-05-22T12:30:00-06:00</published><updated>2020-05-22T12:30:00-06:00</updated><id>http://localhost:4000/errors-csproj</id><content type="html" xml:base="http://localhost:4000/errors-csproj">&lt;p&gt;Here is what I learned when we got a 500 server error while testing my code at work.&lt;/p&gt;
+
+&lt;p&gt;I was tasked to create a button that would copy rows of a list to another position in the list. We changed the functionality later on, but originally I created a button that opened a modal, which required user input to carry out the copy behavior. I created new javascript and cshtml files for the modal.&lt;/p&gt;
+
+&lt;p&gt;I am still learning the ins and outs of Sourcetree, our version control software, but I knew that I had selected these files and pushed them to our main development branch. When the button was clicked during testing, a modal popped up, but its content was “500 server error”. I couldn’t understand why this would be, since I knew I pushed the modal files.&lt;/p&gt;
+
+&lt;p&gt;Back in Visual Studio, I noticed that the new modal files were no longer showing up in solution explorer, but I could see them in file explorer on my PC. Plus I had the correct button functionality locally on my machine. It turns out there was one file that I never pushed, and that was the csproj file.&lt;/p&gt;
+
+&lt;p&gt;I &lt;a href=&quot;https://docs.microsoft.com/en-us/aspnet/web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file&quot;&gt;learned that MSBuild&lt;/a&gt;, the engine that builds your solutions in .NET, uses the csproj file.  This file tells MSBuild that we are building a C# project and gives instructions for how to build it, like database server settings, platform requirements, and what files to include, among other things.&lt;/p&gt;
+
+&lt;p&gt;The problem was with the “include” code, which looks like this:&lt;/p&gt;
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*snipit from microsoft docs*/&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Content&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content\Custom.css&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Content&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CreateDatabase.sql&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Content&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;DropDatabase.sql&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I never technically included the new files in the project, so the application didn’t know to look for them. Here are the steps taken to fix this:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;if you can’t see your files in solution explorer, go to Project -&amp;gt; Show All Files&lt;/li&gt;
+  &lt;li&gt;files should be visible now in solution explorer; right click -&amp;gt; “Include in Project”&lt;/li&gt;
+  &lt;li&gt;you will see them included in .csproj file&lt;/li&gt;
+  &lt;li&gt;commit this file in Sourcetree and push&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;No more 500 error!&lt;/p&gt;</content><author><name></name></author><category term="csharp" /><category term="dotnet" /><summary type="html">Here is what I learned when we got a 500 server error while testing my code at work.</summary></entry><entry><title type="html">Reviewing API calls</title><link href="http://localhost:4000/api-review" rel="alternate" type="text/html" title="Reviewing API calls" /><published>2020-05-18T16:30:00-06:00</published><updated>2020-05-18T16:30:00-06:00</updated><id>http://localhost:4000/api-review</id><content type="html" xml:base="http://localhost:4000/api-review">&lt;p&gt;Today in my Web Developer course I am reviewing how to use APIs.&lt;/p&gt;
+
+&lt;p&gt;This was a topic I really struggled with the first time around while in school.  I just couldn’t wrap my head around it. I think I struggled because javascript was still so new to me, and I could not seem to figure out how to get the data I needed from an API call.&lt;/p&gt;
+
+&lt;p&gt;This time around it’s making a bit more sense, so here are some important points I picked up from the API section of this course, and a little explanation of the process of completing these exercises.&lt;/p&gt;
+
+&lt;p&gt;For this exercise we needed to get the sunset time for Hawaii from a weather API. The course uses the yahoo weather API, but it has since been retired. I decided to use OpenWeather API, which I believe some of my classmates used for their API assignments back in the fall.&lt;/p&gt;
+
+&lt;p&gt;To get started you need to sign up, and an API key will be generated for you. You can generate more API keys as needed. The docs explain how to make an API call. I decided to make my API call using the city ID, and all city IDs can be found in a downloadable JSON file.  I chose Lahaina, Maui.  The format for calling the API by city ID is as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;api.openweathermap.org/data/2.5/weather?id={city id}&amp;amp;appid={your api key}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As you can see, you plug in the city ID and your API key.  My URL looked like this (note I have included a fake API key for privacy):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;My course used the “request” package to handle requests in Node.js, however that package has since been deprecated. I used it for the exercise because it still works, though for a real project I would try to find something that is currently being updated and maintained.&lt;/p&gt;
+
+&lt;p&gt;To test if you’re receiving data, the code looked like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;However, the data you get back in the console is actually a string. We can prove this by printing “typeof body” to the console. We need to access our data from a javascript object, not a string. All you need to do is use “JSON.parse(body)”:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, to get my sunset data. To know the structure of the JSON object I made the API request in the browser. In chrome I have an extension called JSON Viewer, which makes the JSON easier to read. This was the part of the JSON data I needed, to know how my sunset time was nested:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sys&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7875&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;country&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;US&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;sunrise&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1590335183&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;sunset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1590382873&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So I just need to get the data, in this case using the square bracket notation []:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sunset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sys&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sunset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sunset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;However, this just prints a long string of numbers, not a date. Checking the docs I can see that, when using a JSON object, it gives the time in unix format, which is basically the number of seconds that have passed since 00:00:00 UTC on 1 January 1970. The simplest seeming suggestion to parse this format on stack overflow was to use Moment.js.&lt;/p&gt;
+
+&lt;p&gt;Once I figured out how to get an hour:minute format, I printed it to the console. But the time didn’t look right. If I am looking for the sunset in Lahaina, in May, it most likely wouldn’t be 22:58 - nearly 11pm! -  which is what my program told me. When I looked it up, it was in fact 18:59. This four hour difference is actually the time difference between Lahaina and my own timezone, MDT. Somehow I am getting the time that the sun sets in Lahaina, in MDT.  I had to dig in a bit more to find out why this was happening. Is it coming from my API, or from Moment.js?&lt;/p&gt;
+
+&lt;p&gt;I ended up spending a few days away from this exercise, and came back with a fresher mind. After a couple searches I found that you need to include the city’s timezone hardcoded. Stack overflow suggested a method called utcOffset(). Hawaii’s timezone is GMT-10, so I plugged that into the method. You can also see how unix time was handled:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sunsetUnix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sys&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sunset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+        
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sunset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sunsetUnix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;utcOffset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sunset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;HH:mm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally, this gave me the correct sunset time.&lt;/p&gt;
+
+&lt;p&gt;I was glad I managed to figure this out, and that it wasn’t as difficult as I was expecting. I was almost ready to just move on with my course not having figured it out. Maybe it wouldn’t have mattered since this timezone issue doesn’t really have much to do with APIs. However, sticking with it until it was solved reminded me of two things:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the importance of stepping away from the code when you are stuck; it gives your mind a rest and allows your subconscious to continue looking for creative ways to solve the problem&lt;/li&gt;
+  &lt;li&gt;that (at least for my own personal projects) I can solve any problem if I set my mind to it&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="javascript" /><category term="node.js" /><category term="api" /><summary type="html">Today in my Web Developer course I am reviewing how to use APIs.</summary></entry><entry><title type="html">Notes on jQuery</title><link href="http://localhost:4000/jquery-notes" rel="alternate" type="text/html" title="Notes on jQuery" /><published>2020-04-20T21:30:00-06:00</published><updated>2020-04-20T21:30:00-06:00</updated><id>http://localhost:4000/jquery-notes</id><content type="html" xml:base="http://localhost:4000/jquery-notes">&lt;p&gt;I have seen jQuery all over the place, including at work, but I have never taken the time to learn it in depth.  I figured I needed to do this soon, and there happens to be a section in my current Web Developer Bootcamp Udemy course. Here are some of my notes.&lt;/p&gt;
 
 &lt;p&gt;jQuery is a javascript library that helps us manipulate the DOM.&lt;/p&gt;
 
@@ -541,185 +656,4 @@ ReferenceError: primordials is not defined&quot;
 
 &lt;p&gt;I was surprised and a little suspicious. I didn’t think it would be that easy, but it was.  Previously, the old javascript file was saved in the cache, not my new updated one. Once it had the new file it worked like a charm.&lt;/p&gt;
 
-&lt;p&gt;So, all of that to say, I learned the importance of trying the simple solutions first. Restart Visual Studio. Restart your computer.  And if working with javascript, just try a hard refresh.&lt;/p&gt;</content><author><name></name></author><category term="dotnet" /><category term="javascript" /><category term="debugging" /><summary type="html">Recently I was working on a task for my practicum. The task was to add a delete button to two of the pages and ensure it redirected to the correct page once an item was deleted.</summary></entry><entry><title type="html">A few .NET errors and solutions</title><link href="http://localhost:4000/dotnet-errors-and-solutions" rel="alternate" type="text/html" title="A few .NET errors and solutions" /><published>2020-04-02T01:11:00-06:00</published><updated>2020-04-02T01:11:00-06:00</updated><id>http://localhost:4000/dotnet-errors-and-solutions</id><content type="html" xml:base="http://localhost:4000/dotnet-errors-and-solutions">&lt;p&gt;Here are a few errors I received while working on a .NET application, and how I solved them.&lt;/p&gt;
-
-&lt;h3 id=&quot;unable-to-determine-composite-primary-key-ordering-for-type-use-the-columnattribute-or-the-haskey-method&quot;&gt;“Unable to determine composite primary key ordering for type… Use the ColumnAttribute or the HasKey method…”&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;
-This occured because I tried to assign more than one [Key] in a C# class file, as per below:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whatever&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherOne&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The microsoft docs actually helped me here: &lt;a href=&quot;https://docs.microsoft.com/en-ca/ef/ef6/modeling/code-first/data-annotations?redirectedfrom=MSDN#composite-keys&quot;&gt;Microsoft docs on data annotation&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Basically, if you have more than one primary key, you need to give them an order using the column attribute, like below:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;[Column(Order=1)]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whatever&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;[Column(Order=2)]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherOne&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Note that the order doesn’t have to start at zero like an index, the order is just relative.&lt;/p&gt;
-
-&lt;h3 id=&quot;this-operation-requires-a-connection-to-master-database&quot;&gt;“This operation requires a connection to master database”&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;There was an issue connecting to my database, and this was fixed by adding “Integrated Security=True;” to the connection string in my Web.config file.  This is what stack overflow suggested you do when you’re connecting to the database with Windows Authentication, rather than a separate username and password.&lt;/p&gt;
-
-&lt;h3 id=&quot;cannot-insert-null-value-into-column-id&quot;&gt;“Cannot insert null value into column id”&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;The application uses a database of students. If you create a new student in the application it should add to the students table in the database. The problem was the student id number wasn’t being assigned.&lt;/p&gt;
-
-&lt;p&gt;Back to Stack Overflow. Assuming you want the id to automatically increment, this is what you do.&lt;/p&gt;
-
-&lt;p&gt;In SQL Server Management Studio:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;open table in Design&lt;/li&gt;
-  &lt;li&gt;select your column, go to Column Properties&lt;/li&gt;
-  &lt;li&gt;check Identity Specification&lt;/li&gt;
-  &lt;li&gt;set “IsIdentity” to “yes”&lt;/li&gt;
-  &lt;li&gt;set “IdentityIncrement” to “1”, so it increments by 1 each time you add a new student&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="dotnet" /><category term="debugging" /><category term="csharp" /><category term="SQL" /><summary type="html">Here are a few errors I received while working on a .NET application, and how I solved them.</summary></entry><entry><title type="html">Entity Framework, workflows, databases, and migrations</title><link href="http://localhost:4000/entityframework" rel="alternate" type="text/html" title="Entity Framework, workflows, databases, and migrations" /><published>2020-03-18T17:50:00-06:00</published><updated>2020-03-18T17:50:00-06:00</updated><id>http://localhost:4000/entityframework</id><content type="html" xml:base="http://localhost:4000/entityframework">&lt;p&gt;When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.&lt;/p&gt;
-
-&lt;h3 id=&quot;entity-framework-a-tool-we-use-to-access-a-database&quot;&gt;Entity Framework: a tool we use to access a database&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;it’s an object relational mapper (ORM)&lt;/li&gt;
-  &lt;li&gt;it maps data from a relational database to objects in our app&lt;/li&gt;
-  &lt;li&gt;allows you to work at a higher level of abstraction compared to manual mapping&lt;/li&gt;
-  &lt;li&gt;involves:
-    &lt;ul&gt;
-      &lt;li&gt;opening a connection to the databae&lt;/li&gt;
-      &lt;li&gt;executing a command&lt;/li&gt;
-      &lt;li&gt;reading the data&lt;/li&gt;
-      &lt;li&gt;closing the connection&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;relational-vs-non-relational-databases&quot;&gt;Relational vs Non-relational databases&lt;/h4&gt;
-
-&lt;p&gt;As an aside, it might be helpful to define these as well.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://medium.com/@zhenwu93/relational-vs-non-relational-databases-8336870da8bc&quot;&gt;This Medium article helped me quite a bit&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://www.pluralsight.com/blog/software-development/relational-non-relational-databases&quot;&gt;As well as this PluralSite article&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Relational databases: data stored in tables of rows and columns, and relationships between tables are established using primary and foreign keys. Uses SQL. You have to spend time in the beginning intentionally designing the structure of your database.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;good for complex queries&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Non-relational databases: (aka NoSQL) doesn’t use tables, doesn’t need a lot of structure. Data stored in collections of JSON documents.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;good for storing large amounts of data, and for flexibility&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;dbcontext-the-connection-to-the-database&quot;&gt;DbContext: the connection to the database&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;a class provided by Entity Framework&lt;/li&gt;
-  &lt;li&gt;a DbContext class file has one or more DbSet&lt;/li&gt;
-  &lt;li&gt;DbSet represent tables in the database&lt;/li&gt;
-  &lt;li&gt;can use LINQ to query DbSet, and at runtime Entity Framework translates LINQ queries to SQL queries&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;See the DbContext class example below. Each DbSet corresponds to a table in the database.&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;D2LDbContext&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbContext&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Students&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;//&amp;lt;Student&amp;gt; is a type parameter, Students is the property name in plural form&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;//the whole line is a property of D2LDbContext&lt;/span&gt;
-        
-        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Teacher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Teachers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-        
-        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Course&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Courses&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StudentCourse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StudentCourse&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TeacherCourse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TeacherCourse&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You use a DbContext object to access tables, and you use DbSet to modify table data.&lt;/p&gt;
-
-&lt;p&gt;Important takeaway: DbContext is a database connection, and DbSet represents a table in the database&lt;/p&gt;
-
-&lt;p&gt;Entity Framework opens the connection to the database, reads the data, maps it to objects, and adds them to DbSet. Entity Framework also keeps track of changes, like when we add, delete, or modify.  When we ask to persist these changes, Entity Framework automatically generates SQL statements and executes them on the database.&lt;/p&gt;
-
-&lt;p&gt;At this point during my reading, I asked myself what “persistence” actually means. I had to read a few different sources to really get it.&lt;/p&gt;
-
-&lt;h4 id=&quot;persistence&quot;&gt;Persistence&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;(techopedia) in terms of data, persistence means an object should not be erased until it is ready to be deleted&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Persistent data definitions:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;does not change and is not accessed frequently&lt;/li&gt;
-  &lt;li&gt;master data that’s stable&lt;/li&gt;
-  &lt;li&gt;exists from once instance to another&lt;/li&gt;
-  &lt;li&gt;stored in an actual format and stays there, like a hard drive; by contrast in memory, when you close the file the data is gone&lt;/li&gt;
-  &lt;li&gt;can retrieve the data again and again&lt;/li&gt;
-  &lt;li&gt;the ability of the object state to be saved to a database, so the state of the object “persists” whether the app is running or not (stack overflow def.)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;entity-framework-workflows&quot;&gt;Entity Framework workflows&lt;/h3&gt;
-
-&lt;p&gt;Two main workflows for Entity Framework: database first and code first&lt;/p&gt;
-
-&lt;p&gt;First, definitions:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;domain class: models your data, used to map data from a database to an in-memory object&lt;/li&gt;
-  &lt;li&gt;“versioning” a database: sharing all versions of a database that are necessary for other team members to get a project up and running&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Database first:&lt;/strong&gt; design database tables first, then have Entity Framework create the corresponding domain classes&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Code first:&lt;/strong&gt; create your domain classes then have Entity Framework generate the database tables for us&lt;/p&gt;
-
-&lt;p&gt;Advantages of a code first workflow:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;faster to code, more productive&lt;/li&gt;
-  &lt;li&gt;full versioning of database - can migrate to any version of the database at any point in time&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;database-migrations&quot;&gt;Database migrations&lt;/h3&gt;
-
-&lt;p&gt;Database migrations track changes to your database schema. A database migration is moving your data from one platform to another.&lt;/p&gt;
-
-&lt;p&gt;Database schema: the structure/organization of a database, how it is contructed&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;a description of the data&lt;/li&gt;
-  &lt;li&gt;defines attributes of a database like tables, columns, properties&lt;/li&gt;
-  &lt;li&gt;structure that represents the logical view of the database&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;here-are-the-steps-to-a-code-first-migration-in-visual-studio&quot;&gt;Here are the steps to a code first migration in Visual Studio&lt;/h4&gt;
-
-&lt;p&gt;Go to: Tools -&amp;gt; NuGet Package Manager -&amp;gt; Package Manager Console&lt;/p&gt;
-
-&lt;p&gt;Type in console:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;enable-migrations
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This generates a Migrations folder in your solution.&lt;/p&gt;
-
-&lt;p&gt;Then in console:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;add-migration &quot;YourMigrationName&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This generates a new C# class in the Migrations folder&lt;/p&gt;
-
-&lt;p&gt;Finally,&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;update-database
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now if you go to App_Data in your solution, you have a new database file.&lt;/p&gt;</content><author><name></name></author><category term="dotnet" /><category term="MVC" /><category term="database" /><category term="migrations" /><category term="EntityFramework" /><summary type="html">When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers. I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me. In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.</summary></entry></feed>
+&lt;p&gt;So, all of that to say, I learned the importance of trying the simple solutions first. Restart Visual Studio. Restart your computer.  And if working with javascript, just try a hard refresh.&lt;/p&gt;</content><author><name></name></author><category term="dotnet" /><category term="javascript" /><category term="debugging" /><summary type="html">Recently I was working on a task for my practicum. The task was to add a delete button to two of the pages and ensure it redirected to the correct page once an item was deleted.</summary></entry></feed>

@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/csharp/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2020-05-06T09:30:21-06:00</updated>
+  <updated>2020-05-24T21:27:56-06:00</updated>
   <id>http://localhost:4000/tag/csharp/feed.xml</id>
 
   
@@ -42,6 +42,68 @@
   
   
 
+  
+    <entry>
+      <title type="html">500 server error and the csproj file</title>
+      <link href="http://localhost:4000/errors-csproj" rel="alternate" type="text/html" title="500 server error and the csproj file" />
+      <published>2020-05-22T12:30:00-06:00</published>
+      <updated>2020-05-22T12:30:00-06:00</updated>
+      <id>http://localhost:4000/errors-csproj</id>
+      <content type="html" xml:base="http://localhost:4000/errors-csproj">&lt;p&gt;Here is what I learned when we got a 500 server error while testing my code at work.&lt;/p&gt;
+
+&lt;p&gt;I was tasked to create a button that would copy rows of a list to another position in the list. We changed the functionality later on, but originally I created a button that opened a modal, which required user input to carry out the copy behavior. I created new javascript and cshtml files for the modal.&lt;/p&gt;
+
+&lt;p&gt;I am still learning the ins and outs of Sourcetree, our version control software, but I knew that I had selected these files and pushed them to our main development branch. When the button was clicked during testing, a modal popped up, but its content was “500 server error”. I couldn’t understand why this would be, since I knew I pushed the modal files.&lt;/p&gt;
+
+&lt;p&gt;Back in Visual Studio, I noticed that the new modal files were no longer showing up in solution explorer, but I could see them in file explorer on my PC. Plus I had the correct button functionality locally on my machine. It turns out there was one file that I never pushed, and that was the csproj file.&lt;/p&gt;
+
+&lt;p&gt;I &lt;a href=&quot;https://docs.microsoft.com/en-us/aspnet/web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file&quot;&gt;learned that MSBuild&lt;/a&gt;, the engine that builds your solutions in .NET, uses the csproj file.  This file tells MSBuild that we are building a C# project and gives instructions for how to build it, like database server settings, platform requirements, and what files to include, among other things.&lt;/p&gt;
+
+&lt;p&gt;The problem was with the “include” code, which looks like this:&lt;/p&gt;
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*snipit from microsoft docs*/&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Content&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content\Custom.css&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Content&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CreateDatabase.sql&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Content&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;DropDatabase.sql&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I never technically included the new files in the project, so the application didn’t know to look for them. Here are the steps taken to fix this:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;if you can’t see your files in solution explorer, go to Project -&amp;gt; Show All Files&lt;/li&gt;
+  &lt;li&gt;files should be visible now in solution explorer; right click -&amp;gt; “Include in Project”&lt;/li&gt;
+  &lt;li&gt;you will see them included in .csproj file&lt;/li&gt;
+  &lt;li&gt;commit this file in Sourcetree and push&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;No more 500 error!&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="csharp" />
+      
+        <category term="dotnet" />
+      
+
+      
+        <summary type="html">Here is what I learned when we got a 500 server error while testing my code at work.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">C# definitions cheatsheet</title>
