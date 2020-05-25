@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/routing/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2020-05-24T21:40:51-06:00</updated>
+  <updated>2020-05-25T11:24:37-06:00</updated>
   <id>http://localhost:4000/tag/routing/feed.xml</id>
 
   
@@ -49,7 +49,9 @@
       <published>2020-03-18T17:12:00-06:00</published>
       <updated>2020-03-18T17:12:00-06:00</updated>
       <id>http://localhost:4000/routing</id>
-      <content type="html" xml:base="http://localhost:4000/routing">&lt;p&gt;A lot has happened in the month since I last wrote.  I was very busy with my practicum and neglected some of my own projects.  I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum.  I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time.  Let’s go with that.&lt;/p&gt;
+      <content type="html" xml:base="http://localhost:4000/routing">&lt;p&gt;A lot has happened in the month since I last wrote.&lt;/p&gt;
+
+&lt;p&gt;I was very busy with my practicum and neglected some of my own projects.  I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum.  I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time.  Let’s go with that.&lt;/p&gt;
 
 &lt;p&gt;I’m going to try writing posts with one topic only, for now. This post will explain what I know about routing in .NET.&lt;/p&gt;
 
@@ -101,7 +103,7 @@ Overload: in C#, some methods will have the same name but can accept different p
       
 
       
-        <summary type="html">A lot has happened in the month since I last wrote. I was very busy with my practicum and neglected some of my own projects. I then went on vacation to Maui for one week, and started watching the Covid-19 crisis unfold from afar. Currently I am at home in self-isolation, working remotely to finish my practicum. I have great luck and timing - 14 day self-isolation, with 2 weeks left of my practicum. After that, I’m not sure what my situation will be. Perhaps it will be an opportunity to continue my dev learning full time. Let’s go with that.</summary>
+        <summary type="html">A lot has happened in the month since I last wrote.</summary>
       
 
       

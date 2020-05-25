@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/jquery/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2020-05-24T21:40:51-06:00</updated>
+  <updated>2020-05-25T11:24:37-06:00</updated>
   <id>http://localhost:4000/tag/jquery/feed.xml</id>
 
   
@@ -207,7 +207,7 @@
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;removing-parent-elements&quot;&gt;Removing parent elements&lt;/h3&gt;
+&lt;h4 id=&quot;removing-parent-elements&quot;&gt;Removing parent elements&lt;/h4&gt;
 
 &lt;p&gt;Quite simple, as per below:&lt;/p&gt;
 

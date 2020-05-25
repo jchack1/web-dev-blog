@@ -15,7 +15,7 @@ When I began my Udemy course on .NET MVC, as well as my web development practicu
 - it maps data from a relational database to objects in our app
 - allows you to work at a higher level of abstraction compared to manual mapping
 - involves:
-    - opening a connection to the databae
+    - opening a connection to the database
     - executing a command
     - reading the data
     - closing the connection

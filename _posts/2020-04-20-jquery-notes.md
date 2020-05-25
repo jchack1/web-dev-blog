@@ -136,7 +136,7 @@ $("span").click(function(event){
 });
 ```
 
-### Removing parent elements
+#### Removing parent elements
 
 Quite simple, as per below:
 
