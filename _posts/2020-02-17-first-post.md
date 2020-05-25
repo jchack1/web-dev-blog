@@ -8,7 +8,9 @@ class: post-template
 current: post
 ---
 
-Hello!  This is the first post in my new blog. My intention for this blog is to create a place for me to document everything that I am learning as a new web developer. I started my certificate program in September 2019, and I want to be able to look back on all I have learned, and have a centralized space for notes. Here I will make notes of the things I'm learning, the challenges I face, and how I solved any issues that arise. I came up with the idea when I created my first Jekyll blog for an assignment in my CMS class. I needed to create blog posts, so I decided to live-blog my experience using Jekyll. I ended up having a lot of fun with this, and I had notes for myself for the future.
+Hello!  This is the first post in my new blog. My intention for this blog is to create a place for me to document everything that I am learning as a new web developer. 
+
+I started my certificate program in September 2019, and I want to be able to look back on all I have learned, and have a centralized space for notes. Here I will make notes of the things I'm learning, the challenges I face, and how I solved any issues that arise. I came up with the idea when I created my first Jekyll blog for an assignment in my CMS class. I needed to create blog posts, so I decided to live-blog my experience using Jekyll. I ended up having a lot of fun with this, and I had notes for myself for the future.
 
 Today's blog will talk about the steps I took to do the initial set up for this blog.
 
