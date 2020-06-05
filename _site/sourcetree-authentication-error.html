@@ -182,15 +182,15 @@ into the {body} of the default.hbs template -->
 
 <p>Seeing “authentication” made me think it was probably due to changing my password. I logged into our remote Bitbucket server with the new password. That worked fine. I came back to Sourcetree. Same error occured. I exited and reopened the program. Same error when I try to pull.</p>
 
-<p>I started asking coworkers and searching online for solutions. There was actually a solution on the <a href="https://community.atlassian.com/t5/Sourcetree-questions/Getting-quot-fatal-Authentication-failed-for-quot-error/qaq-p/624663">Atlassian community forum</a> that involved navigating from C: -&gt; User -&gt; [myusername] -&gt; AppData -&gt; Local -&gt; Atlassian -&gt; Sourcetree and finding the “passwd” file, and deleting it.  I got stuck on “AppData” which was conveniently not showing up in the folder I expected it. I figured this was because I was using a work PC, and I didn’t have this folder. I kept looking for other solutions, getting suggestions from coworkers, and nothing worked.</p>
+<p>I started asking coworkers and searching online for solutions. There was actually a solution on the <a href="https://community.atlassian.com/t5/Sourcetree-questions/Getting-quot-fatal-Authentication-failed-for-quot-error/qaq-p/624663">Atlassian community forum</a> that involved navigating from C: -&gt; User -&gt; [myusername] -&gt; AppData -&gt; Local -&gt; Atlassian -&gt; Sourcetree and finding the “passwd” file, and deleting it. You should then be prompted to input your updated password. Great!</p>
 
-<p>This is why I feel dumb.</p>
+<p>I got stuck on “AppData” which was conveniently not showing up in the folder where I was expecting it. I figured this was because I was using a work PC, and I didn’t have this folder, or perhaps lacked proper permissions. I kept looking for other solutions, getting suggestions from coworkers, and nothing worked.</p>
 
-<p>A coworker suggested the above solution. Once again I could not find the AppData file.  This time, though, I decided to just search for “passwd” in the search bar on the C drive. And the file showed up with the file path shown above. For whatever reason I couldn’t see it in the other view in file explorer.</p>
+<p>A coworker also suggested the above solution. Once again I could not find the AppData file.  This time, though, I decided to just search for “passwd” in the search bar for C drive. And the file showed up with the file path shown above. For whatever reason I couldn’t see it in the other view in file explorer.</p>
 
-<p>I deleted this file and tried to pull again. A modal popped up asking for my new password. As you would expect, this worked. No error. The pull worked.</p>
+<p>I deleted this file and tried to pull again. A modal popped up asking for my new password. This time the pull worked, no errors. Of course it did.</p>
 
-<p>I’m not exactly sure what the moral of the story is. Don’t give up your search too early? It’s ok to feel dumb?  Instructions for the next time I deal with this error?</p>
+<p>I don’t think there is a moral to this story. I’ll just use this post in the future as instructions for when I inevitably deal with this error again.</p>
 
 <p>Yeah, let’s just go with that.</p>
 

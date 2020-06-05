@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/version-control/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2020-06-05T17:07:00-06:00</updated>
+  <updated>2020-06-05T17:31:16-06:00</updated>
   <id>http://localhost:4000/tag/version-control/feed.xml</id>
 
   
@@ -61,15 +61,15 @@
 
 &lt;p&gt;Seeing “authentication” made me think it was probably due to changing my password. I logged into our remote Bitbucket server with the new password. That worked fine. I came back to Sourcetree. Same error occured. I exited and reopened the program. Same error when I try to pull.&lt;/p&gt;
 
-&lt;p&gt;I started asking coworkers and searching online for solutions. There was actually a solution on the &lt;a href=&quot;https://community.atlassian.com/t5/Sourcetree-questions/Getting-quot-fatal-Authentication-failed-for-quot-error/qaq-p/624663&quot;&gt;Atlassian community forum&lt;/a&gt; that involved navigating from C: -&amp;gt; User -&amp;gt; [myusername] -&amp;gt; AppData -&amp;gt; Local -&amp;gt; Atlassian -&amp;gt; Sourcetree and finding the “passwd” file, and deleting it.  I got stuck on “AppData” which was conveniently not showing up in the folder I expected it. I figured this was because I was using a work PC, and I didn’t have this folder. I kept looking for other solutions, getting suggestions from coworkers, and nothing worked.&lt;/p&gt;
+&lt;p&gt;I started asking coworkers and searching online for solutions. There was actually a solution on the &lt;a href=&quot;https://community.atlassian.com/t5/Sourcetree-questions/Getting-quot-fatal-Authentication-failed-for-quot-error/qaq-p/624663&quot;&gt;Atlassian community forum&lt;/a&gt; that involved navigating from C: -&amp;gt; User -&amp;gt; [myusername] -&amp;gt; AppData -&amp;gt; Local -&amp;gt; Atlassian -&amp;gt; Sourcetree and finding the “passwd” file, and deleting it. You should then be prompted to input your updated password. Great!&lt;/p&gt;
 
-&lt;p&gt;This is why I feel dumb.&lt;/p&gt;
+&lt;p&gt;I got stuck on “AppData” which was conveniently not showing up in the folder where I was expecting it. I figured this was because I was using a work PC, and I didn’t have this folder, or perhaps lacked proper permissions. I kept looking for other solutions, getting suggestions from coworkers, and nothing worked.&lt;/p&gt;
 
-&lt;p&gt;A coworker suggested the above solution. Once again I could not find the AppData file.  This time, though, I decided to just search for “passwd” in the search bar on the C drive. And the file showed up with the file path shown above. For whatever reason I couldn’t see it in the other view in file explorer.&lt;/p&gt;
+&lt;p&gt;A coworker also suggested the above solution. Once again I could not find the AppData file.  This time, though, I decided to just search for “passwd” in the search bar for C drive. And the file showed up with the file path shown above. For whatever reason I couldn’t see it in the other view in file explorer.&lt;/p&gt;
 
-&lt;p&gt;I deleted this file and tried to pull again. A modal popped up asking for my new password. As you would expect, this worked. No error. The pull worked.&lt;/p&gt;
+&lt;p&gt;I deleted this file and tried to pull again. A modal popped up asking for my new password. This time the pull worked, no errors. Of course it did.&lt;/p&gt;
 
-&lt;p&gt;I’m not exactly sure what the moral of the story is. Don’t give up your search too early? It’s ok to feel dumb?  Instructions for the next time I deal with this error?&lt;/p&gt;
+&lt;p&gt;I don’t think there is a moral to this story. I’ll just use this post in the future as instructions for when I inevitably deal with this error again.&lt;/p&gt;
 
 &lt;p&gt;Yeah, let’s just go with that.&lt;/p&gt;</content>
 
