@@ -1,4 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-25T11:24:37-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">500 server error and the csproj file</title><link href="http://localhost:4000/errors-csproj" rel="alternate" type="text/html" title="500 server error and the csproj file" /><published>2020-05-22T12:30:00-06:00</published><updated>2020-05-22T12:30:00-06:00</updated><id>http://localhost:4000/errors-csproj</id><content type="html" xml:base="http://localhost:4000/errors-csproj">&lt;p&gt;Here is what I learned when we got a 500 server error while testing my code at work.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-05T17:07:00-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">When Sourcetree didn’t work - ‘fatal: authentication failed’ error</title><link href="http://localhost:4000/sourcetree-authentication-error" rel="alternate" type="text/html" title="When Sourcetree didn't work - 'fatal: authentication failed' error" /><published>2020-06-05T12:30:00-06:00</published><updated>2020-06-05T12:30:00-06:00</updated><id>http://localhost:4000/sourcetree-authentication-error</id><content type="html" xml:base="http://localhost:4000/sourcetree-authentication-error">&lt;p&gt;I know I shouldn’t feel incompetent every time I struggle with some kind of error or bug; dealing with frustration comes with being a developer, and I chose this. This issue, however, frustrated me more than I care to admit.&lt;/p&gt;
+
+&lt;p&gt;This week I had to change the password on my work PC. Something I believe I have done many times before with no consequences.&lt;/p&gt;
+
+&lt;p&gt;A few days later I wanted to push some code in Sourcetree. Before commiting my changes I needed to do a pull. When I did so, I got the following error:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/images/sourcetree-error.jpg&quot; style=&quot;max-width: 500px;&quot; alt=&quot;sourcetree error message&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;“fatal: Authentication failed for …”, plus a message from git at the top.&lt;/p&gt;
+
+&lt;p&gt;Seeing “authentication” made me think it was probably due to changing my password. I logged into our remote Bitbucket server with the new password. That worked fine. I came back to Sourcetree. Same error occured. I exited and reopened the program. Same error when I try to pull.&lt;/p&gt;
+
+&lt;p&gt;I started asking coworkers and searching online for solutions. There was actually a solution on the &lt;a href=&quot;https://community.atlassian.com/t5/Sourcetree-questions/Getting-quot-fatal-Authentication-failed-for-quot-error/qaq-p/624663&quot;&gt;Atlassian community forum&lt;/a&gt; that involved navigating from C: -&amp;gt; User -&amp;gt; [myusername] -&amp;gt; AppData -&amp;gt; Local -&amp;gt; Atlassian -&amp;gt; Sourcetree and finding the “passwd” file, and deleting it.  I got stuck on “AppData” which was conveniently not showing up in the folder I expected it. I figured this was because I was using a work PC, and I didn’t have this folder. I kept looking for other solutions, getting suggestions from coworkers, and nothing worked.&lt;/p&gt;
+
+&lt;p&gt;This is why I feel dumb.&lt;/p&gt;
+
+&lt;p&gt;A coworker suggested the above solution. Once again I could not find the AppData file.  This time, though, I decided to just search for “passwd” in the search bar on the C drive. And the file showed up with the file path shown above. For whatever reason I couldn’t see it in the other view in file explorer.&lt;/p&gt;
+
+&lt;p&gt;I deleted this file and tried to pull again. A modal popped up asking for my new password. As you would expect, this worked. No error. The pull worked.&lt;/p&gt;
+
+&lt;p&gt;I’m not exactly sure what the moral of the story is. Don’t give up your search too early? It’s ok to feel dumb?  Instructions for the next time I deal with this error?&lt;/p&gt;
+
+&lt;p&gt;Yeah, let’s just go with that.&lt;/p&gt;</content><author><name></name></author><category term="version-control" /><summary type="html">I know I shouldn’t feel incompetent every time I struggle with some kind of error or bug; dealing with frustration comes with being a developer, and I chose this. This issue, however, frustrated me more than I care to admit.</summary></entry><entry><title type="html">500 server error and the csproj file</title><link href="http://localhost:4000/errors-csproj" rel="alternate" type="text/html" title="500 server error and the csproj file" /><published>2020-05-22T12:30:00-06:00</published><updated>2020-05-22T12:30:00-06:00</updated><id>http://localhost:4000/errors-csproj</id><content type="html" xml:base="http://localhost:4000/errors-csproj">&lt;p&gt;Here is what I learned when we got a 500 server error while testing my code at work.&lt;/p&gt;
 
 &lt;p&gt;I was tasked to create a button that would copy rows of a list to another position in the list. We changed the functionality later on, but originally I created a button that opened a modal, which required user input to carry out the copy behavior. I created new javascript and cshtml files for the modal.&lt;/p&gt;
 
@@ -638,22 +660,4 @@ ReferenceError: primordials is not defined&quot;
 
 &lt;p&gt;In my theme you should be able to edit assets/css, and then the gulp.js file automatically updates the css file in assets/built.&lt;/p&gt;
 
-&lt;p&gt;It took my a while to figure out what was going on, so I’ll continue in the next post.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><summary type="html">Well, I’m going to do that thing again where I blog my experience of making a blog. At least I can feel like I am writing something for a reader, a pretend social interaction during week 3 of social distancing, though I suspect no one will read this except myself.</summary></entry><entry><title type="html">The importance of a hard refresh</title><link href="http://localhost:4000/importance-of-hard-refresh" rel="alternate" type="text/html" title="The importance of a hard refresh" /><published>2020-04-02T12:12:00-06:00</published><updated>2020-04-02T12:12:00-06:00</updated><id>http://localhost:4000/importance-of-hard-refresh</id><content type="html" xml:base="http://localhost:4000/importance-of-hard-refresh">&lt;p&gt;Recently I was working on a task for my practicum.  The task was to add a delete button to two of the pages and ensure it redirected to the correct page once an item was deleted.&lt;/p&gt;
-
-&lt;p&gt;This was fairly straight-forward, though it did take some time as I was still in the process of learning the set-up of their project. Since the delete button existed elsewhere in the application, I could copy and paste the code into my cshtml file and make a few minor adjustments. Redirecting the page was handled by a javascript file. I made a new function, which was basically a copy of an already existing function, but tweaked the code so it would redirect to a particular overview page.&lt;/p&gt;
-
-&lt;p&gt;I opened the application in debug mode (in Visual Studio, the F5 key). Everything worked. I was excited that I may be nearly done my task.&lt;/p&gt;
-
-&lt;p&gt;Then I ran the code normally (Ctrl + F5), not in debug mode.  And it didn’t work - the page contents would not appear, and none of the buttons worked.&lt;/p&gt;
-
-&lt;p&gt;I couldn’t understand why this would happen.  I searched for answers online. Stack overflow suggested that it in normal mode, certain variables aren’t being initialized, but in debug mode variables default to zero. I scanned my code to see where there could be uninitialized variables but couldn’t find anything helpful.  I got onto discord and asked my web developer friends, who suggested the delete button was not properly connected to the necessary function in the javascript file. Once again I scanned my code, but there were no typos, everything was connected properly.&lt;/p&gt;
-
-&lt;p&gt;At this point I was becoming very frustrated, feeling like I was missing something important. That I just didn’t understand some important feature of .NET, and that this was going to take ages to dig into and fix.&lt;/p&gt;
-
-&lt;p&gt;I tried testing it again. In Visual Studio I did a clean and build. In the browser I did a hard refresh (Ctrl + Shift + R).&lt;/p&gt;
-
-&lt;p&gt;…and it worked.&lt;/p&gt;
-
-&lt;p&gt;I was surprised and a little suspicious. I didn’t think it would be that easy, but it was.  Previously, the old javascript file was saved in the cache, not my new updated one. Once it had the new file it worked like a charm.&lt;/p&gt;
-
-&lt;p&gt;So, all of that to say, I learned the importance of trying the simple solutions first. Restart Visual Studio. Restart your computer.  And if working with javascript, just try a hard refresh.&lt;/p&gt;</content><author><name></name></author><category term="dotnet" /><category term="javascript" /><category term="debugging" /><summary type="html">Recently I was working on a task for my practicum. The task was to add a delete button to two of the pages and ensure it redirected to the correct page once an item was deleted.</summary></entry></feed>
+&lt;p&gt;It took my a while to figure out what was going on, so I’ll continue in the next post.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><summary type="html">Well, I’m going to do that thing again where I blog my experience of making a blog. At least I can feel like I am writing something for a reader, a pretend social interaction during week 3 of social distancing, though I suspect no one will read this except myself.</summary></entry></feed>

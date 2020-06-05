@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>When Sourcetree didn't work - 'fatal: authentication failed' error</title>
+        
+          <description>&lt;p&gt;I know I shouldn’t feel incompetent every time I struggle with some kind of error or bug; dealing with frustration comes with being a developer, and I chose this. This issue, however, frustrated me more than I care to admit.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 05 Jun 2020 12:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/sourcetree-authentication-error</link>
+        <guid isPermaLink="true">http://localhost:4000/sourcetree-authentication-error</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>500 server error and the csproj file</title>
         
           <description>&lt;p&gt;Here is what I learned when we got a 500 server error while testing my code at work.&lt;/p&gt;
