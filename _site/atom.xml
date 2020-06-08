@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>'There is already an object named ___ in the database' and 'Column names in each table must be unique'</title>
+        
+          <description>&lt;p&gt;There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 08 Jun 2020 12:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/database-error</link>
+        <guid isPermaLink="true">http://localhost:4000/database-error</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>When Sourcetree didn't work - 'fatal: authentication failed' error</title>
         
           <description>&lt;p&gt;I know I shouldn’t feel incompetent every time I struggle with some kind of error or bug; dealing with frustration comes with being a developer, and I chose this. This issue, however, frustrated me more than I care to admit.&lt;/p&gt;

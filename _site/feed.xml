@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-06T19:03:51-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">When Sourcetree didn’t work - ‘fatal: authentication failed’ error</title><link href="http://localhost:4000/sourcetree-authentication-error" rel="alternate" type="text/html" title="When Sourcetree didn't work - 'fatal: authentication failed' error" /><published>2020-06-05T12:30:00-06:00</published><updated>2020-06-05T12:30:00-06:00</updated><id>http://localhost:4000/sourcetree-authentication-error</id><content type="html" xml:base="http://localhost:4000/sourcetree-authentication-error">&lt;p&gt;I know I shouldn’t feel incompetent every time I struggle with some kind of error or bug; dealing with frustration comes with being a developer, and I chose this. This issue, however, frustrated me more than I care to admit.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-08T15:43:30-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">‘There is already an object named ___ in the database’ and ‘Column names in each table must be unique’</title><link href="http://localhost:4000/database-error" rel="alternate" type="text/html" title="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" /><published>2020-06-08T12:30:00-06:00</published><updated>2020-06-08T12:30:00-06:00</updated><id>http://localhost:4000/database-error</id><content type="html" xml:base="http://localhost:4000/database-error">&lt;p&gt;There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.&lt;/p&gt;
+
+&lt;p&gt;I’ll do my best to explain without using any data/table names/etc from my work application.&lt;/p&gt;
+
+&lt;p&gt;In package-manager console in Visual Studio I ran “update-database”, and received the following error when it tried to run the migrations on my database:&lt;/p&gt;
+
+&lt;h4 id=&quot;there-is-already-an-object-named-___-in-the-database&quot;&gt;“There is already an object named ___ in the database”&lt;/h4&gt;
+
+&lt;p&gt;Right away this time I asked a coworker if she also had that error. She told me I should drop the above-mentioned table, which I will refer to as Table1, and gave me more instructions. I will outline the process below.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;opened SQL Server Management Studio&lt;/li&gt;
+  &lt;li&gt;Databases&lt;/li&gt;
+  &lt;li&gt;*mydatabasename&lt;/li&gt;
+  &lt;li&gt;Tables&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There was another important related table, which I’ll call Table2. In here I had to go to the Keys section and delete all the keys related to Table1.&lt;/p&gt;
+
+&lt;p&gt;Then,&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;go back to Table1&lt;/li&gt;
+  &lt;li&gt;right click&lt;/li&gt;
+  &lt;li&gt;Script table as&lt;/li&gt;
+  &lt;li&gt;DELETE to&lt;/li&gt;
+  &lt;li&gt;New query window&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the new query window I deleted the line that said,&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;WHERE &amp;lt;Search Conditions&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;then executed the query. This deletes the contents. You need to do this BEFORE you drop the table.&lt;/p&gt;
+
+&lt;p&gt;Dropping the table:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;right click Table1 again&lt;/li&gt;
+  &lt;li&gt;Script table as&lt;/li&gt;
+  &lt;li&gt;DROP to&lt;/li&gt;
+  &lt;li&gt;New query window&lt;/li&gt;
+  &lt;li&gt;execute this query, which drops Table1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I went to update database again, but I got a new error:&lt;/p&gt;
+
+&lt;h4 id=&quot;column-names-in-each-table-must-be-unique-column-name-___-in-table2-is-specified-more-than-once&quot;&gt;“Column names in each table must be unique. Column name ___ in Table2 is specified more than once”&lt;/h4&gt;
+
+&lt;p&gt;These were &lt;em&gt;column names&lt;/em&gt; that were related to Table1. I already got rid of the &lt;em&gt;keys&lt;/em&gt; that were related to Table1, but not columns. So I deleted those as well, went back to Visual Studio and tried update-database again.&lt;/p&gt;
+
+&lt;p&gt;This time it worked with no error and I was able to open my application.&lt;/p&gt;</content><author><name></name></author><category term="database" /><category term="sql" /><category term="dotnet" /><category term="migrations" /><summary type="html">There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.</summary></entry><entry><title type="html">When Sourcetree didn’t work - ‘fatal: authentication failed’ error</title><link href="http://localhost:4000/sourcetree-authentication-error" rel="alternate" type="text/html" title="When Sourcetree didn't work - 'fatal: authentication failed' error" /><published>2020-06-05T12:30:00-06:00</published><updated>2020-06-05T12:30:00-06:00</updated><id>http://localhost:4000/sourcetree-authentication-error</id><content type="html" xml:base="http://localhost:4000/sourcetree-authentication-error">&lt;p&gt;I know I shouldn’t feel incompetent every time I struggle with some kind of error or bug; dealing with frustration comes with being a developer, and I chose this. This issue, however, frustrated me more than I care to admit.&lt;/p&gt;
 
 &lt;p&gt;This week I had to change the password on my work PC. Something I believe I have done many times before with no consequences.&lt;/p&gt;
 
@@ -710,57 +758,4 @@
 &lt;span class=&quot;c1&quot;&gt;//diss1 is a reference to the object Dissertation&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;That’s all I have for now. As I continue going through my notes I will add to this post.&lt;/p&gt;</content><author><name></name></author><category term="csharp" /><summary type="html">Here is some info I compiled as I worked my way through Codecademy’s C# course.</summary></entry><entry><title type="html">New jekyll site part 2 - errors with Gulp</title><link href="http://localhost:4000/new-jekyll-site-2" rel="alternate" type="text/html" title="New jekyll site part 2 - errors with Gulp" /><published>2020-04-04T17:31:00-06:00</published><updated>2020-04-04T17:31:00-06:00</updated><id>http://localhost:4000/new-jekyll-site-2</id><content type="html" xml:base="http://localhost:4000/new-jekyll-site-2">&lt;p&gt;Continuing from my last post, where I began to describe the process of making this blog.&lt;/p&gt;
-
-&lt;p&gt;I’m at the point of self-isolation where I’m starting to forget what day it is.  I believe I spent the past 3 days or so trying to figure out this problem, though at this point I’ve lost track.&lt;/p&gt;
-
-&lt;p&gt;I left off describing my issue of CSS not compiling the way I expected it to.  I admit I should have checked the instructions on the Jasper2 theme’s github in the very beginning so I would be aware that they use gulp. I followed the instructions to install gulp, but it still didn’t work. I spent many more hours fiddling around with it, then I decided to look up a tutorial on gulp in case my issue was simply not knowing enough about gulp.&lt;/p&gt;
-
-&lt;p&gt;I saw that gulp utilizes command line.  You can create functions in your gulpfile.js that can be executed in the command line; in my case, the gulpfile was already created. Below is an example function that was included with my theme:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'build'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'css'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;cm&quot;&gt;/* cb */&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nodemonServerInit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Above is a gulp task, named build.  To run this code I would type “gulp build” in the command line. If you name a task “default”, all you need to type in command line is “gulp”, and your default task is run.&lt;/p&gt;
-
-&lt;p&gt;Once I learned this I was getting much closer to figuring out my problem.  However when I ran “gulp” or “gulp build”, I got an error:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;fs.js:27
-const { Math, Object } = primordials;
-                         ^
-
-ReferenceError: primordials is not defined&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I searched online for a solution to this error as kind of a last ditch effort. Up until this point, I could not find any solutions at all, and there were no issues of this kind brought up by users on Jasper2’s github page.  Of course, stack overflow gave me a solution, which I would never have thought of myself unless I looked it up. I believe it was the second answer on this page that helped me: https://stackoverflow.com/questions/55921442/how-to-fix-referenceerror-primordials-is-not-defined-in-node&lt;/p&gt;
-
-&lt;p&gt;The issue is that the node.js and gulp versions were incompatible. Remember my last post, where I wondered if I had an issue with my package versions? In a way I was right, just not in the way I expected. Node version 11.5 and higher, and gulp 3.9.1 are not compatible. This version of gulp depends on graceful-fs version 3.0.0, which is something I’m still unfamiliar with.&lt;/p&gt;
-
-&lt;p&gt;To fix this I had to:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;add the below code to my package.json, and run “npm install” in command line&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;preinstall&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;npx npm-force-resolutions&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;resolutions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;graceful-fs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;4.2.3&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;All this just to be able to tweak the CSS in my blog.&lt;/p&gt;
-
-&lt;p&gt;Now, whenever I make a change to CSS, I execute the following commands:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;gulp&lt;/li&gt;
-  &lt;li&gt;bundle exec jekyll serve&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;(If I really want to be thorough, I will add in “bundle exec jekyll build” before I serve the site)&lt;/p&gt;
-
-&lt;p&gt;I believe there is a way to make gulp watch for changes, but I haven’t figured out how to make that work with jekyll. For now though this works just fine, despite the extra typing.&lt;/p&gt;
-
-&lt;p&gt;Okay. Now I think it’s time to finally make my changes to CSS, as well as research markdown in order to clean up my blog posts.  See you in the next one.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="gulp" /><category term="debugging" /><summary type="html">Continuing from my last post, where I began to describe the process of making this blog.</summary></entry></feed>
+&lt;p&gt;That’s all I have for now. As I continue going through my notes I will add to this post.&lt;/p&gt;</content><author><name></name></author><category term="csharp" /><summary type="html">Here is some info I compiled as I worked my way through Codecademy’s C# course.</summary></entry></feed>
