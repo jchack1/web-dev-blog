@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Using WordPress again - getting started</title>
+        
+          <description>&lt;p&gt;We learned WordPress in school briefly as part of our CMS course. I could possibly get to work on some small freelance WordPress projects in the near future so I am relearning WordPress again with the site builder Oxygen.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 27 Jun 2020 12:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/wordpress-set-up</link>
+        <guid isPermaLink="true">http://localhost:4000/wordpress-set-up</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>'There is already an object named ___ in the database' and 'Column names in each table must be unique'</title>
         
           <description>&lt;p&gt;There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.&lt;/p&gt;

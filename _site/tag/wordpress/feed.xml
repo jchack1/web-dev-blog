@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="https://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/tag/wordpress/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2020-06-27T16:04:38-06:00</updated>
+  <id>http://localhost:4000/tag/wordpress/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Julia Hack | </title>
+  
+
+  
+    <subtitle>Web development blog</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Using WordPress again - getting started</title>
+      <link href="http://localhost:4000/wordpress-set-up" rel="alternate" type="text/html" title="Using WordPress again - getting started" />
+      <published>2020-06-27T12:30:00-06:00</published>
+      <updated>2020-06-27T12:30:00-06:00</updated>
+      <id>http://localhost:4000/wordpress-set-up</id>
+      <content type="html" xml:base="http://localhost:4000/wordpress-set-up">&lt;p&gt;We learned WordPress in school briefly as part of our CMS course. I could possibly get to work on some small freelance WordPress projects in the near future so I am relearning WordPress again with the site builder Oxygen.&lt;/p&gt;
+
+&lt;h3 id=&quot;setting-up-wordpress-and-installing-a-new-site&quot;&gt;Setting up Wordpress and installing a new site&lt;/h3&gt;
+
+&lt;p&gt;I already had xampp installed from school.  To run a Wordpress site locally you need a few things installed, including a server and a database.  xampp has those all packaged together when you install it.&lt;/p&gt;
+
+&lt;p&gt;There are lots of articles online with instructions for this, but I followed my class notes - they are currently located &lt;a href=&quot;https://github.com/acidtone/wbdv-fall-2019/tree/master/cpnt200/chapters/ch01&quot;&gt;here on my instructor’s github&lt;/a&gt;. Hopefully this repo will be around for a while but I will also explain the process here.&lt;/p&gt;
+
+&lt;h4 id=&quot;steps&quot;&gt;Steps&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Go to &lt;a href=&quot;https://www.apachefriends.org/download.html&quot;&gt;apachefriends.org&lt;/a&gt; and download xampp.&lt;/li&gt;
+  &lt;li&gt;Open the xampp control panel - I have a shortcut on my desktop to the control panel to make it easier to locate.&lt;/li&gt;
+  &lt;li&gt;Click “Start” for both Apache and MySQL&lt;/li&gt;
+  &lt;li&gt;Click “Admin” next to MySQL. This opens up localhost/phpmyadmin/ where you can create a database&lt;/li&gt;
+  &lt;li&gt;Click “New”, input the name you would like for your database, and click “Create”&lt;/li&gt;
+  &lt;li&gt;Download WordPress from &lt;a href=&quot;https://wordpress.org/download/&quot;&gt;wordpress.org&lt;/a&gt; and unzip into C:/ProgramFiles/XAMPP/htdocs&lt;/li&gt;
+  &lt;li&gt;Rename the WordPress folder to what you’d like your site name to be&lt;/li&gt;
+  &lt;li&gt;Go into your WordPress files and find wp-config-sample.php. Rename to wp-config.php&lt;/li&gt;
+  &lt;li&gt;Open wp-config.php in your code editor update the database name to whatever you named your database, change the user to root, and leave password as an empty string&lt;/li&gt;
+  &lt;li&gt;Go to your browser and type localhost/{your-site-name}&lt;/li&gt;
+  &lt;li&gt;Choose your language, and on the next screen fill in your site title, username, password, and email. You should now be able to log in and see your WordPress dashboard&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Sometimes I have errors logging in or opening all these pages, and that tends to be due to database errors.  When I set up my latest install of WordPress earlier this week, the password I set in my wp-config.php was not the same as the root password, which I set months ago and forgot about.&lt;/p&gt;
+
+&lt;p&gt;Also when I am typing this today I am not at home, I am at a cafe.  I cannot open localhost/phpmyadmin/ and I suspect it is because I am in a different place that is not whitelisted in my xampp set up. It is not super critical because it seems like I can still log into my site and work on it, but this could become problematic if I need to adjust something with my database.&lt;/p&gt;
+
+&lt;h3 id=&quot;instructions-for-logging-into-wordpress-after-it-is-set-up&quot;&gt;Instructions for logging into Wordpress (after it is set up)&lt;/h3&gt;
+
+&lt;p&gt;I already forgot how to do this after a few days, so I am leaving this here for future me for when I inevitably forget again.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;open xampp&lt;/li&gt;
+  &lt;li&gt;start Apache and MySQL&lt;/li&gt;
+  &lt;li&gt;go to browser&lt;/li&gt;
+  &lt;li&gt;type localhost/{your-site-name}/wp-admin&lt;/li&gt;
+  &lt;li&gt;login&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now you are at your site’s admin dashboard.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="wordpress" />
+      
+
+      
+        <summary type="html">We learned WordPress in school briefly as part of our CMS course. I could possibly get to work on some small freelance WordPress projects in the near future so I am relearning WordPress again with the site builder Oxygen.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

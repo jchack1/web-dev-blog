@@ -1,4 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-08T15:43:30-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">‘There is already an object named ___ in the database’ and ‘Column names in each table must be unique’</title><link href="http://localhost:4000/database-error" rel="alternate" type="text/html" title="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" /><published>2020-06-08T12:30:00-06:00</published><updated>2020-06-08T12:30:00-06:00</updated><id>http://localhost:4000/database-error</id><content type="html" xml:base="http://localhost:4000/database-error">&lt;p&gt;There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-27T16:04:38-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Using WordPress again - getting started</title><link href="http://localhost:4000/wordpress-set-up" rel="alternate" type="text/html" title="Using WordPress again - getting started" /><published>2020-06-27T12:30:00-06:00</published><updated>2020-06-27T12:30:00-06:00</updated><id>http://localhost:4000/wordpress-set-up</id><content type="html" xml:base="http://localhost:4000/wordpress-set-up">&lt;p&gt;We learned WordPress in school briefly as part of our CMS course. I could possibly get to work on some small freelance WordPress projects in the near future so I am relearning WordPress again with the site builder Oxygen.&lt;/p&gt;
+
+&lt;h3 id=&quot;setting-up-wordpress-and-installing-a-new-site&quot;&gt;Setting up Wordpress and installing a new site&lt;/h3&gt;
+
+&lt;p&gt;I already had xampp installed from school.  To run a Wordpress site locally you need a few things installed, including a server and a database.  xampp has those all packaged together when you install it.&lt;/p&gt;
+
+&lt;p&gt;There are lots of articles online with instructions for this, but I followed my class notes - they are currently located &lt;a href=&quot;https://github.com/acidtone/wbdv-fall-2019/tree/master/cpnt200/chapters/ch01&quot;&gt;here on my instructor’s github&lt;/a&gt;. Hopefully this repo will be around for a while but I will also explain the process here.&lt;/p&gt;
+
+&lt;h4 id=&quot;steps&quot;&gt;Steps&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Go to &lt;a href=&quot;https://www.apachefriends.org/download.html&quot;&gt;apachefriends.org&lt;/a&gt; and download xampp.&lt;/li&gt;
+  &lt;li&gt;Open the xampp control panel - I have a shortcut on my desktop to the control panel to make it easier to locate.&lt;/li&gt;
+  &lt;li&gt;Click “Start” for both Apache and MySQL&lt;/li&gt;
+  &lt;li&gt;Click “Admin” next to MySQL. This opens up localhost/phpmyadmin/ where you can create a database&lt;/li&gt;
+  &lt;li&gt;Click “New”, input the name you would like for your database, and click “Create”&lt;/li&gt;
+  &lt;li&gt;Download WordPress from &lt;a href=&quot;https://wordpress.org/download/&quot;&gt;wordpress.org&lt;/a&gt; and unzip into C:/ProgramFiles/XAMPP/htdocs&lt;/li&gt;
+  &lt;li&gt;Rename the WordPress folder to what you’d like your site name to be&lt;/li&gt;
+  &lt;li&gt;Go into your WordPress files and find wp-config-sample.php. Rename to wp-config.php&lt;/li&gt;
+  &lt;li&gt;Open wp-config.php in your code editor update the database name to whatever you named your database, change the user to root, and leave password as an empty string&lt;/li&gt;
+  &lt;li&gt;Go to your browser and type localhost/{your-site-name}&lt;/li&gt;
+  &lt;li&gt;Choose your language, and on the next screen fill in your site title, username, password, and email. You should now be able to log in and see your WordPress dashboard&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Sometimes I have errors logging in or opening all these pages, and that tends to be due to database errors.  When I set up my latest install of WordPress earlier this week, the password I set in my wp-config.php was not the same as the root password, which I set months ago and forgot about.&lt;/p&gt;
+
+&lt;p&gt;Also when I am typing this today I am not at home, I am at a cafe.  I cannot open localhost/phpmyadmin/ and I suspect it is because I am in a different place that is not whitelisted in my xampp set up. It is not super critical because it seems like I can still log into my site and work on it, but this could become problematic if I need to adjust something with my database.&lt;/p&gt;
+
+&lt;h3 id=&quot;instructions-for-logging-into-wordpress-after-it-is-set-up&quot;&gt;Instructions for logging into Wordpress (after it is set up)&lt;/h3&gt;
+
+&lt;p&gt;I already forgot how to do this after a few days, so I am leaving this here for future me for when I inevitably forget again.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;open xampp&lt;/li&gt;
+  &lt;li&gt;start Apache and MySQL&lt;/li&gt;
+  &lt;li&gt;go to browser&lt;/li&gt;
+  &lt;li&gt;type localhost/{your-site-name}/wp-admin&lt;/li&gt;
+  &lt;li&gt;login&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now you are at your site’s admin dashboard.&lt;/p&gt;</content><author><name></name></author><category term="wordpress" /><summary type="html">We learned WordPress in school briefly as part of our CMS course. I could possibly get to work on some small freelance WordPress projects in the near future so I am relearning WordPress again with the site builder Oxygen.</summary></entry><entry><title type="html">‘There is already an object named ___ in the database’ and ‘Column names in each table must be unique’</title><link href="http://localhost:4000/database-error" rel="alternate" type="text/html" title="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" /><published>2020-06-08T12:30:00-06:00</published><updated>2020-06-08T12:30:00-06:00</updated><id>http://localhost:4000/database-error</id><content type="html" xml:base="http://localhost:4000/database-error">&lt;p&gt;There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.&lt;/p&gt;
 
 &lt;p&gt;I’ll do my best to explain without using any data/table names/etc from my work application.&lt;/p&gt;
 
@@ -630,132 +670,4 @@
 
 &lt;p&gt;Now I will upload this new folder to github and deploy. It should work now that I have a proper _site folder.&lt;/p&gt;
 
-&lt;p&gt;I just have to remember to always “bundle exec jekyll build” and “bundle exec jekyll serve”(to generate files in _site folder) when I make changes. But only after I execute “gulp”. Hopefully I will quickly get used to this workflow.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="debugging" /><category term="deployment" /><summary type="html">I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.</summary></entry><entry><title type="html">C# definitions cheatsheet</title><link href="http://localhost:4000/csharpdefinitions" rel="alternate" type="text/html" title="C# definitions cheatsheet" /><published>2020-04-06T17:50:00-06:00</published><updated>2020-04-06T17:50:00-06:00</updated><id>http://localhost:4000/csharpdefinitions</id><content type="html" xml:base="http://localhost:4000/csharpdefinitions">&lt;p&gt;Here is some info I compiled as I worked my way through &lt;a href=&quot;https://www.codecademy.com/catalog/language/c-sharp&quot;&gt;Codecademy’s C# course&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I chose the codecademy course because I could work on it at my office during my practicum. My work computer wouldn’t play audio for some reason, so video tutorials weren’t an option while I was there. I also found the Microsoft documentation to be not very beginner friendly in its language, and it was the same with many other article style tutorials. The codecademy course was very beginner friendly and interactive so it held my attention better than just reading.&lt;/p&gt;
-
-&lt;p&gt;That wasn’t an ad or anything, just wanted to share something I found genuinely helpful. Moving on to the definitions…&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Class:&lt;/strong&gt; custom data type, defines info and methods &lt;br /&gt;
-&lt;strong&gt;Object:&lt;/strong&gt; each &lt;em&gt;instance&lt;/em&gt; of a particular class&lt;/p&gt;
-
-&lt;p&gt;We can make many instances of a class, each with unique values of their own&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Fields:&lt;/strong&gt; pieces of data, like size and name&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;basically like variables&lt;/li&gt;
-  &lt;li&gt;these start with a lowercase letter eg. name&lt;/li&gt;
-  &lt;li&gt;fields can have different values in each object/instance&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Class &lt;strong&gt;member&lt;/strong&gt;: a general term for the building blocks of a class&lt;/p&gt;
-
-&lt;p&gt;Some default values in C#:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;string: null&lt;/li&gt;
-  &lt;li&gt;int: 0&lt;/li&gt;
-  &lt;li&gt;bool: false&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Properties:&lt;/strong&gt; control access to a field&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;another kind of class member&lt;/li&gt;
-  &lt;li&gt;use the { get; } and { set; } methods&lt;/li&gt;
-  &lt;li&gt;start with an uppercase letter eg. Name&lt;/li&gt;
-  &lt;li&gt;inside the set method you can include validation&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Access modifiers:&lt;/strong&gt; defines how a type or member can be accessed&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;public: can be accessed by ANY class&lt;/li&gt;
-  &lt;li&gt;private: can only be accessed by code in the SAME class&lt;/li&gt;
-  &lt;li&gt;protected: can be accessed by the current class and any class that inherits from it&lt;/li&gt;
-  &lt;li&gt;override/virtual: override an inherited method. Use “override” in subclass, “virtual” in base class&lt;/li&gt;
-  &lt;li&gt;abstract: use when there is no implementation in base class, but it must be in the subclass&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Methods:&lt;/strong&gt; actions an object can perform&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;if familiar with JavaScript, they are like functions&lt;/li&gt;
-  &lt;li&gt;most belong to a class&lt;/li&gt;
-  &lt;li&gt;define how an instance of the class behaves&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Constructor:&lt;/strong&gt; type of method that sets values of fields when you create a new instance. See below for an example of a constructor:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//define a constructor in your class&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//again, codecademy example&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Forest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;biome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//whatever values you input as parameters are assigned to the below properties&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Biome&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;biome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Age&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//age starts at 0 for all new forests&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Use the constructor with the &lt;strong&gt;“new”&lt;/strong&gt; keyword to make a new instance, as per below:&lt;/p&gt;
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Forest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Forest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//example from codecademy&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;In the above example, “Forest” is the type, “f” is the name of the new object/instance you are making, Forest(); is the constructor that makes the new instance.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;this&lt;/strong&gt;: refers to the &lt;em&gt;current instance&lt;/em&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;it’s good to use this and be more explicit in your code; less chance for misinterpretation&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Static:&lt;/strong&gt; information that is related to a class, but is not an instance of the class&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;something that applies to all instances and there should only be one value for the whole class&lt;/li&gt;
-  &lt;li&gt;a static member is accessed from the class, not an instance&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Forest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Definition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Overload:&lt;/strong&gt; two or more methods that have the same name, but different parameters&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Interfaces:&lt;/strong&gt; sets of properties, methods, and other members that tell us how a class can be used&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;helps check that we are using our types correctly&lt;/li&gt;
-  &lt;li&gt;helps minimize bugs&lt;/li&gt;
-  &lt;li&gt;doesn’t specify how they work, just that a class MUST have them&lt;/li&gt;
-  &lt;li&gt;guarantee certain functionality across multiple classes&lt;/li&gt;
-  &lt;li&gt;all start with “I”&lt;/li&gt;
-  &lt;li&gt;the class must implement properties and methods in the interface&lt;/li&gt;
-  &lt;li&gt;cannot specify constructors or fields&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sedan&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IAutomobile&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//the interface says the sedan must have a &quot;Honk&quot; method, so we must include one in the sedan class&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//must be &quot;public&quot;&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//interface doesn't care what &quot;Honk&quot; actually does &lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Inheritance:&lt;/strong&gt; a subclass/derived class inherits members of a superclass/base class&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sedan&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Vehicle&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//subclass Sedan inherits from base class Vehicle&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//must use &quot;:&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Both of the below are variables:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Reference types:&lt;/strong&gt; refer to a place in memory&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Value types:&lt;/strong&gt; hold actual data&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Classes are reference types. When we create an instance of an object, and store it in a variable, it is a reference to the original object.&lt;/p&gt;
-
-&lt;p&gt;It may seem obvious when written this way, but a “reference” is not an object, it is a &lt;em&gt;reference to&lt;/em&gt; an object.&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Dissertation&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diss1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Dissertation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//from codecademy&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//diss1 is a reference to the object Dissertation&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;That’s all I have for now. As I continue going through my notes I will add to this post.&lt;/p&gt;</content><author><name></name></author><category term="csharp" /><summary type="html">Here is some info I compiled as I worked my way through Codecademy’s C# course.</summary></entry></feed>
+&lt;p&gt;I just have to remember to always “bundle exec jekyll build” and “bundle exec jekyll serve”(to generate files in _site folder) when I make changes. But only after I execute “gulp”. Hopefully I will quickly get used to this workflow.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="debugging" /><category term="deployment" /><summary type="html">I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.</summary></entry></feed>
