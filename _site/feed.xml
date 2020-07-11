@@ -1,4 +1,536 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-27T16:04:38-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Using WordPress again - getting started</title><link href="http://localhost:4000/wordpress-set-up" rel="alternate" type="text/html" title="Using WordPress again - getting started" /><published>2020-06-27T12:30:00-06:00</published><updated>2020-06-27T12:30:00-06:00</updated><id>http://localhost:4000/wordpress-set-up</id><content type="html" xml:base="http://localhost:4000/wordpress-set-up">&lt;p&gt;We learned WordPress in school briefly as part of our CMS course. I could possibly get to work on some small freelance WordPress projects in the near future so I am relearning WordPress again with the site builder Oxygen.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-11T15:24:00-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Learning SQL Part 3</title><link href="http://localhost:4000/sql-part-3" rel="alternate" type="text/html" title="Learning SQL Part 3" /><published>2020-07-04T19:30:00-06:00</published><updated>2020-07-04T19:30:00-06:00</updated><id>http://localhost:4000/sql-part-3</id><content type="html" xml:base="http://localhost:4000/sql-part-3">&lt;p&gt;The previous post was getting a little long, so here is the last of the notes from my &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;t=3445s&quot;&gt;freecodecamp course in SQL&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;triggers&quot;&gt;Triggers&lt;/h3&gt;
+
+&lt;p&gt;A trigger is a block of SQL code that defines an action that should happen when a particular action is performed on a database. Like if something is deleted from the database, or something is inserted into a table.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;DELIMITER&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$$&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;TRIGGER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_trigger&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BEFORE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;EACH&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ROW&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BEGIN&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;trigger_test&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;VALUES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'added new employee'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;END&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$$&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;DELIMITER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;VALUES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;109&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Oscar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Martinez'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'1968-02-19'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'M'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;69000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;106&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/* SELECT * FROM trigger_test returns one row of 'added new employee' */&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;At the start we are setting the delimiter to $$. Normally the delimiter is a semicolon, but because we are using it already inside the trigger, we need to create a new one to denote the end of the code. It is changed back after we are done creating the trigger. This trigger is saying whenever we insert into the employee table, add a string to the trigger_test table that says ‘added new employee’.&lt;/p&gt;
+
+&lt;h3 id=&quot;entity-relationship-diagrams&quot;&gt;Entity relationship diagrams&lt;/h3&gt;
+
+&lt;p&gt;Database schema: all the tables and attributes on the tables&lt;/p&gt;
+
+&lt;p&gt;Entity relationship (ER) diagram: take data storage/business requirements and convert to a database schema, kind of a middle man&lt;/p&gt;
+
+&lt;p&gt;Entity: object we want to model and store information about&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g. Student&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Attributes: specific pieces of information about an entity&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g. name, grade, gpa&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Composite attributes: are attributes that can be broken up into sub-attributes&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g. first name, last name&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Multi-valued attribute: can have more than one value&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g. a student could be in multiple clubs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Derived attribute: can be derived from other attributes&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g. a particular gpa could mean someone has honours&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Relationship attribute: an attribute about the relationship,stored on the relationship&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g. a grade earned by taking a class&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You define relationships between your entities&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;total participation: all members must participate in the relationship - e.g. all classes must be taken by at least one student&lt;/li&gt;
+  &lt;li&gt;partial participation - e.g. not all students have to take a particular class&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Relationship cardinality: the number of times an entity can be associated with the relation&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g. a student can take many classes, a class can have many students&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Weak entity: depends on another entity, not uniquely identified by its own attributes alone. Doesn’t exist on its own.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g. an exam must be associated with a class&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Identifying relationship: relationship that identifies the weak entity&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;the relationship between a class and an exam&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="sql" /><category term="database" /><summary type="html">The previous post was getting a little long, so here is the last of the notes from my freecodecamp course in SQL.</summary></entry><entry><title type="html">Learning SQL Part 2</title><link href="http://localhost:4000/sql-part-2" rel="alternate" type="text/html" title="Learning SQL Part 2" /><published>2020-07-04T15:30:00-06:00</published><updated>2020-07-04T15:30:00-06:00</updated><id>http://localhost:4000/sql-part-2</id><content type="html" xml:base="http://localhost:4000/sql-part-2">&lt;p&gt;Here are more notes from my SQL course on youtube.&lt;/p&gt;
+
+&lt;p&gt;I’m going to disect the below query:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student_id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DESC&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In this query, we are selecting everything in the student table. We are ordering it by student id in descending order, and we are asking for only 2 rows.&lt;/p&gt;
+
+&lt;p&gt;When you use the SELECT keyword we are getting data returned to us from the database&lt;/p&gt;
+
+&lt;h3 id=&quot;filtering&quot;&gt;Filtering&lt;/h3&gt;
+
+&lt;p&gt;Can use the WHERE keyword again to filter our data being returned from the database, like below:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Biology'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Chemistry'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that you can also use comparison operators in your SQL queries:&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;=, =, &amp;lt;&amp;gt;, AND, OR&lt;/p&gt;
+
+&lt;p&gt;Where &amp;lt;&amp;gt; in this case means “not equal to”.&lt;/p&gt;
+
+&lt;p&gt;The IN keyword is used here:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IN&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Claire'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Kate'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Mike'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This statement is basically saying “where the name is one of these values” that we have in the parentheses.&lt;/p&gt;
+
+&lt;h3 id=&quot;adding-a-foreign-key&quot;&gt;Adding a foreign key&lt;/h3&gt;
+
+&lt;p&gt;When creating the employee table for a new company database, we couldn’t make any foreign keys since the table didn’t exist yet. Now we are going back to add the foreign keys:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*just including this query for reference*/&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;first_name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;last_name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;birth_day&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sex&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;super_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FOREIGN&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;kEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;REFERENCES&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the above query, we are altering the employee table. We are adding a foreign key to branch_id. It is referencing the branch table (which hasn’t been created at this point)&lt;/p&gt;
+
+&lt;h3 id=&quot;as-keyword&quot;&gt;AS keyword&lt;/h3&gt;
+
+&lt;p&gt;To get data from your database but under a different column name, do this. In this example we want to get first name, but we want it to be called forename, and last name, but we want it to be called surname. We use the AS keyword.&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first_name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last_name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;distinct-keyword&quot;&gt;DISTINCT keyword&lt;/h3&gt;
+
+&lt;p&gt;If we wanted to find all the different genders that employees are stored as,&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DISTINCT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sex&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In this case it just returns M and F.&lt;/p&gt;
+
+&lt;h3 id=&quot;sql-functions&quot;&gt;SQL functions&lt;/h3&gt;
+
+&lt;p&gt;There are functions in SQL as well.&lt;/p&gt;
+
+&lt;p&gt;COUNT: returns the count of something - we could count the number of employees in our company by using:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;AVG: find the average of something, like:&lt;/p&gt;
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AVG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;SUM: finds the sum&lt;/p&gt;
+
+&lt;h3 id=&quot;wildcards&quot;&gt;Wildcards&lt;/h3&gt;
+
+&lt;p&gt;LIKE: put an expression inside, defining a pattern that matches whatever you’re searching in&lt;/p&gt;
+
+&lt;p&gt;Special characters: 
+% means “any number of characters”,
+_ means “one character”&lt;/p&gt;
+
+&lt;p&gt;Use the special characters to define patterns.&lt;/p&gt;
+
+&lt;p&gt;The below query is saying “return any client name that has any number of characters and then LLC”&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client_name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%LLC'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To get all birthdays in October, use _ four times to give any four digit year and include 10 for the month of October.&lt;/p&gt;
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;birth_day&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'____-10%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;union&quot;&gt;UNION&lt;/h3&gt;
+
+&lt;p&gt;Use UNION to combine results of multiple SELECT statements into one result. Everything will be returned in one table.&lt;/p&gt;
+
+&lt;p&gt;Here we are grabbing all names and branches. Both need to be the same data type and same number of columns.&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first_name&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;UNION&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch_name&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;join&quot;&gt;JOIN&lt;/h3&gt;
+
+&lt;p&gt;JOIN is used to combine rows from two or more tables. There are four different types of JOIN. The below is an “inner” join.&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_name&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mgr_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here when we say JOIN it means join the employee table and the branch table together into one table, on a specific column that the tables have in common. Combine them when the branch manager id is equal to the employee id.&lt;/p&gt;
+
+&lt;p&gt;LEFT JOIN: we include all rows from the “left” table, or the table we are selecting “from”. A left join would look like…&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_name&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;LEFT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mgr_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;…and it would return all the rows from the employee table, where we are selecting from.&lt;/p&gt;
+
+&lt;p&gt;RIGHT JOIN: does the opposite of above, it would include all the rows from the branch table no matter what.&lt;/p&gt;
+
+&lt;p&gt;Full outer join: can’t do it in MySQL, but it is a left and right join combined.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-happens-when-data-is-deleted&quot;&gt;What happens when data is deleted?&lt;/h2&gt;
+
+&lt;p&gt;ON DELETE SET NULL: if data is deleted in one table, set another related value to null&lt;/p&gt;
+
+&lt;p&gt;In our CREATE TABLE code…&lt;/p&gt;
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;branch_name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mgr_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mgr_start_date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;FOREIGN&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mgr_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;REFERENCES&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;…we are saying “if the branch manager employee id is deleted, set the manager id in this table to NULL”.  So if we go to the employee table and delete a branch manager, their id in the branch table will be set to NULL. We’re able to do this because it is a foreign key and not totally essential to the table.&lt;/p&gt;
+
+&lt;p&gt;ON DELETE CASCADE: if data is deleted, delete the whole row&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch_supplier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;supplier_name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;supply_type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;supplier_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;FOREIGN&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;REFERENCES&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;CASCADE&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In our example, there are suppliers that supply product to different branches of the company.  In this situation, if we deleted a branch, all rows in the branch_supplier table associated with the branch would be deleted.&lt;/p&gt;
+
+&lt;p&gt;This is important for primary keys, because a &lt;strong&gt;primary key cannot be null&lt;/strong&gt;.&lt;/p&gt;</content><author><name></name></author><category term="sql" /><category term="database" /><summary type="html">Here are more notes from my SQL course on youtube.</summary></entry><entry><title type="html">Learning SQL</title><link href="http://localhost:4000/learning-sql" rel="alternate" type="text/html" title="Learning SQL" /><published>2020-07-01T18:30:00-06:00</published><updated>2020-07-01T18:30:00-06:00</updated><id>http://localhost:4000/learning-sql</id><content type="html" xml:base="http://localhost:4000/learning-sql">&lt;p&gt;Another set of notes while I am doing a course, this time in SQL.&lt;/p&gt;
+
+&lt;p&gt;This time I am following &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;list=WL&amp;amp;index=111&amp;amp;t=1s&quot;&gt;this freeCodeCamp SQL tutorial on youtube&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;tables&quot;&gt;Tables&lt;/h3&gt;
+
+&lt;p&gt;Columns: a type of information like name, email, password, etc&lt;/p&gt;
+
+&lt;p&gt;Row: a unique entry in the database&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g. in a “student” table, a row would be a unique student including their ID #, name, major, email, etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Primary key: an attribute that uniquely defines a row in the database&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;can be anything - a number, string, etc - but it has to uniquely identify a row&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Whenever you want to store data:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;define a table with all your columns&lt;/li&gt;
+  &lt;li&gt;insert specific pieces of information into the table&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Surrogate key: doesn’t map to anything in the real world&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a type of primary key&lt;/li&gt;
+  &lt;li&gt;e.g. a random number assigned to an employee in an “employee” table&lt;/li&gt;
+  &lt;li&gt;used to represent the employee in the database but doesn’t really mean anything&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Natural key: has a purpose in the real world, not just in the database&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g. a social insurance number&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Foreign key: an attribute we can store in a table that links us to another table in the database&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;basically the primary key of a row in another table&lt;/li&gt;
+  &lt;li&gt;helps us define relationships between the tables&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Composite key: needs two attributes/columns&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;both together are needed to identify a particular row&lt;/li&gt;
+  &lt;li&gt;for if you have columns with repeated values - combine with another column to give a unique row&lt;/li&gt;
+  &lt;li&gt;another type of primary key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;sql-basics&quot;&gt;SQL basics&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;query language used to interact with a relational database management system (RDBMS)&lt;/li&gt;
+  &lt;li&gt;RDBMS examples: MySQL, Oracle, Microsoft SQL Server&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;SQL used for:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;CRUD - creating, reading, updating, deleting information&lt;/li&gt;
+  &lt;li&gt;manage databases&lt;/li&gt;
+  &lt;li&gt;create databases&lt;/li&gt;
+  &lt;li&gt;design and create tables&lt;/li&gt;
+  &lt;li&gt;admin tasks, like managing users and security&lt;/li&gt;
+  &lt;li&gt;define database schemas&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Query: set of instructions given to the RDBMS, in SQL, to tell it what information you want it to retrieve&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;goal is to get exactly the data you need - from potentially very large data sets&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;installing-mysql-and-popsql&quot;&gt;Installing MySQL and PopSQL&lt;/h3&gt;
+
+&lt;p&gt;This is the install process for MySQL in this course:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;go to &lt;a href=&quot;https://dev.mysql.com/downloads/mysql/&quot;&gt;dev.mysql.com&lt;/a&gt; and download the community version of MySQL; I downloaded the MSI file rather than the zip&lt;/li&gt;
+  &lt;li&gt;open the installer&lt;/li&gt;
+  &lt;li&gt;chose custom install&lt;/li&gt;
+  &lt;li&gt;from available products I chose MySQL Server 8.0.20 - x64 and MySQL Shell 8.0.20 - x64&lt;/li&gt;
+  &lt;li&gt;on the installation tab click execute&lt;/li&gt;
+  &lt;li&gt;when those finish installing, on the type and networking screen, choose Standalone MySQL Server/Classic MySQL Replication&lt;/li&gt;
+  &lt;li&gt;keep all the other default settings&lt;/li&gt;
+  &lt;li&gt;enter a password, no need to create any more user accounts unless you want to&lt;/li&gt;
+  &lt;li&gt;on apply configuration page click execute&lt;/li&gt;
+  &lt;li&gt;then the shell will be installed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To create a database, open MySQL 8.0 Command Line Client, and enter the password you set earlier. This connects you to MySQL server on your machine.&lt;/p&gt;
+
+&lt;p&gt;Then type “create database {database-name};”&lt;/p&gt;
+
+&lt;p&gt;We also installed a text editor for SQL called PopSQL. It helps to visualize what’s going on but you can type all the same commands into the command line client. Just go to popsql.com and download. You need to create an account. Once installed create a new connection to the database. Fill in the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Type: MySQL&lt;/li&gt;
+  &lt;li&gt;Nickname: whatever you want&lt;/li&gt;
+  &lt;li&gt;Hostname: localhost&lt;/li&gt;
+  &lt;li&gt;Port: 3306&lt;/li&gt;
+  &lt;li&gt;Database: whatever you named your database in the command line&lt;/li&gt;
+  &lt;li&gt;Username/password: whatever you used when you set up MySQL. if you just used the default username during setup, enter “root”&lt;/li&gt;
+  &lt;li&gt;Click connect&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;common-data-types&quot;&gt;Common data types&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;INT - whole #&lt;/li&gt;
+  &lt;li&gt;DECIMAL(10, 4) - decimal #, () specifying number of digits
+    &lt;ul&gt;
+      &lt;li&gt;in this case, it means this decimal number has 10 digits total with 4 coming after the decimal&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;VARCHAR(1) - string, number of characters in ()&lt;/li&gt;
+  &lt;li&gt;BLOB - binary large object, stores large amounts of binary data, like image files&lt;/li&gt;
+  &lt;li&gt;DATE - formatted as YYYY-MM-DD&lt;/li&gt;
+  &lt;li&gt;TIMESTAMP - formatted as YYYY-MM-DD HH:MM:SS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;creating-tablescolumns&quot;&gt;Creating tables/columns&lt;/h3&gt;
+
+&lt;p&gt;First step when working with RDBMS you have to create tables.&lt;/p&gt;
+
+&lt;p&gt;Convention is to write SQL in all caps, to distinguish it from other text in our queries.&lt;/p&gt;
+
+&lt;p&gt;End SQL commands in semicolons.&lt;/p&gt;
+
+&lt;p&gt;In the below example, you are naming the columns as student_id, name, and major, declaring their data types, and setting the primary key to student_id.&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;student_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Below, in PopSql, this shows us the student table:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;DESCRIBE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To delete a table:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;DROP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Altering a table:&lt;/p&gt;
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*to add a column*/&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gpa&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DECIMAL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/*to delete a column*/&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DROP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gpa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;inserting-data&quot;&gt;Inserting data&lt;/h3&gt;
+
+&lt;p&gt;Inside () put data you want to store:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;VALUES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Jack'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Biology'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/*to see the data in your table*/&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/*if you don't know all the values; the one you leave out will just show as NULL in the column*/&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;VALUES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Jack'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;update-data&quot;&gt;Update data&lt;/h3&gt;
+
+&lt;p&gt;Let’s say you want to change all instances of “Biology” major to “Bio”:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;UPDATE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Bio'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Biology'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;If you do the below query, not using the WHERE statement, it will apply to all columns:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;UPDATE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'undecided'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;deleting-data&quot;&gt;Deleting data&lt;/h3&gt;
+
+&lt;p&gt;To delete one student from the student table,&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'undecided'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To delete everything from the table, giving an empty table:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="sql" /><category term="database" /><summary type="html">Another set of notes while I am doing a course, this time in SQL.</summary></entry><entry><title type="html">Notes from UX design Udemy course</title><link href="http://localhost:4000/starting-ux-course" rel="alternate" type="text/html" title="Notes from UX design Udemy course" /><published>2020-07-01T12:30:00-06:00</published><updated>2020-07-01T12:30:00-06:00</updated><id>http://localhost:4000/starting-ux-course</id><content type="html" xml:base="http://localhost:4000/starting-ux-course">&lt;p&gt;I really love design. It was an area I did well in during school and my instructor commented on this a few times. I want to improve my skills and build a portfolio in case this is an area I want to pursue in the future, so I started a design course on Udemy.&lt;/p&gt;
+
+&lt;p&gt;This course is Master Digital Product Design: UX Research and UI Design.  I’m already a few minutes in and the instructor is telling us to not take anything said as concrete advice. So, I’ll write some notes while I’m going through the course while keeping this idea in mind.&lt;/p&gt;
+
+&lt;h3 id=&quot;notes&quot;&gt;Notes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;go onto sites like Dribble and recreate the designs in different styles to improve creativity, perception, and increase your awareness of what’s out there&lt;/li&gt;
+  &lt;li&gt;don’t just copy design processes from blog posts and other companies; learn the reasoning why they use these methods and take inspiration from them&lt;/li&gt;
+  &lt;li&gt;your perpective gives you something new as a designer&lt;/li&gt;
+  &lt;li&gt;a designer is a person that solves problems&lt;/li&gt;
+  &lt;li&gt;most innovations and new inventions have come about because of emotions rather than utility&lt;/li&gt;
+  &lt;li&gt;a designer is a planner/strategizer&lt;/li&gt;
+  &lt;li&gt;a design is like an important plan where we don’t want to use existing solutions - have to spend time and do research to innovate and create the new thing&lt;/li&gt;
+  &lt;li&gt;there is no solid definition for UX design/designer - it’s important to look at job requirements and ask your boss so it’s clear what YOU are going to be doing, and you want to make sure your team is clear on your role as well&lt;/li&gt;
+  &lt;li&gt;there are no rules in design, just guidelines to help you go in the correct direction; you don’t HAVE to do anything&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Atomic design process: start with the smallest parts of a page rather than designing the whole page first. Decide on fonts, design buttons and reusable components, and your pages will come together more easily later.&lt;/p&gt;
+
+&lt;p&gt;Jacob’s law: basically make your site like other sites, since people already know how to use those&lt;/p&gt;
+
+&lt;p&gt;Arrogant design: when someone tries to create something new without fully understanding the product and the industry. These designers believe their experience is more important than the experiences and perspectives of others.&lt;/p&gt;
+
+&lt;p&gt;The Fold: from newspapers, when you put the important information at the top ie. “above the fold” and less important info “below the fold”. Used in websites early on but found to be useless since people can easily scroll down the page&lt;/p&gt;
+
+&lt;p&gt;A couple good resources (just beware that they are marketing their own products and may be biased):&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;invisionapp.com&lt;/li&gt;
+  &lt;li&gt;99u.adobe.com&lt;/li&gt;
+  &lt;li&gt;jnd.org (Don Norman, has good books on product design)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Look at articles on other types of design, like architecture or print media, since they are coming up with lots of new solutions to problems all the time. This will bring insights to product design.&lt;/p&gt;
+
+&lt;p&gt;Make sure you’re looking at designs visually - not every concept can be articulated in words. Resources:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;designspriation.com - all kinds of design&lt;/li&gt;
+  &lt;li&gt;dribbble.com - mostly UI design&lt;/li&gt;
+  &lt;li&gt;abduzeedo.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;design-briefs&quot;&gt;Design briefs&lt;/h3&gt;
+
+&lt;p&gt;The instructor started to mention design briefs and reaching out to local companies and asking for them. I have not yet done this, but I decided to do a quick search on google and see if there are any good examples.&lt;/p&gt;
+
+&lt;p&gt;I came across this site: &lt;a href=&quot;https://www.briefbox.me/&quot;&gt;briefbox.me&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It looks like they have courses and briefs/challenges for students. This looks pretty useful so I’m going to have a look at some of these when I have time for practice.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;As a note to self, I can create case studies for some of the projects I have already created, or web dev projects I plan to start soon. Assuming I remember my process for creating them, which I most likely do.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When is a design complete? When it meets the pre-defined requirements&lt;/p&gt;
+
+&lt;p&gt;Make sure you get good at writing very detailed briefs.&lt;/p&gt;
+
+&lt;p&gt;Important components of a design brief:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;final approver/stakeholders: make sure these are solid&lt;/li&gt;
+  &lt;li&gt;main contact: whoever is the person to contact with additional questions&lt;/li&gt;
+  &lt;li&gt;about the client: ask lots of questions to understand their company, culture, whether they already have a process in place that they’d like this project to follow&lt;/li&gt;
+  &lt;li&gt;project goals: how do we know when the project is complete? How will you measure if the project is successful. Make sure they are describing problems that YOU can solve for them&lt;/li&gt;
+  &lt;li&gt;target audience: get lots of detail, need to test designs on later, need to research them and what they value&lt;/li&gt;
+  &lt;li&gt;deliverables: what you are providing to company. e.g. what files would they accept if you are providing them icons&lt;/li&gt;
+  &lt;li&gt;scheduled sessions: with stakeholders, final approver, other contacts, to make sure you’re on the right track - meeting to present research, another to present wireframes, another to present design. good to schedule in revision sessions&lt;/li&gt;
+  &lt;li&gt;branding keywords: so you can understand brand’s values and personality&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Make sure they sign off on it, so there’s no going back and you know what your job is.&lt;/p&gt;</content><author><name></name></author><category term="design" /><summary type="html">I really love design. It was an area I did well in during school and my instructor commented on this a few times. I want to improve my skills and build a portfolio in case this is an area I want to pursue in the future, so I started a design course on Udemy.</summary></entry><entry><title type="html">Using WordPress again - getting started</title><link href="http://localhost:4000/wordpress-set-up" rel="alternate" type="text/html" title="Using WordPress again - getting started" /><published>2020-06-27T12:30:00-06:00</published><updated>2020-06-27T12:30:00-06:00</updated><id>http://localhost:4000/wordpress-set-up</id><content type="html" xml:base="http://localhost:4000/wordpress-set-up">&lt;p&gt;We learned WordPress in school briefly as part of our CMS course. I could possibly get to work on some small freelance WordPress projects in the near future so I am relearning WordPress again with the site builder Oxygen.&lt;/p&gt;
 
 &lt;h3 id=&quot;setting-up-wordpress-and-installing-a-new-site&quot;&gt;Setting up Wordpress and installing a new site&lt;/h3&gt;
 
@@ -342,332 +874,4 @@
 &lt;ul&gt;
   &lt;li&gt;the importance of stepping away from the code when you are stuck; it gives your mind a rest and allows your subconscious to continue looking for creative ways to solve the problem&lt;/li&gt;
   &lt;li&gt;that (at least for my own personal projects) I can solve any problem if I set my mind to it&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="javascript" /><category term="node.js" /><category term="api" /><summary type="html">Today in my Web Developer course I am reviewing how to use APIs.</summary></entry><entry><title type="html">Notes on jQuery</title><link href="http://localhost:4000/jquery-notes" rel="alternate" type="text/html" title="Notes on jQuery" /><published>2020-04-20T21:30:00-06:00</published><updated>2020-04-20T21:30:00-06:00</updated><id>http://localhost:4000/jquery-notes</id><content type="html" xml:base="http://localhost:4000/jquery-notes">&lt;p&gt;I have seen jQuery all over the place, including at work, but I have never taken the time to learn it in depth.  I figured I needed to do this soon, and there happens to be a section in my current Web Developer Bootcamp Udemy course. Here are some of my notes.&lt;/p&gt;
-
-&lt;p&gt;jQuery is a javascript library that helps us manipulate the DOM.&lt;/p&gt;
-
-&lt;p&gt;Pros:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;shorter code, easier to access dom&lt;/li&gt;
-  &lt;li&gt;cross-browser support&lt;/li&gt;
-  &lt;li&gt;ajax&lt;/li&gt;
-  &lt;li&gt;strong community&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Cons:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;everything you can do with jQuery you can use without it&lt;/li&gt;
-  &lt;li&gt;including lots of extra methods even if you are only using a couple, could have performance issues&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Two ways to include jQuery in your app:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;download code for jQuery, link to it in html file
-    &lt;ul&gt;
-      &lt;li&gt;there’s a full 9000 line file, and also a minified file&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;include CDN in html file
-    &lt;ul&gt;
-      &lt;li&gt;linking to jQuery file online rather than downloading it to your machine&lt;/li&gt;
-      &lt;li&gt;slightly slower performance than having it locally&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Make sure your jQuery libraries are included &lt;strong&gt;before&lt;/strong&gt; your own script files in your HTML. If you are depending on them in your own javascript file, they must be loaded first, otherwise your file can’t find the jQuery methods it is supposed to use.&lt;/p&gt;
-
-&lt;h3 id=&quot;selecting-elements&quot;&gt;Selecting elements&lt;/h3&gt;
-
-&lt;p&gt;Use the $ function to select things:  $()&lt;/p&gt;
-
-&lt;p&gt;This is like using document.querySelectorAll() in vanilla JS. Inside the function use a CSS selector. This function returns all the elements that match the selector. e.g. $(“.someClass”);&lt;/p&gt;
-
-&lt;h3 id=&quot;important-methods&quot;&gt;Important methods&lt;/h3&gt;
-
-&lt;p&gt;For styling: $(selector).css(property, value)&lt;/p&gt;
-
-&lt;p&gt;val(): to get value from an input, can also set the value&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;e.g. set the input’s value to an empty string to clear the input field&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;text(): gets text content in set of matched elements, and can set text content of an element&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;like textContent in vanilla javascript&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;attr(): get the value of an attribute for first matched element, set the value for all matched elements&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;e.g. to set,  $(#myPhoto).attr(“alt”, “Photo of my dog”);&lt;/li&gt;
-  &lt;li&gt;can also set several attributes at once using a javascript object&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;html(): is like innerHTML in vanilla javascript, gets HTML content of first matched element or sets HTML content of all matched elements&lt;/p&gt;
-
-&lt;p&gt;Below are like the classList properties in vanilla javascript:&lt;/p&gt;
-
-&lt;p&gt;addClass(): add a class or classes to matched elements&lt;/p&gt;
-
-&lt;p&gt;removeClass(): remove a class or classes to matched elements&lt;/p&gt;
-
-&lt;p&gt;toggleClass(): add a class if the matched element doesn’t have it, removes a class if the element has it&lt;/p&gt;
-
-&lt;p&gt;remove(): removes element from the DOM&lt;/p&gt;
-
-&lt;h3 id=&quot;important-jquery-events&quot;&gt;Important jQuery events&lt;/h3&gt;
-
-&lt;p&gt;click(): add a click listener to an element or colection of elements&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;callback function goes in the parentheses&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;keypress(): fires in between key being pressed down and coming back up&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;every key has its own code, access it with keyword “which”&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;input&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keypress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;which&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;you hit enter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;keydown(): fired when key is pressed down&lt;/p&gt;
-
-&lt;p&gt;keyup(): fired when a pressed key is released&lt;/p&gt;
-
-&lt;p&gt;on(): most used jQuery event method&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;similar to vanilla js addEventListener,&lt;/li&gt;
-  &lt;li&gt;used most of the time&lt;/li&gt;
-  &lt;li&gt;include the type of event, and a callback function&lt;/li&gt;
-  &lt;li&gt;adds listeners for all potential items that aren’t there when the page loads
-    &lt;ul&gt;
-      &lt;li&gt;“click”, on the other hand, only creates listeners for things that are on the page when it loads&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mouseenter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;font-weight&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;bold&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;this-in-jquery&quot;&gt;“this” in jQuery&lt;/h3&gt;
-
-&lt;p&gt;In jQuery you need to wrap “this” in a jQuery selector, so it knows we’re using a jQuery object, like so:  $(this)&lt;/p&gt;
-
-&lt;p&gt;If you use just plain this, like you would in vanilla javascript, it will not work.&lt;/p&gt;
-
-&lt;h3 id=&quot;common-jquery-effects&quot;&gt;Common jQuery effects&lt;/h3&gt;
-
-&lt;p&gt;fadeOut(): current opacity to transparent, can specify the speed&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;elements are hidden, not deleted&lt;/li&gt;
-  &lt;li&gt;can include a callback function, because we often want something to happen &lt;em&gt;after&lt;/em&gt; the the fade has completed. If you include this in a separate line of code after fadeOut, it will execute right away, possibly before the fade is even complete&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;fadeIn(): similar to fadeOut&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;element should start out as display none; it gets changed to display block when you use the function&lt;/li&gt;
-  &lt;li&gt;also include callback functions inside, for same reason as above fadeOut()&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;fadeToggle(): will know if it needs to fade in or out depending if element is currently displayed&lt;/p&gt;
-
-&lt;p&gt;slideDown(), slideUp(), slideToggle(): height of an element is animated as up or down&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;also have optional callback and ability to specify timing&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;parent-elements&quot;&gt;Parent elements&lt;/h3&gt;
-
-&lt;h4 id=&quot;event-bubbling&quot;&gt;Event bubbling&lt;/h4&gt;
-
-&lt;p&gt;If you have a click event on a particular element, it will bubble up into parent elements, triggering any click events on the parents.&lt;/p&gt;
-
-&lt;p&gt;You can tell it not to bubble by adding the following to your click event:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;add “event” (or whatever keyword you choose) as an argument to your callback function&lt;/li&gt;
-  &lt;li&gt;add a line inside your callback function: event.stopPropagation();&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;span&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;clicked on a span&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stopPropagation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;removing-parent-elements&quot;&gt;Removing parent elements&lt;/h4&gt;
-
-&lt;p&gt;Quite simple, as per below:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;span&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stopPropagation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="javascript" /><category term="jquery" /><category term="dom" /><summary type="html">I have seen jQuery all over the place, including at work, but I have never taken the time to learn it in depth. I figured I needed to do this soon, and there happens to be a section in my current Web Developer Bootcamp Udemy course. Here are some of my notes.</summary></entry><entry><title type="html">Notes on the DOM</title><link href="http://localhost:4000/dom-notes" rel="alternate" type="text/html" title="Notes on the DOM" /><published>2020-04-19T11:30:00-06:00</published><updated>2020-04-19T11:30:00-06:00</updated><id>http://localhost:4000/dom-notes</id><content type="html" xml:base="http://localhost:4000/dom-notes">&lt;p&gt;I finished my .NET MVC Udemy course and have gone back to my Web Developer Bootcamp Udemy course that I started before going to school.&lt;/p&gt;
-
-&lt;p&gt;I should have completed this before starting my program; it would have made life so much easier if I already had some exposure to these topics.&lt;/p&gt;
-
-&lt;p&gt;The nice thing about completing this now, however, is that I’m breezing right through the content. It’s actually a really good opportunity to review the fundamentals, hear the content explained from another perspective, and pick up some new things I didn’t learn the first time around.&lt;/p&gt;
-
-&lt;p&gt;Today I am working through the section on the DOM. The instructor is really good at highlighting and organizing the most important concepts, so I figured it would help me to make some notes here.&lt;/p&gt;
-
-&lt;h3 id=&quot;important-dom-selector-methods&quot;&gt;Important DOM Selector Methods&lt;/h3&gt;
-
-&lt;p&gt;These return HTML elements as &lt;em&gt;objects&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;document.getElementById()&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;pretty obvious, select the element with this id&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;document.getElementsByClassName()&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;returns a list of all elements with this class name&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;document.getElementsByTagName()&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;e.g. to select the body of a page use document.getElementsByTagName(“body”)[0];&lt;/li&gt;
-  &lt;li&gt;I have tried using the TagName selector in the past but I could never get it to work. It was only when I saw the index of 0 ([0]) being used that I understood my problem&lt;/li&gt;
-  &lt;li&gt;this selector returns all the elements in a &lt;em&gt;list&lt;/em&gt;, and I needed to select the first one - in the case of body, it’s the only one&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;document.querySelector()&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;important note!! only returns the &lt;em&gt;first element&lt;/em&gt; it comes across with this selector&lt;/li&gt;
-  &lt;li&gt;can use any CSS selector you could use in a CSS file, like “.some-class h1”, using the same syntax you use in a CSS file&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;document.querySelectorAll()&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;returns a list of elements that match the selector&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;important-ways-to-manipulate-the-dom&quot;&gt;Important ways to manipulate the DOM&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;changing the style of an element
-    &lt;ul&gt;
-      &lt;li&gt;can use the “&lt;strong&gt;style&lt;/strong&gt;” property in javascript&lt;/li&gt;
-      &lt;li&gt;e.g. tag.style.border = “1px solid black”;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;add/remove classes with javascript
-    &lt;ul&gt;
-      &lt;li&gt;use javascript “&lt;strong&gt;classList&lt;/strong&gt;” property&lt;/li&gt;
-      &lt;li&gt;classList.add, classList.remove, classList.toggle&lt;/li&gt;
-      &lt;li&gt;classList is not technically an array&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;changing content of a tag
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;textContent&lt;/strong&gt; to extract and change the text inside an element, treats it like text&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;innerHtml&lt;/strong&gt;, however, maintains what’s inside the HTML, safer to use, treats it like HTML&lt;/li&gt;
-      &lt;li&gt;these override what’s already inside the tag&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;changing tag attributes
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;getAttribute()&lt;/strong&gt; and &lt;strong&gt;setAttribute()&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;e.g. link.getAttribute(“href”);&lt;/li&gt;
-      &lt;li&gt;e.g. link.setAttribute(“src”, “imgs/whatever.jpg”);&lt;/li&gt;
-      &lt;li&gt;can even use to change an id or a class&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;dom-events&quot;&gt;DOM events&lt;/h3&gt;
-
-&lt;p&gt;Add event listeners to specific elements.&lt;/p&gt;
-
-&lt;p&gt;Important method: &lt;strong&gt;addEventListener(type, functionToCall)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Type = type of event we’re listening for&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;“click” is a common one&lt;/li&gt;
-  &lt;li&gt;“change” will fire whenever there is any sort of change, like typing into an input&lt;/li&gt;
-  &lt;li&gt;“mouseover” for when you hover over an element&lt;/li&gt;
-  &lt;li&gt;“mouseout” for when you move your mouse away from the element; can use with “mouseover” to create hover effect&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;functionToCall = callback function we want to run when event happens&lt;/p&gt;
-
-&lt;h3 id=&quot;html-inputs-give-you-strings&quot;&gt;HTML inputs give you strings&lt;/h3&gt;
-
-&lt;p&gt;Let’s say you want to use an input field for a number. Even if you input a number, and have the input type=”number”, the value you get will be a string. Like “7” instead of 7. Unless you are using a “==” and type coersion, javascript won’t be able to use this as a number.&lt;/p&gt;
-
-&lt;p&gt;It took me a while to figure this out on my own, and it came up in my course.  The instructor’s solution for this was to place the input value inside the Number() method:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;winningScore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;numInput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="javascript" /><category term="dom" /><summary type="html">I finished my .NET MVC Udemy course and have gone back to my Web Developer Bootcamp Udemy course that I started before going to school.</summary></entry><entry><title type="html">Last ditch effort – I deleted my database</title><link href="http://localhost:4000/deleting-my-database" rel="alternate" type="text/html" title="Last ditch effort – I deleted my database" /><published>2020-04-11T18:30:00-06:00</published><updated>2020-04-11T18:30:00-06:00</updated><id>http://localhost:4000/deleting-my-database</id><content type="html" xml:base="http://localhost:4000/deleting-my-database">&lt;p&gt;I have been working on my Udemy courses again, currently hoping to finish my MVC course.&lt;/p&gt;
-
-&lt;p&gt;Sometimes I really don’t like .NET.  I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course though, because I’m sure it will be useful at my next job, or somewhere down the line.&lt;/p&gt;
-
-&lt;p&gt;Since I was away from this course for a while I forgot where I was and some of what I had learned. I started a new section, followed all the instructions exactly, attempting to create a dropdown menu. Of course, none of the options showed up in the menu.&lt;/p&gt;
-
-&lt;p&gt;The first thing I did was check the code for typos. There were none. I thought this was a mistake so I checked again, and compared it to the instructor’s code on github. Nope, still correct.&lt;/p&gt;
-
-&lt;p&gt;Perhaps I made an error with the earlier exercises in the course. There were no review videos, and I had to use some of the code from github. This was necessary in order to have the same code as the instructor throughout the course.  If it was an error with my migrations, a topic I still don’t quite get, maybe the dropdown menu items just didn’t make it into my database.&lt;/p&gt;
-
-&lt;p&gt;I’m also not yet an expert in SQL, so I just used the below query to check the table for my data:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TOP&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MembershipTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This showed me the rows that were in my table, and the menu items were there.&lt;/p&gt;
-
-&lt;p&gt;At this point I spent about 2 days trying various things to fix the problem. I tried to simply update the database, using the update-database command in package manager console. Didn’t work. I realized some of my files may have been missing from the earlier exercises, so I added the code to my solution. Also didn’t help. I updated the DbContext to what I saw on the github code. Didn’t help, at least not immediately. After lots of experimenting and searching, I was ready to start a new solution and rebuild it from scratch, which meant having to watch a few hours of video again. It would maybe help solidify what I was learning but that was not ideal.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/16035333/how-to-delete-and-recreate-from-scratch-an-existing-ef-code-first-database&quot;&gt;Somewhere on Stack Overflow&lt;/a&gt; someone suggested to manually delete the database to start fresh. I decided to try this, but I did not follow their instructions exactly.&lt;/p&gt;
-
-&lt;p&gt;Here are my steps:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;deleted the database connections in Server Explorer&lt;/li&gt;
-  &lt;li&gt;deleted the database files under the App_Data folder in Solution Explorer&lt;/li&gt;
-  &lt;li&gt;made a change in the code - I made change in one of the models and saved, but it didn’t matter what changed, just that something &lt;em&gt;had&lt;/em&gt; changed; this was important for the next step to work properly&lt;/li&gt;
-  &lt;li&gt;added a new migration using “add-migration” in package manager console&lt;/li&gt;
-  &lt;li&gt;then “update-database”&lt;/li&gt;
-  &lt;li&gt;cleaned and built my solution again&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Then I opened the page I had originally been working on.  The dropdown was now working properly and all menu items showed up!&lt;/p&gt;
-
-&lt;p&gt;I can’t help but feel there is still going to be something wrong with my database, migrations, or project in general and it will come back to bite me later on. But for now I will continue on with the course and take this as a learning opportunity.&lt;/p&gt;</content><author><name></name></author><category term="dotnet" /><category term="database" /><category term="migrations" /><summary type="html">I have been working on my Udemy courses again, currently hoping to finish my MVC course.</summary></entry><entry><title type="html">New jekyll site part 3 - errors with deployment</title><link href="http://localhost:4000/new-jekyll-site-3" rel="alternate" type="text/html" title="New jekyll site part 3 - errors with deployment" /><published>2020-04-08T16:03:00-06:00</published><updated>2020-04-08T16:03:00-06:00</updated><id>http://localhost:4000/new-jekyll-site-3</id><content type="html" xml:base="http://localhost:4000/new-jekyll-site-3">&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
-
-&lt;p&gt;Of course there have been errors with this as well. As expected.&lt;/p&gt;
-
-&lt;p&gt;I created my github repo and pushed my code using command line. I used the following commands and this worked without errors:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;git init&lt;/li&gt;
-  &lt;li&gt;git add .&lt;/li&gt;
-  &lt;li&gt;git commit -m “first commit”&lt;/li&gt;
-  &lt;li&gt;git remote add origin https://github.com/jchack1/julia-blog2.git&lt;/li&gt;
-  &lt;li&gt;git push -u origin master&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I decided to deploy with Netlify, which is my go to for any deployment. It’s usually pretty straightforward, &lt;a href=&quot;https://www.netlify.com/blog/2015/10/28/a-step-by-step-guide-jekyll-3.0-on-netlify/&quot;&gt;and you can find the instructions for deploying Jekyll with Netlify here.&lt;/a&gt;  I selected my github repo and clicked deploy. After a few minutes I got an error, saying the build failed.&lt;/p&gt;
-
-&lt;p&gt;That is because Netlify was looking for the _site folder.  I checked my files and I saw that I did not have this.  By now I’m getting pretty frustrated with this theme because it feels like there was a lot missing and unexplained. Why isn’t there a _site folder?&lt;/p&gt;
-
-&lt;p&gt;I went to the &lt;a href=&quot;https://jekyllrb.com/docs/step-by-step/01-setup/&quot;&gt;Jekyll docs&lt;/a&gt; looking for any information about the _site folder.  I saw that when you use the command “jekyll build”, Jekyll builds the site and outputs it to a directory called _site, which is viewable in the browser at localhost:4000. I have used the “jekyll build” command many times so far, so I was unsure why it’s not in my files.  And why I was able to serve my site to localhost:4000.  I decided to see what would happen if I make a new Jekyll folder from scratch and run “jekyll build”. In my previous sites I always had a _site folder and never gave any thought to how it was created.&lt;/p&gt;
-
-&lt;p&gt;This time I decided to just follow my old notes rather than just copy-paste from my theme. I went into the Jekyll folder I already have on my machine and opened command line. I used the following commands:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;jekyll new julia-blog3&lt;/li&gt;
-  &lt;li&gt;cd julia-blog3&lt;/li&gt;
-  &lt;li&gt;bundle exec jekyll build&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I watched the files in the folders and there it was. Once I used the jekyll build command, my _site folder appeared. Perhaps this was my mistake from the beginning. I never intiallized my folder properly.&lt;/p&gt;
-
-&lt;p&gt;I decided to check both folders now, to see if I could either update my blog scripts to create the _site file, or if I’d need to copy everything over into my new folder. Whatever I tried in my old folder did not work, so I ended up copying everything over into my new folder. I set up gulp, which was really quick this time since I knew what I was doing. When I executed “bundle exec jekyll build” I now ended up with a _site folder, and it was filled with the proper files.&lt;/p&gt;
-
-&lt;p&gt;Now I will upload this new folder to github and deploy. It should work now that I have a proper _site folder.&lt;/p&gt;
-
-&lt;p&gt;I just have to remember to always “bundle exec jekyll build” and “bundle exec jekyll serve”(to generate files in _site folder) when I make changes. But only after I execute “gulp”. Hopefully I will quickly get used to this workflow.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="debugging" /><category term="deployment" /><summary type="html">I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><category term="javascript" /><category term="node.js" /><category term="api" /><summary type="html">Today in my Web Developer course I am reviewing how to use APIs.</summary></entry></feed>

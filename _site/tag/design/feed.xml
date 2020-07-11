@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="https://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/tag/design/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2020-07-11T15:24:00-06:00</updated>
+  <id>http://localhost:4000/tag/design/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Julia Hack | </title>
+  
+
+  
+    <subtitle>Web development blog</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Notes from UX design Udemy course</title>
+      <link href="http://localhost:4000/starting-ux-course" rel="alternate" type="text/html" title="Notes from UX design Udemy course" />
+      <published>2020-07-01T12:30:00-06:00</published>
+      <updated>2020-07-01T12:30:00-06:00</updated>
+      <id>http://localhost:4000/starting-ux-course</id>
+      <content type="html" xml:base="http://localhost:4000/starting-ux-course">&lt;p&gt;I really love design. It was an area I did well in during school and my instructor commented on this a few times. I want to improve my skills and build a portfolio in case this is an area I want to pursue in the future, so I started a design course on Udemy.&lt;/p&gt;
+
+&lt;p&gt;This course is Master Digital Product Design: UX Research and UI Design.  I’m already a few minutes in and the instructor is telling us to not take anything said as concrete advice. So, I’ll write some notes while I’m going through the course while keeping this idea in mind.&lt;/p&gt;
+
+&lt;h3 id=&quot;notes&quot;&gt;Notes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;go onto sites like Dribble and recreate the designs in different styles to improve creativity, perception, and increase your awareness of what’s out there&lt;/li&gt;
+  &lt;li&gt;don’t just copy design processes from blog posts and other companies; learn the reasoning why they use these methods and take inspiration from them&lt;/li&gt;
+  &lt;li&gt;your perpective gives you something new as a designer&lt;/li&gt;
+  &lt;li&gt;a designer is a person that solves problems&lt;/li&gt;
+  &lt;li&gt;most innovations and new inventions have come about because of emotions rather than utility&lt;/li&gt;
+  &lt;li&gt;a designer is a planner/strategizer&lt;/li&gt;
+  &lt;li&gt;a design is like an important plan where we don’t want to use existing solutions - have to spend time and do research to innovate and create the new thing&lt;/li&gt;
+  &lt;li&gt;there is no solid definition for UX design/designer - it’s important to look at job requirements and ask your boss so it’s clear what YOU are going to be doing, and you want to make sure your team is clear on your role as well&lt;/li&gt;
+  &lt;li&gt;there are no rules in design, just guidelines to help you go in the correct direction; you don’t HAVE to do anything&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Atomic design process: start with the smallest parts of a page rather than designing the whole page first. Decide on fonts, design buttons and reusable components, and your pages will come together more easily later.&lt;/p&gt;
+
+&lt;p&gt;Jacob’s law: basically make your site like other sites, since people already know how to use those&lt;/p&gt;
+
+&lt;p&gt;Arrogant design: when someone tries to create something new without fully understanding the product and the industry. These designers believe their experience is more important than the experiences and perspectives of others.&lt;/p&gt;
+
+&lt;p&gt;The Fold: from newspapers, when you put the important information at the top ie. “above the fold” and less important info “below the fold”. Used in websites early on but found to be useless since people can easily scroll down the page&lt;/p&gt;
+
+&lt;p&gt;A couple good resources (just beware that they are marketing their own products and may be biased):&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;invisionapp.com&lt;/li&gt;
+  &lt;li&gt;99u.adobe.com&lt;/li&gt;
+  &lt;li&gt;jnd.org (Don Norman, has good books on product design)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Look at articles on other types of design, like architecture or print media, since they are coming up with lots of new solutions to problems all the time. This will bring insights to product design.&lt;/p&gt;
+
+&lt;p&gt;Make sure you’re looking at designs visually - not every concept can be articulated in words. Resources:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;designspriation.com - all kinds of design&lt;/li&gt;
+  &lt;li&gt;dribbble.com - mostly UI design&lt;/li&gt;
+  &lt;li&gt;abduzeedo.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;design-briefs&quot;&gt;Design briefs&lt;/h3&gt;
+
+&lt;p&gt;The instructor started to mention design briefs and reaching out to local companies and asking for them. I have not yet done this, but I decided to do a quick search on google and see if there are any good examples.&lt;/p&gt;
+
+&lt;p&gt;I came across this site: &lt;a href=&quot;https://www.briefbox.me/&quot;&gt;briefbox.me&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It looks like they have courses and briefs/challenges for students. This looks pretty useful so I’m going to have a look at some of these when I have time for practice.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;As a note to self, I can create case studies for some of the projects I have already created, or web dev projects I plan to start soon. Assuming I remember my process for creating them, which I most likely do.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When is a design complete? When it meets the pre-defined requirements&lt;/p&gt;
+
+&lt;p&gt;Make sure you get good at writing very detailed briefs.&lt;/p&gt;
+
+&lt;p&gt;Important components of a design brief:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;final approver/stakeholders: make sure these are solid&lt;/li&gt;
+  &lt;li&gt;main contact: whoever is the person to contact with additional questions&lt;/li&gt;
+  &lt;li&gt;about the client: ask lots of questions to understand their company, culture, whether they already have a process in place that they’d like this project to follow&lt;/li&gt;
+  &lt;li&gt;project goals: how do we know when the project is complete? How will you measure if the project is successful. Make sure they are describing problems that YOU can solve for them&lt;/li&gt;
+  &lt;li&gt;target audience: get lots of detail, need to test designs on later, need to research them and what they value&lt;/li&gt;
+  &lt;li&gt;deliverables: what you are providing to company. e.g. what files would they accept if you are providing them icons&lt;/li&gt;
+  &lt;li&gt;scheduled sessions: with stakeholders, final approver, other contacts, to make sure you’re on the right track - meeting to present research, another to present wireframes, another to present design. good to schedule in revision sessions&lt;/li&gt;
+  &lt;li&gt;branding keywords: so you can understand brand’s values and personality&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Make sure they sign off on it, so there’s no going back and you know what your job is.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="design" />
+      
+
+      
+        <summary type="html">I really love design. It was an area I did well in during school and my instructor commented on this a few times. I want to improve my skills and build a portfolio in case this is an area I want to pursue in the future, so I started a design course on Udemy.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
