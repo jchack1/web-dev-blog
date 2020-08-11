@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Dealing with memory leaks</title>
+        
+          <description>&lt;p&gt;While working on a particularly difficult task at work I ended up learning a lot about memory leaks.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 10 Aug 2020 18:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/memoryleaks</link>
+        <guid isPermaLink="true">http://localhost:4000/memoryleaks</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Learning SQL Part 3</title>
         
           <description>&lt;p&gt;The previous post was getting a little long, so here is the last of the notes from my &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;t=3445s&quot;&gt;freecodecamp course in SQL&lt;/a&gt;.&lt;/p&gt;

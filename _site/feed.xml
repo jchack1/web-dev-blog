@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-11T15:24:00-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Learning SQL Part 3</title><link href="http://localhost:4000/sql-part-3" rel="alternate" type="text/html" title="Learning SQL Part 3" /><published>2020-07-04T19:30:00-06:00</published><updated>2020-07-04T19:30:00-06:00</updated><id>http://localhost:4000/sql-part-3</id><content type="html" xml:base="http://localhost:4000/sql-part-3">&lt;p&gt;The previous post was getting a little long, so here is the last of the notes from my &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;t=3445s&quot;&gt;freecodecamp course in SQL&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-11T15:44:31-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Dealing with memory leaks</title><link href="http://localhost:4000/memoryleaks" rel="alternate" type="text/html" title="Dealing with memory leaks" /><published>2020-08-10T18:30:00-06:00</published><updated>2020-08-10T18:30:00-06:00</updated><id>http://localhost:4000/memoryleaks</id><content type="html" xml:base="http://localhost:4000/memoryleaks">&lt;p&gt;While working on a particularly difficult task at work I ended up learning a lot about memory leaks.&lt;/p&gt;
+
+&lt;p&gt;I am actually still working on this task.  To summarize, I needed to create a button that copies items in a table. We are using the javascript library Knockout.js.&lt;/p&gt;
+
+&lt;p&gt;Knockout.js came out in 2010 before other similar libraries like React had come onto the scene. It was very promising at the time and gained a lot of interest from developers because it was able to observe the UI for changes from the user.&lt;/p&gt;
+
+&lt;p&gt;I am still getting to know Knockout and React, but so far I have found my experience with React to be a more pleasant one. React just makes more sense to me in how the library is used and structured, and it is more optimized for performance.  Knockout, on the other hand, is not fully optimized in this regard and there are very specific, advanced fixes required to solve the problems you may face.&lt;/p&gt;
+
+&lt;p&gt;I am not meaning to bash Knockout, and I am sure there is more for me to learn to improve my experience with it, but I do find it unnecessarily frustrating at times.&lt;/p&gt;
+
+&lt;p&gt;So, back to my specific issue.&lt;/p&gt;
+
+&lt;p&gt;I figured out the original logic for my button early on when I was assigned this task. To be honest even this took me a while; deciphering other peoples’ (uncommented!) code is what proved to be the most challenging aspect at that point in time. It was basically two nested loops - the outer loop determines where in the table the &lt;em&gt;set&lt;/em&gt; of copies will go, and the inner loop inserts the &lt;em&gt;individual&lt;/em&gt; copies into the correct place in the table.  This worked great on small tables, let’s say smaller than 20 items. But once I started using it on tables that contained 100s of items, the browser crashed. It ran out of memory.&lt;/p&gt;
+
+&lt;p&gt;My classmates from my web dev program suggested a while back, for a different task, that I get to know the chrome developer tools. I decided to go more in depth and start learning how to use the performance profiler and the memory tab. I also started doing more research into memory leaks in general and this is what I learned.&lt;/p&gt;
+
+&lt;h3 id=&quot;javascript-memory-management&quot;&gt;Javascript memory management&lt;/h3&gt;
+
+&lt;p&gt;Javascript automatically manages memory, allocating slots of memory when you declare variables.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Garbage collection(GC)&lt;/strong&gt; is automatic memory management, which monitors how memory is being allocated, and reclaims memory that is no longer being used. Javascript uses GC, where other languages like C and C++ do not have this built in. You have to allocate memory manually when using these languages.&lt;/p&gt;
+
+&lt;p&gt;But just because javascript has garbage collection doesn’t mean you will never encounter issues with memory.&lt;/p&gt;
+
+&lt;p&gt;Javascript and GC algorithms keep track of references.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Reference counting: if an object has no other objects referencing it, it is no longer needed. It is sent to the garbage.&lt;/li&gt;
+  &lt;li&gt;Circular references: if you have references referring to each other. They can never be garbage collected. Even if the values are deleted, the references still exist in memory.&lt;/li&gt;
+  &lt;li&gt;Mark and sweep algorithm: instead of looking at which objects are no longer needed, objects that are “no longer reachable” are garbage collected. It starts from the javascript root and works its way outward, finding all the references from there. If something cannot be reached in this case, it is garbage collected.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you look at your memory graph in dev tools, when analyzing performance, you may see a saw-tooth pattern. This can sometimes indicate a memory leak, because the javascript heap keeps increasing.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Heap:&lt;/strong&gt; the pool of memory used to satisfy requests for memory&lt;/p&gt;
+
+&lt;h3 id=&quot;how-my-issue-was-solved&quot;&gt;How my issue was solved&lt;/h3&gt;
+
+&lt;p&gt;I spent a lot of time just learning about memory and was pretty stuck.  Of course, the examples from the dev tools instructions are pretty simple, but the application I’m working on is complex. I sent some of my performance profiles and heap snapshots to one of the senior devs. He said that it looked like too many &lt;em&gt;subscriptions&lt;/em&gt; are being made, and few are being &lt;em&gt;disposed&lt;/em&gt; of.&lt;/p&gt;
+
+&lt;p&gt;In knockout, you can &lt;strong&gt;subscribe&lt;/strong&gt; to elements in your UI so you will be notified of any changes. Subscriptions can also be &lt;strong&gt;disposed&lt;/strong&gt; of when they are no longer needed.  It looked like I had to manually make these fixes, while they are most often taken care of automatically in the background.&lt;/p&gt;
+
+&lt;p&gt;What was happening was, every time we were making a new copy in the table, a new subscription was being made, and this was taking up space in memory. This is because we were adding new copies to an observable array, not a plain javascript array.&lt;/p&gt;
+
+&lt;p&gt;To fix this, we:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;copied the observable array with all the original data into a new regular javascript array&lt;/li&gt;
+  &lt;li&gt;added the new copies to the regular array&lt;/li&gt;
+  &lt;li&gt;replaced the content of the observable array with the contents of the regular array; this is the stage when the subscription occured&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, we had only one subscription event, rather than a potential 100 or 1000. The speed improved dramatically.&lt;/p&gt;
+
+&lt;p&gt;There are still a number of bugs to work out with this task, but I learned a lot about memory management just from working on these issues.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="debugging" /><category term="memory" /><summary type="html">While working on a particularly difficult task at work I ended up learning a lot about memory leaks.</summary></entry><entry><title type="html">Learning SQL Part 3</title><link href="http://localhost:4000/sql-part-3" rel="alternate" type="text/html" title="Learning SQL Part 3" /><published>2020-07-04T19:30:00-06:00</published><updated>2020-07-04T19:30:00-06:00</updated><id>http://localhost:4000/sql-part-3</id><content type="html" xml:base="http://localhost:4000/sql-part-3">&lt;p&gt;The previous post was getting a little long, so here is the last of the notes from my &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;t=3445s&quot;&gt;freecodecamp course in SQL&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;triggers&quot;&gt;Triggers&lt;/h3&gt;
 
@@ -785,93 +837,4 @@ _ means “one character”&lt;/p&gt;
   &lt;li&gt;commit this file in Sourcetree and push&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;No more 500 error!&lt;/p&gt;</content><author><name></name></author><category term="csharp" /><category term="dotnet" /><summary type="html">Here is what I learned when we got a 500 server error while testing my code at work.</summary></entry><entry><title type="html">Reviewing API calls</title><link href="http://localhost:4000/api-review" rel="alternate" type="text/html" title="Reviewing API calls" /><published>2020-05-18T16:30:00-06:00</published><updated>2020-05-18T16:30:00-06:00</updated><id>http://localhost:4000/api-review</id><content type="html" xml:base="http://localhost:4000/api-review">&lt;p&gt;Today in my Web Developer course I am reviewing how to use APIs.&lt;/p&gt;
-
-&lt;p&gt;This was a topic I really struggled with the first time around while in school.  I just couldn’t wrap my head around it. I think I struggled because javascript was still so new to me, and I could not seem to figure out how to get the data I needed from an API call.&lt;/p&gt;
-
-&lt;p&gt;This time around it’s making a bit more sense, so here are some important points I picked up from the API section of this course, and a little explanation of the process of completing these exercises.&lt;/p&gt;
-
-&lt;p&gt;For this exercise we needed to get the sunset time for Hawaii from a weather API. The course uses the yahoo weather API, but it has since been retired. I decided to use OpenWeather API, which I believe some of my classmates used for their API assignments back in the fall.&lt;/p&gt;
-
-&lt;p&gt;To get started you need to sign up, and an API key will be generated for you. You can generate more API keys as needed. The docs explain how to make an API call. I decided to make my API call using the city ID, and all city IDs can be found in a downloadable JSON file.  I chose Lahaina, Maui.  The format for calling the API by city ID is as follows:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;api.openweathermap.org/data/2.5/weather?id={city id}&amp;amp;appid={your api key}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;As you can see, you plug in the city ID and your API key.  My URL looked like this (note I have included a fake API key for privacy):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;My course used the “request” package to handle requests in Node.js, however that package has since been deprecated. I used it for the exercise because it still works, though for a real project I would try to find something that is currently being updated and maintained.&lt;/p&gt;
-
-&lt;p&gt;To test if you’re receiving data, the code looked like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;However, the data you get back in the console is actually a string. We can prove this by printing “typeof body” to the console. We need to access our data from a javascript object, not a string. All you need to do is use “JSON.parse(body)”:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now, to get my sunset data. To know the structure of the JSON object I made the API request in the browser. In chrome I have an extension called JSON Viewer, which makes the JSON easier to read. This was the part of the JSON data I needed, to know how my sunset time was nested:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sys&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7875&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;country&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;US&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;sunrise&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1590335183&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;sunset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1590382873&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;So I just need to get the data, in this case using the square bracket notation []:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sunset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sys&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sunset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sunset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;However, this just prints a long string of numbers, not a date. Checking the docs I can see that, when using a JSON object, it gives the time in unix format, which is basically the number of seconds that have passed since 00:00:00 UTC on 1 January 1970. The simplest seeming suggestion to parse this format on stack overflow was to use Moment.js.&lt;/p&gt;
-
-&lt;p&gt;Once I figured out how to get an hour:minute format, I printed it to the console. But the time didn’t look right. If I am looking for the sunset in Lahaina, in May, it most likely wouldn’t be 22:58 - nearly 11pm! -  which is what my program told me. When I looked it up, it was in fact 18:59. This four hour difference is actually the time difference between Lahaina and my own timezone, MDT. Somehow I am getting the time that the sun sets in Lahaina, in MDT.  I had to dig in a bit more to find out why this was happening. Is it coming from my API, or from Moment.js?&lt;/p&gt;
-
-&lt;p&gt;I ended up spending a few days away from this exercise, and came back with a fresher mind. After a couple searches I found that you need to include the city’s timezone hardcoded. Stack overflow suggested a method called utcOffset(). Hawaii’s timezone is GMT-10, so I plugged that into the method. You can also see how unix time was handled:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sunsetUnix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sys&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sunset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-        
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sunset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sunsetUnix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;utcOffset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sunset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;HH:mm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Finally, this gave me the correct sunset time.&lt;/p&gt;
-
-&lt;p&gt;I was glad I managed to figure this out, and that it wasn’t as difficult as I was expecting. I was almost ready to just move on with my course not having figured it out. Maybe it wouldn’t have mattered since this timezone issue doesn’t really have much to do with APIs. However, sticking with it until it was solved reminded me of two things:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;the importance of stepping away from the code when you are stuck; it gives your mind a rest and allows your subconscious to continue looking for creative ways to solve the problem&lt;/li&gt;
-  &lt;li&gt;that (at least for my own personal projects) I can solve any problem if I set my mind to it&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="javascript" /><category term="node.js" /><category term="api" /><summary type="html">Today in my Web Developer course I am reviewing how to use APIs.</summary></entry></feed>
+&lt;p&gt;No more 500 error!&lt;/p&gt;</content><author><name></name></author><category term="csharp" /><category term="dotnet" /><summary type="html">Here is what I learned when we got a 500 server error while testing my code at work.</summary></entry></feed>

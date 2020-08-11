@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="https://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/tag/memory/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2020-08-11T15:44:31-06:00</updated>
+  <id>http://localhost:4000/tag/memory/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Julia Hack | </title>
+  
+
+  
+    <subtitle>Web development blog</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Dealing with memory leaks</title>
+      <link href="http://localhost:4000/memoryleaks" rel="alternate" type="text/html" title="Dealing with memory leaks" />
+      <published>2020-08-10T18:30:00-06:00</published>
+      <updated>2020-08-10T18:30:00-06:00</updated>
+      <id>http://localhost:4000/memoryleaks</id>
+      <content type="html" xml:base="http://localhost:4000/memoryleaks">&lt;p&gt;While working on a particularly difficult task at work I ended up learning a lot about memory leaks.&lt;/p&gt;
+
+&lt;p&gt;I am actually still working on this task.  To summarize, I needed to create a button that copies items in a table. We are using the javascript library Knockout.js.&lt;/p&gt;
+
+&lt;p&gt;Knockout.js came out in 2010 before other similar libraries like React had come onto the scene. It was very promising at the time and gained a lot of interest from developers because it was able to observe the UI for changes from the user.&lt;/p&gt;
+
+&lt;p&gt;I am still getting to know Knockout and React, but so far I have found my experience with React to be a more pleasant one. React just makes more sense to me in how the library is used and structured, and it is more optimized for performance.  Knockout, on the other hand, is not fully optimized in this regard and there are very specific, advanced fixes required to solve the problems you may face.&lt;/p&gt;
+
+&lt;p&gt;I am not meaning to bash Knockout, and I am sure there is more for me to learn to improve my experience with it, but I do find it unnecessarily frustrating at times.&lt;/p&gt;
+
+&lt;p&gt;So, back to my specific issue.&lt;/p&gt;
+
+&lt;p&gt;I figured out the original logic for my button early on when I was assigned this task. To be honest even this took me a while; deciphering other peoples’ (uncommented!) code is what proved to be the most challenging aspect at that point in time. It was basically two nested loops - the outer loop determines where in the table the &lt;em&gt;set&lt;/em&gt; of copies will go, and the inner loop inserts the &lt;em&gt;individual&lt;/em&gt; copies into the correct place in the table.  This worked great on small tables, let’s say smaller than 20 items. But once I started using it on tables that contained 100s of items, the browser crashed. It ran out of memory.&lt;/p&gt;
+
+&lt;p&gt;My classmates from my web dev program suggested a while back, for a different task, that I get to know the chrome developer tools. I decided to go more in depth and start learning how to use the performance profiler and the memory tab. I also started doing more research into memory leaks in general and this is what I learned.&lt;/p&gt;
+
+&lt;h3 id=&quot;javascript-memory-management&quot;&gt;Javascript memory management&lt;/h3&gt;
+
+&lt;p&gt;Javascript automatically manages memory, allocating slots of memory when you declare variables.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Garbage collection(GC)&lt;/strong&gt; is automatic memory management, which monitors how memory is being allocated, and reclaims memory that is no longer being used. Javascript uses GC, where other languages like C and C++ do not have this built in. You have to allocate memory manually when using these languages.&lt;/p&gt;
+
+&lt;p&gt;But just because javascript has garbage collection doesn’t mean you will never encounter issues with memory.&lt;/p&gt;
+
+&lt;p&gt;Javascript and GC algorithms keep track of references.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Reference counting: if an object has no other objects referencing it, it is no longer needed. It is sent to the garbage.&lt;/li&gt;
+  &lt;li&gt;Circular references: if you have references referring to each other. They can never be garbage collected. Even if the values are deleted, the references still exist in memory.&lt;/li&gt;
+  &lt;li&gt;Mark and sweep algorithm: instead of looking at which objects are no longer needed, objects that are “no longer reachable” are garbage collected. It starts from the javascript root and works its way outward, finding all the references from there. If something cannot be reached in this case, it is garbage collected.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you look at your memory graph in dev tools, when analyzing performance, you may see a saw-tooth pattern. This can sometimes indicate a memory leak, because the javascript heap keeps increasing.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Heap:&lt;/strong&gt; the pool of memory used to satisfy requests for memory&lt;/p&gt;
+
+&lt;h3 id=&quot;how-my-issue-was-solved&quot;&gt;How my issue was solved&lt;/h3&gt;
+
+&lt;p&gt;I spent a lot of time just learning about memory and was pretty stuck.  Of course, the examples from the dev tools instructions are pretty simple, but the application I’m working on is complex. I sent some of my performance profiles and heap snapshots to one of the senior devs. He said that it looked like too many &lt;em&gt;subscriptions&lt;/em&gt; are being made, and few are being &lt;em&gt;disposed&lt;/em&gt; of.&lt;/p&gt;
+
+&lt;p&gt;In knockout, you can &lt;strong&gt;subscribe&lt;/strong&gt; to elements in your UI so you will be notified of any changes. Subscriptions can also be &lt;strong&gt;disposed&lt;/strong&gt; of when they are no longer needed.  It looked like I had to manually make these fixes, while they are most often taken care of automatically in the background.&lt;/p&gt;
+
+&lt;p&gt;What was happening was, every time we were making a new copy in the table, a new subscription was being made, and this was taking up space in memory. This is because we were adding new copies to an observable array, not a plain javascript array.&lt;/p&gt;
+
+&lt;p&gt;To fix this, we:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;copied the observable array with all the original data into a new regular javascript array&lt;/li&gt;
+  &lt;li&gt;added the new copies to the regular array&lt;/li&gt;
+  &lt;li&gt;replaced the content of the observable array with the contents of the regular array; this is the stage when the subscription occured&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, we had only one subscription event, rather than a potential 100 or 1000. The speed improved dramatically.&lt;/p&gt;
+
+&lt;p&gt;There are still a number of bugs to work out with this task, but I learned a lot about memory management just from working on these issues.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="javascript" />
+      
+        <category term="debugging" />
+      
+        <category term="memory" />
+      
+
+      
+        <summary type="html">While working on a particularly difficult task at work I ended up learning a lot about memory leaks.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
