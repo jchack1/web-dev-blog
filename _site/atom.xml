@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Usability - notes from design course</title>
+        
+          <description>&lt;p&gt;I am back working on my Udemy course, “Master Digital Product Design: UX Research and UI Design”. In this post I will add some notes on usability.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 07 Sep 2020 14:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/usability</link>
+        <guid isPermaLink="true">http://localhost:4000/usability</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Dealing with memory leaks</title>
         
           <description>&lt;p&gt;While working on a particularly difficult task at work I ended up learning a lot about memory leaks.&lt;/p&gt;
