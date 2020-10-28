@@ -1,4 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-09-07T22:42:36-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Usability - notes from design course</title><link href="http://localhost:4000/usability" rel="alternate" type="text/html" title="Usability - notes from design course" /><published>2020-09-07T14:30:00-06:00</published><updated>2020-09-07T14:30:00-06:00</updated><id>http://localhost:4000/usability</id><content type="html" xml:base="http://localhost:4000/usability">&lt;p&gt;I am back working on my Udemy course, “Master Digital Product Design: UX Research and UI Design”. In this post I will add some notes on usability.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-27T22:52:18-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">How to fully delete Visual Studio Code from Windows 10</title><link href="http://localhost:4000/how-to-fully-delete-vscode" rel="alternate" type="text/html" title="How to fully delete Visual Studio Code from Windows 10" /><published>2020-10-27T14:30:00-06:00</published><updated>2020-10-27T14:30:00-06:00</updated><id>http://localhost:4000/how-to-fully-delete-vscode</id><content type="html" xml:base="http://localhost:4000/how-to-fully-delete-vscode">&lt;p&gt;Recently I was messing around in my VS Code settings trying to get some new extensions to work. Long story short, I was following along with a tutorial, clicked a few things I probably shouldn’t have, and suddenly I could not see the settings UI screen.&lt;/p&gt;
+
+&lt;p&gt;I figured it would be best to just uninstall VS Code and start over fresh, so I went to “Add or remove programs” in system settings to uninstall the program. Seemed simple enough, but when I re-installed VS Code, all my extensions were still there, and my settings were still not right.  So VS Code must be saving data elsewhere on the machine and it is not being deleted when the program is uninstalled.&lt;/p&gt;
+
+&lt;p&gt;I spent some time navigating my PC’s files to determine where the program files were kept, but all it really took was a quick Google search to find some helpful answers.&lt;/p&gt;
+
+&lt;p&gt;To be extra sure, as I found myself confused for the first time about the folder stucture of my PC, I went over a couple different pages:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;one on &lt;a href=&quot;https://stackoverflow.com/questions/47689536/uninstall-visual-studio-code-in-windows&quot;&gt;Stack Overflow&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;another on &lt;a href=&quot;https://superuser.com/questions/1380208/how-to-completely-uninstall-visual-studio-code-from-windows-10&quot;&gt;Stack Exchange&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’ll list what I did below. It may be overkill, but when I reinstalled VS Code afterwards I had a clean slate; no more extensions and default settings.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-i-did&quot;&gt;What I did&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Program Files\Microsoft VS Code&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Click &lt;code class=&quot;highlighter-rouge&quot;&gt;unins000.exe&lt;/code&gt; and uninstall VS Code&lt;/li&gt;
+  &lt;li&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;%AppData%\Code&lt;/code&gt; and delete the Code folder&lt;/li&gt;
+  &lt;li&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;%UserProfile%\.vscode&lt;/code&gt; and delete .vscode folder&lt;/li&gt;
+  &lt;li&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;%AppData%\Local\Programs\Microsoft VS Code&lt;/code&gt; and delete this folder&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Basically delete any files having to do with VS Code, and it should get rid of any VS Code data lurking around on your machine.&lt;/p&gt;</content><author><name></name></author><category term="devops" /><summary type="html">Recently I was messing around in my VS Code settings trying to get some new extensions to work. Long story short, I was following along with a tutorial, clicked a few things I probably shouldn’t have, and suddenly I could not see the settings UI screen.</summary></entry><entry><title type="html">Usability - notes from design course</title><link href="http://localhost:4000/usability" rel="alternate" type="text/html" title="Usability - notes from design course" /><published>2020-09-07T14:30:00-06:00</published><updated>2020-09-07T14:30:00-06:00</updated><id>http://localhost:4000/usability</id><content type="html" xml:base="http://localhost:4000/usability">&lt;p&gt;I am back working on my Udemy course, “Master Digital Product Design: UX Research and UI Design”. In this post I will add some notes on usability.&lt;/p&gt;
 
 &lt;p&gt;Usability Heuristics, I have learned, is a way of saying “rule of thumb”.  So these are not usability rules exactly; they are usability suggestions and best practices.&lt;/p&gt;
 
@@ -761,123 +785,4 @@ _ means “one character”&lt;/p&gt;
 
 &lt;p&gt;I don’t think there is a moral to this story. I’ll just use this post in the future as instructions for when I inevitably deal with this error again.&lt;/p&gt;
 
-&lt;p&gt;Yeah, let’s just go with that.&lt;/p&gt;</content><author><name></name></author><category term="version-control" /><summary type="html">I know I shouldn’t feel incompetent every time I struggle with some kind of error or bug; dealing with frustration comes with being a developer, and I chose this. This issue, however, frustrated me more than I care to admit.</summary></entry><entry><title type="html">Learning about databases in Udemy course</title><link href="http://localhost:4000/learning-about-databases" rel="alternate" type="text/html" title="Learning about databases in Udemy course" /><published>2020-05-30T18:30:00-06:00</published><updated>2020-05-30T18:30:00-06:00</updated><id>http://localhost:4000/learning-about-databases</id><content type="html" xml:base="http://localhost:4000/learning-about-databases">&lt;p&gt;I often feel I need to drill this information into my head a few times before I really get it, so here are some more notes with basic definitions surrounding databases.&lt;/p&gt;
-
-&lt;p&gt;These notes are from the database section of my Web Developer Bootcamp Udemy course, and also include some of my own notes about connecting to MongoDB Atlas.&lt;/p&gt;
-
-&lt;h3 id=&quot;database&quot;&gt;Database&lt;/h3&gt;
-
-&lt;p&gt;A collection of information or data that you access using an interface - not just any file with information. An interface here means that you use code to interact with the database.&lt;/p&gt;
-
-&lt;p&gt;For example, SQL is an interface to some databases.&lt;/p&gt;
-
-&lt;h3 id=&quot;relationalsql-vs-non-relationalno-sql-databases&quot;&gt;Relational(SQL) vs. non-relational(No-SQL) databases&lt;/h3&gt;
-
-&lt;p&gt;Relational databases are “tabular” databases and are considered flat. You have to define what your tables look like first, and the relationships between the tables. You define relationships by creating a new table, called a join table. Relational databases are not very flexible if you want to make changes later.&lt;/p&gt;
-
-&lt;p&gt;For non-relational databases you don’t have to define these patterns ahead of time, so they are more flexible. There are no tables. They can have nested data so are therefore not flat.&lt;/p&gt;
-
-&lt;h3 id=&quot;mongodb-and-mongoose&quot;&gt;MongoDB and Mongoose&lt;/h3&gt;
-
-&lt;p&gt;We are using MongoDB in the Udemy course, and we used it in my certificate program as well. That ‘s because it is currently the most popular database to use with Node.js. In class we used MongoDB Atlas, which is a cloud-based system for storing your data with MongoDB. You can also set up MongoDB on your machine and interact with it using the command line. There are many articles on how to set this up, and I didn’t want to go through all those steps since I already have a good system in place with Atlas. You can see the &lt;a href=&quot;https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/&quot;&gt;MongoDB docs&lt;/a&gt; and this &lt;a href=&quot;https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/&quot;&gt;freeCodeCamp article&lt;/a&gt; for set up.&lt;/p&gt;
-
-&lt;p&gt;We are also using the Mongoose library to model our javascript objects. Mongoose uses schemas, like below:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//create your schema&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;campgroundSchema&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//use your schema to model what data a Campground object will include - needs to start with a capital letter &lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Campground&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Campground&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;campgroundSchema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//create a new campground&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Campground&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Granite Hill&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-        &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://i.picsum.photos/id/654/200/300.jpg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;campground&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-                &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Newly created campground&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-                &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;campground&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Even though you are defining name and image in your schema, it is not set in stone; you can modify it later, unlike tables in relational databases.&lt;/p&gt;
-
-&lt;p&gt;The following is what I use to connect to mongoose and my database:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//connecting to mongoose&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DB_CONNECTION&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;useUnifiedTopology&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;useNewUrlParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//define db&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//error handling and letting us know if we are connected to our database&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;error&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Error connecting to mongoose&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;once&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;open&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Connected to the database&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The part with “process.env.DB_CONNECTION” is how I connect to my database in the cloud. In my code I also have a .env file, which is included in my .gitignore and NOT uploaded to github, because it contains confidential information like my username and password.&lt;/p&gt;
-
-&lt;p&gt;Putting your username and password directly in your code is of course very insecure. You need to install “dotenv” in your project, and the content of your .env file may look like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;DB_CONNECTION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mongodb+srv://username:password@cluster0-abc.mongodb.net/mycollection?retryWrites=true&amp;amp;w=majority&quot;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;PORT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;DB_CONNECTION is your connection string. Here, “mycollection” is the name of the collection you are connecting to, and you can see where you include your username and password. Change the collection name for each new project.  Mongo will create the new collection automatically, and you can check that it was made when you log into MongoDB Atlas and go to your collections. PORT was included here as well to define the port we want to use as port 3000.&lt;/p&gt;
-
-&lt;p&gt;Here is an example connection string template from the &lt;a href=&quot;https://docs.mongodb.com/manual/reference/connection-string/&quot;&gt;MongoDB docs&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;useful-commands&quot;&gt;Useful commands&lt;/h3&gt;
-
-&lt;p&gt;Let’s say you have a database called “cat_app” with a collection called “cats”. You can interact with it using these commands in the mongo console.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;help
-//actually prints all the commands you can use&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;show dbs
-//will print names of your databases&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;use cat_app
-//switches you to the cat_app database, prints out a message to confirm&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;show collections
-//prints the collections in cat_app&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;db.cats.find()
-//prints out all the cats in the cats collection
-//can include data inside find() like find({breed: “whatever”}) to filter the data, finding all the cats of a particular breed&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;db.cats.insert({name: “Fluffy”})
-//inserts data into the cats collection&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;db.cats.update()
-//update data of a cat&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;db.cats.remove({breed: “whatever”})
-//remove the cats of a particular breed&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="database" /><category term="node.js" /><category term="mongodb" /><category term="mongoose" /><summary type="html">I often feel I need to drill this information into my head a few times before I really get it, so here are some more notes with basic definitions surrounding databases.</summary></entry></feed>
+&lt;p&gt;Yeah, let’s just go with that.&lt;/p&gt;</content><author><name></name></author><category term="version-control" /><summary type="html">I know I shouldn’t feel incompetent every time I struggle with some kind of error or bug; dealing with frustration comes with being a developer, and I chose this. This issue, however, frustrated me more than I care to admit.</summary></entry></feed>
