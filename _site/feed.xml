@@ -1,4 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-27T22:52:18-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">How to fully delete Visual Studio Code from Windows 10</title><link href="http://localhost:4000/how-to-fully-delete-vscode" rel="alternate" type="text/html" title="How to fully delete Visual Studio Code from Windows 10" /><published>2020-10-27T14:30:00-06:00</published><updated>2020-10-27T14:30:00-06:00</updated><id>http://localhost:4000/how-to-fully-delete-vscode</id><content type="html" xml:base="http://localhost:4000/how-to-fully-delete-vscode">&lt;p&gt;Recently I was messing around in my VS Code settings trying to get some new extensions to work. Long story short, I was following along with a tutorial, clicked a few things I probably shouldn’t have, and suddenly I could not see the settings UI screen.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-29T19:07:26-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">How I configured ESLint and Prettier for React at work</title><link href="http://localhost:4000/eslint-prettier-react" rel="alternate" type="text/html" title="How I configured ESLint and Prettier for React at work " /><published>2020-10-29T17:30:00-06:00</published><updated>2020-10-29T17:30:00-06:00</updated><id>http://localhost:4000/eslint-prettier-react</id><content type="html" xml:base="http://localhost:4000/eslint-prettier-react">&lt;p&gt;At work we are doing some set-up on our projects so we can work better as a team, especially as we grow. It made sense to look into linting and formatting we can use across our projects, so our code is consistent and we don’t have to spend time thinking about correct formatting as we code.&lt;/p&gt;
+
+&lt;p&gt;We decided we wanted to implement ESLint for linting (looking for code quality issues) and Prettier for formatting (code format/style like quotes, tabs, etc). We specifically wanted to add config files to the projects where we can store our settings, so the settings are just there in our project and we don’t have to change too many settings in our code editor.&lt;/p&gt;
+
+&lt;p&gt;For this set-up you need to install the packages locally in your project, and install the extensions directly in your editor updating a couple settings.&lt;/p&gt;
+
+&lt;p&gt;Since we use React I made an example project of how you set up ESLint and Prettier from a brand new React project. The steps I followed are below, as well as some other info, some of which is copied from my work document.&lt;/p&gt;
+
+&lt;h3 id=&quot;steps&quot;&gt;Steps&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create folder for new app and open in VS Code&lt;/li&gt;
+  &lt;li&gt;Open terminal and run command &lt;code class=&quot;highlighter-rouge&quot;&gt;npx create-react-app . &lt;/code&gt; to create app directly in your folder&lt;/li&gt;
+  &lt;li&gt;Go to “Extensions” tab and install “ESLint” and “Prettier - Code formatter” in VS Code&lt;/li&gt;
+  &lt;li&gt;Install packages locally; run this command in the terminal: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Note: ESLint React plugins come pre-installed with create-react-app&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add Prettier config file
+    &lt;ul&gt;
+      &lt;li&gt;“.prettierrc”&lt;/li&gt;
+      &lt;li&gt;Inside the file add a JSON object, your Prettier rules will go here&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add ESLint config file
+    &lt;ul&gt;
+      &lt;li&gt;“.eslintrc.json”&lt;/li&gt;
+      &lt;li&gt;Add empty JSON object&lt;/li&gt;
+      &lt;li&gt;Add “extends” section with the following: &lt;code class=&quot;highlighter-rouge&quot;&gt;“extends”: [“eslint:recommended”, “react-app”]&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;“React-app” extends the React rules that are already included with create-react-app&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Go to File -&amp;gt; Preferences -&amp;gt; Settings ( or Ctrl + , ) to update settings for Prettier extension
+    &lt;ul&gt;
+      &lt;li&gt;Text Editor -&amp;gt; Formatting -&amp;gt; check “Format on Save”&lt;/li&gt;
+      &lt;li&gt;Ensure “Format on Save Mode” is set to “File”&lt;/li&gt;
+      &lt;li&gt;In the search bar search for“default formatter” and in the dropdown select “esbenp.prettier-vscode”
+        &lt;ul&gt;
+          &lt;li&gt;This allows prettier to format all our file types&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;eslint-can-extend-prettier-rules&quot;&gt;ESLint can extend Prettier rules&lt;/h3&gt;
+
+&lt;p&gt;You can set up ESLint to give you warnings when your Prettier options are not being followed. We decided not to go with this for now, because we found that they were quite distracting when working in your editor. However, this is what you would need in your .eslintrc.json file if you wanted that:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;extends&quot;: [&quot;eslint:recommended&quot;, &quot;react-app&quot; / &quot;prettier&quot;], &quot;plugins&quot;: [&quot;prettier&quot;],&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;husky-for-git&quot;&gt;Husky for git&lt;/h3&gt;
+
+&lt;p&gt;We can use Husky to lint our code before we commit our code with git.&lt;/p&gt;
+
+&lt;p&gt;Install Husky with the following command: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i husky --save-dev&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In our package.json, we want to have this in our scripts, so we can run it in the command line:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;scripts&quot;: { &quot;lint&quot;: &quot;eslint .&quot; }&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And include this Husky config as well:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;husky&quot;: { &quot;hooks&quot;: { &quot;pre-push&quot;: &quot;npm run lint&quot; } }&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;links&quot;&gt;Links&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://prettier.io/docs/en/install.html&quot;&gt;Prettier Docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://eslint.org/docs/user-guide/getting-started&quot;&gt;ESLint Docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=bfyI9yl3qfE&quot;&gt;Helpful youtube tutorial&lt;/a&gt; - NOTE I did not follow this exactly, but it helped me to learn how ESLint and Prettier can be set up with create-react-app&lt;/p&gt;</content><author><name></name></author><category term="react" /><category term="devops" /><summary type="html">At work we are doing some set-up on our projects so we can work better as a team, especially as we grow. It made sense to look into linting and formatting we can use across our projects, so our code is consistent and we don’t have to spend time thinking about correct formatting as we code.</summary></entry><entry><title type="html">How to fully delete Visual Studio Code from Windows 10</title><link href="http://localhost:4000/how-to-fully-delete-vscode" rel="alternate" type="text/html" title="How to fully delete Visual Studio Code from Windows 10" /><published>2020-10-27T14:30:00-06:00</published><updated>2020-10-27T14:30:00-06:00</updated><id>http://localhost:4000/how-to-fully-delete-vscode</id><content type="html" xml:base="http://localhost:4000/how-to-fully-delete-vscode">&lt;p&gt;Recently I was messing around in my VS Code settings trying to get some new extensions to work. Long story short, I was following along with a tutorial, clicked a few things I probably shouldn’t have, and suddenly I could not see the settings UI screen.&lt;/p&gt;
 
 &lt;p&gt;I figured it would be best to just uninstall VS Code and start over fresh, so I went to “Add or remove programs” in system settings to uninstall the program. Seemed simple enough, but when I re-installed VS Code, all my extensions were still there, and my settings were still not right.  So VS Code must be saving data elsewhere on the machine and it is not being deleted when the program is uninstalled.&lt;/p&gt;
 
@@ -763,26 +836,4 @@ _ means “one character”&lt;/p&gt;
 
 &lt;p&gt;These were &lt;em&gt;column names&lt;/em&gt; that were related to Table1. I already got rid of the &lt;em&gt;keys&lt;/em&gt; that were related to Table1, but not columns. So I deleted those as well, went back to Visual Studio and tried update-database again.&lt;/p&gt;
 
-&lt;p&gt;This time it worked with no error and I was able to open my application.&lt;/p&gt;</content><author><name></name></author><category term="database" /><category term="sql" /><category term="dotnet" /><category term="migrations" /><summary type="html">There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.</summary></entry><entry><title type="html">When Sourcetree didn’t work - ‘fatal: authentication failed’ error</title><link href="http://localhost:4000/sourcetree-authentication-error" rel="alternate" type="text/html" title="When Sourcetree didn't work - 'fatal: authentication failed' error" /><published>2020-06-05T12:30:00-06:00</published><updated>2020-06-05T12:30:00-06:00</updated><id>http://localhost:4000/sourcetree-authentication-error</id><content type="html" xml:base="http://localhost:4000/sourcetree-authentication-error">&lt;p&gt;I know I shouldn’t feel incompetent every time I struggle with some kind of error or bug; dealing with frustration comes with being a developer, and I chose this. This issue, however, frustrated me more than I care to admit.&lt;/p&gt;
-
-&lt;p&gt;This week I had to change the password on my work PC. Something I believe I have done many times before with no consequences.&lt;/p&gt;
-
-&lt;p&gt;A few days later I wanted to push some code in Sourcetree. Before commiting my changes I needed to do a pull. When I did so, I got the following error:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../assets/images/sourcetree-error.jpg&quot; style=&quot;max-width: 500px;&quot; alt=&quot;sourcetree error message&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;“fatal: Authentication failed for …”, plus a message from git at the top.&lt;/p&gt;
-
-&lt;p&gt;Seeing “authentication” made me think it was probably due to changing my password. I logged into our remote Bitbucket server with the new password. That worked fine. I came back to Sourcetree. Same error occured. I exited and reopened the program. Same error when I try to pull.&lt;/p&gt;
-
-&lt;p&gt;I started asking coworkers and searching online for solutions. There was actually a solution on the &lt;a href=&quot;https://community.atlassian.com/t5/Sourcetree-questions/Getting-quot-fatal-Authentication-failed-for-quot-error/qaq-p/624663&quot;&gt;Atlassian community forum&lt;/a&gt; that involved navigating from C: -&amp;gt; User -&amp;gt; [myusername] -&amp;gt; AppData -&amp;gt; Local -&amp;gt; Atlassian -&amp;gt; Sourcetree and finding the “passwd” file, and deleting it. You should then be prompted to input your updated password. Great!&lt;/p&gt;
-
-&lt;p&gt;I got stuck on “AppData” which was conveniently not showing up in the folder where I was expecting it. I figured this was because I was using a work PC, and I didn’t have this folder, or perhaps lacked proper permissions. I kept looking for other solutions, getting suggestions from coworkers, and nothing worked.&lt;/p&gt;
-
-&lt;p&gt;A coworker also suggested the above solution. Once again I could not find the AppData file.  This time, though, I decided to just search for “passwd” in the search bar for C drive. And the file showed up with the file path shown above. For whatever reason I couldn’t see it in the other view in file explorer.&lt;/p&gt;
-
-&lt;p&gt;I deleted this file and tried to pull again. A modal popped up asking for my new password. This time the pull worked, no errors. Of course it did.&lt;/p&gt;
-
-&lt;p&gt;I don’t think there is a moral to this story. I’ll just use this post in the future as instructions for when I inevitably deal with this error again.&lt;/p&gt;
-
-&lt;p&gt;Yeah, let’s just go with that.&lt;/p&gt;</content><author><name></name></author><category term="version-control" /><summary type="html">I know I shouldn’t feel incompetent every time I struggle with some kind of error or bug; dealing with frustration comes with being a developer, and I chose this. This issue, however, frustrated me more than I care to admit.</summary></entry></feed>
+&lt;p&gt;This time it worked with no error and I was able to open my application.&lt;/p&gt;</content><author><name></name></author><category term="database" /><category term="sql" /><category term="dotnet" /><category term="migrations" /><summary type="html">There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.</summary></entry></feed>

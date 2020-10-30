@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/devops/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/tag/react/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
   <updated>2020-10-29T19:07:26-06:00</updated>
-  <id>http://localhost:4000/tag/devops/feed.xml</id>
+  <id>http://localhost:4000/tag/react/feed.xml</id>
 
   
   
@@ -146,64 +146,6 @@
 
       
         <summary type="html">At work we are doing some set-up on our projects so we can work better as a team, especially as we grow. It made sense to look into linting and formatting we can use across our projects, so our code is consistent and we don’t have to spend time thinking about correct formatting as we code.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">How to fully delete Visual Studio Code from Windows 10</title>
-      <link href="http://localhost:4000/how-to-fully-delete-vscode" rel="alternate" type="text/html" title="How to fully delete Visual Studio Code from Windows 10" />
-      <published>2020-10-27T14:30:00-06:00</published>
-      <updated>2020-10-27T14:30:00-06:00</updated>
-      <id>http://localhost:4000/how-to-fully-delete-vscode</id>
-      <content type="html" xml:base="http://localhost:4000/how-to-fully-delete-vscode">&lt;p&gt;Recently I was messing around in my VS Code settings trying to get some new extensions to work. Long story short, I was following along with a tutorial, clicked a few things I probably shouldn’t have, and suddenly I could not see the settings UI screen.&lt;/p&gt;
-
-&lt;p&gt;I figured it would be best to just uninstall VS Code and start over fresh, so I went to “Add or remove programs” in system settings to uninstall the program. Seemed simple enough, but when I re-installed VS Code, all my extensions were still there, and my settings were still not right.  So VS Code must be saving data elsewhere on the machine and it is not being deleted when the program is uninstalled.&lt;/p&gt;
-
-&lt;p&gt;I spent some time navigating my PC’s files to determine where the program files were kept, but all it really took was a quick Google search to find some helpful answers.&lt;/p&gt;
-
-&lt;p&gt;To be extra sure, as I found myself confused for the first time about the folder stucture of my PC, I went over a couple different pages:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;one on &lt;a href=&quot;https://stackoverflow.com/questions/47689536/uninstall-visual-studio-code-in-windows&quot;&gt;Stack Overflow&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;another on &lt;a href=&quot;https://superuser.com/questions/1380208/how-to-completely-uninstall-visual-studio-code-from-windows-10&quot;&gt;Stack Exchange&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I’ll list what I did below. It may be overkill, but when I reinstalled VS Code afterwards I had a clean slate; no more extensions and default settings.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-i-did&quot;&gt;What I did&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Program Files\Microsoft VS Code&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Click &lt;code class=&quot;highlighter-rouge&quot;&gt;unins000.exe&lt;/code&gt; and uninstall VS Code&lt;/li&gt;
-  &lt;li&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;%AppData%\Code&lt;/code&gt; and delete the Code folder&lt;/li&gt;
-  &lt;li&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;%UserProfile%\.vscode&lt;/code&gt; and delete .vscode folder&lt;/li&gt;
-  &lt;li&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;%AppData%\Local\Programs\Microsoft VS Code&lt;/code&gt; and delete this folder&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Basically delete any files having to do with VS Code, and it should get rid of any VS Code data lurking around on your machine.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="devops" />
-      
-
-      
-        <summary type="html">Recently I was messing around in my VS Code settings trying to get some new extensions to work. Long story short, I was following along with a tutorial, clicked a few things I probably shouldn’t have, and suddenly I could not see the settings UI screen.</summary>
       
 
       
