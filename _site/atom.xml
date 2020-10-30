@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Deploying simple React app with Serverless / AWS </title>
+        
+          <description>&lt;p&gt;I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 29 Oct 2020 18:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/deploy-react-serverless-aws</link>
+        <guid isPermaLink="true">http://localhost:4000/deploy-react-serverless-aws</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>How I configured ESLint and Prettier for React at work </title>
         
           <description>&lt;p&gt;At work we are doing some set-up on our projects so we can work better as a team, especially as we grow. It made sense to look into linting and formatting we can use across our projects, so our code is consistent and we don’t have to spend time thinking about correct formatting as we code.&lt;/p&gt;

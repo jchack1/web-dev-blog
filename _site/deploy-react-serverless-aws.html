@@ -11,7 +11,7 @@
 
 
 
-    <title>A few .NET errors and solutions</title>
+    <title>Deploying simple React app with Serverless / AWS </title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/dotnet-errors-and-solutions" />
+    <link rel="canonical" href="http://localhost:4000/deploy-react-serverless-aws" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="A few .NET errors and solutions" />
-    <meta property="og:description" content="Here are a few errors I received while working on a .NET application, and how I solved them. “Unable to determine composite primary key ordering for type… Use the ColumnAttribute or the HasKey method…” This occured because I tried to assign more than one [Key] in a C# class file," />
-    <meta property="og:url" content="http://localhost:4000/dotnet-errors-and-solutions" />
+    <meta property="og:title" content="Deploying simple React app with Serverless / AWS " />
+    <meta property="og:description" content="I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless. This is assuming you already have an AWS account, and have installed Serverless, the AWS SDK, and set up your AWS credentials on your machine.Simply put, though: To install Serverless" />
+    <meta property="og:url" content="http://localhost:4000/deploy-react-serverless-aws" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-04-02T01:11:00-06:00" />
-    <meta property="article:modified_time" content="2020-04-02T01:11:00-06:00" />
-    <meta property="article:tag" content="Dotnet" />
+    <meta property="article:published_time" content="2020-10-29T18:30:00-06:00" />
+    <meta property="article:modified_time" content="2020-10-29T18:30:00-06:00" />
+    <meta property="article:tag" content="React" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="A few .NET errors and solutions" />
-    <meta name="twitter:description" content="Here are a few errors I received while working on a .NET application, and how I solved them. “Unable to determine composite primary key ordering for type… Use the ColumnAttribute or the HasKey method…” This occured because I tried to assign more than one [Key] in a C# class file," />
+    <meta name="twitter:title" content="Deploying simple React app with Serverless / AWS " />
+    <meta name="twitter:description" content="I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless. This is assuming you already have an AWS account, and have installed Serverless, the AWS SDK, and set up your AWS credentials on your machine.Simply put, though: To install Serverless" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Dotnet" />
+    <meta name="twitter:data2" content="React" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/dotnet-errors-and-solutions",
+    "url": "http://localhost:4000/deploy-react-serverless-aws",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/dotnet-errors-and-solutions"
+        "@id": "http://localhost:4000/deploy-react-serverless-aws"
     },
-    "description": "Here are a few errors I received while working on a .NET application, and how I solved them. “Unable to determine composite primary key ordering for type… Use the ColumnAttribute or the HasKey method…” This occured because I tried to assign more than one [Key] in a C# class file,"
+    "description": "I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless. This is assuming you already have an AWS account, and have installed Serverless, the AWS SDK, and set up your AWS credentials on your machine.Simply put, though: To install Serverless"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="A few .NET errors and solutions" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Deploying simple React app with Serverless / AWS " href="/feed.xml" />
 
 
 </head>
@@ -153,84 +153,128 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 2 April 2020"> 2 April 2020</time>
+                    <time class="post-full-meta-date" datetime="29 October 2020">29 October 2020</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/dotnet/'>DOTNET</a>,
+                               <a href='/tag/react/'>REACT</a>,
                             
                         
                             
-                               <a href='/tag/debugging/'>DEBUGGING</a>,
+                               <a href='/tag/aws/'>AWS</a>,
                             
                         
                             
-                               <a href='/tag/csharp/'>CSHARP</a>,
-                            
-                        
-                            
-                               <a href='/tag/sql/'>SQL</a>
+                               <a href='/tag/serverless/'>SERVERLESS</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">A few .NET errors and solutions</h1>
+                <h1 class="post-full-title">Deploying simple React app with Serverless / AWS </h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>Here are a few errors I received while working on a .NET application, and how I solved them.</p>
+                    <p>I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless.</p>
 
-<h3 id="unable-to-determine-composite-primary-key-ordering-for-type-use-the-columnattribute-or-the-haskey-method">“Unable to determine composite primary key ordering for type… Use the ColumnAttribute or the HasKey method…”</h3>
-<p><br />
-This occured because I tried to assign more than one [Key] in a C# class file, as per below:</p>
+<p>This is assuming you already have an AWS account, and have installed Serverless, the AWS SDK, and set up your AWS credentials on your machine.Simply put, though:</p>
 
-<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">[Key]</span>
-<span class="k">public</span> <span class="kt">int</span> <span class="n">whatever</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-<span class="na">[Key]</span>
-<span class="k">public</span> <span class="kt">int</span> <span class="n">anotherOne</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</code></pre></div></div>
-
-<p>The microsoft docs actually helped me here: <a href="https://docs.microsoft.com/en-ca/ef/ef6/modeling/code-first/data-annotations?redirectedfrom=MSDN#composite-keys">Microsoft docs on data annotation</a></p>
-
-<p>Basically, if you have more than one primary key, you need to give them an order using the column attribute, like below:</p>
-
-<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">[Key]</span>
-<span class="na">[Column(Order=1)]</span>
-<span class="k">public</span> <span class="kt">int</span> <span class="n">whatever</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-<span class="na">[Key]</span>
-<span class="na">[Column(Order=2)]</span>
-<span class="k">public</span> <span class="kt">int</span> <span class="n">anotherOne</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</code></pre></div></div>
-
-<p>Note that the order doesn’t have to start at zero like an index, the order is just relative.</p>
-
-<h3 id="this-operation-requires-a-connection-to-master-database">“This operation requires a connection to master database”</h3>
-<p><br /></p>
-
-<p>There was an issue connecting to my database, and this was fixed by adding “Integrated Security=True;” to the connection string in my Web.config file.  This is what stack overflow suggested you do when you’re connecting to the database with Windows Authentication, rather than a separate username and password.</p>
-
-<h3 id="cannot-insert-null-value-into-column-id">“Cannot insert null value into column id”</h3>
-<p><br /></p>
-
-<p>The application uses a database of students. If you create a new student in the application it should add to the students table in the database. The problem was the student id number wasn’t being assigned.</p>
-
-<p>Back to Stack Overflow. Assuming you want the id to automatically increment, this is what you do.</p>
-
-<p>In SQL Server Management Studio:</p>
 <ul>
-  <li>open table in Design</li>
-  <li>select your column, go to Column Properties</li>
-  <li>check Identity Specification</li>
-  <li>set “IsIdentity” to “yes”</li>
-  <li>set “IdentityIncrement” to “1”, so it increments by 1 each time you add a new student</li>
+  <li>To install Serverless I ran this command: <code class="highlighter-rouge">npm i serverless -g</code></li>
+  <li>To install the AWS SDK I ran this command: <code class="highlighter-rouge">npm i aws-sdk -g</code></li>
+  <li>Once you’ve set up an AWS account you can set up a new user in IAM, and save your credentials on your machine. <a href="https://www.youtube.com/watch?v=w-OHgML58eg&amp;t=1s">This video shows that set-up</a>.</li>
 </ul>
 
+<p>In this case I already had a project made, which I set up using <code class="highlighter-rouge">create-react-app</code>. You can also set up a new serverless app by creating a new folder and running <code class="highlighter-rouge">serverless create --template aws-nodejs</code>. This is assuming you are using Node.js in the backend. There are many different runtimes you can use and templates available. You can also run <code class="highlighter-rouge">create-react-app</code> after creating your serverless template. The order you do this doesn’t seem to matter, as long as you have all the files you need.</p>
+
+<p><a href="https://www.serverless.com/framework/docs/providers/aws/guide/services/">This article from Serverless explains services, and all associated files, very well</a>.</p>
+
+<p>To deploy static pages to an S3 bucket on AWS, I installed serverless-finch in my project using <code class="highlighter-rouge">npm i --save-dev serverless-finch</code>.</p>
+
+<p>When deploying a React app it is important to run the command <code class="highlighter-rouge">npm run build</code>, so you get a build folder in your project directory. This is where all your static files end up including your index.html, which S3 needs to find in order to deploy your site.</p>
+
+<h3 id="inside-the-serverlessyml-file">Inside the serverless.yml file</h3>
+
+<p>Setting up a new serverless app will give you a handler file (in my case, handler.js), a .gitignore, and a serverless.yml file. serverless.yml is where you configure your service. Serverless uses this file to work with AWS to deploy your app.</p>
+
+<p>The following is what I have in my serverless.yml file:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">service</span><span class="pi">:</span> <span class="s">react-practice</span>
+
+<span class="na">provider</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">aws</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">${opt:stage, 'dev'}</span>
+  <span class="na">runtime</span><span class="pi">:</span> <span class="s">nodejs12.x</span>
+  <span class="na">region</span><span class="pi">:</span> <span class="s">us-west-2</span>
+
+<span class="na">functions</span><span class="pi">:</span>
+  <span class="na">hello</span><span class="pi">:</span>
+    <span class="na">handler</span><span class="pi">:</span> <span class="s">handler.hello</span>
+    <span class="c1">#    The following are a few example events you can configure</span>
+    <span class="c1">#    NOTE: Please make sure to change your handler code to work with those events</span>
+    <span class="c1">#    Check the event documentation for details</span>
+    <span class="na">events</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">http</span><span class="pi">:</span>
+          <span class="na">path</span><span class="pi">:</span> <span class="s">hello</span>
+          <span class="na">method</span><span class="pi">:</span> <span class="s">get</span>
+
+<span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">serverless-finch</span>
+
+<span class="na">custom</span><span class="pi">:</span>
+  <span class="na">client</span><span class="pi">:</span>
+    <span class="na">bucketName</span><span class="pi">:</span> <span class="s">julia-practice-react1</span>
+    <span class="na">distributionFolder</span><span class="pi">:</span> <span class="s">/build</span>
+    <span class="na">errorDocument</span><span class="pi">:</span> <span class="s">index.html</span>
+</code></pre></div></div>
+
+<p>“service” essentially means project. It’s where you define all your functions, resources, events, plugins, and so on. Here you give the service a name.</p>
+
+<p>Under “provider” is where you specify that you are using AWS and configure your runtime, region, stage, etc. Stage refers to stage of development which includes development, QA, or production. Here the “dev” stage is default, if you don’t specify a stage when you deploy.</p>
+
+<p>Under each function you can have events. These are events that trigger the function to execute. In this example, and HTTP “get” request is triggering the “hello” function to execute.</p>
+
+<p>If you have a “resources” section, these are the resources that your functions use when they execute. These could include database tables.</p>
+
+<p>Note that under “plugins” I added “serverless-finch”.</p>
+
+<p>Under “custom” and “client” we configure S3.</p>
+
+<p>bucketName the bucket where S3 will place our files. It must be a globally unique name, meaning no one else in the world have have a bucket with this name.</p>
+
+<p>distributionFolder is where S3 should look for our files. For React we use “/build”, since that’s where our index.html is.</p>
+
+<p>S3 also requires you have an errorDocument specified. Since this is just a simple app I didn’t make one and just left it as index.html.</p>
+
+<h4 id="what-serverless-does-with-the-serverlessyml-file">What Serverless does with the serverless.yml file</h4>
+
+<p>Serverless takes the serverless.yml file and translates it into an AWS CloudFormation template.</p>
+
+<p>CloudFormation is an AWS service that allows you to manage all your AWS services/resources. You would write a template describing everything you want, and CloudFormation configures it for you.</p>
+
+<p>This sounds like an improvement over configuring everything yourself in the AWS management console, though these files can still get pretty long and take time to create. That’s where Serverless comes in. Serverless takes your serverless.yml file and creates CloudFormation templates for you.</p>
+
+<p><a href="https://www.serverless.com/framework/docs/providers/aws/guide/deploying/">Here’s an article describing deployment with Serverless</a></p>
+
+<h3 id="deployment">Deployment</h3>
+
+<p>Note: you can set up different commands in the “scripts” section of your package.json file.</p>
+
+<p>For backend stuff, especially for Lambda functions, run <code class="highlighter-rouge">sls deploy --aws-profile={whatever name you set up in your aws credentials file}</code></p>
+
+<p>To deploy the client side, into your S3 bucket, run this command <code class="highlighter-rouge">sls client deploy --aws-profile={whatever name you set up in your aws credentials file}</code></p>
+
+<p>Your screen should look something like this if successful. You will see a link you can go to and view the site.
+<img src="../assets/images/sls-cli.jpg" style="max-width: 500px;" alt="serverless cli successful" /></p>
+
+<h3 id="errors">Errors</h3>
+
+<p>I got an error reading “Serverless Error: Access Denied”. This seemed strange because I never got this error for the backend deploy, so I thought it must have to do with S3. I fixed this by making my bucket public, but I don’t think this is very secure so I need to look into this further.</p>
+
+<p>Another error said that I was not in the correct region. This was because my bucket and my serverless.yml file “region” did not match. I just had to quickly update my .yml file and there error was solved. I could now see my site.</p>
 
                 </div>
             </section>
@@ -286,7 +330,7 @@ This occured because I tried to assign more than one [Key] in a C# class file, a
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/dotnet/">Dotnet</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/react/">React</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
@@ -296,58 +340,14 @@ This occured because I tried to assign more than one [Key] in a C# class file, a
                                 
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
+                                    
                                   
                                 
                                   
                                     
                                         
                                         
-                                            <li><a href="/database-error">'There is already an object named ___ in the database' and 'Column names in each table must be unique'</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/errors-csproj">500 server error and the csproj file</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/deleting-my-database">Last ditch effort – I deleted my database</a></li>
+                                            <li><a href="/eslint-prettier-react">How I configured ESLint and Prettier for React at work </a></li>
                                         
                                     
                                   
@@ -361,35 +361,45 @@ This occured because I tried to assign more than one [Key] in a C# class file, a
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -397,9 +407,9 @@ This occured because I tried to assign more than one [Key] in a C# class file, a
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/dotnet/">
+                            <a href="/tag/react/">
                                 
-                                    See all 7 posts  →
+                                    See all 1 posts  →
                                 
                             </a>
                         </footer>
@@ -409,64 +419,6 @@ This occured because I tried to assign more than one [Key] in a C# class file, a
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/importance-of-hard-refresh">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Dotnet</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Javascript</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Debugging</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">The importance of a hard refresh</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -475,33 +427,21 @@ This occured because I tried to assign more than one [Key] in a C# class file, a
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/entityframework">
+            <a class="post-card-content-link" href="/eslint-prettier-react">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Dotnet</span>
+                               <span class="post-card-tags">React</span>
                             
                         
                             
-                               <span class="post-card-tags">Mvc</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Database</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Migrations</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Entityframework</span>
+                                <span class="post-card-tags">Devops</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">Entity Framework, workflows, databases, and migrations</h2>
+                    <h2 class="post-card-title">How I configured ESLint and Prettier for React at work </h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -552,18 +492,18 @@ This occured because I tried to assign more than one [Key] in a C# class file, a
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">A few .NET errors and solutions</div>
+    <div class="floating-header-title">Deploying simple React app with Serverless / AWS </div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=A+few+.NET+errors+and+solutions&amp;url=dotnet-errors-and-solutions"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Deploying+simple+React+app+with+Serverless+%2F+AWS+&amp;url=deploy-react-serverless-aws"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=dotnet-errors-and-solutions"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=deploy-react-serverless-aws"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 

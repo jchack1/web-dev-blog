@@ -1,4 +1,100 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-29T19:07:26-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">How I configured ESLint and Prettier for React at work</title><link href="http://localhost:4000/eslint-prettier-react" rel="alternate" type="text/html" title="How I configured ESLint and Prettier for React at work " /><published>2020-10-29T17:30:00-06:00</published><updated>2020-10-29T17:30:00-06:00</updated><id>http://localhost:4000/eslint-prettier-react</id><content type="html" xml:base="http://localhost:4000/eslint-prettier-react">&lt;p&gt;At work we are doing some set-up on our projects so we can work better as a team, especially as we grow. It made sense to look into linting and formatting we can use across our projects, so our code is consistent and we don’t have to spend time thinking about correct formatting as we code.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-30T15:12:40-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Deploying simple React app with Serverless / AWS</title><link href="http://localhost:4000/deploy-react-serverless-aws" rel="alternate" type="text/html" title="Deploying simple React app with Serverless / AWS " /><published>2020-10-29T18:30:00-06:00</published><updated>2020-10-29T18:30:00-06:00</updated><id>http://localhost:4000/deploy-react-serverless-aws</id><content type="html" xml:base="http://localhost:4000/deploy-react-serverless-aws">&lt;p&gt;I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless.&lt;/p&gt;
+
+&lt;p&gt;This is assuming you already have an AWS account, and have installed Serverless, the AWS SDK, and set up your AWS credentials on your machine.Simply put, though:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To install Serverless I ran this command: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i serverless -g&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;To install the AWS SDK I ran this command: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i aws-sdk -g&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Once you’ve set up an AWS account you can set up a new user in IAM, and save your credentials on your machine. &lt;a href=&quot;https://www.youtube.com/watch?v=w-OHgML58eg&amp;amp;t=1s&quot;&gt;This video shows that set-up&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this case I already had a project made, which I set up using &lt;code class=&quot;highlighter-rouge&quot;&gt;create-react-app&lt;/code&gt;. You can also set up a new serverless app by creating a new folder and running &lt;code class=&quot;highlighter-rouge&quot;&gt;serverless create --template aws-nodejs&lt;/code&gt;. This is assuming you are using Node.js in the backend. There are many different runtimes you can use and templates available. You can also run &lt;code class=&quot;highlighter-rouge&quot;&gt;create-react-app&lt;/code&gt; after creating your serverless template. The order you do this doesn’t seem to matter, as long as you have all the files you need.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.serverless.com/framework/docs/providers/aws/guide/services/&quot;&gt;This article from Serverless explains services, and all associated files, very well&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To deploy static pages to an S3 bucket on AWS, I installed serverless-finch in my project using &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i --save-dev serverless-finch&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;When deploying a React app it is important to run the command &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run build&lt;/code&gt;, so you get a build folder in your project directory. This is where all your static files end up including your index.html, which S3 needs to find in order to deploy your site.&lt;/p&gt;
+
+&lt;h3 id=&quot;inside-the-serverlessyml-file&quot;&gt;Inside the serverless.yml file&lt;/h3&gt;
+
+&lt;p&gt;Setting up a new serverless app will give you a handler file (in my case, handler.js), a .gitignore, and a serverless.yml file. serverless.yml is where you configure your service. Serverless uses this file to work with AWS to deploy your app.&lt;/p&gt;
+
+&lt;p&gt;The following is what I have in my serverless.yml file:&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;react-practice&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;provider&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;aws&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${opt:stage, 'dev'}&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;runtime&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;nodejs12.x&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;region&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;us-west-2&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;functions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;handler.hello&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;#    The following are a few example events you can configure&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;#    NOTE: Please make sure to change your handler code to work with those events&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;#    Check the event documentation for details&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;hello&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;get&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;serverless-finch&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;custom&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;bucketName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;julia-practice-react1&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;distributionFolder&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/build&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;errorDocument&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;index.html&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;“service” essentially means project. It’s where you define all your functions, resources, events, plugins, and so on. Here you give the service a name.&lt;/p&gt;
+
+&lt;p&gt;Under “provider” is where you specify that you are using AWS and configure your runtime, region, stage, etc. Stage refers to stage of development which includes development, QA, or production. Here the “dev” stage is default, if you don’t specify a stage when you deploy.&lt;/p&gt;
+
+&lt;p&gt;Under each function you can have events. These are events that trigger the function to execute. In this example, and HTTP “get” request is triggering the “hello” function to execute.&lt;/p&gt;
+
+&lt;p&gt;If you have a “resources” section, these are the resources that your functions use when they execute. These could include database tables.&lt;/p&gt;
+
+&lt;p&gt;Note that under “plugins” I added “serverless-finch”.&lt;/p&gt;
+
+&lt;p&gt;Under “custom” and “client” we configure S3.&lt;/p&gt;
+
+&lt;p&gt;bucketName the bucket where S3 will place our files. It must be a globally unique name, meaning no one else in the world have have a bucket with this name.&lt;/p&gt;
+
+&lt;p&gt;distributionFolder is where S3 should look for our files. For React we use “/build”, since that’s where our index.html is.&lt;/p&gt;
+
+&lt;p&gt;S3 also requires you have an errorDocument specified. Since this is just a simple app I didn’t make one and just left it as index.html.&lt;/p&gt;
+
+&lt;h4 id=&quot;what-serverless-does-with-the-serverlessyml-file&quot;&gt;What Serverless does with the serverless.yml file&lt;/h4&gt;
+
+&lt;p&gt;Serverless takes the serverless.yml file and translates it into an AWS CloudFormation template.&lt;/p&gt;
+
+&lt;p&gt;CloudFormation is an AWS service that allows you to manage all your AWS services/resources. You would write a template describing everything you want, and CloudFormation configures it for you.&lt;/p&gt;
+
+&lt;p&gt;This sounds like an improvement over configuring everything yourself in the AWS management console, though these files can still get pretty long and take time to create. That’s where Serverless comes in. Serverless takes your serverless.yml file and creates CloudFormation templates for you.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.serverless.com/framework/docs/providers/aws/guide/deploying/&quot;&gt;Here’s an article describing deployment with Serverless&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;deployment&quot;&gt;Deployment&lt;/h3&gt;
+
+&lt;p&gt;Note: you can set up different commands in the “scripts” section of your package.json file.&lt;/p&gt;
+
+&lt;p&gt;For backend stuff, especially for Lambda functions, run &lt;code class=&quot;highlighter-rouge&quot;&gt;sls deploy --aws-profile={whatever name you set up in your aws credentials file}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To deploy the client side, into your S3 bucket, run this command &lt;code class=&quot;highlighter-rouge&quot;&gt;sls client deploy --aws-profile={whatever name you set up in your aws credentials file}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Your screen should look something like this if successful. You will see a link you can go to and view the site.
+&lt;img src=&quot;../assets/images/sls-cli.jpg&quot; style=&quot;max-width: 500px;&quot; alt=&quot;serverless cli successful&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;errors&quot;&gt;Errors&lt;/h3&gt;
+
+&lt;p&gt;I got an error reading “Serverless Error: Access Denied”. This seemed strange because I never got this error for the backend deploy, so I thought it must have to do with S3. I fixed this by making my bucket public, but I don’t think this is very secure so I need to look into this further.&lt;/p&gt;
+
+&lt;p&gt;Another error said that I was not in the correct region. This was because my bucket and my serverless.yml file “region” did not match. I just had to quickly update my .yml file and there error was solved. I could now see my site.&lt;/p&gt;</content><author><name></name></author><category term="react" /><category term="aws" /><category term="serverless" /><summary type="html">I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless.</summary></entry><entry><title type="html">How I configured ESLint and Prettier for React at work</title><link href="http://localhost:4000/eslint-prettier-react" rel="alternate" type="text/html" title="How I configured ESLint and Prettier for React at work " /><published>2020-10-29T17:30:00-06:00</published><updated>2020-10-29T17:30:00-06:00</updated><id>http://localhost:4000/eslint-prettier-react</id><content type="html" xml:base="http://localhost:4000/eslint-prettier-react">&lt;p&gt;At work we are doing some set-up on our projects so we can work better as a team, especially as we grow. It made sense to look into linting and formatting we can use across our projects, so our code is consistent and we don’t have to spend time thinking about correct formatting as we code.&lt;/p&gt;
 
 &lt;p&gt;We decided we wanted to implement ESLint for linting (looking for code quality issues) and Prettier for formatting (code format/style like quotes, tabs, etc). We specifically wanted to add config files to the projects where we can store our settings, so the settings are just there in our project and we don’t have to change too many settings in our code editor.&lt;/p&gt;
 
@@ -788,52 +884,4 @@ _ means “one character”&lt;/p&gt;
   &lt;li&gt;login&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Now you are at your site’s admin dashboard.&lt;/p&gt;</content><author><name></name></author><category term="wordpress" /><summary type="html">We learned WordPress in school briefly as part of our CMS course. I could possibly get to work on some small freelance WordPress projects in the near future so I am relearning WordPress again with the site builder Oxygen.</summary></entry><entry><title type="html">‘There is already an object named ___ in the database’ and ‘Column names in each table must be unique’</title><link href="http://localhost:4000/database-error" rel="alternate" type="text/html" title="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" /><published>2020-06-08T12:30:00-06:00</published><updated>2020-06-08T12:30:00-06:00</updated><id>http://localhost:4000/database-error</id><content type="html" xml:base="http://localhost:4000/database-error">&lt;p&gt;There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.&lt;/p&gt;
-
-&lt;p&gt;I’ll do my best to explain without using any data/table names/etc from my work application.&lt;/p&gt;
-
-&lt;p&gt;In package-manager console in Visual Studio I ran “update-database”, and received the following error when it tried to run the migrations on my database:&lt;/p&gt;
-
-&lt;h4 id=&quot;there-is-already-an-object-named-___-in-the-database&quot;&gt;“There is already an object named ___ in the database”&lt;/h4&gt;
-
-&lt;p&gt;Right away this time I asked a coworker if she also had that error. She told me I should drop the above-mentioned table, which I will refer to as Table1, and gave me more instructions. I will outline the process below.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;opened SQL Server Management Studio&lt;/li&gt;
-  &lt;li&gt;Databases&lt;/li&gt;
-  &lt;li&gt;*mydatabasename&lt;/li&gt;
-  &lt;li&gt;Tables&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;There was another important related table, which I’ll call Table2. In here I had to go to the Keys section and delete all the keys related to Table1.&lt;/p&gt;
-
-&lt;p&gt;Then,&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;go back to Table1&lt;/li&gt;
-  &lt;li&gt;right click&lt;/li&gt;
-  &lt;li&gt;Script table as&lt;/li&gt;
-  &lt;li&gt;DELETE to&lt;/li&gt;
-  &lt;li&gt;New query window&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In the new query window I deleted the line that said,&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;WHERE &amp;lt;Search Conditions&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;then executed the query. This deletes the contents. You need to do this BEFORE you drop the table.&lt;/p&gt;
-
-&lt;p&gt;Dropping the table:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;right click Table1 again&lt;/li&gt;
-  &lt;li&gt;Script table as&lt;/li&gt;
-  &lt;li&gt;DROP to&lt;/li&gt;
-  &lt;li&gt;New query window&lt;/li&gt;
-  &lt;li&gt;execute this query, which drops Table1&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I went to update database again, but I got a new error:&lt;/p&gt;
-
-&lt;h4 id=&quot;column-names-in-each-table-must-be-unique-column-name-___-in-table2-is-specified-more-than-once&quot;&gt;“Column names in each table must be unique. Column name ___ in Table2 is specified more than once”&lt;/h4&gt;
-
-&lt;p&gt;These were &lt;em&gt;column names&lt;/em&gt; that were related to Table1. I already got rid of the &lt;em&gt;keys&lt;/em&gt; that were related to Table1, but not columns. So I deleted those as well, went back to Visual Studio and tried update-database again.&lt;/p&gt;
-
-&lt;p&gt;This time it worked with no error and I was able to open my application.&lt;/p&gt;</content><author><name></name></author><category term="database" /><category term="sql" /><category term="dotnet" /><category term="migrations" /><summary type="html">There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.</summary></entry></feed>
+&lt;p&gt;Now you are at your site’s admin dashboard.&lt;/p&gt;</content><author><name></name></author><category term="wordpress" /><summary type="html">We learned WordPress in school briefly as part of our CMS course. I could possibly get to work on some small freelance WordPress projects in the near future so I am relearning WordPress again with the site builder Oxygen.</summary></entry></feed>

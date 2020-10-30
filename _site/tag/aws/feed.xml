@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/react/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/tag/aws/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
   <updated>2020-10-30T15:12:40-06:00</updated>
-  <id>http://localhost:4000/tag/react/feed.xml</id>
+  <id>http://localhost:4000/tag/aws/feed.xml</id>
 
   
   
@@ -171,115 +171,6 @@
 
       
         <summary type="html">I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">How I configured ESLint and Prettier for React at work</title>
-      <link href="http://localhost:4000/eslint-prettier-react" rel="alternate" type="text/html" title="How I configured ESLint and Prettier for React at work " />
-      <published>2020-10-29T17:30:00-06:00</published>
-      <updated>2020-10-29T17:30:00-06:00</updated>
-      <id>http://localhost:4000/eslint-prettier-react</id>
-      <content type="html" xml:base="http://localhost:4000/eslint-prettier-react">&lt;p&gt;At work we are doing some set-up on our projects so we can work better as a team, especially as we grow. It made sense to look into linting and formatting we can use across our projects, so our code is consistent and we don’t have to spend time thinking about correct formatting as we code.&lt;/p&gt;
-
-&lt;p&gt;We decided we wanted to implement ESLint for linting (looking for code quality issues) and Prettier for formatting (code format/style like quotes, tabs, etc). We specifically wanted to add config files to the projects where we can store our settings, so the settings are just there in our project and we don’t have to change too many settings in our code editor.&lt;/p&gt;
-
-&lt;p&gt;For this set-up you need to install the packages locally in your project, and install the extensions directly in your editor updating a couple settings.&lt;/p&gt;
-
-&lt;p&gt;Since we use React I made an example project of how you set up ESLint and Prettier from a brand new React project. The steps I followed are below, as well as some other info, some of which is copied from my work document.&lt;/p&gt;
-
-&lt;h3 id=&quot;steps&quot;&gt;Steps&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Create folder for new app and open in VS Code&lt;/li&gt;
-  &lt;li&gt;Open terminal and run command &lt;code class=&quot;highlighter-rouge&quot;&gt;npx create-react-app . &lt;/code&gt; to create app directly in your folder&lt;/li&gt;
-  &lt;li&gt;Go to “Extensions” tab and install “ESLint” and “Prettier - Code formatter” in VS Code&lt;/li&gt;
-  &lt;li&gt;Install packages locally; run this command in the terminal: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;Note: ESLint React plugins come pre-installed with create-react-app&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Add Prettier config file
-    &lt;ul&gt;
-      &lt;li&gt;“.prettierrc”&lt;/li&gt;
-      &lt;li&gt;Inside the file add a JSON object, your Prettier rules will go here&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Add ESLint config file
-    &lt;ul&gt;
-      &lt;li&gt;“.eslintrc.json”&lt;/li&gt;
-      &lt;li&gt;Add empty JSON object&lt;/li&gt;
-      &lt;li&gt;Add “extends” section with the following: &lt;code class=&quot;highlighter-rouge&quot;&gt;“extends”: [“eslint:recommended”, “react-app”]&lt;/code&gt;
-        &lt;ul&gt;
-          &lt;li&gt;“React-app” extends the React rules that are already included with create-react-app&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Go to File -&amp;gt; Preferences -&amp;gt; Settings ( or Ctrl + , ) to update settings for Prettier extension
-    &lt;ul&gt;
-      &lt;li&gt;Text Editor -&amp;gt; Formatting -&amp;gt; check “Format on Save”&lt;/li&gt;
-      &lt;li&gt;Ensure “Format on Save Mode” is set to “File”&lt;/li&gt;
-      &lt;li&gt;In the search bar search for“default formatter” and in the dropdown select “esbenp.prettier-vscode”
-        &lt;ul&gt;
-          &lt;li&gt;This allows prettier to format all our file types&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;eslint-can-extend-prettier-rules&quot;&gt;ESLint can extend Prettier rules&lt;/h3&gt;
-
-&lt;p&gt;You can set up ESLint to give you warnings when your Prettier options are not being followed. We decided not to go with this for now, because we found that they were quite distracting when working in your editor. However, this is what you would need in your .eslintrc.json file if you wanted that:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;extends&quot;: [&quot;eslint:recommended&quot;, &quot;react-app&quot; / &quot;prettier&quot;], &quot;plugins&quot;: [&quot;prettier&quot;],&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;husky-for-git&quot;&gt;Husky for git&lt;/h3&gt;
-
-&lt;p&gt;We can use Husky to lint our code before we commit our code with git.&lt;/p&gt;
-
-&lt;p&gt;Install Husky with the following command: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i husky --save-dev&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;In our package.json, we want to have this in our scripts, so we can run it in the command line:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;scripts&quot;: { &quot;lint&quot;: &quot;eslint .&quot; }&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;And include this Husky config as well:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;husky&quot;: { &quot;hooks&quot;: { &quot;pre-push&quot;: &quot;npm run lint&quot; } }&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;links&quot;&gt;Links&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://prettier.io/docs/en/install.html&quot;&gt;Prettier Docs&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://eslint.org/docs/user-guide/getting-started&quot;&gt;ESLint Docs&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=bfyI9yl3qfE&quot;&gt;Helpful youtube tutorial&lt;/a&gt; - NOTE I did not follow this exactly, but it helped me to learn how ESLint and Prettier can be set up with create-react-app&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="react" />
-      
-        <category term="devops" />
-      
-
-      
-        <summary type="html">At work we are doing some set-up on our projects so we can work better as a team, especially as we grow. It made sense to look into linting and formatting we can use across our projects, so our code is consistent and we don’t have to spend time thinking about correct formatting as we code.</summary>
       
 
       
