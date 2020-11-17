@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/react/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2020-11-16T21:02:03-07:00</updated>
+  <updated>2020-11-17T12:41:06-07:00</updated>
   <id>http://localhost:4000/tag/react/feed.xml</id>
 
   
@@ -51,25 +51,25 @@
       <id>http://localhost:4000/react-nodejs-app</id>
       <content type="html" xml:base="http://localhost:4000/react-nodejs-app">&lt;p&gt;When I was in school we learned about fetching data from external APIs. At the time I found a news API where you could filter articles based on topic. Since I previously went to university and earned a science degree I thought it would be great to make an app for myself that gives me the latest science articles.&lt;/p&gt;
 
-&lt;p&gt;I had genuinely wanted to keep up with what was going on in science. Once I ordered real physical magazines from the Nature journal hoping that would help me keep up. I fell hopelessly behind as each week they sent a journal packed with primary science research articles. Even after spending four years reading these types of in-depth research articles, they often took me a long time to get through due to the detailed technical language.&lt;/p&gt;
+&lt;p&gt;I had genuinely wanted to keep up with what was going on in science. After I graduated I had a subscription to the journal Nature hoping that would help me keep up. I fell hopelessly behind as each week they sent a journal packed with primary science research articles. Even after spending four years reading these types of in-depth research articles, they often took me a long time to get through due to the detailed technical language.&lt;/p&gt;
 
-&lt;p&gt;I figured an app would be easier. I finally got around to making it a year after finding the news API. Since I am learning React I thought this would be a great opportunity to practice my React skills.&lt;/p&gt;
+&lt;p&gt;I figured an app would be easier. I finally got around to making it a year after finding the news API. Since I am learning React I thought this would be a good opportunity to practice my React skills.&lt;/p&gt;
 
 &lt;h3 id=&quot;what-i-actually-did&quot;&gt;What I actually did&lt;/h3&gt;
 
-&lt;p&gt;I specifically searched for tutorials on how to fetch API data with React. I modelled what I did after &lt;a href=&quot;https://www.youtube.com/watch?v=YaioUnMw0mo&quot;&gt;this video by Brad Traversy&lt;/a&gt;. I also went back to previous React projects/tutorials I followed as a reference. Since I wanted to get data onto cards in a React front end this was perfect.&lt;/p&gt;
+&lt;p&gt;I specifically searched for tutorials on how to fetch API data with React. I modelled what I did after &lt;a href=&quot;https://www.youtube.com/watch?v=YaioUnMw0mo&quot;&gt;this video by Brad Traversy&lt;/a&gt;, and I also went back to previous React projects/tutorials I followed as a reference. Since I wanted to get data onto cards in a React front end this was perfect.&lt;/p&gt;
 
-&lt;p&gt;I created the front end with my card structure and set up React Router to have another page in my app.&lt;/p&gt;
+&lt;p&gt;I created the front end with my card structure and set up React Router so I could navigate between pages in my app.&lt;/p&gt;
 
 &lt;h4 id=&quot;nodejsexpress-backend&quot;&gt;Node.js/Express backend&lt;/h4&gt;
 
 &lt;p&gt;I realized that I needed to hide my API key somewhere. Even though this is a low stakes project and no one was likely going to hack my app, I wanted to do it right. First I put my key in a .env file in the front-end.&lt;/p&gt;
 
-&lt;p&gt;After some searching on StackOverflow I learned that the key is still visible in the Network tab under Chrome dev tools. And I checked - it was very easy to find. At this point I decided to create a Node.js backend to keep my key safe. I needed to do this anyway to deploy my app later on.&lt;/p&gt;
+&lt;p&gt;After reading some posts on StackOverflow I learned that the key is still visible in the Network tab under Chrome dev tools. And I checked - it was very easy to find. At this point I decided to create a Node.js backend to keep my key safe. I needed to do this anyway to deploy my app to Heroku later on.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=kJA9rDX7azM&quot;&gt;This was a very helpful tutorial&lt;/a&gt; that taught me how to make a very simple back-end and connection to React front-end.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/jchack1/react-science-news-public/blob/main/server.js&quot;&gt;You can see the code on github&lt;/a&gt;, but to summarize: “request” package was used to actually make the request to the news API. I had to parse the json data to get to my “articles” array. I made a route called “/getArticles” that would be called by axios in the front end.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jchack1/react-science-news-public/blob/main/server.js&quot;&gt;You can see the my server.js code on github&lt;/a&gt;, but to summarize: the “request” npm package was used to actually make the request to the news API. I had to parse the json data to get to my “articles” array. I made a route called “/getArticles” that would be called by Axios in the front end.&lt;/p&gt;
 
 &lt;p&gt;Get route:&lt;/p&gt;
 
@@ -112,22 +112,24 @@
 &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;There is probably a cleaner way to do the above call with Axios, but if I didn’t do it this way, there would be too many calls to the news API and I would use up my daily limit in a matter of minutes.&lt;/p&gt;
+&lt;p&gt;There is probably a cleaner way to do the above Axios request, but if I didn’t do it this way, there would be too many calls to the news API and I would use up my daily limit in a matter of minutes. This code came from an old tutorial I followed to call data from a Pokemon API.&lt;/p&gt;
 
-&lt;h4 id=&quot;using-a-proxy-during-development&quot;&gt;Using a proxy during development&lt;/h4&gt;
+&lt;h4 id=&quot;using-a-proxy-in-packagejson-during-development&quot;&gt;Using a proxy in package.json during development&lt;/h4&gt;
 
-&lt;p&gt;The video I linked above goes over this, but when you are working on your local machine you will have React and Node running at the same time. In the package.json you can add this line:&lt;/p&gt;
+&lt;p&gt;The video I linked above goes over this, but when you are working on your local machine you will have React and Node running at the same time. In the package.json you can add a line like this (port number can be any unused port):&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;proxy&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://localhost:5000&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;And set your port to 5000 in your server.js and/or .env file. React by default starts on port 3000, so you will be able to run both projects at once while developing.&lt;/p&gt;
 
-&lt;p&gt;I kept this when I deployed but ended up removing it. I had several bugs. It’s possible that Heroku ignores this during deployment, but I decided to put both projects back to port 3000 just in case this was causing problems for me.&lt;/p&gt;
+&lt;p&gt;I originally kept this in my package.json when I deployed, but removed it later on. I had several bugs once I deployed and the ports may or may not be related. It’s possible that Heroku ignores this during deployment, but I decided to put both projects back to port 3000 just in case this was causing problems for me.&lt;/p&gt;
+
+&lt;p&gt;It should also be noted that when you add your proxy into your package.json, you must restart your projects for it to take effect.&lt;/p&gt;
 
 &lt;h4 id=&quot;scripts-in-packagejson&quot;&gt;Scripts in package.json&lt;/h4&gt;
 
-&lt;p&gt;I had to pay special attention to my scripts, so I could start my server and my React app separately during development. I used the below scripts in package.json:&lt;/p&gt;
+&lt;p&gt;I had to pay special attention to my scripts so I could start my server and my React app separately during development. I used the below scripts in package.json:&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;start&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;node server.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -138,17 +140,17 @@
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;I kept “start” related to the server. When deploying, Heroku looks for your start script to start your Node.js server. I made a special “react-start” script which I ran with “npm run react-start”.&lt;/p&gt;
+&lt;p&gt;I kept the “start” script related to the server. When deploying, Heroku looks for your start script to start your Node.js server. I made a special “react-start” script which I ran with “npm run react-start”.&lt;/p&gt;
 
 &lt;h3 id=&quot;other-issues&quot;&gt;Other issues&lt;/h3&gt;
 
-&lt;p&gt;The .env file was very problematic. I used this in the backend to hide my API key from being public on github. This worked fine when running locally, but the “/getArticles” route would not work once deployed on Heroku. I made a last ditch effort to get it to work and added my API directly into the url in my server.js file. I was shocked when it worked.&lt;/p&gt;
+&lt;p&gt;The .env file was very problematic. I used this in the backend to hide my API key from being public on github. This worked fine when running locally, but the “/getArticles” route would not work once deployed on Heroku. I made a last ditch effort to get it to work and added my API key directly into the url in my server.js file. I was shocked when it worked.&lt;/p&gt;
 
-&lt;p&gt;I need to look into this more, but it seems like there is an issue using .env files when deploying with Heroku, or perhaps deployment in general. At least this solved my problem of the API key being revealed in the Network tab, but I can’t upload my exact server.js file to github. Until I figure out a better way, my server.js file on github is modified so the API is not shown.&lt;/p&gt;
+&lt;p&gt;I need to look into this more, but it seems like there is an issue using .env files when deploying with Heroku, or perhaps deployment in general. At least this solved my problem of the API key being revealed in the Network tab, but I can’t upload my exact server.js file to github. Until I figure out a better way, my server.js file on github is modified so the API key is not shown.&lt;/p&gt;
 
-&lt;p&gt;Also, the original news API I had decided to use - which gave me the idea for this project in the first place - changed their rules earlier in 2020 so you cannot get data if it is being called from anything other than localhost. And the free API keys expire after a month. It is just meant for developers to test out the API before paying for it, which I believe is a cost of about $400 per month.&lt;/p&gt;
+&lt;p&gt;Also, the original news API I had decided to use - NewsAPI.org, which gave me the idea for this project in the first place - changed their rules for the free developer plan earlier in 2020. You cannot get data if the API is being called from anything other than localhost (so it doesn’t work when deployed), and the API keys expire after one month. It is just meant for developers to test out the API before paying for it, which I believe is a cost of about $400 per month.&lt;/p&gt;
 
-&lt;p&gt;I had already spent a long time building this project using this API and was very disappointed when I deployed and found this out. Thankfully I found gnews.io, which I fit into my new app with very little extra work.&lt;/p&gt;
+&lt;p&gt;I had already spent a long time building the project using this API and was very disappointed when I deployed and found this out. Thankfully I found GNews.io, which I fit into my app with very little extra work. If I’m being honest, I think I actually like it better than NewsAPI.org. The data seems cleaner and there are not as many articles missing images. This data looks better on my cards so I think it worked out for the best.&lt;/p&gt;
 
 &lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
 
