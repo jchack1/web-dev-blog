@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-17T12:41:06-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Making a React/Node.js app</title><link href="http://localhost:4000/react-nodejs-app" rel="alternate" type="text/html" title="Making a React/Node.js app" /><published>2020-11-16T18:30:00-07:00</published><updated>2020-11-16T18:30:00-07:00</updated><id>http://localhost:4000/react-nodejs-app</id><content type="html" xml:base="http://localhost:4000/react-nodejs-app">&lt;p&gt;When I was in school we learned about fetching data from external APIs. At the time I found a news API where you could filter articles based on topic. Since I previously went to university and earned a science degree I thought it would be great to make an app for myself that gives me the latest science articles.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-24T18:11:42-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">When to use the different JavaScript data structures</title><link href="http://localhost:4000/js-data-structures" rel="alternate" type="text/html" title="When to use the different JavaScript data structures" /><published>2020-11-23T18:30:00-07:00</published><updated>2020-11-23T18:30:00-07:00</updated><id>http://localhost:4000/js-data-structures</id><content type="html" xml:base="http://localhost:4000/js-data-structures">&lt;p&gt;A few quick notes from my Udemy Javascript course on when you should use different types of JavaScript data structures. The course is “The Complete JavaScript Course 2020: From Zero to Expert!”, which I started last year but never finished.&lt;/p&gt;
+
+&lt;p&gt;I recently learned of two new data structures that I have never used before. In JavaScript I was never really aware of anything past arrays and objects. The new ones I learned about were sets and maps.&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;set&lt;/strong&gt; is a collection of values you can iterate through, which contains unique values. You cannot have any duplicate values in a set, unlike arrays.&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;map&lt;/strong&gt;, not to be confused with the .map() method, is like an object in that it has key-value pairs, but keys can be any data type. A map basically returns an array of arrays, with each array containing the key and value.&lt;/p&gt;
+
+&lt;h3 id=&quot;arrays-are-similar-to-sets&quot;&gt;Arrays are similar to sets&lt;/h3&gt;
+
+&lt;p&gt;Arrays and sets are both collections of values, whose values do not need to be described.&lt;/p&gt;
+
+&lt;p&gt;Arrays are good for when you need to allow for duplicate values, and when you need to manipulate data, since there are lots of good built-in array methods you can use.&lt;/p&gt;
+
+&lt;p&gt;Sets are a good way to remove duplicates from an array, and when you must have unique values. So sets compliment arrays nicely.&lt;/p&gt;
+
+&lt;h3 id=&quot;objects-are-similar-to-maps&quot;&gt;Objects are similar to maps&lt;/h3&gt;
+
+&lt;p&gt;Objects and maps are used in instances where you need to describe your values with keys.&lt;/p&gt;
+
+&lt;p&gt;If you need to include methods, use objects. Maps are better for simple collections of key-value pairs.&lt;/p&gt;
+
+&lt;p&gt;If you need your keys to be any data type other than a string, use a map.&lt;/p&gt;
+
+&lt;h3 id=&quot;screenshot-from-course&quot;&gt;Screenshot from course&lt;/h3&gt;
+
+&lt;p&gt;Below you can see a screenshot from the course, which is a nice comparison of all the options.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/images/udemy-js-screenshot.jpg&quot; style=&quot;max-width: 700px;&quot; alt=&quot;screenshot udemy data structure comparison&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">A few quick notes from my Udemy Javascript course on when you should use different types of JavaScript data structures. The course is “The Complete JavaScript Course 2020: From Zero to Expert!”, which I started last year but never finished.</summary></entry><entry><title type="html">Making a React/Node.js app</title><link href="http://localhost:4000/react-nodejs-app" rel="alternate" type="text/html" title="Making a React/Node.js app" /><published>2020-11-16T18:30:00-07:00</published><updated>2020-11-16T18:30:00-07:00</updated><id>http://localhost:4000/react-nodejs-app</id><content type="html" xml:base="http://localhost:4000/react-nodejs-app">&lt;p&gt;When I was in school we learned about fetching data from external APIs. At the time I found a news API where you could filter articles based on topic. Since I previously went to university and earned a science degree I thought it would be great to make an app for myself that gives me the latest science articles.&lt;/p&gt;
 
 &lt;p&gt;I had genuinely wanted to keep up with what was going on in science. After I graduated I had a subscription to the journal Nature hoping that would help me keep up. I fell hopelessly behind as each week they sent a journal packed with primary science research articles. Even after spending four years reading these types of in-depth research articles, they often took me a long time to get through due to the detailed technical language.&lt;/p&gt;
 
@@ -417,7 +445,222 @@
 
 &lt;p&gt;So, we had only one subscription event, rather than a potential 100 or 1000. The speed improved dramatically.&lt;/p&gt;
 
-&lt;p&gt;There are still a number of bugs to work out with this task, but I learned a lot about memory management just from working on these issues.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="debugging" /><category term="memory" /><summary type="html">While working on a particularly difficult task at work I ended up learning a lot about memory leaks.</summary></entry><entry><title type="html">Learning SQL Part 3</title><link href="http://localhost:4000/sql-part-3" rel="alternate" type="text/html" title="Learning SQL Part 3" /><published>2020-07-04T19:30:00-06:00</published><updated>2020-07-04T19:30:00-06:00</updated><id>http://localhost:4000/sql-part-3</id><content type="html" xml:base="http://localhost:4000/sql-part-3">&lt;p&gt;The previous post was getting a little long, so here is the last of the notes from my &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;t=3445s&quot;&gt;freecodecamp course in SQL&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are still a number of bugs to work out with this task, but I learned a lot about memory management just from working on these issues.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="debugging" /><category term="memory" /><summary type="html">While working on a particularly difficult task at work I ended up learning a lot about memory leaks.</summary></entry><entry><title type="html">UX design notes part 3</title><link href="http://localhost:4000/ux-3" rel="alternate" type="text/html" title="UX design notes part 3" /><published>2020-07-22T19:30:00-06:00</published><updated>2020-07-22T19:30:00-06:00</updated><id>http://localhost:4000/ux-3</id><content type="html" xml:base="http://localhost:4000/ux-3">&lt;p&gt;Optimal Sort: helps you with information architecture, card sorting&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;test how people think content should be organized&lt;/li&gt;
+  &lt;li&gt;test with lots of people&lt;/li&gt;
+  &lt;li&gt;can do this manually with paper cards and in person&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.optimalworkshop.com/optimalsort/&quot;&gt;Optimal sort found here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;4:1 worksheet for wireframing&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;draw four different ideas for how a page might work, then take the one you like the best (for whatever reason) and draw it in one box&lt;/li&gt;
+  &lt;li&gt;can do this for each section of your website that you got from your information architecture&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Wireframes&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Balsamiq is a good tool, partly because of the hand-drawn look
+    &lt;ul&gt;
+      &lt;li&gt;hand drawn looks unfinished, so people will not get too attached and think it’s the final product&lt;/li&gt;
+      &lt;li&gt;looking good and having an aesthetic draws people to it. Aestheics are important. If it doesn’t look good, people won’t like it and they won’t use it.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Perception&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to improve perception skills, think of something that you firmly believe is correct, and think of an argument for why it is incorrect&lt;/li&gt;
+  &lt;li&gt;logic is the enemy of perception, it tells us we already know the answer; perception makes us go out and look for more answers&lt;/li&gt;
+  &lt;li&gt;we perceive a small amount of the world around us - our brain is interpreting what we see&lt;/li&gt;
+  &lt;li&gt;don’t want to assume the user is seeing everything on the page&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Can design applications for a focused or diffused state of thinking&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Google is for a focused state; it is minimal, not a lot of distractions, has pagination&lt;/li&gt;
+  &lt;li&gt;YouTube is for a diffused state, when you are looking to browse and be distracted; lots to grab you attention, infinite scroll, lots of ads&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Memory&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Iconic memory: in our eye, fast and short, picks up patterns, light, colors&lt;/li&gt;
+  &lt;li&gt;Filters: only see what we are looking for, decides whether we should pay attention to it&lt;/li&gt;
+  &lt;li&gt;Working memory: can only hold a few things at once, finite, only add to it if it’s really important because we need to take something else out to add it in&lt;/li&gt;
+  &lt;li&gt;Long term memory: for a lifetime&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Visual encoding channels: things that make items stand out&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;position, color, size, shape, texture, gradient, angle&lt;/li&gt;
+  &lt;li&gt;color: hue, brightness differences&lt;/li&gt;
+  &lt;li&gt;position most important - why we make wireframes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hierarchy&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;determining how important something is&lt;/li&gt;
+  &lt;li&gt;headings big, meta-information small&lt;/li&gt;
+  &lt;li&gt;you can only pay attention to one thing at once&lt;/li&gt;
+  &lt;li&gt;you can’t make everything on the page the most important thing&lt;/li&gt;
+  &lt;li&gt;assign items on a page with a hierarchy score&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pre-attentive channels: channels we can identify without focusing our attention on them directly&lt;/p&gt;</content><author><name></name></author><category term="design" /><summary type="html">Optimal Sort: helps you with information architecture, card sorting</summary></entry><entry><title type="html">UX design notes part 2</title><link href="http://localhost:4000/ux-2" rel="alternate" type="text/html" title="UX design notes part 2" /><published>2020-07-09T19:30:00-06:00</published><updated>2020-07-09T19:30:00-06:00</updated><id>http://localhost:4000/ux-2</id><content type="html" xml:base="http://localhost:4000/ux-2">&lt;p&gt;More notes from my Udemy course in UX design.&lt;/p&gt;
+
+&lt;h3 id=&quot;design-process&quot;&gt;Design process&lt;/h3&gt;
+
+&lt;p&gt;The instructor reiterated that this is about coming up with the process that works best for you and not to copy another designer’s style. Make changes however you see fit.&lt;/p&gt;
+
+&lt;p&gt;There are four main steps in most processes: research (empathize), analyze (your reserach), ideate (generate ideas), test.&lt;/p&gt;
+
+&lt;p&gt;Mistakes people make/things people don’t realize:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;there is a design process; need to do research, come up with ideas, etc. One can’t just come up with an idea on the spot, work needs to go into it, and that takes the form of your design process.&lt;/li&gt;
+  &lt;li&gt;need to have an excess of research before you analyze, and need excess of ideas before you test them; it’s imporant to be aware of as many problems that you are facing as possible, so you can proritize the most imporant ones. Solving some problems can also cause problems in other areas.&lt;/li&gt;
+  &lt;li&gt;each of these design phases require different types of thinking; &lt;strong&gt;divergence and convergence&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Research and ideation are divergent, quantity over quantity, need to gather lots of data
+Analysis and testing are convergent, need to focus on most important details, lots of time to think&lt;/p&gt;
+
+&lt;h3 id=&quot;critical-thinkingdesign-thinking&quot;&gt;Critical thinking/design thinking&lt;/h3&gt;
+
+&lt;p&gt;Scandinavian cooperative design: Scandinavian designers actually worked with the people they were building software for. The workers essentially helped to design the software they were going to use.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;this type of process is more about perception, rather than a “scientific” or rational thinking kind of process&lt;/li&gt;
+  &lt;li&gt;often re-packaged as “design thinking”, boiled down to process steps; these short courses don’t usually help you to become a better designer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Innovation theatre: the appearance of being innovative without actually having interest in a better user experience; more for show, for stakeholders, etc&lt;/p&gt;
+
+&lt;p&gt;Design is about &lt;strong&gt;thinking&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;it’s important to improve your preception, creativity skills, and listen more&lt;/li&gt;
+  &lt;li&gt;decisions come from emotions rather than rational thinking&lt;/li&gt;
+  &lt;li&gt;book recommendation was Six Thinking Hats - to learn about different ways of thinking&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;experience&quot;&gt;Experience&lt;/h3&gt;
+
+&lt;p&gt;We can get people to buy products by saving them:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;time&lt;/li&gt;
+  &lt;li&gt;money&lt;/li&gt;
+  &lt;li&gt;space&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If the cost of any of these is too high it is no longer worth it.&lt;/p&gt;
+
+&lt;p&gt;These days, improving the experience of a product is more important.&lt;/p&gt;
+
+&lt;p&gt;It’s important to look at the emotional responses that people have to various tasks in their lives&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;e.g. Tinder - online dating full of rejection and emotional pain, Tinder takes the rejection out of it by having “matches” and includes the experience of “swiping” people out of your life or into your life
+    &lt;ul&gt;
+      &lt;li&gt;good experience, however not in the long term&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Focusing on making something a good experience does not make it inherently good. A cheeseburger is a good experience, but is not good &lt;em&gt;for&lt;/em&gt; you.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://humanetech.com/&quot;&gt;Center for Humane Technology&lt;/a&gt;: organization that wants to make things that are good for people, rather than focusing on a good experience&lt;/p&gt;
+
+&lt;p&gt;People like to talk about things that are easy to articulate. But sometimes it’s more important to address the things that are difficult to talk about.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Perception&lt;/strong&gt; is important. If someone says it took too long to do something on your site, it’s likely they just don’t like your site. It doesn’t matter how long it actually took them - if they perceived it to take too long it is a problem. People’s experiences are not rooted in reality. These things can be difficult to articulate to your coworkers; talking about things like the number of clicks to a particular part of a site is easy.&lt;/p&gt;
+
+&lt;p&gt;People like to feel in control. They like to know how long it will be until the Uber or train arrives, and will more happily wait when they know what to expect. If your site responds when you click a button, or you let the user know that something is loading, they will be more patient with your site&lt;/p&gt;
+
+&lt;p&gt;Software design isn’t all about usability - creativity is important too.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;e.g. TV remote - if you take away some buttons from your TV remote, you should replace them with something unique and interesting. If you just take buttons away, people will think it’s less valuable.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;creativity&quot;&gt;Creativity&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;TL;DR - creative people come up with lots and lots of ideas&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We value novel experiences, even if the things we have are fine as they are.&lt;/p&gt;
+
+&lt;p&gt;Creativity: ability to generate novel solutions to a problem&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;how many ideas you can come up with in a defined amount of time&lt;/li&gt;
+  &lt;li&gt;judgement free, whatever comes to you; don’t try to overthink and figure out why something won’t work&lt;/li&gt;
+  &lt;li&gt;you can’t be creative and rationalize at the same time&lt;/li&gt;
+  &lt;li&gt;this is important to practice - the more you do it the better you get&lt;/li&gt;
+  &lt;li&gt;your first idea is probably bad, and don’t want to get attached to an idea too early&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Exercise:&lt;/strong&gt; every day pick a problem and see how many solutions you can come up with in one minute&lt;/p&gt;
+
+&lt;p&gt;Exercise: think of 100 uses for a potato, see how quickly you can do it&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;can do this for other things like a pin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Charles Darwin: sometimes unique traits help an animal survive, more than fitness&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;so don’t make your designs forgettable - you need some uniqueness for people to remember it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The things we love are imperfect and unique. Humans’ highest perception of value is creativity.&lt;/p&gt;
+
+&lt;p&gt;It is important to write down or draw out your ideas. It gets them out of your working memory, freeing it up for the more interesting ideas underneath. Use paper and get away from the computer.&lt;/p&gt;
+
+&lt;p&gt;“Good ideas are hidden under bad ideas”&lt;/p&gt;
+
+&lt;p&gt;Important parts of your brain for creativity:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Central Executive Network - for focusing on a task&lt;/li&gt;
+  &lt;li&gt;Default Mode Network - where you daydream and let your brain make new connections&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The most creative people use both of these parts of the brain at once or can switch between them quickly. Taking breaks is good, because that’s when you’re in default mode. A lot of ideas can come when you’re not in focused mode.&lt;/p&gt;
+
+&lt;p&gt;Boundaries/limits make people more creative - Van Gogh used only a few colors in his paintings.&lt;/p&gt;
+
+&lt;p&gt;Rory’s story cubes: roll them, come up with a story&lt;/p&gt;
+
+&lt;p&gt;Post-its:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;not too much detail&lt;/li&gt;
+  &lt;li&gt;gets people moving around the room&lt;/li&gt;
+  &lt;li&gt;can combine your ideas easily&lt;/li&gt;
+  &lt;li&gt;gets thrown away; ideas on their own aren’t valuable, don’t get attached to ideas too early&lt;/li&gt;
+  &lt;li&gt;downside: innovation theatre; just because you have post-it notes doesn’t mean you are innovating, have to use them properly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Test ideas way before you’re ready&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;e.g. comedians testing out their jokes; cross out the bad jokes that don’t get many laughs
+    &lt;ul&gt;
+      &lt;li&gt;they create more jokes than most people, and they test them, not necessarily more funny than anyone else&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="design" /><summary type="html">More notes from my Udemy course in UX design.</summary></entry><entry><title type="html">Learning SQL Part 3</title><link href="http://localhost:4000/sql-part-3" rel="alternate" type="text/html" title="Learning SQL Part 3" /><published>2020-07-04T19:30:00-06:00</published><updated>2020-07-04T19:30:00-06:00</updated><id>http://localhost:4000/sql-part-3</id><content type="html" xml:base="http://localhost:4000/sql-part-3">&lt;p&gt;The previous post was getting a little long, so here is the last of the notes from my &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;t=3445s&quot;&gt;freecodecamp course in SQL&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;triggers&quot;&gt;Triggers&lt;/h3&gt;
 
@@ -496,457 +739,4 @@
 &lt;p&gt;Identifying relationship: relationship that identifies the weak entity&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;the relationship between a class and an exam&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="sql" /><category term="database" /><summary type="html">The previous post was getting a little long, so here is the last of the notes from my freecodecamp course in SQL.</summary></entry><entry><title type="html">Learning SQL Part 2</title><link href="http://localhost:4000/sql-part-2" rel="alternate" type="text/html" title="Learning SQL Part 2" /><published>2020-07-04T15:30:00-06:00</published><updated>2020-07-04T15:30:00-06:00</updated><id>http://localhost:4000/sql-part-2</id><content type="html" xml:base="http://localhost:4000/sql-part-2">&lt;p&gt;Here are more notes from my SQL course on youtube.&lt;/p&gt;
-
-&lt;p&gt;I’m going to disect the below query:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student_id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DESC&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In this query, we are selecting everything in the student table. We are ordering it by student id in descending order, and we are asking for only 2 rows.&lt;/p&gt;
-
-&lt;p&gt;When you use the SELECT keyword we are getting data returned to us from the database&lt;/p&gt;
-
-&lt;h3 id=&quot;filtering&quot;&gt;Filtering&lt;/h3&gt;
-
-&lt;p&gt;Can use the WHERE keyword again to filter our data being returned from the database, like below:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Biology'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Chemistry'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Note that you can also use comparison operators in your SQL queries:&lt;/p&gt;
-
-&lt;p&gt;&amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;=, =, &amp;lt;&amp;gt;, AND, OR&lt;/p&gt;
-
-&lt;p&gt;Where &amp;lt;&amp;gt; in this case means “not equal to”.&lt;/p&gt;
-
-&lt;p&gt;The IN keyword is used here:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IN&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Claire'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Kate'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Mike'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This statement is basically saying “where the name is one of these values” that we have in the parentheses.&lt;/p&gt;
-
-&lt;h3 id=&quot;adding-a-foreign-key&quot;&gt;Adding a foreign key&lt;/h3&gt;
-
-&lt;p&gt;When creating the employee table for a new company database, we couldn’t make any foreign keys since the table didn’t exist yet. Now we are going back to add the foreign keys:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*just including this query for reference*/&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;first_name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;last_name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;birth_day&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sex&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;super_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FOREIGN&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;kEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;REFERENCES&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In the above query, we are altering the employee table. We are adding a foreign key to branch_id. It is referencing the branch table (which hasn’t been created at this point)&lt;/p&gt;
-
-&lt;h3 id=&quot;as-keyword&quot;&gt;AS keyword&lt;/h3&gt;
-
-&lt;p&gt;To get data from your database but under a different column name, do this. In this example we want to get first name, but we want it to be called forename, and last name, but we want it to be called surname. We use the AS keyword.&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first_name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last_name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;distinct-keyword&quot;&gt;DISTINCT keyword&lt;/h3&gt;
-
-&lt;p&gt;If we wanted to find all the different genders that employees are stored as,&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DISTINCT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sex&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In this case it just returns M and F.&lt;/p&gt;
-
-&lt;h3 id=&quot;sql-functions&quot;&gt;SQL functions&lt;/h3&gt;
-
-&lt;p&gt;There are functions in SQL as well.&lt;/p&gt;
-
-&lt;p&gt;COUNT: returns the count of something - we could count the number of employees in our company by using:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;AVG: find the average of something, like:&lt;/p&gt;
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AVG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;SUM: finds the sum&lt;/p&gt;
-
-&lt;h3 id=&quot;wildcards&quot;&gt;Wildcards&lt;/h3&gt;
-
-&lt;p&gt;LIKE: put an expression inside, defining a pattern that matches whatever you’re searching in&lt;/p&gt;
-
-&lt;p&gt;Special characters: 
-% means “any number of characters”,
-_ means “one character”&lt;/p&gt;
-
-&lt;p&gt;Use the special characters to define patterns.&lt;/p&gt;
-
-&lt;p&gt;The below query is saying “return any client name that has any number of characters and then LLC”&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; 
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; 
-&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client_name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%LLC'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To get all birthdays in October, use _ four times to give any four digit year and include 10 for the month of October.&lt;/p&gt;
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt; 
-&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;birth_day&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'____-10%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;union&quot;&gt;UNION&lt;/h3&gt;
-
-&lt;p&gt;Use UNION to combine results of multiple SELECT statements into one result. Everything will be returned in one table.&lt;/p&gt;
-
-&lt;p&gt;Here we are grabbing all names and branches. Both need to be the same data type and same number of columns.&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first_name&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;UNION&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch_name&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;join&quot;&gt;JOIN&lt;/h3&gt;
-
-&lt;p&gt;JOIN is used to combine rows from two or more tables. There are four different types of JOIN. The below is an “inner” join.&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_name&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mgr_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here when we say JOIN it means join the employee table and the branch table together into one table, on a specific column that the tables have in common. Combine them when the branch manager id is equal to the employee id.&lt;/p&gt;
-
-&lt;p&gt;LEFT JOIN: we include all rows from the “left” table, or the table we are selecting “from”. A left join would look like…&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_name&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;LEFT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mgr_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;…and it would return all the rows from the employee table, where we are selecting from.&lt;/p&gt;
-
-&lt;p&gt;RIGHT JOIN: does the opposite of above, it would include all the rows from the branch table no matter what.&lt;/p&gt;
-
-&lt;p&gt;Full outer join: can’t do it in MySQL, but it is a left and right join combined.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-happens-when-data-is-deleted&quot;&gt;What happens when data is deleted?&lt;/h2&gt;
-
-&lt;p&gt;ON DELETE SET NULL: if data is deleted in one table, set another related value to null&lt;/p&gt;
-
-&lt;p&gt;In our CREATE TABLE code…&lt;/p&gt;
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;branch_name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;mgr_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;mgr_start_date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;FOREIGN&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mgr_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;REFERENCES&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emp_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;…we are saying “if the branch manager employee id is deleted, set the manager id in this table to NULL”.  So if we go to the employee table and delete a branch manager, their id in the branch table will be set to NULL. We’re able to do this because it is a foreign key and not totally essential to the table.&lt;/p&gt;
-
-&lt;p&gt;ON DELETE CASCADE: if data is deleted, delete the whole row&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch_supplier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;supplier_name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;supply_type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;supplier_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;FOREIGN&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;REFERENCES&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;CASCADE&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In our example, there are suppliers that supply product to different branches of the company.  In this situation, if we deleted a branch, all rows in the branch_supplier table associated with the branch would be deleted.&lt;/p&gt;
-
-&lt;p&gt;This is important for primary keys, because a &lt;strong&gt;primary key cannot be null&lt;/strong&gt;.&lt;/p&gt;</content><author><name></name></author><category term="sql" /><category term="database" /><summary type="html">Here are more notes from my SQL course on youtube.</summary></entry><entry><title type="html">Learning SQL</title><link href="http://localhost:4000/learning-sql" rel="alternate" type="text/html" title="Learning SQL" /><published>2020-07-01T18:30:00-06:00</published><updated>2020-07-01T18:30:00-06:00</updated><id>http://localhost:4000/learning-sql</id><content type="html" xml:base="http://localhost:4000/learning-sql">&lt;p&gt;Another set of notes while I am doing a course, this time in SQL.&lt;/p&gt;
-
-&lt;p&gt;This time I am following &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;list=WL&amp;amp;index=111&amp;amp;t=1s&quot;&gt;this freeCodeCamp SQL tutorial on youtube&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;tables&quot;&gt;Tables&lt;/h3&gt;
-
-&lt;p&gt;Columns: a type of information like name, email, password, etc&lt;/p&gt;
-
-&lt;p&gt;Row: a unique entry in the database&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;e.g. in a “student” table, a row would be a unique student including their ID #, name, major, email, etc&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Primary key: an attribute that uniquely defines a row in the database&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;can be anything - a number, string, etc - but it has to uniquely identify a row&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Whenever you want to store data:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;define a table with all your columns&lt;/li&gt;
-  &lt;li&gt;insert specific pieces of information into the table&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Surrogate key: doesn’t map to anything in the real world&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;a type of primary key&lt;/li&gt;
-  &lt;li&gt;e.g. a random number assigned to an employee in an “employee” table&lt;/li&gt;
-  &lt;li&gt;used to represent the employee in the database but doesn’t really mean anything&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Natural key: has a purpose in the real world, not just in the database&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;e.g. a social insurance number&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Foreign key: an attribute we can store in a table that links us to another table in the database&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;basically the primary key of a row in another table&lt;/li&gt;
-  &lt;li&gt;helps us define relationships between the tables&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Composite key: needs two attributes/columns&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;both together are needed to identify a particular row&lt;/li&gt;
-  &lt;li&gt;for if you have columns with repeated values - combine with another column to give a unique row&lt;/li&gt;
-  &lt;li&gt;another type of primary key&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;sql-basics&quot;&gt;SQL basics&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;query language used to interact with a relational database management system (RDBMS)&lt;/li&gt;
-  &lt;li&gt;RDBMS examples: MySQL, Oracle, Microsoft SQL Server&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;SQL used for:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;CRUD - creating, reading, updating, deleting information&lt;/li&gt;
-  &lt;li&gt;manage databases&lt;/li&gt;
-  &lt;li&gt;create databases&lt;/li&gt;
-  &lt;li&gt;design and create tables&lt;/li&gt;
-  &lt;li&gt;admin tasks, like managing users and security&lt;/li&gt;
-  &lt;li&gt;define database schemas&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Query: set of instructions given to the RDBMS, in SQL, to tell it what information you want it to retrieve&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;goal is to get exactly the data you need - from potentially very large data sets&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;installing-mysql-and-popsql&quot;&gt;Installing MySQL and PopSQL&lt;/h3&gt;
-
-&lt;p&gt;This is the install process for MySQL in this course:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;go to &lt;a href=&quot;https://dev.mysql.com/downloads/mysql/&quot;&gt;dev.mysql.com&lt;/a&gt; and download the community version of MySQL; I downloaded the MSI file rather than the zip&lt;/li&gt;
-  &lt;li&gt;open the installer&lt;/li&gt;
-  &lt;li&gt;chose custom install&lt;/li&gt;
-  &lt;li&gt;from available products I chose MySQL Server 8.0.20 - x64 and MySQL Shell 8.0.20 - x64&lt;/li&gt;
-  &lt;li&gt;on the installation tab click execute&lt;/li&gt;
-  &lt;li&gt;when those finish installing, on the type and networking screen, choose Standalone MySQL Server/Classic MySQL Replication&lt;/li&gt;
-  &lt;li&gt;keep all the other default settings&lt;/li&gt;
-  &lt;li&gt;enter a password, no need to create any more user accounts unless you want to&lt;/li&gt;
-  &lt;li&gt;on apply configuration page click execute&lt;/li&gt;
-  &lt;li&gt;then the shell will be installed&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;To create a database, open MySQL 8.0 Command Line Client, and enter the password you set earlier. This connects you to MySQL server on your machine.&lt;/p&gt;
-
-&lt;p&gt;Then type “create database {database-name};”&lt;/p&gt;
-
-&lt;p&gt;We also installed a text editor for SQL called PopSQL. It helps to visualize what’s going on but you can type all the same commands into the command line client. Just go to popsql.com and download. You need to create an account. Once installed create a new connection to the database. Fill in the following:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Type: MySQL&lt;/li&gt;
-  &lt;li&gt;Nickname: whatever you want&lt;/li&gt;
-  &lt;li&gt;Hostname: localhost&lt;/li&gt;
-  &lt;li&gt;Port: 3306&lt;/li&gt;
-  &lt;li&gt;Database: whatever you named your database in the command line&lt;/li&gt;
-  &lt;li&gt;Username/password: whatever you used when you set up MySQL. if you just used the default username during setup, enter “root”&lt;/li&gt;
-  &lt;li&gt;Click connect&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;common-data-types&quot;&gt;Common data types&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;INT - whole #&lt;/li&gt;
-  &lt;li&gt;DECIMAL(10, 4) - decimal #, () specifying number of digits
-    &lt;ul&gt;
-      &lt;li&gt;in this case, it means this decimal number has 10 digits total with 4 coming after the decimal&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;VARCHAR(1) - string, number of characters in ()&lt;/li&gt;
-  &lt;li&gt;BLOB - binary large object, stores large amounts of binary data, like image files&lt;/li&gt;
-  &lt;li&gt;DATE - formatted as YYYY-MM-DD&lt;/li&gt;
-  &lt;li&gt;TIMESTAMP - formatted as YYYY-MM-DD HH:MM:SS&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;creating-tablescolumns&quot;&gt;Creating tables/columns&lt;/h3&gt;
-
-&lt;p&gt;First step when working with RDBMS you have to create tables.&lt;/p&gt;
-
-&lt;p&gt;Convention is to write SQL in all caps, to distinguish it from other text in our queries.&lt;/p&gt;
-
-&lt;p&gt;End SQL commands in semicolons.&lt;/p&gt;
-
-&lt;p&gt;In the below example, you are naming the columns as student_id, name, and major, declaring their data types, and setting the primary key to student_id.&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;student_id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Below, in PopSql, this shows us the student table:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;DESCRIBE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To delete a table:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;DROP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Altering a table:&lt;/p&gt;
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*to add a column*/&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gpa&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DECIMAL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;cm&quot;&gt;/*to delete a column*/&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DROP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gpa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;inserting-data&quot;&gt;Inserting data&lt;/h3&gt;
-
-&lt;p&gt;Inside () put data you want to store:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;VALUES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Jack'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Biology'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;cm&quot;&gt;/*to see the data in your table*/&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;cm&quot;&gt;/*if you don't know all the values; the one you leave out will just show as NULL in the column*/&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;VALUES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Jack'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;update-data&quot;&gt;Update data&lt;/h3&gt;
-
-&lt;p&gt;Let’s say you want to change all instances of “Biology” major to “Bio”:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;UPDATE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Bio'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Biology'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;If you do the below query, not using the WHERE statement, it will apply to all columns:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;UPDATE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'undecided'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;deleting-data&quot;&gt;Deleting data&lt;/h3&gt;
-
-&lt;p&gt;To delete one student from the student table,&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'undecided'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To delete everything from the table, giving an empty table:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="sql" /><category term="database" /><summary type="html">Another set of notes while I am doing a course, this time in SQL.</summary></entry><entry><title type="html">Notes from UX design Udemy course</title><link href="http://localhost:4000/starting-ux-course" rel="alternate" type="text/html" title="Notes from UX design Udemy course" /><published>2020-07-01T12:30:00-06:00</published><updated>2020-07-01T12:30:00-06:00</updated><id>http://localhost:4000/starting-ux-course</id><content type="html" xml:base="http://localhost:4000/starting-ux-course">&lt;p&gt;I really love design. It was an area I did well in during school and my instructor commented on this a few times. I want to improve my skills and build a portfolio in case this is an area I want to pursue in the future, so I started a design course on Udemy.&lt;/p&gt;
-
-&lt;p&gt;This course is Master Digital Product Design: UX Research and UI Design.  I’m already a few minutes in and the instructor is telling us to not take anything said as concrete advice. So, I’ll write some notes while I’m going through the course while keeping this idea in mind.&lt;/p&gt;
-
-&lt;h3 id=&quot;notes&quot;&gt;Notes&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;go onto sites like Dribble and recreate the designs in different styles to improve creativity, perception, and increase your awareness of what’s out there&lt;/li&gt;
-  &lt;li&gt;don’t just copy design processes from blog posts and other companies; learn the reasoning why they use these methods and take inspiration from them&lt;/li&gt;
-  &lt;li&gt;your perpective gives you something new as a designer&lt;/li&gt;
-  &lt;li&gt;a designer is a person that solves problems&lt;/li&gt;
-  &lt;li&gt;most innovations and new inventions have come about because of emotions rather than utility&lt;/li&gt;
-  &lt;li&gt;a designer is a planner/strategizer&lt;/li&gt;
-  &lt;li&gt;a design is like an important plan where we don’t want to use existing solutions - have to spend time and do research to innovate and create the new thing&lt;/li&gt;
-  &lt;li&gt;there is no solid definition for UX design/designer - it’s important to look at job requirements and ask your boss so it’s clear what YOU are going to be doing, and you want to make sure your team is clear on your role as well&lt;/li&gt;
-  &lt;li&gt;there are no rules in design, just guidelines to help you go in the correct direction; you don’t HAVE to do anything&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Atomic design process: start with the smallest parts of a page rather than designing the whole page first. Decide on fonts, design buttons and reusable components, and your pages will come together more easily later.&lt;/p&gt;
-
-&lt;p&gt;Jacob’s law: basically make your site like other sites, since people already know how to use those&lt;/p&gt;
-
-&lt;p&gt;Arrogant design: when someone tries to create something new without fully understanding the product and the industry. These designers believe their experience is more important than the experiences and perspectives of others.&lt;/p&gt;
-
-&lt;p&gt;The Fold: from newspapers, when you put the important information at the top ie. “above the fold” and less important info “below the fold”. Used in websites early on but found to be useless since people can easily scroll down the page&lt;/p&gt;
-
-&lt;p&gt;A couple good resources (just beware that they are marketing their own products and may be biased):&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;invisionapp.com&lt;/li&gt;
-  &lt;li&gt;99u.adobe.com&lt;/li&gt;
-  &lt;li&gt;jnd.org (Don Norman, has good books on product design)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Look at articles on other types of design, like architecture or print media, since they are coming up with lots of new solutions to problems all the time. This will bring insights to product design.&lt;/p&gt;
-
-&lt;p&gt;Make sure you’re looking at designs visually - not every concept can be articulated in words. Resources:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;designspriation.com - all kinds of design&lt;/li&gt;
-  &lt;li&gt;dribbble.com - mostly UI design&lt;/li&gt;
-  &lt;li&gt;abduzeedo.com&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;design-briefs&quot;&gt;Design briefs&lt;/h3&gt;
-
-&lt;p&gt;The instructor started to mention design briefs and reaching out to local companies and asking for them. I have not yet done this, but I decided to do a quick search on google and see if there are any good examples.&lt;/p&gt;
-
-&lt;p&gt;I came across this site: &lt;a href=&quot;https://www.briefbox.me/&quot;&gt;briefbox.me&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;It looks like they have courses and briefs/challenges for students. This looks pretty useful so I’m going to have a look at some of these when I have time for practice.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;As a note to self, I can create case studies for some of the projects I have already created, or web dev projects I plan to start soon. Assuming I remember my process for creating them, which I most likely do.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;When is a design complete? When it meets the pre-defined requirements&lt;/p&gt;
-
-&lt;p&gt;Make sure you get good at writing very detailed briefs.&lt;/p&gt;
-
-&lt;p&gt;Important components of a design brief:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;final approver/stakeholders: make sure these are solid&lt;/li&gt;
-  &lt;li&gt;main contact: whoever is the person to contact with additional questions&lt;/li&gt;
-  &lt;li&gt;about the client: ask lots of questions to understand their company, culture, whether they already have a process in place that they’d like this project to follow&lt;/li&gt;
-  &lt;li&gt;project goals: how do we know when the project is complete? How will you measure if the project is successful. Make sure they are describing problems that YOU can solve for them&lt;/li&gt;
-  &lt;li&gt;target audience: get lots of detail, need to test designs on later, need to research them and what they value&lt;/li&gt;
-  &lt;li&gt;deliverables: what you are providing to company. e.g. what files would they accept if you are providing them icons&lt;/li&gt;
-  &lt;li&gt;scheduled sessions: with stakeholders, final approver, other contacts, to make sure you’re on the right track - meeting to present research, another to present wireframes, another to present design. good to schedule in revision sessions&lt;/li&gt;
-  &lt;li&gt;branding keywords: so you can understand brand’s values and personality&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Make sure they sign off on it, so there’s no going back and you know what your job is.&lt;/p&gt;</content><author><name></name></author><category term="design" /><summary type="html">I really love design. It was an area I did well in during school and my instructor commented on this a few times. I want to improve my skills and build a portfolio in case this is an area I want to pursue in the future, so I started a design course on Udemy.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><category term="sql" /><category term="database" /><summary type="html">The previous post was getting a little long, so here is the last of the notes from my freecodecamp course in SQL.</summary></entry></feed>

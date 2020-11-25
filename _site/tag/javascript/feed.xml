@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/javascript/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2020-11-17T12:41:06-07:00</updated>
+  <updated>2020-11-24T18:11:42-07:00</updated>
   <id>http://localhost:4000/tag/javascript/feed.xml</id>
 
   
@@ -42,6 +42,68 @@
   
   
 
+  
+    <entry>
+      <title type="html">When to use the different JavaScript data structures</title>
+      <link href="http://localhost:4000/js-data-structures" rel="alternate" type="text/html" title="When to use the different JavaScript data structures" />
+      <published>2020-11-23T18:30:00-07:00</published>
+      <updated>2020-11-23T18:30:00-07:00</updated>
+      <id>http://localhost:4000/js-data-structures</id>
+      <content type="html" xml:base="http://localhost:4000/js-data-structures">&lt;p&gt;A few quick notes from my Udemy Javascript course on when you should use different types of JavaScript data structures. The course is “The Complete JavaScript Course 2020: From Zero to Expert!”, which I started last year but never finished.&lt;/p&gt;
+
+&lt;p&gt;I recently learned of two new data structures that I have never used before. In JavaScript I was never really aware of anything past arrays and objects. The new ones I learned about were sets and maps.&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;set&lt;/strong&gt; is a collection of values you can iterate through, which contains unique values. You cannot have any duplicate values in a set, unlike arrays.&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;map&lt;/strong&gt;, not to be confused with the .map() method, is like an object in that it has key-value pairs, but keys can be any data type. A map basically returns an array of arrays, with each array containing the key and value.&lt;/p&gt;
+
+&lt;h3 id=&quot;arrays-are-similar-to-sets&quot;&gt;Arrays are similar to sets&lt;/h3&gt;
+
+&lt;p&gt;Arrays and sets are both collections of values, whose values do not need to be described.&lt;/p&gt;
+
+&lt;p&gt;Arrays are good for when you need to allow for duplicate values, and when you need to manipulate data, since there are lots of good built-in array methods you can use.&lt;/p&gt;
+
+&lt;p&gt;Sets are a good way to remove duplicates from an array, and when you must have unique values. So sets compliment arrays nicely.&lt;/p&gt;
+
+&lt;h3 id=&quot;objects-are-similar-to-maps&quot;&gt;Objects are similar to maps&lt;/h3&gt;
+
+&lt;p&gt;Objects and maps are used in instances where you need to describe your values with keys.&lt;/p&gt;
+
+&lt;p&gt;If you need to include methods, use objects. Maps are better for simple collections of key-value pairs.&lt;/p&gt;
+
+&lt;p&gt;If you need your keys to be any data type other than a string, use a map.&lt;/p&gt;
+
+&lt;h3 id=&quot;screenshot-from-course&quot;&gt;Screenshot from course&lt;/h3&gt;
+
+&lt;p&gt;Below you can see a screenshot from the course, which is a nice comparison of all the options.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/images/udemy-js-screenshot.jpg&quot; style=&quot;max-width: 700px;&quot; alt=&quot;screenshot udemy data structure comparison&quot; /&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="javascript" />
+      
+
+      
+        <summary type="html">A few quick notes from my Udemy Javascript course on when you should use different types of JavaScript data structures. The course is “The Complete JavaScript Course 2020: From Zero to Expert!”, which I started last year but never finished.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Dealing with memory leaks</title>

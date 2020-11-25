@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/design/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2020-11-17T12:41:06-07:00</updated>
+  <updated>2020-11-24T18:11:42-07:00</updated>
   <id>http://localhost:4000/tag/design/feed.xml</id>
 
   
@@ -140,6 +140,289 @@
 
       
         <summary type="html">I am back working on my Udemy course, “Master Digital Product Design: UX Research and UI Design”. In this post I will add some notes on usability.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">UX design notes part 3</title>
+      <link href="http://localhost:4000/ux-3" rel="alternate" type="text/html" title="UX design notes part 3" />
+      <published>2020-07-22T19:30:00-06:00</published>
+      <updated>2020-07-22T19:30:00-06:00</updated>
+      <id>http://localhost:4000/ux-3</id>
+      <content type="html" xml:base="http://localhost:4000/ux-3">&lt;p&gt;Optimal Sort: helps you with information architecture, card sorting&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;test how people think content should be organized&lt;/li&gt;
+  &lt;li&gt;test with lots of people&lt;/li&gt;
+  &lt;li&gt;can do this manually with paper cards and in person&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.optimalworkshop.com/optimalsort/&quot;&gt;Optimal sort found here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;4:1 worksheet for wireframing&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;draw four different ideas for how a page might work, then take the one you like the best (for whatever reason) and draw it in one box&lt;/li&gt;
+  &lt;li&gt;can do this for each section of your website that you got from your information architecture&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Wireframes&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Balsamiq is a good tool, partly because of the hand-drawn look
+    &lt;ul&gt;
+      &lt;li&gt;hand drawn looks unfinished, so people will not get too attached and think it’s the final product&lt;/li&gt;
+      &lt;li&gt;looking good and having an aesthetic draws people to it. Aestheics are important. If it doesn’t look good, people won’t like it and they won’t use it.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Perception&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to improve perception skills, think of something that you firmly believe is correct, and think of an argument for why it is incorrect&lt;/li&gt;
+  &lt;li&gt;logic is the enemy of perception, it tells us we already know the answer; perception makes us go out and look for more answers&lt;/li&gt;
+  &lt;li&gt;we perceive a small amount of the world around us - our brain is interpreting what we see&lt;/li&gt;
+  &lt;li&gt;don’t want to assume the user is seeing everything on the page&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Can design applications for a focused or diffused state of thinking&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Google is for a focused state; it is minimal, not a lot of distractions, has pagination&lt;/li&gt;
+  &lt;li&gt;YouTube is for a diffused state, when you are looking to browse and be distracted; lots to grab you attention, infinite scroll, lots of ads&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Memory&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Iconic memory: in our eye, fast and short, picks up patterns, light, colors&lt;/li&gt;
+  &lt;li&gt;Filters: only see what we are looking for, decides whether we should pay attention to it&lt;/li&gt;
+  &lt;li&gt;Working memory: can only hold a few things at once, finite, only add to it if it’s really important because we need to take something else out to add it in&lt;/li&gt;
+  &lt;li&gt;Long term memory: for a lifetime&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Visual encoding channels: things that make items stand out&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;position, color, size, shape, texture, gradient, angle&lt;/li&gt;
+  &lt;li&gt;color: hue, brightness differences&lt;/li&gt;
+  &lt;li&gt;position most important - why we make wireframes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hierarchy&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;determining how important something is&lt;/li&gt;
+  &lt;li&gt;headings big, meta-information small&lt;/li&gt;
+  &lt;li&gt;you can only pay attention to one thing at once&lt;/li&gt;
+  &lt;li&gt;you can’t make everything on the page the most important thing&lt;/li&gt;
+  &lt;li&gt;assign items on a page with a hierarchy score&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pre-attentive channels: channels we can identify without focusing our attention on them directly&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="design" />
+      
+
+      
+        <summary type="html">Optimal Sort: helps you with information architecture, card sorting</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">UX design notes part 2</title>
+      <link href="http://localhost:4000/ux-2" rel="alternate" type="text/html" title="UX design notes part 2" />
+      <published>2020-07-09T19:30:00-06:00</published>
+      <updated>2020-07-09T19:30:00-06:00</updated>
+      <id>http://localhost:4000/ux-2</id>
+      <content type="html" xml:base="http://localhost:4000/ux-2">&lt;p&gt;More notes from my Udemy course in UX design.&lt;/p&gt;
+
+&lt;h3 id=&quot;design-process&quot;&gt;Design process&lt;/h3&gt;
+
+&lt;p&gt;The instructor reiterated that this is about coming up with the process that works best for you and not to copy another designer’s style. Make changes however you see fit.&lt;/p&gt;
+
+&lt;p&gt;There are four main steps in most processes: research (empathize), analyze (your reserach), ideate (generate ideas), test.&lt;/p&gt;
+
+&lt;p&gt;Mistakes people make/things people don’t realize:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;there is a design process; need to do research, come up with ideas, etc. One can’t just come up with an idea on the spot, work needs to go into it, and that takes the form of your design process.&lt;/li&gt;
+  &lt;li&gt;need to have an excess of research before you analyze, and need excess of ideas before you test them; it’s imporant to be aware of as many problems that you are facing as possible, so you can proritize the most imporant ones. Solving some problems can also cause problems in other areas.&lt;/li&gt;
+  &lt;li&gt;each of these design phases require different types of thinking; &lt;strong&gt;divergence and convergence&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Research and ideation are divergent, quantity over quantity, need to gather lots of data
+Analysis and testing are convergent, need to focus on most important details, lots of time to think&lt;/p&gt;
+
+&lt;h3 id=&quot;critical-thinkingdesign-thinking&quot;&gt;Critical thinking/design thinking&lt;/h3&gt;
+
+&lt;p&gt;Scandinavian cooperative design: Scandinavian designers actually worked with the people they were building software for. The workers essentially helped to design the software they were going to use.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;this type of process is more about perception, rather than a “scientific” or rational thinking kind of process&lt;/li&gt;
+  &lt;li&gt;often re-packaged as “design thinking”, boiled down to process steps; these short courses don’t usually help you to become a better designer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Innovation theatre: the appearance of being innovative without actually having interest in a better user experience; more for show, for stakeholders, etc&lt;/p&gt;
+
+&lt;p&gt;Design is about &lt;strong&gt;thinking&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;it’s important to improve your preception, creativity skills, and listen more&lt;/li&gt;
+  &lt;li&gt;decisions come from emotions rather than rational thinking&lt;/li&gt;
+  &lt;li&gt;book recommendation was Six Thinking Hats - to learn about different ways of thinking&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;experience&quot;&gt;Experience&lt;/h3&gt;
+
+&lt;p&gt;We can get people to buy products by saving them:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;time&lt;/li&gt;
+  &lt;li&gt;money&lt;/li&gt;
+  &lt;li&gt;space&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If the cost of any of these is too high it is no longer worth it.&lt;/p&gt;
+
+&lt;p&gt;These days, improving the experience of a product is more important.&lt;/p&gt;
+
+&lt;p&gt;It’s important to look at the emotional responses that people have to various tasks in their lives&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;e.g. Tinder - online dating full of rejection and emotional pain, Tinder takes the rejection out of it by having “matches” and includes the experience of “swiping” people out of your life or into your life
+    &lt;ul&gt;
+      &lt;li&gt;good experience, however not in the long term&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Focusing on making something a good experience does not make it inherently good. A cheeseburger is a good experience, but is not good &lt;em&gt;for&lt;/em&gt; you.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://humanetech.com/&quot;&gt;Center for Humane Technology&lt;/a&gt;: organization that wants to make things that are good for people, rather than focusing on a good experience&lt;/p&gt;
+
+&lt;p&gt;People like to talk about things that are easy to articulate. But sometimes it’s more important to address the things that are difficult to talk about.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Perception&lt;/strong&gt; is important. If someone says it took too long to do something on your site, it’s likely they just don’t like your site. It doesn’t matter how long it actually took them - if they perceived it to take too long it is a problem. People’s experiences are not rooted in reality. These things can be difficult to articulate to your coworkers; talking about things like the number of clicks to a particular part of a site is easy.&lt;/p&gt;
+
+&lt;p&gt;People like to feel in control. They like to know how long it will be until the Uber or train arrives, and will more happily wait when they know what to expect. If your site responds when you click a button, or you let the user know that something is loading, they will be more patient with your site&lt;/p&gt;
+
+&lt;p&gt;Software design isn’t all about usability - creativity is important too.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;e.g. TV remote - if you take away some buttons from your TV remote, you should replace them with something unique and interesting. If you just take buttons away, people will think it’s less valuable.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;creativity&quot;&gt;Creativity&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;TL;DR - creative people come up with lots and lots of ideas&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We value novel experiences, even if the things we have are fine as they are.&lt;/p&gt;
+
+&lt;p&gt;Creativity: ability to generate novel solutions to a problem&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;how many ideas you can come up with in a defined amount of time&lt;/li&gt;
+  &lt;li&gt;judgement free, whatever comes to you; don’t try to overthink and figure out why something won’t work&lt;/li&gt;
+  &lt;li&gt;you can’t be creative and rationalize at the same time&lt;/li&gt;
+  &lt;li&gt;this is important to practice - the more you do it the better you get&lt;/li&gt;
+  &lt;li&gt;your first idea is probably bad, and don’t want to get attached to an idea too early&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Exercise:&lt;/strong&gt; every day pick a problem and see how many solutions you can come up with in one minute&lt;/p&gt;
+
+&lt;p&gt;Exercise: think of 100 uses for a potato, see how quickly you can do it&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;can do this for other things like a pin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Charles Darwin: sometimes unique traits help an animal survive, more than fitness&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;so don’t make your designs forgettable - you need some uniqueness for people to remember it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The things we love are imperfect and unique. Humans’ highest perception of value is creativity.&lt;/p&gt;
+
+&lt;p&gt;It is important to write down or draw out your ideas. It gets them out of your working memory, freeing it up for the more interesting ideas underneath. Use paper and get away from the computer.&lt;/p&gt;
+
+&lt;p&gt;“Good ideas are hidden under bad ideas”&lt;/p&gt;
+
+&lt;p&gt;Important parts of your brain for creativity:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Central Executive Network - for focusing on a task&lt;/li&gt;
+  &lt;li&gt;Default Mode Network - where you daydream and let your brain make new connections&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The most creative people use both of these parts of the brain at once or can switch between them quickly. Taking breaks is good, because that’s when you’re in default mode. A lot of ideas can come when you’re not in focused mode.&lt;/p&gt;
+
+&lt;p&gt;Boundaries/limits make people more creative - Van Gogh used only a few colors in his paintings.&lt;/p&gt;
+
+&lt;p&gt;Rory’s story cubes: roll them, come up with a story&lt;/p&gt;
+
+&lt;p&gt;Post-its:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;not too much detail&lt;/li&gt;
+  &lt;li&gt;gets people moving around the room&lt;/li&gt;
+  &lt;li&gt;can combine your ideas easily&lt;/li&gt;
+  &lt;li&gt;gets thrown away; ideas on their own aren’t valuable, don’t get attached to ideas too early&lt;/li&gt;
+  &lt;li&gt;downside: innovation theatre; just because you have post-it notes doesn’t mean you are innovating, have to use them properly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Test ideas way before you’re ready&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;e.g. comedians testing out their jokes; cross out the bad jokes that don’t get many laughs
+    &lt;ul&gt;
+      &lt;li&gt;they create more jokes than most people, and they test them, not necessarily more funny than anyone else&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="design" />
+      
+
+      
+        <summary type="html">More notes from my Udemy course in UX design.</summary>
       
 
       

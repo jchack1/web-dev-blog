@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>When to use the different JavaScript data structures</title>
+        
+          <description>&lt;p&gt;A few quick notes from my Udemy Javascript course on when you should use different types of JavaScript data structures. The course is “The Complete JavaScript Course 2020: From Zero to Expert!”, which I started last year but never finished.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 23 Nov 2020 18:30:00 -0700</pubDate>
+        <link>
+        http://localhost:4000/js-data-structures</link>
+        <guid isPermaLink="true">http://localhost:4000/js-data-structures</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Making a React/Node.js app</title>
         
           <description>&lt;p&gt;When I was in school we learned about fetching data from external APIs. At the time I found a news API where you could filter articles based on topic. Since I previously went to university and earned a science degree I thought it would be great to make an app for myself that gives me the latest science articles.&lt;/p&gt;
@@ -93,6 +108,36 @@
         <link>
         http://localhost:4000/memoryleaks</link>
         <guid isPermaLink="true">http://localhost:4000/memoryleaks</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>UX design notes part 3</title>
+        
+          <description>&lt;p&gt;Optimal Sort: helps you with information architecture, card sorting&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 22 Jul 2020 19:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/ux-3</link>
+        <guid isPermaLink="true">http://localhost:4000/ux-3</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>UX design notes part 2</title>
+        
+          <description>&lt;p&gt;More notes from my Udemy course in UX design.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 09 Jul 2020 19:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/ux-2</link>
+        <guid isPermaLink="true">http://localhost:4000/ux-2</guid>
       </item>
       
     
