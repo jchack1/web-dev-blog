@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Learning Redux</title>
+        
+          <description>&lt;p&gt;Currently I am learning redux to help me build a small react application. I am following along with &lt;a href=&quot;https://www.youtube.com/watch?v=93p3LxR9xfM&quot;&gt;Brad Traversy’s 2018 tutorial on redux found here&lt;/a&gt;. I am taking notes while following this tutorial.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 11 Jan 2021 14:30:00 -0700</pubDate>
+        <link>
+        http://localhost:4000/redux</link>
+        <guid isPermaLink="true">http://localhost:4000/redux</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Some JavaScript array methods, how they work, when to use them</title>
         
           <description>&lt;p&gt;Here are a few JavaScript array methods that I recently learned about in my JavaScript course. Some are relatively new additions to JavaScript and some are not, but I have learned about them all in a little more depth.&lt;/p&gt;

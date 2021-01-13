@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Learning Redux</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="Web development blog" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/redux" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Julia Hack" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Learning Redux" />
+    <meta property="og:description" content="Currently I am learning redux to help me build a small react application. I am following along with Brad Traversy’s 2018 tutorial on redux found here. I am taking notes while following this tutorial. I also found this 5 minute tutorial from freeCodeCamp to be a really simple explanation of" />
+    <meta property="og:url" content="http://localhost:4000/redux" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2021-01-11T14:30:00-07:00" />
+    <meta property="article:modified_time" content="2021-01-11T14:30:00-07:00" />
+    <meta property="article:tag" content="Javascript" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Learning Redux" />
+    <meta name="twitter:description" content="Currently I am learning redux to help me build a small react application. I am following along with Brad Traversy’s 2018 tutorial on redux found here. I am taking notes while following this tutorial. I also found this 5 minute tutorial from freeCodeCamp to be a really simple explanation of" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Julia Hack" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Javascript" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Julia Hack",
+        "logo": "http://localhost:4000/assets/images/blog-icon.png"
+    },
+    "url": "http://localhost:4000/redux",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/redux"
+    },
+    "description": "Currently I am learning redux to help me build a small react application. I am following along with Brad Traversy’s 2018 tutorial on redux found here. I am taking notes while following this tutorial. I also found this 5 minute tutorial from freeCodeCamp to be a really simple explanation of"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Learning Redux" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/"><img src="/assets/images/blog-icon.png" alt="Julia Hack" /></a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-home" role="menuitem"><a href="/topics/">Topics</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-contact" role="menuitem"><a href="/contact/">Contact</a></li>
+
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="11 January 2021">11 January 2021</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/javascript/'>JAVASCRIPT</a>,
+                            
+                        
+                            
+                               <a href='/tag/react/'>REACT</a>,
+                            
+                        
+                            
+                               <a href='/tag/redux/'>REDUX</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Learning Redux</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>Currently I am learning redux to help me build a small react application. I am following along with <a href="https://www.youtube.com/watch?v=93p3LxR9xfM">Brad Traversy’s 2018 tutorial on redux found here</a>. I am taking notes while following this tutorial.</p>
+
+<p>I also found <a href="https://www.youtube.com/watch?v=oD3miHerQbY">this 5 minute tutorial from freeCodeCamp</a> to be a really simple explanation of redux and it helped me understand the basic concepts before jumping into the complicated stuff.</p>
+
+<p>Redux is a state manager, which can be used with react or other frameworks. In react you have state at the level of your components, but redux takes state to the application level, and data flows through your app from the top down.</p>
+
+<h3 id="theory">Theory</h3>
+
+<p>The <strong>store</strong> is where state is kept, and that is sent down to your <strong>view</strong>, or component.</p>
+
+<p>Inside your component you maybe have events like button clicks or submits. These fire an <strong>action creator</strong> which <strong>dispatches</strong> an <strong>action</strong> to the store.</p>
+
+<p>You also have <strong>reducers</strong> which are functions that determine what should happen when an action is dispatched to the store. The reducers are what create the new state, which is then sent to the store. The new state replaces the old state. This is sent down to the components and the cycle repeats.</p>
+
+<h3 id="implementing-redux-in-your-app">Implementing redux in your app</h3>
+
+<p>This is pretty long. I’m not sure what I think of it - it seems like a lot to set up, but perhaps it becomes more intuitive the more you use it. Maybe you can also have a simple boilerplate on hand so you don’t have to type this out every time you make a new app.</p>
+
+<p><strong>1. </strong>In your terminal run <code class="highlighter-rouge">npm i redux react-redux redux-thunk</code></p>
+
+<p>react-redux is what connects react and redux together. redux-thunk is where we get our dispatcher function from</p>
+
+<p><strong>2. </strong>In your App.js file import the <strong>Provider</strong>, which is a react component that connects react and redux together. It is from the react-redux library.</p>
+
+<p><strong>3. </strong>Inside your return, wrap everything in the Provider component.</p>
+
+<p><strong>4. </strong>Pass a “store” prop into the Provider component. The store is where the state is held for the entire application.</p>
+
+<p>Below is what the code looks like up to this point:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Posts</span> <span class="k">from</span> <span class="s2">"./components/Posts"</span><span class="p">;</span>
+<span class="k">import</span> <span class="s2">"./App.css"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">PostForm</span> <span class="k">from</span> <span class="s2">"./components/PostForm"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Provider</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"react-redux"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">Provider</span> <span class="nx">store</span><span class="o">=</span><span class="p">{</span><span class="nx">store</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"App"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">PostForm</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">hr</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Posts</span> <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/Provider</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><strong>5. </strong> Create the store. To create it use the function createStore(). It takes 3 arguments: your reducer, the initial state, and an enhancer. Make sure you import createStore and applyMiddleware from ‘redux’.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//function can start off looking like this; we haven't created our reducer yet</span>
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">[],</span> <span class="p">{},</span> <span class="nx">applyMiddleware</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>You can have this in your App.js or create a store.js file. It would be a better practice to have a separate store.js file, and import the store into App.js.</p>
+
+<p>Inside your store.js, import createStore and applyMiddleware from ‘redux’, and import thunk from ‘redux-thunk’. Then create variables for initialState, middleware, and the store.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createStore</span><span class="p">,</span> <span class="nx">applyMiddleware</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"redux"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">thunk</span> <span class="k">from</span> <span class="s2">"redux-thunk"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="kd">const</span> <span class="nx">middleware</span> <span class="o">=</span> <span class="p">[</span><span class="nx">thunk</span><span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span>
+  <span class="nx">rootReducer</span><span class="p">,</span>
+  <span class="nx">initialState</span><span class="p">,</span>
+  <span class="nx">applyMiddleware</span><span class="p">(...</span><span class="nx">middleware</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">store</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><strong>6. </strong> Now we need to create our reducer. Create a folder called ‘reducers’ and an index.js file. Put your root reducer in here. This combines all your reducers together and exports them. You need to import combineReducers from ‘redux’, as well as other reducers inside your reducers folder (we haven’t created them yet at this stage).</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">combineReducers</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"redux"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">postReducer</span> <span class="k">from</span> <span class="s2">"./postReducer"</span><span class="p">;</span> <span class="c1">//not created yet</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">combineReducers</span><span class="p">({</span>
+  <span class="na">posts</span><span class="p">:</span> <span class="nx">postReducer</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><strong>7. </strong> Create your actual reducers. Create a file inside your reducers folder. The reducers handle actions that come their way.</p>
+
+<p><strong>8. </strong> Inside src create a folder called actions, and inside create a file called types.js. For actions we have to create <strong>types</strong>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">FETCH_POSTS</span> <span class="o">=</span> <span class="s2">"FETCH_POSTS"</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">NEW_POST</span> <span class="o">=</span> <span class="s2">"NEW_POST"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><strong>9. </strong> Import these types into your reducer file.</p>
+
+<p><strong>10. </strong> Create your initial state, which is an object.</p>
+
+<p><strong>11. </strong> Create a function, which takes in initial state and an action. Actions come with a type and payload if it includes data. You can use a switch statement. Depending on the type of the action that comes into your reducer, you want to do something.</p>
+
+<p>This is what our reducer file looks like now:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">FETCH_POSTS</span><span class="p">,</span> <span class="nx">NEW_POST</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"../actions/types"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">items</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">item</span><span class="p">:</span> <span class="p">{},</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>12. </strong> Now we’re creating our actions file. Since the app we’re creating here deals with “posts”, my file is called postActions.js and it is inside the actions folder. Inside here we need to import our types. Each action creator is actually a function inside this file. We also need the dispatcher inside these functions, so here is where thunk is used. We use dispatch to send our data. We pass dispatch into our function and do a fetch. This is difficult to explain in words to see code below.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">FETCH_POSTS</span><span class="p">,</span> <span class="nx">NEW_POST</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"./types"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">fetchPosts</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">dispatch</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://jsonplaceholder.typicode.com/posts"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span> <span class="c1">//turn response into json</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span>
+      <span class="nx">dispatch</span><span class="p">({</span>
+        <span class="c1">//take the data, dispatch to reducer</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">FETCH_POSTS</span><span class="p">,</span>
+        <span class="na">payload</span><span class="p">:</span> <span class="nx">data</span><span class="p">,</span>
+      <span class="p">})</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><strong>13. </strong> Now we go back to our reducer file, and add this type to our switch statement. We want to return the current state and our payload (if there is one).</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//inside the reducer file, update switch</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FETCH_POSTS</span><span class="p">,</span> <span class="nx">NEW_POST</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"../actions/types"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">items</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">item</span><span class="p">:</span> <span class="p">{},</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">FETCH_POSTS</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+        <span class="na">items</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">,</span>
+      <span class="p">};</span>
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>14. </strong> Going away from our reducer and action files, we go to our react components to configure some things there. We have a posts component, which displays the posts from our store. Import <strong>connect</strong> from ‘react-redux’. This connects our components to the store.</p>
+
+<p>You also need to import any actions you need in your component from your actions folder.</p>
+
+<p><strong>15. </strong> Your component needs to be exported with connect, as well as your action functions. We also need to add fetchPosts to our component inside componentDidMount. See below for what our component file looks like after these steps are taken.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"react"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"react-redux"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">fetchPosts</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"../actions/postActions"</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">Posts</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">fetchPosts</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">postItems</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">post</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">post</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">post</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">post</span><span class="p">.</span><span class="nx">body</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">));</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Posts</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>        <span class="p">{</span><span class="nx">postItems</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">connect</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span> <span class="nx">fetchPosts</span> <span class="p">})(</span><span class="nx">Posts</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Where is says null we will be mapping our state to our props - in next step.</p>
+
+<p><strong>16. </strong> Create a function inside our component called mapStateToProps. This takes our state, and maps it into our component properties. Our reducer adds items to our state. We get the state, and map those items into a posts prop. Now our component has a prop called posts - this.props.posts.</p>
+
+<p>We also have to pass mapStateToProps in our export, where we had null before.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mapStateToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+  <span class="na">posts</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">items</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">connect</span><span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">,</span> <span class="p">{</span> <span class="nx">fetchPosts</span> <span class="p">})(</span><span class="nx">Posts</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>We can use our new prop inside our component. It has our posts in it now, from our state, so we can map through them and get our posts displayed on the page.</p>
+
+<p><strong>17. </strong> Also good to add PropTypes. We import PropTypes and create an object listing the types of the props used in this component. We declare fetchPosts as a function, and posts as an array. Here is our component file now.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"react"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">PropTypes</span> <span class="k">from</span> <span class="s2">"prop-types"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"react-redux"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">fetchPosts</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"../actions/postActions"</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">Posts</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">fetchPosts</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">postItems</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">post</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">post</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">post</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">post</span><span class="p">.</span><span class="nx">body</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">));</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Posts</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>        <span class="p">{</span><span class="nx">postItems</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Posts</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">fetchPosts</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">func</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+  <span class="na">posts</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">array</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="c1">//this should now give us a this.props.posts, since we mapped items from state to posts properties</span>
+<span class="kd">const</span> <span class="nx">mapStateToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+  <span class="na">posts</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">items</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">connect</span><span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">,</span> <span class="p">{</span> <span class="nx">fetchPosts</span> <span class="p">})(</span><span class="nx">Posts</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="boilerplate-done-adding-more-stuff">Boilerplate done, adding more stuff</h3>
+
+<p>Redux is basically all set up at this point, and you can repeat some of these steps when you want to add new actions. You can see that addPost wasn’t implemented yet. That would be the next step.</p>
+
+<p>Steps:</p>
+
+<ul>
+  <li>go to actions file, add new action</li>
+  <li>go to reducer, add a new case to the switch statement</li>
+  <li>go to component where it is used, bring in connect from react-redux, bring in proptypes, and bring in action</li>
+  <li>implement action where you would be fetching/submitting data</li>
+  <li>create proptypes</li>
+  <li>add connect to export</li>
+  <li>update our mapStateToProps if needed</li>
+</ul>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>This ended up being a lot longer than I expected. Redux seems quite complicated and there is a lot of code required just to get started. I can see why having application level state is important in large projects, but it seems like there should be a simpler way.</p>
+
+<p>There’s not much else to say at this stage, as I haven’t spent much time with it yet. I’m sure I’ll come back to this in the future next time I need to implement redux in a project.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/js-methods">Some JavaScript array methods, how they work, when to use them</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/js-data-structures">When to use the different JavaScript data structures</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/memoryleaks">Dealing with memory leaks</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/javascript/">
+                                
+                                    See all 7 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/js-methods">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Javascript</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Some JavaScript array methods, how they work, when to use them</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+                <img src="/assets/images/favicon.ico" alt="Julia Hack icon" />
+            
+            <span>Julia Hack</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Learning Redux</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Learning+Redux&amp;url=redux"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=redux"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">Julia Hack</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    <a href="https://github.com/jchack1" target="_blank" rel="noopener">Github</a>
+                    <a href="https://linkedin.com/in/juliahack" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    <!--  -->
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
