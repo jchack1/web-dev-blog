@@ -23,21 +23,6 @@
     
       
       <item>
-        <title>Learning DynamoDB</title>
-        
-          <description>&lt;p&gt;I have recently been learning about DynamoDB, another NoSQL database.&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Wed, 13 Jan 2021 14:30:00 -0700</pubDate>
-        <link>
-        http://localhost:4000/learning-dynamodb</link>
-        <guid isPermaLink="true">http://localhost:4000/learning-dynamodb</guid>
-      </item>
-      
-    
-      
-      <item>
         <title>Learning Redux</title>
         
           <description>&lt;p&gt;Currently I am learning redux to help me build a small react application. I am following along with &lt;a href=&quot;https://www.youtube.com/watch?v=93p3LxR9xfM&quot;&gt;Brad Traversy’s 2018 tutorial on redux found here&lt;/a&gt;. I am taking notes while following this tutorial.&lt;/p&gt;

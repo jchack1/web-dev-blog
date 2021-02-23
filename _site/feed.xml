@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-22T19:59:56-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">MERN stack - flashcard app</title><link href="http://localhost:4000/mern-flashcard-app" rel="alternate" type="text/html" title="MERN stack - flashcard app" /><published>2021-02-22T18:30:00-07:00</published><updated>2021-02-22T18:30:00-07:00</updated><id>http://localhost:4000/mern-flashcard-app</id><content type="html" xml:base="http://localhost:4000/mern-flashcard-app">&lt;p&gt;My latest project was a full stack MERN app.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-23T15:42:54-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">MERN stack - flashcard app</title><link href="http://localhost:4000/mern-flashcard-app" rel="alternate" type="text/html" title="MERN stack - flashcard app" /><published>2021-02-22T18:30:00-07:00</published><updated>2021-02-22T18:30:00-07:00</updated><id>http://localhost:4000/mern-flashcard-app</id><content type="html" xml:base="http://localhost:4000/mern-flashcard-app">&lt;p&gt;My latest project was a full stack MERN app.&lt;/p&gt;
 
 &lt;p&gt;I am pretty confident when I am doing front end work but I know I need more practice with back end, especially databases. At work I use AWS for all backend services, particularly Lambda and DynamoDB. For personal projects I like to use Node.js, Express, and MongoDB, as this was what I began learning in school, and I believe these are still good skills to practice.&lt;/p&gt;
 
@@ -240,25 +240,7 @@
 
 &lt;p&gt;Overall I had fun with this project. It helped me practice database skills, tailwind, and styled-components, and I got to revisit some science concepts from university while creating the flashcard graphics and questions.&lt;/p&gt;
 
-&lt;p&gt;You can view the app &lt;a href=&quot;https://react-science-flashcards.herokuapp.com/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="react" /><category term="node.js" /><category term="mongodb" /><category term="mongoose" /><category term="database" /><summary type="html">My latest project was a full stack MERN app.</summary></entry><entry><title type="html">Learning DynamoDB</title><link href="http://localhost:4000/learning-dynamodb" rel="alternate" type="text/html" title="Learning DynamoDB" /><published>2021-01-13T14:30:00-07:00</published><updated>2021-01-13T14:30:00-07:00</updated><id>http://localhost:4000/learning-dynamodb</id><content type="html" xml:base="http://localhost:4000/learning-dynamodb">&lt;p&gt;I have recently been learning about DynamoDB, another NoSQL database.&lt;/p&gt;
-
-&lt;p&gt;DynamoDB is a NoSQL database offered by AWS. It has a reputation for being very fast and scalable.&lt;/p&gt;
-
-&lt;h3 id=&quot;resources-that-helped-me&quot;&gt;Resources that helped me&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=OfZgHXsYqNE&quot;&gt;This youtube tutorial&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=jzeKPKpucS0&quot;&gt;This talk from Rick Houlihan&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.dynamodbguide.com/what-is-dynamo-db/&quot;&gt;DynamoDBGuide&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/alexdebrie/awesome-dynamodb&quot;&gt;There are lots of links in this github repo&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;data-modelling&quot;&gt;Data modelling&lt;/h3&gt;
-
-&lt;p&gt;Even though it’s very flexible it’s good to figure out all your access patterns before you begin to model your data.&lt;/p&gt;
-
-&lt;p&gt;Your database can use only one table - just one table to hold all your records.&lt;/p&gt;</content><author><name></name></author><category term="database" /><category term="dynambodb" /><category term="nosql" /><summary type="html">I have recently been learning about DynamoDB, another NoSQL database.</summary></entry><entry><title type="html">Learning Redux</title><link href="http://localhost:4000/redux" rel="alternate" type="text/html" title="Learning Redux" /><published>2021-01-11T14:30:00-07:00</published><updated>2021-01-11T14:30:00-07:00</updated><id>http://localhost:4000/redux</id><content type="html" xml:base="http://localhost:4000/redux">&lt;p&gt;Currently I am learning redux to help me build a small react application. I am following along with &lt;a href=&quot;https://www.youtube.com/watch?v=93p3LxR9xfM&quot;&gt;Brad Traversy’s 2018 tutorial on redux found here&lt;/a&gt;. I am taking notes while following this tutorial.&lt;/p&gt;
+&lt;p&gt;You can view the app &lt;a href=&quot;https://react-science-flashcards.herokuapp.com/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="react" /><category term="node.js" /><category term="mongodb" /><category term="mongoose" /><category term="database" /><summary type="html">My latest project was a full stack MERN app.</summary></entry><entry><title type="html">Learning Redux</title><link href="http://localhost:4000/redux" rel="alternate" type="text/html" title="Learning Redux" /><published>2021-01-11T14:30:00-07:00</published><updated>2021-01-11T14:30:00-07:00</updated><id>http://localhost:4000/redux</id><content type="html" xml:base="http://localhost:4000/redux">&lt;p&gt;Currently I am learning redux to help me build a small react application. I am following along with &lt;a href=&quot;https://www.youtube.com/watch?v=93p3LxR9xfM&quot;&gt;Brad Traversy’s 2018 tutorial on redux found here&lt;/a&gt;. I am taking notes while following this tutorial.&lt;/p&gt;
 
 &lt;p&gt;I also found &lt;a href=&quot;https://www.youtube.com/watch?v=oD3miHerQbY&quot;&gt;this 5 minute tutorial from freeCodeCamp&lt;/a&gt; to be a really simple explanation of redux and it helped me understand the basic concepts before jumping into the complicated stuff.&lt;/p&gt;
 
@@ -1097,4 +1079,56 @@
   &lt;li&gt;you can test a large number of people and get data about how they are navigating your product&lt;/li&gt;
   &lt;li&gt;however, you just don’t know how they were feeling while they were going the test, so it is hard to gauge the reason they clicked where they did, and how big of a problem it is when a user does something “incorrectly”&lt;/li&gt;
   &lt;li&gt;a site you can use for this is &lt;a href=&quot;https://usabilityhub.com/&quot;&gt;usabilityhub.com&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="design" /><summary type="html">I am back working on my Udemy course, “Master Digital Product Design: UX Research and UI Design”. In this post I will add some notes on usability.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><category term="design" /><summary type="html">I am back working on my Udemy course, “Master Digital Product Design: UX Research and UI Design”. In this post I will add some notes on usability.</summary></entry><entry><title type="html">Dealing with memory leaks</title><link href="http://localhost:4000/memoryleaks" rel="alternate" type="text/html" title="Dealing with memory leaks" /><published>2020-08-10T18:30:00-06:00</published><updated>2020-08-10T18:30:00-06:00</updated><id>http://localhost:4000/memoryleaks</id><content type="html" xml:base="http://localhost:4000/memoryleaks">&lt;p&gt;While working on a particularly difficult task at work I ended up learning a lot about memory leaks.&lt;/p&gt;
+
+&lt;p&gt;I am actually still working on this task.  To summarize, I needed to create a button that copies items in a table. We are using the javascript library Knockout.js.&lt;/p&gt;
+
+&lt;p&gt;Knockout.js came out in 2010 before other similar libraries like React had come onto the scene. It was very promising at the time and gained a lot of interest from developers because it was able to observe the UI for changes from the user.&lt;/p&gt;
+
+&lt;p&gt;I am still getting to know Knockout and React, but so far I have found my experience with React to be a more pleasant one. React just makes more sense to me in how the library is used and structured, and it is more optimized for performance.  Knockout, on the other hand, is not fully optimized in this regard and there are very specific, advanced fixes required to solve the problems you may face.&lt;/p&gt;
+
+&lt;p&gt;I am not meaning to bash Knockout, and I am sure there is more for me to learn to improve my experience with it, but I do find it unnecessarily frustrating at times.&lt;/p&gt;
+
+&lt;p&gt;So, back to my specific issue.&lt;/p&gt;
+
+&lt;p&gt;I figured out the original logic for my button early on when I was assigned this task. To be honest even this took me a while; deciphering other peoples’ (uncommented!) code is what proved to be the most challenging aspect at that point in time. It was basically two nested loops - the outer loop determines where in the table the &lt;em&gt;set&lt;/em&gt; of copies will go, and the inner loop inserts the &lt;em&gt;individual&lt;/em&gt; copies into the correct place in the table.  This worked great on small tables, let’s say smaller than 20 items. But once I started using it on tables that contained 100s of items, the browser crashed. It ran out of memory.&lt;/p&gt;
+
+&lt;p&gt;My classmates from my web dev program suggested a while back, for a different task, that I get to know the chrome developer tools. I decided to go more in depth and start learning how to use the performance profiler and the memory tab. I also started doing more research into memory leaks in general and this is what I learned.&lt;/p&gt;
+
+&lt;h3 id=&quot;javascript-memory-management&quot;&gt;Javascript memory management&lt;/h3&gt;
+
+&lt;p&gt;Javascript automatically manages memory, allocating slots of memory when you declare variables.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Garbage collection(GC)&lt;/strong&gt; is automatic memory management, which monitors how memory is being allocated, and reclaims memory that is no longer being used. Javascript uses GC, where other languages like C and C++ do not have this built in. You have to allocate memory manually when using these languages.&lt;/p&gt;
+
+&lt;p&gt;But just because javascript has garbage collection doesn’t mean you will never encounter issues with memory.&lt;/p&gt;
+
+&lt;p&gt;Javascript and GC algorithms keep track of references.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Reference counting: if an object has no other objects referencing it, it is no longer needed. It is sent to the garbage.&lt;/li&gt;
+  &lt;li&gt;Circular references: if you have references referring to each other. They can never be garbage collected. Even if the values are deleted, the references still exist in memory.&lt;/li&gt;
+  &lt;li&gt;Mark and sweep algorithm: instead of looking at which objects are no longer needed, objects that are “no longer reachable” are garbage collected. It starts from the javascript root and works its way outward, finding all the references from there. If something cannot be reached in this case, it is garbage collected.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you look at your memory graph in dev tools, when analyzing performance, you may see a saw-tooth pattern. This can sometimes indicate a memory leak, because the javascript heap keeps increasing.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Heap:&lt;/strong&gt; the pool of memory used to satisfy requests for memory&lt;/p&gt;
+
+&lt;h3 id=&quot;how-my-issue-was-solved&quot;&gt;How my issue was solved&lt;/h3&gt;
+
+&lt;p&gt;I spent a lot of time just learning about memory and was pretty stuck.  Of course, the examples from the dev tools instructions are pretty simple, but the application I’m working on is complex. I sent some of my performance profiles and heap snapshots to one of the senior devs. He said that it looked like too many &lt;em&gt;subscriptions&lt;/em&gt; are being made, and few are being &lt;em&gt;disposed&lt;/em&gt; of.&lt;/p&gt;
+
+&lt;p&gt;In knockout, you can &lt;strong&gt;subscribe&lt;/strong&gt; to elements in your UI so you will be notified of any changes. Subscriptions can also be &lt;strong&gt;disposed&lt;/strong&gt; of when they are no longer needed.  It looked like I had to manually make these fixes, while they are most often taken care of automatically in the background.&lt;/p&gt;
+
+&lt;p&gt;What was happening was, every time we were making a new copy in the table, a new subscription was being made, and this was taking up space in memory. This is because we were adding new copies to an observable array, not a plain javascript array.&lt;/p&gt;
+
+&lt;p&gt;To fix this, we:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;copied the observable array with all the original data into a new regular javascript array&lt;/li&gt;
+  &lt;li&gt;added the new copies to the regular array&lt;/li&gt;
+  &lt;li&gt;replaced the content of the observable array with the contents of the regular array; this is the stage when the subscription occured&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, we had only one subscription event, rather than a potential 100 or 1000. The speed improved dramatically.&lt;/p&gt;
+
+&lt;p&gt;There are still a number of bugs to work out with this task, but I learned a lot about memory management just from working on these issues.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="debugging" /><category term="memory" /><summary type="html">While working on a particularly difficult task at work I ended up learning a lot about memory leaks.</summary></entry></feed>
