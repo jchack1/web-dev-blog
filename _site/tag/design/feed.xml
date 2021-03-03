@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/design/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-03-02T13:02:33-07:00</updated>
+  <updated>2021-03-02T19:12:55-07:00</updated>
   <id>http://localhost:4000/tag/design/feed.xml</id>
 
   
@@ -42,6 +42,104 @@
   
   
 
+  
+    <entry>
+      <title type="html">Helpful design notes - fonts</title>
+      <link href="http://localhost:4000/design-fonts" rel="alternate" type="text/html" title="Helpful design notes - fonts" />
+      <published>2021-03-02T15:30:00-07:00</published>
+      <updated>2021-03-02T15:30:00-07:00</updated>
+      <id>http://localhost:4000/design-fonts</id>
+      <content type="html" xml:base="http://localhost:4000/design-fonts">&lt;p&gt;It’s been a while since we had a new post on design so here we go.&lt;/p&gt;
+
+&lt;p&gt;Today I’m back working on my UX Design / Adobe XD course so I thought I’d make some notes here with some helpful tips. Today is mostly about fonts.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;fonts.google.com&lt;/strong&gt; - free fonts&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;fonts.adobe.com&lt;/strong&gt; - paid fonts, should be included in creative cloud subscription&lt;/p&gt;
+
+&lt;p&gt;For Adobe fonts, can click “activate font” and use it in Adobe XD.&lt;/p&gt;
+
+&lt;p&gt;For Google fonts, to use in your design software, you need to download the font and install on your machine.&lt;/p&gt;
+
+&lt;h3 id=&quot;choosing-fonts&quot;&gt;Choosing fonts&lt;/h3&gt;
+
+&lt;p&gt;Decorative fonts are good for headers, but not great for body text. If you make your text more narrow, you can fit more characters in your titles. It doesn’t look as good if your titles break onto multiple lines.&lt;/p&gt;
+
+&lt;p&gt;Fonts can slow down website loading. Your browser has to go find the font and download it for use on your site. If you have many fonts with many different weights it takes longer for your site to load. Decreasing the number of fonts and weights you include in your site can help with loading time and also with SEO - Google finds these sites to be more friendly. Google fonts will let you know if your load time is fast, moderate, slow, and so on.&lt;/p&gt;
+
+&lt;p&gt;Search for font combinations if you are unsure what fonts you should pair together.&lt;/p&gt;
+
+&lt;h3 id=&quot;common-font-sizes-for-your-designs&quot;&gt;Common font sizes for your designs&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Heading 1 - 40&lt;/li&gt;
+  &lt;li&gt;Heading 2 - 32&lt;/li&gt;
+  &lt;li&gt;Heading 3 - 24&lt;/li&gt;
+  &lt;li&gt;Body copy - 16&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These work well with your baseline grid in XD, if it is also divisible by 8. Items line up nicely with your grid this way.&lt;/p&gt;
+
+&lt;p&gt;In XD, add your fonts into Character Styles so you have your fonts quickly available for you and your team throughout the design process. This is helpful if you need to change your font - XD will find all instances of this font being used and update it when you change the font.&lt;/p&gt;
+
+&lt;p&gt;While doing a bit of my own research in this area I came across &lt;a href=&quot;https://learnui.design/blog/mobile-desktop-website-font-size-guidelines.html&quot;&gt;this article on learnui.design&lt;/a&gt;.
+Their recommendation was to start with a font size of 16px and go from there, depending on your situation.&lt;/p&gt;
+
+&lt;p&gt;If your site is text heavy, a larger font is more desirable, as it is easier to read and helps the user avoid eye strain.&lt;/p&gt;
+
+&lt;p&gt;If the site is interaction heavy, an app like Facebook maybe, then you wouldn’t want to go higher than 16px. Users are more likely to be scanning the page than reading closely, so larger text doesn’t feel quite right.&lt;/p&gt;
+
+&lt;p&gt;Finally, they recommended to not have more than 4 font sizes. This looks a little different than what’s shown above.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;A header size - add another smaller size if you need a sub-heading&lt;/li&gt;
+  &lt;li&gt;Your default size - 16px&lt;/li&gt;
+  &lt;li&gt;Secondary size - a couple points smaller than your default, eg. 14px, for less important details and captions&lt;/li&gt;
+  &lt;li&gt;Tertiary size - in case you need another smaller size, not always necessary though, again things like labels and captions&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;buttons&quot;&gt;Buttons&lt;/h3&gt;
+
+&lt;p&gt;Looking at design systems like Google Material can help you get inspiration to make better buttons. They add things like rounded corners, drop shadow, etc, to make buttons look more clickable.&lt;/p&gt;
+
+&lt;p&gt;You can add icons like arrows, plus, chevrons - to show convey that the button performs some actions.&lt;/p&gt;
+
+&lt;p&gt;Colours are important for buttons to convey the correct meaning. Important buttons, like delete, could be red. Be consistent with your colours across your site so users don’t get confused.&lt;/p&gt;
+
+&lt;p&gt;A good site to visit to learn more about UX/UI concepts is &lt;a href=&quot;https://uxplanet.org/&quot;&gt;UXPlanet.org&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://uxplanet.org/primary-secondary-action-buttons-c16df9b36150&quot;&gt;This article&lt;/a&gt; has some good tips for creating primary and secondary buttons, including:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;making buttons distinct&lt;/strong&gt; - could use a brighter colour for the primary button, for example. But be careful about buttons that cause a negative action, like delete buttons. Make these less obvious than the accompanying “cancel” button. You don’t want users to take a permanent action by mistake because they just clicked on the most obvious button.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;button labels should explain what they do&lt;/strong&gt; - describe the action with a verb, for example use “submit” instead of “ok”&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="design" />
+      
+
+      
+        <summary type="html">It’s been a while since we had a new post on design so here we go.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Usability - notes from design course</title>
