@@ -1,4 +1,72 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-02T19:12:55-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Helpful design notes - fonts</title><link href="http://localhost:4000/design-fonts" rel="alternate" type="text/html" title="Helpful design notes - fonts" /><published>2021-03-02T15:30:00-07:00</published><updated>2021-03-02T15:30:00-07:00</updated><id>http://localhost:4000/design-fonts</id><content type="html" xml:base="http://localhost:4000/design-fonts">&lt;p&gt;It’s been a while since we had a new post on design so here we go.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-15T18:26:16-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">AWS Cloudformation - intrinsic functions</title><link href="http://localhost:4000/cloudformation-intrinsic-functions" rel="alternate" type="text/html" title="AWS Cloudformation - intrinsic functions" /><published>2021-03-15T14:30:00-06:00</published><updated>2021-03-15T14:30:00-06:00</updated><id>http://localhost:4000/cloudformation-intrinsic-functions</id><content type="html" xml:base="http://localhost:4000/cloudformation-intrinsic-functions">&lt;p&gt;AWS Cloudformation is a really great AWS service for creating “infrastructure as code”.&lt;/p&gt;
+
+&lt;p&gt;If you have ever dabbled in AWS it’s possible that you have been creating your resources in the browser in the AWS console. I will say I enjoy creating my resources this way because I am a visual person and sometimes enjoy using a GUI. However, when working on real-world projects that involve other developers and AWS accounts and environments, it would become tedious to manually create these over and over again in the console. And it would be awful to have to re-create them in the case that they are accidentally deleted.&lt;/p&gt;
+
+&lt;p&gt;Cloudformation allows you to create template files in YAML or JSON (I use YAML, I think this is most common) to declaratively create your AWS resources. The templates can be uploaded in the AWS console, or in the command line. For work I have my AWS credentials saved in a file on my computer, and I am able to deploy my templates from the command line. Despite what I said about enjoying using a GUI, once I got used to pushing code from the command line, that became my preference. It’s just so quick and easy once you get up and running. I imagine I’ll feel this way about Cloudformation with more experience.&lt;/p&gt;
+
+&lt;p&gt;No surprise here but I am taking a course in AWS as well - Ultimate AWS Certified Developer Associate 2021 on Udemy. Some of the info here comes from that course as I work my way through the cloudformation section, as well as the AWS documentation.&lt;/p&gt;
+
+&lt;h3 id=&quot;intrinsic-functions&quot;&gt;Intrinsic functions&lt;/h3&gt;
+
+&lt;p&gt;As I was diving deeper into AWS Cloudformation I started to come across a lot of weird things I had never seen before while working with YAML. Things like !Ref, fn::GetAtt, etc. These are called &lt;strong&gt;intrinsic functions&lt;/strong&gt; and essentially allow you to make references to resouces and parameters inside your cloudformation template.&lt;/p&gt;
+
+&lt;p&gt;First, a couple definitions:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Resources:&lt;/strong&gt; This is a required section in your template, which is where you declare the AWS resources that you want included in your stack. A resource is an AWS entity/service you can work with, like an EC2 instance, an SNS topic, or an S3 bucket.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Parameters:&lt;/strong&gt; This is an optional section in your template. Parameters in a cloudformation template are like parameters you pass into a function. You define specific values for your parameters which can be referenced later on in your template. If you are referencing these parameters many times in your template, but you need to make a change, it is easier to change them once at the top of your file than have to update them several times throughout your code.&lt;/p&gt;
+
+&lt;p&gt;When you see Fn::Something or !Something in the code you are dealing with an intrinsic function.&lt;/p&gt;
+
+&lt;p&gt;Fn::Ref&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;in YAML code is !Ref&lt;/li&gt;
+  &lt;li&gt;most common&lt;/li&gt;
+  &lt;li&gt;can be used to reference a parameter - gives you the exact &lt;strong&gt;value&lt;/strong&gt; of the parameter&lt;/li&gt;
+  &lt;li&gt;can be used to reference a resource - give you the &lt;strong&gt;physical ID&lt;/strong&gt; of the resource&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fn::GetAtt&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sometimes you need more than just the ID of a resource&lt;/li&gt;
+  &lt;li&gt;attach to any resource, check docs to see the &lt;em&gt;attributes that are exposed&lt;/em&gt; by each type of resource&lt;/li&gt;
+  &lt;li&gt;in YAML code it looks like this: !GetAtt MyInstance.AvailabilityZone&lt;/li&gt;
+  &lt;li&gt;so, use !GetAtt, with the resource name, and the attribute you want&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fn::FindInMap&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;used similar to GetAtt, but to get a value out of a “Mapping” you made in your template&lt;/li&gt;
+  &lt;li&gt;a “mapping” is where you hardcode values in your template that, for example, depend on what environment you’re in&lt;/li&gt;
+  &lt;li&gt;maybe you are using a different image to create an EC2 instance based on what region you’re in, or whether you are in qa, dev, or prod environment. Hardcode these into your template and reference your map later on&lt;/li&gt;
+  &lt;li&gt;in your code use like so: !FindInMap [MapName, TopLevelKey, SecondLevelKey]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fn::ImportValue&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to get values exported from another cloudformation template in its “Outputs” Section&lt;/li&gt;
+  &lt;li&gt;your exports should have unique names across the region you’re working in&lt;/li&gt;
+  &lt;li&gt;used in YAML code: !ImportValue ExportedResourceName&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fn::Join&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to join a list of values with a delimiter (a delimiter is a character that separates values - could be a comma, colon, etc)&lt;/li&gt;
+  &lt;li&gt;!Join [delimiter, [list of values]]&lt;/li&gt;
+  &lt;li&gt;puts the delimiter in between each value in the list&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fn::Sub&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to substitute a particular value with other values you specify&lt;/li&gt;
+  &lt;li&gt;!Sub&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="aws" /><summary type="html">AWS Cloudformation is a really great AWS service for creating “infrastructure as code”.</summary></entry><entry><title type="html">Helpful design notes - fonts</title><link href="http://localhost:4000/design-fonts" rel="alternate" type="text/html" title="Helpful design notes - fonts" /><published>2021-03-02T15:30:00-07:00</published><updated>2021-03-02T15:30:00-07:00</updated><id>http://localhost:4000/design-fonts</id><content type="html" xml:base="http://localhost:4000/design-fonts">&lt;p&gt;It’s been a while since we had a new post on design so here we go.&lt;/p&gt;
 
 &lt;p&gt;Today I’m back working on my UX Design / Adobe XD course so I thought I’d make some notes here with some helpful tips. Today is mostly about fonts.&lt;/p&gt;
 
@@ -1074,73 +1142,4 @@ Their recommendation was to start with a font size of 16px and go from there, de
   &lt;li&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;%AppData%\Local\Programs\Microsoft VS Code&lt;/code&gt; and delete this folder&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Basically delete any files having to do with VS Code, and it should get rid of any VS Code data lurking around on your machine.&lt;/p&gt;</content><author><name></name></author><category term="devops" /><summary type="html">Recently I was messing around in my VS Code settings trying to get some new extensions to work. Long story short, I was following along with a tutorial, clicked a few things I probably shouldn’t have, and suddenly I could not see the settings UI screen.</summary></entry><entry><title type="html">Usability - notes from design course</title><link href="http://localhost:4000/usability" rel="alternate" type="text/html" title="Usability - notes from design course" /><published>2020-09-07T14:30:00-06:00</published><updated>2020-09-07T14:30:00-06:00</updated><id>http://localhost:4000/usability</id><content type="html" xml:base="http://localhost:4000/usability">&lt;p&gt;I am back working on my Udemy course, “Master Digital Product Design: UX Research and UI Design”. In this post I will add some notes on usability.&lt;/p&gt;
-
-&lt;p&gt;Usability Heuristics, I have learned, is a way of saying “rule of thumb”.  So these are not usability rules exactly; they are usability suggestions and best practices.&lt;/p&gt;
-
-&lt;p&gt;While going through these lectures I have been cringing a bit. Recently I realized I am becoming more interested in and passionate about good user experience and easing frustration for the user. The designer in me knows how important these points are. However, I know I have broken some of these best practices as a developer.  It has been difficult for me to implement my features in the best possible way when task requirements are unclear, on large systems I did not create myself. I came across roadblocks and had to get around them somehow, and then I was irritated with myself for not implementing the feature in the “best” way. But in those sitations, I did what I could.&lt;/p&gt;
-
-&lt;p&gt;Nevertheless, I’m still enjoying learning about UX and UI.&lt;/p&gt;
-
-&lt;h2 id=&quot;useful-links&quot;&gt;Useful links&lt;/h2&gt;
-
-&lt;p&gt;This site &lt;a href=&quot;http://ui-patterns.com/patterns&quot;&gt;UI-patterns.com&lt;/a&gt; has in-depth descriptions and examples of many design patterns you see in user interface design, including cards, modals, dropdown menus, and more.&lt;/p&gt;
-
-&lt;p&gt;This &lt;a href=&quot;https://contrastchecker.com/&quot;&gt;contrast checker&lt;/a&gt; site allows you to check the foreground and background colors on your site against various conditions, to make sure the level of contrast is acceptable. You could use this while auditing your sites.&lt;/p&gt;
-
-&lt;h2 id=&quot;usability-heuristics&quot;&gt;Usability Heuristics&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Visibility: &lt;/strong&gt; (of system status) includes the idea of instant feedback - does a button instantly change when clicked? Is there a loading bar/spinner when a file is downloading?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;System and real world matching: &lt;/strong&gt; does the language used sound like how we speak in real life? Or in the industry the software is used in?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;User control and freedom: &lt;/strong&gt; can the user easily escape their previous action? Nothing we build is fully intuitive and the user will make mistakes. Can you reset, undo, go back? This allows users to explore and experiment, since they won’t be afraid of clicking and making irreversible mistakes.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Consistency and standards: &lt;/strong&gt; does it use existing conventions and standards used on other sites? Does it follow design patterns we typically see on websites? Some examples are hamburger icons for menus, paper clip icons for attachments, and shopping cart icons on e-commerce sites. Sites can also create their own standards - for example, Google uses different colored buttons for different functions.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Error prevention: &lt;/strong&gt; warn users if they are going to perform a significant action, like clearing a form. Or prevent an action altogether.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Recognition rather than recall: &lt;/strong&gt; storing important information on the screen rather than making the user remember. For example, highlighting what page they’re on or category they are in so they don’t have to remember where they are in the site.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Flexibility and efficiency of use: &lt;/strong&gt; making the software easier to use for advanced users, so they can quickly finish routine tasks.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Aesthetics and minimalism: &lt;/strong&gt; you want the minimal amount of things on the screen, so we don’t overload the user’s working memory.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Help recognize, diagnose, and recover from errors: &lt;/strong&gt; do we tell users about the errors clearly, and can they easily find the solutions?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Help and documentation: &lt;/strong&gt; is there help available and can users find where it is? Are the steps clear?&lt;/p&gt;
-
-&lt;h2 id=&quot;usability-audits&quot;&gt;Usability audits&lt;/h2&gt;
-
-&lt;p&gt;These are different from usability heuristics. Heuristics are vague, but an audit is more of a checklist. These are rules you come up with as part of your design process. Creating the audit can be time-consuming, but filling it out should be relatively quick and simple. Audits should contain specific yes or no questions that anyone can fill in while reviewing the product. No opinions should be allowed.&lt;/p&gt;
-
-&lt;p&gt;Example questions on the checklist (from a real checklist shown in the course):&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Does every display begin with a title or header that describes screen contents?&lt;/li&gt;
-  &lt;li&gt;Is there visual feeback in menus or dialog boxes about which choice the cursor is on now?&lt;/li&gt;
-  &lt;li&gt;Is the current status of an icon clearly indicated?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
-
-&lt;p&gt;It is often recommended that testing be done often, and that everyone in your company should observe users using the software regularly. Programmers, managers, everyone else; everyone involved with the product should observe the software being used.&lt;/p&gt;
-
-&lt;p&gt;Don’t just ask users what they like. They will start to post-rationalize reasons why they like or dislike it, and start coming up with their own solutions. They will think about what would be useful in a hypothetical situation. But that’s not actually very useful for us. It’s important to &lt;em&gt;observe&lt;/em&gt; them using it.&lt;/p&gt;
-
-&lt;p&gt;A &lt;strong&gt;usability test&lt;/strong&gt; is when you give a user a task and observe what they do. You look for responses in their faces, and you need to be impartial and not influence the user’s behavior. Get users to talk out their thought process while using the product - that way you don’t have to guess.&lt;/p&gt;
-
-&lt;p&gt;Reasons to do usability testing with experienced users as well as new users:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;experienced users may not even be experts in the software; users often fiddle their way through until they complete what they need to do, without mastering the product&lt;/li&gt;
-  &lt;li&gt;products tested with only first time users can sometimes be set up really well to guide users through set up and early stages, but tasks they attempt later on may be very frustrating because they haven’t been given as much attention&lt;/li&gt;
-  &lt;li&gt;existing customers are very valuable, more so than new customers&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Test as early as you can! Don’t wait until you have a finished design.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Click testing: &lt;/strong&gt; a quantitative method for testing, where users are given a task and you can see where they click in your design&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;you can test a large number of people and get data about how they are navigating your product&lt;/li&gt;
-  &lt;li&gt;however, you just don’t know how they were feeling while they were going the test, so it is hard to gauge the reason they clicked where they did, and how big of a problem it is when a user does something “incorrectly”&lt;/li&gt;
-  &lt;li&gt;a site you can use for this is &lt;a href=&quot;https://usabilityhub.com/&quot;&gt;usabilityhub.com&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="design" /><summary type="html">I am back working on my Udemy course, “Master Digital Product Design: UX Research and UI Design”. In this post I will add some notes on usability.</summary></entry></feed>
+&lt;p&gt;Basically delete any files having to do with VS Code, and it should get rid of any VS Code data lurking around on your machine.&lt;/p&gt;</content><author><name></name></author><category term="devops" /><summary type="html">Recently I was messing around in my VS Code settings trying to get some new extensions to work. Long story short, I was following along with a tutorial, clicked a few things I probably shouldn’t have, and suddenly I could not see the settings UI screen.</summary></entry></feed>
