@@ -11,7 +11,7 @@
 
 
 
-    <title>Entity Framework, workflows, databases, and migrations</title>
+    <title>AWS SQS</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/entityframework" />
+    <link rel="canonical" href="http://localhost:4000/sqs" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Entity Framework, workflows, databases, and migrations" />
-    <meta property="og:description" content="When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers. I was constantly having to google new terms I came across, and often" />
-    <meta property="og:url" content="http://localhost:4000/entityframework" />
+    <meta property="og:title" content="AWS SQS" />
+    <meta property="og:description" content="SQS is one of several AWS services that allows communication between your AWS resources. Today I am learning about it in my Udemy course. Here are some notes. SQS (Simple Queue Service) accepts messages from one microservice and delivers them to another. Your microservices do not communicate directly - this" />
+    <meta property="og:url" content="http://localhost:4000/sqs" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-03-18T17:50:00-06:00" />
-    <meta property="article:modified_time" content="2020-03-18T17:50:00-06:00" />
-    <meta property="article:tag" content="Dotnet" />
+    <meta property="article:published_time" content="2021-03-22T18:30:00-06:00" />
+    <meta property="article:modified_time" content="2021-03-22T18:30:00-06:00" />
+    <meta property="article:tag" content="Aws" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Entity Framework, workflows, databases, and migrations" />
-    <meta name="twitter:description" content="When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers. I was constantly having to google new terms I came across, and often" />
+    <meta name="twitter:title" content="AWS SQS" />
+    <meta name="twitter:description" content="SQS is one of several AWS services that allows communication between your AWS resources. Today I am learning about it in my Udemy course. Here are some notes. SQS (Simple Queue Service) accepts messages from one microservice and delivers them to another. Your microservices do not communicate directly - this" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Dotnet" />
+    <meta name="twitter:data2" content="Aws" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/entityframework",
+    "url": "http://localhost:4000/sqs",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/entityframework"
+        "@id": "http://localhost:4000/sqs"
     },
-    "description": "When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers. I was constantly having to google new terms I came across, and often"
+    "description": "SQS is one of several AWS services that allows communication between your AWS resources. Today I am learning about it in my Udemy course. Here are some notes. SQS (Simple Queue Service) accepts messages from one microservice and delivers them to another. Your microservices do not communicate directly - this"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Entity Framework, workflows, databases, and migrations" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="AWS SQS" href="/feed.xml" />
 
 
 </head>
@@ -153,174 +153,89 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="18 March 2020">18 March 2020</time>
+                    <time class="post-full-meta-date" datetime="22 March 2021">22 March 2021</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/dotnet/'>DOTNET</a>,
-                            
-                        
-                            
-                               <a href='/tag/mvc/'>MVC</a>,
-                            
-                        
-                            
-                               <a href='/tag/database/'>DATABASE</a>,
-                            
-                        
-                            
-                               <a href='/tag/migrations/'>MIGRATIONS</a>,
-                            
-                        
-                            
-                               <a href='/tag/entityframework/'>ENTITYFRAMEWORK</a>
+                               <a href='/tag/aws/'>AWS</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Entity Framework, workflows, databases, and migrations</h1>
+                <h1 class="post-full-title">AWS SQS</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.</p>
+                    <p>SQS is one of several AWS services that allows communication between your AWS resources. Today I am learning about it in my Udemy course. Here are some notes.</p>
 
-<h3 id="entity-framework-a-tool-we-use-to-access-a-database">Entity Framework: a tool we use to access a database</h3>
+<p>SQS (Simple Queue Service) accepts messages from one microservice and delivers them to another. Your microservices do not communicate directly - this is asynchronous communication. SQS is able to scale up or down depending on traffic.</p>
+
+<p>A “producer” sends messages into an SQS queue, and “consumers” poll the queue for messages, essentially asking if the queue has any messages for it. Consumers are applications that run on an EC2, Lambda, or other servers, and they process the messages. In a standard queue you can send as many messages to your queue as you want, and you can keep unlimited messages in the queue as well. SQS is very quick, but messages need to be small (256 kb or smaller).</p>
+
+<p>Messages stay in the queue until the consumer reads and deletes it, up to 14 days.</p>
+
+<p><strong>Standard</strong> SQS message delivery is “at least once” delivery, meaning your consumers may receive a message more than once. Order is also not guaranteed, as SQS uses a “best effort ordering” policy.</p>
+
+<p>This works nicely with auto-scaling groups/EC2 and Cloudwatch. You could set an alarm that watches the “queue length” metric, and when the alarm goes off, trigger your auto-scaling groups to increase the number of EC2 instances. In this case, your EC2s are your consumers, and you will have more of them to poll your SQS queue.</p>
+
+<p>Message visibility timeout: there is a 30 second window in which the consumer that got the message has to process it, before it becomes visible again to other consumers. During this 30 seconds the message is invisible to others. If the first consumer can’t process it in that window, other consumers will also be able to process it, so you may have the same message processed multiple times. You can have your consumer call the Change Message Visibility API to get more time for processing. It’s also possible to set visibility to something other than 30 seconds when setting up the queue.</p>
+
+<p><strong>Dead letter queue: </strong> contains messages that have gone back into the queue multiple times. You can set a threshold for the maximum number of times a message goes back into the queue. Once the threshold is reached, the messages go to the dead letter queue. Another app can analyze these messages for debugging. Set the message retention period high, like to the 14 day maximum, for dead-letter queues.</p>
+
+<p><strong>Delay queue: </strong> can delay messages for up to 15 minutes so consumer can’t see them right away</p>
+
+<p><strong>Long polling: </strong> consumers can wait for messages if none are currently in the queue. Means fewer API calls. Lower latency because a consumer can act on a message as soon as it comes into the queue. Preferable over short-polling since it reduces cost. In the console, add any number from 1 - 20 in the Receive Message Wait Time field while editing your queue.</p>
+
+<p><strong>Extended client: </strong> a Java library that uses an S3 bucket for large files, greater than the SQS 256kb limit. A small meta-data message goes into the queue, and it tells the consumer where to go in S3 to get the files.</p>
+
+<p><strong>First In First Out: </strong> your other option instead of the standard queue. This queue preserves the order in which the messages are received by the queue. The consumer will receive them in order. It also has “exactly once” capability, so messages are only sent once.</p>
+
 <ul>
-  <li>it’s an object relational mapper (ORM)</li>
-  <li>it maps data from a relational database to objects in our app</li>
-  <li>allows you to work at a higher level of abstraction compared to manual mapping</li>
-  <li>involves:
+  <li>deduplication: do not allow messages into the queue if a duplicate is sent by the producer
     <ul>
-      <li>opening a connection to the database</li>
-      <li>executing a command</li>
-      <li>reading the data</li>
-      <li>closing the connection</li>
+      <li>content-based: SHA-265 algorithm creates a hash based on the content, and if that hash is seen by the queue again, it is not allowed</li>
+      <li>message duplication ID: an actual id that is provided with the message</li>
     </ul>
   </li>
+  <li>message grouping: a group of messages has the same message group id, and only one consumer can accept the group of messages</li>
 </ul>
 
-<h4 id="relational-vs-non-relational-databases">Relational vs Non-relational databases</h4>
+<h3 id="using-sqs-with-serverless">Using SQS with serverless</h3>
 
-<p>As an aside, it might be helpful to define these as well.</p>
+<p>Since I work with serverless it’s important for me to understand how to create SQS quess with code, not just in the AWS console. Sometimes at work we use SQS with Lambda functions. The youtuber FooBarServerless thankfully has really great videos on serverless, and she happened to have a tutorial on using SQS with Lambda. Just what I need! <a href="https://www.youtube.com/watch?v=hVdZb-h135M">Here is the video</a>.</p>
 
-<p><a href="https://medium.com/@zhenwu93/relational-vs-non-relational-databases-8336870da8bc">This Medium article helped me quite a bit</a><br />
-<a href="https://www.pluralsight.com/blog/software-development/relational-non-relational-databases">As well as this PluralSite article</a></p>
+<p>Also, <a href="https://www.serverless.com/framework/docs/providers/aws/events/sqs/">here is the reference on serverless.com</a></p>
 
-<p>Relational databases: data stored in tables of rows and columns, and relationships between tables are established using primary and foreign keys. Uses SQL. You have to spend time in the beginning intentionally designing the structure of your database.</p>
-<ul>
-  <li>good for complex queries</li>
-</ul>
+<p>It’s best not to call a lambda from another lambda function. If you make changes to your lambda you could be in trouble. Putting something in between, like SQS in this case is helpful. You would have a lambda as the producer, and another as a consumer.</p>
 
-<p>Non-relational databases: (aka NoSQL) doesn’t use tables, doesn’t need a lot of structure. Data stored in collections of JSON documents.</p>
-<ul>
-  <li>good for storing large amounts of data, and for flexibility</li>
-</ul>
+<p>When working with lambdas, you would first set up your SQS Queue as an AWS resources at the bottom of your file:</p>
 
-<h3 id="dbcontext-the-connection-to-the-database">DbContext: the connection to the database</h3>
-<ul>
-  <li>a class provided by Entity Framework</li>
-  <li>a DbContext class file has one or more DbSet</li>
-  <li>DbSet represent tables in the database</li>
-  <li>can use LINQ to query DbSet, and at runtime Entity Framework translates LINQ queries to SQL queries</li>
-</ul>
-
-<p>See the DbContext class example below. Each DbSet corresponds to a table in the database.</p>
-
-<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">D2LDbContext</span> <span class="p">:</span> <span class="n">DbContext</span>
-    <span class="p">{</span>
-        <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Student</span><span class="p">&gt;</span> <span class="n">Students</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-        <span class="c1">//&lt;Student&gt; is a type parameter, Students is the property name in plural form</span>
-        <span class="c1">//the whole line is a property of D2LDbContext</span>
-        
-        <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Teacher</span><span class="p">&gt;</span> <span class="n">Teachers</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> 
-        
-        <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Course</span><span class="p">&gt;</span> <span class="n">Courses</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-        <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">StudentCourse</span><span class="p">&gt;</span> <span class="n">StudentCourse</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-        <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">TeacherCourse</span><span class="p">&gt;</span> <span class="n">TeacherCourse</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-    <span class="p">}</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">resources</span><span class="pi">:</span>
+  <span class="na">Resources</span><span class="pi">:</span>
+    <span class="na">MyQueue</span><span class="pi">:</span>
+      <span class="na">Type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">AWS::SQS::Queue"</span>
+      <span class="na">Properties</span><span class="pi">:</span>
+        <span class="na">QueueName</span><span class="pi">:</span> <span class="s2">"</span><span class="s">DemoQueue"</span>
 </code></pre></div></div>
 
-<p>You use a DbContext object to access tables, and you use DbSet to modify table data.</p>
+<p>And you connect your lambdas to the queue under the “events” section in your lambda code:</p>
 
-<p>Important takeaway: DbContext is a database connection, and DbSet represents a table in the database</p>
-
-<p>Entity Framework opens the connection to the database, reads the data, maps it to objects, and adds them to DbSet. Entity Framework also keeps track of changes, like when we add, delete, or modify.  When we ask to persist these changes, Entity Framework automatically generates SQL statements and executes them on the database.</p>
-
-<p>At this point during my reading, I asked myself what “persistence” actually means. I had to read a few different sources to really get it.</p>
-
-<h4 id="persistence">Persistence</h4>
-<ul>
-  <li>(techopedia) in terms of data, persistence means an object should not be erased until it is ready to be deleted</li>
-</ul>
-
-<p>Persistent data definitions:</p>
-<ul>
-  <li>does not change and is not accessed frequently</li>
-  <li>master data that’s stable</li>
-  <li>exists from once instance to another</li>
-  <li>stored in an actual format and stays there, like a hard drive; by contrast in memory, when you close the file the data is gone</li>
-  <li>can retrieve the data again and again</li>
-  <li>the ability of the object state to be saved to a database, so the state of the object “persists” whether the app is running or not (stack overflow def.)</li>
-</ul>
-
-<h3 id="entity-framework-workflows">Entity Framework workflows</h3>
-
-<p>Two main workflows for Entity Framework: database first and code first</p>
-
-<p>First, definitions:</p>
-<ul>
-  <li>domain class: models your data, used to map data from a database to an in-memory object</li>
-  <li>“versioning” a database: sharing all versions of a database that are necessary for other team members to get a project up and running</li>
-</ul>
-
-<p><strong>Database first:</strong> design database tables first, then have Entity Framework create the corresponding domain classes</p>
-
-<p><strong>Code first:</strong> create your domain classes then have Entity Framework generate the database tables for us</p>
-
-<p>Advantages of a code first workflow:</p>
-<ul>
-  <li>faster to code, more productive</li>
-  <li>full versioning of database - can migrate to any version of the database at any point in time</li>
-</ul>
-
-<h3 id="database-migrations">Database migrations</h3>
-
-<p>Database migrations track changes to your database schema. A database migration is moving your data from one platform to another.</p>
-
-<p>Database schema: the structure/organization of a database, how it is contructed</p>
-<ul>
-  <li>a description of the data</li>
-  <li>defines attributes of a database like tables, columns, properties</li>
-  <li>structure that represents the logical view of the database</li>
-</ul>
-
-<h4 id="here-are-the-steps-to-a-code-first-migration-in-visual-studio">Here are the steps to a code first migration in Visual Studio</h4>
-
-<p>Go to: Tools -&gt; NuGet Package Manager -&gt; Package Manager Console</p>
-
-<p>Type in console:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;enable-migrations
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">mySqsFunction</span><span class="pi">:</span>
+  <span class="na">handler</span><span class="pi">:</span> <span class="s">handler.mySqsFunction</span>
+  <span class="na">events</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">sqs</span><span class="pi">:</span>
+        <span class="na">arn</span><span class="pi">:</span>
+          <span class="s">Fn::GetAtt</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="s">MyDemoQueue</span>
+            <span class="pi">-</span> <span class="s">Arn</span>
+        <span class="na">batchSize</span><span class="pi">:</span> <span class="s">1</span>
 </code></pre></div></div>
 
-<p>This generates a Migrations folder in your solution.</p>
-
-<p>Then in console:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;add-migration "YourMigrationName"
-</code></pre></div></div>
-
-<p>This generates a new C# class in the Migrations folder</p>
-
-<p>Finally,</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;update-database
-</code></pre></div></div>
-
-<p>Now if you go to App_Data in your solution, you have a new database file.</p>
+<p>Your actual function code is in a separate handler file.</p>
 
                 </div>
             </section>
@@ -376,7 +291,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/dotnet/">Dotnet</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/aws/">Aws</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -390,31 +305,16 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
+                                    
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
+                                    
+                                        
+                                        
+                                            <li><a href="/cloudformation-intrinsic-functions">AWS Cloudformation - intrinsic functions</a></li>
+                                        
+                                    
                                   
                                 
                                   
@@ -433,35 +333,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/database-error">'There is already an object named ___ in the database' and 'Column names in each table must be unique'</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/errors-csproj">500 server error and the csproj file</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/deleting-my-database">Last ditch effort – I deleted my database</a></li>
+                                            <li><a href="/deploy-react-serverless-aws">Deploying simple React app with Serverless / AWS </a></li>
                                         
                                     
                                   
@@ -475,35 +347,51 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -511,9 +399,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/dotnet/">
+                            <a href="/tag/aws/">
                                 
-                                    See all 7 posts  →
+                                    See all 2 posts  →
                                 
                             </a>
                         </footer>
@@ -523,68 +411,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/dotnet-errors-and-solutions">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Dotnet</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Debugging</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Csharp</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Sql</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">A few .NET errors and solutions</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -593,25 +419,17 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/routing">
+            <a class="post-card-content-link" href="/cloudformation-intrinsic-functions">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Dotnet</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Mvc</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Routing</span>
+                                <span class="post-card-tags">Aws</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">Update and Routing</h2>
+                    <h2 class="post-card-title">AWS Cloudformation - intrinsic functions</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -662,7 +480,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Entity Framework, workflows, databases, and migrations</div>
+    <div class="floating-header-title">AWS SQS</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -670,7 +488,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Entity+Framework%2C+workflows%2C+databases%2C+and+migrations&amp;url=entityframework"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=AWS+SQS&amp;url=sqs"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -679,7 +497,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=entityframework"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=sqs"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
