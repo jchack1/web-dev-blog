@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>AWS SNS</title>
+        
+          <description>&lt;p&gt;Here is what I am learning about AWS SNS (Simple Notification Service), using my Udemy course as a jumping off point.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 28 Mar 2021 13:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/sns</link>
+        <guid isPermaLink="true">http://localhost:4000/sns</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>AWS SQS</title>
         
           <description>&lt;p&gt;SQS is one of several AWS services that allows communication between your AWS resources. Today I am learning about it in my Udemy course. Here are some notes.&lt;/p&gt;

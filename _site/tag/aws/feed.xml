@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/aws/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-03-28T13:32:33-06:00</updated>
+  <updated>2021-03-28T14:42:40-06:00</updated>
   <id>http://localhost:4000/tag/aws/feed.xml</id>
 
   
@@ -42,6 +42,68 @@
   
   
 
+  
+    <entry>
+      <title type="html">AWS SNS</title>
+      <link href="http://localhost:4000/sns" rel="alternate" type="text/html" title="AWS SNS" />
+      <published>2021-03-28T13:30:00-06:00</published>
+      <updated>2021-03-28T13:30:00-06:00</updated>
+      <id>http://localhost:4000/sns</id>
+      <content type="html" xml:base="http://localhost:4000/sns">&lt;p&gt;Here is what I am learning about AWS SNS (Simple Notification Service), using my Udemy course as a jumping off point.&lt;/p&gt;
+
+&lt;p&gt;I have already seen SNS to a small degree at work. I was tasked with creating alarms that would send notifications to our Slack channel if there were any errors in one of our services.&lt;/p&gt;
+
+&lt;p&gt;You create SNS “topics” which store information about where notifications should be sent to. Other services “subscribe” to your SNS topics, so when triggered, a notification is sent to wherever you have indicated during set-up. In the case above, without going into too much extra detail, I created an SNS topic, which my alarm is subscribed to. When the alarm is triggered, the SNS topic sends information to our Slack channel.&lt;/p&gt;
+
+&lt;p&gt;Let’s take a more detailed look at SNS. These are notes I have taken while going through the SNS section of my course.&lt;/p&gt;
+
+&lt;h3 id=&quot;more-detail&quot;&gt;More detail&lt;/h3&gt;
+
+&lt;p&gt;You can use SNS to send messages to &lt;strong&gt;many&lt;/strong&gt; different subscribers. One service sends a message to your SNS topic, which sends the message to all of the subscribers. This is an example of Pub/Sub or publish/subscribe pattern.&lt;/p&gt;
+
+&lt;p&gt;For security, set IAM permissions and SNS Access Policies.&lt;/p&gt;
+
+&lt;p&gt;If you set an email as a subscription, you will need to confirm the email address. You will get an email from AWS with a link to confirm subscription.&lt;/p&gt;
+
+&lt;p&gt;If you want to test if your topic and subscriptions are working properly, go to the SNS console, click on your topic, and click the button “publish message”. Your subscribers should now receive a message.&lt;/p&gt;
+
+&lt;h4 id=&quot;my-issues-setting-it-up-with-slack&quot;&gt;My issues setting it up with Slack&lt;/h4&gt;
+
+&lt;p&gt;I should note, though, that when I set up our Slack channel with SNS (with AWS Chatbot as a subscriber), no messages were received in Slack when I tried “publish message”. I spent a lot of time going through my IAM policies, assuming it was a permissions error, but there was actually a better way to test if Chatbot was working. You had to try it out by creating an alarm in Cloudwatch and connecting it to the SNS topic. &lt;a href=&quot;https://docs.aws.amazon.com/chatbot/latest/adminguide/test-notifications-cw.html&quot;&gt;Here is the article that outlines this process&lt;/a&gt;. I still don’t know why it didn’t work to publish a message directly from SNS, but I’m grateful I found this article. Just test it out with an alarm!&lt;/p&gt;
+
+&lt;h3 id=&quot;sns-and-sqs&quot;&gt;SNS and SQS&lt;/h3&gt;
+
+&lt;p&gt;You can use both SNS and SQS at once. SNS can send messages to many different subscribers. You can have multiple SQS queues subscribed to SNS, and they all get the same message. This is called “fan-out”.&lt;/p&gt;
+
+&lt;p&gt;NOTE: as of this writing, you can only send SNS messages to the &lt;strong&gt;standard&lt;/strong&gt; SQS queues, not FIFO.&lt;/p&gt;
+
+&lt;p&gt;When this could be useful: S3 only allows one event rule, so if you want S3 to send message to multiple SQS queues, you could put SNS in between them. This way you send only one message to SNS, but it fans out to many SQS subscribers.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="aws" />
+      
+
+      
+        <summary type="html">Here is what I am learning about AWS SNS (Simple Notification Service), using my Udemy course as a jumping off point.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">AWS SQS</title>
