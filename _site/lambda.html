@@ -11,7 +11,7 @@
 
 
 
-    <title>Some JavaScript array methods, how they work, when to use them</title>
+    <title>AWS Lambda</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/js-methods" />
+    <link rel="canonical" href="http://localhost:4000/lambda" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Some JavaScript array methods, how they work, when to use them" />
-    <meta property="og:description" content="Here are a few JavaScript array methods that I recently learned about in my JavaScript course. Some are relatively new additions to JavaScript and some are not, but I have learned about them all in a little more depth. some (vs includes) The “some” method tests if any item inside" />
-    <meta property="og:url" content="http://localhost:4000/js-methods" />
+    <meta property="og:title" content="AWS Lambda" />
+    <meta property="og:description" content="AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model. There are so many options to choose from when setting up your sevices with AWS. Until now in my Udemy course, a lot of what we have seen involves some" />
+    <meta property="og:url" content="http://localhost:4000/lambda" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-12-14T19:30:00-07:00" />
-    <meta property="article:modified_time" content="2020-12-14T19:30:00-07:00" />
-    <meta property="article:tag" content="Javascript" />
+    <meta property="article:published_time" content="2021-04-11T14:30:00-06:00" />
+    <meta property="article:modified_time" content="2021-04-11T14:30:00-06:00" />
+    <meta property="article:tag" content="Aws" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Some JavaScript array methods, how they work, when to use them" />
-    <meta name="twitter:description" content="Here are a few JavaScript array methods that I recently learned about in my JavaScript course. Some are relatively new additions to JavaScript and some are not, but I have learned about them all in a little more depth. some (vs includes) The “some” method tests if any item inside" />
+    <meta name="twitter:title" content="AWS Lambda" />
+    <meta name="twitter:description" content="AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model. There are so many options to choose from when setting up your sevices with AWS. Until now in my Udemy course, a lot of what we have seen involves some" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Javascript" />
+    <meta name="twitter:data2" content="Aws" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/js-methods",
+    "url": "http://localhost:4000/lambda",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/js-methods"
+        "@id": "http://localhost:4000/lambda"
     },
-    "description": "Here are a few JavaScript array methods that I recently learned about in my JavaScript course. Some are relatively new additions to JavaScript and some are not, but I have learned about them all in a little more depth. some (vs includes) The “some” method tests if any item inside"
+    "description": "AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model. There are so many options to choose from when setting up your sevices with AWS. Until now in my Udemy course, a lot of what we have seen involves some"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Some JavaScript array methods, how they work, when to use them" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="AWS Lambda" href="/feed.xml" />
 
 
 </head>
@@ -153,200 +153,180 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="14 December 2020">14 December 2020</time>
+                    <time class="post-full-meta-date" datetime="11 April 2021">11 April 2021</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/javascript/'>JAVASCRIPT</a>
+                               <a href='/tag/aws/'>AWS</a>,
+                            
+                        
+                            
+                               <a href='/tag/serverless/'>SERVERLESS</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Some JavaScript array methods, how they work, when to use them</h1>
+                <h1 class="post-full-title">AWS Lambda</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>Here are a few JavaScript array methods that I recently learned about in my JavaScript course. Some are relatively new additions to JavaScript and some are not, but I have learned about them all in a little more depth.</p>
+                    <p>AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.</p>
 
-<h3 id="some-vs-includes">some (vs includes)</h3>
+<p>There are so many options to choose from when setting up your sevices with AWS. Until now in my Udemy course, a lot of what we have seen involves some sort of servers. A lot of time was spent talking about EC2s, which is basically a computer/server in the cloud that runs your apps.</p>
 
-<p>The “some” method tests if <strong>any</strong> item inside an array meets a certain condition. If any item meets your condition it returns “true”.</p>
+<p>Apps created with Lambda don’t run on EC2. This is where “serverless” comes into play. Lambda functions are just functions, small pieces of code that have some purpose. You essentially deploy your lambda functions into AWS and everything is taken care of for you. Your functions can be “connected” by SNS, Eventbridge, SQS, etc (rather than having lambdas calling lambdas).</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<p>We’ll go into more detail below. Once again I am taking notes from my Udemy course - “Ultimate AWS Certified Developer Associate 2021”.</p>
 
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">some</span><span class="p">((</span><span class="nx">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">num</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">//returns true, since 12 and 17 are greater than 10</span>
-</code></pre></div></div>
+<h3 id="serverless">Serverless</h3>
 
-<p>This is similar to the “includes” method, except “includes” tests for equality. It will test if any element in your array is equal to whatever value you use inside the method.</p>
+<p>You only deploy your code/functions - you no longer have to manage and think about your servers.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
-
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// returns false since there is no value of 10 in the array</span>
-</code></pre></div></div>
-
-<h3 id="every">every</h3>
-
-<p>The “every” method tests if <strong>every</strong> item in an array matches a specific condition.</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
-
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">every</span><span class="p">((</span><span class="nx">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">num</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">//returns false, not every item in the array is greater than 10</span>
-</code></pre></div></div>
-
-<h3 id="flat">flat</h3>
-
-<p>Let’s say you have a nested array - an array of arrays. And you would like all the values in one array. The “flat” method flattens the nested arrays into just one array with all the items on the same level. HOWEVER, it only goes one level deep when used on it’s own.</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-  <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-  <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
-<span class="p">];</span>
-
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">flat</span><span class="p">();</span> <span class="c1">//returns [1,2,3,4,5,6,7,8,9]</span>
-
-<span class="c1">//for nesting more than one level deep, add a value</span>
-<span class="c1">//into the flat method that defines the number of levels you want to go</span>
-<span class="kd">const</span> <span class="nx">numbers2</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">],</span>
-  <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
-<span class="p">];</span>
-
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">flat</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">//returns [1,2,3,4,5]</span>
-</code></pre></div></div>
-
-<h3 id="flatmap">flatMap</h3>
-
-<p>The flatMap method just combines the “flat” and “map” methods together. It works the same way as the map method - calls a funtion on each item in an array and returns a new array - and additionally flattens the result.</p>
-
-<p>It also only goes one level deep, however, and you can’t change that. If you need to flatten multiple levels you should use the flat method.</p>
-
-<h3 id="sort">sort</h3>
-
-<p>The sort method sorts based on strings. Even if an item is a number, it is converted to a string, then sorted. Numbers don’t actually end up being sorted from lowest to highests as you would expect. You need to add a callback function into your sort method in order to sort numbers.</p>
-
-<p>Below is an example similar to what was used in my course</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="o">-</span><span class="mi">440</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">250</span><span class="p">];</span>
-
-<span class="c1">//if A should be before B, return &lt; 0  (can be any negative number) -&gt; keep order</span>
-<span class="c1">//if B should be before A, return &gt; 0  (can be any positive number) -&gt; switch order</span>
-
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">&gt;</span> <span class="nx">b</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">b</span> <span class="o">&gt;</span> <span class="nx">a</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="p">});</span>
-
-<span class="c1">//returns [-440, -250, -100, 5, 50, 200, 600]</span>
-
-<span class="c1">//the same thing can also be acheived this way:</span>
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>sort compares two values at a time. In this case we want to sort in ascending order, or lowest to highest. We want A to be less than B. If A is greater than B, 1 is returned, and we switch the order of the values. If B is greater than A, -1 is returned, and we keep the current order of the values. We loop over the array until it is sorted according to our conditions.</p>
-
-<p>You can also see a shortened method included.</p>
-
-<p>If you want ascending order, use a - b. If you want descending order, use b - a.</p>
-
-<h3 id="fill">fill</h3>
-
-<p>Mutates the entire array. It fills an empty array with values, or replaces values of an already existing/full array. Like slice, you can specify where it begins and ends filling the array</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">//creates an array with 5 empty places</span>
-
-<span class="nx">arr</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">//fills the array with 1s, returns [1,1,1,1,1]</span>
-
-<span class="c1">//another option</span>
-<span class="nx">arr</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">//returns [_,_,_,1,1]</span>
-</code></pre></div></div>
-
-<p>The first parameter is the <strong>value</strong> you want to fill the array with. The second parameter is the index you want it to start filling at, and the third parameter is the index where it should stop.</p>
-
-<h3 id="arrayfrom">Array.from</h3>
-
-<p>from is used on the Array constructor. It takes in the length of array you would like, and a function similar to map. The params you can use are the current and index values.</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">({</span> <span class="na">length</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span> <span class="p">(</span><span class="nx">cur</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-<span class="c1">//returns [1,2,3,4,5]</span>
-
-<span class="kd">const</span> <span class="nx">diceRolls</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">({</span> <span class="na">length</span><span class="p">:</span> <span class="mi">100</span> <span class="p">},</span> <span class="p">()</span> <span class="o">=&gt;</span>
-  <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-<span class="p">);</span>
-<span class="c1">//returns array of 100 numbers between 1 and 6</span>
-</code></pre></div></div>
-
-<p>You can use this method to convert something that is not an array into an array.</p>
-
-<h3 id="when-to-use-each-type-of-array">When to use each type of array</h3>
-
-<p>This comes from the summary lecture of my JavaScript course</p>
-
-<p>Methods that mutate the original array:</p>
+<p>A typical serverless architecture in AWS could include:</p>
 
 <ul>
-  <li>push</li>
-  <li>unshift</li>
-  <li>pop</li>
-  <li>shift</li>
-  <li>splice</li>
-  <li>reverse</li>
-  <li>sort</li>
-  <li>fill</li>
+  <li>users log in with Cognito</li>
+  <li>static site comes from S3</li>
+  <li>API Gateway accesses your Lambda functions, which access your DynamoDB database</li>
 </ul>
 
-<p>Methods that create a new array based off an original:</p>
+<h3 id="lambda">Lambda</h3>
+
+<p>There is a time limit for your functions, up to 15 minutes. Lambda functions are run on demand, only invoked when you need them. They are scaled up automatically by AWS, so more functions are created when you need them. You only pay for invocations and compute time.</p>
+
+<p>This is different from EC2, which need to be running at all times, and provisioned by you to scale up or down in response to changes in traffic.</p>
+
+<p>API Gateway works well with Lambda - you create your REST API and the endpoints call your lambdas.</p>
+
+<p>When you invoke your function, you will get a new log stream in Cloudwatch. You can use Cloudwatch to help debug your functions.</p>
+
+<h3 id="synchronous-invocation">Synchronous invocation</h3>
+
+<p>You invoke the function, and you wait for the result. This can happen when you use API Gateway, the AWS SDK, or other services.</p>
+
+<p>Example: client calls API Gateway, which sends the request to Lambda. Lambda will run and return a response to the client through API Gateway. You wait for the response from the Lambda function.</p>
+
+<h3 id="lambdas-and-albs-application-load-balancers">Lambdas and ALBs (Application Load Balancers)</h3>
+
+<p>Another way, aside from API Gateway, to expose a lambda function via an HTTP endpoint. I first learned about ALBs through their use with EC2, but they can be used with lambdas as well.</p>
+
+<p>Lambda is registered to a target group. The HTTP request that is sent to the load balancer is converted to a JSON format. Once the lambda code runs, it should return a JSON object, which is converted to HTTP and sent back to the client to indicate the response.</p>
+
+<p>In a severless.yml file, you could set up ALBs with Lambdas like below, using an ALB event. This code is from <a href="https://www.serverless.com/framework/docs/providers/aws/events/alb/">serverless.com</a>:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">functions</span><span class="pi">:</span>
+  <span class="na">albEventConsumer</span><span class="pi">:</span>
+    <span class="na">handler</span><span class="pi">:</span> <span class="s">handler.hello</span>
+    <span class="na">events</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">alb</span><span class="pi">:</span>
+          <span class="na">listenerArn</span><span class="pi">:</span> <span class="s">arn:aws:elasticloadbalancing:us-east-1:12345:listener/app/my-load-balancer/50dc6c495c0c9188/</span>
+          <span class="na">priority</span><span class="pi">:</span> <span class="s">1</span>
+          <span class="na">conditions</span><span class="pi">:</span>
+            <span class="na">path</span><span class="pi">:</span> <span class="s">/hello</span>
+</code></pre></div></div>
+
+<h3 id="asynchronous-invocations">Asynchronous invocations</h3>
+
+<p>Events placed into event queue, lambda processes events. If there are problems processing, there are up to 3 retries. You can end up with your events processed multiple times. If processing continues to fail you can send the messages to a dead letter queue in SNS or SQS.</p>
+
+<p>S3, SNS, EventBridge, SES, CloudFormation all use asynchronous invocations.</p>
+
+<p>This can also be useful if you need to increase processing speed, and order/duplicates aren’t a big deal.</p>
+
+<h3 id="eventbridge-and-lambda">EventBridge and Lambda</h3>
+
+<p>2 ways to trigger lambda from EventBridge rule:</p>
+
+<ol>
+  <li>Set up CRON or Rate EventBridge rule (scheduled) - trigger lambda on a schedule, like every hour</li>
+  <li>Set up CodePipeline EventBridge Rule - trigger lambda whenever the state of the CodePipeline changes</li>
+</ol>
+
+<p>Note: it wasn’t mentioned in the course, but at work we have services emitting EventBridge events that trigger our lambdas.</p>
+
+<h3 id="iam-roles--permissions">IAM Roles / permissions</h3>
+
+<p>When lambda functions are <em>invoking other services</em>:</p>
 
 <ul>
-  <li>map</li>
-  <li>filter</li>
-  <li>slice</li>
-  <li>concat</li>
-  <li>flat</li>
-  <li>flatMap</li>
+  <li>Lambda functions need IAM roles attached to them so they have access to the AWS services they require. This is called an <strong>execution role</strong>. You should have one execution role per lambda function.</li>
 </ul>
 
-<p>To get an index:</p>
+<p>When lambdas are <em>being</em> accessed by another service:</p>
 
 <ul>
-  <li>indexOf (based on a value)</li>
-  <li>findIndex (based on a condition)</li>
+  <li>give other services access to your lambdas by using a <strong>resource based policy</strong></li>
 </ul>
 
-<p>To get array element:</p>
+<p><a href="https://www.serverless.com/blog/abcs-of-iam-permissions">This link</a> to serverless.com goes over how to work with IAM roles in serverless.</p>
+
+<h3 id="environment-variables">Environment variables</h3>
+
+<p>You can add and change environment variables in the Lambda console, but I tend to work with them only in the code.</p>
+
+<p>In serverless.yml files, variables look like this:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">variableA</span><span class="pi">:</span> <span class="s">${variableSource}</span>
+
+<span class="c1">#also can have a default</span>
+<span class="na">variableB</span><span class="pi">:</span> <span class="s">${variableSource, default}</span>
+
+<span class="c1">#example, with a "dev" stage being the default</span>
+<span class="na">STAGE</span><span class="pi">:</span> <span class="s">${opt:stage, 'dev'}</span>
+</code></pre></div></div>
+
+<h3 id="networking">Networking</h3>
+
+<p>By default, lambdas are launched in the AWS VPC, not your VPC, so they can’t access resources in your VPC. They can access other AWS services and external websites.</p>
+
+<p>You can launch them inside your VPC, though, and you need to set up the VPC ID, subnets, security groups, and an IAM role. You can deploy a lambda inside a private subnet with a NAT gateway if you want it to access the internet. Interestingly, putting it inside a <em>public</em> subnet does not give it internet access, so you must use a private subnet.</p>
+
+<h3 id="cloudformation">Cloudformation</h3>
+
+<p>What I didn’t realize until now was that lambda function code is actually stored in S3. This isn’t something that you have to tell serverless to do explicitly - it is generated by serverless behind the scenes. If you look at the cloudformation templates that are generated by serverless, you will find references to S3 buckets in the code for your lambda functions.</p>
+
+<p>It looks something like this:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">      </span><span class="s2">"Properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"S3Bucket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ServerlessDeploymentBucket"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Under “Code” you could also write your code directly, but this is only good for very simple functions, and I honestly wouldn’t consider doing it. Instead you should just reference the S3 bucket where your code is stored.</p>
+
+<p>Here I can see just how useful serverless is. I don’t have to think about any of these things. In my serverless.yml file all I need to do is reference the handler that my lambda should correspond to with a file path.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># here, my code is being kept in a folder called "src"</span>
+<span class="c1"># this is all that's needed - serverless creates all other resources for me</span>
+<span class="na">createTeam</span><span class="pi">:</span>
+  <span class="na">handler</span><span class="pi">:</span> <span class="s">src/teams/teams.createTeam</span>
+</code></pre></div></div>
+
+<p>In my course, in the Lambda/Cloudformation demo, the instructor is having to go into S3 in the AWS console and create a bucket. Then he needs to reference it in the cloudformation file.</p>
+
+<p>If you were to do this, you should enable versioning on your bucket (so new versions of your code are updated properly when deployed).</p>
+
+<p>Once your bucket is created, you upload your code, then go to the cloudformation console and upload your template. There is some config that needs to happen at this step.</p>
+
+<p>Definitely prefer serverless.yml files, uploaded from my machine, over this process.</p>
+
+<h3 id="other-notes">Other notes</h3>
 
 <ul>
-  <li>find</li>
-</ul>
-
-<p>Does an array include something? Returns true or false</p>
-
-<ul>
-  <li>some</li>
-  <li>every</li>
-  <li>includes</li>
-</ul>
-
-<p>Make array into a string:</p>
-
-<ul>
-  <li>join</li>
-</ul>
-
-<p>Boil something down to one value:</p>
-
-<ul>
-  <li>reduce</li>
-</ul>
-
-<p>To simply loop over an array without producing a new value/array:</p>
-
-<ul>
-  <li>forEach</li>
+  <li>Lambda can have up to 1000 concurrent executions at once. Lambdas scale up or down automatically. Important: this applies to all lambda functions across your account, not just one application, so you may want to set limits on your functions so one application doesn’t take up all your lambda resources.</li>
+  <li>when connecting to databases / creating other clients like the AWS SDK, it is best practice to initialize them outside of your handler functions at the top of your file. This makes them available for other functions, not just the current one.</li>
+  <li>Lambda layers: split up your function code and put reusable things like large libraries into separate layers - don’t have to be reuploaded every time you change your code, and other functions could use them as well.</li>
+  <li>can create different versions of your lambdas as well - your latest version is mutable, what you’re currently working on. Each version is immutable and can’t be changed once deployed
+    <ul>
+      <li>an alias is mutable and points to the latest version of your lambda</li>
+    </ul>
+  </li>
 </ul>
 
                 </div>
@@ -403,7 +383,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/aws/">Aws</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -417,27 +397,6 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/redux">Learning Redux</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
                                     
                                   
                                 
@@ -445,38 +404,27 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/js-data-structures">When to use the different JavaScript data structures</a></li>
+                                            <li><a href="/sns">AWS SNS</a></li>
                                         
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
                                     
                                         
                                         
-                                            <li><a href="/memoryleaks">Dealing with memory leaks</a></li>
+                                            <li><a href="/sqs">AWS SQS</a></li>
                                         
                                     
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
+                                    
+                                        
+                                        
+                                            <li><a href="/cloudformation-intrinsic-functions">AWS Cloudformation - intrinsic functions</a></li>
+                                        
+                                    
                                   
                                 
                                   
@@ -499,17 +447,13 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -523,10 +467,31 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -542,9 +507,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/javascript/">
+                            <a href="/tag/aws/">
                                 
-                                    See all 7 posts  →
+                                    See all 4 posts  →
                                 
                             </a>
                         </footer>
@@ -554,64 +519,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/redux">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Javascript</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">React</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Redux</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Learning Redux</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -620,17 +527,17 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/js-data-structures">
+            <a class="post-card-content-link" href="/sns">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Javascript</span>
+                                <span class="post-card-tags">Aws</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">When to use the different JavaScript data structures</h2>
+                    <h2 class="post-card-title">AWS SNS</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -681,7 +588,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Some JavaScript array methods, how they work, when to use them</div>
+    <div class="floating-header-title">AWS Lambda</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -689,7 +596,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Some+JavaScript+array+methods%2C+how+they+work%2C+when+to+use+them&amp;url=js-methods"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=AWS+Lambda&amp;url=lambda"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -698,7 +605,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=js-methods"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=lambda"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

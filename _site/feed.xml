@@ -1,4 +1,157 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-28T14:42:40-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">AWS SNS</title><link href="http://localhost:4000/sns" rel="alternate" type="text/html" title="AWS SNS" /><published>2021-03-28T13:30:00-06:00</published><updated>2021-03-28T13:30:00-06:00</updated><id>http://localhost:4000/sns</id><content type="html" xml:base="http://localhost:4000/sns">&lt;p&gt;Here is what I am learning about AWS SNS (Simple Notification Service), using my Udemy course as a jumping off point.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-11T23:06:28-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">AWS Lambda</title><link href="http://localhost:4000/lambda" rel="alternate" type="text/html" title="AWS Lambda" /><published>2021-04-11T14:30:00-06:00</published><updated>2021-04-11T14:30:00-06:00</updated><id>http://localhost:4000/lambda</id><content type="html" xml:base="http://localhost:4000/lambda">&lt;p&gt;AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.&lt;/p&gt;
+
+&lt;p&gt;There are so many options to choose from when setting up your sevices with AWS. Until now in my Udemy course, a lot of what we have seen involves some sort of servers. A lot of time was spent talking about EC2s, which is basically a computer/server in the cloud that runs your apps.&lt;/p&gt;
+
+&lt;p&gt;Apps created with Lambda don’t run on EC2. This is where “serverless” comes into play. Lambda functions are just functions, small pieces of code that have some purpose. You essentially deploy your lambda functions into AWS and everything is taken care of for you. Your functions can be “connected” by SNS, Eventbridge, SQS, etc (rather than having lambdas calling lambdas).&lt;/p&gt;
+
+&lt;p&gt;We’ll go into more detail below. Once again I am taking notes from my Udemy course - “Ultimate AWS Certified Developer Associate 2021”.&lt;/p&gt;
+
+&lt;h3 id=&quot;serverless&quot;&gt;Serverless&lt;/h3&gt;
+
+&lt;p&gt;You only deploy your code/functions - you no longer have to manage and think about your servers.&lt;/p&gt;
+
+&lt;p&gt;A typical serverless architecture in AWS could include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;users log in with Cognito&lt;/li&gt;
+  &lt;li&gt;static site comes from S3&lt;/li&gt;
+  &lt;li&gt;API Gateway accesses your Lambda functions, which access your DynamoDB database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;lambda&quot;&gt;Lambda&lt;/h3&gt;
+
+&lt;p&gt;There is a time limit for your functions, up to 15 minutes. Lambda functions are run on demand, only invoked when you need them. They are scaled up automatically by AWS, so more functions are created when you need them. You only pay for invocations and compute time.&lt;/p&gt;
+
+&lt;p&gt;This is different from EC2, which need to be running at all times, and provisioned by you to scale up or down in response to changes in traffic.&lt;/p&gt;
+
+&lt;p&gt;API Gateway works well with Lambda - you create your REST API and the endpoints call your lambdas.&lt;/p&gt;
+
+&lt;p&gt;When you invoke your function, you will get a new log stream in Cloudwatch. You can use Cloudwatch to help debug your functions.&lt;/p&gt;
+
+&lt;h3 id=&quot;synchronous-invocation&quot;&gt;Synchronous invocation&lt;/h3&gt;
+
+&lt;p&gt;You invoke the function, and you wait for the result. This can happen when you use API Gateway, the AWS SDK, or other services.&lt;/p&gt;
+
+&lt;p&gt;Example: client calls API Gateway, which sends the request to Lambda. Lambda will run and return a response to the client through API Gateway. You wait for the response from the Lambda function.&lt;/p&gt;
+
+&lt;h3 id=&quot;lambdas-and-albs-application-load-balancers&quot;&gt;Lambdas and ALBs (Application Load Balancers)&lt;/h3&gt;
+
+&lt;p&gt;Another way, aside from API Gateway, to expose a lambda function via an HTTP endpoint. I first learned about ALBs through their use with EC2, but they can be used with lambdas as well.&lt;/p&gt;
+
+&lt;p&gt;Lambda is registered to a target group. The HTTP request that is sent to the load balancer is converted to a JSON format. Once the lambda code runs, it should return a JSON object, which is converted to HTTP and sent back to the client to indicate the response.&lt;/p&gt;
+
+&lt;p&gt;In a severless.yml file, you could set up ALBs with Lambdas like below, using an ALB event. This code is from &lt;a href=&quot;https://www.serverless.com/framework/docs/providers/aws/events/alb/&quot;&gt;serverless.com&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;functions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;albEventConsumer&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;handler.hello&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alb&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;listenerArn&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;arn:aws:elasticloadbalancing:us-east-1:12345:listener/app/my-load-balancer/50dc6c495c0c9188/&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;conditions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/hello&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;asynchronous-invocations&quot;&gt;Asynchronous invocations&lt;/h3&gt;
+
+&lt;p&gt;Events placed into event queue, lambda processes events. If there are problems processing, there are up to 3 retries. You can end up with your events processed multiple times. If processing continues to fail you can send the messages to a dead letter queue in SNS or SQS.&lt;/p&gt;
+
+&lt;p&gt;S3, SNS, EventBridge, SES, CloudFormation all use asynchronous invocations.&lt;/p&gt;
+
+&lt;p&gt;This can also be useful if you need to increase processing speed, and order/duplicates aren’t a big deal.&lt;/p&gt;
+
+&lt;h3 id=&quot;eventbridge-and-lambda&quot;&gt;EventBridge and Lambda&lt;/h3&gt;
+
+&lt;p&gt;2 ways to trigger lambda from EventBridge rule:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Set up CRON or Rate EventBridge rule (scheduled) - trigger lambda on a schedule, like every hour&lt;/li&gt;
+  &lt;li&gt;Set up CodePipeline EventBridge Rule - trigger lambda whenever the state of the CodePipeline changes&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Note: it wasn’t mentioned in the course, but at work we have services emitting EventBridge events that trigger our lambdas.&lt;/p&gt;
+
+&lt;h3 id=&quot;iam-roles--permissions&quot;&gt;IAM Roles / permissions&lt;/h3&gt;
+
+&lt;p&gt;When lambda functions are &lt;em&gt;invoking other services&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Lambda functions need IAM roles attached to them so they have access to the AWS services they require. This is called an &lt;strong&gt;execution role&lt;/strong&gt;. You should have one execution role per lambda function.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When lambdas are &lt;em&gt;being&lt;/em&gt; accessed by another service:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;give other services access to your lambdas by using a &lt;strong&gt;resource based policy&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.serverless.com/blog/abcs-of-iam-permissions&quot;&gt;This link&lt;/a&gt; to serverless.com goes over how to work with IAM roles in serverless.&lt;/p&gt;
+
+&lt;h3 id=&quot;environment-variables&quot;&gt;Environment variables&lt;/h3&gt;
+
+&lt;p&gt;You can add and change environment variables in the Lambda console, but I tend to work with them only in the code.&lt;/p&gt;
+
+&lt;p&gt;In serverless.yml files, variables look like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;variableA&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${variableSource}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#also can have a default&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;variableB&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${variableSource, default}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#example, with a &quot;dev&quot; stage being the default&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;STAGE&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${opt:stage, 'dev'}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;networking&quot;&gt;Networking&lt;/h3&gt;
+
+&lt;p&gt;By default, lambdas are launched in the AWS VPC, not your VPC, so they can’t access resources in your VPC. They can access other AWS services and external websites.&lt;/p&gt;
+
+&lt;p&gt;You can launch them inside your VPC, though, and you need to set up the VPC ID, subnets, security groups, and an IAM role. You can deploy a lambda inside a private subnet with a NAT gateway if you want it to access the internet. Interestingly, putting it inside a &lt;em&gt;public&lt;/em&gt; subnet does not give it internet access, so you must use a private subnet.&lt;/p&gt;
+
+&lt;h3 id=&quot;cloudformation&quot;&gt;Cloudformation&lt;/h3&gt;
+
+&lt;p&gt;What I didn’t realize until now was that lambda function code is actually stored in S3. This isn’t something that you have to tell serverless to do explicitly - it is generated by serverless behind the scenes. If you look at the cloudformation templates that are generated by serverless, you will find references to S3 buckets in the code for your lambda functions.&lt;/p&gt;
+
+&lt;p&gt;It looks something like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;S3Bucket&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Ref&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ServerlessDeploymentBucket&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Under “Code” you could also write your code directly, but this is only good for very simple functions, and I honestly wouldn’t consider doing it. Instead you should just reference the S3 bucket where your code is stored.&lt;/p&gt;
+
+&lt;p&gt;Here I can see just how useful serverless is. I don’t have to think about any of these things. In my serverless.yml file all I need to do is reference the handler that my lambda should correspond to with a file path.&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# here, my code is being kept in a folder called &quot;src&quot;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# this is all that's needed - serverless creates all other resources for me&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;createTeam&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;src/teams/teams.createTeam&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In my course, in the Lambda/Cloudformation demo, the instructor is having to go into S3 in the AWS console and create a bucket. Then he needs to reference it in the cloudformation file.&lt;/p&gt;
+
+&lt;p&gt;If you were to do this, you should enable versioning on your bucket (so new versions of your code are updated properly when deployed).&lt;/p&gt;
+
+&lt;p&gt;Once your bucket is created, you upload your code, then go to the cloudformation console and upload your template. There is some config that needs to happen at this step.&lt;/p&gt;
+
+&lt;p&gt;Definitely prefer serverless.yml files, uploaded from my machine, over this process.&lt;/p&gt;
+
+&lt;h3 id=&quot;other-notes&quot;&gt;Other notes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Lambda can have up to 1000 concurrent executions at once. Lambdas scale up or down automatically. Important: this applies to all lambda functions across your account, not just one application, so you may want to set limits on your functions so one application doesn’t take up all your lambda resources.&lt;/li&gt;
+  &lt;li&gt;when connecting to databases / creating other clients like the AWS SDK, it is best practice to initialize them outside of your handler functions at the top of your file. This makes them available for other functions, not just the current one.&lt;/li&gt;
+  &lt;li&gt;Lambda layers: split up your function code and put reusable things like large libraries into separate layers - don’t have to be reuploaded every time you change your code, and other functions could use them as well.&lt;/li&gt;
+  &lt;li&gt;can create different versions of your lambdas as well - your latest version is mutable, what you’re currently working on. Each version is immutable and can’t be changed once deployed
+    &lt;ul&gt;
+      &lt;li&gt;an alias is mutable and points to the latest version of your lambda&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="aws" /><category term="serverless" /><summary type="html">AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.</summary></entry><entry><title type="html">AWS SNS</title><link href="http://localhost:4000/sns" rel="alternate" type="text/html" title="AWS SNS" /><published>2021-03-28T13:30:00-06:00</published><updated>2021-03-28T13:30:00-06:00</updated><id>http://localhost:4000/sns</id><content type="html" xml:base="http://localhost:4000/sns">&lt;p&gt;Here is what I am learning about AWS SNS (Simple Notification Service), using my Udemy course as a jumping off point.&lt;/p&gt;
 
 &lt;p&gt;I have already seen SNS to a small degree at work. I was tasked with creating alarms that would send notifications to our Slack channel if there were any errors in one of our services.&lt;/p&gt;
 
@@ -1042,100 +1195,4 @@ Their recommendation was to start with a font size of 16px and go from there, de
 
 &lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
 
-&lt;p&gt;For now this is all I can remember. It was a difficult project but I’m happy I pushed through, because I ended up with this finished product: https://react-science-news.herokuapp.com/&lt;/p&gt;</content><author><name></name></author><category term="react" /><category term="node.js" /><summary type="html">When I was in school we learned about fetching data from external APIs. At the time I found a news API where you could filter articles based on topic. Since I previously went to university and earned a science degree I thought it would be great to make an app for myself that gives me the latest science articles.</summary></entry><entry><title type="html">Deploying simple React app with Serverless / AWS</title><link href="http://localhost:4000/deploy-react-serverless-aws" rel="alternate" type="text/html" title="Deploying simple React app with Serverless / AWS " /><published>2020-10-29T18:30:00-06:00</published><updated>2020-10-29T18:30:00-06:00</updated><id>http://localhost:4000/deploy-react-serverless-aws</id><content type="html" xml:base="http://localhost:4000/deploy-react-serverless-aws">&lt;p&gt;I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless.&lt;/p&gt;
-
-&lt;p&gt;This is assuming you already have an AWS account, and have installed Serverless, the AWS SDK, and set up your AWS credentials on your machine.Simply put, though:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;To install Serverless I ran this command: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i serverless -g&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;To install the AWS SDK I ran this command: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i aws-sdk -g&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Once you’ve set up an AWS account you can set up a new user in IAM, and save your credentials on your machine. &lt;a href=&quot;https://www.youtube.com/watch?v=w-OHgML58eg&amp;amp;t=1s&quot;&gt;This video shows that set-up&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In this case I already had a project made, which I set up using &lt;code class=&quot;highlighter-rouge&quot;&gt;create-react-app&lt;/code&gt;. You can also set up a new serverless app by creating a new folder and running &lt;code class=&quot;highlighter-rouge&quot;&gt;serverless create --template aws-nodejs&lt;/code&gt;. This is assuming you are using Node.js in the backend. There are many different runtimes you can use and templates available. You can also run &lt;code class=&quot;highlighter-rouge&quot;&gt;create-react-app&lt;/code&gt; after creating your serverless template. The order you do this doesn’t seem to matter, as long as you have all the files you need.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.serverless.com/framework/docs/providers/aws/guide/services/&quot;&gt;This article from Serverless explains services, and all associated files, very well&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;To deploy static pages to an S3 bucket on AWS, I installed serverless-finch in my project using &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i --save-dev serverless-finch&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;When deploying a React app it is important to run the command &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run build&lt;/code&gt;, so you get a build folder in your project directory. This is where all your static files end up including your index.html, which S3 needs to find in order to deploy your site.&lt;/p&gt;
-
-&lt;h3 id=&quot;inside-the-serverlessyml-file&quot;&gt;Inside the serverless.yml file&lt;/h3&gt;
-
-&lt;p&gt;Setting up a new serverless app will give you a handler file (in my case, handler.js), a .gitignore, and a serverless.yml file. serverless.yml is where you configure your service. Serverless uses this file to work with AWS to deploy your app.&lt;/p&gt;
-
-&lt;p&gt;The following is what I have in my serverless.yml file:&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;react-practice&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;provider&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;aws&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${opt:stage, 'dev'}&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;runtime&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;nodejs12.x&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;region&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;us-west-2&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;functions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;handler.hello&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;#    The following are a few example events you can configure&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;#    NOTE: Please make sure to change your handler code to work with those events&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;#    Check the event documentation for details&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;hello&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;get&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;serverless-finch&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;custom&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;bucketName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;julia-practice-react1&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;distributionFolder&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/build&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;errorDocument&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;index.html&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;“service” essentially means project. It’s where you define all your functions, resources, events, plugins, and so on. Here you give the service a name.&lt;/p&gt;
-
-&lt;p&gt;Under “provider” is where you specify that you are using AWS and configure your runtime, region, stage, etc. Stage refers to stage of development which includes development, QA, or production. Here the “dev” stage is default, if you don’t specify a stage when you deploy.&lt;/p&gt;
-
-&lt;p&gt;Under each function you can have events. These are events that trigger the function to execute. In this example, and HTTP “get” request is triggering the “hello” function to execute.&lt;/p&gt;
-
-&lt;p&gt;If you have a “resources” section, these are the resources that your functions use when they execute. These could include database tables.&lt;/p&gt;
-
-&lt;p&gt;Note that under “plugins” I added “serverless-finch”.&lt;/p&gt;
-
-&lt;p&gt;Under “custom” and “client” we configure S3.&lt;/p&gt;
-
-&lt;p&gt;bucketName the bucket where S3 will place our files. It must be a globally unique name, meaning no one else in the world have have a bucket with this name.&lt;/p&gt;
-
-&lt;p&gt;distributionFolder is where S3 should look for our files. For React we use “/build”, since that’s where our index.html is.&lt;/p&gt;
-
-&lt;p&gt;S3 also requires you have an errorDocument specified. Since this is just a simple app I didn’t make one and just left it as index.html.&lt;/p&gt;
-
-&lt;h4 id=&quot;what-serverless-does-with-the-serverlessyml-file&quot;&gt;What Serverless does with the serverless.yml file&lt;/h4&gt;
-
-&lt;p&gt;Serverless takes the serverless.yml file and translates it into an AWS CloudFormation template.&lt;/p&gt;
-
-&lt;p&gt;CloudFormation is an AWS service that allows you to manage all your AWS services/resources. You would write a template describing everything you want, and CloudFormation configures it for you.&lt;/p&gt;
-
-&lt;p&gt;This sounds like an improvement over configuring everything yourself in the AWS management console, though these files can still get pretty long and take time to create. That’s where Serverless comes in. Serverless takes your serverless.yml file and creates CloudFormation templates for you.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.serverless.com/framework/docs/providers/aws/guide/deploying/&quot;&gt;Here’s an article describing deployment with Serverless&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;deployment&quot;&gt;Deployment&lt;/h3&gt;
-
-&lt;p&gt;Note: you can set up different commands in the “scripts” section of your package.json file.&lt;/p&gt;
-
-&lt;p&gt;For backend stuff, especially for Lambda functions, run &lt;code class=&quot;highlighter-rouge&quot;&gt;sls deploy --aws-profile={whatever name you set up in your aws credentials file}&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;To deploy the client side, into your S3 bucket, run this command &lt;code class=&quot;highlighter-rouge&quot;&gt;sls client deploy --aws-profile={whatever name you set up in your aws credentials file}&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Your screen should look something like this if successful. You will see a link you can go to and view the site.
-&lt;img src=&quot;../assets/images/sls-cli.jpg&quot; style=&quot;max-width: 500px;&quot; alt=&quot;serverless cli successful&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;errors&quot;&gt;Errors&lt;/h3&gt;
-
-&lt;p&gt;I got an error reading “Serverless Error: Access Denied”. This seemed strange because I never got this error for the backend deploy, so I thought it must have to do with S3. I fixed this by making my bucket public, but I don’t think this is very secure so I need to look into this further.&lt;/p&gt;
-
-&lt;p&gt;Another error said that I was not in the correct region. This was because my bucket and my serverless.yml file “region” did not match. I just had to quickly update my .yml file and there error was solved. I could now see my site.&lt;/p&gt;</content><author><name></name></author><category term="react" /><category term="aws" /><category term="serverless" /><summary type="html">I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless.</summary></entry></feed>
+&lt;p&gt;For now this is all I can remember. It was a difficult project but I’m happy I pushed through, because I ended up with this finished product: https://react-science-news.herokuapp.com/&lt;/p&gt;</content><author><name></name></author><category term="react" /><category term="node.js" /><summary type="html">When I was in school we learned about fetching data from external APIs. At the time I found a news API where you could filter articles based on topic. Since I previously went to university and earned a science degree I thought it would be great to make an app for myself that gives me the latest science articles.</summary></entry></feed>
