@@ -1,4 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-11T23:06:28-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">AWS Lambda</title><link href="http://localhost:4000/lambda" rel="alternate" type="text/html" title="AWS Lambda" /><published>2021-04-11T14:30:00-06:00</published><updated>2021-04-11T14:30:00-06:00</updated><id>http://localhost:4000/lambda</id><content type="html" xml:base="http://localhost:4000/lambda">&lt;p&gt;AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-24T23:46:42-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Learning data structures - performance and basic structures</title><link href="http://localhost:4000/data-structures" rel="alternate" type="text/html" title="Learning data structures - performance and basic structures" /><published>2021-05-23T14:30:00-06:00</published><updated>2021-05-23T14:30:00-06:00</updated><id>http://localhost:4000/data-structures</id><content type="html" xml:base="http://localhost:4000/data-structures">&lt;p&gt;It felt like it was about time to dive deeper into data structures.&lt;/p&gt;
+
+&lt;p&gt;This is one of those topics that I knew I needed to learn in more depth eventually, but didn’t get around to until now. I was working on a difficult programming problem where I had to convert some data from one structure to another for my front end to be able to use it. I was frustrated because I felt like I had a gap in my knowledge - how do I create and work with these data structures efficiently? Through a lot of trial and error I figured it out, but it likely would have been easier if I had more knowledge of the specific structures I was using - in this case, objects and maps in Javascript.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-a-data-structure&quot;&gt;What is a data structure?&lt;/h3&gt;
+
+&lt;p&gt;Turns out my idea of data structures as a concept wasn’t too far off - the &lt;a href=&quot;https://www.youtube.com/watch?v=zg9ih6SVACc&amp;amp;list=WL&amp;amp;index=7&quot;&gt;free code camp video I’m using to help me learn&lt;/a&gt; defined a data structure as something that stores data and allows a user to manipulate that data.&lt;/p&gt;
+
+&lt;p&gt;Things you might want to do with a data structure include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;accessing the data&lt;/li&gt;
+  &lt;li&gt;searching the data&lt;/li&gt;
+  &lt;li&gt;inserting a new item&lt;/li&gt;
+  &lt;li&gt;deleting an item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;big-o-notation&quot;&gt;Big-O Notation&lt;/h3&gt;
+
+&lt;p&gt;This helps us to determine how efficient our data structures are. It measures the complexity of an algorithm.&lt;/p&gt;
+
+&lt;p&gt;I found &lt;a href=&quot;https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation&quot;&gt;this article that helps explain this concept for beginners&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You essentially score a data structure based on how it performs if you increase the size of the data input into your program.&lt;/p&gt;
+
+&lt;p&gt;You give a score to the data structure for how well it can accomplish the tasks mentioned above (access, search, insert, delete). When you are choosing how to store your data, you should choose the data structure that is most efficient at the thing you are mainly using it for.&lt;/p&gt;
+
+&lt;p&gt;Performance of a function is based on the &lt;strong&gt;number of operations&lt;/strong&gt; it takes to complete its task.&lt;/p&gt;
+
+&lt;p&gt;We measure performance by using equations that take in the size of the data set. This equation returns the number of operations. These are called Time Complexity Equations. We don’t actually measure time, however, as that can vary depending on the machine you are using to run your program.&lt;/p&gt;
+
+&lt;h4 id=&quot;most-common-time-complexity-equations-from-highest-to-lowest-efficiency&quot;&gt;Most common Time Complexity Equations, from highest to lowest efficiency&lt;/h4&gt;
+
+&lt;p&gt;n = the size of the data set&lt;/p&gt;
+
+&lt;p&gt;The first three are pretty good:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O(1)&lt;/strong&gt;: the best possible score is 1. This means that the task can be completed with one operation. It always takes the same amount of time regardless of the size of the data set it is working with.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O(log n)&lt;/strong&gt;: still very fast; the larger the data set, the more efficient it is. Follows a logarithmic curve (the inverse of an exponential curve, if like me you don’t remember much about logarithmic curves from school).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;example algorithm that uses this: binary search&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;O(n)&lt;/strong&gt;: the number of operations needed is proportional to the number of items in the data set. This would be represented by a linear graph.&lt;/p&gt;
+
+&lt;p&gt;The next three are not so good:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O(n log n)&lt;/strong&gt;: not quite linear, performance gets slightly worse as the size of the data set increases&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O(n^2) and O(2^n)&lt;/strong&gt;: gets exponentially worse as the size increases&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;n^2 can happen with nested loops&lt;/li&gt;
+  &lt;li&gt;you could end up with n^3, n^4 and larger if you have even more code nested with in your nests&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;basic-data-structures---arrays-and-array-lists&quot;&gt;Basic data structures - arrays and array lists&lt;/h3&gt;
+
+&lt;p&gt;Arrays and array lists are random-access data structures. This means you can access any element inside them directly without depending on any of the other elements.&lt;/p&gt;
+
+&lt;h4 id=&quot;arrays&quot;&gt;Arrays&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;can be used to store anything, usually similar values&lt;/li&gt;
+  &lt;li&gt;items in an array are called elements&lt;/li&gt;
+  &lt;li&gt;indexes are used to identify the elements in the array, starting at index 0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Parallel arrays: multiple arrays have corresponding values, like employees and their salaries&lt;/p&gt;
+
+&lt;p&gt;There was a point when I started to become confused while watching the freeCodeCamp video. They say that an array can store data of only one type. This isn’t true in Javascript, as it is an un-typed language. You can also add and remove items in a Javascript array, so the size is not always fixed; in the video, fixed-size was an important aspect of the array data structure. If my understanding of data storage is correct, this means that you cannot reserve continuous spaces in memory for all your array elements (in Javascript). This could affect how the data is accessed and therefore its performance.&lt;/p&gt;
+
+&lt;p&gt;Moving on…&lt;/p&gt;
+
+&lt;p&gt;You can have two-dimensional arrays:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;at each index of the first array, there is another array&lt;/li&gt;
+  &lt;li&gt;looks like a spreadsheet&lt;/li&gt;
+  &lt;li&gt;use two indexes to access each item, first for column and second for row&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;BigO efficiency for arrays:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;accessing: O(1)&lt;/li&gt;
+  &lt;li&gt;searching, deleting, inserting: O(n)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;array-lists&quot;&gt;Array lists&lt;/h4&gt;
+
+&lt;p&gt;This began to clear up my confusion about Javascript arrays and size. An array list has the same properties as an array, except it is dynamic and can grow. Exactly what I’m used to with Javascript. So, in Javascript, is an “array” actually an “array list”? That is something I need to dive into further.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;array lists usually use arrays in the background. Some languages, like Python (and possibly Javascript?) mix properties of arrays and array lists.&lt;/li&gt;
+  &lt;li&gt;has built-in methods. Javascript has methods like pop, unshift, and length, to name a few.&lt;/li&gt;
+  &lt;li&gt;in memory, array list items are stored as references to other places in memory - the actual element values are stored elsewhere in memory&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;BigO efficiency for array lists:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;accessing: O(1)&lt;/li&gt;
+  &lt;li&gt;searching, inserting, deleting: O(n)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For both arrays and array lists, searching, inserting, and deleting will require us to go through each item to complete the task (you could also find the correct element on the first try, but for BigO notation we look at the worst case scenario).&lt;/p&gt;
+
+&lt;p&gt;Use arrays if:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;you won’t be changing the size or modifying the data&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Otherwise, array lists are more powerful and a better choice. As we can see above, the efficiency in terms of BigO are the same.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;That’s all for the basics. The next posts will get into the intermediate and advanced data structures.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><summary type="html">It felt like it was about time to dive deeper into data structures.</summary></entry><entry><title type="html">AWS Lambda</title><link href="http://localhost:4000/lambda" rel="alternate" type="text/html" title="AWS Lambda" /><published>2021-04-11T14:30:00-06:00</published><updated>2021-04-11T14:30:00-06:00</updated><id>http://localhost:4000/lambda</id><content type="html" xml:base="http://localhost:4000/lambda">&lt;p&gt;AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.&lt;/p&gt;
 
 &lt;p&gt;There are so many options to choose from when setting up your sevices with AWS. Until now in my Udemy course, a lot of what we have seen involves some sort of servers. A lot of time was spent talking about EC2s, which is basically a computer/server in the cloud that runs your apps.&lt;/p&gt;
 
@@ -1090,109 +1210,4 @@ Their recommendation was to start with a font size of 16px and go from there, de
 
 &lt;p&gt;Below you can see a screenshot from the course, which is a nice comparison of all the options.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../assets/images/udemy-js-screenshot.jpg&quot; style=&quot;max-width: 700px;&quot; alt=&quot;screenshot udemy data structure comparison&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">A few quick notes from my Udemy Javascript course on when you should use different types of JavaScript data structures. The course is “The Complete JavaScript Course 2020: From Zero to Expert!”, which I started last year but never finished.</summary></entry><entry><title type="html">Making a React/Node.js app</title><link href="http://localhost:4000/react-nodejs-app" rel="alternate" type="text/html" title="Making a React/Node.js app" /><published>2020-11-16T18:30:00-07:00</published><updated>2020-11-16T18:30:00-07:00</updated><id>http://localhost:4000/react-nodejs-app</id><content type="html" xml:base="http://localhost:4000/react-nodejs-app">&lt;p&gt;When I was in school we learned about fetching data from external APIs. At the time I found a news API where you could filter articles based on topic. Since I previously went to university and earned a science degree I thought it would be great to make an app for myself that gives me the latest science articles.&lt;/p&gt;
-
-&lt;p&gt;I had genuinely wanted to keep up with what was going on in science. After I graduated I had a subscription to the journal Nature hoping that would help me keep up. I fell hopelessly behind as each week they sent a journal packed with primary science research articles. Even after spending four years reading these types of in-depth research articles, they often took me a long time to get through due to the detailed technical language.&lt;/p&gt;
-
-&lt;p&gt;I figured an app would be easier. I finally got around to making it a year after finding the news API. Since I am learning React I thought this would be a good opportunity to practice my React skills.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-i-actually-did&quot;&gt;What I actually did&lt;/h3&gt;
-
-&lt;p&gt;I specifically searched for tutorials on how to fetch API data with React. I modelled what I did after &lt;a href=&quot;https://www.youtube.com/watch?v=YaioUnMw0mo&quot;&gt;this video by Brad Traversy&lt;/a&gt;, and I also went back to previous React projects/tutorials I followed as a reference. Since I wanted to get data onto cards in a React front end this was perfect.&lt;/p&gt;
-
-&lt;p&gt;I created the front end with my card structure and set up React Router so I could navigate between pages in my app.&lt;/p&gt;
-
-&lt;h4 id=&quot;nodejsexpress-backend&quot;&gt;Node.js/Express backend&lt;/h4&gt;
-
-&lt;p&gt;I realized that I needed to hide my API key somewhere. Even though this is a low stakes project and no one was likely going to hack my app, I wanted to do it right. First I put my key in a .env file in the front-end.&lt;/p&gt;
-
-&lt;p&gt;After reading some posts on StackOverflow I learned that the key is still visible in the Network tab under Chrome dev tools. And I checked - it was very easy to find. At this point I decided to create a Node.js backend to keep my key safe. I needed to do this anyway to deploy my app to Heroku later on.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=kJA9rDX7azM&quot;&gt;This was a very helpful tutorial&lt;/a&gt; that taught me how to make a very simple back-end and connection to React front-end.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/jchack1/react-science-news-public/blob/main/server.js&quot;&gt;You can see the my server.js code on github&lt;/a&gt;, but to summarize: the “request” npm package was used to actually make the request to the news API. I had to parse the json data to get to my “articles” array. I made a route called “/getArticles” that would be called by Axios in the front end.&lt;/p&gt;
-
-&lt;p&gt;Get route:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/getArticles&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;https://gnews.io/api/v4/top-headlines?topic=science&amp;amp;lang=en&amp;amp;country=ca&amp;amp;token=${apiKey}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parsedBody&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;articles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parsedBody&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;articles&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-        &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;articles&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;And below it is being called in the front end:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/getArticles&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setItems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([]);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setIsLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;useEffect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cancel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;axios&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;cancelToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;axios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CancelToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cancel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;setIsLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;setItems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;articles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cancel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;There is probably a cleaner way to do the above Axios request, but if I didn’t do it this way, there would be too many calls to the news API and I would use up my daily limit in a matter of minutes. This code came from an old tutorial I followed to call data from a Pokemon API.&lt;/p&gt;
-
-&lt;h4 id=&quot;using-a-proxy-in-packagejson-during-development&quot;&gt;Using a proxy in package.json during development&lt;/h4&gt;
-
-&lt;p&gt;The video I linked above goes over this, but when you are working on your local machine you will have React and Node running at the same time. In the package.json you can add a line like this (port number can be any unused port):&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;proxy&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://localhost:5000&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;And set your port to 5000 in your server.js and/or .env file. React by default starts on port 3000, so you will be able to run both projects at once while developing.&lt;/p&gt;
-
-&lt;p&gt;I originally kept this in my package.json when I deployed, but removed it later on. I had several bugs once I deployed and the ports may or may not be related. It’s possible that Heroku ignores this during deployment, but I decided to put both projects back to port 3000 just in case this was causing problems for me.&lt;/p&gt;
-
-&lt;p&gt;It should also be noted that when you add your proxy into your package.json, you must restart your projects for it to take effect.&lt;/p&gt;
-
-&lt;h4 id=&quot;scripts-in-packagejson&quot;&gt;Scripts in package.json&lt;/h4&gt;
-
-&lt;p&gt;I had to pay special attention to my scripts so I could start my server and my React app separately during development. I used the below scripts in package.json:&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;start&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;node server.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;react-start&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;react-scripts start&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;build&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;react-scripts build&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;react-scripts test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;eject&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;react-scripts eject&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I kept the “start” script related to the server. When deploying, Heroku looks for your start script to start your Node.js server. I made a special “react-start” script which I ran with “npm run react-start”.&lt;/p&gt;
-
-&lt;h3 id=&quot;other-issues&quot;&gt;Other issues&lt;/h3&gt;
-
-&lt;p&gt;The .env file was very problematic. I used this in the backend to hide my API key from being public on github. This worked fine when running locally, but the “/getArticles” route would not work once deployed on Heroku. I made a last ditch effort to get it to work and added my API key directly into the url in my server.js file. I was shocked when it worked.&lt;/p&gt;
-
-&lt;p&gt;I need to look into this more, but it seems like there is an issue using .env files when deploying with Heroku, or perhaps deployment in general. At least this solved my problem of the API key being revealed in the Network tab, but I can’t upload my exact server.js file to github. Until I figure out a better way, my server.js file on github is modified so the API key is not shown.&lt;/p&gt;
-
-&lt;p&gt;Also, the original news API I had decided to use - NewsAPI.org, which gave me the idea for this project in the first place - changed their rules for the free developer plan earlier in 2020. You cannot get data if the API is being called from anything other than localhost (so it doesn’t work when deployed), and the API keys expire after one month. It is just meant for developers to test out the API before paying for it, which I believe is a cost of about $400 per month.&lt;/p&gt;
-
-&lt;p&gt;I had already spent a long time building the project using this API and was very disappointed when I deployed and found this out. Thankfully I found GNews.io, which I fit into my app with very little extra work. If I’m being honest, I think I actually like it better than NewsAPI.org. The data seems cleaner and there are not as many articles missing images. This data looks better on my cards so I think it worked out for the best.&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;For now this is all I can remember. It was a difficult project but I’m happy I pushed through, because I ended up with this finished product: https://react-science-news.herokuapp.com/&lt;/p&gt;</content><author><name></name></author><category term="react" /><category term="node.js" /><summary type="html">When I was in school we learned about fetching data from external APIs. At the time I found a news API where you could filter articles based on topic. Since I previously went to university and earned a science degree I thought it would be great to make an app for myself that gives me the latest science articles.</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;../assets/images/udemy-js-screenshot.jpg&quot; style=&quot;max-width: 700px;&quot; alt=&quot;screenshot udemy data structure comparison&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">A few quick notes from my Udemy Javascript course on when you should use different types of JavaScript data structures. The course is “The Complete JavaScript Course 2020: From Zero to Expert!”, which I started last year but never finished.</summary></entry></feed>

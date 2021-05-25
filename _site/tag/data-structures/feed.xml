@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="https://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/tag/data-structures/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2021-05-24T23:46:42-06:00</updated>
+  <id>http://localhost:4000/tag/data-structures/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Julia Hack | </title>
+  
+
+  
+    <subtitle>Web development blog</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Learning data structures - performance and basic structures</title>
+      <link href="http://localhost:4000/data-structures" rel="alternate" type="text/html" title="Learning data structures - performance and basic structures" />
+      <published>2021-05-23T14:30:00-06:00</published>
+      <updated>2021-05-23T14:30:00-06:00</updated>
+      <id>http://localhost:4000/data-structures</id>
+      <content type="html" xml:base="http://localhost:4000/data-structures">&lt;p&gt;It felt like it was about time to dive deeper into data structures.&lt;/p&gt;
+
+&lt;p&gt;This is one of those topics that I knew I needed to learn in more depth eventually, but didn’t get around to until now. I was working on a difficult programming problem where I had to convert some data from one structure to another for my front end to be able to use it. I was frustrated because I felt like I had a gap in my knowledge - how do I create and work with these data structures efficiently? Through a lot of trial and error I figured it out, but it likely would have been easier if I had more knowledge of the specific structures I was using - in this case, objects and maps in Javascript.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-a-data-structure&quot;&gt;What is a data structure?&lt;/h3&gt;
+
+&lt;p&gt;Turns out my idea of data structures as a concept wasn’t too far off - the &lt;a href=&quot;https://www.youtube.com/watch?v=zg9ih6SVACc&amp;amp;list=WL&amp;amp;index=7&quot;&gt;free code camp video I’m using to help me learn&lt;/a&gt; defined a data structure as something that stores data and allows a user to manipulate that data.&lt;/p&gt;
+
+&lt;p&gt;Things you might want to do with a data structure include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;accessing the data&lt;/li&gt;
+  &lt;li&gt;searching the data&lt;/li&gt;
+  &lt;li&gt;inserting a new item&lt;/li&gt;
+  &lt;li&gt;deleting an item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;big-o-notation&quot;&gt;Big-O Notation&lt;/h3&gt;
+
+&lt;p&gt;This helps us to determine how efficient our data structures are. It measures the complexity of an algorithm.&lt;/p&gt;
+
+&lt;p&gt;I found &lt;a href=&quot;https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation&quot;&gt;this article that helps explain this concept for beginners&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You essentially score a data structure based on how it performs if you increase the size of the data input into your program.&lt;/p&gt;
+
+&lt;p&gt;You give a score to the data structure for how well it can accomplish the tasks mentioned above (access, search, insert, delete). When you are choosing how to store your data, you should choose the data structure that is most efficient at the thing you are mainly using it for.&lt;/p&gt;
+
+&lt;p&gt;Performance of a function is based on the &lt;strong&gt;number of operations&lt;/strong&gt; it takes to complete its task.&lt;/p&gt;
+
+&lt;p&gt;We measure performance by using equations that take in the size of the data set. This equation returns the number of operations. These are called Time Complexity Equations. We don’t actually measure time, however, as that can vary depending on the machine you are using to run your program.&lt;/p&gt;
+
+&lt;h4 id=&quot;most-common-time-complexity-equations-from-highest-to-lowest-efficiency&quot;&gt;Most common Time Complexity Equations, from highest to lowest efficiency&lt;/h4&gt;
+
+&lt;p&gt;n = the size of the data set&lt;/p&gt;
+
+&lt;p&gt;The first three are pretty good:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O(1)&lt;/strong&gt;: the best possible score is 1. This means that the task can be completed with one operation. It always takes the same amount of time regardless of the size of the data set it is working with.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O(log n)&lt;/strong&gt;: still very fast; the larger the data set, the more efficient it is. Follows a logarithmic curve (the inverse of an exponential curve, if like me you don’t remember much about logarithmic curves from school).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;example algorithm that uses this: binary search&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;O(n)&lt;/strong&gt;: the number of operations needed is proportional to the number of items in the data set. This would be represented by a linear graph.&lt;/p&gt;
+
+&lt;p&gt;The next three are not so good:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O(n log n)&lt;/strong&gt;: not quite linear, performance gets slightly worse as the size of the data set increases&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O(n^2) and O(2^n)&lt;/strong&gt;: gets exponentially worse as the size increases&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;n^2 can happen with nested loops&lt;/li&gt;
+  &lt;li&gt;you could end up with n^3, n^4 and larger if you have even more code nested with in your nests&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;basic-data-structures---arrays-and-array-lists&quot;&gt;Basic data structures - arrays and array lists&lt;/h3&gt;
+
+&lt;p&gt;Arrays and array lists are random-access data structures. This means you can access any element inside them directly without depending on any of the other elements.&lt;/p&gt;
+
+&lt;h4 id=&quot;arrays&quot;&gt;Arrays&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;can be used to store anything, usually similar values&lt;/li&gt;
+  &lt;li&gt;items in an array are called elements&lt;/li&gt;
+  &lt;li&gt;indexes are used to identify the elements in the array, starting at index 0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Parallel arrays: multiple arrays have corresponding values, like employees and their salaries&lt;/p&gt;
+
+&lt;p&gt;There was a point when I started to become confused while watching the freeCodeCamp video. They say that an array can store data of only one type. This isn’t true in Javascript, as it is an un-typed language. You can also add and remove items in a Javascript array, so the size is not always fixed; in the video, fixed-size was an important aspect of the array data structure. If my understanding of data storage is correct, this means that you cannot reserve continuous spaces in memory for all your array elements (in Javascript). This could affect how the data is accessed and therefore its performance.&lt;/p&gt;
+
+&lt;p&gt;Moving on…&lt;/p&gt;
+
+&lt;p&gt;You can have two-dimensional arrays:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;at each index of the first array, there is another array&lt;/li&gt;
+  &lt;li&gt;looks like a spreadsheet&lt;/li&gt;
+  &lt;li&gt;use two indexes to access each item, first for column and second for row&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;BigO efficiency for arrays:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;accessing: O(1)&lt;/li&gt;
+  &lt;li&gt;searching, deleting, inserting: O(n)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;array-lists&quot;&gt;Array lists&lt;/h4&gt;
+
+&lt;p&gt;This began to clear up my confusion about Javascript arrays and size. An array list has the same properties as an array, except it is dynamic and can grow. Exactly what I’m used to with Javascript. So, in Javascript, is an “array” actually an “array list”? That is something I need to dive into further.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;array lists usually use arrays in the background. Some languages, like Python (and possibly Javascript?) mix properties of arrays and array lists.&lt;/li&gt;
+  &lt;li&gt;has built-in methods. Javascript has methods like pop, unshift, and length, to name a few.&lt;/li&gt;
+  &lt;li&gt;in memory, array list items are stored as references to other places in memory - the actual element values are stored elsewhere in memory&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;BigO efficiency for array lists:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;accessing: O(1)&lt;/li&gt;
+  &lt;li&gt;searching, inserting, deleting: O(n)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For both arrays and array lists, searching, inserting, and deleting will require us to go through each item to complete the task (you could also find the correct element on the first try, but for BigO notation we look at the worst case scenario).&lt;/p&gt;
+
+&lt;p&gt;Use arrays if:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;you won’t be changing the size or modifying the data&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Otherwise, array lists are more powerful and a better choice. As we can see above, the efficiency in terms of BigO are the same.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;That’s all for the basics. The next posts will get into the intermediate and advanced data structures.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="computer-science" />
+      
+        <category term="data-structures" />
+      
+
+      
+        <summary type="html">It felt like it was about time to dive deeper into data structures.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
