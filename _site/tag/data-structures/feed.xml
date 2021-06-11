@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/data-structures/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-05-24T23:46:42-06:00</updated>
+  <updated>2021-06-10T22:58:20-06:00</updated>
   <id>http://localhost:4000/tag/data-structures/feed.xml</id>
 
   
@@ -42,6 +42,187 @@
   
   
 
+  
+    <entry>
+      <title type="html">Learning data structures - intermediate structures</title>
+      <link href="http://localhost:4000/data-structures-2" rel="alternate" type="text/html" title="Learning data structures - intermediate structures" />
+      <published>2021-06-10T14:30:00-06:00</published>
+      <updated>2021-06-10T14:30:00-06:00</updated>
+      <id>http://localhost:4000/data-structures-2</id>
+      <content type="html" xml:base="http://localhost:4000/data-structures-2">&lt;p&gt;Now we are getting into some intermediate topics in data structures.&lt;/p&gt;
+
+&lt;p&gt;Again I am following along with the &lt;a href=&quot;https://www.youtube.com/watch?v=zg9ih6SVACc&amp;amp;t=3551s&quot;&gt;freeCodeCamp video&lt;/a&gt; on data structures as I learn.&lt;/p&gt;
+
+&lt;p&gt;We are now going to be going over sequential access data structures. Unlike random access data structures, you can access items only in a certain order, which means you are depending on other items in the data structure. You can’t get items instantly like you can with arrays.&lt;/p&gt;
+
+&lt;h3 id=&quot;stacks&quot;&gt;Stacks&lt;/h3&gt;
+
+&lt;p&gt;Stacks follow the “last in first out” principle - the last item you add is the first item to be removed.&lt;/p&gt;
+
+&lt;p&gt;The video has a great analogy for this where they envision a stack of books. If you wanted to grab a book from the middle of the stack, you first have to remove all the other books on top, in order, otherwise the whole thing will collapse.&lt;/p&gt;
+
+&lt;p&gt;I also thought of this like a stack of plates. The last one you put on top of the stack is the first one you will use.&lt;/p&gt;
+
+&lt;p&gt;Some stack methods:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;push: adds to top of stack&lt;/li&gt;
+  &lt;li&gt;pop: removes from top of stack&lt;/li&gt;
+  &lt;li&gt;peek: get the value of the top item, without removing it&lt;/li&gt;
+  &lt;li&gt;contains: to find something within the stack&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Interestingly, pop and push are the same names as common Javascript array methods. The contains method reminds me of the Javascript array method “includes”. This is definitely making me think I need to find a Javascript specific data structures resource.&lt;/p&gt;
+
+&lt;p&gt;BigO efficiency:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;accessing, searching: O(n)&lt;/li&gt;
+  &lt;li&gt;inserting, deleting: O(1), because you just do push or pop once&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When would you use stacks?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;for recursion - when functions call themselves repeatedly&lt;/li&gt;
+  &lt;li&gt;a back button in the browser - add your pages/actions to a stack&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;queues&quot;&gt;Queues&lt;/h3&gt;
+
+&lt;p&gt;Follows a first in first out principle. Just like a line-up in real life. The first person in the line is the first person served.&lt;/p&gt;
+
+&lt;p&gt;Some queue methods:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;enqueue: add to the end/tail of the queue&lt;/li&gt;
+  &lt;li&gt;dequeue: remove from the start/head of the queue&lt;/li&gt;
+  &lt;li&gt;peek: tells us the value at the head of the queue&lt;/li&gt;
+  &lt;li&gt;contains: if our queue contains are specific element&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;BigO efficiency:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;accessing, searching: O(n)&lt;/li&gt;
+  &lt;li&gt;inserting, deleting: O(1), because you just do enqueue or dequeue once, same as the stack&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I actually use queues fairly often when working with AWS, particularly SQS queues. Events can be added to a queue, and processed by, for example, a Lambda function in the order they are received, when the function is ready for the next one.&lt;/p&gt;
+
+&lt;h3 id=&quot;linked-lists&quot;&gt;Linked lists&lt;/h3&gt;
+
+&lt;p&gt;I was very interested in learning what exactly a linked list is. I hear about them all the time but don’t actually know what they do.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sequential&lt;/li&gt;
+  &lt;li&gt;each element is called a node, and a node contains data and a reference to the next node&lt;/li&gt;
+  &lt;li&gt;nodes are objects and can have multiple values&lt;/li&gt;
+  &lt;li&gt;the reference is what &lt;em&gt;links&lt;/em&gt; the elements together into a list&lt;/li&gt;
+  &lt;li&gt;the last node reference points towards a null value&lt;/li&gt;
+  &lt;li&gt;can add or remove items anywhere in the list, unlike stacks and queues, but this means you also have to change the references&lt;/li&gt;
+  &lt;li&gt;can only go forwards, not backwards&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Linked list methods:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;add to head of list: need to add a reference to the former head node,&lt;/li&gt;
+  &lt;li&gt;remove from head: just set reference to null&lt;/li&gt;
+  &lt;li&gt;add to middle: reference of new node needs to be to the next item in the list, and the item before must have its reference updated to that of the new node&lt;/li&gt;
+  &lt;li&gt;remove from middle: set the reference of the node before to point to the node after the one you’re removing, then update the reference of the one you’re removing to null&lt;/li&gt;
+  &lt;li&gt;add to the end: make the tail node point to the new node&lt;/li&gt;
+  &lt;li&gt;remove from the end: set the node before the tail node to null&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;BigO efficiency:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;accessing, searching: O(n) - still need to go through each node before we get to the one we want, using the pointers to get us there&lt;/li&gt;
+  &lt;li&gt;inserting, deleting: can be O(n) or O(1), depending on if you’re adding to the beginning/end or in the middle&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So how are these actually used? In situations where one thing points to another&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;music playlists&lt;/li&gt;
+  &lt;li&gt;photo albums&lt;/li&gt;
+  &lt;li&gt;can work with queues and stacks behind the scenes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;doubly-linked-lists&quot;&gt;Doubly linked lists&lt;/h3&gt;
+
+&lt;p&gt;Regular linked lists could only point forwards, but doubly linked lists can point forwards and backwards.&lt;/p&gt;
+
+&lt;p&gt;You don’t just have a pointer to the next node, you also have a pointer to the previous node.&lt;/p&gt;
+
+&lt;p&gt;Like a linked list, there is a head and tail node. The first pointer of the head node points to a null value, as well as the second pointer of the tail node.&lt;/p&gt;
+
+&lt;p&gt;BigO efficiency: the same as for linked lists&lt;/p&gt;
+
+&lt;p&gt;Uses - basically whenever you want to go back and forth between things:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;browser caches&lt;/li&gt;
+  &lt;li&gt;undo/redo&lt;/li&gt;
+  &lt;li&gt;open recent functionality&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dictionaries&quot;&gt;Dictionaries&lt;/h3&gt;
+
+&lt;p&gt;These are also called associated arrays and maps. So in Javascript, a dictionary is referred to as a map (not the same as the map function).&lt;/p&gt;
+
+&lt;p&gt;Dictionaries store data in key-value pairs. Keys can be any primitive data type. Keys must be unique and can only have one value assigned to them. This makes it easier and faster to look up values later. Values do not have to be unique, however.&lt;/p&gt;
+
+&lt;h4 id=&quot;hash-tables&quot;&gt;Hash tables&lt;/h4&gt;
+
+&lt;p&gt;During the lesson on dictionaries the instructor went over hash tables. Yet another term I’ve heard a lot about and never understood.&lt;/p&gt;
+
+&lt;p&gt;Hash tables help you to store keys from a dictionary while cutting down on nil/empty values being taken up in memory. A hash function is what assigns keys to locations in memory so they can be retrieved easily later.&lt;/p&gt;
+
+&lt;p&gt;Dictionaries are built on hash tables.&lt;/p&gt;
+
+&lt;p&gt;Ok, back to dictionaries.&lt;/p&gt;
+
+&lt;p&gt;BigO efficiency: in the case of dictionaries, we can’t just use the worst case scenario, things get pretty complicated due to hash tables.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;for the average efficiency, all operations are O(1). That is because they are key-value pairs, so it’s quick to look up a value based on its key. You don’t have to spend a lot of time searching through your data structure to perform your operation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Dictionaries are overall very useful data structures that can be used in many situations.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;That’s it for the intermediate data structures. The deeper I go into all of this, the more I want to find information on how these all apply to Javascript specifically. I’ll finish up the rest of the data structures in this course, and find more information on data structures in Javascript.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="computer-science" />
+      
+        <category term="data-structures" />
+      
+
+      
+        <summary type="html">Now we are getting into some intermediate topics in data structures.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Learning data structures - performance and basic structures</title>

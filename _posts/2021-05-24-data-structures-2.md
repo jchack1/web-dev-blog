@@ -1,12 +1,11 @@
 ---
 layout: post
-title: "Learning data structures - performance and basic structures"
-date: 2021-05-23 14:30
+title: "Learning data structures - intermediate structures"
+date: 2021-06-10 14:30
 tags: computer-science data-structures
 navigation: true
 class: post-template
 current: post
-published: false
 ---
 
 Now we are getting into some intermediate topics in data structures.
@@ -67,7 +66,7 @@ I was very interested in learning what exactly a linked list is. I hear about th
 - sequential
 - each element is called a node, and a node contains data and a reference to the next node
 - nodes are objects and can have multiple values
-- the reference what <em>links</em> the elements together into a list
+- the reference is what <em>links</em> the elements together into a list
 - the last node reference points towards a null value
 - can add or remove items anywhere in the list, unlike stacks and queues, but this means you also have to change the references
 - can only go forwards, not backwards
@@ -95,3 +94,41 @@ So how are these actually used? In situations where one thing points to another
 ### Doubly linked lists
 
 Regular linked lists could only point forwards, but doubly linked lists can point forwards and backwards.
+
+You don't just have a pointer to the next node, you also have a pointer to the previous node.
+
+Like a linked list, there is a head and tail node. The first pointer of the head node points to a null value, as well as the second pointer of the tail node.
+
+BigO efficiency: the same as for linked lists
+
+Uses - basically whenever you want to go back and forth between things:
+
+- browser caches
+- undo/redo
+- open recent functionality
+
+### Dictionaries
+
+These are also called associated arrays and maps. So in Javascript, a dictionary is referred to as a map (not the same as the map function).
+
+Dictionaries store data in key-value pairs. Keys can be any primitive data type. Keys must be unique and can only have one value assigned to them. This makes it easier and faster to look up values later. Values do not have to be unique, however.
+
+#### Hash tables
+
+During the lesson on dictionaries the instructor went over hash tables. Yet another term I've heard a lot about and never understood.
+
+Hash tables help you to store keys from a dictionary while cutting down on nil/empty values being taken up in memory. A hash function is what assigns keys to locations in memory so they can be retrieved easily later.
+
+Dictionaries are built on hash tables.
+
+Ok, back to dictionaries.
+
+BigO efficiency: in the case of dictionaries, we can't just use the worst case scenario, things get pretty complicated due to hash tables.
+
+- for the average efficiency, all operations are O(1). That is because they are key-value pairs, so it's quick to look up a value based on its key. You don't have to spend a lot of time searching through your data structure to perform your operation.
+
+Dictionaries are overall very useful data structures that can be used in many situations.
+
+### Conclusion
+
+That's it for the intermediate data structures. The deeper I go into all of this, the more I want to find information on how these all apply to Javascript specifically. I'll finish up the rest of the data structures in this course, and find more information on data structures in Javascript.
