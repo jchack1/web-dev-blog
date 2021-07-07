@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>How I added Google Analytics with cookie consent to my Next.js site</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="Web development blog" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/nextjs-google-analytics" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Julia Hack" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How I added Google Analytics with cookie consent to my Next.js site" />
+    <meta property="og:description" content="Recently at work I needed to add google analytics to our company website, built with Next.js. We were participating in a local event and since there would potentially be a lot of eyes on our site we wanted to start measuring where our traffic was coming from. I figured this" />
+    <meta property="og:url" content="http://localhost:4000/nextjs-google-analytics" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2021-07-06T14:30:00-06:00" />
+    <meta property="article:modified_time" content="2021-07-06T14:30:00-06:00" />
+    <meta property="article:tag" content="Nextjs" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How I added Google Analytics with cookie consent to my Next.js site" />
+    <meta name="twitter:description" content="Recently at work I needed to add google analytics to our company website, built with Next.js. We were participating in a local event and since there would potentially be a lot of eyes on our site we wanted to start measuring where our traffic was coming from. I figured this" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Julia Hack" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Nextjs" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Julia Hack",
+        "logo": "http://localhost:4000/assets/images/blog-icon.png"
+    },
+    "url": "http://localhost:4000/nextjs-google-analytics",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/nextjs-google-analytics"
+    },
+    "description": "Recently at work I needed to add google analytics to our company website, built with Next.js. We were participating in a local event and since there would potentially be a lot of eyes on our site we wanted to start measuring where our traffic was coming from. I figured this"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="How I added Google Analytics with cookie consent to my Next.js site" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/"><img src="/assets/images/blog-icon.png" alt="Julia Hack" /></a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-home" role="menuitem"><a href="/topics/">Topics</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-contact" role="menuitem"><a href="/contact/">Contact</a></li>
+
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 6 July 2021"> 6 July 2021</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/nextjs/'>NEXTJS</a>,
+                            
+                        
+                            
+                               <a href='/tag/google-analytics/'>GOOGLE-ANALYTICS</a>,
+                            
+                        
+                            
+                               <a href='/tag/cookies/'>COOKIES</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">How I added Google Analytics with cookie consent to my Next.js site</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>Recently at work I needed to add google analytics to our company website, built with Next.js.</p>
+
+<p>We were participating in a local event and since there would potentially be a lot of eyes on our site we wanted to start measuring where our traffic was coming from. I figured this would be a quick task that would involve adding a couple tags to our site and that would be it. Such tasks with our website are never this simple, however, and I ended up fighting with our code for quite some time.</p>
+
+<p>In the end I got it working and it’s not overly complicated - just took me some time to get there!</p>
+
+<p>I started out by adding the google analytics tags to the site alone, without the cookie banner. We later decided that it would be best to also include a cookie banner, even though it may not be necessary where our business is located.</p>
+
+<h3 id="background-on-cookies-and-privacy">Background on cookies and privacy</h3>
+
+<p>I need to make a disclaimer right here that I am by no means an expert in privacy law. The conclusions I came to in my research may not be entirely correct, but I will share what I found anyway.</p>
+
+<p>Our business is located in Canada, and it is most likely we would be trying to work with other local companies rather than marketing our product abroad.</p>
+
+<p>The important legislation for us to look at is CASL, Canada’s anti-spam legislation. You can <a href="https://fightspam.gc.ca/eic/site/030.nsf/eng/home">read more about CASL here</a>.</p>
+
+<p>You need consent to install software on people’s devices, but this <a href="https://crtc.gc.ca/eng/internet/install.htm">does not apply to cookies</a> or software that one can reasonably assume would be installed while using a particular product. So in Canada it looks like asking for consent via a cookie banner is not necessary.</p>
+
+<p>However, if we were to market to Europe directly, we would need to abide by the <a href="https://gdpr.eu/cookies/">GDPR</a>. You must follow several regulations including obtaining consent to use cookies, allowing users to use your service if cookies are declined, and more.</p>
+
+<p>So even though in Canada it doesn’t seem to be necessary, we decided to stay on the safe side and add a cookie consent banner.</p>
+
+<h3 id="my-steps">My steps</h3>
+
+<p>I followed <a href="https://mariestarck.com/add-google-analytics-to-your-next-js-application-in-5-easy-steps/">this tutorial</a> initially, but had to make some adjustments once we decided to add the cookie banner. Follow this if you only need the basics and don’t need a cookie banner, it’s really straight-forward.</p>
+
+<p><strong>Install <a href="https://www.npmjs.com/package/react-cookie-consent">react-cookie-consent</a></strong></p>
+
+<p>This is what I used for the cookie banner. It saves the user’s response, allows you to perform functions on accept/decline, and you can add whatever styling you’d like.</p>
+
+<p><strong>Add your google analytics code to your .env file</strong></p>
+
+<p>How you do this depends on what version of Next.js you have. More recent versions allow you to put this directly in a .env file and access it with process.env, while older versions require more work. You just need to be able to access this variable in all your environments, whether dev, prod, etc,</p>
+
+<p><strong>Create a React component for your analytics and add to each page on your site</strong></p>
+
+<p>Or, add this code into a component that wraps around <em>every</em> page on your site.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span><span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span><span class="p">}</span> <span class="k">from</span> <span class="s2">"react"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Head</span> <span class="k">from</span> <span class="s2">"next/head"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">CookieConsent</span><span class="p">,</span> <span class="p">{</span><span class="nx">getCookieConsentValue</span><span class="p">}</span> <span class="k">from</span> <span class="s2">"react-cookie-consent"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">analyticsConsent</span><span class="p">,</span> <span class="nx">updateAnalyticsConsent</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="s2">"denied"</span><span class="p">);</span>
+
+  <span class="p">{</span>
+    <span class="cm">/* gets the user's response from CookieConsent when you load a new page */</span>
+  <span class="p">}</span>
+  <span class="kd">const</span> <span class="nx">cookieConsent</span> <span class="o">=</span> <span class="nx">getCookieConsentValue</span><span class="p">();</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">cookieConsent</span> <span class="o">===</span> <span class="s2">"true"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">updateAnalyticsConsent</span><span class="p">(</span><span class="s2">"granted"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">cookieConsent</span> <span class="o">===</span> <span class="s2">"false"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">updateAnalyticsConsent</span><span class="p">(</span><span class="s2">"denied"</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="cm">/* Global Site Tag (gtag.js) - Google Analytics */</span><span class="p">}</span>
+      <span class="p">{</span><span class="nx">analyticsConsent</span> <span class="o">===</span> <span class="s2">"granted"</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">Head</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">script</span>
+            <span class="k">async</span>
+            <span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="s2">`https://www.googletagmanager.com/gtag/js?id=</span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NEXT_PUBLIC_GOOGLE_ANALYTICS</span><span class="p">}</span><span class="s2">`</span><span class="p">}</span>
+          <span class="sr">/</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">script</span>
+             <span class="nx">dangerouslySetInnerHTML</span><span class="o">=</span><span class="p">{{</span>
+              <span class="na">__html</span><span class="p">:</span> <span class="s2">`
+             window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              'analytics_storage': '</span><span class="p">${</span><span class="nx">analyticsConsent</span><span class="p">}</span><span class="s2">'
+            });
+            gtag('js', new Date());
+            gtag('config', '</span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NEXT_PUBLIC_GOOGLE_ANALYTICS</span><span class="p">}</span><span class="s2">', {
+              page_path: window.location.pathname,
+            });
+          `</span>
+            <span class="p">}}</span>
+          <span class="sr">/</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/Head</span><span class="err">&gt;
+</span>      <span class="p">)}</span>
+
+      <span class="p">{</span><span class="cm">/* saves the user's response */</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="nx">CookieConsent</span>
+        <span class="nx">enableDeclineButton</span>
+        <span class="nx">onDecline</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">updateAnalyticsConsent</span><span class="p">(</span><span class="s2">"denied"</span><span class="p">);</span>
+        <span class="p">}}</span>
+        <span class="nx">onAccept</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">updateAnalyticsConsent</span><span class="p">(</span><span class="s2">"granted"</span><span class="p">);</span>
+        <span class="p">}}</span>
+        <span class="nx">buttonText</span><span class="o">=</span><span class="s2">"Accept"</span>
+        <span class="nx">declineButtonText</span><span class="o">=</span><span class="s2">"Decline"</span>
+        <span class="nx">ariaAcceptLabel</span><span class="o">=</span><span class="s2">"Accept cookies"</span>
+        <span class="nx">ariaDeclineLabel</span><span class="o">=</span><span class="s2">"Decline cookies"</span>
+      <span class="o">&gt;</span>
+        <span class="nx">We</span> <span class="nx">use</span> <span class="nx">cookies</span> <span class="nx">to</span> <span class="nx">enhance</span> <span class="nx">the</span> <span class="nx">user</span> <span class="nx">experience</span> <span class="nx">and</span> <span class="nx">analyze</span> <span class="nx">site</span> <span class="nx">traffic</span><span class="p">.</span>
+        <span class="nx">For</span> <span class="nx">more</span> <span class="nx">information</span> <span class="nx">please</span> <span class="nx">read</span> <span class="nx">our</span><span class="p">{</span><span class="s2">" "</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"/privacypolicy"</span><span class="o">&gt;</span><span class="nx">privacy</span> <span class="nx">policy</span><span class="p">.</span><span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/CookieConsent</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>There are two scripts you need to add to your head tag. These initialize google analytics and allow you to start collecting data.</p>
+
+<p>The CookieConsent component is used here and saves the user’s answer. I added my own functions on button click to update my analyticsConsent variable, which is saved in state with the useState hook.</p>
+
+<p>The analyticsConsent value is used in the conditional wrapped around the script tags. The default value is set to “denied” so script tags only are added to the head when a user clicks “Accept”.</p>
+
+<p>I also added in this bit of code to the script:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">gtag</span><span class="p">(</span><span class="s2">"consent"</span><span class="p">,</span> <span class="s2">"default"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="s2">"analytics_storage"</span><span class="p">:</span> <span class="s2">"${analyticsConsent}"</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>I’m not sure if it’s even necessary at this point, since I made the scripts conditional on consent being given. I kept it anyway just to be safe. You can read more about this <a href="https://developers.google.com/gtagjs/devguide/consent">in the google analytics docs</a>. My idea was to substitute in “denied” or “granted” where the “analytics consent” variable is currently. This probably would have worked fine but I felt better not including any google scripts until the user opted in.</p>
+
+<h4 id="the-_documentjs-file">The _document.js file</h4>
+
+<p>I should note here that the tutorial tells you to add your script tags to the _document.js file. This works well if you don’t need to worry about cookie consent as it adds the scripts to the head tag on all pages.</p>
+
+<p>I didn’t do this in the end. It worked better for me to create a separate component to handle the analytics scripts and cookie banner.</p>
+
+<p><strong>Create a folder in the root of your project called lib, with a file called gtag.js inside</strong></p>
+
+<p>You will need this code:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// log the pageview with their URL</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">pageview</span> <span class="o">=</span> <span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">gtag</span><span class="p">(</span><span class="s2">"config"</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NEXT_PUBLIC_GOOGLE_ANALYTICS</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">page_path</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// log specific events happening.</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">event</span> <span class="o">=</span> <span class="p">({</span><span class="nx">action</span><span class="p">,</span> <span class="nx">params</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">gtag</span><span class="p">(</span><span class="s2">"event"</span><span class="p">,</span> <span class="nx">action</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>This helps you track page views and events.</p>
+
+<p><strong>Import gtag.js into your _app.js file</strong></p>
+
+<p>I basically copied this code from the tutorial. You use Next.js router to log page views to google analytics whenever a user navigates to a new page.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">useEffect</span><span class="p">}</span> <span class="k">from</span> <span class="s2">"react"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">useRouter</span><span class="p">}</span> <span class="k">from</span> <span class="s2">"next/router"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">CookieConsent</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">Cookies</span><span class="p">,</span>
+  <span class="nx">getCookieConsentValue</span><span class="p">,</span>
+<span class="p">}</span> <span class="k">from</span> <span class="s2">"react-cookie-consent"</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">ga</span> <span class="k">from</span> <span class="s2">"../lib/gtag"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Head</span> <span class="k">from</span> <span class="s2">"next/head"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">MyApp</span><span class="p">({</span><span class="nx">Component</span><span class="p">,</span> <span class="nx">pageProps</span><span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">useRouter</span><span class="p">();</span>
+
+  <span class="kd">let</span> <span class="nx">cookieConsent</span> <span class="o">=</span> <span class="nx">getCookieConsentValue</span><span class="p">();</span> <span class="c1">//this function comes from react-cookie-consent package</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">cookieConsent</span> <span class="o">===</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">handleRouteChange</span> <span class="o">=</span> <span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">ga</span><span class="p">.</span><span class="nx">pageview</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+      <span class="p">};</span>
+      <span class="nx">router</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"routeChangeComplete"</span><span class="p">,</span> <span class="nx">handleRouteChange</span><span class="p">);</span>
+
+      <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">router</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="s2">"routeChangeComplete"</span><span class="p">,</span> <span class="nx">handleRouteChange</span><span class="p">);</span>
+      <span class="p">};</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">router</span><span class="p">.</span><span class="nx">events</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="nx">pageProps</span><span class="p">}</span><span class="o">&gt;&lt;</span><span class="sr">/Component&gt;</span><span class="err">;
+</span><span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">MyApp</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The only changes I made were:</p>
+
+<ul>
+  <li>getting the value of CookieConsent using the function getCookieConsentValue()</li>
+  <li>only logging page views if CookieConsent is set to true</li>
+</ul>
+
+<p>Logging page views would only happen if you had google analytics enabled on your site anyway. A problem I ran into, however, was if consent was not given or denied yet, this code would still try to run on page navigation. This would cause an error because the google analytics scripts were not loaded yet, so it doesn’t know what “ga” is in the code above. This can only be ran when the scripts are present, which means you need cookie consent first.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>You can do a lot more with google analytics, like logging other types of events besides page views, but basic analytics and consent were enough for us.</p>
+
+<p>This was challenging to figure out with Next.js as I wasn’t sure how to properly incorporate cookie consent and have it persist on each page. This was confusing for me as Next.js uses server-side rendering - how would I update my html head tags dynamically in the client? The react-cookie-consent package was very helpful here as I was able to grab the consent value from CookieConsent on any page.</p>
+
+<p>There may be a more elegant way of accomplishing this, but in the end I believe I came up with a relatively simple solution.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/data-structures-2">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Computer-science</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Data-structures</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Learning data structures - intermediate structures</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+                <img src="/assets/images/favicon.ico" alt="Julia Hack icon" />
+            
+            <span>Julia Hack</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">How I added Google Analytics with cookie consent to my Next.js site</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path
+    d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"
+  />
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=How+I+added+Google+Analytics+with+cookie+consent+to+my+Next.js+site&amp;url=nextjs-google-analytics"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <path
+    d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"
+  />
+</svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=nextjs-google-analytics"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <path
+    d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"
+  />
+</svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">Julia Hack</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    <a href="https://github.com/jchack1" target="_blank" rel="noopener">Github</a>
+                    <a href="https://linkedin.com/in/juliahack" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    <!--  -->
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
