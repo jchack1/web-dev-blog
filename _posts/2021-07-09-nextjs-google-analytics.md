@@ -2,7 +2,7 @@
 layout: post
 title: "How I added Google Analytics with cookie consent to my Next.js site"
 date: 2021-07-06 14:30
-tags: nextjs google-analytics cookies
+tags: next.js google-analytics cookies
 navigation: true
 class: post-template
 current: post
@@ -32,13 +32,13 @@ So even though in Canada it doesn't seem to be necessary, we decided to stay on 
 
 ### My steps
 
-I followed [this tutorial](https://mariestarck.com/add-google-analytics-to-your-next-js-application-in-5-easy-steps/) initially, but had to make some adjustments once we decided to add the cookie banner. Follow this if you only need the basics and don't need a cookie banner, it's really straight-forward.
+I followed [this tutorial](https://mariestarck.com/add-google-analytics-to-your-next-js-application-in-5-easy-steps/) initially, but had to make some adjustments once we decided to add the cookie banner. Follow the tutorial if you only need the basics and don't need a cookie banner, it's really straight-forward.
 
 <strong>Install [react-cookie-consent](https://www.npmjs.com/package/react-cookie-consent)</strong>
 
 This is what I used for the cookie banner. It saves the user's response, allows you to perform functions on accept/decline, and you can add whatever styling you'd like.
 
-<strong>Add your google analytics code to your .env file</strong>
+<strong>Add your google analytics tracking ID to your .env file</strong>
 
 How you do this depends on what version of Next.js you have. More recent versions allow you to put this directly in a .env file and access it with process.env, while older versions require more work. You just need to be able to access this variable in all your environments, whether dev, prod, etc,
 

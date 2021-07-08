@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/computer-science/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-07-06T22:16:10-06:00</updated>
+  <updated>2021-07-07T22:20:58-06:00</updated>
   <id>http://localhost:4000/tag/computer-science/feed.xml</id>
 
   
@@ -42,6 +42,114 @@
   
   
 
+  
+    <entry>
+      <title type="html">Learning data structures - advanced structures (trees)</title>
+      <link href="http://localhost:4000/data-structures-3" rel="alternate" type="text/html" title="Learning data structures - advanced structures (trees)" />
+      <published>2021-07-07T14:30:00-06:00</published>
+      <updated>2021-07-07T14:30:00-06:00</updated>
+      <id>http://localhost:4000/data-structures-3</id>
+      <content type="html" xml:base="http://localhost:4000/data-structures-3">&lt;p&gt;This is the last section of intro to data structures. We are now getting into non-linear data structures.&lt;/p&gt;
+
+&lt;p&gt;Everything up to this point has been a linear structure. The next data structures to cover are trees.&lt;/p&gt;
+
+&lt;p&gt;Once again following along with &lt;a href=&quot;https://www.youtube.com/watch?v=zg9ih6SVACc&amp;amp;t=7744s&quot;&gt;this video&lt;/a&gt; and supplementing with other sources.&lt;/p&gt;
+
+&lt;h3 id=&quot;trees&quot;&gt;Trees&lt;/h3&gt;
+
+&lt;p&gt;Nodes in a tree have a hierarchical relationship. Nodes can point to multiple nodes instead of just one, like we saw in linked lists.&lt;/p&gt;
+
+&lt;p&gt;There are lots of different types of trees, but one important one is called a &lt;strong&gt;binarysearch tree&lt;/strong&gt; .&lt;/p&gt;
+
+&lt;p&gt;Binary search tree:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;some rules:
+    &lt;ul&gt;
+      &lt;li&gt;nodes can only have 2 children&lt;/li&gt;
+      &lt;li&gt;the child to the left of the parent must be less than or equal to the parent while the child to the right must be greater than or equal to the parent&lt;/li&gt;
+      &lt;li&gt;nodes cannot have the same value&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;can perform searches on the tree in a logarithmic time&lt;/li&gt;
+  &lt;li&gt;at any given node during a search, choose left or right depending on if the value is less than or greater than the value at the current node&lt;/li&gt;
+  &lt;li&gt;these are good for storing large amounts of data because they are quick to search - for BigO notation, I believe that makes it O(log n)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Another tree that is used is called a &lt;strong&gt;Trie&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;these store letters of the alphabet&lt;/li&gt;
+  &lt;li&gt;to retrieve word based data&lt;/li&gt;
+  &lt;li&gt;each node has an array that includes references to letters&lt;/li&gt;
+  &lt;li&gt;the nodes basically spell out words as you go down the different paths on the tree&lt;/li&gt;
+  &lt;li&gt;the end of a word is marked by a flag - so nodes contain pointers to letters that follow as well as flags for the ends of words&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Heaps:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;parent nodes compare to child nodes and whether they are greater than or less than&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;min-heap:&lt;/strong&gt; root node is the minimum compared to the children&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;max-heap:&lt;/strong&gt; root node is the maximum compared to the children&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Graphs:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;made up of nodes and edges (paths between the nodes)&lt;/li&gt;
+  &lt;li&gt;not linear&lt;/li&gt;
+  &lt;li&gt;undirected graphs: direction between nodes doesn’t matter&lt;/li&gt;
+  &lt;li&gt;directed graph: direction does matter&lt;/li&gt;
+  &lt;li&gt;cyclic graph: nodes have a path back to itself (undirected count, since you can go any direction back to the start)&lt;/li&gt;
+  &lt;li&gt;acyclic graph: no path from one node back to itself&lt;/li&gt;
+  &lt;li&gt;edges can have a weight - kind of like distance between nodes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When to use trees?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;any time you have hierarchical data&lt;/li&gt;
+  &lt;li&gt;tries are used by things like spellcheck and autocomplete features&lt;/li&gt;
+  &lt;li&gt;heaps used for sorting algorithms like HeapSort, and priority queues&lt;/li&gt;
+  &lt;li&gt;graphs: used in shortest path algorithm, social media users, and more&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;That’s it for intro data structures! These posts probably read way more like notes than actual blog posts, but as I am still learning data structures I don’t have much else to share.&lt;/p&gt;
+
+&lt;p&gt;It’s interesting to learn the theory but I kept wondering how I would actually apply this in real projects. Especially in Javascript projects. Do all these data structures exist in Javascript? Do they go by different names? I still have a lot of questions.&lt;/p&gt;
+
+&lt;p&gt;My next step will be to learn about Javascript specific data structures and real life applications.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="computer-science" />
+      
+        <category term="data-structures" />
+      
+
+      
+        <summary type="html">This is the last section of intro to data structures. We are now getting into non-linear data structures.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Learning data structures - intermediate structures</title>

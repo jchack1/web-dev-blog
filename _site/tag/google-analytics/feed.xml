@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/google-analytics/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-07-06T22:16:10-06:00</updated>
+  <updated>2021-07-07T22:20:58-06:00</updated>
   <id>http://localhost:4000/tag/google-analytics/feed.xml</id>
 
   
@@ -73,13 +73,13 @@
 
 &lt;h3 id=&quot;my-steps&quot;&gt;My steps&lt;/h3&gt;
 
-&lt;p&gt;I followed &lt;a href=&quot;https://mariestarck.com/add-google-analytics-to-your-next-js-application-in-5-easy-steps/&quot;&gt;this tutorial&lt;/a&gt; initially, but had to make some adjustments once we decided to add the cookie banner. Follow this if you only need the basics and don’t need a cookie banner, it’s really straight-forward.&lt;/p&gt;
+&lt;p&gt;I followed &lt;a href=&quot;https://mariestarck.com/add-google-analytics-to-your-next-js-application-in-5-easy-steps/&quot;&gt;this tutorial&lt;/a&gt; initially, but had to make some adjustments once we decided to add the cookie banner. Follow the tutorial if you only need the basics and don’t need a cookie banner, it’s really straight-forward.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Install &lt;a href=&quot;https://www.npmjs.com/package/react-cookie-consent&quot;&gt;react-cookie-consent&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;This is what I used for the cookie banner. It saves the user’s response, allows you to perform functions on accept/decline, and you can add whatever styling you’d like.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Add your google analytics code to your .env file&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Add your google analytics tracking ID to your .env file&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;How you do this depends on what version of Next.js you have. More recent versions allow you to put this directly in a .env file and access it with process.env, while older versions require more work. You just need to be able to access this variable in all your environments, whether dev, prod, etc,&lt;/p&gt;
 
@@ -267,7 +267,7 @@
       
 
       
-        <category term="nextjs" />
+        <category term="next.js" />
       
         <category term="google-analytics" />
       

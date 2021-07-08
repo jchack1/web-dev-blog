@@ -50,7 +50,7 @@
     <meta property="article:author" content="https://www.facebook.com/" />
     <meta property="article:published_time" content="2021-07-06T14:30:00-06:00" />
     <meta property="article:modified_time" content="2021-07-06T14:30:00-06:00" />
-    <meta property="article:tag" content="Nextjs" />
+    <meta property="article:tag" content="Next.js" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="How I added Google Analytics with cookie consent to my Next.js site" />
     <meta name="twitter:description" content="Recently at work I needed to add google analytics to our company website, built with Next.js. We were participating in a local event and since there would potentially be a lot of eyes on our site we wanted to start measuring where our traffic was coming from. I figured this" />
@@ -59,7 +59,7 @@
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Nextjs" />
+    <meta name="twitter:data2" content="Next.js" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -158,7 +158,7 @@ into the {body} of the default.hbs template -->
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/nextjs/'>NEXTJS</a>,
+                               <a href='/tag/next.js/'>NEXT.JS</a>,
                             
                         
                             
@@ -202,13 +202,13 @@ into the {body} of the default.hbs template -->
 
 <h3 id="my-steps">My steps</h3>
 
-<p>I followed <a href="https://mariestarck.com/add-google-analytics-to-your-next-js-application-in-5-easy-steps/">this tutorial</a> initially, but had to make some adjustments once we decided to add the cookie banner. Follow this if you only need the basics and don’t need a cookie banner, it’s really straight-forward.</p>
+<p>I followed <a href="https://mariestarck.com/add-google-analytics-to-your-next-js-application-in-5-easy-steps/">this tutorial</a> initially, but had to make some adjustments once we decided to add the cookie banner. Follow the tutorial if you only need the basics and don’t need a cookie banner, it’s really straight-forward.</p>
 
 <p><strong>Install <a href="https://www.npmjs.com/package/react-cookie-consent">react-cookie-consent</a></strong></p>
 
 <p>This is what I used for the cookie banner. It saves the user’s response, allows you to perform functions on accept/decline, and you can add whatever styling you’d like.</p>
 
-<p><strong>Add your google analytics code to your .env file</strong></p>
+<p><strong>Add your google analytics tracking ID to your .env file</strong></p>
 
 <p>How you do this depends on what version of Next.js you have. More recent versions allow you to put this directly in a .env file and access it with process.env, while older versions require more work. You just need to be able to access this variable in all your environments, whether dev, prod, etc,</p>
 
@@ -430,6 +430,60 @@ into the {body} of the default.hbs template -->
             
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/data-structures-3">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Computer-science</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Data-structures</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Learning data structures - advanced structures (trees)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
             
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
