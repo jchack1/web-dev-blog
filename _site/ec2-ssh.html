@@ -11,7 +11,7 @@
 
 
 
-    <title>Deploying simple React app with Serverless / AWS </title>
+    <title>How I lost, and regained, ssh access to my AWS EC2</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/deploy-react-serverless-aws" />
+    <link rel="canonical" href="http://localhost:4000/ec2-ssh" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Deploying simple React app with Serverless / AWS " />
-    <meta property="og:description" content="I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless. This is assuming you already have an AWS account, and have installed Serverless, the AWS SDK, and set up your AWS credentials on your machine.Simply put, though: To install Serverless" />
-    <meta property="og:url" content="http://localhost:4000/deploy-react-serverless-aws" />
+    <meta property="og:title" content="How I lost, and regained, ssh access to my AWS EC2" />
+    <meta property="og:description" content="This is a long story so I will leave out extra details to keep it (somewhat) brief. I was working with an AWS EC2 instance with wordpress installed. When you host your own wordpress sites, you need to keep up with server maintenance. I needed to update the PHP version" />
+    <meta property="og:url" content="http://localhost:4000/ec2-ssh" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-10-29T18:30:00-06:00" />
-    <meta property="article:modified_time" content="2020-10-29T18:30:00-06:00" />
-    <meta property="article:tag" content="React" />
+    <meta property="article:published_time" content="2021-08-11T14:30:00-06:00" />
+    <meta property="article:modified_time" content="2021-08-11T14:30:00-06:00" />
+    <meta property="article:tag" content="Aws" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Deploying simple React app with Serverless / AWS " />
-    <meta name="twitter:description" content="I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless. This is assuming you already have an AWS account, and have installed Serverless, the AWS SDK, and set up your AWS credentials on your machine.Simply put, though: To install Serverless" />
+    <meta name="twitter:title" content="How I lost, and regained, ssh access to my AWS EC2" />
+    <meta name="twitter:description" content="This is a long story so I will leave out extra details to keep it (somewhat) brief. I was working with an AWS EC2 instance with wordpress installed. When you host your own wordpress sites, you need to keep up with server maintenance. I needed to update the PHP version" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="React" />
+    <meta name="twitter:data2" content="Aws" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/deploy-react-serverless-aws",
+    "url": "http://localhost:4000/ec2-ssh",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/deploy-react-serverless-aws"
+        "@id": "http://localhost:4000/ec2-ssh"
     },
-    "description": "I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless. This is assuming you already have an AWS account, and have installed Serverless, the AWS SDK, and set up your AWS credentials on your machine.Simply put, though: To install Serverless"
+    "description": "This is a long story so I will leave out extra details to keep it (somewhat) brief. I was working with an AWS EC2 instance with wordpress installed. When you host your own wordpress sites, you need to keep up with server maintenance. I needed to update the PHP version"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Deploying simple React app with Serverless / AWS " href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="How I lost, and regained, ssh access to my AWS EC2" href="/feed.xml" />
 
 
 </head>
@@ -153,128 +153,96 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="29 October 2020">29 October 2020</time>
+                    <time class="post-full-meta-date" datetime="11 August 2021">11 August 2021</time>
                     
                         <span class="date-divider">/</span>
-                        
-                            
-                               <a href='/tag/react/'>REACT</a>,
-                            
                         
                             
                                <a href='/tag/aws/'>AWS</a>,
                             
                         
                             
-                               <a href='/tag/serverless/'>SERVERLESS</a>
+                               <a href='/tag/ec2/'>EC2</a>,
+                            
+                        
+                            
+                               <a href='/tag/linux/'>LINUX</a>,
+                            
+                        
+                            
+                               <a href='/tag/debugging/'>DEBUGGING</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Deploying simple React app with Serverless / AWS </h1>
+                <h1 class="post-full-title">How I lost, and regained, ssh access to my AWS EC2</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless.</p>
+                    <p>This is a long story so I will leave out extra details to keep it (somewhat) brief.</p>
 
-<p>This is assuming you already have an AWS account, and have installed Serverless, the AWS SDK, and set up your AWS credentials on your machine.Simply put, though:</p>
+<p>I was working with an AWS EC2 instance with wordpress installed. When you host your own wordpress sites, you need to keep up with server maintenance. I needed to update the PHP version for security reasons and I found a tutorial that told me to update ubuntu first. Once the update was complete, I no longer had ssh access to my EC2.</p>
+
+<p>After doing some reading, I believe this happened because there is some kind of a breaking change in the ssh config between ubuntu versions 16.04 and 18.04.</p>
+
+<p>For most users who have the physical device in front of them it is not difficult to run a few commands on their machine and repair the config issue. For me, however, my only access at the time was through ssh. I could not fix ssh and access the files on my machine until I had a command line or c-panel to work with.</p>
+
+<p>After a lot of trial an error I eventually regained access. I will share the process here.</p>
+
+<h3 id="the-things-that-didnt-work">The things that didn’t work</h3>
+
+<p>First I’ll list what I tried that <em>didn’t</em> work. To be fair, though, it’s possible that some of these could work for someone else, as there is plenty of documentation for these methods.</p>
 
 <ul>
-  <li>To install Serverless I ran this command: <code class="highlighter-rouge">npm i serverless -g</code></li>
-  <li>To install the AWS SDK I ran this command: <code class="highlighter-rouge">npm i aws-sdk -g</code></li>
-  <li>Once you’ve set up an AWS account you can set up a new user in IAM, and save your credentials on your machine. <a href="https://www.youtube.com/watch?v=w-OHgML58eg&amp;t=1s">This video shows that set-up</a>.</li>
+  <li>checked security groups to ensure ssh access still available on port 22 (it was)</li>
+  <li>added new security group with new port (1022) and try to ssh using it</li>
+  <li>created a <em>new</em> AMI based on current EC2 instance, and launched an entirely new instance from it - still no ssh acces on new one</li>
+  <li>launched a new instance from an <em>old</em> AMI that was created before I updated ubuntu</li>
+  <li>stopped the current instance, detached the EBS volume, reattached it, and restarted the instance</li>
+  <li>added user data script to restart ssh (method 4 in this article <a href="https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-resolve-ssh-connection-errors/">https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-resolve-ssh-connection-errors/</a>)</li>
+  <li>ran the troubleshoot ssh automation document (method 3 in this article <a href="https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-resolve-ssh-connection-errors/">https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-resolve-ssh-connection-errors/</a>), hoping to find some clues as to the root of the problem</li>
+  <li>tried to set up EC2 connect - only works on nitro-based instances, and I wasn’t able to update my instance to a nitro-based system</li>
 </ul>
 
-<p>In this case I already had a project made, which I set up using <code class="highlighter-rouge">create-react-app</code>. You can also set up a new serverless app by creating a new folder and running <code class="highlighter-rouge">serverless create --template aws-nodejs</code>. This is assuming you are using Node.js in the backend. There are many different runtimes you can use and templates available. You can also run <code class="highlighter-rouge">create-react-app</code> after creating your serverless template. The order you do this doesn’t seem to matter, as long as you have all the files you need.</p>
+<p>I was about ready to give up, but there was one more method I had not tried - setting up session manager</p>
 
-<p><a href="https://www.serverless.com/framework/docs/providers/aws/guide/services/">This article from Serverless explains services, and all associated files, very well</a>.</p>
+<h3 id="the-session-manager-way">The session manager way</h3>
 
-<p>To deploy static pages to an S3 bucket on AWS, I installed serverless-finch in my project using <code class="highlighter-rouge">npm i --save-dev serverless-finch</code>.</p>
+<p>While attempting all of the above processes I came across this option. There were a lot of steps in the documentation I read at that time and it seemed a bit intimidating to set up.</p>
 
-<p>When deploying a React app it is important to run the command <code class="highlighter-rouge">npm run build</code>, so you get a build folder in your project directory. This is where all your static files end up including your index.html, which S3 needs to find in order to deploy your site.</p>
+<p>I revisited it again while on the “connect” page in EC2. On this page there are tabs with several options to connect to your instance. Connecting via session manager was one of these options.</p>
 
-<h3 id="inside-the-serverlessyml-file">Inside the serverless.yml file</h3>
+<p>I dismissed it earlier because it said I couldn’t connect. This time I paid attention to the possible reasons why the connection wasn’t being made. One possibility was that the proper IAM policy wasn’t attached, which could be added using <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#start-ec2-console">“quick set-up”</a> in systems manager.</p>
 
-<p>Setting up a new serverless app will give you a handler file (in my case, handler.js), a .gitignore, and a serverless.yml file. serverless.yml is where you configure your service. Serverless uses this file to work with AWS to deploy your app.</p>
+<p>So I gave it a try and followed along in the quick set-up console and chose an EC2 related configuration. When I returned to the EC2 connection session manager tab the warnings were gone.</p>
 
-<p>The following is what I have in my serverless.yml file:</p>
+<p>This time when I clicked “connect”, I got command line access to the EC2!</p>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">service</span><span class="pi">:</span> <span class="s">react-practice</span>
+<p>Even when I ran the “pwd” linux command I was a bit lost in the file system. Signing in via session manager didn’t take me directly into the wordpress folders like it did on ssh login. Since now I could run commands I decided to troubleshoot ssh access once again.</p>
 
-<span class="na">provider</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s">aws</span>
-  <span class="na">stage</span><span class="pi">:</span> <span class="s">${opt:stage, 'dev'}</span>
-  <span class="na">runtime</span><span class="pi">:</span> <span class="s">nodejs12.x</span>
-  <span class="na">region</span><span class="pi">:</span> <span class="s">us-west-2</span>
+<p>I tried a command to test ssh <code class="highlighter-rouge">sudo sshd -t</code> which unfortunatly didn’t provide anything useful for me.</p>
 
-<span class="na">functions</span><span class="pi">:</span>
-  <span class="na">hello</span><span class="pi">:</span>
-    <span class="na">handler</span><span class="pi">:</span> <span class="s">handler.hello</span>
-    <span class="c1">#    The following are a few example events you can configure</span>
-    <span class="c1">#    NOTE: Please make sure to change your handler code to work with those events</span>
-    <span class="c1">#    Check the event documentation for details</span>
-    <span class="na">events</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">http</span><span class="pi">:</span>
-          <span class="na">path</span><span class="pi">:</span> <span class="s">hello</span>
-          <span class="na">method</span><span class="pi">:</span> <span class="s">get</span>
+<p>The information that I believe helped me the most was from <a href="https://community.bitnami.com/t/ssh-stops-working-after-upgrade-to-ubuntu-18-04-on-aws-lightsail/64821/7">this article on the bitnami community page</a>, which addressed essentially the same problem I was having, just on AWS Lightsail. As Lightsail is built on EC2, I thought this might help.</p>
 
-<span class="na">plugins</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">serverless-finch</span>
+<p>It suggested, as I suspected from earlier research, that the ssh config was the issue. They said to run these commands:</p>
 
-<span class="na">custom</span><span class="pi">:</span>
-  <span class="na">client</span><span class="pi">:</span>
-    <span class="na">bucketName</span><span class="pi">:</span> <span class="s">julia-practice-react1</span>
-    <span class="na">distributionFolder</span><span class="pi">:</span> <span class="s">/build</span>
-    <span class="na">errorDocument</span><span class="pi">:</span> <span class="s">index.html</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  sudo sed -i 's/^Ciphers .*/Ciphers +aes256-cbc,aes192-cbc,aes128-cbc/' /etc/ssh/sshd_config
+  sudo service sshd stop
+  sudo service sshd start
 </code></pre></div></div>
 
-<p>“service” essentially means project. It’s where you define all your functions, resources, events, plugins, and so on. Here you give the service a name.</p>
+<p>I can’t say for sure these were the exact steps that solved my problem, since I ran some other commands around this time in session manager. But after running the above commands I tried to ssh into my instance again, and it worked. Mostly likely it was this attempt that fixed it since it’s the only one that addresses the config problem.</p>
 
-<p>Under “provider” is where you specify that you are using AWS and configure your runtime, region, stage, etc. Stage refers to stage of development which includes development, QA, or production. Here the “dev” stage is default, if you don’t specify a stage when you deploy.</p>
+<h3 id="conclusion">Conclusion</h3>
 
-<p>Under each function you can have events. These are events that trigger the function to execute. In this example, and HTTP “get” request is triggering the “hello” function to execute.</p>
+<p>This may be the most frustrating problem I’ve had to deal with yet in my dev journey. I’ve been stuck before many times but this was the closest I’ve been to running out of ideas and abandoning the project. Thankfully I was able to push through and that didn’t have to happen.</p>
 
-<p>If you have a “resources” section, these are the resources that your functions use when they execute. These could include database tables.</p>
+<p>The biggest benefit to working through this problem was that it forced me to dive deep into EC2. It helped to solidify my knowledge on EC2 and expose me to other AWS services. In addition, I learned more about linux systems, which was quite interesting for me since I don’t work with them often.</p>
 
-<p>Note that under “plugins” I added “serverless-finch”.</p>
-
-<p>Under “custom” and “client” we configure S3.</p>
-
-<p>bucketName the bucket where S3 will place our files. It must be a globally unique name, meaning no one else in the world have have a bucket with this name.</p>
-
-<p>distributionFolder is where S3 should look for our files. For React we use “/build”, since that’s where our index.html is.</p>
-
-<p>S3 also requires you have an errorDocument specified. Since this is just a simple app I didn’t make one and just left it as index.html.</p>
-
-<h4 id="what-serverless-does-with-the-serverlessyml-file">What Serverless does with the serverless.yml file</h4>
-
-<p>Serverless takes the serverless.yml file and translates it into an AWS CloudFormation template.</p>
-
-<p>CloudFormation is an AWS service that allows you to manage all your AWS services/resources. You would write a template describing everything you want, and CloudFormation configures it for you.</p>
-
-<p>This sounds like an improvement over configuring everything yourself in the AWS management console, though these files can still get pretty long and take time to create. That’s where Serverless comes in. Serverless takes your serverless.yml file and creates CloudFormation templates for you.</p>
-
-<p><a href="https://www.serverless.com/framework/docs/providers/aws/guide/deploying/">Here’s an article describing deployment with Serverless</a></p>
-
-<h3 id="deployment">Deployment</h3>
-
-<p>Note: you can set up different commands in the “scripts” section of your package.json file.</p>
-
-<p>For backend stuff, especially for Lambda functions, run <code class="highlighter-rouge">sls deploy --aws-profile={whatever name you set up in your aws credentials file}</code></p>
-
-<p>To deploy the client side, into your S3 bucket, run this command <code class="highlighter-rouge">sls client deploy --aws-profile={whatever name you set up in your aws credentials file}</code></p>
-
-<p>Your screen should look something like this if successful. You will see a link you can go to and view the site.
-<img src="../assets/images/sls-cli.jpg" style="max-width: 500px;" alt="serverless cli successful" /></p>
-
-<h3 id="errors">Errors</h3>
-
-<p>I got an error reading “Serverless Error: Access Denied”. This seemed strange because I never got this error for the backend deploy, so I thought it must have to do with S3. I fixed this by making my bucket public, but I don’t think this is very secure so I need to look into this further.</p>
-
-<p>Another error said that I was not in the correct region. This was because my bucket and my serverless.yml file “region” did not match. I just had to quickly update my .yml file and there error was solved. I could now see my site.</p>
+<p>If nothing else, this was a great learning opportunity. And I’m now very happy to move on.</p>
 
                 </div>
             </section>
@@ -330,7 +298,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/react/">React</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/aws/">Aws</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -344,22 +312,7 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
-                                  
                                     
-                                        
-                                        
-                                            <li><a href="/debugging-graphs">Debugging front-end graph libraries - recharts</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
@@ -376,7 +329,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/mern-flashcard-app">MERN stack - flashcard app</a></li>
+                                            <li><a href="/lambda">AWS Lambda</a></li>
                                         
                                     
                                   
@@ -385,7 +338,23 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/redux">Learning Redux</a></li>
+                                            <li><a href="/sns">AWS SNS</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/sqs">AWS SQS</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
                                         
                                     
                                   
@@ -395,21 +364,20 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
                                     
                                         
                                         
                                     
                                   
                                 
-                                  
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
                                   
                                 
                                   
@@ -471,7 +439,7 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/react/">
+                            <a href="/tag/aws/">
                                 
                                     See all 5 posts  →
                                 
@@ -483,60 +451,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/react-nodejs-app">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">React</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Node.js</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Making a React/Node.js app</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -545,21 +459,21 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/eslint-prettier-react">
+            <a class="post-card-content-link" href="/debugging-graphs">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">React</span>
+                               <span class="post-card-tags">Debugging</span>
                             
                         
                             
-                                <span class="post-card-tags">Devops</span>
+                                <span class="post-card-tags">React</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">How I configured ESLint and Prettier for React at work </h2>
+                    <h2 class="post-card-title">Debugging front-end graph libraries - recharts</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -610,7 +524,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Deploying simple React app with Serverless / AWS </div>
+    <div class="floating-header-title">How I lost, and regained, ssh access to my AWS EC2</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -618,7 +532,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Deploying+simple+React+app+with+Serverless+%2F+AWS+&amp;url=deploy-react-serverless-aws"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=How+I+lost%2C+and+regained%2C+ssh+access+to+my+AWS+EC2&amp;url=ec2-ssh"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -627,7 +541,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=deploy-react-serverless-aws"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=ec2-ssh"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

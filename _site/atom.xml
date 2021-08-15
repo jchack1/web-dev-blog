@@ -8,6 +8,36 @@
     
       
       <item>
+        <title>How I lost, and regained, ssh access to my AWS EC2</title>
+        
+          <description>&lt;p&gt;This is a long story so I will leave out extra details to keep it (somewhat) brief.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 11 Aug 2021 14:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/ec2-ssh</link>
+        <guid isPermaLink="true">http://localhost:4000/ec2-ssh</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Debugging front-end graph libraries - recharts</title>
+        
+          <description>&lt;p&gt;My company does a lot of data analytics, which means on the front end we work with a lot of graphs. Today I’ll talk about some difficulties I had debugging a new dashboard on our platform, which was built using recharts graphs.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 06 Aug 2021 14:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/debugging-graphs</link>
+        <guid isPermaLink="true">http://localhost:4000/debugging-graphs</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Learning data structures - advanced structures (trees)</title>
         
           <description>&lt;p&gt;This is the last section of intro to data structures. We are now getting into non-linear data structures.&lt;/p&gt;

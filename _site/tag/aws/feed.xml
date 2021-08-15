@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/aws/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-07-07T22:20:58-06:00</updated>
+  <updated>2021-08-14T22:32:10-06:00</updated>
   <id>http://localhost:4000/tag/aws/feed.xml</id>
 
   
@@ -42,6 +42,106 @@
   
   
 
+  
+    <entry>
+      <title type="html">How I lost, and regained, ssh access to my AWS EC2</title>
+      <link href="http://localhost:4000/ec2-ssh" rel="alternate" type="text/html" title="How I lost, and regained, ssh access to my AWS EC2" />
+      <published>2021-08-11T14:30:00-06:00</published>
+      <updated>2021-08-11T14:30:00-06:00</updated>
+      <id>http://localhost:4000/ec2-ssh</id>
+      <content type="html" xml:base="http://localhost:4000/ec2-ssh">&lt;p&gt;This is a long story so I will leave out extra details to keep it (somewhat) brief.&lt;/p&gt;
+
+&lt;p&gt;I was working with an AWS EC2 instance with wordpress installed. When you host your own wordpress sites, you need to keep up with server maintenance. I needed to update the PHP version for security reasons and I found a tutorial that told me to update ubuntu first. Once the update was complete, I no longer had ssh access to my EC2.&lt;/p&gt;
+
+&lt;p&gt;After doing some reading, I believe this happened because there is some kind of a breaking change in the ssh config between ubuntu versions 16.04 and 18.04.&lt;/p&gt;
+
+&lt;p&gt;For most users who have the physical device in front of them it is not difficult to run a few commands on their machine and repair the config issue. For me, however, my only access at the time was through ssh. I could not fix ssh and access the files on my machine until I had a command line or c-panel to work with.&lt;/p&gt;
+
+&lt;p&gt;After a lot of trial an error I eventually regained access. I will share the process here.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-things-that-didnt-work&quot;&gt;The things that didn’t work&lt;/h3&gt;
+
+&lt;p&gt;First I’ll list what I tried that &lt;em&gt;didn’t&lt;/em&gt; work. To be fair, though, it’s possible that some of these could work for someone else, as there is plenty of documentation for these methods.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;checked security groups to ensure ssh access still available on port 22 (it was)&lt;/li&gt;
+  &lt;li&gt;added new security group with new port (1022) and try to ssh using it&lt;/li&gt;
+  &lt;li&gt;created a &lt;em&gt;new&lt;/em&gt; AMI based on current EC2 instance, and launched an entirely new instance from it - still no ssh acces on new one&lt;/li&gt;
+  &lt;li&gt;launched a new instance from an &lt;em&gt;old&lt;/em&gt; AMI that was created before I updated ubuntu&lt;/li&gt;
+  &lt;li&gt;stopped the current instance, detached the EBS volume, reattached it, and restarted the instance&lt;/li&gt;
+  &lt;li&gt;added user data script to restart ssh (method 4 in this article &lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-resolve-ssh-connection-errors/&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-resolve-ssh-connection-errors/&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;ran the troubleshoot ssh automation document (method 3 in this article &lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-resolve-ssh-connection-errors/&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-resolve-ssh-connection-errors/&lt;/a&gt;), hoping to find some clues as to the root of the problem&lt;/li&gt;
+  &lt;li&gt;tried to set up EC2 connect - only works on nitro-based instances, and I wasn’t able to update my instance to a nitro-based system&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I was about ready to give up, but there was one more method I had not tried - setting up session manager&lt;/p&gt;
+
+&lt;h3 id=&quot;the-session-manager-way&quot;&gt;The session manager way&lt;/h3&gt;
+
+&lt;p&gt;While attempting all of the above processes I came across this option. There were a lot of steps in the documentation I read at that time and it seemed a bit intimidating to set up.&lt;/p&gt;
+
+&lt;p&gt;I revisited it again while on the “connect” page in EC2. On this page there are tabs with several options to connect to your instance. Connecting via session manager was one of these options.&lt;/p&gt;
+
+&lt;p&gt;I dismissed it earlier because it said I couldn’t connect. This time I paid attention to the possible reasons why the connection wasn’t being made. One possibility was that the proper IAM policy wasn’t attached, which could be added using &lt;a href=&quot;https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#start-ec2-console&quot;&gt;“quick set-up”&lt;/a&gt; in systems manager.&lt;/p&gt;
+
+&lt;p&gt;So I gave it a try and followed along in the quick set-up console and chose an EC2 related configuration. When I returned to the EC2 connection session manager tab the warnings were gone.&lt;/p&gt;
+
+&lt;p&gt;This time when I clicked “connect”, I got command line access to the EC2!&lt;/p&gt;
+
+&lt;p&gt;Even when I ran the “pwd” linux command I was a bit lost in the file system. Signing in via session manager didn’t take me directly into the wordpress folders like it did on ssh login. Since now I could run commands I decided to troubleshoot ssh access once again.&lt;/p&gt;
+
+&lt;p&gt;I tried a command to test ssh &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo sshd -t&lt;/code&gt; which unfortunatly didn’t provide anything useful for me.&lt;/p&gt;
+
+&lt;p&gt;The information that I believe helped me the most was from &lt;a href=&quot;https://community.bitnami.com/t/ssh-stops-working-after-upgrade-to-ubuntu-18-04-on-aws-lightsail/64821/7&quot;&gt;this article on the bitnami community page&lt;/a&gt;, which addressed essentially the same problem I was having, just on AWS Lightsail. As Lightsail is built on EC2, I thought this might help.&lt;/p&gt;
+
+&lt;p&gt;It suggested, as I suspected from earlier research, that the ssh config was the issue. They said to run these commands:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  sudo sed -i 's/^Ciphers .*/Ciphers +aes256-cbc,aes192-cbc,aes128-cbc/' /etc/ssh/sshd_config
+  sudo service sshd stop
+  sudo service sshd start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I can’t say for sure these were the exact steps that solved my problem, since I ran some other commands around this time in session manager. But after running the above commands I tried to ssh into my instance again, and it worked. Mostly likely it was this attempt that fixed it since it’s the only one that addresses the config problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;This may be the most frustrating problem I’ve had to deal with yet in my dev journey. I’ve been stuck before many times but this was the closest I’ve been to running out of ideas and abandoning the project. Thankfully I was able to push through and that didn’t have to happen.&lt;/p&gt;
+
+&lt;p&gt;The biggest benefit to working through this problem was that it forced me to dive deep into EC2. It helped to solidify my knowledge on EC2 and expose me to other AWS services. In addition, I learned more about linux systems, which was quite interesting for me since I don’t work with them often.&lt;/p&gt;
+
+&lt;p&gt;If nothing else, this was a great learning opportunity. And I’m now very happy to move on.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="aws" />
+      
+        <category term="ec2" />
+      
+        <category term="linux" />
+      
+        <category term="debugging" />
+      
+
+      
+        <summary type="html">This is a long story so I will leave out extra details to keep it (somewhat) brief.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">AWS Lambda</title>

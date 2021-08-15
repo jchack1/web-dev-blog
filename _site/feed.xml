@@ -1,4 +1,123 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-07T22:20:58-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Learning data structures - advanced structures (trees)</title><link href="http://localhost:4000/data-structures-3" rel="alternate" type="text/html" title="Learning data structures - advanced structures (trees)" /><published>2021-07-07T14:30:00-06:00</published><updated>2021-07-07T14:30:00-06:00</updated><id>http://localhost:4000/data-structures-3</id><content type="html" xml:base="http://localhost:4000/data-structures-3">&lt;p&gt;This is the last section of intro to data structures. We are now getting into non-linear data structures.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-08-14T22:32:10-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">How I lost, and regained, ssh access to my AWS EC2</title><link href="http://localhost:4000/ec2-ssh" rel="alternate" type="text/html" title="How I lost, and regained, ssh access to my AWS EC2" /><published>2021-08-11T14:30:00-06:00</published><updated>2021-08-11T14:30:00-06:00</updated><id>http://localhost:4000/ec2-ssh</id><content type="html" xml:base="http://localhost:4000/ec2-ssh">&lt;p&gt;This is a long story so I will leave out extra details to keep it (somewhat) brief.&lt;/p&gt;
+
+&lt;p&gt;I was working with an AWS EC2 instance with wordpress installed. When you host your own wordpress sites, you need to keep up with server maintenance. I needed to update the PHP version for security reasons and I found a tutorial that told me to update ubuntu first. Once the update was complete, I no longer had ssh access to my EC2.&lt;/p&gt;
+
+&lt;p&gt;After doing some reading, I believe this happened because there is some kind of a breaking change in the ssh config between ubuntu versions 16.04 and 18.04.&lt;/p&gt;
+
+&lt;p&gt;For most users who have the physical device in front of them it is not difficult to run a few commands on their machine and repair the config issue. For me, however, my only access at the time was through ssh. I could not fix ssh and access the files on my machine until I had a command line or c-panel to work with.&lt;/p&gt;
+
+&lt;p&gt;After a lot of trial an error I eventually regained access. I will share the process here.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-things-that-didnt-work&quot;&gt;The things that didn’t work&lt;/h3&gt;
+
+&lt;p&gt;First I’ll list what I tried that &lt;em&gt;didn’t&lt;/em&gt; work. To be fair, though, it’s possible that some of these could work for someone else, as there is plenty of documentation for these methods.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;checked security groups to ensure ssh access still available on port 22 (it was)&lt;/li&gt;
+  &lt;li&gt;added new security group with new port (1022) and try to ssh using it&lt;/li&gt;
+  &lt;li&gt;created a &lt;em&gt;new&lt;/em&gt; AMI based on current EC2 instance, and launched an entirely new instance from it - still no ssh acces on new one&lt;/li&gt;
+  &lt;li&gt;launched a new instance from an &lt;em&gt;old&lt;/em&gt; AMI that was created before I updated ubuntu&lt;/li&gt;
+  &lt;li&gt;stopped the current instance, detached the EBS volume, reattached it, and restarted the instance&lt;/li&gt;
+  &lt;li&gt;added user data script to restart ssh (method 4 in this article &lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-resolve-ssh-connection-errors/&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-resolve-ssh-connection-errors/&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;ran the troubleshoot ssh automation document (method 3 in this article &lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-resolve-ssh-connection-errors/&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-resolve-ssh-connection-errors/&lt;/a&gt;), hoping to find some clues as to the root of the problem&lt;/li&gt;
+  &lt;li&gt;tried to set up EC2 connect - only works on nitro-based instances, and I wasn’t able to update my instance to a nitro-based system&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I was about ready to give up, but there was one more method I had not tried - setting up session manager&lt;/p&gt;
+
+&lt;h3 id=&quot;the-session-manager-way&quot;&gt;The session manager way&lt;/h3&gt;
+
+&lt;p&gt;While attempting all of the above processes I came across this option. There were a lot of steps in the documentation I read at that time and it seemed a bit intimidating to set up.&lt;/p&gt;
+
+&lt;p&gt;I revisited it again while on the “connect” page in EC2. On this page there are tabs with several options to connect to your instance. Connecting via session manager was one of these options.&lt;/p&gt;
+
+&lt;p&gt;I dismissed it earlier because it said I couldn’t connect. This time I paid attention to the possible reasons why the connection wasn’t being made. One possibility was that the proper IAM policy wasn’t attached, which could be added using &lt;a href=&quot;https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#start-ec2-console&quot;&gt;“quick set-up”&lt;/a&gt; in systems manager.&lt;/p&gt;
+
+&lt;p&gt;So I gave it a try and followed along in the quick set-up console and chose an EC2 related configuration. When I returned to the EC2 connection session manager tab the warnings were gone.&lt;/p&gt;
+
+&lt;p&gt;This time when I clicked “connect”, I got command line access to the EC2!&lt;/p&gt;
+
+&lt;p&gt;Even when I ran the “pwd” linux command I was a bit lost in the file system. Signing in via session manager didn’t take me directly into the wordpress folders like it did on ssh login. Since now I could run commands I decided to troubleshoot ssh access once again.&lt;/p&gt;
+
+&lt;p&gt;I tried a command to test ssh &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo sshd -t&lt;/code&gt; which unfortunatly didn’t provide anything useful for me.&lt;/p&gt;
+
+&lt;p&gt;The information that I believe helped me the most was from &lt;a href=&quot;https://community.bitnami.com/t/ssh-stops-working-after-upgrade-to-ubuntu-18-04-on-aws-lightsail/64821/7&quot;&gt;this article on the bitnami community page&lt;/a&gt;, which addressed essentially the same problem I was having, just on AWS Lightsail. As Lightsail is built on EC2, I thought this might help.&lt;/p&gt;
+
+&lt;p&gt;It suggested, as I suspected from earlier research, that the ssh config was the issue. They said to run these commands:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  sudo sed -i 's/^Ciphers .*/Ciphers +aes256-cbc,aes192-cbc,aes128-cbc/' /etc/ssh/sshd_config
+  sudo service sshd stop
+  sudo service sshd start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I can’t say for sure these were the exact steps that solved my problem, since I ran some other commands around this time in session manager. But after running the above commands I tried to ssh into my instance again, and it worked. Mostly likely it was this attempt that fixed it since it’s the only one that addresses the config problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;This may be the most frustrating problem I’ve had to deal with yet in my dev journey. I’ve been stuck before many times but this was the closest I’ve been to running out of ideas and abandoning the project. Thankfully I was able to push through and that didn’t have to happen.&lt;/p&gt;
+
+&lt;p&gt;The biggest benefit to working through this problem was that it forced me to dive deep into EC2. It helped to solidify my knowledge on EC2 and expose me to other AWS services. In addition, I learned more about linux systems, which was quite interesting for me since I don’t work with them often.&lt;/p&gt;
+
+&lt;p&gt;If nothing else, this was a great learning opportunity. And I’m now very happy to move on.&lt;/p&gt;</content><author><name></name></author><category term="aws" /><category term="ec2" /><category term="linux" /><category term="debugging" /><summary type="html">This is a long story so I will leave out extra details to keep it (somewhat) brief.</summary></entry><entry><title type="html">Debugging front-end graph libraries - recharts</title><link href="http://localhost:4000/debugging-graphs" rel="alternate" type="text/html" title="Debugging front-end graph libraries - recharts" /><published>2021-08-06T14:30:00-06:00</published><updated>2021-08-06T14:30:00-06:00</updated><id>http://localhost:4000/debugging-graphs</id><content type="html" xml:base="http://localhost:4000/debugging-graphs">&lt;p&gt;My company does a lot of data analytics, which means on the front end we work with a lot of graphs. Today I’ll talk about some difficulties I had debugging a new dashboard on our platform, which was built using recharts graphs.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-task&quot;&gt;The task&lt;/h3&gt;
+
+&lt;p&gt;We needed a set of graphs to represent some new metrics. Without giving away what the graph is actually communicating, I’ll say the x-axis went from “good” on the left side, to “bad” on the far right. We wanted a gradient going from left to right, changing from a “good” colour to a “bad” colour, to represent this concept and help users visually see the problems they are facing.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-problem&quot;&gt;The problem&lt;/h3&gt;
+
+&lt;p&gt;I experimented with an Area chart in the recharts sandbox. The gradient was quick to figure out and I ended up with a nice blue-purple-orange gradient.&lt;/p&gt;
+
+&lt;p&gt;To create a gradient with recharts, you need to put the code under “defs”:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;defs&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;linearGradient&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;uv&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x1=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y1=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x2=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y2=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;stop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5%&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;stopColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#008eff&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;stopOpacity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{0.9}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;stop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;40%&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;stopColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#833f97&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;stopOpacity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{0.9}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;stop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;95%&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;stopColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#ff4800&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;stopOpacity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{0.9}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/linearGradient&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/defs&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You use the “id” field inside the linearGradient tag inside the Area tag property “fill”:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Area&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;monotone&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dataKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;percent&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stroke&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#8884d8&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;url(#uv)&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This looked great, so I copied it into my code and tried it out in the proper dashboard in our app.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The problem was, in the app, there was no gradient - the area fill was just gray.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;things-i-tried&quot;&gt;Things I tried&lt;/h3&gt;
+
+&lt;p&gt;First I tried inputing other values into the “fill” property, including colour names like “red” or “blue”. These colours worked.&lt;/p&gt;
+
+&lt;p&gt;I wasn’t sure if using gradients was a recently added feature in recharts, so I checked what version of recharts we had. Our package.json had an old beta version of recharts, while the sandbox had the newest version. I updated our version and re-installed. Upon starting the app I saw the same problem - no gradient.&lt;/p&gt;
+
+&lt;p&gt;Perhaps it wasn’t just the recharts version - we had an old version of react, react-scripts, and react-dom. I went through the process of trying to update these to a new version, but did not complete it, as I had a lot of conflicting versions of packages. I just re-installed the original versions, with the exception of the updated recharts, as the new version didn’t affect our app negatively.&lt;/p&gt;
+
+&lt;p&gt;These graphs were nested inside many components, so I tried taking the AreaChart code and pasting it at the top of the code for our main overview page. Unexpectedly, the graph had a gradient! This told me there wasn’t anything wrong with the versions of my packages at this point, and the problem was within my app itself.&lt;/p&gt;
+
+&lt;p&gt;Back on the actual dashboard page, I tried putting the graph in different places. Strangely, the gradient showed up when the graph was placed higher up on the page, but not when it was further down the page. I placed my graph at the very top of the dashboard, and I noticed that while this gradient worked, one of the old graphs below was losing its gradient.&lt;/p&gt;
+
+&lt;h3 id=&quot;solution&quot;&gt;Solution&lt;/h3&gt;
+
+&lt;p&gt;I was trying to put two graphs with gradients on the same page. This should work fine, except the linear gradient ids for both graphs were the same - neither I nor the previous developer had changed the id names when we copied the code from recharts.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//below, id=&quot;uv&quot;. both gradients had this same id
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;linearGradient&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;uv&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x1=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y1=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x2=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y2=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;stop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5%&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;stopColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#008eff&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;stopOpacity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{0.9}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;stop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;40%&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;stopColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#833f97&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;stopOpacity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{0.9}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;stop&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;offset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;95%&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;stopColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#ff4800&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;stopOpacity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{0.9}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/linearGradient&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Both graphs were trying to use a linear gradient with id=”uv”. This caused the bug, since ids are supposed to be unique, and the graph lower on the page didn’t know which gradient it needed.&lt;/p&gt;
+
+&lt;p&gt;This was easily fixed by updating the ids to unique values.&lt;/p&gt;
+
+&lt;p&gt;I kind of wish I didn’t have to go through all that work before figuring out this simple issue, but at least in the future when I see a similar problem I’ll have a better idea of where to look first.&lt;/p&gt;</content><author><name></name></author><category term="debugging" /><category term="react" /><summary type="html">My company does a lot of data analytics, which means on the front end we work with a lot of graphs. Today I’ll talk about some difficulties I had debugging a new dashboard on our platform, which was built using recharts graphs.</summary></entry><entry><title type="html">Learning data structures - advanced structures (trees)</title><link href="http://localhost:4000/data-structures-3" rel="alternate" type="text/html" title="Learning data structures - advanced structures (trees)" /><published>2021-07-07T14:30:00-06:00</published><updated>2021-07-07T14:30:00-06:00</updated><id>http://localhost:4000/data-structures-3</id><content type="html" xml:base="http://localhost:4000/data-structures-3">&lt;p&gt;This is the last section of intro to data structures. We are now getting into non-linear data structures.&lt;/p&gt;
 
 &lt;p&gt;Everything up to this point has been a linear structure. The next data structures to cover are trees.&lt;/p&gt;
 
@@ -850,310 +969,4 @@
 &lt;ul&gt;
   &lt;li&gt;to substitute a particular value with other values you specify&lt;/li&gt;
   &lt;li&gt;!Sub&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="aws" /><summary type="html">AWS Cloudformation is a really great AWS service for creating “infrastructure as code”.</summary></entry><entry><title type="html">Helpful design notes - fonts</title><link href="http://localhost:4000/design-fonts" rel="alternate" type="text/html" title="Helpful design notes - fonts" /><published>2021-03-02T15:30:00-07:00</published><updated>2021-03-02T15:30:00-07:00</updated><id>http://localhost:4000/design-fonts</id><content type="html" xml:base="http://localhost:4000/design-fonts">&lt;p&gt;It’s been a while since we had a new post on design so here we go.&lt;/p&gt;
-
-&lt;p&gt;Today I’m back working on my UX Design / Adobe XD course so I thought I’d make some notes here with some helpful tips. Today is mostly about fonts.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;fonts.google.com&lt;/strong&gt; - free fonts&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;fonts.adobe.com&lt;/strong&gt; - paid fonts, should be included in creative cloud subscription&lt;/p&gt;
-
-&lt;p&gt;For Adobe fonts, can click “activate font” and use it in Adobe XD.&lt;/p&gt;
-
-&lt;p&gt;For Google fonts, to use in your design software, you need to download the font and install on your machine.&lt;/p&gt;
-
-&lt;h3 id=&quot;choosing-fonts&quot;&gt;Choosing fonts&lt;/h3&gt;
-
-&lt;p&gt;Decorative fonts are good for headers, but not great for body text. If you make your text more narrow, you can fit more characters in your titles. It doesn’t look as good if your titles break onto multiple lines.&lt;/p&gt;
-
-&lt;p&gt;Fonts can slow down website loading. Your browser has to go find the font and download it for use on your site. If you have many fonts with many different weights it takes longer for your site to load. Decreasing the number of fonts and weights you include in your site can help with loading time and also with SEO - Google finds these sites to be more friendly. Google fonts will let you know if your load time is fast, moderate, slow, and so on.&lt;/p&gt;
-
-&lt;p&gt;Search for font combinations if you are unsure what fonts you should pair together.&lt;/p&gt;
-
-&lt;h3 id=&quot;common-font-sizes-for-your-designs&quot;&gt;Common font sizes for your designs&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Heading 1 - 40&lt;/li&gt;
-  &lt;li&gt;Heading 2 - 32&lt;/li&gt;
-  &lt;li&gt;Heading 3 - 24&lt;/li&gt;
-  &lt;li&gt;Body copy - 16&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;These work well with your baseline grid in XD, if it is also divisible by 8. Items line up nicely with your grid this way.&lt;/p&gt;
-
-&lt;p&gt;In XD, add your fonts into Character Styles so you have your fonts quickly available for you and your team throughout the design process. This is helpful if you need to change your font - XD will find all instances of this font being used and update it when you change the font.&lt;/p&gt;
-
-&lt;p&gt;While doing a bit of my own research in this area I came across &lt;a href=&quot;https://learnui.design/blog/mobile-desktop-website-font-size-guidelines.html&quot;&gt;this article on learnui.design&lt;/a&gt;.
-Their recommendation was to start with a font size of 16px and go from there, depending on your situation.&lt;/p&gt;
-
-&lt;p&gt;If your site is text heavy, a larger font is more desirable, as it is easier to read and helps the user avoid eye strain.&lt;/p&gt;
-
-&lt;p&gt;If the site is interaction heavy, an app like Facebook maybe, then you wouldn’t want to go higher than 16px. Users are more likely to be scanning the page than reading closely, so larger text doesn’t feel quite right.&lt;/p&gt;
-
-&lt;p&gt;Finally, they recommended to not have more than 4 font sizes. This looks a little different than what’s shown above.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;A header size - add another smaller size if you need a sub-heading&lt;/li&gt;
-  &lt;li&gt;Your default size - 16px&lt;/li&gt;
-  &lt;li&gt;Secondary size - a couple points smaller than your default, eg. 14px, for less important details and captions&lt;/li&gt;
-  &lt;li&gt;Tertiary size - in case you need another smaller size, not always necessary though, again things like labels and captions&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;buttons&quot;&gt;Buttons&lt;/h3&gt;
-
-&lt;p&gt;Looking at design systems like Google Material can help you get inspiration to make better buttons. They add things like rounded corners, drop shadow, etc, to make buttons look more clickable.&lt;/p&gt;
-
-&lt;p&gt;You can add icons like arrows, plus, chevrons - to show convey that the button performs some actions.&lt;/p&gt;
-
-&lt;p&gt;Colours are important for buttons to convey the correct meaning. Important buttons, like delete, could be red. Be consistent with your colours across your site so users don’t get confused.&lt;/p&gt;
-
-&lt;p&gt;A good site to visit to learn more about UX/UI concepts is &lt;a href=&quot;https://uxplanet.org/&quot;&gt;UXPlanet.org&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://uxplanet.org/primary-secondary-action-buttons-c16df9b36150&quot;&gt;This article&lt;/a&gt; has some good tips for creating primary and secondary buttons, including:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;making buttons distinct&lt;/strong&gt; - could use a brighter colour for the primary button, for example. But be careful about buttons that cause a negative action, like delete buttons. Make these less obvious than the accompanying “cancel” button. You don’t want users to take a permanent action by mistake because they just clicked on the most obvious button.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;button labels should explain what they do&lt;/strong&gt; - describe the action with a verb, for example use “submit” instead of “ok”&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="design" /><summary type="html">It’s been a while since we had a new post on design so here we go.</summary></entry><entry><title type="html">MERN stack - flashcard app</title><link href="http://localhost:4000/mern-flashcard-app" rel="alternate" type="text/html" title="MERN stack - flashcard app" /><published>2021-02-22T18:30:00-07:00</published><updated>2021-02-22T18:30:00-07:00</updated><id>http://localhost:4000/mern-flashcard-app</id><content type="html" xml:base="http://localhost:4000/mern-flashcard-app">&lt;p&gt;My latest project was a full stack MERN app.&lt;/p&gt;
-
-&lt;p&gt;I am pretty confident when I am doing front end work but I know I need more practice with back end, especially databases. At work I use AWS for all backend services, particularly Lambda and DynamoDB. For personal projects I like to use Node.js, Express, and MongoDB, as this was what I began learning in school, and I believe these are still good skills to practice.&lt;/p&gt;
-
-&lt;p&gt;I came across old flashcards I made while working on my science degree, so I decided to make a flashcard app.&lt;/p&gt;
-
-&lt;h3 id=&quot;backend&quot;&gt;Backend&lt;/h3&gt;
-
-&lt;p&gt;The first thing I decided to do was configure my database. Each type of flashcard would be given its own category. I created a model and route file for each category, and kept them in their respective folders. I created a mongoose schema and required it in the route file. I also included an npm package to find a random item from the collection, so in each category I can get a random flashcard on the front end.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//model file&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mongoose&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mongoose-simple-random&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AminoAcidSchema&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;symbol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;AminoAcidSchema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AminoAcid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;AminoAcid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AminoAcidSchema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AminoAcid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here I created my routes. I included a get random route, as well as a post route so I can post records to my database with postman.&lt;/p&gt;
-
-&lt;p&gt;I preferred to use the post route, rather than add my data directly into MongoDB Atlas, because using my app ensures I am posting to the correct collections. When I post through my app, my collections are created automatically based off the names I give my models, so the app knows to post to these collections.&lt;/p&gt;
-
-&lt;p&gt;I could also do all of this in the command line, but in this case my preference is to use a GUI. Either way works fine.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//route file&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;express&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;router&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Router&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//getting model, needed to make queries&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AminoAcid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;../models/aminoAcid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//get random amino acid&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;router&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/random&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;AminoAcid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;findOneRandom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//used for testing route&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;router&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;AminoAcid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;aminoAcid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;aminoAcid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//for posting amino acid data to db&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;router&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newAA&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AminoAcid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;symbol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;symbol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;newAA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;router&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I then required the routes in my server.js file. The routes above could have gone into the server.js file directly, however I would have ended up with a dozen or more routes. Keeping them in a separate routes folder keeps my files more clean and organized.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//server.js&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// I required the routes at the top of my file&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;aminoAcids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./routes/aminoAcids&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;functionalGroups&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./routes/functionalGroups&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;physics&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./routes/physics&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;biology&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./routes/biology&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//and later on in the file I use them and assign their url&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/aminoacids&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;aminoAcids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/functionalgroups&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;functionalGroups&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/physics&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;physics&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/biology&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;biology&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I used postman to test my routes and database connection. I was able to get and post items into the correct collections. Even in my post route I ask the database to return the data we just posted, as a way of confirming success. I could also check in my MongoDB Atlas account to ensure they are there.&lt;/p&gt;
-
-&lt;h3 id=&quot;front-end&quot;&gt;Front end&lt;/h3&gt;
-
-&lt;p&gt;Once again I am using react on the front end. I created a separate client folder and used create-react-app to initialize the front end app.&lt;/p&gt;
-
-&lt;p&gt;There are two main UIs - a home page displaying all the categories in a tile format, and a flashcard page. Each flashcard is a little different so they each get their own component, which is given its own route with react router.&lt;/p&gt;
-
-&lt;p&gt;The router looks like this, and the components are imported at the top of the file:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//inside the App.js file&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Router&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;container justify-center&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Switch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Route&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exact&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/physics&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PhysicsFlashcard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Route&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exact&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/biology&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;BiologyFlashcard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Route&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;exact&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/functionalgroups&quot;&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;FunctionalGroupsFlashcard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Route&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exact&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/aminoacids&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;AminoAcidFlashcard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Route&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exact&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;HomePage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/Switch&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/Router&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Each flashcard component has its own state, managed by the UseState react hook. Each “flashcard” has two sides, so I keep a variable called “flipped” to store the current “side”. There is also an item variable, to which we will assign a value from our API call.&lt;/p&gt;
-
-&lt;p&gt;In this app I made sure to have a loading variable as well, as it is good practice to show a loading state when fetching data.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([]);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setIsLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flipped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setFlipped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;getting-data&quot;&gt;Getting data&lt;/h3&gt;
-
-&lt;p&gt;To get the random item from the database I make an API call to the back end with axios and the UseEffect hook. A get request is made to the “random” route for the current category. The setItem function from my hook is used here to set the item variable to the data we just fetched.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/aminoacids/random&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;useEffect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cancel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;axios&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;cancelToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;axios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CancelToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cancel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;setIsLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cancel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;There is a next button on the flipped side of the flashcard. When clicked, we get another random item from the database. The card is then “flipped over”, so the user sees the front end of the card, rather than the answer, for the next flashcard.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getAnother&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cancel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;nx&quot;&gt;axios&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;cancelToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;axios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CancelToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cancel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;setIsLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;setFlipped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flipped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//reset the card&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cancel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;images&quot;&gt;Images&lt;/h4&gt;
-
-&lt;p&gt;Ideally I would have liked to store the images - which I created in Adobe Illustrator - in my database. I researched this but it seemed overly complicated for what I was trying to do. It seemed simpler to store my images in an assets folder on the front end.&lt;/p&gt;
-
-&lt;p&gt;Image names match the name of the item in the database. I used a template literal so I can use the fetched item’s name to get the corresponding image from my assets folder.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`/assets/functionalGroupImg/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.svg`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;molecule&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Getting images from an assets folder was a bit challenging. I struggled to get the path correct. After a bit of research I found that if you keep your assets in the “public” folder, all you need to do is begin your path with “/assets” and react will find what you’re looking for.&lt;/p&gt;
-
-&lt;p&gt;If I needed only one static image, I could just import it at the top of my file. It would have been easier for me to deal with the paths in this case, as you type the relative path, rather than relying on react to figure out the path for you.&lt;/p&gt;
-
-&lt;h3 id=&quot;styling&quot;&gt;Styling&lt;/h3&gt;
-
-&lt;p&gt;I have been using styled-components and tailwind at work, so I used them in this app for extra practice. Tailwind gives a nice clean, consistent feel. I also liked including styled-components as it gave me more control over my styling, and lets me create and style my components directly in the file where I am using them without needing to rely on separate stylesheets.&lt;/p&gt;
-
-&lt;p&gt;It goes against everything I learned in school about “separation of concerns”, but I can appreciate its usefulness. I’m sure a more in-depth discussion can be had on this topic, but that’s for another time.&lt;/p&gt;
-
-&lt;h3 id=&quot;other-issues-and-conclusions&quot;&gt;Other issues and conclusions&lt;/h3&gt;
-
-&lt;p&gt;As expected, the database/back end work was more difficult for me than the front end.&lt;/p&gt;
-
-&lt;p&gt;Getting a random item from the database was difficult without the npm package I ended up using. I always feel like there should be simple solutions to these &lt;em&gt;seemingly&lt;/em&gt; simple problems, so I’m happy when I can find an easy solution rather than re-inventing the wheel. Sometimes stack overflow contributors can make things overly complicated.&lt;/p&gt;
-
-&lt;p&gt;It was difficult for me to properly get and post items to the database in my routes, as I am still learning the syntax of mongodb. In the future I would like to take some time to learn mongodb in more depth through a tutorial/course, and make a full CRUD app where I am also updating and deleting items.&lt;/p&gt;
-
-&lt;p&gt;Deployment was also more challenging than I expected, even though deployments to Heroku never go according to plan for me. I had never created an app before where I had a separate client folder to get my static pages from, where I was also using a database. There were issues with typos in my server.js file and my package.json. In the end I used the following:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//server.js code&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//for heroku deployment&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;static&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;static&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;client/build&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sendFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;client/build&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;index.html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;__dirname is where you currently are in your app - in this case, the server.js file. The path you create to get your static files is relative to where you currently are.&lt;/p&gt;
-
-&lt;p&gt;Also important, I did not have “path” installed in my project, so even if my path was correct, it wasn’t seen by the app. I made sure to require this in my server.js and install in my project.&lt;/p&gt;
-
-&lt;p&gt;I made sure to save it in my package.json, and update my scripts for deployment. Heroku needs a start script to start your server. For react, it also needs a build script. I had to make sure to change directories into my client folder to properly create a react build. Using a command called “heroku-postbuild” was helpful here.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;mernflashcards&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;science flashcard app&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;main&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;server.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;engines&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;node&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;12.13.0&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;echo &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Error: no test specified&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &amp;amp;&amp;amp; exit 1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;start&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;npm install &amp;amp;&amp;amp; node server.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;heroku-postbuild&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;cd client &amp;amp;&amp;amp; npm install &amp;amp;&amp;amp; npm run build&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;julia h&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ISC&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;proxy&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;http://localhost:5000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;body-parser&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^1.19.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;dotenv&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^8.2.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;express&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^4.17.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;mongodb&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^3.6.3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;mongoose&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^5.11.11&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;mongoose-simple-random&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^0.4.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^0.12.7&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Once again I had issues with my .env file. I stored my mongodb connection string here, so it worked great locally, but not when deployed. I still don’t fully understand how to solve this issue. It didn’t cause any problems in a similar app I made in school, only recently. I believe there is a way to set up environment variables in Heroku itself. For now I added my URI in a config file, referenced by server.js, which I did not upload to github.&lt;/p&gt;
-
-&lt;p&gt;Overall I had fun with this project. It helped me practice database skills, tailwind, and styled-components, and I got to revisit some science concepts from university while creating the flashcard graphics and questions.&lt;/p&gt;
-
-&lt;p&gt;You can view the app &lt;a href=&quot;https://react-science-flashcards.herokuapp.com/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="react" /><category term="node.js" /><category term="mongodb" /><category term="mongoose" /><category term="database" /><summary type="html">My latest project was a full stack MERN app.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><category term="aws" /><summary type="html">AWS Cloudformation is a really great AWS service for creating “infrastructure as code”.</summary></entry></feed>
