@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-08-14T22:32:10-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">How I lost, and regained, ssh access to my AWS EC2</title><link href="http://localhost:4000/ec2-ssh" rel="alternate" type="text/html" title="How I lost, and regained, ssh access to my AWS EC2" /><published>2021-08-11T14:30:00-06:00</published><updated>2021-08-11T14:30:00-06:00</updated><id>http://localhost:4000/ec2-ssh</id><content type="html" xml:base="http://localhost:4000/ec2-ssh">&lt;p&gt;This is a long story so I will leave out extra details to keep it (somewhat) brief.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-27T19:45:33-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">React refs</title><link href="http://localhost:4000/react-ref" rel="alternate" type="text/html" title="React refs" /><published>2021-11-27T18:30:00-07:00</published><updated>2021-11-27T18:30:00-07:00</updated><id>http://localhost:4000/react-ref</id><content type="html" xml:base="http://localhost:4000/react-ref">&lt;p&gt;For a new personal project I needed to use a React ref in order to obtain some information from the DOM. I have never needed to use them before and this is what I learned.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-was-i-trying-to-do&quot;&gt;What was I trying to do?&lt;/h3&gt;
+
+&lt;p&gt;I am working on an “art canvas” app, where I have a div in the middle of the screen and shows a shape in place of my cursor.&lt;/p&gt;
+
+&lt;p&gt;It is basically a web browser version of Microsoft Paint and is totally unnecessary, but it is a fun way for me to practice front-end skills and hopefully learn D3.js.&lt;/p&gt;
+
+&lt;p&gt;Anyway, I needed a way to calculate the distance between the viewport and the edges of my “canvas”, so I could render my shape wherever the cursor was hovering on the canvas div.&lt;/p&gt;
+
+&lt;p&gt;In vanilla JavaScript you can get the canvas div by using document.querySelector() or other similar document methods, and then using element.getBoundingClientRect(). This will give you information about the canvas div including its position within the viewport.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#main-canvas&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getBoundingClientRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once I have the x and y values, I can subtract them from my mouse position values, and have my shape appear in the correct place on the screen.&lt;/p&gt;
+
+&lt;p&gt;However with React, in order to access DOM nodes in this way, you should use refs.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-are-refs&quot;&gt;What are refs&lt;/h3&gt;
+
+&lt;p&gt;Note: these days I use React Hooks, which enable me to use function components instead of class components. I’ll explain refs in the context of function components.&lt;/p&gt;
+
+&lt;p&gt;As mentioned above, one of the biggest use cases for refs is when you want to access something in the DOM. Refs are similar to state in that their value can persist across component re-renders. The difference, though, is that a change in the value of your ref does not cause the component to re-render, whereas for state it does.&lt;/p&gt;
+
+&lt;p&gt;First, you create a variable with the useRef hook:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;inputRef&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useRef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then you add the &lt;strong&gt;ref&lt;/strong&gt; attribute to the component you are targeting.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;MainCanvas&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{inputRef}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;onMouseMove=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{handleMouseMove}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/MainCanvas&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This gets our MainCanvas element and saves it to our ref variable above. inputRef is a JavaScript object, and we access our element using the “current” property. As you can see below, I can perform DOM related functions on the element, like getBoundingClientRect(), which gives me the x and y values I need.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleMouseMove&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clientY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;displacementX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;inputRef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getBoundingClientRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;displacementY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;inputRef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getBoundingClientRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;updateMousePositionX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;displacementX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;updateMousePositionY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;displacementY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;There is, of course, a lot more information out there on refs and how they can be used.&lt;/p&gt;
+
+&lt;p&gt;I recommend checking out the &lt;a href=&quot;https://reactjs.org/docs/hooks-reference.html#useref&quot;&gt;React hooks docs&lt;/a&gt; as well as &lt;a href=&quot;https://www.youtube.com/watch?v=t2ypzz6gJm0&quot;&gt;this youtube video&lt;/a&gt; for more detailed information, as it was very helpful for me.&lt;/p&gt;</content><author><name></name></author><category term="react" /><summary type="html">For a new personal project I needed to use a React ref in order to obtain some information from the DOM. I have never needed to use them before and this is what I learned.</summary></entry><entry><title type="html">How I lost, and regained, ssh access to my AWS EC2</title><link href="http://localhost:4000/ec2-ssh" rel="alternate" type="text/html" title="How I lost, and regained, ssh access to my AWS EC2" /><published>2021-08-11T14:30:00-06:00</published><updated>2021-08-11T14:30:00-06:00</updated><id>http://localhost:4000/ec2-ssh</id><content type="html" xml:base="http://localhost:4000/ec2-ssh">&lt;p&gt;This is a long story so I will leave out extra details to keep it (somewhat) brief.&lt;/p&gt;
 
 &lt;p&gt;I was working with an AWS EC2 instance with wordpress installed. When you host your own wordpress sites, you need to keep up with server maintenance. I needed to update the PHP version for security reasons and I found a tutorial that told me to update ubuntu first. Once the update was complete, I no longer had ssh access to my EC2.&lt;/p&gt;
 
@@ -901,72 +954,4 @@
         &lt;span class=&quot;na&quot;&gt;batchSize&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Your actual function code is in a separate handler file.&lt;/p&gt;</content><author><name></name></author><category term="aws" /><summary type="html">SQS is one of several AWS services that allows communication between your AWS resources. Today I am learning about it in my Udemy course. Here are some notes.</summary></entry><entry><title type="html">AWS Cloudformation - intrinsic functions</title><link href="http://localhost:4000/cloudformation-intrinsic-functions" rel="alternate" type="text/html" title="AWS Cloudformation - intrinsic functions" /><published>2021-03-15T14:30:00-06:00</published><updated>2021-03-15T14:30:00-06:00</updated><id>http://localhost:4000/cloudformation-intrinsic-functions</id><content type="html" xml:base="http://localhost:4000/cloudformation-intrinsic-functions">&lt;p&gt;AWS Cloudformation is a really great AWS service for creating “infrastructure as code”.&lt;/p&gt;
-
-&lt;p&gt;If you have ever dabbled in AWS it’s possible that you have been creating your resources in the browser in the AWS console. I will say I enjoy creating my resources this way because I am a visual person and sometimes enjoy using a GUI. However, when working on real-world projects that involve other developers and AWS accounts and environments, it would become tedious to manually create these over and over again in the console. And it would be awful to have to re-create them in the case that they are accidentally deleted.&lt;/p&gt;
-
-&lt;p&gt;Cloudformation allows you to create template files in YAML or JSON (I use YAML, I think this is most common) to declaratively create your AWS resources. The templates can be uploaded in the AWS console, or in the command line. For work I have my AWS credentials saved in a file on my computer, and I am able to deploy my templates from the command line. Despite what I said about enjoying using a GUI, once I got used to pushing code from the command line, that became my preference. It’s just so quick and easy once you get up and running. I imagine I’ll feel this way about Cloudformation with more experience.&lt;/p&gt;
-
-&lt;p&gt;No surprise here but I am taking a course in AWS as well - Ultimate AWS Certified Developer Associate 2021 on Udemy. Some of the info here comes from that course as I work my way through the cloudformation section, as well as the AWS documentation.&lt;/p&gt;
-
-&lt;h3 id=&quot;intrinsic-functions&quot;&gt;Intrinsic functions&lt;/h3&gt;
-
-&lt;p&gt;As I was diving deeper into AWS Cloudformation I started to come across a lot of weird things I had never seen before while working with YAML. Things like !Ref, fn::GetAtt, etc. These are called &lt;strong&gt;intrinsic functions&lt;/strong&gt; and essentially allow you to make references to resouces and parameters inside your cloudformation template.&lt;/p&gt;
-
-&lt;p&gt;First, a couple definitions:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Resources:&lt;/strong&gt; This is a required section in your template, which is where you declare the AWS resources that you want included in your stack. A resource is an AWS entity/service you can work with, like an EC2 instance, an SNS topic, or an S3 bucket.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Parameters:&lt;/strong&gt; This is an optional section in your template. Parameters in a cloudformation template are like parameters you pass into a function. You define specific values for your parameters which can be referenced later on in your template. If you are referencing these parameters many times in your template, but you need to make a change, it is easier to change them once at the top of your file than have to update them several times throughout your code.&lt;/p&gt;
-
-&lt;p&gt;When you see Fn::Something or !Something in the code you are dealing with an intrinsic function.&lt;/p&gt;
-
-&lt;p&gt;Fn::Ref&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;in YAML code is !Ref&lt;/li&gt;
-  &lt;li&gt;most common&lt;/li&gt;
-  &lt;li&gt;can be used to reference a parameter - gives you the exact &lt;strong&gt;value&lt;/strong&gt; of the parameter&lt;/li&gt;
-  &lt;li&gt;can be used to reference a resource - give you the &lt;strong&gt;physical ID&lt;/strong&gt; of the resource&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Fn::GetAtt&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;sometimes you need more than just the ID of a resource&lt;/li&gt;
-  &lt;li&gt;attach to any resource, check docs to see the &lt;em&gt;attributes that are exposed&lt;/em&gt; by each type of resource&lt;/li&gt;
-  &lt;li&gt;in YAML code it looks like this: !GetAtt MyInstance.AvailabilityZone&lt;/li&gt;
-  &lt;li&gt;so, use !GetAtt, with the resource name, and the attribute you want&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Fn::FindInMap&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;used similar to GetAtt, but to get a value out of a “Mapping” you made in your template&lt;/li&gt;
-  &lt;li&gt;a “mapping” is where you hardcode values in your template that, for example, depend on what environment you’re in&lt;/li&gt;
-  &lt;li&gt;maybe you are using a different image to create an EC2 instance based on what region you’re in, or whether you are in qa, dev, or prod environment. Hardcode these into your template and reference your map later on&lt;/li&gt;
-  &lt;li&gt;in your code use like so: !FindInMap [MapName, TopLevelKey, SecondLevelKey]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Fn::ImportValue&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;to get values exported from another cloudformation template in its “Outputs” Section&lt;/li&gt;
-  &lt;li&gt;your exports should have unique names across the region you’re working in&lt;/li&gt;
-  &lt;li&gt;used in YAML code: !ImportValue ExportedResourceName&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Fn::Join&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;to join a list of values with a delimiter (a delimiter is a character that separates values - could be a comma, colon, etc)&lt;/li&gt;
-  &lt;li&gt;!Join [delimiter, [list of values]]&lt;/li&gt;
-  &lt;li&gt;puts the delimiter in between each value in the list&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Fn::Sub&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;to substitute a particular value with other values you specify&lt;/li&gt;
-  &lt;li&gt;!Sub&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="aws" /><summary type="html">AWS Cloudformation is a really great AWS service for creating “infrastructure as code”.</summary></entry></feed>
+&lt;p&gt;Your actual function code is in a separate handler file.&lt;/p&gt;</content><author><name></name></author><category term="aws" /><summary type="html">SQS is one of several AWS services that allows communication between your AWS resources. Today I am learning about it in my Udemy course. Here are some notes.</summary></entry></feed>

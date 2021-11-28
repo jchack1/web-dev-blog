@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>React refs</title>
+        
+          <description>&lt;p&gt;For a new personal project I needed to use a React ref in order to obtain some information from the DOM. I have never needed to use them before and this is what I learned.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 27 Nov 2021 18:30:00 -0700</pubDate>
+        <link>
+        http://localhost:4000/react-ref</link>
+        <guid isPermaLink="true">http://localhost:4000/react-ref</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>How I lost, and regained, ssh access to my AWS EC2</title>
         
           <description>&lt;p&gt;This is a long story so I will leave out extra details to keep it (somewhat) brief.&lt;/p&gt;

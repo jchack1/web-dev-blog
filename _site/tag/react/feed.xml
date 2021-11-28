@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/react/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-08-14T22:32:10-06:00</updated>
+  <updated>2021-11-27T19:45:33-07:00</updated>
   <id>http://localhost:4000/tag/react/feed.xml</id>
 
   
@@ -42,6 +42,93 @@
   
   
 
+  
+    <entry>
+      <title type="html">React refs</title>
+      <link href="http://localhost:4000/react-ref" rel="alternate" type="text/html" title="React refs" />
+      <published>2021-11-27T18:30:00-07:00</published>
+      <updated>2021-11-27T18:30:00-07:00</updated>
+      <id>http://localhost:4000/react-ref</id>
+      <content type="html" xml:base="http://localhost:4000/react-ref">&lt;p&gt;For a new personal project I needed to use a React ref in order to obtain some information from the DOM. I have never needed to use them before and this is what I learned.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-was-i-trying-to-do&quot;&gt;What was I trying to do?&lt;/h3&gt;
+
+&lt;p&gt;I am working on an “art canvas” app, where I have a div in the middle of the screen and shows a shape in place of my cursor.&lt;/p&gt;
+
+&lt;p&gt;It is basically a web browser version of Microsoft Paint and is totally unnecessary, but it is a fun way for me to practice front-end skills and hopefully learn D3.js.&lt;/p&gt;
+
+&lt;p&gt;Anyway, I needed a way to calculate the distance between the viewport and the edges of my “canvas”, so I could render my shape wherever the cursor was hovering on the canvas div.&lt;/p&gt;
+
+&lt;p&gt;In vanilla JavaScript you can get the canvas div by using document.querySelector() or other similar document methods, and then using element.getBoundingClientRect(). This will give you information about the canvas div including its position within the viewport.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#main-canvas&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getBoundingClientRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once I have the x and y values, I can subtract them from my mouse position values, and have my shape appear in the correct place on the screen.&lt;/p&gt;
+
+&lt;p&gt;However with React, in order to access DOM nodes in this way, you should use refs.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-are-refs&quot;&gt;What are refs&lt;/h3&gt;
+
+&lt;p&gt;Note: these days I use React Hooks, which enable me to use function components instead of class components. I’ll explain refs in the context of function components.&lt;/p&gt;
+
+&lt;p&gt;As mentioned above, one of the biggest use cases for refs is when you want to access something in the DOM. Refs are similar to state in that their value can persist across component re-renders. The difference, though, is that a change in the value of your ref does not cause the component to re-render, whereas for state it does.&lt;/p&gt;
+
+&lt;p&gt;First, you create a variable with the useRef hook:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;inputRef&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useRef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then you add the &lt;strong&gt;ref&lt;/strong&gt; attribute to the component you are targeting.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;MainCanvas&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{inputRef}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;onMouseMove=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{handleMouseMove}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/MainCanvas&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This gets our MainCanvas element and saves it to our ref variable above. inputRef is a JavaScript object, and we access our element using the “current” property. As you can see below, I can perform DOM related functions on the element, like getBoundingClientRect(), which gives me the x and y values I need.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleMouseMove&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clientY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;displacementX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;inputRef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getBoundingClientRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;displacementY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;inputRef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getBoundingClientRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;updateMousePositionX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;displacementX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;updateMousePositionY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;displacementY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;There is, of course, a lot more information out there on refs and how they can be used.&lt;/p&gt;
+
+&lt;p&gt;I recommend checking out the &lt;a href=&quot;https://reactjs.org/docs/hooks-reference.html#useref&quot;&gt;React hooks docs&lt;/a&gt; as well as &lt;a href=&quot;https://www.youtube.com/watch?v=t2ypzz6gJm0&quot;&gt;this youtube video&lt;/a&gt; for more detailed information, as it was very helpful for me.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="react" />
+      
+
+      
+        <summary type="html">For a new personal project I needed to use a React ref in order to obtain some information from the DOM. I have never needed to use them before and this is what I learned.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Debugging front-end graph libraries - recharts</title>
