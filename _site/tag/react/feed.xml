@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/react/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-11-27T19:45:33-07:00</updated>
+  <updated>2021-11-28T22:48:03-07:00</updated>
   <id>http://localhost:4000/tag/react/feed.xml</id>
 
   
@@ -53,13 +53,13 @@
 
 &lt;h3 id=&quot;what-was-i-trying-to-do&quot;&gt;What was I trying to do?&lt;/h3&gt;
 
-&lt;p&gt;I am working on an “art canvas” app, where I have a div in the middle of the screen and shows a shape in place of my cursor.&lt;/p&gt;
+&lt;p&gt;I am working on an “art canvas” app, where I have a div in the middle of the screen that shows a shape in place of my cursor.&lt;/p&gt;
 
 &lt;p&gt;It is basically a web browser version of Microsoft Paint and is totally unnecessary, but it is a fun way for me to practice front-end skills and hopefully learn D3.js.&lt;/p&gt;
 
 &lt;p&gt;Anyway, I needed a way to calculate the distance between the viewport and the edges of my “canvas”, so I could render my shape wherever the cursor was hovering on the canvas div.&lt;/p&gt;
 
-&lt;p&gt;In vanilla JavaScript you can get the canvas div by using document.querySelector() or other similar document methods, and then using element.getBoundingClientRect(). This will give you information about the canvas div including its position within the viewport.&lt;/p&gt;
+&lt;p&gt;In vanilla JavaScript I can get the canvas div by using document.querySelector() or other similar document methods. Using element.getBoundingClientRect() will then give you information about the canvas div including its position within the viewport.&lt;/p&gt;
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#main-canvas&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getBoundingClientRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
@@ -67,9 +67,9 @@
 
 &lt;p&gt;Once I have the x and y values, I can subtract them from my mouse position values, and have my shape appear in the correct place on the screen.&lt;/p&gt;
 
-&lt;p&gt;However with React, in order to access DOM nodes in this way, you should use refs.&lt;/p&gt;
+&lt;p&gt;However with React, in order to access DOM nodes in this way, I needed to use refs.&lt;/p&gt;
 
-&lt;h3 id=&quot;what-are-refs&quot;&gt;What are refs&lt;/h3&gt;
+&lt;h3 id=&quot;what-are-refs&quot;&gt;What are refs?&lt;/h3&gt;
 
 &lt;p&gt;Note: these days I use React Hooks, which enable me to use function components instead of class components. I’ll explain refs in the context of function components.&lt;/p&gt;
 
@@ -80,10 +80,10 @@
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;inputRef&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useRef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Then you add the &lt;strong&gt;ref&lt;/strong&gt; attribute to the component you are targeting.&lt;/p&gt;
+&lt;p&gt;Then you add the ref attribute to the component you are targeting.&lt;/p&gt;
 
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;MainCanvas&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{inputRef}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;onMouseMove=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{handleMouseMove}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/MainCanvas&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;MainCanvas&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inputRef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;onMouseMove&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handleMouseMove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/MainCanvas&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;This gets our MainCanvas element and saves it to our ref variable above. inputRef is a JavaScript object, and we access our element using the “current” property. As you can see below, I can perform DOM related functions on the element, like getBoundingClientRect(), which gives me the x and y values I need.&lt;/p&gt;
 

@@ -174,13 +174,13 @@ into the {body} of the default.hbs template -->
 
 <h3 id="what-was-i-trying-to-do">What was I trying to do?</h3>
 
-<p>I am working on an “art canvas” app, where I have a div in the middle of the screen and shows a shape in place of my cursor.</p>
+<p>I am working on an “art canvas” app, where I have a div in the middle of the screen that shows a shape in place of my cursor.</p>
 
 <p>It is basically a web browser version of Microsoft Paint and is totally unnecessary, but it is a fun way for me to practice front-end skills and hopefully learn D3.js.</p>
 
 <p>Anyway, I needed a way to calculate the distance between the viewport and the edges of my “canvas”, so I could render my shape wherever the cursor was hovering on the canvas div.</p>
 
-<p>In vanilla JavaScript you can get the canvas div by using document.querySelector() or other similar document methods, and then using element.getBoundingClientRect(). This will give you information about the canvas div including its position within the viewport.</p>
+<p>In vanilla JavaScript I can get the canvas div by using document.querySelector() or other similar document methods. Using element.getBoundingClientRect() will then give you information about the canvas div including its position within the viewport.</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"#main-canvas"</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">rect</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">getBoundingClientRect</span><span class="p">();</span>
@@ -188,9 +188,9 @@ into the {body} of the default.hbs template -->
 
 <p>Once I have the x and y values, I can subtract them from my mouse position values, and have my shape appear in the correct place on the screen.</p>
 
-<p>However with React, in order to access DOM nodes in this way, you should use refs.</p>
+<p>However with React, in order to access DOM nodes in this way, I needed to use refs.</p>
 
-<h3 id="what-are-refs">What are refs</h3>
+<h3 id="what-are-refs">What are refs?</h3>
 
 <p>Note: these days I use React Hooks, which enable me to use function components instead of class components. I’ll explain refs in the context of function components.</p>
 
@@ -201,10 +201,10 @@ into the {body} of the default.hbs template -->
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">inputRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p>Then you add the <strong>ref</strong> attribute to the component you are targeting.</p>
+<p>Then you add the ref attribute to the component you are targeting.</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;MainCanvas</span> <span class="na">ref=</span><span class="s">"{inputRef}"</span> <span class="na">onMouseMove=</span><span class="s">"{handleMouseMove}"</span><span class="nt">&gt;&lt;/MainCanvas&gt;</span>
-</code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">MainCanvas</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">inputRef</span><span class="p">}</span> <span class="nx">onMouseMove</span><span class="o">=</span><span class="p">{</span><span class="nx">handleMouseMove</span><span class="p">}</span><span class="o">&gt;&lt;</span><span class="sr">/MainCanvas</span><span class="err">&gt;
+</span></code></pre></div></div>
 
 <p>This gets our MainCanvas element and saves it to our ref variable above. inputRef is a JavaScript object, and we access our element using the “current” property. As you can see below, I can perform DOM related functions on the element, like getBoundingClientRect(), which gives me the x and y values I need.</p>
 
