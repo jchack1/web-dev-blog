@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/debugging/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-11-28T22:48:03-07:00</updated>
+  <updated>2021-12-07T20:10:06-07:00</updated>
   <id>http://localhost:4000/tag/debugging/feed.xml</id>
 
   
@@ -42,6 +42,86 @@
   
   
 
+  
+    <entry>
+      <title type="html">Debugging - forEach with async/await</title>
+      <link href="http://localhost:4000/forEach-async-await" rel="alternate" type="text/html" title="Debugging - forEach with async/await" />
+      <published>2021-12-07T18:30:00-07:00</published>
+      <updated>2021-12-07T18:30:00-07:00</updated>
+      <id>http://localhost:4000/forEach-async-await</id>
+      <content type="html" xml:base="http://localhost:4000/forEach-async-await">&lt;p&gt;This week I learned that you do not use forEach loops with async/await.&lt;/p&gt;
+
+&lt;p&gt;I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app.&lt;/p&gt;
+
+&lt;p&gt;We use async and await to deal with promises when interacting with the database. While investigating the updating issue, I noticed that most of the time, my “put” operations were not going through. No error was being returned - the puts were just not happening. Not a lot to go on when debugging. The code also seemed to stop running when it hit the function that was supposed to return the promise.&lt;/p&gt;
+
+&lt;p&gt;What’s interesting, though, is that &lt;em&gt;sometimes&lt;/em&gt; the operations would actually go through. I’d notice that my item had updated and the rest of the code had run. But I hadn’t made any changes to the code. This suggested to me that it may be an issue with the way I implemented async and await.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-the-code-originally-looked-like&quot;&gt;What the code originally looked like&lt;/h3&gt;
+
+&lt;p&gt;I had no reason before to think that a forEach loop couldn’t be used with async/await. I figured that if you awaited something in the body of the forEach callback, it would work as long as you placed an async in front of your callback, kind of like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newTeamName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Team B&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;employees&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getEmployeesByTeamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;teamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Team A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;employees&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;updateEmployeeTeam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;teamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newTeamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;employeeId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;what-the-problem-is&quot;&gt;What the problem is&lt;/h3&gt;
+
+&lt;p&gt;Here are a couple articles that helped me understand, as well as the MDN doc for forEach:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zellwk.com/blog/async-await-in-loops/&quot;&gt;https://zellwk.com/blog/async-await-in-loops/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.hacksparrow.com/javascript/foreach-in-promise-async-function.html&quot;&gt;https://www.hacksparrow.com/javascript/foreach-in-promise-async-function.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Essentially, forEach came before async/await and is not built for it. Async/await doesn’t work with callback based loops. You aren’t actually awaiting the callback. The code just keeps running and doesn’t wait for promises to complete.&lt;/p&gt;
+
+&lt;p&gt;For my work scenario, most of the time I could not get the data back from the database before the forEach loop moved on the to next line of code. I assume that for the times that my code &lt;em&gt;did&lt;/em&gt; work, it was just by chance that I got the data quickly enough that execution had not moved onto the next line yet. Of course, this was a very rare event.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-to-do-instead&quot;&gt;What to do instead&lt;/h3&gt;
+
+&lt;p&gt;Just use a for loop. The code will pause and wait for your promise synchronously, as you’d expect. In my case I used a for…of loop, like below:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newTeamName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Team B&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;employees&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getEmployeesByTeamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;teamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Team A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;employee&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;employees&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;updateEmployeeTeam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;teamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newTeamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;employeeId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="javascript" />
+      
+        <category term="debugging" />
+      
+
+      
+        <summary type="html">This week I learned that you do not use forEach loops with async/await.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">How I lost, and regained, ssh access to my AWS EC2</title>

@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-28T22:48:03-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">React refs</title><link href="http://localhost:4000/react-ref" rel="alternate" type="text/html" title="React refs" /><published>2021-11-27T18:30:00-07:00</published><updated>2021-11-27T18:30:00-07:00</updated><id>http://localhost:4000/react-ref</id><content type="html" xml:base="http://localhost:4000/react-ref">&lt;p&gt;For a new personal project I needed to use a React ref in order to obtain some information from the DOM. I have never needed to use them before and this is what I learned.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-07T20:10:06-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Debugging - forEach with async/await</title><link href="http://localhost:4000/forEach-async-await" rel="alternate" type="text/html" title="Debugging - forEach with async/await" /><published>2021-12-07T18:30:00-07:00</published><updated>2021-12-07T18:30:00-07:00</updated><id>http://localhost:4000/forEach-async-await</id><content type="html" xml:base="http://localhost:4000/forEach-async-await">&lt;p&gt;This week I learned that you do not use forEach loops with async/await.&lt;/p&gt;
+
+&lt;p&gt;I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app.&lt;/p&gt;
+
+&lt;p&gt;We use async and await to deal with promises when interacting with the database. While investigating the updating issue, I noticed that most of the time, my “put” operations were not going through. No error was being returned - the puts were just not happening. Not a lot to go on when debugging. The code also seemed to stop running when it hit the function that was supposed to return the promise.&lt;/p&gt;
+
+&lt;p&gt;What’s interesting, though, is that &lt;em&gt;sometimes&lt;/em&gt; the operations would actually go through. I’d notice that my item had updated and the rest of the code had run. But I hadn’t made any changes to the code. This suggested to me that it may be an issue with the way I implemented async and await.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-the-code-originally-looked-like&quot;&gt;What the code originally looked like&lt;/h3&gt;
+
+&lt;p&gt;I had no reason before to think that a forEach loop couldn’t be used with async/await. I figured that if you awaited something in the body of the forEach callback, it would work as long as you placed an async in front of your callback, kind of like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newTeamName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Team B&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;employees&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getEmployeesByTeamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;teamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Team A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;employees&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;updateEmployeeTeam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;teamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newTeamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;employeeId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;what-the-problem-is&quot;&gt;What the problem is&lt;/h3&gt;
+
+&lt;p&gt;Here are a couple articles that helped me understand, as well as the MDN doc for forEach:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zellwk.com/blog/async-await-in-loops/&quot;&gt;https://zellwk.com/blog/async-await-in-loops/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.hacksparrow.com/javascript/foreach-in-promise-async-function.html&quot;&gt;https://www.hacksparrow.com/javascript/foreach-in-promise-async-function.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Essentially, forEach came before async/await and is not built for it. Async/await doesn’t work with callback based loops. You aren’t actually awaiting the callback. The code just keeps running and doesn’t wait for promises to complete.&lt;/p&gt;
+
+&lt;p&gt;For my work scenario, most of the time I could not get the data back from the database before the forEach loop moved on the to next line of code. I assume that for the times that my code &lt;em&gt;did&lt;/em&gt; work, it was just by chance that I got the data quickly enough that execution had not moved onto the next line yet. Of course, this was a very rare event.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-to-do-instead&quot;&gt;What to do instead&lt;/h3&gt;
+
+&lt;p&gt;Just use a for loop. The code will pause and wait for your promise synchronously, as you’d expect. In my case I used a for…of loop, like below:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newTeamName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Team B&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;employees&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getEmployeesByTeamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;teamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Team A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;employee&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;employees&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;updateEmployeeTeam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;teamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newTeamName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;employeeId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="javascript" /><category term="debugging" /><summary type="html">This week I learned that you do not use forEach loops with async/await.</summary></entry><entry><title type="html">React refs</title><link href="http://localhost:4000/react-ref" rel="alternate" type="text/html" title="React refs" /><published>2021-11-27T18:30:00-07:00</published><updated>2021-11-27T18:30:00-07:00</updated><id>http://localhost:4000/react-ref</id><content type="html" xml:base="http://localhost:4000/react-ref">&lt;p&gt;For a new personal project I needed to use a React ref in order to obtain some information from the DOM. I have never needed to use them before and this is what I learned.&lt;/p&gt;
 
 &lt;h3 id=&quot;what-was-i-trying-to-do&quot;&gt;What was I trying to do?&lt;/h3&gt;
 
@@ -889,69 +933,4 @@
 
 &lt;p&gt;NOTE: as of this writing, you can only send SNS messages to the &lt;strong&gt;standard&lt;/strong&gt; SQS queues, not FIFO.&lt;/p&gt;
 
-&lt;p&gt;When this could be useful: S3 only allows one event rule, so if you want S3 to send message to multiple SQS queues, you could put SNS in between them. This way you send only one message to SNS, but it fans out to many SQS subscribers.&lt;/p&gt;</content><author><name></name></author><category term="aws" /><summary type="html">Here is what I am learning about AWS SNS (Simple Notification Service), using my Udemy course as a jumping off point.</summary></entry><entry><title type="html">AWS SQS</title><link href="http://localhost:4000/sqs" rel="alternate" type="text/html" title="AWS SQS" /><published>2021-03-22T18:30:00-06:00</published><updated>2021-03-22T18:30:00-06:00</updated><id>http://localhost:4000/sqs</id><content type="html" xml:base="http://localhost:4000/sqs">&lt;p&gt;SQS is one of several AWS services that allows communication between your AWS resources. Today I am learning about it in my Udemy course. Here are some notes.&lt;/p&gt;
-
-&lt;p&gt;SQS (Simple Queue Service) accepts messages from one microservice and delivers them to another. Your microservices do not communicate directly - this is asynchronous communication. SQS is able to scale up or down depending on traffic.&lt;/p&gt;
-
-&lt;p&gt;A “producer” sends messages into an SQS queue, and “consumers” poll the queue for messages, essentially asking if the queue has any messages for it. Consumers are applications that run on an EC2, Lambda, or other servers, and they process the messages. In a standard queue you can send as many messages to your queue as you want, and you can keep unlimited messages in the queue as well. SQS is very quick, but messages need to be small (256 kb or smaller).&lt;/p&gt;
-
-&lt;p&gt;Messages stay in the queue until the consumer reads and deletes it, up to 14 days.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Standard&lt;/strong&gt; SQS message delivery is “at least once” delivery, meaning your consumers may receive a message more than once. Order is also not guaranteed, as SQS uses a “best effort ordering” policy.&lt;/p&gt;
-
-&lt;p&gt;This works nicely with auto-scaling groups/EC2 and Cloudwatch. You could set an alarm that watches the “queue length” metric, and when the alarm goes off, trigger your auto-scaling groups to increase the number of EC2 instances. In this case, your EC2s are your consumers, and you will have more of them to poll your SQS queue.&lt;/p&gt;
-
-&lt;p&gt;Message visibility timeout: there is a 30 second window in which the consumer that got the message has to process it, before it becomes visible again to other consumers. During this 30 seconds the message is invisible to others. If the first consumer can’t process it in that window, other consumers will also be able to process it, so you may have the same message processed multiple times. You can have your consumer call the Change Message Visibility API to get more time for processing. It’s also possible to set visibility to something other than 30 seconds when setting up the queue.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Dead letter queue: &lt;/strong&gt; contains messages that have gone back into the queue multiple times. You can set a threshold for the maximum number of times a message goes back into the queue. Once the threshold is reached, the messages go to the dead letter queue. Another app can analyze these messages for debugging. Set the message retention period high, like to the 14 day maximum, for dead-letter queues.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Delay queue: &lt;/strong&gt; can delay messages for up to 15 minutes so consumer can’t see them right away&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Long polling: &lt;/strong&gt; consumers can wait for messages if none are currently in the queue. Means fewer API calls. Lower latency because a consumer can act on a message as soon as it comes into the queue. Preferable over short-polling since it reduces cost. In the console, add any number from 1 - 20 in the Receive Message Wait Time field while editing your queue.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Extended client: &lt;/strong&gt; a Java library that uses an S3 bucket for large files, greater than the SQS 256kb limit. A small meta-data message goes into the queue, and it tells the consumer where to go in S3 to get the files.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;First In First Out: &lt;/strong&gt; your other option instead of the standard queue. This queue preserves the order in which the messages are received by the queue. The consumer will receive them in order. It also has “exactly once” capability, so messages are only sent once.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;deduplication: do not allow messages into the queue if a duplicate is sent by the producer
-    &lt;ul&gt;
-      &lt;li&gt;content-based: SHA-265 algorithm creates a hash based on the content, and if that hash is seen by the queue again, it is not allowed&lt;/li&gt;
-      &lt;li&gt;message duplication ID: an actual id that is provided with the message&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;message grouping: a group of messages has the same message group id, and only one consumer can accept the group of messages&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;using-sqs-with-serverless&quot;&gt;Using SQS with serverless&lt;/h3&gt;
-
-&lt;p&gt;Since I work with serverless it’s important for me to understand how to create SQS quess with code, not just in the AWS console. Sometimes at work we use SQS with Lambda functions. The youtuber FooBarServerless thankfully has really great videos on serverless, and she happened to have a tutorial on using SQS with Lambda. Just what I need! &lt;a href=&quot;https://www.youtube.com/watch?v=hVdZb-h135M&quot;&gt;Here is the video&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Also, &lt;a href=&quot;https://www.serverless.com/framework/docs/providers/aws/events/sqs/&quot;&gt;here is the reference on serverless.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;It’s best not to call a lambda from another lambda function. If you make changes to your lambda you could be in trouble. Putting something in between, like SQS in this case is helpful. You would have a lambda as the producer, and another as a consumer.&lt;/p&gt;
-
-&lt;p&gt;When working with lambdas, you would first set up your SQS Queue as an AWS resources at the bottom of your file:&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;Resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;MyQueue&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;AWS::SQS::Queue&quot;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;Properties&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;QueueName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;DemoQueue&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;And you connect your lambdas to the queue under the “events” section in your lambda code:&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;mySqsFunction&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;handler.mySqsFunction&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;sqs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;arn&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;Fn::GetAtt&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;MyDemoQueue&lt;/span&gt;
-            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Arn&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;batchSize&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Your actual function code is in a separate handler file.&lt;/p&gt;</content><author><name></name></author><category term="aws" /><summary type="html">SQS is one of several AWS services that allows communication between your AWS resources. Today I am learning about it in my Udemy course. Here are some notes.</summary></entry></feed>
+&lt;p&gt;When this could be useful: S3 only allows one event rule, so if you want S3 to send message to multiple SQS queues, you could put SNS in between them. This way you send only one message to SNS, but it fans out to many SQS subscribers.&lt;/p&gt;</content><author><name></name></author><category term="aws" /><summary type="html">Here is what I am learning about AWS SNS (Simple Notification Service), using my Udemy course as a jumping off point.</summary></entry></feed>

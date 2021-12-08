@@ -11,7 +11,7 @@
 
 
 
-    <title>'There is already an object named ___ in the database' and 'Column names in each table must be unique'</title>
+    <title>Debugging - forEach with async/await</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/database-error" />
+    <link rel="canonical" href="http://localhost:4000/forEach-async-await" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" />
-    <meta property="og:description" content="There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine. I’ll do my best to explain without using any data/table names/etc from my work application. In package-manager console in Visual Studio" />
-    <meta property="og:url" content="http://localhost:4000/database-error" />
+    <meta property="og:title" content="Debugging - forEach with async/await" />
+    <meta property="og:description" content="This week I learned that you do not use forEach loops with async/await. I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app. We use async and await to deal with" />
+    <meta property="og:url" content="http://localhost:4000/forEach-async-await" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-06-08T12:30:00-06:00" />
-    <meta property="article:modified_time" content="2020-06-08T12:30:00-06:00" />
-    <meta property="article:tag" content="Database" />
+    <meta property="article:published_time" content="2021-12-07T18:30:00-07:00" />
+    <meta property="article:modified_time" content="2021-12-07T18:30:00-07:00" />
+    <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" />
-    <meta name="twitter:description" content="There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine. I’ll do my best to explain without using any data/table names/etc from my work application. In package-manager console in Visual Studio" />
+    <meta name="twitter:title" content="Debugging - forEach with async/await" />
+    <meta name="twitter:description" content="This week I learned that you do not use forEach loops with async/await. I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app. We use async and await to deal with" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Database" />
+    <meta name="twitter:data2" content="Javascript" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/database-error",
+    "url": "http://localhost:4000/forEach-async-await",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/database-error"
+        "@id": "http://localhost:4000/forEach-async-await"
     },
-    "description": "There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine. I’ll do my best to explain without using any data/table names/etc from my work application. In package-manager console in Visual Studio"
+    "description": "This week I learned that you do not use forEach loops with async/await. I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app. We use async and await to deal with"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Debugging - forEach with async/await" href="/feed.xml" />
 
 
 </head>
@@ -153,85 +153,72 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 8 June 2020"> 8 June 2020</time>
+                    <time class="post-full-meta-date" datetime=" 7 December 2021"> 7 December 2021</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/database/'>DATABASE</a>,
+                               <a href='/tag/javascript/'>JAVASCRIPT</a>,
                             
                         
                             
-                               <a href='/tag/sql/'>SQL</a>,
-                            
-                        
-                            
-                               <a href='/tag/dotnet/'>DOTNET</a>,
-                            
-                        
-                            
-                               <a href='/tag/migrations/'>MIGRATIONS</a>
+                               <a href='/tag/debugging/'>DEBUGGING</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">'There is already an object named ___ in the database' and 'Column names in each table must be unique'</h1>
+                <h1 class="post-full-title">Debugging - forEach with async/await</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.</p>
+                    <p>This week I learned that you do not use forEach loops with async/await.</p>
 
-<p>I’ll do my best to explain without using any data/table names/etc from my work application.</p>
+<p>I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app.</p>
 
-<p>In package-manager console in Visual Studio I ran “update-database”, and received the following error when it tried to run the migrations on my database:</p>
+<p>We use async and await to deal with promises when interacting with the database. While investigating the updating issue, I noticed that most of the time, my “put” operations were not going through. No error was being returned - the puts were just not happening. Not a lot to go on when debugging. The code also seemed to stop running when it hit the function that was supposed to return the promise.</p>
 
-<h4 id="there-is-already-an-object-named-___-in-the-database">“There is already an object named ___ in the database”</h4>
+<p>What’s interesting, though, is that <em>sometimes</em> the operations would actually go through. I’d notice that my item had updated and the rest of the code had run. But I hadn’t made any changes to the code. This suggested to me that it may be an issue with the way I implemented async and await.</p>
 
-<p>Right away this time I asked a coworker if she also had that error. She told me I should drop the above-mentioned table, which I will refer to as Table1, and gave me more instructions. I will outline the process below.</p>
+<h3 id="what-the-code-originally-looked-like">What the code originally looked like</h3>
 
-<ul>
-  <li>opened SQL Server Management Studio</li>
-  <li>Databases</li>
-  <li>*mydatabasename</li>
-  <li>Tables</li>
-</ul>
+<p>I had no reason before to think that a forEach loop couldn’t be used with async/await. I figured that if you awaited something in the body of the forEach callback, it would work as long as you placed an async in front of your callback, kind of like this:</p>
 
-<p>There was another important related table, which I’ll call Table2. In here I had to go to the Keys section and delete all the keys related to Table1.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">newTeamName</span> <span class="o">=</span> <span class="s2">"Team B"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">employees</span> <span class="o">=</span> <span class="nx">getEmployeesByTeamName</span><span class="p">({</span><span class="na">teamName</span><span class="p">:</span> <span class="s2">"Team A"</span><span class="p">});</span>
 
-<p>Then,</p>
-<ul>
-  <li>go back to Table1</li>
-  <li>right click</li>
-  <li>Script table as</li>
-  <li>DELETE to</li>
-  <li>New query window</li>
-</ul>
-
-<p>In the new query window I deleted the line that said,</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WHERE &lt;Search Conditions&gt;
+<span class="nx">employees</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="nx">employee</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kr">await</span> <span class="nx">updateEmployeeTeam</span><span class="p">({</span><span class="na">teamName</span><span class="p">:</span> <span class="nx">newTeamName</span><span class="p">,</span> <span class="na">employeeId</span><span class="p">:</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">id</span><span class="p">});</span>
+<span class="p">});</span>
 </code></pre></div></div>
-<p>then executed the query. This deletes the contents. You need to do this BEFORE you drop the table.</p>
 
-<p>Dropping the table:</p>
+<h3 id="what-the-problem-is">What the problem is</h3>
+
+<p>Here are a couple articles that helped me understand, as well as the MDN doc for forEach:</p>
+
 <ul>
-  <li>right click Table1 again</li>
-  <li>Script table as</li>
-  <li>DROP to</li>
-  <li>New query window</li>
-  <li>execute this query, which drops Table1</li>
+  <li><a href="https://zellwk.com/blog/async-await-in-loops/">https://zellwk.com/blog/async-await-in-loops/</a></li>
+  <li><a href="https://www.hacksparrow.com/javascript/foreach-in-promise-async-function.html">https://www.hacksparrow.com/javascript/foreach-in-promise-async-function.html</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach</a></li>
 </ul>
 
-<p>I went to update database again, but I got a new error:</p>
+<p>Essentially, forEach came before async/await and is not built for it. Async/await doesn’t work with callback based loops. You aren’t actually awaiting the callback. The code just keeps running and doesn’t wait for promises to complete.</p>
 
-<h4 id="column-names-in-each-table-must-be-unique-column-name-___-in-table2-is-specified-more-than-once">“Column names in each table must be unique. Column name ___ in Table2 is specified more than once”</h4>
+<p>For my work scenario, most of the time I could not get the data back from the database before the forEach loop moved on the to next line of code. I assume that for the times that my code <em>did</em> work, it was just by chance that I got the data quickly enough that execution had not moved onto the next line yet. Of course, this was a very rare event.</p>
 
-<p>These were <em>column names</em> that were related to Table1. I already got rid of the <em>keys</em> that were related to Table1, but not columns. So I deleted those as well, went back to Visual Studio and tried update-database again.</p>
+<h3 id="what-to-do-instead">What to do instead</h3>
 
-<p>This time it worked with no error and I was able to open my application.</p>
+<p>Just use a for loop. The code will pause and wait for your promise synchronously, as you’d expect. In my case I used a for…of loop, like below:</p>
 
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">newTeamName</span> <span class="o">=</span> <span class="s2">"Team B"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">employees</span> <span class="o">=</span> <span class="nx">getEmployeesByTeamName</span><span class="p">({</span><span class="na">teamName</span><span class="p">:</span> <span class="s2">"Team A"</span><span class="p">});</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">employee</span> <span class="k">of</span> <span class="nx">employees</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">await</span> <span class="nx">updateEmployeeTeam</span><span class="p">({</span><span class="na">teamName</span><span class="p">:</span> <span class="nx">newTeamName</span><span class="p">,</span> <span class="na">employeeId</span><span class="p">:</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">id</span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
                 </div>
             </section>
@@ -287,7 +274,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/database/">Database</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -301,6 +288,10 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
+                                    
+                                  
+                                
+                                  
                                 
                                   
                                 
@@ -330,38 +321,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/mern-flashcard-app">MERN stack - flashcard app</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/sql-part-3">Learning SQL Part 3</a></li>
+                                            <li><a href="/redux">Learning Redux</a></li>
                                         
                                     
                                   
@@ -370,7 +330,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/sql-part-2">Learning SQL Part 2</a></li>
+                                            <li><a href="/js-methods">Some JavaScript array methods, how they work, when to use them</a></li>
                                         
                                     
                                   
@@ -379,24 +339,11 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
+                                            <li><a href="/js-data-structures">When to use the different JavaScript data structures</a></li>
                                         
                                     
+                                  
+                                
                                   
                                 
                                   
@@ -427,10 +374,55 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
                                     
                                         
                                         
                                     
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -442,9 +434,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/database/">
+                            <a href="/tag/javascript/">
                                 
-                                    See all 7 posts  →
+                                    See all 8 posts  →
                                 
                             </a>
                         </footer>
@@ -454,56 +446,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/wordpress-set-up">
-                <header class="post-card-header">
-                    
-                        
-                            
-                                <span class="post-card-tags">Wordpress</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Using WordPress again - getting started</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -512,17 +454,17 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/sourcetree-authentication-error">
+            <a class="post-card-content-link" href="/react-ref">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Version-control</span>
+                                <span class="post-card-tags">React</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">When Sourcetree didn't work - 'fatal: authentication failed' error</h2>
+                    <h2 class="post-card-title">React refs</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -573,7 +515,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">'There is already an object named ___ in the database' and 'Column names in each table must be unique'</div>
+    <div class="floating-header-title">Debugging - forEach with async/await</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -581,7 +523,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%27There+is+already+an+object+named+___+in+the+database%27+and+%27Column+names+in+each+table+must+be+unique%27&amp;url=database-error"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Debugging+-+forEach+with+async%2Fawait&amp;url=forEach-async-await"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -590,7 +532,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=database-error"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=forEach-async-await"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

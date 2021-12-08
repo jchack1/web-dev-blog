@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Debugging - forEach with async/await</title>
+        
+          <description>&lt;p&gt;This week I learned that you do not use forEach loops with async/await.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 07 Dec 2021 18:30:00 -0700</pubDate>
+        <link>
+        http://localhost:4000/forEach-async-await</link>
+        <guid isPermaLink="true">http://localhost:4000/forEach-async-await</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>React refs</title>
         
           <description>&lt;p&gt;For a new personal project I needed to use a React ref in order to obtain some information from the DOM. I have never needed to use them before and this is what I learned.&lt;/p&gt;
