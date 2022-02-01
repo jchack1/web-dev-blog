@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/aws/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-12-07T20:10:06-07:00</updated>
+  <updated>2022-01-31T18:46:56-07:00</updated>
   <id>http://localhost:4000/tag/aws/feed.xml</id>
 
   
@@ -42,6 +42,80 @@
   
   
 
+  
+    <entry>
+      <title type="html">Debugging serverless - Eventbridge rule already exists</title>
+      <link href="http://localhost:4000/serverless-event-bug" rel="alternate" type="text/html" title="Debugging serverless - Eventbridge rule already exists" />
+      <published>2022-01-31T18:30:00-07:00</published>
+      <updated>2022-01-31T18:30:00-07:00</updated>
+      <id>http://localhost:4000/serverless-event-bug</id>
+      <content type="html" xml:base="http://localhost:4000/serverless-event-bug">&lt;p&gt;I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.&lt;/p&gt;
+
+&lt;p&gt;This is the error message, with the real function and service names changed:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;CREATE_FAILED: AccountsqadeleteAccountrule1EventBridgeRule (AWS::Events::Rule)
+myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a message from Cloudformation telling us that our resource, in this case an event rule, couldn’t be created.&lt;/p&gt;
+
+&lt;p&gt;The strange part is that I only encountered this issue when I deployed to an AWS account via github actions (to my QA account), not when I deployed to my dev account from my local machine. There had to be a difference between my dev and QA environments.&lt;/p&gt;
+
+&lt;p&gt;This also only happened with services that had Lambda functions triggered by Eventbridge. Makes sense given that the error message has to do with event rules, though sometimes there can be other explanations for these kinds of problems.&lt;/p&gt;
+
+&lt;h3 id=&quot;problem-solving&quot;&gt;Problem solving&lt;/h3&gt;
+
+&lt;p&gt;One of the steps involved in github actions deployment is to install serverless on the virtual machine github uses to deploy. The logs told me the environment looked like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; linux, node 12.22.9, framework 3.0.1, plugin 6.0.0, SDK 4.3.0&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Notice “framework: 3.0.1”. I remembered that my local serverless version was still at version 2, and I had not updated it since originally installing it. I confirmed my local version was 2.60.0.&lt;/p&gt;
+
+&lt;p&gt;Maybe there were some breaking changes since the new version came out. But when did version 3 even come out? If it’s a recent change, maybe that’s the cause of my problems.&lt;/p&gt;
+
+&lt;p&gt;I did a quick search and found out that version 3 came out a day or two before I started getting my error. In fact, there was &lt;a href=&quot;https://www.serverless.com/blog/serverless-framework-v3-is-live&quot;&gt;an article from January 27th&lt;/a&gt; about the release of version 3, saying it is now live.&lt;/p&gt;
+
+&lt;p&gt;To be sure this was the problem, I checked the last successful deployment of one of my problem services from a few days earlier, and during the build process serverless@2.72.2 was installed.&lt;/p&gt;
+
+&lt;h3 id=&quot;solution&quot;&gt;Solution&lt;/h3&gt;
+
+&lt;p&gt;The solution to this specific Eventbridge problem was just a few lines of code in my serverless.yml file:&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;provider&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;eventBridge&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;useCloudFormation&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is because Eventbridge resources will now be deployed using native Cloudformation instead of Lambda, &lt;a href=&quot;https://www.serverless.com/framework/docs/deprecations#aws-eventbridge-lambda-event-triggers&quot;&gt;which you can read about here&lt;/a&gt;. The solution above won’t work forever, so I’ll need to do some maintenance on all our serverless projects to bring them up-to-date.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="aws" />
+      
+        <category term="debugging" />
+      
+        <category term="serverless" />
+      
+
+      
+        <summary type="html">I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">How I lost, and regained, ssh access to my AWS EC2</title>

@@ -11,7 +11,7 @@
 
 
 
-    <title>When to use the different JavaScript data structures</title>
+    <title>Debugging serverless - Eventbridge rule already exists</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/js-data-structures" />
+    <link rel="canonical" href="http://localhost:4000/serverless-event-bug" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="When to use the different JavaScript data structures" />
-    <meta property="og:description" content="A few quick notes from my Udemy Javascript course on when you should use different types of JavaScript data structures. The course is “The Complete JavaScript Course 2020: From Zero to Expert!”, which I started last year but never finished. I recently learned of two new data structures that I" />
-    <meta property="og:url" content="http://localhost:4000/js-data-structures" />
+    <meta property="og:title" content="Debugging serverless - Eventbridge rule already exists" />
+    <meta property="og:description" content="I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time. This is the error message, with the real function and" />
+    <meta property="og:url" content="http://localhost:4000/serverless-event-bug" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-11-23T18:30:00-07:00" />
-    <meta property="article:modified_time" content="2020-11-23T18:30:00-07:00" />
-    <meta property="article:tag" content="Javascript" />
+    <meta property="article:published_time" content="2022-01-31T18:30:00-07:00" />
+    <meta property="article:modified_time" content="2022-01-31T18:30:00-07:00" />
+    <meta property="article:tag" content="Aws" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="When to use the different JavaScript data structures" />
-    <meta name="twitter:description" content="A few quick notes from my Udemy Javascript course on when you should use different types of JavaScript data structures. The course is “The Complete JavaScript Course 2020: From Zero to Expert!”, which I started last year but never finished. I recently learned of two new data structures that I" />
+    <meta name="twitter:title" content="Debugging serverless - Eventbridge rule already exists" />
+    <meta name="twitter:description" content="I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time. This is the error message, with the real function and" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Javascript" />
+    <meta name="twitter:data2" content="Aws" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/js-data-structures",
+    "url": "http://localhost:4000/serverless-event-bug",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/js-data-structures"
+        "@id": "http://localhost:4000/serverless-event-bug"
     },
-    "description": "A few quick notes from my Udemy Javascript course on when you should use different types of JavaScript data structures. The course is “The Complete JavaScript Course 2020: From Zero to Expert!”, which I started last year but never finished. I recently learned of two new data structures that I"
+    "description": "I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time. This is the error message, with the real function and"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="When to use the different JavaScript data structures" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Debugging serverless - Eventbridge rule already exists" href="/feed.xml" />
 
 
 </head>
@@ -153,52 +153,68 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="23 November 2020">23 November 2020</time>
+                    <time class="post-full-meta-date" datetime="31 January 2022">31 January 2022</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/javascript/'>JAVASCRIPT</a>
+                               <a href='/tag/aws/'>AWS</a>,
+                            
+                        
+                            
+                               <a href='/tag/debugging/'>DEBUGGING</a>,
+                            
+                        
+                            
+                               <a href='/tag/serverless/'>SERVERLESS</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">When to use the different JavaScript data structures</h1>
+                <h1 class="post-full-title">Debugging serverless - Eventbridge rule already exists</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>A few quick notes from my Udemy Javascript course on when you should use different types of JavaScript data structures. The course is “The Complete JavaScript Course 2020: From Zero to Expert!”, which I started last year but never finished.</p>
+                    <p>I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.</p>
 
-<p>I recently learned of two new data structures that I have never used before. In JavaScript I was never really aware of anything past arrays and objects. The new ones I learned about were sets and maps.</p>
+<p>This is the error message, with the real function and service names changed:</p>
 
-<p>A <strong>set</strong> is a collection of values you can iterate through, which contains unique values. You cannot have any duplicate values in a set, unlike arrays.</p>
+<p><em>CREATE_FAILED: AccountsqadeleteAccountrule1EventBridgeRule (AWS::Events::Rule)
+myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists</em></p>
 
-<p>A <strong>map</strong>, not to be confused with the .map() method, is like an object in that it has key-value pairs, but keys can be any data type. A map basically returns an array of arrays, with each array containing the key and value.</p>
+<p>This is a message from Cloudformation telling us that our resource, in this case an event rule, couldn’t be created.</p>
 
-<h3 id="arrays-are-similar-to-sets">Arrays are similar to sets</h3>
+<p>The strange part is that I only encountered this issue when I deployed to an AWS account via github actions (to my QA account), not when I deployed to my dev account from my local machine. There had to be a difference between my dev and QA environments.</p>
 
-<p>Arrays and sets are both collections of values, whose values do not need to be described.</p>
+<p>This also only happened with services that had Lambda functions triggered by Eventbridge. Makes sense given that the error message has to do with event rules, though sometimes there can be other explanations for these kinds of problems.</p>
 
-<p>Arrays are good for when you need to allow for duplicate values, and when you need to manipulate data, since there are lots of good built-in array methods you can use.</p>
+<h3 id="problem-solving">Problem solving</h3>
 
-<p>Sets are a good way to remove duplicates from an array, and when you must have unique values. So sets compliment arrays nicely.</p>
+<p>One of the steps involved in github actions deployment is to install serverless on the virtual machine github uses to deploy. The logs told me the environment looked like this:</p>
 
-<h3 id="objects-are-similar-to-maps">Objects are similar to maps</h3>
+<p><code class="highlighter-rouge"> linux, node 12.22.9, framework 3.0.1, plugin 6.0.0, SDK 4.3.0</code></p>
 
-<p>Objects and maps are used in instances where you need to describe your values with keys.</p>
+<p>Notice “framework: 3.0.1”. I remembered that my local serverless version was still at version 2, and I had not updated it since originally installing it. I confirmed my local version was 2.60.0.</p>
 
-<p>If you need to include methods, use objects. Maps are better for simple collections of key-value pairs.</p>
+<p>Maybe there were some breaking changes since the new version came out. But when did version 3 even come out? If it’s a recent change, maybe that’s the cause of my problems.</p>
 
-<p>If you need your keys to be any data type other than a string, use a map.</p>
+<p>I did a quick search and found out that version 3 came out a day or two before I started getting my error. In fact, there was <a href="https://www.serverless.com/blog/serverless-framework-v3-is-live">an article from January 27th</a> about the release of version 3, saying it is now live.</p>
 
-<h3 id="screenshot-from-course">Screenshot from course</h3>
+<p>To be sure this was the problem, I checked the last successful deployment of one of my problem services from a few days earlier, and during the build process serverless@2.72.2 was installed.</p>
 
-<p>Below you can see a screenshot from the course, which is a nice comparison of all the options.</p>
+<h3 id="solution">Solution</h3>
 
-<p><img src="../assets/images/udemy-js-screenshot.jpg" style="max-width: 700px;" alt="screenshot udemy data structure comparison" /></p>
+<p>The solution to this specific Eventbridge problem was just a few lines of code in my serverless.yml file:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">provider</span><span class="pi">:</span>
+  <span class="na">eventBridge</span><span class="pi">:</span>
+    <span class="na">useCloudFormation</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<p>This is because Eventbridge resources will now be deployed using native Cloudformation instead of Lambda, <a href="https://www.serverless.com/framework/docs/deprecations#aws-eventbridge-lambda-event-triggers">which you can read about here</a>. The solution above won’t work forever, so I’ll need to do some maintenance on all our serverless projects to bring them up-to-date.</p>
 
                 </div>
             </section>
@@ -254,7 +270,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/aws/">Aws</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -268,36 +284,7 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
-                                  
                                     
-                                        
-                                        
-                                            <li><a href="/forEach-async-await">Debugging - forEach with async/await</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
@@ -308,21 +295,8 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/redux">Learning Redux</a></li>
+                                            <li><a href="/ec2-ssh">How I lost, and regained, ssh access to my AWS EC2</a></li>
                                         
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/js-methods">Some JavaScript array methods, how they work, when to use them</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
                                     
                                   
                                 
@@ -340,34 +314,16 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
+                                            <li><a href="/lambda">AWS Lambda</a></li>
+                                        
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
                                     
                                         
+                                        
+                                            <li><a href="/sns">AWS SNS</a></li>
                                         
                                     
                                   
@@ -397,10 +353,60 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                
+                                  
                                     
                                         
                                         
                                     
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -416,9 +422,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/javascript/">
+                            <a href="/tag/aws/">
                                 
-                                    See all 8 posts  →
+                                    See all 6 posts  →
                                 
                             </a>
                         </footer>
@@ -428,56 +434,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/js-methods">
-                <header class="post-card-header">
-                    
-                        
-                            
-                                <span class="post-card-tags">Javascript</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Some JavaScript array methods, how they work, when to use them</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -486,21 +442,21 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/react-nodejs-app">
+            <a class="post-card-content-link" href="/forEach-async-await">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">React</span>
+                               <span class="post-card-tags">Javascript</span>
                             
                         
                             
-                                <span class="post-card-tags">Node.js</span>
+                                <span class="post-card-tags">Debugging</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">Making a React/Node.js app</h2>
+                    <h2 class="post-card-title">Debugging - forEach with async/await</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -551,7 +507,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">When to use the different JavaScript data structures</div>
+    <div class="floating-header-title">Debugging serverless - Eventbridge rule already exists</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -559,7 +515,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=When+to+use+the+different+JavaScript+data+structures&amp;url=js-data-structures"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Debugging+serverless+-+Eventbridge+rule+already+exists&amp;url=serverless-event-bug"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -568,7 +524,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=js-data-structures"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=serverless-event-bug"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

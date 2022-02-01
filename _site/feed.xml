@@ -1,4 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-07T20:10:06-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Debugging - forEach with async/await</title><link href="http://localhost:4000/forEach-async-await" rel="alternate" type="text/html" title="Debugging - forEach with async/await" /><published>2021-12-07T18:30:00-07:00</published><updated>2021-12-07T18:30:00-07:00</updated><id>http://localhost:4000/forEach-async-await</id><content type="html" xml:base="http://localhost:4000/forEach-async-await">&lt;p&gt;This week I learned that you do not use forEach loops with async/await.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-31T18:46:56-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Debugging serverless - Eventbridge rule already exists</title><link href="http://localhost:4000/serverless-event-bug" rel="alternate" type="text/html" title="Debugging serverless - Eventbridge rule already exists" /><published>2022-01-31T18:30:00-07:00</published><updated>2022-01-31T18:30:00-07:00</updated><id>http://localhost:4000/serverless-event-bug</id><content type="html" xml:base="http://localhost:4000/serverless-event-bug">&lt;p&gt;I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.&lt;/p&gt;
+
+&lt;p&gt;This is the error message, with the real function and service names changed:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;CREATE_FAILED: AccountsqadeleteAccountrule1EventBridgeRule (AWS::Events::Rule)
+myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a message from Cloudformation telling us that our resource, in this case an event rule, couldn’t be created.&lt;/p&gt;
+
+&lt;p&gt;The strange part is that I only encountered this issue when I deployed to an AWS account via github actions (to my QA account), not when I deployed to my dev account from my local machine. There had to be a difference between my dev and QA environments.&lt;/p&gt;
+
+&lt;p&gt;This also only happened with services that had Lambda functions triggered by Eventbridge. Makes sense given that the error message has to do with event rules, though sometimes there can be other explanations for these kinds of problems.&lt;/p&gt;
+
+&lt;h3 id=&quot;problem-solving&quot;&gt;Problem solving&lt;/h3&gt;
+
+&lt;p&gt;One of the steps involved in github actions deployment is to install serverless on the virtual machine github uses to deploy. The logs told me the environment looked like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; linux, node 12.22.9, framework 3.0.1, plugin 6.0.0, SDK 4.3.0&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Notice “framework: 3.0.1”. I remembered that my local serverless version was still at version 2, and I had not updated it since originally installing it. I confirmed my local version was 2.60.0.&lt;/p&gt;
+
+&lt;p&gt;Maybe there were some breaking changes since the new version came out. But when did version 3 even come out? If it’s a recent change, maybe that’s the cause of my problems.&lt;/p&gt;
+
+&lt;p&gt;I did a quick search and found out that version 3 came out a day or two before I started getting my error. In fact, there was &lt;a href=&quot;https://www.serverless.com/blog/serverless-framework-v3-is-live&quot;&gt;an article from January 27th&lt;/a&gt; about the release of version 3, saying it is now live.&lt;/p&gt;
+
+&lt;p&gt;To be sure this was the problem, I checked the last successful deployment of one of my problem services from a few days earlier, and during the build process serverless@2.72.2 was installed.&lt;/p&gt;
+
+&lt;h3 id=&quot;solution&quot;&gt;Solution&lt;/h3&gt;
+
+&lt;p&gt;The solution to this specific Eventbridge problem was just a few lines of code in my serverless.yml file:&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;provider&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;eventBridge&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;useCloudFormation&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is because Eventbridge resources will now be deployed using native Cloudformation instead of Lambda, &lt;a href=&quot;https://www.serverless.com/framework/docs/deprecations#aws-eventbridge-lambda-event-triggers&quot;&gt;which you can read about here&lt;/a&gt;. The solution above won’t work forever, so I’ll need to do some maintenance on all our serverless projects to bring them up-to-date.&lt;/p&gt;</content><author><name></name></author><category term="aws" /><category term="debugging" /><category term="serverless" /><summary type="html">I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.</summary></entry><entry><title type="html">Debugging - forEach with async/await</title><link href="http://localhost:4000/forEach-async-await" rel="alternate" type="text/html" title="Debugging - forEach with async/await" /><published>2021-12-07T18:30:00-07:00</published><updated>2021-12-07T18:30:00-07:00</updated><id>http://localhost:4000/forEach-async-await</id><content type="html" xml:base="http://localhost:4000/forEach-async-await">&lt;p&gt;This week I learned that you do not use forEach loops with async/await.&lt;/p&gt;
 
 &lt;p&gt;I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app.&lt;/p&gt;
 
@@ -905,32 +941,4 @@
       &lt;li&gt;an alias is mutable and points to the latest version of your lambda&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="aws" /><category term="serverless" /><summary type="html">AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.</summary></entry><entry><title type="html">AWS SNS</title><link href="http://localhost:4000/sns" rel="alternate" type="text/html" title="AWS SNS" /><published>2021-03-28T13:30:00-06:00</published><updated>2021-03-28T13:30:00-06:00</updated><id>http://localhost:4000/sns</id><content type="html" xml:base="http://localhost:4000/sns">&lt;p&gt;Here is what I am learning about AWS SNS (Simple Notification Service), using my Udemy course as a jumping off point.&lt;/p&gt;
-
-&lt;p&gt;I have already seen SNS to a small degree at work. I was tasked with creating alarms that would send notifications to our Slack channel if there were any errors in one of our services.&lt;/p&gt;
-
-&lt;p&gt;You create SNS “topics” which store information about where notifications should be sent to. Other services “subscribe” to your SNS topics, so when triggered, a notification is sent to wherever you have indicated during set-up. In the case above, without going into too much extra detail, I created an SNS topic, which my alarm is subscribed to. When the alarm is triggered, the SNS topic sends information to our Slack channel.&lt;/p&gt;
-
-&lt;p&gt;Let’s take a more detailed look at SNS. These are notes I have taken while going through the SNS section of my course.&lt;/p&gt;
-
-&lt;h3 id=&quot;more-detail&quot;&gt;More detail&lt;/h3&gt;
-
-&lt;p&gt;You can use SNS to send messages to &lt;strong&gt;many&lt;/strong&gt; different subscribers. One service sends a message to your SNS topic, which sends the message to all of the subscribers. This is an example of Pub/Sub or publish/subscribe pattern.&lt;/p&gt;
-
-&lt;p&gt;For security, set IAM permissions and SNS Access Policies.&lt;/p&gt;
-
-&lt;p&gt;If you set an email as a subscription, you will need to confirm the email address. You will get an email from AWS with a link to confirm subscription.&lt;/p&gt;
-
-&lt;p&gt;If you want to test if your topic and subscriptions are working properly, go to the SNS console, click on your topic, and click the button “publish message”. Your subscribers should now receive a message.&lt;/p&gt;
-
-&lt;h4 id=&quot;my-issues-setting-it-up-with-slack&quot;&gt;My issues setting it up with Slack&lt;/h4&gt;
-
-&lt;p&gt;I should note, though, that when I set up our Slack channel with SNS (with AWS Chatbot as a subscriber), no messages were received in Slack when I tried “publish message”. I spent a lot of time going through my IAM policies, assuming it was a permissions error, but there was actually a better way to test if Chatbot was working. You had to try it out by creating an alarm in Cloudwatch and connecting it to the SNS topic. &lt;a href=&quot;https://docs.aws.amazon.com/chatbot/latest/adminguide/test-notifications-cw.html&quot;&gt;Here is the article that outlines this process&lt;/a&gt;. I still don’t know why it didn’t work to publish a message directly from SNS, but I’m grateful I found this article. Just test it out with an alarm!&lt;/p&gt;
-
-&lt;h3 id=&quot;sns-and-sqs&quot;&gt;SNS and SQS&lt;/h3&gt;
-
-&lt;p&gt;You can use both SNS and SQS at once. SNS can send messages to many different subscribers. You can have multiple SQS queues subscribed to SNS, and they all get the same message. This is called “fan-out”.&lt;/p&gt;
-
-&lt;p&gt;NOTE: as of this writing, you can only send SNS messages to the &lt;strong&gt;standard&lt;/strong&gt; SQS queues, not FIFO.&lt;/p&gt;
-
-&lt;p&gt;When this could be useful: S3 only allows one event rule, so if you want S3 to send message to multiple SQS queues, you could put SNS in between them. This way you send only one message to SNS, but it fans out to many SQS subscribers.&lt;/p&gt;</content><author><name></name></author><category term="aws" /><summary type="html">Here is what I am learning about AWS SNS (Simple Notification Service), using my Udemy course as a jumping off point.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><category term="aws" /><category term="serverless" /><summary type="html">AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.</summary></entry></feed>
