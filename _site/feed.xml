@@ -1,4 +1,152 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-31T18:46:56-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Debugging serverless - Eventbridge rule already exists</title><link href="http://localhost:4000/serverless-event-bug" rel="alternate" type="text/html" title="Debugging serverless - Eventbridge rule already exists" /><published>2022-01-31T18:30:00-07:00</published><updated>2022-01-31T18:30:00-07:00</updated><id>http://localhost:4000/serverless-event-bug</id><content type="html" xml:base="http://localhost:4000/serverless-event-bug">&lt;p&gt;I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-11T16:17:41-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">More data structures - JavaScript</title><link href="http://localhost:4000/data-structures-javascript" rel="alternate" type="text/html" title="More data structures - JavaScript" /><published>2022-03-11T15:30:00-07:00</published><updated>2022-03-11T15:30:00-07:00</updated><id>http://localhost:4000/data-structures-javascript</id><content type="html" xml:base="http://localhost:4000/data-structures-javascript">&lt;p&gt;Last year I began learning more about data structures. I found myself often wondering how the theory I was learning would apply to JavaScript, the language I code in most frequently.&lt;/p&gt;
+
+&lt;p&gt;Currently I am going through a &lt;a href=&quot;https://www.youtube.com/watch?v=t2CEgPsws3U&amp;amp;list=WL&amp;amp;index=21&amp;amp;t=3s&quot;&gt;tutorial on JavaScript data structures&lt;/a&gt;, and I will make some notes here as I learn.&lt;/p&gt;
+
+&lt;p&gt;You are able to use built-in data structures in JavaScript for some of these, and others you need to code yourself.&lt;/p&gt;
+
+&lt;p&gt;The instructor uses object-oriented programming, creating classes for the types of data structures, and methods within those classes that can be used to interact with the data structure.&lt;/p&gt;
+
+&lt;p&gt;Some helpful articles:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.educative.io/blog/javascript-data-structures&quot;&gt;https://www.educative.io/blog/javascript-data-structures&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.freecodecamp.org/news/10-common-data-structures-explained-with-videos-exercises-aaff6c06fb2b&quot;&gt;https://www.freecodecamp.org/news/10-common-data-structures-explained-with-videos-exercises-aaff6c06fb2b&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;stack&quot;&gt;Stack&lt;/h3&gt;
+
+&lt;p&gt;Stacks operate with a Last In First Out (LIFO) functionality - the last thing you put onto your stack is the first thing that will be removed, like if you had a stack of books or plates.&lt;/p&gt;
+
+&lt;p&gt;Examples of JavaScript functions that work like this:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the .push() method, which adds to the top of a stack&lt;/li&gt;
+  &lt;li&gt;the .pop() method, which removes from the top of a stack&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;JavaScript already has the build in methods that enable you to use an array as a stack.&lt;/p&gt;
+
+&lt;h3 id=&quot;set&quot;&gt;Set&lt;/h3&gt;
+
+&lt;p&gt;Like an array, but all items are unique - no duplicates.&lt;/p&gt;
+
+&lt;p&gt;You can &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set&quot;&gt;read more about sets on MDN&lt;/a&gt;. There is a built in Set function in ES6.&lt;/p&gt;
+
+&lt;p&gt;Using this functionality, you create a new set using the Set() constructor, like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mySet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There are several built-in methods you can use to interact with your set.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;add() - adds a value to the set&lt;/li&gt;
+  &lt;li&gt;has() - checks if the set has a particular item&lt;/li&gt;
+  &lt;li&gt;delete() - deletes a value from the set&lt;/li&gt;
+  &lt;li&gt;clear() - clears the whole set&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are some methods that you might want to use with sets generally, but aren’t included in ES6. You’d need to create your own set class with these methods:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;union: combines multiple sets and leaves out duplicate items&lt;/li&gt;
+  &lt;li&gt;intersection: compares two sets, returns a new set that includes items that are in &lt;strong&gt;both&lt;/strong&gt; sets&lt;/li&gt;
+  &lt;li&gt;difference: compares two sets, returns items that are in one set but not the other set&lt;/li&gt;
+  &lt;li&gt;subset: tests if one set is a subset of another set - so if one set is fully contained within another set&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;queue&quot;&gt;Queue&lt;/h3&gt;
+
+&lt;p&gt;Follows a First In First Out (FIFO) pattern - the first item placed into the queue is the first item that is processed.&lt;/p&gt;
+
+&lt;p&gt;In JavaScript you can use an array for this, or create your own class with more methods.&lt;/p&gt;
+
+&lt;p&gt;Some built in JavaScript methods:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;.push() - add to the end of an array&lt;/li&gt;
+  &lt;li&gt;.shift() - remove from the beginning of an array&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some methods that queues sometimes use, that are not built into JavaScript:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;front() - tells you what’s at the beginning of your queue - in JavaScript we would just do &lt;code class=&quot;highlighter-rouge&quot;&gt;myArray[0] &lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;size() - just use &lt;code class=&quot;highlighter-rouge&quot;&gt;myArray.length&lt;/code&gt; to get size&lt;/li&gt;
+  &lt;li&gt;isEmpty() - just check the length of the array &lt;code class=&quot;highlighter-rouge&quot;&gt;myArray.length === 0 &lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can also create &lt;strong&gt;priority queues.&lt;/strong&gt; Again, this is a functionality you would need to create. You pass in the item as well as it’s priority, and it is added to the queue based on priority.&lt;/p&gt;
+
+&lt;p&gt;One way of checking priorities is to use a for loop. Each item you put into the queue is its own array, at the 0 index is the item and at 1 index is a number for its priority. For each element already in the queue, compare its priority value to the incoming item’s priority value. If the incoming priority value is less than the item we are comparing to, we add it to the queue at this position using the “splice” method.&lt;/p&gt;
+
+&lt;h3 id=&quot;tree&quot;&gt;Tree&lt;/h3&gt;
+
+&lt;p&gt;A tree is a branching data structure, where all data points are called nodes. The top node is called the “root” node. Nodes with their own branches are called parent nodes, and nodes branching from them are called child nodes.&lt;/p&gt;
+
+&lt;p&gt;In a &lt;strong&gt;binary tree,&lt;/strong&gt; each node can only have two branches. Nodes in a left subtree must have a value of less than or equal to the parent node. Nodes in a right subtree must have a value of greater than or equal its parent node.&lt;/p&gt;
+
+&lt;p&gt;Using binary search, you don’t have to check every single item for what you’re looking for, and you are able to skip about half the tree. Time taken for the search is proportional to the logarithm of the number of items in the tree, with a big O notion of O(log n). So it’s pretty fast, but slower than searching a hash table.&lt;/p&gt;
+
+&lt;p&gt;Some tree traversal methods (ways of exploring the data in the tree):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;in order: begin search at left-most node and end at right-most node; gives values in order from smallest to largest&lt;/li&gt;
+  &lt;li&gt;pre order: start at root nodes before looking at leaves&lt;/li&gt;
+  &lt;li&gt;post order: start at leaf nodes before going to roots&lt;/li&gt;
+  &lt;li&gt;level order: explores all nodes on a level of the tree before moving on to the next level, starting at the root node&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;hash-table&quot;&gt;Hash table&lt;/h3&gt;
+
+&lt;p&gt;Hash tables are used for key-value pairs, like maps or objects. They are very efficient and searching doesn’t depend on the number of items, with a big O notion of O(1).&lt;/p&gt;
+
+&lt;p&gt;They work by putting your key into a hash function, which assigns strings to a number, usually an index in an array. The value is stored here.&lt;/p&gt;
+
+&lt;h3 id=&quot;linked-list&quot;&gt;Linked list&lt;/h3&gt;
+
+&lt;p&gt;A list where items are stored in nodes. Nodes contain the item and a reference to the next node.&lt;/p&gt;
+
+&lt;p&gt;When performing any operation on a linked list you always have to start at the beginning of the list, or head node. You can’t just access something in the middle of the list without going through the items preceding it.&lt;/p&gt;
+
+&lt;h3 id=&quot;binary-heap&quot;&gt;Binary heap&lt;/h3&gt;
+
+&lt;p&gt;It has a similar structure to a binary tree, but the ordering is different and is one of two types:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;max heap: parent nodes are greater than or equal to child nodes&lt;/li&gt;
+  &lt;li&gt;min heap: parent nodes are less than or equal to child nodes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The order the values within a level does not matter. Levels are filled from left to right.&lt;/p&gt;
+
+&lt;p&gt;Arrays are used to implement heaps in JavaScript. You add values to the array starting at &lt;strong&gt;index 1, not 0. Index 0 is assigned null.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You can calculate where elements are in the array using the calculations below, where i is your current index (or position in the tree):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Left child is i * 2&lt;/li&gt;
+  &lt;li&gt;Right child is i * 2 + 1&lt;/li&gt;
+  &lt;li&gt;Parent is i / 2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;graphs&quot;&gt;Graphs&lt;/h3&gt;
+
+&lt;p&gt;Graphs contain nodes, or vertices, connected by edges. You can have directed or undirected graphs - meaning, the edges of the graph can have direction, or no direction, respectively.&lt;/p&gt;
+
+&lt;p&gt;An example of an undirected graph could be a social network, where nodes are people and edges are whether or not they are connected/know each other.&lt;/p&gt;
+
+&lt;p&gt;How to traverse a graph:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;breadth-first search: start at one node, visit all its neighbours that are one edge away first, then visits all their neighbours. Keep in mind the graph is directed or undirected - a node could look like it’s one edge away, but if you can’t move in that direction, you can’t go to that node in one move.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;I was hoping to find more concrete examples of real applications of data structures in JavaScript. What I did get out of this, though, is a review of basic data structures, and an understanding of how I could create any of these data structures using classes in JavaScript.&lt;/p&gt;
+
+&lt;p&gt;There is a lot more learning I can do with data structures and algorithms. One big take-away is that choosing the right data structure is all about the problem you are trying to solve, and how to solve it efficiently. My strategy going forward may be to deal with it on a case by case basis - when trying to solve a problem I can use my basic knowledge of data structures to think about the most efficient solution, and do more research from there if needed. Built-in JavaScript methods and data structures, like arrays, maps, and objects, have been enough to solve my problems so far, so maybe I don’t need to get too advanced yet.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="data-structures" /><summary type="html">Last year I began learning more about data structures. I found myself often wondering how the theory I was learning would apply to JavaScript, the language I code in most frequently.</summary></entry><entry><title type="html">Debugging serverless - Eventbridge rule already exists</title><link href="http://localhost:4000/serverless-event-bug" rel="alternate" type="text/html" title="Debugging serverless - Eventbridge rule already exists" /><published>2022-01-31T18:30:00-07:00</published><updated>2022-01-31T18:30:00-07:00</updated><id>http://localhost:4000/serverless-event-bug</id><content type="html" xml:base="http://localhost:4000/serverless-event-bug">&lt;p&gt;I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.&lt;/p&gt;
 
 &lt;p&gt;This is the error message, with the real function and service names changed:&lt;/p&gt;
 
@@ -788,157 +936,4 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
 
 &lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
 
-&lt;p&gt;That’s all for the basics. The next posts will get into the intermediate and advanced data structures.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><summary type="html">It felt like it was about time to dive deeper into data structures.</summary></entry><entry><title type="html">AWS Lambda</title><link href="http://localhost:4000/lambda" rel="alternate" type="text/html" title="AWS Lambda" /><published>2021-04-11T14:30:00-06:00</published><updated>2021-04-11T14:30:00-06:00</updated><id>http://localhost:4000/lambda</id><content type="html" xml:base="http://localhost:4000/lambda">&lt;p&gt;AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.&lt;/p&gt;
-
-&lt;p&gt;There are so many options to choose from when setting up your sevices with AWS. Until now in my Udemy course, a lot of what we have seen involves some sort of servers. A lot of time was spent talking about EC2s, which is basically a computer/server in the cloud that runs your apps.&lt;/p&gt;
-
-&lt;p&gt;Apps created with Lambda don’t run on EC2. This is where “serverless” comes into play. Lambda functions are just functions, small pieces of code that have some purpose. You essentially deploy your lambda functions into AWS and everything is taken care of for you. Your functions can be “connected” by SNS, Eventbridge, SQS, etc (rather than having lambdas calling lambdas).&lt;/p&gt;
-
-&lt;p&gt;We’ll go into more detail below. Once again I am taking notes from my Udemy course - “Ultimate AWS Certified Developer Associate 2021”.&lt;/p&gt;
-
-&lt;h3 id=&quot;serverless&quot;&gt;Serverless&lt;/h3&gt;
-
-&lt;p&gt;You only deploy your code/functions - you no longer have to manage and think about your servers.&lt;/p&gt;
-
-&lt;p&gt;A typical serverless architecture in AWS could include:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;users log in with Cognito&lt;/li&gt;
-  &lt;li&gt;static site comes from S3&lt;/li&gt;
-  &lt;li&gt;API Gateway accesses your Lambda functions, which access your DynamoDB database&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;lambda&quot;&gt;Lambda&lt;/h3&gt;
-
-&lt;p&gt;There is a time limit for your functions, up to 15 minutes. Lambda functions are run on demand, only invoked when you need them. They are scaled up automatically by AWS, so more functions are created when you need them. You only pay for invocations and compute time.&lt;/p&gt;
-
-&lt;p&gt;This is different from EC2, which need to be running at all times, and provisioned by you to scale up or down in response to changes in traffic.&lt;/p&gt;
-
-&lt;p&gt;API Gateway works well with Lambda - you create your REST API and the endpoints call your lambdas.&lt;/p&gt;
-
-&lt;p&gt;When you invoke your function, you will get a new log stream in Cloudwatch. You can use Cloudwatch to help debug your functions.&lt;/p&gt;
-
-&lt;h3 id=&quot;synchronous-invocation&quot;&gt;Synchronous invocation&lt;/h3&gt;
-
-&lt;p&gt;You invoke the function, and you wait for the result. This can happen when you use API Gateway, the AWS SDK, or other services.&lt;/p&gt;
-
-&lt;p&gt;Example: client calls API Gateway, which sends the request to Lambda. Lambda will run and return a response to the client through API Gateway. You wait for the response from the Lambda function.&lt;/p&gt;
-
-&lt;h3 id=&quot;lambdas-and-albs-application-load-balancers&quot;&gt;Lambdas and ALBs (Application Load Balancers)&lt;/h3&gt;
-
-&lt;p&gt;Another way, aside from API Gateway, to expose a lambda function via an HTTP endpoint. I first learned about ALBs through their use with EC2, but they can be used with lambdas as well.&lt;/p&gt;
-
-&lt;p&gt;Lambda is registered to a target group. The HTTP request that is sent to the load balancer is converted to a JSON format. Once the lambda code runs, it should return a JSON object, which is converted to HTTP and sent back to the client to indicate the response.&lt;/p&gt;
-
-&lt;p&gt;In a severless.yml file, you could set up ALBs with Lambdas like below, using an ALB event. This code is from &lt;a href=&quot;https://www.serverless.com/framework/docs/providers/aws/events/alb/&quot;&gt;serverless.com&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;functions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;albEventConsumer&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;handler.hello&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alb&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;listenerArn&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;arn:aws:elasticloadbalancing:us-east-1:12345:listener/app/my-load-balancer/50dc6c495c0c9188/&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;conditions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/hello&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;asynchronous-invocations&quot;&gt;Asynchronous invocations&lt;/h3&gt;
-
-&lt;p&gt;Events placed into event queue, lambda processes events. If there are problems processing, there are up to 3 retries. You can end up with your events processed multiple times. If processing continues to fail you can send the messages to a dead letter queue in SNS or SQS.&lt;/p&gt;
-
-&lt;p&gt;S3, SNS, EventBridge, SES, CloudFormation all use asynchronous invocations.&lt;/p&gt;
-
-&lt;p&gt;This can also be useful if you need to increase processing speed, and order/duplicates aren’t a big deal.&lt;/p&gt;
-
-&lt;h3 id=&quot;eventbridge-and-lambda&quot;&gt;EventBridge and Lambda&lt;/h3&gt;
-
-&lt;p&gt;2 ways to trigger lambda from EventBridge rule:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Set up CRON or Rate EventBridge rule (scheduled) - trigger lambda on a schedule, like every hour&lt;/li&gt;
-  &lt;li&gt;Set up CodePipeline EventBridge Rule - trigger lambda whenever the state of the CodePipeline changes&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Note: it wasn’t mentioned in the course, but at work we have services emitting EventBridge events that trigger our lambdas.&lt;/p&gt;
-
-&lt;h3 id=&quot;iam-roles--permissions&quot;&gt;IAM Roles / permissions&lt;/h3&gt;
-
-&lt;p&gt;When lambda functions are &lt;em&gt;invoking other services&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Lambda functions need IAM roles attached to them so they have access to the AWS services they require. This is called an &lt;strong&gt;execution role&lt;/strong&gt;. You should have one execution role per lambda function.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;When lambdas are &lt;em&gt;being&lt;/em&gt; accessed by another service:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;give other services access to your lambdas by using a &lt;strong&gt;resource based policy&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.serverless.com/blog/abcs-of-iam-permissions&quot;&gt;This link&lt;/a&gt; to serverless.com goes over how to work with IAM roles in serverless.&lt;/p&gt;
-
-&lt;h3 id=&quot;environment-variables&quot;&gt;Environment variables&lt;/h3&gt;
-
-&lt;p&gt;You can add and change environment variables in the Lambda console, but I tend to work with them only in the code.&lt;/p&gt;
-
-&lt;p&gt;In serverless.yml files, variables look like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;variableA&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${variableSource}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;#also can have a default&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;variableB&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${variableSource, default}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;#example, with a &quot;dev&quot; stage being the default&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;STAGE&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${opt:stage, 'dev'}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;networking&quot;&gt;Networking&lt;/h3&gt;
-
-&lt;p&gt;By default, lambdas are launched in the AWS VPC, not your VPC, so they can’t access resources in your VPC. They can access other AWS services and external websites.&lt;/p&gt;
-
-&lt;p&gt;You can launch them inside your VPC, though, and you need to set up the VPC ID, subnets, security groups, and an IAM role. You can deploy a lambda inside a private subnet with a NAT gateway if you want it to access the internet. Interestingly, putting it inside a &lt;em&gt;public&lt;/em&gt; subnet does not give it internet access, so you must use a private subnet.&lt;/p&gt;
-
-&lt;h3 id=&quot;cloudformation&quot;&gt;Cloudformation&lt;/h3&gt;
-
-&lt;p&gt;What I didn’t realize until now was that lambda function code is actually stored in S3. This isn’t something that you have to tell serverless to do explicitly - it is generated by serverless behind the scenes. If you look at the cloudformation templates that are generated by serverless, you will find references to S3 buckets in the code for your lambda functions.&lt;/p&gt;
-
-&lt;p&gt;It looks something like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;S3Bucket&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Ref&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ServerlessDeploymentBucket&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Under “Code” you could also write your code directly, but this is only good for very simple functions, and I honestly wouldn’t consider doing it. Instead you should just reference the S3 bucket where your code is stored.&lt;/p&gt;
-
-&lt;p&gt;Here I can see just how useful serverless is. I don’t have to think about any of these things. In my serverless.yml file all I need to do is reference the handler that my lambda should correspond to with a file path.&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# here, my code is being kept in a folder called &quot;src&quot;&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# this is all that's needed - serverless creates all other resources for me&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;createTeam&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;src/teams/teams.createTeam&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In my course, in the Lambda/Cloudformation demo, the instructor is having to go into S3 in the AWS console and create a bucket. Then he needs to reference it in the cloudformation file.&lt;/p&gt;
-
-&lt;p&gt;If you were to do this, you should enable versioning on your bucket (so new versions of your code are updated properly when deployed).&lt;/p&gt;
-
-&lt;p&gt;Once your bucket is created, you upload your code, then go to the cloudformation console and upload your template. There is some config that needs to happen at this step.&lt;/p&gt;
-
-&lt;p&gt;Definitely prefer serverless.yml files, uploaded from my machine, over this process.&lt;/p&gt;
-
-&lt;h3 id=&quot;other-notes&quot;&gt;Other notes&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Lambda can have up to 1000 concurrent executions at once. Lambdas scale up or down automatically. Important: this applies to all lambda functions across your account, not just one application, so you may want to set limits on your functions so one application doesn’t take up all your lambda resources.&lt;/li&gt;
-  &lt;li&gt;when connecting to databases / creating other clients like the AWS SDK, it is best practice to initialize them outside of your handler functions at the top of your file. This makes them available for other functions, not just the current one.&lt;/li&gt;
-  &lt;li&gt;Lambda layers: split up your function code and put reusable things like large libraries into separate layers - don’t have to be reuploaded every time you change your code, and other functions could use them as well.&lt;/li&gt;
-  &lt;li&gt;can create different versions of your lambdas as well - your latest version is mutable, what you’re currently working on. Each version is immutable and can’t be changed once deployed
-    &lt;ul&gt;
-      &lt;li&gt;an alias is mutable and points to the latest version of your lambda&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="aws" /><category term="serverless" /><summary type="html">AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.</summary></entry></feed>
+&lt;p&gt;That’s all for the basics. The next posts will get into the intermediate and advanced data structures.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><summary type="html">It felt like it was about time to dive deeper into data structures.</summary></entry></feed>
