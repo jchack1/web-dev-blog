@@ -1,4 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-11T16:17:41-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">More data structures - JavaScript</title><link href="http://localhost:4000/data-structures-javascript" rel="alternate" type="text/html" title="More data structures - JavaScript" /><published>2022-03-11T15:30:00-07:00</published><updated>2022-03-11T15:30:00-07:00</updated><id>http://localhost:4000/data-structures-javascript</id><content type="html" xml:base="http://localhost:4000/data-structures-javascript">&lt;p&gt;Last year I began learning more about data structures. I found myself often wondering how the theory I was learning would apply to JavaScript, the language I code in most frequently.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-16T19:32:44-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</title><link href="http://localhost:4000/dino-clone" rel="alternate" type="text/html" title="Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game" /><published>2022-05-16T18:30:00-06:00</published><updated>2022-05-16T18:30:00-06:00</updated><id>http://localhost:4000/dino-clone</id><content type="html" xml:base="http://localhost:4000/dino-clone">&lt;p&gt;I learned some new things about vanilla javascript while following a &lt;a href=&quot;https://www.youtube.com/watch?v=47eXVRJKdkU&quot;&gt;tutorial for creating the chrome dino game&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;data-attributes&quot;&gt;Data attributes&lt;/h3&gt;
+
+&lt;p&gt;Data attributes are used to store extra information on an HTML element. They always start with “data-“ and are added to an HTML element like any other attribute. They are meant to be used for data that will not be shown on the screen, or picked up by a screen reader, just for data associated with a particular element.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;score&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-score&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The data attributes for an element are collectively called a “dataset”. You can access the dataset using javascript like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scoreDiv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scoreDataset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scoreDiv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Data attributes are great for selecting DOM elements in our javascript code. The easiest way to access elements with data attributes is to use the query selector method, adding your data attribute inside square brackets:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scoreDiv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[data-score]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;css-variables-and-calc-method&quot;&gt;CSS variables and calc() method&lt;/h3&gt;
+
+&lt;p&gt;When I started learning CSS there weren’t a lot of ways to use variables in your stylesheets - you had to use SASS, which would compile into CSS. There are now more options built into CSS to use variables and functions, including the calc() method.&lt;/p&gt;
+
+&lt;p&gt;This method is fairly straight-forward. You pass some values into calc(), and the value returned from it becomes the value of your CSS property.&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.my-class&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;--bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;absolute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;--bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In this example we are also passing a variable into calc.&lt;/p&gt;
+
+&lt;p&gt;Variables, or custom properties, are useful for values that repeat often in your stylesheet. We also used them in the dino game code when we needed to manipulate a value using javascript.&lt;/p&gt;
+
+&lt;p&gt;Variables are declared in your stylesheet with a double hyphen &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;--&quot;&lt;/code&gt; preceding the variable name, and are accessed using the var() function.&lt;/p&gt;
+
+&lt;p&gt;In the dino game code we often selected our elements using data attributes and changed their custom CSS properties in our javascript code. This is how we were able to make the game interactive.&lt;/p&gt;
+
+&lt;h3 id=&quot;css-getpropertyvalue-and-setproperty&quot;&gt;CSS getPropertyValue() and setProperty()&lt;/h3&gt;
+
+&lt;p&gt;These are built in functions that allow you to get the value of a CSS property, and set or change the value of a CSS property.&lt;/p&gt;
+
+&lt;p&gt;They are used on your elements once they are selected in your javascript code.&lt;/p&gt;
+
+&lt;p&gt;We also needed to use a window method called &lt;strong&gt;getComputedStyle()&lt;/strong&gt;, which returns an object containing all the CSS properties for an element.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scoreDiv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[data-score]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getComputedStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scoreDiv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getPropertyValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;margin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The object returned from getComputedStyle() is read only, so when you want to update a value, you use setProperty() on the element’s style property like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//pass in the property and its new value&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;scoreDiv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;margin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;20px&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;getboundingclientrect&quot;&gt;getBoundingClientRect()&lt;/h3&gt;
+
+&lt;p&gt;This one isn’t new to me, but I had never used it in a game before. This function returns an object with information on the size of an element and its position within the viewport.&lt;/p&gt;
+
+&lt;p&gt;In the dino game we get these values for both the dino and the cacti. Whenever any of the position values are the same, that means a collision has occurred, and the game is over.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;I don’t often work with vanilla javascript anymore since I spend most of my time using React. It’s important to understand the basics and it’s been really helpful to fill some gaps in my knowledge regarding working with the DOM, so I can make my code more interactive.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="css" /><category term="dom" /><summary type="html">I learned some new things about vanilla javascript while following a tutorial for creating the chrome dino game.</summary></entry><entry><title type="html">More data structures - JavaScript</title><link href="http://localhost:4000/data-structures-javascript" rel="alternate" type="text/html" title="More data structures - JavaScript" /><published>2022-03-11T15:30:00-07:00</published><updated>2022-03-11T15:30:00-07:00</updated><id>http://localhost:4000/data-structures-javascript</id><content type="html" xml:base="http://localhost:4000/data-structures-javascript">&lt;p&gt;Last year I began learning more about data structures. I found myself often wondering how the theory I was learning would apply to JavaScript, the language I code in most frequently.&lt;/p&gt;
 
 &lt;p&gt;Currently I am going through a &lt;a href=&quot;https://www.youtube.com/watch?v=t2CEgPsws3U&amp;amp;list=WL&amp;amp;index=21&amp;amp;t=3s&quot;&gt;tutorial on JavaScript data structures&lt;/a&gt;, and I will make some notes here as I learn.&lt;/p&gt;
 
@@ -816,124 +885,4 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
 
 &lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
 
-&lt;p&gt;That’s it for the intermediate data structures. The deeper I go into all of this, the more I want to find information on how these all apply to Javascript specifically. I’ll finish up the rest of the data structures in this course, and find more information on data structures in Javascript.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><summary type="html">Now we are getting into some intermediate topics in data structures.</summary></entry><entry><title type="html">Learning data structures - performance and basic structures</title><link href="http://localhost:4000/data-structures" rel="alternate" type="text/html" title="Learning data structures - performance and basic structures" /><published>2021-05-23T14:30:00-06:00</published><updated>2021-05-23T14:30:00-06:00</updated><id>http://localhost:4000/data-structures</id><content type="html" xml:base="http://localhost:4000/data-structures">&lt;p&gt;It felt like it was about time to dive deeper into data structures.&lt;/p&gt;
-
-&lt;p&gt;This is one of those topics that I knew I needed to learn in more depth eventually, but didn’t get around to until now. I was working on a difficult programming problem where I had to convert some data from one structure to another for my front end to be able to use it. I was frustrated because I felt like I had a gap in my knowledge - how do I create and work with these data structures efficiently? Through a lot of trial and error I figured it out, but it likely would have been easier if I had more knowledge of the specific structures I was using - in this case, objects and maps in Javascript.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-is-a-data-structure&quot;&gt;What is a data structure?&lt;/h3&gt;
-
-&lt;p&gt;Turns out my idea of data structures as a concept wasn’t too far off - the &lt;a href=&quot;https://www.youtube.com/watch?v=zg9ih6SVACc&amp;amp;list=WL&amp;amp;index=7&quot;&gt;free code camp video I’m using to help me learn&lt;/a&gt; defined a data structure as something that stores data and allows a user to manipulate that data.&lt;/p&gt;
-
-&lt;p&gt;Things you might want to do with a data structure include:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;accessing the data&lt;/li&gt;
-  &lt;li&gt;searching the data&lt;/li&gt;
-  &lt;li&gt;inserting a new item&lt;/li&gt;
-  &lt;li&gt;deleting an item&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;big-o-notation&quot;&gt;Big-O Notation&lt;/h3&gt;
-
-&lt;p&gt;This helps us to determine how efficient our data structures are. It measures the complexity of an algorithm.&lt;/p&gt;
-
-&lt;p&gt;I found &lt;a href=&quot;https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation&quot;&gt;this article that helps explain this concept for beginners&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;You essentially score a data structure based on how it performs if you increase the size of the data input into your program.&lt;/p&gt;
-
-&lt;p&gt;You give a score to the data structure for how well it can accomplish the tasks mentioned above (access, search, insert, delete). When you are choosing how to store your data, you should choose the data structure that is most efficient at the thing you are mainly using it for.&lt;/p&gt;
-
-&lt;p&gt;Performance of a function is based on the &lt;strong&gt;number of operations&lt;/strong&gt; it takes to complete its task.&lt;/p&gt;
-
-&lt;p&gt;We measure performance by using equations that take in the size of the data set. This equation returns the number of operations. These are called Time Complexity Equations. We don’t actually measure time, however, as that can vary depending on the machine you are using to run your program.&lt;/p&gt;
-
-&lt;h4 id=&quot;most-common-time-complexity-equations-from-highest-to-lowest-efficiency&quot;&gt;Most common Time Complexity Equations, from highest to lowest efficiency&lt;/h4&gt;
-
-&lt;p&gt;n = the size of the data set&lt;/p&gt;
-
-&lt;p&gt;The first three are pretty good:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;O(1)&lt;/strong&gt;: the best possible score is 1. This means that the task can be completed with one operation. It always takes the same amount of time regardless of the size of the data set it is working with.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;O(log n)&lt;/strong&gt;: still very fast; the larger the data set, the more efficient it is. Follows a logarithmic curve (the inverse of an exponential curve, if like me you don’t remember much about logarithmic curves from school).&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;example algorithm that uses this: binary search&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;O(n)&lt;/strong&gt;: the number of operations needed is proportional to the number of items in the data set. This would be represented by a linear graph.&lt;/p&gt;
-
-&lt;p&gt;The next three are not so good:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;O(n log n)&lt;/strong&gt;: not quite linear, performance gets slightly worse as the size of the data set increases&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;O(n^2) and O(2^n)&lt;/strong&gt;: gets exponentially worse as the size increases&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;n^2 can happen with nested loops&lt;/li&gt;
-  &lt;li&gt;you could end up with n^3, n^4 and larger if you have even more code nested with in your nests&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;basic-data-structures---arrays-and-array-lists&quot;&gt;Basic data structures - arrays and array lists&lt;/h3&gt;
-
-&lt;p&gt;Arrays and array lists are random-access data structures. This means you can access any element inside them directly without depending on any of the other elements.&lt;/p&gt;
-
-&lt;h4 id=&quot;arrays&quot;&gt;Arrays&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;can be used to store anything, usually similar values&lt;/li&gt;
-  &lt;li&gt;items in an array are called elements&lt;/li&gt;
-  &lt;li&gt;indexes are used to identify the elements in the array, starting at index 0&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Parallel arrays: multiple arrays have corresponding values, like employees and their salaries&lt;/p&gt;
-
-&lt;p&gt;There was a point when I started to become confused while watching the freeCodeCamp video. They say that an array can store data of only one type. This isn’t true in Javascript, as it is an un-typed language. You can also add and remove items in a Javascript array, so the size is not always fixed; in the video, fixed-size was an important aspect of the array data structure. If my understanding of data storage is correct, this means that you cannot reserve continuous spaces in memory for all your array elements (in Javascript). This could affect how the data is accessed and therefore its performance.&lt;/p&gt;
-
-&lt;p&gt;Moving on…&lt;/p&gt;
-
-&lt;p&gt;You can have two-dimensional arrays:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;at each index of the first array, there is another array&lt;/li&gt;
-  &lt;li&gt;looks like a spreadsheet&lt;/li&gt;
-  &lt;li&gt;use two indexes to access each item, first for column and second for row&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;BigO efficiency for arrays:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;accessing: O(1)&lt;/li&gt;
-  &lt;li&gt;searching, deleting, inserting: O(n)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;array-lists&quot;&gt;Array lists&lt;/h4&gt;
-
-&lt;p&gt;This began to clear up my confusion about Javascript arrays and size. An array list has the same properties as an array, except it is dynamic and can grow. Exactly what I’m used to with Javascript. So, in Javascript, is an “array” actually an “array list”? That is something I need to dive into further.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;array lists usually use arrays in the background. Some languages, like Python (and possibly Javascript?) mix properties of arrays and array lists.&lt;/li&gt;
-  &lt;li&gt;has built-in methods. Javascript has methods like pop, unshift, and length, to name a few.&lt;/li&gt;
-  &lt;li&gt;in memory, array list items are stored as references to other places in memory - the actual element values are stored elsewhere in memory&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;BigO efficiency for array lists:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;accessing: O(1)&lt;/li&gt;
-  &lt;li&gt;searching, inserting, deleting: O(n)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For both arrays and array lists, searching, inserting, and deleting will require us to go through each item to complete the task (you could also find the correct element on the first try, but for BigO notation we look at the worst case scenario).&lt;/p&gt;
-
-&lt;p&gt;Use arrays if:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;you won’t be changing the size or modifying the data&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Otherwise, array lists are more powerful and a better choice. As we can see above, the efficiency in terms of BigO are the same.&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;That’s all for the basics. The next posts will get into the intermediate and advanced data structures.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><summary type="html">It felt like it was about time to dive deeper into data structures.</summary></entry></feed>
+&lt;p&gt;That’s it for the intermediate data structures. The deeper I go into all of this, the more I want to find information on how these all apply to Javascript specifically. I’ll finish up the rest of the data structures in this course, and find more information on data structures in Javascript.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><summary type="html">Now we are getting into some intermediate topics in data structures.</summary></entry></feed>

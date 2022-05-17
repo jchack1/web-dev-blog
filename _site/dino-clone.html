@@ -11,7 +11,7 @@
 
 
 
-    <title>New jekyll site part 2 - errors with Gulp</title>
+    <title>Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/new-jekyll-site-2" />
+    <link rel="canonical" href="http://localhost:4000/dino-clone" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="New jekyll site part 2 - errors with Gulp" />
-    <meta property="og:description" content="Continuing from my last post, where I began to describe the process of making this blog. I’m at the point of self-isolation where I’m starting to forget what day it is. I believe I spent the past 3 days or so trying to figure out this problem, though at this" />
-    <meta property="og:url" content="http://localhost:4000/new-jekyll-site-2" />
+    <meta property="og:title" content="Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game" />
+    <meta property="og:description" content="I learned some new things about vanilla javascript while following a tutorial for creating the chrome dino game. Data attributes Data attributes are used to store extra information on an HTML element. They always start with “data-“ and are added to an HTML element like any other attribute. They are" />
+    <meta property="og:url" content="http://localhost:4000/dino-clone" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-04-04T17:31:00-06:00" />
-    <meta property="article:modified_time" content="2020-04-04T17:31:00-06:00" />
-    <meta property="article:tag" content="Jekyll" />
+    <meta property="article:published_time" content="2022-05-16T18:30:00-06:00" />
+    <meta property="article:modified_time" content="2022-05-16T18:30:00-06:00" />
+    <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="New jekyll site part 2 - errors with Gulp" />
-    <meta name="twitter:description" content="Continuing from my last post, where I began to describe the process of making this blog. I’m at the point of self-isolation where I’m starting to forget what day it is. I believe I spent the past 3 days or so trying to figure out this problem, though at this" />
+    <meta name="twitter:title" content="Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game" />
+    <meta name="twitter:description" content="I learned some new things about vanilla javascript while following a tutorial for creating the chrome dino game. Data attributes Data attributes are used to store extra information on an HTML element. They always start with “data-“ and are added to an HTML element like any other attribute. They are" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Jekyll" />
+    <meta name="twitter:data2" content="Javascript" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/new-jekyll-site-2",
+    "url": "http://localhost:4000/dino-clone",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/new-jekyll-site-2"
+        "@id": "http://localhost:4000/dino-clone"
     },
-    "description": "Continuing from my last post, where I began to describe the process of making this blog. I’m at the point of self-isolation where I’m starting to forget what day it is. I believe I spent the past 3 days or so trying to figure out this problem, though at this"
+    "description": "I learned some new things about vanilla javascript while following a tutorial for creating the chrome dino game. Data attributes Data attributes are used to store extra information on an HTML element. They always start with “data-“ and are added to an HTML element like any other attribute. They are"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="New jekyll site part 2 - errors with Gulp" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game" href="/feed.xml" />
 
 
 </head>
@@ -153,86 +153,101 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 4 April 2020"> 4 April 2020</time>
+                    <time class="post-full-meta-date" datetime="16 May 2022">16 May 2022</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/jekyll/'>JEKYLL</a>,
+                               <a href='/tag/javascript/'>JAVASCRIPT</a>,
                             
                         
                             
-                               <a href='/tag/gulp/'>GULP</a>,
+                               <a href='/tag/css/'>CSS</a>,
                             
                         
                             
-                               <a href='/tag/debugging/'>DEBUGGING</a>
+                               <a href='/tag/dom/'>DOM</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">New jekyll site part 2 - errors with Gulp</h1>
+                <h1 class="post-full-title">Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>Continuing from my last post, where I began to describe the process of making this blog.</p>
+                    <p>I learned some new things about vanilla javascript while following a <a href="https://www.youtube.com/watch?v=47eXVRJKdkU">tutorial for creating the chrome dino game</a>.</p>
 
-<p>I’m at the point of self-isolation where I’m starting to forget what day it is.  I believe I spent the past 3 days or so trying to figure out this problem, though at this point I’ve lost track.</p>
+<h3 id="data-attributes">Data attributes</h3>
 
-<p>I left off describing my issue of CSS not compiling the way I expected it to.  I admit I should have checked the instructions on the Jasper2 theme’s github in the very beginning so I would be aware that they use gulp. I followed the instructions to install gulp, but it still didn’t work. I spent many more hours fiddling around with it, then I decided to look up a tutorial on gulp in case my issue was simply not knowing enough about gulp.</p>
+<p>Data attributes are used to store extra information on an HTML element. They always start with “data-“ and are added to an HTML element like any other attribute. They are meant to be used for data that will not be shown on the screen, or picked up by a screen reader, just for data associated with a particular element.</p>
 
-<p>I saw that gulp utilizes command line.  You can create functions in your gulpfile.js that can be executed in the command line; in my case, the gulpfile was already created. Below is an example function that was included with my theme:</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'css'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="cm">/* cb */</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">nodemonServerInit</span><span class="p">();</span>
-<span class="p">});</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"score"</span> <span class="na">data-score</span><span class="nt">&gt;&lt;/div&gt;</span>
 </code></pre></div></div>
 
-<p>Above is a gulp task, named build.  To run this code I would type “gulp build” in the command line. If you name a task “default”, all you need to type in command line is “gulp”, and your default task is run.</p>
+<p>The data attributes for an element are collectively called a “dataset”. You can access the dataset using javascript like this:</p>
 
-<p>Once I learned this I was getting much closer to figuring out my problem.  However when I ran “gulp” or “gulp build”, I got an error:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">scoreDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"#score"</span><span class="p">);</span>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"fs.js:27
-const { Math, Object } = primordials;
-                         ^
-
-ReferenceError: primordials is not defined"
+<span class="kd">const</span> <span class="nx">scoreDataset</span> <span class="o">=</span> <span class="nx">scoreDiv</span><span class="p">.</span><span class="nx">dataset</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>I searched online for a solution to this error as kind of a last ditch effort. Up until this point, I could not find any solutions at all, and there were no issues of this kind brought up by users on Jasper2’s github page.  Of course, stack overflow gave me a solution, which I would never have thought of myself unless I looked it up. I believe it was the second answer on this page that helped me: https://stackoverflow.com/questions/55921442/how-to-fix-referenceerror-primordials-is-not-defined-in-node</p>
+<p>Data attributes are great for selecting DOM elements in our javascript code. The easiest way to access elements with data attributes is to use the query selector method, adding your data attribute inside square brackets:</p>
 
-<p>The issue is that the node.js and gulp versions were incompatible. Remember my last post, where I wondered if I had an issue with my package versions? In a way I was right, just not in the way I expected. Node version 11.5 and higher, and gulp 3.9.1 are not compatible. This version of gulp depends on graceful-fs version 3.0.0, which is something I’m still unfamiliar with.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">scoreDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"[data-score]"</span><span class="p">);</span>
+</code></pre></div></div>
 
-<p>To fix this I had to:</p>
-<ul>
-  <li>add the below code to my package.json, and run “npm install” in command line</li>
-</ul>
+<h3 id="css-variables-and-calc-method">CSS variables and calc() method</h3>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"preinstall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npx npm-force-resolutions"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"resolutions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"graceful-fs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.2.3"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+<p>When I started learning CSS there weren’t a lot of ways to use variables in your stylesheets - you had to use SASS, which would compile into CSS. There are now more options built into CSS to use variables and functions, including the calc() method.</p>
 
-<p>All this just to be able to tweak the CSS in my blog.</p>
+<p>This method is fairly straight-forward. You pass some values into calc(), and the value returned from it becomes the value of your CSS property.</p>
 
-<p>Now, whenever I make a change to CSS, I execute the following commands:</p>
-<ul>
-  <li>gulp</li>
-  <li>bundle exec jekyll serve</li>
-</ul>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.my-class</span> <span class="p">{</span>
+  <span class="py">--bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">bottom</span><span class="p">:</span> <span class="n">calc</span><span class="p">(</span><span class="n">var</span><span class="p">(</span><span class="n">--bottom</span><span class="p">)</span> <span class="err">*</span> <span class="m">1%</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<p>(If I really want to be thorough, I will add in “bundle exec jekyll build” before I serve the site)</p>
+<p>In this example we are also passing a variable into calc.</p>
 
-<p>I believe there is a way to make gulp watch for changes, but I haven’t figured out how to make that work with jekyll. For now though this works just fine, despite the extra typing.</p>
+<p>Variables, or custom properties, are useful for values that repeat often in your stylesheet. We also used them in the dino game code when we needed to manipulate a value using javascript.</p>
 
-<p>Okay. Now I think it’s time to finally make my changes to CSS, as well as research markdown in order to clean up my blog posts.  See you in the next one.</p>
+<p>Variables are declared in your stylesheet with a double hyphen <code class="highlighter-rouge">"--"</code> preceding the variable name, and are accessed using the var() function.</p>
 
+<p>In the dino game code we often selected our elements using data attributes and changed their custom CSS properties in our javascript code. This is how we were able to make the game interactive.</p>
+
+<h3 id="css-getpropertyvalue-and-setproperty">CSS getPropertyValue() and setProperty()</h3>
+
+<p>These are built in functions that allow you to get the value of a CSS property, and set or change the value of a CSS property.</p>
+
+<p>They are used on your elements once they are selected in your javascript code.</p>
+
+<p>We also needed to use a window method called <strong>getComputedStyle()</strong>, which returns an object containing all the CSS properties for an element.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">scoreDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"[data-score]"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">myValue</span> <span class="o">=</span> <span class="nx">getComputedStyle</span><span class="p">(</span><span class="nx">scoreDiv</span><span class="p">).</span><span class="nx">getPropertyValue</span><span class="p">(</span><span class="s2">"margin"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The object returned from getComputedStyle() is read only, so when you want to update a value, you use setProperty() on the element’s style property like this:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//pass in the property and its new value</span>
+<span class="nx">scoreDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="s2">"margin"</span><span class="p">,</span> <span class="s2">"20px"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="getboundingclientrect">getBoundingClientRect()</h3>
+
+<p>This one isn’t new to me, but I had never used it in a game before. This function returns an object with information on the size of an element and its position within the viewport.</p>
+
+<p>In the dino game we get these values for both the dino and the cacti. Whenever any of the position values are the same, that means a collision has occurred, and the game is over.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>I don’t often work with vanilla javascript anymore since I spend most of my time using React. It’s important to understand the basics and it’s been really helpful to fill some gaps in my knowledge regarding working with the DOM, so I can make my code more interactive.</p>
 
                 </div>
             </section>
@@ -288,7 +303,7 @@ ReferenceError: primordials is not defined"
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/jekyll/">Jekyll</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -302,59 +317,27 @@ ReferenceError: primordials is not defined"
                                 
                                 
                                   
+                                    
+                                  
                                 
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/data-structures-javascript">More data structures - JavaScript</a></li>
+                                        
+                                    
                                   
                                 
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
+                                    
+                                        
+                                        
+                                            <li><a href="/forEach-async-await">Debugging - forEach with async/await</a></li>
+                                        
+                                    
                                   
                                 
                                   
@@ -387,14 +370,8 @@ ReferenceError: primordials is not defined"
                                     
                                         
                                         
-                                            <li><a href="/new-jekyll-site-3">New jekyll site part 3 - errors with deployment</a></li>
+                                            <li><a href="/redux">Learning Redux</a></li>
                                         
-                                    
-                                  
-                                
-                                  
-                                
-                                  
                                     
                                   
                                 
@@ -402,7 +379,12 @@ ReferenceError: primordials is not defined"
                                     
                                         
                                         
-                                            <li><a href="/making-another-jekyll-site">Making a new jekyll site - this one, actually</a></li>
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
                                         
                                     
                                   
@@ -421,17 +403,85 @@ ReferenceError: primordials is not defined"
                                     
                                         
                                         
-                                            <li><a href="/first-post">Welcome to my new web dev blog!</a></li>
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
                                         
                                     
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/jekyll/">
+                            <a href="/tag/javascript/">
                                 
-                                    See all 3 posts  →
+                                    See all 10 posts  →
                                 
                             </a>
                         </footer>
@@ -441,56 +491,6 @@ ReferenceError: primordials is not defined"
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/csharpdefinitions">
-                <header class="post-card-header">
-                    
-                        
-                            
-                                <span class="post-card-tags">Csharp</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">C# definitions cheatsheet</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -499,17 +499,21 @@ ReferenceError: primordials is not defined"
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/making-another-jekyll-site">
+            <a class="post-card-content-link" href="/data-structures-javascript">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Jekyll</span>
+                               <span class="post-card-tags">Javascript</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Data-structures</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">Making a new jekyll site - this one, actually</h2>
+                    <h2 class="post-card-title">More data structures - JavaScript</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -560,7 +564,7 @@ ReferenceError: primordials is not defined"
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">New jekyll site part 2 - errors with Gulp</div>
+    <div class="floating-header-title">Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -568,7 +572,7 @@ ReferenceError: primordials is not defined"
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=New+jekyll+site+part+2+-+errors+with+Gulp&amp;url=new-jekyll-site-2"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Things+I+learned+about+the+DOM+and+vanilla+JavaScript+from+cloning+the+chrome+dinosaur+game&amp;url=dino-clone"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -577,7 +581,7 @@ ReferenceError: primordials is not defined"
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=new-jekyll-site-2"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=dino-clone"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

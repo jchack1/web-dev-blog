@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/dom/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-03-11T16:17:41-07:00</updated>
+  <updated>2022-05-16T19:32:44-06:00</updated>
   <id>http://localhost:4000/tag/dom/feed.xml</id>
 
   
@@ -42,6 +42,113 @@
   
   
 
+  
+    <entry>
+      <title type="html">Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</title>
+      <link href="http://localhost:4000/dino-clone" rel="alternate" type="text/html" title="Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game" />
+      <published>2022-05-16T18:30:00-06:00</published>
+      <updated>2022-05-16T18:30:00-06:00</updated>
+      <id>http://localhost:4000/dino-clone</id>
+      <content type="html" xml:base="http://localhost:4000/dino-clone">&lt;p&gt;I learned some new things about vanilla javascript while following a &lt;a href=&quot;https://www.youtube.com/watch?v=47eXVRJKdkU&quot;&gt;tutorial for creating the chrome dino game&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;data-attributes&quot;&gt;Data attributes&lt;/h3&gt;
+
+&lt;p&gt;Data attributes are used to store extra information on an HTML element. They always start with “data-“ and are added to an HTML element like any other attribute. They are meant to be used for data that will not be shown on the screen, or picked up by a screen reader, just for data associated with a particular element.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;score&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-score&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The data attributes for an element are collectively called a “dataset”. You can access the dataset using javascript like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scoreDiv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scoreDataset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scoreDiv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Data attributes are great for selecting DOM elements in our javascript code. The easiest way to access elements with data attributes is to use the query selector method, adding your data attribute inside square brackets:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scoreDiv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[data-score]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;css-variables-and-calc-method&quot;&gt;CSS variables and calc() method&lt;/h3&gt;
+
+&lt;p&gt;When I started learning CSS there weren’t a lot of ways to use variables in your stylesheets - you had to use SASS, which would compile into CSS. There are now more options built into CSS to use variables and functions, including the calc() method.&lt;/p&gt;
+
+&lt;p&gt;This method is fairly straight-forward. You pass some values into calc(), and the value returned from it becomes the value of your CSS property.&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.my-class&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;--bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;absolute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;--bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In this example we are also passing a variable into calc.&lt;/p&gt;
+
+&lt;p&gt;Variables, or custom properties, are useful for values that repeat often in your stylesheet. We also used them in the dino game code when we needed to manipulate a value using javascript.&lt;/p&gt;
+
+&lt;p&gt;Variables are declared in your stylesheet with a double hyphen &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;--&quot;&lt;/code&gt; preceding the variable name, and are accessed using the var() function.&lt;/p&gt;
+
+&lt;p&gt;In the dino game code we often selected our elements using data attributes and changed their custom CSS properties in our javascript code. This is how we were able to make the game interactive.&lt;/p&gt;
+
+&lt;h3 id=&quot;css-getpropertyvalue-and-setproperty&quot;&gt;CSS getPropertyValue() and setProperty()&lt;/h3&gt;
+
+&lt;p&gt;These are built in functions that allow you to get the value of a CSS property, and set or change the value of a CSS property.&lt;/p&gt;
+
+&lt;p&gt;They are used on your elements once they are selected in your javascript code.&lt;/p&gt;
+
+&lt;p&gt;We also needed to use a window method called &lt;strong&gt;getComputedStyle()&lt;/strong&gt;, which returns an object containing all the CSS properties for an element.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scoreDiv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[data-score]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getComputedStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scoreDiv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getPropertyValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;margin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The object returned from getComputedStyle() is read only, so when you want to update a value, you use setProperty() on the element’s style property like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//pass in the property and its new value&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;scoreDiv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;margin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;20px&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;getboundingclientrect&quot;&gt;getBoundingClientRect()&lt;/h3&gt;
+
+&lt;p&gt;This one isn’t new to me, but I had never used it in a game before. This function returns an object with information on the size of an element and its position within the viewport.&lt;/p&gt;
+
+&lt;p&gt;In the dino game we get these values for both the dino and the cacti. Whenever any of the position values are the same, that means a collision has occurred, and the game is over.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;I don’t often work with vanilla javascript anymore since I spend most of my time using React. It’s important to understand the basics and it’s been really helpful to fill some gaps in my knowledge regarding working with the DOM, so I can make my code more interactive.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="javascript" />
+      
+        <category term="css" />
+      
+        <category term="dom" />
+      
+
+      
+        <summary type="html">I learned some new things about vanilla javascript while following a tutorial for creating the chrome dino game.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Notes on jQuery</title>
