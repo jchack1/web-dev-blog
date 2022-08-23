@@ -1,4 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-16T19:32:44-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</title><link href="http://localhost:4000/dino-clone" rel="alternate" type="text/html" title="Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game" /><published>2022-05-16T18:30:00-06:00</published><updated>2022-05-16T18:30:00-06:00</updated><id>http://localhost:4000/dino-clone</id><content type="html" xml:base="http://localhost:4000/dino-clone">&lt;p&gt;I learned some new things about vanilla javascript while following a &lt;a href=&quot;https://www.youtube.com/watch?v=47eXVRJKdkU&quot;&gt;tutorial for creating the chrome dino game&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-08-22T20:35:13-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">DynamoDB scans and pagination</title><link href="http://localhost:4000/dynamo-db-pagination" rel="alternate" type="text/html" title="DynamoDB scans and pagination" /><published>2022-08-22T18:30:00-06:00</published><updated>2022-08-22T18:30:00-06:00</updated><id>http://localhost:4000/dynamo-db-pagination</id><content type="html" xml:base="http://localhost:4000/dynamo-db-pagination">&lt;p&gt;Today I was working on a task that involved archiving some old data in DynamoDB. I didn’t want to permanently delete my data, so I needed to retrieve the data, create a new record in the archive database, and delete the record from the original database.&lt;/p&gt;
+
+&lt;p&gt;These records were never meant to be queried all at once. Normally in the app you would query these records for one user at a time. My PK and SK were not set up to get all of these records as one batch, which meant I needed to scan the database and filter out all of these records in my retrieval step, rather than doing a more efficient query.&lt;/p&gt;
+
+&lt;p&gt;I wrote the code and invoked it in my lambda console. I invoked it multiple times and noticed in my logs that I was retrieving and archiving new records each time. It wasn’t supposed to work like this - I should only need to invoke this function once, and all of the records are archived. My scan wasn’t getting all of the records.&lt;/p&gt;
+
+&lt;p&gt;One &lt;a href=&quot;https://stackoverflow.com/questions/66337345/amazon-dynamodb-scan-is-not-scanning-complete-table&quot;&gt;stack overflow page&lt;/a&gt; brought to my attention a value that is returned from DynamoDB scans and queries called “LastEvaluatedKey”, which is logged to the console when there are more records left to be retrieved. This is how DynamoDB paginates large amounts of data.&lt;/p&gt;
+
+&lt;p&gt;According to the &lt;a href=&quot;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html&quot;&gt;AWS developer guide&lt;/a&gt;, this happens after a maximum of 1MB of data has been returned. If there is no “LastEvaluatedKey” logged to the console, there are no more results.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-fix-this&quot;&gt;How to fix this&lt;/h3&gt;
+
+&lt;p&gt;I still needed to get all the data. If there are still records left over, you need to do another scan and tell it where the previous scan left off. You do this by making the value “ExclusiveStartKey” in your current scan equal to the previous scan’s “LastEvaluatedKey”. You do this until there are no more records left to retrieve, which means your last scan hasn’t returned a value for “LastEvaluatedKey”.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//not the exact same code for privacy reasons&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scanDatabase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;TableName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;myTable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;FilterExpression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;contains(PK, :pk) AND begins_with(SK, :sk)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;ExpressionAttributeValues&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;:pk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;team-stats&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;:sk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scanResults&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dynamo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scanResults&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ExclusiveStartKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LastEvaluatedKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LastEvaluatedKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scanResults&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This could have been a use case for a recursive function, but I based my code off one of the answers on the stack overflow page which used a do-while loop. It seemed like a simple, readable solution, and performed reasonably well as my archive function eneded up taking only a couple minutes to complete.&lt;/p&gt;
+
+&lt;p&gt;This helped me to learn a little more about pagination, but also brought up a few questions for me. Are there any other cases in my codebase where the data being requested is more than 1MB? Are we missing data and not realizing it? I will have to check some of our other queries and see if “LastEvaluatedKey” is being returned.&lt;/p&gt;</content><author><name></name></author><category term="dynamodb" /><category term="database" /><category term="debugging" /><category term="aws" /><summary type="html">Today I was working on a task that involved archiving some old data in DynamoDB. I didn’t want to permanently delete my data, so I needed to retrieve the data, create a new record in the archive database, and delete the record from the original database.</summary></entry><entry><title type="html">Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</title><link href="http://localhost:4000/dino-clone" rel="alternate" type="text/html" title="Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game" /><published>2022-05-16T18:30:00-06:00</published><updated>2022-05-16T18:30:00-06:00</updated><id>http://localhost:4000/dino-clone</id><content type="html" xml:base="http://localhost:4000/dino-clone">&lt;p&gt;I learned some new things about vanilla javascript while following a &lt;a href=&quot;https://www.youtube.com/watch?v=47eXVRJKdkU&quot;&gt;tutorial for creating the chrome dino game&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;data-attributes&quot;&gt;Data attributes&lt;/h3&gt;
 
@@ -740,149 +781,4 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
 
 &lt;p&gt;This was challenging to figure out with Next.js as I wasn’t sure how to properly incorporate cookie consent and have it persist on each page. This was confusing for me as Next.js uses server-side rendering - how would I update my html head tags dynamically in the client? The react-cookie-consent package was very helpful here as I was able to grab the consent value from CookieConsent on any page.&lt;/p&gt;
 
-&lt;p&gt;There may be a more elegant way of accomplishing this, but in the end I believe I came up with a relatively simple solution.&lt;/p&gt;</content><author><name></name></author><category term="next.js" /><category term="google-analytics" /><category term="cookies" /><summary type="html">Recently at work I needed to add google analytics to our company website, built with Next.js.</summary></entry><entry><title type="html">Learning data structures - intermediate structures</title><link href="http://localhost:4000/data-structures-2" rel="alternate" type="text/html" title="Learning data structures - intermediate structures" /><published>2021-06-10T14:30:00-06:00</published><updated>2021-06-10T14:30:00-06:00</updated><id>http://localhost:4000/data-structures-2</id><content type="html" xml:base="http://localhost:4000/data-structures-2">&lt;p&gt;Now we are getting into some intermediate topics in data structures.&lt;/p&gt;
-
-&lt;p&gt;Again I am following along with the &lt;a href=&quot;https://www.youtube.com/watch?v=zg9ih6SVACc&amp;amp;t=3551s&quot;&gt;freeCodeCamp video&lt;/a&gt; on data structures as I learn.&lt;/p&gt;
-
-&lt;p&gt;We are now going to be going over sequential access data structures. Unlike random access data structures, you can access items only in a certain order, which means you are depending on other items in the data structure. You can’t get items instantly like you can with arrays.&lt;/p&gt;
-
-&lt;h3 id=&quot;stacks&quot;&gt;Stacks&lt;/h3&gt;
-
-&lt;p&gt;Stacks follow the “last in first out” principle - the last item you add is the first item to be removed.&lt;/p&gt;
-
-&lt;p&gt;The video has a great analogy for this where they envision a stack of books. If you wanted to grab a book from the middle of the stack, you first have to remove all the other books on top, in order, otherwise the whole thing will collapse.&lt;/p&gt;
-
-&lt;p&gt;I also thought of this like a stack of plates. The last one you put on top of the stack is the first one you will use.&lt;/p&gt;
-
-&lt;p&gt;Some stack methods:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;push: adds to top of stack&lt;/li&gt;
-  &lt;li&gt;pop: removes from top of stack&lt;/li&gt;
-  &lt;li&gt;peek: get the value of the top item, without removing it&lt;/li&gt;
-  &lt;li&gt;contains: to find something within the stack&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Interestingly, pop and push are the same names as common Javascript array methods. The contains method reminds me of the Javascript array method “includes”. This is definitely making me think I need to find a Javascript specific data structures resource.&lt;/p&gt;
-
-&lt;p&gt;BigO efficiency:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;accessing, searching: O(n)&lt;/li&gt;
-  &lt;li&gt;inserting, deleting: O(1), because you just do push or pop once&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;When would you use stacks?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;for recursion - when functions call themselves repeatedly&lt;/li&gt;
-  &lt;li&gt;a back button in the browser - add your pages/actions to a stack&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;queues&quot;&gt;Queues&lt;/h3&gt;
-
-&lt;p&gt;Follows a first in first out principle. Just like a line-up in real life. The first person in the line is the first person served.&lt;/p&gt;
-
-&lt;p&gt;Some queue methods:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;enqueue: add to the end/tail of the queue&lt;/li&gt;
-  &lt;li&gt;dequeue: remove from the start/head of the queue&lt;/li&gt;
-  &lt;li&gt;peek: tells us the value at the head of the queue&lt;/li&gt;
-  &lt;li&gt;contains: if our queue contains are specific element&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;BigO efficiency:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;accessing, searching: O(n)&lt;/li&gt;
-  &lt;li&gt;inserting, deleting: O(1), because you just do enqueue or dequeue once, same as the stack&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I actually use queues fairly often when working with AWS, particularly SQS queues. Events can be added to a queue, and processed by, for example, a Lambda function in the order they are received, when the function is ready for the next one.&lt;/p&gt;
-
-&lt;h3 id=&quot;linked-lists&quot;&gt;Linked lists&lt;/h3&gt;
-
-&lt;p&gt;I was very interested in learning what exactly a linked list is. I hear about them all the time but don’t actually know what they do.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;sequential&lt;/li&gt;
-  &lt;li&gt;each element is called a node, and a node contains data and a reference to the next node&lt;/li&gt;
-  &lt;li&gt;nodes are objects and can have multiple values&lt;/li&gt;
-  &lt;li&gt;the reference is what &lt;em&gt;links&lt;/em&gt; the elements together into a list&lt;/li&gt;
-  &lt;li&gt;the last node reference points towards a null value&lt;/li&gt;
-  &lt;li&gt;can add or remove items anywhere in the list, unlike stacks and queues, but this means you also have to change the references&lt;/li&gt;
-  &lt;li&gt;can only go forwards, not backwards&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Linked list methods:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;add to head of list: need to add a reference to the former head node,&lt;/li&gt;
-  &lt;li&gt;remove from head: just set reference to null&lt;/li&gt;
-  &lt;li&gt;add to middle: reference of new node needs to be to the next item in the list, and the item before must have its reference updated to that of the new node&lt;/li&gt;
-  &lt;li&gt;remove from middle: set the reference of the node before to point to the node after the one you’re removing, then update the reference of the one you’re removing to null&lt;/li&gt;
-  &lt;li&gt;add to the end: make the tail node point to the new node&lt;/li&gt;
-  &lt;li&gt;remove from the end: set the node before the tail node to null&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;BigO efficiency:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;accessing, searching: O(n) - still need to go through each node before we get to the one we want, using the pointers to get us there&lt;/li&gt;
-  &lt;li&gt;inserting, deleting: can be O(n) or O(1), depending on if you’re adding to the beginning/end or in the middle&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So how are these actually used? In situations where one thing points to another&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;music playlists&lt;/li&gt;
-  &lt;li&gt;photo albums&lt;/li&gt;
-  &lt;li&gt;can work with queues and stacks behind the scenes&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;doubly-linked-lists&quot;&gt;Doubly linked lists&lt;/h3&gt;
-
-&lt;p&gt;Regular linked lists could only point forwards, but doubly linked lists can point forwards and backwards.&lt;/p&gt;
-
-&lt;p&gt;You don’t just have a pointer to the next node, you also have a pointer to the previous node.&lt;/p&gt;
-
-&lt;p&gt;Like a linked list, there is a head and tail node. The first pointer of the head node points to a null value, as well as the second pointer of the tail node.&lt;/p&gt;
-
-&lt;p&gt;BigO efficiency: the same as for linked lists&lt;/p&gt;
-
-&lt;p&gt;Uses - basically whenever you want to go back and forth between things:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;browser caches&lt;/li&gt;
-  &lt;li&gt;undo/redo&lt;/li&gt;
-  &lt;li&gt;open recent functionality&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;dictionaries&quot;&gt;Dictionaries&lt;/h3&gt;
-
-&lt;p&gt;These are also called associated arrays and maps. So in Javascript, a dictionary is referred to as a map (not the same as the map function).&lt;/p&gt;
-
-&lt;p&gt;Dictionaries store data in key-value pairs. Keys can be any primitive data type. Keys must be unique and can only have one value assigned to them. This makes it easier and faster to look up values later. Values do not have to be unique, however.&lt;/p&gt;
-
-&lt;h4 id=&quot;hash-tables&quot;&gt;Hash tables&lt;/h4&gt;
-
-&lt;p&gt;During the lesson on dictionaries the instructor went over hash tables. Yet another term I’ve heard a lot about and never understood.&lt;/p&gt;
-
-&lt;p&gt;Hash tables help you to store keys from a dictionary while cutting down on nil/empty values being taken up in memory. A hash function is what assigns keys to locations in memory so they can be retrieved easily later.&lt;/p&gt;
-
-&lt;p&gt;Dictionaries are built on hash tables.&lt;/p&gt;
-
-&lt;p&gt;Ok, back to dictionaries.&lt;/p&gt;
-
-&lt;p&gt;BigO efficiency: in the case of dictionaries, we can’t just use the worst case scenario, things get pretty complicated due to hash tables.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;for the average efficiency, all operations are O(1). That is because they are key-value pairs, so it’s quick to look up a value based on its key. You don’t have to spend a lot of time searching through your data structure to perform your operation.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Dictionaries are overall very useful data structures that can be used in many situations.&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;That’s it for the intermediate data structures. The deeper I go into all of this, the more I want to find information on how these all apply to Javascript specifically. I’ll finish up the rest of the data structures in this course, and find more information on data structures in Javascript.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><summary type="html">Now we are getting into some intermediate topics in data structures.</summary></entry></feed>
+&lt;p&gt;There may be a more elegant way of accomplishing this, but in the end I believe I came up with a relatively simple solution.&lt;/p&gt;</content><author><name></name></author><category term="next.js" /><category term="google-analytics" /><category term="cookies" /><summary type="html">Recently at work I needed to add google analytics to our company website, built with Next.js.</summary></entry></feed>

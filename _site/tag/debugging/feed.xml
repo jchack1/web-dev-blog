@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/debugging/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-16T19:32:44-06:00</updated>
+  <updated>2022-08-22T20:35:13-06:00</updated>
   <id>http://localhost:4000/tag/debugging/feed.xml</id>
 
   
@@ -42,6 +42,87 @@
   
   
 
+  
+    <entry>
+      <title type="html">DynamoDB scans and pagination</title>
+      <link href="http://localhost:4000/dynamo-db-pagination" rel="alternate" type="text/html" title="DynamoDB scans and pagination" />
+      <published>2022-08-22T18:30:00-06:00</published>
+      <updated>2022-08-22T18:30:00-06:00</updated>
+      <id>http://localhost:4000/dynamo-db-pagination</id>
+      <content type="html" xml:base="http://localhost:4000/dynamo-db-pagination">&lt;p&gt;Today I was working on a task that involved archiving some old data in DynamoDB. I didn’t want to permanently delete my data, so I needed to retrieve the data, create a new record in the archive database, and delete the record from the original database.&lt;/p&gt;
+
+&lt;p&gt;These records were never meant to be queried all at once. Normally in the app you would query these records for one user at a time. My PK and SK were not set up to get all of these records as one batch, which meant I needed to scan the database and filter out all of these records in my retrieval step, rather than doing a more efficient query.&lt;/p&gt;
+
+&lt;p&gt;I wrote the code and invoked it in my lambda console. I invoked it multiple times and noticed in my logs that I was retrieving and archiving new records each time. It wasn’t supposed to work like this - I should only need to invoke this function once, and all of the records are archived. My scan wasn’t getting all of the records.&lt;/p&gt;
+
+&lt;p&gt;One &lt;a href=&quot;https://stackoverflow.com/questions/66337345/amazon-dynamodb-scan-is-not-scanning-complete-table&quot;&gt;stack overflow page&lt;/a&gt; brought to my attention a value that is returned from DynamoDB scans and queries called “LastEvaluatedKey”, which is logged to the console when there are more records left to be retrieved. This is how DynamoDB paginates large amounts of data.&lt;/p&gt;
+
+&lt;p&gt;According to the &lt;a href=&quot;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html&quot;&gt;AWS developer guide&lt;/a&gt;, this happens after a maximum of 1MB of data has been returned. If there is no “LastEvaluatedKey” logged to the console, there are no more results.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-fix-this&quot;&gt;How to fix this&lt;/h3&gt;
+
+&lt;p&gt;I still needed to get all the data. If there are still records left over, you need to do another scan and tell it where the previous scan left off. You do this by making the value “ExclusiveStartKey” in your current scan equal to the previous scan’s “LastEvaluatedKey”. You do this until there are no more records left to retrieve, which means your last scan hasn’t returned a value for “LastEvaluatedKey”.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//not the exact same code for privacy reasons&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scanDatabase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;TableName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;myTable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;FilterExpression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;contains(PK, :pk) AND begins_with(SK, :sk)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;ExpressionAttributeValues&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;:pk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;team-stats&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;:sk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scanResults&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dynamo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scanResults&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ExclusiveStartKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LastEvaluatedKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LastEvaluatedKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scanResults&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This could have been a use case for a recursive function, but I based my code off one of the answers on the stack overflow page which used a do-while loop. It seemed like a simple, readable solution, and performed reasonably well as my archive function eneded up taking only a couple minutes to complete.&lt;/p&gt;
+
+&lt;p&gt;This helped me to learn a little more about pagination, but also brought up a few questions for me. Are there any other cases in my codebase where the data being requested is more than 1MB? Are we missing data and not realizing it? I will have to check some of our other queries and see if “LastEvaluatedKey” is being returned.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="dynamodb" />
+      
+        <category term="database" />
+      
+        <category term="debugging" />
+      
+        <category term="aws" />
+      
+
+      
+        <summary type="html">Today I was working on a task that involved archiving some old data in DynamoDB. I didn’t want to permanently delete my data, so I needed to retrieve the data, create a new record in the archive database, and delete the record from the original database.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Debugging serverless - Eventbridge rule already exists</title>
