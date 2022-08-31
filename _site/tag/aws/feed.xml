@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/aws/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-08-30T20:27:52-06:00</updated>
+  <updated>2022-08-30T20:30:34-06:00</updated>
   <id>http://localhost:4000/tag/aws/feed.xml</id>
 
   
@@ -72,7 +72,7 @@
 
 &lt;p&gt;I checked the serverless-generated cloudformation files in my .serverless folder. There was code for the creation of a AWSLambdaFullAccess policy. But none of our own code was telling it to do that. I thought maybe I had an old version of serverless, but I recently updated my local environment to version 3, and my serverless.yml file didn’t specify a framework version, so that couldn’t be it.&lt;/p&gt;
 
-&lt;p&gt;After lots of trial and error, and more googling, I went back to a github issues page where someone else reported the same issue. At first glace I didn’t see a solution for my problem, but I scrolled a little further and found something helpful.&lt;/p&gt;
+&lt;p&gt;After lots of trial and error, and more googling, I went back to a &lt;a href=&quot;https://github.com/serverless/components/issues/918&quot;&gt;github issues page&lt;/a&gt; where someone else reported the same issue. At first glace I didn’t see a solution for my problem, but I scrolled a little further and found something helpful.&lt;/p&gt;
 
 &lt;h3 id=&quot;solution&quot;&gt;Solution&lt;/h3&gt;
 

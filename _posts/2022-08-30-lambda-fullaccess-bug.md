@@ -32,7 +32,7 @@ After some googling, I saw that the AWSLambdaFullAccess policy had been deprecat
 
 I checked the serverless-generated cloudformation files in my .serverless folder. There was code for the creation of a AWSLambdaFullAccess policy. But none of our own code was telling it to do that. I thought maybe I had an old version of serverless, but I recently updated my local environment to version 3, and my serverless.yml file didn't specify a framework version, so that couldn't be it.
 
-After lots of trial and error, and more googling, I went back to a github issues page where someone else reported the same issue. At first glace I didn't see a solution for my problem, but I scrolled a little further and found something helpful.
+After lots of trial and error, and more googling, I went back to a [github issues page](https://github.com/serverless/components/issues/918) where someone else reported the same issue. At first glace I didn't see a solution for my problem, but I scrolled a little further and found something helpful.
 
 ### Solution
 
