@@ -11,7 +11,7 @@
 
 
 
-    <title>Some JavaScript array methods, how they work, when to use them</title>
+    <title>Debugging serverless: 'AWSLambdaFullAccess does not exist'</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/js-methods" />
+    <link rel="canonical" href="http://localhost:4000/lambda-fullaccess-bug" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Some JavaScript array methods, how they work, when to use them" />
-    <meta property="og:description" content="Here are a few JavaScript array methods that I recently learned about in my JavaScript course. Some are relatively new additions to JavaScript and some are not, but I have learned about them all in a little more depth. some (vs includes) The “some” method tests if any item inside" />
-    <meta property="og:url" content="http://localhost:4000/js-methods" />
+    <meta property="og:title" content="Debugging serverless: 'AWSLambdaFullAccess does not exist'" />
+    <meta property="og:description" content="I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today. Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node" />
+    <meta property="og:url" content="http://localhost:4000/lambda-fullaccess-bug" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-12-14T19:30:00-07:00" />
-    <meta property="article:modified_time" content="2020-12-14T19:30:00-07:00" />
-    <meta property="article:tag" content="Javascript" />
+    <meta property="article:published_time" content="2022-08-30T18:30:00-06:00" />
+    <meta property="article:modified_time" content="2022-08-30T18:30:00-06:00" />
+    <meta property="article:tag" content="Debugging" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Some JavaScript array methods, how they work, when to use them" />
-    <meta name="twitter:description" content="Here are a few JavaScript array methods that I recently learned about in my JavaScript course. Some are relatively new additions to JavaScript and some are not, but I have learned about them all in a little more depth. some (vs includes) The “some” method tests if any item inside" />
+    <meta name="twitter:title" content="Debugging serverless: 'AWSLambdaFullAccess does not exist'" />
+    <meta name="twitter:description" content="I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today. Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Javascript" />
+    <meta name="twitter:data2" content="Debugging" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/js-methods",
+    "url": "http://localhost:4000/lambda-fullaccess-bug",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/js-methods"
+        "@id": "http://localhost:4000/lambda-fullaccess-bug"
     },
-    "description": "Here are a few JavaScript array methods that I recently learned about in my JavaScript course. Some are relatively new additions to JavaScript and some are not, but I have learned about them all in a little more depth. some (vs includes) The “some” method tests if any item inside"
+    "description": "I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today. Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Some JavaScript array methods, how they work, when to use them" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Debugging serverless: 'AWSLambdaFullAccess does not exist'" href="/feed.xml" />
 
 
 </head>
@@ -153,201 +153,61 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="14 December 2020">14 December 2020</time>
+                    <time class="post-full-meta-date" datetime="30 August 2022">30 August 2022</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/javascript/'>JAVASCRIPT</a>
+                               <a href='/tag/debugging/'>DEBUGGING</a>,
+                            
+                        
+                            
+                               <a href='/tag/aws/'>AWS</a>,
+                            
+                        
+                            
+                               <a href='/tag/serverless/'>SERVERLESS</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Some JavaScript array methods, how they work, when to use them</h1>
+                <h1 class="post-full-title">Debugging serverless: 'AWSLambdaFullAccess does not exist'</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>Here are a few JavaScript array methods that I recently learned about in my JavaScript course. Some are relatively new additions to JavaScript and some are not, but I have learned about them all in a little more depth.</p>
+                    <p>I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.</p>
 
-<h3 id="some-vs-includes">some (vs includes)</h3>
+<p>Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node 14 - or so I thought. It turns out there were a few I missed, mostly in projects that are not worked on often.</p>
 
-<p>The “some” method tests if <strong>any</strong> item inside an array meets a certain condition. If any item meets your condition it returns “true”.</p>
+<p>A year is a long time to not deploy a serverless app into AWS. I updated the runtime to Node 14, and attempted to deploy. There were several errors, one after the other, that I managed to fix. The last error I received had me stuck for a while.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<p><code class="highlighter-rouge"> CREATE_FAILED: CodeDeployServiceRole (AWS::IAM::Role) Policy arn:aws:iam::aws:policy/AWSLambdaFullAccess does not exist or is not attachable</code></p>
 
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">some</span><span class="p">((</span><span class="nx">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">num</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">//returns true, since 12 and 17 are greater than 10</span>
+<p>While there was some CodeDeploy code in the app, there was never any line of code where we explicitly set “AWSLambdaFullAccess”. I tried commenting out the CodeDeploy code under the IAM role section:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">Effect</span><span class="pi">:</span> <span class="s">Allow</span>
+  <span class="na">Action</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">codedeploy:*</span>
+  <span class="na">Resource</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">*"</span>
 </code></pre></div></div>
 
-<p>This is similar to the “includes” method, except “includes” tests for equality. It will test if any element in your array is equal to whatever value you use inside the method.</p>
+<p>But that didn’t do anything.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<p>After some googling, I saw that the AWSLambdaFullAccess policy had been deprecated, and AWSLambda_FullAccess was its replacement. I vaguely remembered seeing this in an AWS email sometime in the past year. The problem must be connected to this, somehow.</p>
 
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// returns false since there is no value of 10 in the array</span>
-</code></pre></div></div>
+<p>I checked the serverless-generated cloudformation files in my .serverless folder. There was code for the creation of a AWSLambdaFullAccess policy. But none of our own code was telling it to do that. I thought maybe I had an old version of serverless, but I recently updated my local environment to version 3, and my serverless.yml file didn’t specify a framework version, so that couldn’t be it.</p>
 
-<h3 id="every">every</h3>
+<p>After lots of trial and error, and more googling, I went back to a github issues page where someone else reported the same issue. At first glace I didn’t see a solution for my problem, but I scrolled a little further and found something helpful.</p>
 
-<p>The “every” method tests if <strong>every</strong> item in an array matches a specific condition.</p>
+<h3 id="solution">Solution</h3>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<p>One commenter said their issue was that they had an old version of a plugin “serverless-plugin-canary-deployments”. We had that plugin, too. I thought I had checked the plugin versions and found they were the same across our different microservices, and these microservices never gave the same error. Regardless, I updated that npm package to the latest version and deployed. This time it worked!</p>
 
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">every</span><span class="p">((</span><span class="nx">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">num</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">//returns false, not every item in the array is greater than 10</span>
-</code></pre></div></div>
-
-<h3 id="flat">flat</h3>
-
-<p>Let’s say you have a nested array - an array of arrays. And you would like all the values in one array. The “flat” method flattens the nested arrays into just one array with all the items on the same level. HOWEVER, it only goes one level deep when used on it’s own.</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-  <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-  <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
-<span class="p">];</span>
-
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">flat</span><span class="p">();</span> <span class="c1">//returns [1,2,3,4,5,6,7,8,9]</span>
-
-<span class="c1">//for nesting more than one level deep, add a value</span>
-<span class="c1">//into the flat method that defines the number of levels you want to go</span>
-<span class="kd">const</span> <span class="nx">numbers2</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">],</span>
-  <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
-<span class="p">];</span>
-
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">flat</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">//returns [1,2,3,4,5]</span>
-</code></pre></div></div>
-
-<h3 id="flatmap">flatMap</h3>
-
-<p>The flatMap method just combines the “flat” and “map” methods together. It works the same way as the map method - calls a funtion on each item in an array and returns a new array - and additionally flattens the result.</p>
-
-<p>It also only goes one level deep, however, and you can’t change that. If you need to flatten multiple levels you should use the flat method.</p>
-
-<h3 id="sort">sort</h3>
-
-<p>The sort method sorts based on strings. Even if an item is a number, it is converted to a string, then sorted. Numbers don’t actually end up being sorted from lowest to highests as you would expect. You need to add a callback function into your sort method in order to sort numbers.</p>
-
-<p>Below is an example similar to what was used in my course</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="o">-</span><span class="mi">440</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">250</span><span class="p">];</span>
-
-<span class="c1">//if A should be before B, return &lt; 0  (can be any negative number) -&gt; keep order</span>
-<span class="c1">//if B should be before A, return &gt; 0  (can be any positive number) -&gt; switch order</span>
-
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">&gt;</span> <span class="nx">b</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">b</span> <span class="o">&gt;</span> <span class="nx">a</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="p">});</span>
-
-<span class="c1">//returns [-440, -250, -100, 5, 50, 200, 600]</span>
-
-<span class="c1">//the same thing can also be acheived this way:</span>
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>sort compares two values at a time. In this case we want to sort in ascending order, or lowest to highest. We want A to be less than B. If A is greater than B, 1 is returned, and we switch the order of the values. If B is greater than A, -1 is returned, and we keep the current order of the values. We loop over the array until it is sorted according to our conditions.</p>
-
-<p>You can also see a shortened method included.</p>
-
-<p>If you want ascending order, use a - b. If you want descending order, use b - a.</p>
-
-<h3 id="fill">fill</h3>
-
-<p>Mutates the entire array. It fills an empty array with values, or replaces values of an already existing/full array. Like slice, you can specify where it begins and ends filling the array</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">//creates an array with 5 empty places</span>
-
-<span class="nx">arr</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">//fills the array with 1s, returns [1,1,1,1,1]</span>
-
-<span class="c1">//another option</span>
-<span class="nx">arr</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">//returns [_,_,_,1,1]</span>
-</code></pre></div></div>
-
-<p>The first parameter is the <strong>value</strong> you want to fill the array with. The second parameter is the index you want it to start filling at, and the third parameter is the index where it should stop.</p>
-
-<h3 id="arrayfrom">Array.from</h3>
-
-<p>from is used on the Array constructor. It takes in the length of array you would like, and a function similar to map. The params you can use are the current and index values.</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">({</span> <span class="na">length</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span> <span class="p">(</span><span class="nx">cur</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-<span class="c1">//returns [1,2,3,4,5]</span>
-
-<span class="kd">const</span> <span class="nx">diceRolls</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">({</span> <span class="na">length</span><span class="p">:</span> <span class="mi">100</span> <span class="p">},</span> <span class="p">()</span> <span class="o">=&gt;</span>
-  <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-<span class="p">);</span>
-<span class="c1">//returns array of 100 numbers between 1 and 6</span>
-</code></pre></div></div>
-
-<p>You can use this method to convert something that is not an array into an array.</p>
-
-<h3 id="when-to-use-each-type-of-array">When to use each type of array</h3>
-
-<p>This comes from the summary lecture of my JavaScript course</p>
-
-<p>Methods that mutate the original array:</p>
-
-<ul>
-  <li>push</li>
-  <li>unshift</li>
-  <li>pop</li>
-  <li>shift</li>
-  <li>splice</li>
-  <li>reverse</li>
-  <li>sort</li>
-  <li>fill</li>
-</ul>
-
-<p>Methods that create a new array based off an original:</p>
-
-<ul>
-  <li>map</li>
-  <li>filter</li>
-  <li>slice</li>
-  <li>concat</li>
-  <li>flat</li>
-  <li>flatMap</li>
-</ul>
-
-<p>To get an index:</p>
-
-<ul>
-  <li>indexOf (based on a value)</li>
-  <li>findIndex (based on a condition)</li>
-</ul>
-
-<p>To get array element:</p>
-
-<ul>
-  <li>find</li>
-</ul>
-
-<p>Does an array include something? Returns true or false</p>
-
-<ul>
-  <li>some</li>
-  <li>every</li>
-  <li>includes</li>
-</ul>
-
-<p>Make array into a string:</p>
-
-<ul>
-  <li>join</li>
-</ul>
-
-<p>Boil something down to one value:</p>
-
-<ul>
-  <li>reduce</li>
-</ul>
-
-<p>To simply loop over an array without producing a new value/array:</p>
-
-<ul>
-  <li>forEach</li>
-</ul>
+<p>It’s possible to receive this same error and have an entirely different issue causing the problem, but this worked for me. Perhaps we can generalize this and say that if you are getting an error related to a deprecation, have a look at the versions of your dependencies.</p>
 
                 </div>
             </section>
@@ -403,7 +263,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/debugging/">Debugging</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -417,15 +277,6 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/dino-clone">Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</a></li>
-                                        
                                     
                                   
                                 
@@ -433,11 +284,22 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/data-structures-javascript">More data structures - JavaScript</a></li>
+                                            <li><a href="/dynamo-db-pagination">DynamoDB scans and pagination</a></li>
                                         
                                     
                                   
                                 
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/serverless-event-bug">Debugging serverless - Eventbridge rule already exists</a></li>
+                                        
+                                    
                                   
                                 
                                   
@@ -452,37 +314,9 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
                                     
                                         
                                         
-                                    
-                                  
-                                
-                                  
                                     
                                   
                                 
@@ -504,10 +338,7 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
@@ -540,10 +371,33 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -556,9 +410,10 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                
-                                  
-                                
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -570,6 +425,11 @@ into the {body} of the default.hbs template -->
                                     
                                   
                                 
+                                  
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -583,7 +443,7 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/javascript/">
+                            <a href="/tag/debugging/">
                                 
                                     See all 10 posts  →
                                 
@@ -595,64 +455,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/redux">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Javascript</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">React</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Redux</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Learning Redux</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -661,17 +463,29 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/js-data-structures">
+            <a class="post-card-content-link" href="/dynamo-db-pagination">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Javascript</span>
+                               <span class="post-card-tags">Dynamodb</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Database</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Debugging</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Aws</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">When to use the different JavaScript data structures</h2>
+                    <h2 class="post-card-title">DynamoDB scans and pagination</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -722,7 +536,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Some JavaScript array methods, how they work, when to use them</div>
+    <div class="floating-header-title">Debugging serverless: 'AWSLambdaFullAccess does not exist'</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -730,7 +544,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Some+JavaScript+array+methods%2C+how+they+work%2C+when+to+use+them&amp;url=js-methods"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Debugging+serverless%3A+%27AWSLambdaFullAccess+does+not+exist%27&amp;url=lambda-fullaccess-bug"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -739,7 +553,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=js-methods"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=lambda-fullaccess-bug"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

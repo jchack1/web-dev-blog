@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/debugging/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-08-22T20:35:13-06:00</updated>
+  <updated>2022-08-30T20:27:52-06:00</updated>
   <id>http://localhost:4000/tag/debugging/feed.xml</id>
 
   
@@ -42,6 +42,73 @@
   
   
 
+  
+    <entry>
+      <title type="html">Debugging serverless: ‘AWSLambdaFullAccess does not exist’</title>
+      <link href="http://localhost:4000/lambda-fullaccess-bug" rel="alternate" type="text/html" title="Debugging serverless: 'AWSLambdaFullAccess does not exist'" />
+      <published>2022-08-30T18:30:00-06:00</published>
+      <updated>2022-08-30T18:30:00-06:00</updated>
+      <id>http://localhost:4000/lambda-fullaccess-bug</id>
+      <content type="html" xml:base="http://localhost:4000/lambda-fullaccess-bug">&lt;p&gt;I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.&lt;/p&gt;
+
+&lt;p&gt;Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node 14 - or so I thought. It turns out there were a few I missed, mostly in projects that are not worked on often.&lt;/p&gt;
+
+&lt;p&gt;A year is a long time to not deploy a serverless app into AWS. I updated the runtime to Node 14, and attempted to deploy. There were several errors, one after the other, that I managed to fix. The last error I received had me stuck for a while.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; CREATE_FAILED: CodeDeployServiceRole (AWS::IAM::Role) Policy arn:aws:iam::aws:policy/AWSLambdaFullAccess does not exist or is not attachable&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;While there was some CodeDeploy code in the app, there was never any line of code where we explicitly set “AWSLambdaFullAccess”. I tried commenting out the CodeDeploy code under the IAM role section:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Effect&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Allow&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;Action&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;codedeploy:*&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;Resource&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;But that didn’t do anything.&lt;/p&gt;
+
+&lt;p&gt;After some googling, I saw that the AWSLambdaFullAccess policy had been deprecated, and AWSLambda_FullAccess was its replacement. I vaguely remembered seeing this in an AWS email sometime in the past year. The problem must be connected to this, somehow.&lt;/p&gt;
+
+&lt;p&gt;I checked the serverless-generated cloudformation files in my .serverless folder. There was code for the creation of a AWSLambdaFullAccess policy. But none of our own code was telling it to do that. I thought maybe I had an old version of serverless, but I recently updated my local environment to version 3, and my serverless.yml file didn’t specify a framework version, so that couldn’t be it.&lt;/p&gt;
+
+&lt;p&gt;After lots of trial and error, and more googling, I went back to a github issues page where someone else reported the same issue. At first glace I didn’t see a solution for my problem, but I scrolled a little further and found something helpful.&lt;/p&gt;
+
+&lt;h3 id=&quot;solution&quot;&gt;Solution&lt;/h3&gt;
+
+&lt;p&gt;One commenter said their issue was that they had an old version of a plugin “serverless-plugin-canary-deployments”. We had that plugin, too. I thought I had checked the plugin versions and found they were the same across our different microservices, and these microservices never gave the same error. Regardless, I updated that npm package to the latest version and deployed. This time it worked!&lt;/p&gt;
+
+&lt;p&gt;It’s possible to receive this same error and have an entirely different issue causing the problem, but this worked for me. Perhaps we can generalize this and say that if you are getting an error related to a deprecation, have a look at the versions of your dependencies.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="debugging" />
+      
+        <category term="aws" />
+      
+        <category term="serverless" />
+      
+
+      
+        <summary type="html">I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">DynamoDB scans and pagination</title>
@@ -774,93 +841,6 @@ ReferenceError: primordials is not defined&quot;
 
       
         <summary type="html">Recently I was working on a task for my practicum. The task was to add a delete button to two of the pages and ensure it redirected to the correct page once an item was deleted.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">A few .NET errors and solutions</title>
-      <link href="http://localhost:4000/dotnet-errors-and-solutions" rel="alternate" type="text/html" title="A few .NET errors and solutions" />
-      <published>2020-04-02T01:11:00-06:00</published>
-      <updated>2020-04-02T01:11:00-06:00</updated>
-      <id>http://localhost:4000/dotnet-errors-and-solutions</id>
-      <content type="html" xml:base="http://localhost:4000/dotnet-errors-and-solutions">&lt;p&gt;Here are a few errors I received while working on a .NET application, and how I solved them.&lt;/p&gt;
-
-&lt;h3 id=&quot;unable-to-determine-composite-primary-key-ordering-for-type-use-the-columnattribute-or-the-haskey-method&quot;&gt;“Unable to determine composite primary key ordering for type… Use the ColumnAttribute or the HasKey method…”&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;
-This occured because I tried to assign more than one [Key] in a C# class file, as per below:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whatever&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherOne&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The microsoft docs actually helped me here: &lt;a href=&quot;https://docs.microsoft.com/en-ca/ef/ef6/modeling/code-first/data-annotations?redirectedfrom=MSDN#composite-keys&quot;&gt;Microsoft docs on data annotation&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Basically, if you have more than one primary key, you need to give them an order using the column attribute, like below:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;[Column(Order=1)]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whatever&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;[Key]&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;[Column(Order=2)]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherOne&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Note that the order doesn’t have to start at zero like an index, the order is just relative.&lt;/p&gt;
-
-&lt;h3 id=&quot;this-operation-requires-a-connection-to-master-database&quot;&gt;“This operation requires a connection to master database”&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;There was an issue connecting to my database, and this was fixed by adding “Integrated Security=True;” to the connection string in my Web.config file.  This is what stack overflow suggested you do when you’re connecting to the database with Windows Authentication, rather than a separate username and password.&lt;/p&gt;
-
-&lt;h3 id=&quot;cannot-insert-null-value-into-column-id&quot;&gt;“Cannot insert null value into column id”&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;The application uses a database of students. If you create a new student in the application it should add to the students table in the database. The problem was the student id number wasn’t being assigned.&lt;/p&gt;
-
-&lt;p&gt;Back to Stack Overflow. Assuming you want the id to automatically increment, this is what you do.&lt;/p&gt;
-
-&lt;p&gt;In SQL Server Management Studio:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;open table in Design&lt;/li&gt;
-  &lt;li&gt;select your column, go to Column Properties&lt;/li&gt;
-  &lt;li&gt;check Identity Specification&lt;/li&gt;
-  &lt;li&gt;set “IsIdentity” to “yes”&lt;/li&gt;
-  &lt;li&gt;set “IdentityIncrement” to “1”, so it increments by 1 each time you add a new student&lt;/li&gt;
-&lt;/ul&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="dotnet" />
-      
-        <category term="debugging" />
-      
-        <category term="csharp" />
-      
-        <category term="SQL" />
-      
-
-      
-        <summary type="html">Here are a few errors I received while working on a .NET application, and how I solved them.</summary>
       
 
       
