@@ -1,4 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-08-30T20:30:34-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Debugging serverless: ‘AWSLambdaFullAccess does not exist’</title><link href="http://localhost:4000/lambda-fullaccess-bug" rel="alternate" type="text/html" title="Debugging serverless: 'AWSLambdaFullAccess does not exist'" /><published>2022-08-30T18:30:00-06:00</published><updated>2022-08-30T18:30:00-06:00</updated><id>http://localhost:4000/lambda-fullaccess-bug</id><content type="html" xml:base="http://localhost:4000/lambda-fullaccess-bug">&lt;p&gt;I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-03T18:25:57-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">What’s the difference between ‘i++’ and ‘++i’</title><link href="http://localhost:4000/increment-decrement" rel="alternate" type="text/html" title="What's the difference between 'i++' and '++i'" /><published>2022-10-02T18:30:00-06:00</published><updated>2022-10-02T18:30:00-06:00</updated><id>http://localhost:4000/increment-decrement</id><content type="html" xml:base="http://localhost:4000/increment-decrement">&lt;p&gt;I have always been familiar with incrementing a variable using &lt;code class=&quot;highlighter-rouge&quot;&gt;i++&lt;/code&gt;, but recently came across &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt;. It took me a while to truly understand the difference.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;i++&lt;/code&gt; is used as a shorthand for writing &lt;code class=&quot;highlighter-rouge&quot;&gt;i = i + 1&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt; does the same. The difference between the two is in what value is returned from this operation.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;returnIncrementPrefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;returnIncrementPostfix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// returns 6&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the example above, we use the prefix &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt;. When 5 is used as an argument in this function, 6 is returned. Knowing that &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt; increments by one, this seems to make sense.&lt;/p&gt;
+
+&lt;p&gt;What happens when we use the postfix?&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;returnIncrementPostfix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;returnIncrementPostfix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// returns 5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The above code returns a value of 5. At first this doesn’t make sense. We are supposed to be incrementing by 1, right? Shouldn’t this also equal 6?&lt;/p&gt;
+
+&lt;p&gt;Nope! In the first example, these steps occur:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;i is incremented by 1, giving i a value of 6&lt;/li&gt;
+  &lt;li&gt;i is returned&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We are returned the value of i &lt;em&gt;after&lt;/em&gt; it has been incremented.&lt;/p&gt;
+
+&lt;p&gt;In the second example using the postfix, i is being returned &lt;em&gt;before&lt;/em&gt; it is incremented. The operation doesn’t happen until after 5 has been returned to us.&lt;/p&gt;
+
+&lt;p&gt;It’s all about the order in which the steps occur.&lt;/p&gt;
+
+&lt;h4 id=&quot;tip-for-remembering&quot;&gt;Tip for remembering&lt;/h4&gt;
+
+&lt;p&gt;If you need help remembering which operation does which, think of it this way. If the “++” comes &lt;em&gt;before&lt;/em&gt; the i, incrementation happens before it is returned. If the “++” comes &lt;em&gt;after&lt;/em&gt; the i, the incrementation happens after it is returned.&lt;/p&gt;
+
+&lt;p&gt;Of course, this applies to other operations, including decrementation.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="javascript" /><summary type="html">I have always been familiar with incrementing a variable using i++, but recently came across ++i. It took me a while to truly understand the difference.</summary></entry><entry><title type="html">Debugging serverless: ‘AWSLambdaFullAccess does not exist’</title><link href="http://localhost:4000/lambda-fullaccess-bug" rel="alternate" type="text/html" title="Debugging serverless: 'AWSLambdaFullAccess does not exist'" /><published>2022-08-30T18:30:00-06:00</published><updated>2022-08-30T18:30:00-06:00</updated><id>http://localhost:4000/lambda-fullaccess-bug</id><content type="html" xml:base="http://localhost:4000/lambda-fullaccess-bug">&lt;p&gt;I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.&lt;/p&gt;
 
 &lt;p&gt;Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node 14 - or so I thought. It turns out there were a few I missed, mostly in projects that are not worked on often.&lt;/p&gt;
 
@@ -537,76 +578,4 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
 
 &lt;p&gt;This was easily fixed by updating the ids to unique values.&lt;/p&gt;
 
-&lt;p&gt;I kind of wish I didn’t have to go through all that work before figuring out this simple issue, but at least in the future when I see a similar problem I’ll have a better idea of where to look first.&lt;/p&gt;</content><author><name></name></author><category term="debugging" /><category term="react" /><summary type="html">My company does a lot of data analytics, which means on the front end we work with a lot of graphs. Today I’ll talk about some difficulties I had debugging a new dashboard on our platform, which was built using recharts graphs.</summary></entry><entry><title type="html">Learning data structures - advanced structures (trees)</title><link href="http://localhost:4000/data-structures-3" rel="alternate" type="text/html" title="Learning data structures - advanced structures (trees)" /><published>2021-07-07T14:30:00-06:00</published><updated>2021-07-07T14:30:00-06:00</updated><id>http://localhost:4000/data-structures-3</id><content type="html" xml:base="http://localhost:4000/data-structures-3">&lt;p&gt;This is the last section of intro to data structures. We are now getting into non-linear data structures.&lt;/p&gt;
-
-&lt;p&gt;Everything up to this point has been a linear structure. The next data structures to cover are trees.&lt;/p&gt;
-
-&lt;p&gt;Once again following along with &lt;a href=&quot;https://www.youtube.com/watch?v=zg9ih6SVACc&amp;amp;t=7744s&quot;&gt;this video&lt;/a&gt; and supplementing with other sources.&lt;/p&gt;
-
-&lt;h3 id=&quot;trees&quot;&gt;Trees&lt;/h3&gt;
-
-&lt;p&gt;Nodes in a tree have a hierarchical relationship. Nodes can point to multiple nodes instead of just one, like we saw in linked lists.&lt;/p&gt;
-
-&lt;p&gt;There are lots of different types of trees, but one important one is called a &lt;strong&gt;binarysearch tree&lt;/strong&gt; .&lt;/p&gt;
-
-&lt;p&gt;Binary search tree:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;some rules:
-    &lt;ul&gt;
-      &lt;li&gt;nodes can only have 2 children&lt;/li&gt;
-      &lt;li&gt;the child to the left of the parent must be less than or equal to the parent while the child to the right must be greater than or equal to the parent&lt;/li&gt;
-      &lt;li&gt;nodes cannot have the same value&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;can perform searches on the tree in a logarithmic time&lt;/li&gt;
-  &lt;li&gt;at any given node during a search, choose left or right depending on if the value is less than or greater than the value at the current node&lt;/li&gt;
-  &lt;li&gt;these are good for storing large amounts of data because they are quick to search - for BigO notation, I believe that makes it O(log n)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Another tree that is used is called a &lt;strong&gt;Trie&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;these store letters of the alphabet&lt;/li&gt;
-  &lt;li&gt;to retrieve word based data&lt;/li&gt;
-  &lt;li&gt;each node has an array that includes references to letters&lt;/li&gt;
-  &lt;li&gt;the nodes basically spell out words as you go down the different paths on the tree&lt;/li&gt;
-  &lt;li&gt;the end of a word is marked by a flag - so nodes contain pointers to letters that follow as well as flags for the ends of words&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Heaps:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;parent nodes compare to child nodes and whether they are greater than or less than&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;min-heap:&lt;/strong&gt; root node is the minimum compared to the children&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;max-heap:&lt;/strong&gt; root node is the maximum compared to the children&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Graphs:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;made up of nodes and edges (paths between the nodes)&lt;/li&gt;
-  &lt;li&gt;not linear&lt;/li&gt;
-  &lt;li&gt;undirected graphs: direction between nodes doesn’t matter&lt;/li&gt;
-  &lt;li&gt;directed graph: direction does matter&lt;/li&gt;
-  &lt;li&gt;cyclic graph: nodes have a path back to itself (undirected count, since you can go any direction back to the start)&lt;/li&gt;
-  &lt;li&gt;acyclic graph: no path from one node back to itself&lt;/li&gt;
-  &lt;li&gt;edges can have a weight - kind of like distance between nodes&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;When to use trees?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;any time you have hierarchical data&lt;/li&gt;
-  &lt;li&gt;tries are used by things like spellcheck and autocomplete features&lt;/li&gt;
-  &lt;li&gt;heaps used for sorting algorithms like HeapSort, and priority queues&lt;/li&gt;
-  &lt;li&gt;graphs: used in shortest path algorithm, social media users, and more&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;That’s it for intro data structures! These posts probably read way more like notes than actual blog posts, but as I am still learning data structures I don’t have much else to share.&lt;/p&gt;
-
-&lt;p&gt;It’s interesting to learn the theory but I kept wondering how I would actually apply this in real projects. Especially in Javascript projects. Do all these data structures exist in Javascript? Do they go by different names? I still have a lot of questions.&lt;/p&gt;
-
-&lt;p&gt;My next step will be to learn about Javascript specific data structures and real life applications.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><summary type="html">This is the last section of intro to data structures. We are now getting into non-linear data structures.</summary></entry></feed>
+&lt;p&gt;I kind of wish I didn’t have to go through all that work before figuring out this simple issue, but at least in the future when I see a similar problem I’ll have a better idea of where to look first.&lt;/p&gt;</content><author><name></name></author><category term="debugging" /><category term="react" /><summary type="html">My company does a lot of data analytics, which means on the front end we work with a lot of graphs. Today I’ll talk about some difficulties I had debugging a new dashboard on our platform, which was built using recharts graphs.</summary></entry></feed>

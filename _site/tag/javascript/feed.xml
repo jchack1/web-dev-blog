@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/javascript/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-08-30T20:30:34-06:00</updated>
+  <updated>2022-10-03T18:25:57-06:00</updated>
   <id>http://localhost:4000/tag/javascript/feed.xml</id>
 
   
@@ -42,6 +42,83 @@
   
   
 
+  
+    <entry>
+      <title type="html">What’s the difference between ‘i++’ and ‘++i’</title>
+      <link href="http://localhost:4000/increment-decrement" rel="alternate" type="text/html" title="What's the difference between 'i++' and '++i'" />
+      <published>2022-10-02T18:30:00-06:00</published>
+      <updated>2022-10-02T18:30:00-06:00</updated>
+      <id>http://localhost:4000/increment-decrement</id>
+      <content type="html" xml:base="http://localhost:4000/increment-decrement">&lt;p&gt;I have always been familiar with incrementing a variable using &lt;code class=&quot;highlighter-rouge&quot;&gt;i++&lt;/code&gt;, but recently came across &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt;. It took me a while to truly understand the difference.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;i++&lt;/code&gt; is used as a shorthand for writing &lt;code class=&quot;highlighter-rouge&quot;&gt;i = i + 1&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt; does the same. The difference between the two is in what value is returned from this operation.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;returnIncrementPrefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;returnIncrementPostfix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// returns 6&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the example above, we use the prefix &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt;. When 5 is used as an argument in this function, 6 is returned. Knowing that &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt; increments by one, this seems to make sense.&lt;/p&gt;
+
+&lt;p&gt;What happens when we use the postfix?&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;returnIncrementPostfix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;returnIncrementPostfix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// returns 5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The above code returns a value of 5. At first this doesn’t make sense. We are supposed to be incrementing by 1, right? Shouldn’t this also equal 6?&lt;/p&gt;
+
+&lt;p&gt;Nope! In the first example, these steps occur:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;i is incremented by 1, giving i a value of 6&lt;/li&gt;
+  &lt;li&gt;i is returned&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We are returned the value of i &lt;em&gt;after&lt;/em&gt; it has been incremented.&lt;/p&gt;
+
+&lt;p&gt;In the second example using the postfix, i is being returned &lt;em&gt;before&lt;/em&gt; it is incremented. The operation doesn’t happen until after 5 has been returned to us.&lt;/p&gt;
+
+&lt;p&gt;It’s all about the order in which the steps occur.&lt;/p&gt;
+
+&lt;h4 id=&quot;tip-for-remembering&quot;&gt;Tip for remembering&lt;/h4&gt;
+
+&lt;p&gt;If you need help remembering which operation does which, think of it this way. If the “++” comes &lt;em&gt;before&lt;/em&gt; the i, incrementation happens before it is returned. If the “++” comes &lt;em&gt;after&lt;/em&gt; the i, the incrementation happens after it is returned.&lt;/p&gt;
+
+&lt;p&gt;Of course, this applies to other operations, including decrementation.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="computer-science" />
+      
+        <category term="javascript" />
+      
+
+      
+        <summary type="html">I have always been familiar with incrementing a variable using i++, but recently came across ++i. It took me a while to truly understand the difference.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</title>
@@ -1407,138 +1484,6 @@
 
       
         <summary type="html">I have seen jQuery all over the place, including at work, but I have never taken the time to learn it in depth. I figured I needed to do this soon, and there happens to be a section in my current Web Developer Bootcamp Udemy course. Here are some of my notes.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Notes on the DOM</title>
-      <link href="http://localhost:4000/dom-notes" rel="alternate" type="text/html" title="Notes on the DOM" />
-      <published>2020-04-19T11:30:00-06:00</published>
-      <updated>2020-04-19T11:30:00-06:00</updated>
-      <id>http://localhost:4000/dom-notes</id>
-      <content type="html" xml:base="http://localhost:4000/dom-notes">&lt;p&gt;I finished my .NET MVC Udemy course and have gone back to my Web Developer Bootcamp Udemy course that I started before going to school.&lt;/p&gt;
-
-&lt;p&gt;I should have completed this before starting my program; it would have made life so much easier if I already had some exposure to these topics.&lt;/p&gt;
-
-&lt;p&gt;The nice thing about completing this now, however, is that I’m breezing right through the content. It’s actually a really good opportunity to review the fundamentals, hear the content explained from another perspective, and pick up some new things I didn’t learn the first time around.&lt;/p&gt;
-
-&lt;p&gt;Today I am working through the section on the DOM. The instructor is really good at highlighting and organizing the most important concepts, so I figured it would help me to make some notes here.&lt;/p&gt;
-
-&lt;h3 id=&quot;important-dom-selector-methods&quot;&gt;Important DOM Selector Methods&lt;/h3&gt;
-
-&lt;p&gt;These return HTML elements as &lt;em&gt;objects&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;document.getElementById()&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;pretty obvious, select the element with this id&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;document.getElementsByClassName()&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;returns a list of all elements with this class name&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;document.getElementsByTagName()&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;e.g. to select the body of a page use document.getElementsByTagName(“body”)[0];&lt;/li&gt;
-  &lt;li&gt;I have tried using the TagName selector in the past but I could never get it to work. It was only when I saw the index of 0 ([0]) being used that I understood my problem&lt;/li&gt;
-  &lt;li&gt;this selector returns all the elements in a &lt;em&gt;list&lt;/em&gt;, and I needed to select the first one - in the case of body, it’s the only one&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;document.querySelector()&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;important note!! only returns the &lt;em&gt;first element&lt;/em&gt; it comes across with this selector&lt;/li&gt;
-  &lt;li&gt;can use any CSS selector you could use in a CSS file, like “.some-class h1”, using the same syntax you use in a CSS file&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;document.querySelectorAll()&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;returns a list of elements that match the selector&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;important-ways-to-manipulate-the-dom&quot;&gt;Important ways to manipulate the DOM&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;changing the style of an element
-    &lt;ul&gt;
-      &lt;li&gt;can use the “&lt;strong&gt;style&lt;/strong&gt;” property in javascript&lt;/li&gt;
-      &lt;li&gt;e.g. tag.style.border = “1px solid black”;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;add/remove classes with javascript
-    &lt;ul&gt;
-      &lt;li&gt;use javascript “&lt;strong&gt;classList&lt;/strong&gt;” property&lt;/li&gt;
-      &lt;li&gt;classList.add, classList.remove, classList.toggle&lt;/li&gt;
-      &lt;li&gt;classList is not technically an array&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;changing content of a tag
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;textContent&lt;/strong&gt; to extract and change the text inside an element, treats it like text&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;innerHtml&lt;/strong&gt;, however, maintains what’s inside the HTML, safer to use, treats it like HTML&lt;/li&gt;
-      &lt;li&gt;these override what’s already inside the tag&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;changing tag attributes
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;getAttribute()&lt;/strong&gt; and &lt;strong&gt;setAttribute()&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;e.g. link.getAttribute(“href”);&lt;/li&gt;
-      &lt;li&gt;e.g. link.setAttribute(“src”, “imgs/whatever.jpg”);&lt;/li&gt;
-      &lt;li&gt;can even use to change an id or a class&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;dom-events&quot;&gt;DOM events&lt;/h3&gt;
-
-&lt;p&gt;Add event listeners to specific elements.&lt;/p&gt;
-
-&lt;p&gt;Important method: &lt;strong&gt;addEventListener(type, functionToCall)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Type = type of event we’re listening for&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;“click” is a common one&lt;/li&gt;
-  &lt;li&gt;“change” will fire whenever there is any sort of change, like typing into an input&lt;/li&gt;
-  &lt;li&gt;“mouseover” for when you hover over an element&lt;/li&gt;
-  &lt;li&gt;“mouseout” for when you move your mouse away from the element; can use with “mouseover” to create hover effect&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;functionToCall = callback function we want to run when event happens&lt;/p&gt;
-
-&lt;h3 id=&quot;html-inputs-give-you-strings&quot;&gt;HTML inputs give you strings&lt;/h3&gt;
-
-&lt;p&gt;Let’s say you want to use an input field for a number. Even if you input a number, and have the input type=”number”, the value you get will be a string. Like “7” instead of 7. Unless you are using a “==” and type coersion, javascript won’t be able to use this as a number.&lt;/p&gt;
-
-&lt;p&gt;It took me a while to figure this out on my own, and it came up in my course.  The instructor’s solution for this was to place the input value inside the Number() method:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;winningScore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;numInput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="javascript" />
-      
-        <category term="dom" />
-      
-
-      
-        <summary type="html">I finished my .NET MVC Udemy course and have gone back to my Web Developer Bootcamp Udemy course that I started before going to school.</summary>
       
 
       
