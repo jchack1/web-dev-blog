@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/javascript/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-10-21T14:52:10-06:00</updated>
+  <updated>2022-10-30T18:53:46-06:00</updated>
   <id>http://localhost:4000/tag/javascript/feed.xml</id>
 
   
@@ -42,6 +42,212 @@
   
   
 
+  
+    <entry>
+      <title type="html">Working with JavaScript numbers and dates</title>
+      <link href="http://localhost:4000/javascript-numbers-dates" rel="alternate" type="text/html" title="Working with JavaScript numbers and dates" />
+      <published>2022-10-30T18:30:00-06:00</published>
+      <updated>2022-10-30T18:30:00-06:00</updated>
+      <id>http://localhost:4000/javascript-numbers-dates</id>
+      <content type="html" xml:base="http://localhost:4000/javascript-numbers-dates">&lt;p&gt;Doing math and working with dates can sometimes be challenging in programming.&lt;/p&gt;
+
+&lt;p&gt;I’ve been getting back into my JavaScript course on Udemy called “The Complete JavaScript Course 2022: From Zero to Expert”, in order to level up my skills. Here are some notes about numbers, dates, and methods we can use in JavaScript to work with numbers and dates.&lt;/p&gt;
+
+&lt;h3 id=&quot;conversion-parsing&quot;&gt;Conversion, parsing&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Number()&lt;/code&gt;: converts to a number&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; : a kind of type coercion that you place in front of what you’d like to convert. Acts just like &lt;code class=&quot;highlighter-rouge&quot;&gt;Number()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Number.parseInt()&lt;/code&gt;: if a string begins with a number(specifically an integer), it will return the number to you. Make sure you include the radix (or base, eg base 10, or base 2 (binary)).&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Number.parseFloat()&lt;/code&gt;: if a string begins with a number(in this case, a floating point number, meaning it has a decimal), it will return the number to you, including what’s after the decimal.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Number.isNaN()&lt;/code&gt;: check if something is not a number. Remember that NaN is its own type of value, so you could even put a string into this method, and it will return false, because it is &lt;em&gt;not&lt;/em&gt; NaN, it is a string.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Notes on NaN &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN&quot;&gt;from MDN&lt;/a&gt;: NaN is returned when a math operation results in something we can’t represent or is undefined. It is also returned when we try to convert something into a number that can’t be. - &lt;code class=&quot;highlighter-rouge&quot;&gt;Number(&quot;257abc&quot;)&lt;/code&gt; returns NaN, since it can’t be turned into a number&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Number.isFinite()&lt;/code&gt;: another, better way to check if something is a floating point number&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Number.isInteger()&lt;/code&gt;: to check if something is an integer, no decimal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;remainders&quot;&gt;Remainders&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;use &lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt; to get the remainder of a division operation&lt;/li&gt;
+  &lt;li&gt;good when you need to do something every nth time&lt;/li&gt;
+  &lt;li&gt;good to use when determining if a number is even or odd
+    &lt;ul&gt;
+      &lt;li&gt;if you divide a number by 2, and the remainder is 0, the number is even. If the remainder is 1, the number is odd&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;numeric-separators&quot;&gt;Numeric separators&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;use &lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt; to separate digits in a number, to make it easier to read&lt;/li&gt;
+  &lt;li&gt;for example you can use them to separate by the thousands place
+    &lt;ul&gt;
+      &lt;li&gt;2,000,000 becomes 2_000_000&lt;/li&gt;
+      &lt;li&gt;JavaScript ignores the underscores&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;cannot be placed:
+    &lt;ul&gt;
+      &lt;li&gt;before or after a decimal point&lt;/li&gt;
+      &lt;li&gt;at beginning or end of number&lt;/li&gt;
+      &lt;li&gt;in a string that needs to be converted to a number - will result in NaN&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;bigint&quot;&gt;BigInt&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;there is a limit to the biggest number JavaScript can represent - the max safe integer
+    &lt;ul&gt;
+      &lt;li&gt;2 to the power of (53 -1)&lt;/li&gt;
+      &lt;li&gt;anything larger is unsafe&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;BigInt can store these larger numbers&lt;/li&gt;
+  &lt;li&gt;add &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; to the end of your number&lt;/li&gt;
+  &lt;li&gt;can also use BigInt function&lt;/li&gt;
+  &lt;li&gt;you can’t do operations that mix regular numbers and BigInt - make sure the regular number is converted to a BigInt before doing a calculation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//n&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;569875621352789786315346578967&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//BigInt&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;BigInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;685789746533216578964321321234&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;dates&quot;&gt;Dates&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;new Date()&lt;/code&gt; gives you the current date and time&lt;/li&gt;
+  &lt;li&gt;you can pass strings and numbers into the Date constructor and JavaScript will parse them&lt;/li&gt;
+  &lt;li&gt;unix timestamps (number of milliseconds since Jan 1 1970) can be passed into it as well&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are methods you can use on dates&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getFullYear()&lt;/code&gt; returns the year&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getMonth()&lt;/code&gt; - returns as a number, remember it is 0 based&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getDate()&lt;/code&gt; - returns the day of the month&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getDay()&lt;/code&gt; - returns day of the week as a number also 0 based, starting on Sunday&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getHours()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getMinutes()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getSeconds()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;toISOString()&lt;/code&gt; - converts to a string&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getTime()&lt;/code&gt; - returns unix timestamp in milliseconds&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Date.now()&lt;/code&gt; - gives us the timestamp for right now&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are also “set” methods for all of the above, so you can update a date&lt;/p&gt;
+
+&lt;h3 id=&quot;operations-with-dates&quot;&gt;Operations with dates&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;you can convert a JavaScript date to a timestamp in milliseconds by converting it to a number&lt;/li&gt;
+  &lt;li&gt;if you wanted to subtract two dates, and return the number of days in between them, you’d need to divide them by a numerical value &lt;code class=&quot;highlighter-rouge&quot;&gt;1000 * 60 * 60 * 24&lt;/code&gt; - converts milliseconds to seconds (1000), then to minutes (60), then hours (60), then days (24)&lt;/li&gt;
+  &lt;li&gt;do these kinds of conversions depending on whether you want values in days, minutes, hours, etc&lt;/li&gt;
+  &lt;li&gt;if you need to do more complicated operations, can get a library like Moment.js&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;internationalization-api&quot;&gt;Internationalization API&lt;/h3&gt;
+
+&lt;h4 id=&quot;dates-1&quot;&gt;Dates&lt;/h4&gt;
+
+&lt;p&gt;Formatting with different languages:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;use &lt;code class=&quot;highlighter-rouge&quot;&gt;Intl.DateTimeFormat()&lt;/code&gt; function to choose a language (locale), then &lt;code class=&quot;highlighter-rouge&quot;&gt;.format()&lt;/code&gt; to format the date according to the chosen language&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.lingoes.net/en/translator/langcode.htm&quot;&gt;this link gives a list of codes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;you can &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat&quot;&gt;read more about this API on MDN here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;today&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Intl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DateTimeFormat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;en-GB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;today&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;you can add an “options” object into the formatter to get the date and time, and format how you choose&lt;/li&gt;
+  &lt;li&gt;numeric gives a number, long gives you a string - see above MDN link for more options&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;today&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;hour&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;numeric&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;minute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;numeric&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;day&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;numeric&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;month&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;long&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//pass options as an argument&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Intl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DateTimeFormat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;en-GB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;today&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;you can also get it from the user’s browser instead of setting it manually: &lt;code class=&quot;highlighter-rouge&quot;&gt;const locale = navigator.language&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;this is ideal if you will have international users&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;numbers&quot;&gt;Numbers&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;use &lt;code class=&quot;highlighter-rouge&quot;&gt;Intl.NumberFormat().format()&lt;/code&gt; to change number formatting based on location&lt;/li&gt;
+  &lt;li&gt;eg. using commas vs decimal points as separators&lt;/li&gt;
+  &lt;li&gt;can also pass in an option object, where you can format units (like mph, temperature, percent, currency)&lt;/li&gt;
+  &lt;li&gt;have to set the currency in ‘options’, which you can’t get from locale alone&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;settimeout-and-setinterval&quot;&gt;setTimeout and setInterval&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout()&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;first argument is a callback function, and the second argument is the amount of time to pass before running the function&lt;/li&gt;
+  &lt;li&gt;pass additional arguments (that your callback function needs) after the time argument&lt;/li&gt;
+  &lt;li&gt;line of code is read, JavaScript makes note of it and counts down the time in the background, while the rest of your code runs. JavaScript does NOT wait for setTimeout to finish before executing the rest of your code&lt;/li&gt;
+  &lt;li&gt;can use &lt;code class=&quot;highlighter-rouge&quot;&gt;clearTimeout()&lt;/code&gt; to delete the timer in certain situations. You would assign your setTimeout function to a variable, then pass that variable into &lt;code class=&quot;highlighter-rouge&quot;&gt;clearTimeout()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval()&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;runs a callback function over and over, according to the timer interval you pass as an argument&lt;/li&gt;
+  &lt;li&gt;stop it using &lt;code class=&quot;highlighter-rouge&quot;&gt;clearInterval()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="javascript" />
+      
+
+      
+        <summary type="html">Doing math and working with dates can sometimes be challenging in programming.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">How to clone a JavaScript object</title>
@@ -1237,133 +1443,6 @@
 
       
         <summary type="html">While working on a particularly difficult task at work I ended up learning a lot about memory leaks.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Reviewing API calls</title>
-      <link href="http://localhost:4000/api-review" rel="alternate" type="text/html" title="Reviewing API calls" />
-      <published>2020-05-18T16:30:00-06:00</published>
-      <updated>2020-05-18T16:30:00-06:00</updated>
-      <id>http://localhost:4000/api-review</id>
-      <content type="html" xml:base="http://localhost:4000/api-review">&lt;p&gt;Today in my Web Developer course I am reviewing how to use APIs.&lt;/p&gt;
-
-&lt;p&gt;This was a topic I really struggled with the first time around while in school.  I just couldn’t wrap my head around it. I think I struggled because javascript was still so new to me, and I could not seem to figure out how to get the data I needed from an API call.&lt;/p&gt;
-
-&lt;p&gt;This time around it’s making a bit more sense, so here are some important points I picked up from the API section of this course, and a little explanation of the process of completing these exercises.&lt;/p&gt;
-
-&lt;p&gt;For this exercise we needed to get the sunset time for Hawaii from a weather API. The course uses the yahoo weather API, but it has since been retired. I decided to use OpenWeather API, which I believe some of my classmates used for their API assignments back in the fall.&lt;/p&gt;
-
-&lt;p&gt;To get started you need to sign up, and an API key will be generated for you. You can generate more API keys as needed. The docs explain how to make an API call. I decided to make my API call using the city ID, and all city IDs can be found in a downloadable JSON file.  I chose Lahaina, Maui.  The format for calling the API by city ID is as follows:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;api.openweathermap.org/data/2.5/weather?id={city id}&amp;amp;appid={your api key}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;As you can see, you plug in the city ID and your API key.  My URL looked like this (note I have included a fake API key for privacy):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;My course used the “request” package to handle requests in Node.js, however that package has since been deprecated. I used it for the exercise because it still works, though for a real project I would try to find something that is currently being updated and maintained.&lt;/p&gt;
-
-&lt;p&gt;To test if you’re receiving data, the code looked like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;However, the data you get back in the console is actually a string. We can prove this by printing “typeof body” to the console. We need to access our data from a javascript object, not a string. All you need to do is use “JSON.parse(body)”:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now, to get my sunset data. To know the structure of the JSON object I made the API request in the browser. In chrome I have an extension called JSON Viewer, which makes the JSON easier to read. This was the part of the JSON data I needed, to know how my sunset time was nested:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sys&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7875&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;country&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;US&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;sunrise&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1590335183&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;sunset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1590382873&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;So I just need to get the data, in this case using the square bracket notation []:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sunset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sys&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sunset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sunset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;However, this just prints a long string of numbers, not a date. Checking the docs I can see that, when using a JSON object, it gives the time in unix format, which is basically the number of seconds that have passed since 00:00:00 UTC on 1 January 1970. The simplest seeming suggestion to parse this format on stack overflow was to use Moment.js.&lt;/p&gt;
-
-&lt;p&gt;Once I figured out how to get an hour:minute format, I printed it to the console. But the time didn’t look right. If I am looking for the sunset in Lahaina, in May, it most likely wouldn’t be 22:58 - nearly 11pm! -  which is what my program told me. When I looked it up, it was in fact 18:59. This four hour difference is actually the time difference between Lahaina and my own timezone, MDT. Somehow I am getting the time that the sun sets in Lahaina, in MDT.  I had to dig in a bit more to find out why this was happening. Is it coming from my API, or from Moment.js?&lt;/p&gt;
-
-&lt;p&gt;I ended up spending a few days away from this exercise, and came back with a fresher mind. After a couple searches I found that you need to include the city’s timezone hardcoded. Stack overflow suggested a method called utcOffset(). Hawaii’s timezone is GMT-10, so I plugged that into the method. You can also see how unix time was handled:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;amp;appid=12345abcde&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sunsetUnix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sys&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sunset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-        
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sunset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sunsetUnix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;utcOffset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sunset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;HH:mm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Finally, this gave me the correct sunset time.&lt;/p&gt;
-
-&lt;p&gt;I was glad I managed to figure this out, and that it wasn’t as difficult as I was expecting. I was almost ready to just move on with my course not having figured it out. Maybe it wouldn’t have mattered since this timezone issue doesn’t really have much to do with APIs. However, sticking with it until it was solved reminded me of two things:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;the importance of stepping away from the code when you are stuck; it gives your mind a rest and allows your subconscious to continue looking for creative ways to solve the problem&lt;/li&gt;
-  &lt;li&gt;that (at least for my own personal projects) I can solve any problem if I set my mind to it&lt;/li&gt;
-&lt;/ul&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="javascript" />
-      
-        <category term="node.js" />
-      
-        <category term="api" />
-      
-
-      
-        <summary type="html">Today in my Web Developer course I am reviewing how to use APIs.</summary>
       
 
       
