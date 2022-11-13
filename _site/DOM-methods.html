@@ -11,7 +11,7 @@
 
 
 
-    <title>Debugging - forEach with async/await</title>
+    <title>The DOM</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,24 +36,24 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/forEach-async-await" />
+    <link rel="canonical" href="http://localhost:4000/DOM-methods" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Debugging - forEach with async/await" />
-    <meta property="og:description" content="This week I learned that you do not use forEach loops with async/await. I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app. We use async and await to deal with" />
-    <meta property="og:url" content="http://localhost:4000/forEach-async-await" />
+    <meta property="og:title" content="The DOM" />
+    <meta property="og:description" content="Some more notes about the DOM, from the course I’m working on “The Complete JavaScript Course 2022: From Zero to Expert” on Udemy. This post is more about DOM methods and strategies for common use cases. Selecting selecting the whole HTML document: document.documentElement head: document.head, body: document.body select all, returns" />
+    <meta property="og:url" content="http://localhost:4000/DOM-methods" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2021-12-07T18:30:00-07:00" />
-    <meta property="article:modified_time" content="2021-12-07T18:30:00-07:00" />
+    <meta property="article:published_time" content="2022-11-12T18:30:00-07:00" />
+    <meta property="article:modified_time" content="2022-11-12T18:30:00-07:00" />
     <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Debugging - forEach with async/await" />
-    <meta name="twitter:description" content="This week I learned that you do not use forEach loops with async/await. I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app. We use async and await to deal with" />
+    <meta name="twitter:title" content="The DOM" />
+    <meta name="twitter:description" content="Some more notes about the DOM, from the course I’m working on “The Complete JavaScript Course 2022: From Zero to Expert” on Udemy. This post is more about DOM methods and strategies for common use cases. Selecting selecting the whole HTML document: document.documentElement head: document.head, body: document.body select all, returns" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/forEach-async-await",
+    "url": "http://localhost:4000/DOM-methods",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/forEach-async-await"
+        "@id": "http://localhost:4000/DOM-methods"
     },
-    "description": "This week I learned that you do not use forEach loops with async/await. I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app. We use async and await to deal with"
+    "description": "Some more notes about the DOM, from the course I’m working on “The Complete JavaScript Course 2022: From Zero to Expert” on Udemy. This post is more about DOM methods and strategies for common use cases. Selecting selecting the whole HTML document: document.documentElement head: document.head, body: document.body select all, returns"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Debugging - forEach with async/await" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="The DOM" href="/feed.xml" />
 
 
 </head>
@@ -153,7 +153,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 7 December 2021"> 7 December 2021</time>
+                    <time class="post-full-meta-date" datetime="12 November 2022">12 November 2022</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -162,62 +162,290 @@ into the {body} of the default.hbs template -->
                             
                         
                             
-                               <a href='/tag/debugging/'>DEBUGGING</a>
+                               <a href='/tag/dom/'>DOM</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Debugging - forEach with async/await</h1>
+                <h1 class="post-full-title">The DOM</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>This week I learned that you do not use forEach loops with async/await.</p>
+                    <p>Some more notes about the DOM, from the course I’m working on “The Complete JavaScript Course 2022: From Zero to Expert” on Udemy. This post is more about DOM methods and strategies for common use cases.</p>
 
-<p>I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app.</p>
+<h3 id="selecting">Selecting</h3>
 
-<p>We use async and await to deal with promises when interacting with the database. While investigating the updating issue, I noticed that most of the time, my “put” operations were not going through. No error was being returned - the puts were just not happening. Not a lot to go on when debugging. The code also seemed to stop running when it hit the function that was supposed to return the promise.</p>
+<ul>
+  <li>selecting the whole HTML document: <code class="highlighter-rouge">document.documentElement</code></li>
+  <li>head: <code class="highlighter-rouge">document.head</code>, body: <code class="highlighter-rouge">document.body</code></li>
+  <li>select all, returns a node list: <code class="highlighter-rouge">document.querySelectorAll()</code></li>
+</ul>
 
-<p>What’s interesting, though, is that <em>sometimes</em> the operations would actually go through. I’d notice that my item had updated and the rest of the code had run. But I hadn’t made any changes to the code. This suggested to me that it may be an issue with the way I implemented async and await.</p>
+<p>More selectors:</p>
 
-<h3 id="what-the-code-originally-looked-like">What the code originally looked like</h3>
+<ul>
+  <li>getElementById()</li>
+  <li>getElementsByTagName()</li>
+  <li>querySelector()</li>
+  <li>getElementsByClassName()</li>
+</ul>
 
-<p>I had no reason before to think that a forEach loop couldn’t be used with async/await. I figured that if you awaited something in the body of the forEach callback, it would work as long as you placed an async in front of your callback, kind of like this:</p>
+<p>HTML Collection: a list of elements from the <em>live</em> webpage, will update if elements are added or deleted</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">newTeamName</span> <span class="o">=</span> <span class="s2">"Team B"</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">employees</span> <span class="o">=</span> <span class="nx">getEmployeesByTeamName</span><span class="p">({</span><span class="na">teamName</span><span class="p">:</span> <span class="s2">"Team A"</span><span class="p">});</span>
+<ul>
+  <li>not just any type of DOM node - collections are made up of HTML elements</li>
+</ul>
 
-<span class="nx">employees</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="nx">employee</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kr">await</span> <span class="nx">updateEmployeeTeam</span><span class="p">({</span><span class="na">teamName</span><span class="p">:</span> <span class="nx">newTeamName</span><span class="p">,</span> <span class="na">employeeId</span><span class="p">:</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">id</span><span class="p">});</span>
+<p>Node list vs HTML collection: a node list stays constant (usually) and won’t update itself, but an HTML collection is live and can update</p>
+
+<ul>
+  <li>node lists can contain any type of DOM node, but HTML collections can only contain HTML elements</li>
+  <li>node lists can use array methods, HTML collections can’t</li>
+</ul>
+
+<h3 id="creatinginserting-elements">Creating/inserting elements</h3>
+
+<ul>
+  <li>insertAdjacentHTML()</li>
+  <li>document.createElement() - returns DOM element, but you need to put it into the page still</li>
+  <li>textContent and innerHTML can add content to an element</li>
+  <li>prepend() - adds element as the first child of an element</li>
+  <li>append() - adds element as the last child of an element
+    <ul>
+      <li>prepend and append can be used to move elements, since the DOM element is assigned a unique id</li>
+    </ul>
+  </li>
+  <li>cloneNode() - copies an element, giving it a unique id</li>
+</ul>
+
+<h3 id="deleting-elements">Deleting elements</h3>
+
+<ul>
+  <li>remove() - removes element from DOM</li>
+</ul>
+
+<h3 id="styling">Styling</h3>
+
+<ul>
+  <li>getComputedStyle() - pass element into this function to get all its CSS styling</li>
+  <li>can get individual properties from this as well</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">thing</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">".thing"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">color</span> <span class="o">=</span> <span class="nx">getComputedStyle</span><span class="p">(</span><span class="nx">thing</span><span class="p">).</span><span class="nx">color</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>setProperty() - pass property and value into this to set a CSS property on an element</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">thing</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">".thing"</span><span class="p">);</span>
+
+<span class="nx">thing</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="s2">"backgroundColor"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">);</span>
+
+<span class="c1">//but this is not always necessary</span>
+<span class="c1">//can do this instead</span>
+
+<span class="nx">thing</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="s2">"red"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="attributes">Attributes</h3>
+
+<ul>
+  <li>access standard HTML attributes like how we access style above</li>
+  <li>for anything that is not standard, use getAttribute()</li>
+  <li>also a setAttribute() method</li>
+  <li>can get data attributes as well, accessed with “dataset” property</li>
+</ul>
+
+<h3 id="classes">Classes</h3>
+
+<ul>
+  <li>get classes with “classList”</li>
+  <li>classList.add()</li>
+  <li>classList.remove()</li>
+  <li>classList.toggle()</li>
+  <li>classList.contains()</li>
+</ul>
+
+<p>DON’T USE: <code class="highlighter-rouge">thing.className = "newClass"</code> to set a class, because it overrides everything. Just use the methods above.</p>
+
+<h3 id="coordinates-of-dom-elements">Coordinates of DOM elements</h3>
+
+<ul>
+  <li>getBoundingClientRect(): gives you lots of properties of an element, including how far away it is from the left (x), right, top (y), bottom of the viewport, as welel as the element’s width and height</li>
+  <li>window.pageXOffset or scrollX: how far down the page you have scrolled</li>
+  <li>window.pageYOffset or scrollY: how far you’ve scrolled horizontally, if at all</li>
+  <li>document.documentElement.clientHeight (or clientWidth): gives the height (or width) of the viewport</li>
+  <li>window.scrollTo(): to scroll to coordinates on the page</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//NEWER WAY of scrolling to element</span>
+<span class="c1">//no calculations needed</span>
+<span class="c1">//just in new browsers though</span>
+<span class="nx">element</span><span class="p">.</span><span class="nx">scrollIntoView</span><span class="p">({</span><span class="na">behavior</span><span class="p">:</span> <span class="s2">"smooth"</span><span class="p">});</span>
+
+<span class="c1">//OLD WAY</span>
+<span class="c1">//combine methods together to get the abolute coordinates of an element</span>
+<span class="c1">//not just the coordinates relative to the top of viewport, etc</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">(</span>
+  <span class="nx">element</span><span class="p">.</span><span class="nx">left</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">pageXOffset</span><span class="p">,</span>
+  <span class="nx">element</span><span class="p">.</span><span class="nx">top</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span>
+<span class="p">);</span>
+
+<span class="c1">//can also add an object, to specify behavior</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">({</span>
+  <span class="na">left</span><span class="p">:</span> <span class="nx">element</span><span class="p">.</span><span class="nx">left</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">pageXOffset</span><span class="p">,</span>
+  <span class="na">top</span><span class="p">:</span> <span class="nx">element</span><span class="p">.</span><span class="nx">top</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span><span class="p">,</span>
+  <span class="na">behavior</span><span class="p">:</span> <span class="s2">"smooth"</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div></div>
 
-<h3 id="what-the-problem-is">What the problem is</h3>
-
-<p>Here are a couple articles that helped me understand, as well as the MDN doc for forEach:</p>
+<h3 id="events">Events</h3>
 
 <ul>
-  <li><a href="https://zellwk.com/blog/async-await-in-loops/">https://zellwk.com/blog/async-await-in-loops/</a></li>
-  <li><a href="https://www.hacksparrow.com/javascript/foreach-in-promise-async-function.html">https://www.hacksparrow.com/javascript/foreach-in-promise-async-function.html</a></li>
-  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach</a></li>
+  <li>mouseEnter(): like hovering, when the mouse is hovering over an element</li>
+  <li>mouseLeave(): mouse is off the element</li>
+  <li>mouseover and mouseout are similar, but mouseenter triggers only when the mouse enters that specific element. mouseover is triggered when the mouse enters that element OR its childredn</li>
 </ul>
 
-<p>Essentially, forEach came before async/await and is not built for it. Async/await doesn’t work with callback based loops. You aren’t actually awaiting the callback. The code just keeps running and doesn’t wait for promises to complete.</p>
+<p>How events work - using click events as example</p>
 
-<p>For my work scenario, most of the time I could not get the data back from the database before the forEach loop moved on the to next line of code. I assume that for the times that my code <em>did</em> work, it was just by chance that I got the data quickly enough that execution had not moved onto the next line yet. Of course, this was a very rare event.</p>
+<ul>
+  <li>element is clicked, and an event is generated at the root of document (top of dom tree)</li>
+  <li>capturing phase: event passes down to the target element, through every parent element on its way</li>
+  <li>target phase begins once the event gets to the target element - then whatever is supposed to happen on click, happens</li>
+  <li>bubbling phase - event travels all the way back up to the root of the document, again through every parent element
+    <ul>
+      <li>its as if the same event is happening on all the parent elements too</li>
+      <li>so if we also had that event listener on one of the parent elements, the thing would happen there too</li>
+    </ul>
+  </li>
+  <li>this is basically events “progagating”</li>
+  <li>you can stop the propagation of an event before it bubbles back up to the parent elements, using e.stopPropagation() - but you don’t want to rely on this unless you really need to</li>
+</ul>
 
-<h3 id="what-to-do-instead">What to do instead</h3>
+<p>By default: event is handled by target element and in bubbling phase, BUT: you can set up some events to happen in capturing phase (add <code class="highlighter-rouge">true</code> to your event listener code)</p>
 
-<p>Just use a for loop. The code will pause and wait for your promise synchronously, as you’d expect. In my case I used a for…of loop, like below:</p>
+<p>Also, there are exceptions, where there are no capturing or bubbling phases</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">newTeamName</span> <span class="o">=</span> <span class="s2">"Team B"</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">employees</span> <span class="o">=</span> <span class="nx">getEmployeesByTeamName</span><span class="p">({</span><span class="na">teamName</span><span class="p">:</span> <span class="s2">"Team A"</span><span class="p">});</span>
+<ul>
+  <li>mouseover vs mouseenter: note that mouseover events bubble, but mouseenter events DO NOT, since mouseover is triggered by hovering over itself and its children</li>
+</ul>
 
-<span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">employee</span> <span class="k">of</span> <span class="nx">employees</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">await</span> <span class="nx">updateEmployeeTeam</span><span class="p">({</span><span class="na">teamName</span><span class="p">:</span> <span class="nx">newTeamName</span><span class="p">,</span> <span class="na">employeeId</span><span class="p">:</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">id</span><span class="p">});</span>
+<h3 id="smooth-scroll-into-view">Smooth scroll into view</h3>
+
+<ul>
+  <li>on the a tag, put the id of the element you’d like to scroll to in the href</li>
+  <li>in the javascript, add an event listener</li>
+  <li>use e.preventDefault() so we aren’t just using the HTML to jump down the page, want our javascript to make it smooth</li>
+  <li>get the id of the element but using this.getAttribute(“href”)</li>
+  <li>select that element using the id, then add scrollIntoView({behavior: smooth})</li>
+</ul>
+
+<p>Example below of adding events to multiple nav links - but, forEach is not very efficient. You could instead add the function to a common parent element, only one time.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">".nav-link"</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">x</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">"href"</span><span class="p">);</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">scrollIntoView</span><span class="p">({</span><span class="na">behavior</span><span class="p">:</span> <span class="s2">"smooth"</span><span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="event-delegation">Event delegation</h3>
+
+<ul>
+  <li>add event listener to common parent</li>
+  <li>determine what element originated the event, using e.target
+    <ul>
+      <li>check if target contains the correct class of the element you’re looking for</li>
+      <li>if so, using e.target, you can get the id like in the example above, basically do the same code</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="dom-traversing">DOM traversing</h3>
+
+<ul>
+  <li>“walking through” the DOM</li>
+  <li>can select elements, and get child elements or use querySelector() on it</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">h2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"h2"</span><span class="p">);</span>
+
+<span class="c1">//can select child elements with a particular class</span>
+<span class="c1">//only elements with this class that are child elements of this parent will be selected</span>
+<span class="kd">const</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nx">h2</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">".my-class"</span><span class="p">);</span>
+
+<span class="c1">//can also select parent elements</span>
+
+<span class="kd">const</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">h2</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">anotherWay</span> <span class="o">=</span> <span class="nx">h2</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">closest</span> <span class="o">=</span> <span class="nx">h2</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="s2">".header"</span><span class="p">);</span> <span class="c1">//closest parent with a particular class</span>
+
+<span class="c1">// can also select direct siblings</span>
+
+<span class="kd">const</span> <span class="nx">previous</span> <span class="o">=</span> <span class="nx">h2</span><span class="p">.</span><span class="nx">previousSibling</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">next</span> <span class="o">=</span> <span class="nx">h2</span><span class="p">.</span><span class="nx">nextSibling</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="passing-arguments-into-handler-functions">Passing arguments into handler functions</h3>
+
+<ul>
+  <li>event handlers can only accept 1 argument, but there are times when you may need to pass in others</li>
+  <li>you can use the <code class="highlighter-rouge">bind</code> method, as well as the <code class="highlighter-rouge">this</code> keyword</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">//opacity example, similar to the one in the course</span>
+<span class="c1">//let say you want to change the opacity of something based on a hover event</span>
+
+<span class="kd">const</span> <span class="nx">handleHover</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">//only need to pass in the event, using bind in the event handle allows us to use "this" here</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s2">"nav-link"</span><span class="p">)){</span>
+   <span class="kd">const</span> <span class="nx">link</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span>
+   <span class="kd">const</span> <span class="nx">siblings</span> <span class="o">=</span> <span class="nx">link</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="s2">".nav"</span><span class="p">).</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">".nav-link"</span><span class="p">)</span>
+
+   <span class="nx">siblings</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">x</span> <span class="o">!==</span> <span class="nx">link</span> <span class="nx">x</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">opacity</span> <span class="o">=</span> <span class="k">this</span>
+   <span class="p">})</span>
+  <span class="p">}</span>
+
 <span class="p">}</span>
+
+<span class="c1">//bind allows you to add extra arguments, and you can use "this" in your callback</span>
+<span class="nx">element</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"mouseover"</span><span class="p">,</span> <span class="nx">handleHover</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="nx">element</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"mouseout"</span><span class="p">,</span> <span class="nx">handleHover</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="intersection-observer-api">Intersection Observer API</h3>
+
+<ul>
+  <li>user observer to observe a specific target</li>
+  <li>I’ve had some trouble getting this to work the way I want it to, but it’s very powerful</li>
+  <li>can use it to do something when an element comes into view on the screen</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//this is called whenever the target element intersects the root element we define in the options object</span>
+<span class="kd">const</span> <span class="nx">obsCallback</span> <span class="o">=</span> <span class="p">(</span><span class="nx">entries</span><span class="p">,</span> <span class="nx">observer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">entries</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">entry</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{});</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">obsOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">root</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="c1">//set to null when you want your target to just come into the viewport</span>
+  <span class="na">threshold</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="c1">//how much of the section needs to be intersecting the viewport</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">observer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">IntersectionObserver</span><span class="p">(</span><span class="nx">obsCallback</span><span class="p">,</span> <span class="nx">obsOptions</span><span class="p">);</span>
+<span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">myElement</span><span class="p">);</span>
 </code></pre></div></div>
 
                 </div>
@@ -289,11 +517,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                        
-                                        
-                                            <li><a href="/DOM-methods">The DOM</a></li>
-                                        
-                                    
                                   
                                 
                                   
@@ -320,6 +543,8 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
+                                            <li><a href="/increment-decrement">What's the difference between 'i++' and '++i'</a></li>
+                                        
                                     
                                   
                                 
@@ -344,6 +569,9 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
                                     
                                   
                                 
@@ -496,64 +724,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/serverless-event-bug">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Aws</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Debugging</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Serverless</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Debugging serverless - Eventbridge rule already exists</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -562,17 +732,21 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/react-ref">
+            <a class="post-card-content-link" href="/DOM-notes">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">React</span>
+                               <span class="post-card-tags">Javascript</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Dom</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">React refs</h2>
+                    <h2 class="post-card-title">Notes about the DOM</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -623,7 +797,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Debugging - forEach with async/await</div>
+    <div class="floating-header-title">The DOM</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -631,7 +805,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Debugging+-+forEach+with+async%2Fawait&amp;url=forEach-async-await"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=The+DOM&amp;url=DOM-methods"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -640,7 +814,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=forEach-async-await"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=DOM-methods"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

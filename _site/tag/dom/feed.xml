@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/dom/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-10-30T18:53:46-06:00</updated>
+  <updated>2022-11-12T21:32:38-07:00</updated>
   <id>http://localhost:4000/tag/dom/feed.xml</id>
 
   
@@ -42,6 +42,417 @@
   
   
 
+  
+    <entry>
+      <title type="html">The DOM</title>
+      <link href="http://localhost:4000/DOM-methods" rel="alternate" type="text/html" title="The DOM" />
+      <published>2022-11-12T18:30:00-07:00</published>
+      <updated>2022-11-12T18:30:00-07:00</updated>
+      <id>http://localhost:4000/DOM-methods</id>
+      <content type="html" xml:base="http://localhost:4000/DOM-methods">&lt;p&gt;Some more notes about the DOM, from the course I’m working on “The Complete JavaScript Course 2022: From Zero to Expert” on Udemy. This post is more about DOM methods and strategies for common use cases.&lt;/p&gt;
+
+&lt;h3 id=&quot;selecting&quot;&gt;Selecting&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;selecting the whole HTML document: &lt;code class=&quot;highlighter-rouge&quot;&gt;document.documentElement&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;head: &lt;code class=&quot;highlighter-rouge&quot;&gt;document.head&lt;/code&gt;, body: &lt;code class=&quot;highlighter-rouge&quot;&gt;document.body&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;select all, returns a node list: &lt;code class=&quot;highlighter-rouge&quot;&gt;document.querySelectorAll()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;More selectors:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;getElementById()&lt;/li&gt;
+  &lt;li&gt;getElementsByTagName()&lt;/li&gt;
+  &lt;li&gt;querySelector()&lt;/li&gt;
+  &lt;li&gt;getElementsByClassName()&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;HTML Collection: a list of elements from the &lt;em&gt;live&lt;/em&gt; webpage, will update if elements are added or deleted&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;not just any type of DOM node - collections are made up of HTML elements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Node list vs HTML collection: a node list stays constant (usually) and won’t update itself, but an HTML collection is live and can update&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;node lists can contain any type of DOM node, but HTML collections can only contain HTML elements&lt;/li&gt;
+  &lt;li&gt;node lists can use array methods, HTML collections can’t&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;creatinginserting-elements&quot;&gt;Creating/inserting elements&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;insertAdjacentHTML()&lt;/li&gt;
+  &lt;li&gt;document.createElement() - returns DOM element, but you need to put it into the page still&lt;/li&gt;
+  &lt;li&gt;textContent and innerHTML can add content to an element&lt;/li&gt;
+  &lt;li&gt;prepend() - adds element as the first child of an element&lt;/li&gt;
+  &lt;li&gt;append() - adds element as the last child of an element
+    &lt;ul&gt;
+      &lt;li&gt;prepend and append can be used to move elements, since the DOM element is assigned a unique id&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;cloneNode() - copies an element, giving it a unique id&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;deleting-elements&quot;&gt;Deleting elements&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;remove() - removes element from DOM&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;styling&quot;&gt;Styling&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;getComputedStyle() - pass element into this function to get all its CSS styling&lt;/li&gt;
+  &lt;li&gt;can get individual properties from this as well&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;thing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.thing&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;color&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getComputedStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;thing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;setProperty() - pass property and value into this to set a CSS property on an element&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;thing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.thing&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;thing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;backgroundColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//but this is not always necessary&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//can do this instead&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;thing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;backgroundColor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;attributes&quot;&gt;Attributes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;access standard HTML attributes like how we access style above&lt;/li&gt;
+  &lt;li&gt;for anything that is not standard, use getAttribute()&lt;/li&gt;
+  &lt;li&gt;also a setAttribute() method&lt;/li&gt;
+  &lt;li&gt;can get data attributes as well, accessed with “dataset” property&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;classes&quot;&gt;Classes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;get classes with “classList”&lt;/li&gt;
+  &lt;li&gt;classList.add()&lt;/li&gt;
+  &lt;li&gt;classList.remove()&lt;/li&gt;
+  &lt;li&gt;classList.toggle()&lt;/li&gt;
+  &lt;li&gt;classList.contains()&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;DON’T USE: &lt;code class=&quot;highlighter-rouge&quot;&gt;thing.className = &quot;newClass&quot;&lt;/code&gt; to set a class, because it overrides everything. Just use the methods above.&lt;/p&gt;
+
+&lt;h3 id=&quot;coordinates-of-dom-elements&quot;&gt;Coordinates of DOM elements&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;getBoundingClientRect(): gives you lots of properties of an element, including how far away it is from the left (x), right, top (y), bottom of the viewport, as welel as the element’s width and height&lt;/li&gt;
+  &lt;li&gt;window.pageXOffset or scrollX: how far down the page you have scrolled&lt;/li&gt;
+  &lt;li&gt;window.pageYOffset or scrollY: how far you’ve scrolled horizontally, if at all&lt;/li&gt;
+  &lt;li&gt;document.documentElement.clientHeight (or clientWidth): gives the height (or width) of the viewport&lt;/li&gt;
+  &lt;li&gt;window.scrollTo(): to scroll to coordinates on the page&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//NEWER WAY of scrolling to element&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//no calculations needed&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//just in new browsers though&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scrollIntoView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;behavior&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;smooth&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//OLD WAY&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//combine methods together to get the abolute coordinates of an element&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//not just the coordinates relative to the top of viewport, etc&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scrollTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pageXOffset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;top&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pageYOffset&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//can also add an object, to specify behavior&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scrollTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pageXOffset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;top&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pageYOffset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;behavior&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;smooth&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;events&quot;&gt;Events&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;mouseEnter(): like hovering, when the mouse is hovering over an element&lt;/li&gt;
+  &lt;li&gt;mouseLeave(): mouse is off the element&lt;/li&gt;
+  &lt;li&gt;mouseover and mouseout are similar, but mouseenter triggers only when the mouse enters that specific element. mouseover is triggered when the mouse enters that element OR its childredn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;How events work - using click events as example&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;element is clicked, and an event is generated at the root of document (top of dom tree)&lt;/li&gt;
+  &lt;li&gt;capturing phase: event passes down to the target element, through every parent element on its way&lt;/li&gt;
+  &lt;li&gt;target phase begins once the event gets to the target element - then whatever is supposed to happen on click, happens&lt;/li&gt;
+  &lt;li&gt;bubbling phase - event travels all the way back up to the root of the document, again through every parent element
+    &lt;ul&gt;
+      &lt;li&gt;its as if the same event is happening on all the parent elements too&lt;/li&gt;
+      &lt;li&gt;so if we also had that event listener on one of the parent elements, the thing would happen there too&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;this is basically events “progagating”&lt;/li&gt;
+  &lt;li&gt;you can stop the propagation of an event before it bubbles back up to the parent elements, using e.stopPropagation() - but you don’t want to rely on this unless you really need to&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By default: event is handled by target element and in bubbling phase, BUT: you can set up some events to happen in capturing phase (add &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; to your event listener code)&lt;/p&gt;
+
+&lt;p&gt;Also, there are exceptions, where there are no capturing or bubbling phases&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;mouseover vs mouseenter: note that mouseover events bubble, but mouseenter events DO NOT, since mouseover is triggered by hovering over itself and its children&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;smooth-scroll-into-view&quot;&gt;Smooth scroll into view&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;on the a tag, put the id of the element you’d like to scroll to in the href&lt;/li&gt;
+  &lt;li&gt;in the javascript, add an event listener&lt;/li&gt;
+  &lt;li&gt;use e.preventDefault() so we aren’t just using the HTML to jump down the page, want our javascript to make it smooth&lt;/li&gt;
+  &lt;li&gt;get the id of the element but using this.getAttribute(“href”)&lt;/li&gt;
+  &lt;li&gt;select that element using the id, then add scrollIntoView({behavior: smooth})&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Example below of adding events to multiple nav links - but, forEach is not very efficient. You could instead add the function to a common parent element, only one time.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelectorAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.nav-link&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;click&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;preventDefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;href&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scrollIntoView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;behavior&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;smooth&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;event-delegation&quot;&gt;Event delegation&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;add event listener to common parent&lt;/li&gt;
+  &lt;li&gt;determine what element originated the event, using e.target
+    &lt;ul&gt;
+      &lt;li&gt;check if target contains the correct class of the element you’re looking for&lt;/li&gt;
+      &lt;li&gt;if so, using e.target, you can get the id like in the example above, basically do the same code&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dom-traversing&quot;&gt;DOM traversing&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;“walking through” the DOM&lt;/li&gt;
+  &lt;li&gt;can select elements, and get child elements or use querySelector() on it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;h2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//can select child elements with a particular class&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//only elements with this class that are child elements of this parent will be selected&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;elements&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelectorAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.my-class&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//can also select parent elements&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parentNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;anotherWay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parentElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;closest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;closest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.header&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//closest parent with a particular class&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// can also select direct siblings&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;previous&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;previousSibling&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nextSibling&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;passing-arguments-into-handler-functions&quot;&gt;Passing arguments into handler functions&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;event handlers can only accept 1 argument, but there are times when you may need to pass in others&lt;/li&gt;
+  &lt;li&gt;you can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;bind&lt;/code&gt; method, as well as the &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; keyword&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;//opacity example, similar to the one in the course&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//let say you want to change the opacity of something based on a hover event&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleHover&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;//only need to pass in the event, using bind in the event handle allows us to use &quot;this&quot; here&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;nav-link&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)){&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;siblings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;closest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.nav&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelectorAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.nav-link&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;nx&quot;&gt;siblings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;opacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//bind allows you to add extra arguments, and you can use &quot;this&quot; in your callback&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mouseover&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleHover&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mouseout&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleHover&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;intersection-observer-api&quot;&gt;Intersection Observer API&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;user observer to observe a specific target&lt;/li&gt;
+  &lt;li&gt;I’ve had some trouble getting this to work the way I want it to, but it’s very powerful&lt;/li&gt;
+  &lt;li&gt;can use it to do something when an element comes into view on the screen&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//this is called whenever the target element intersects the root element we define in the options object&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obsCallback&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;entries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;entries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obsOptions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//set to null when you want your target to just come into the viewport&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//how much of the section needs to be intersecting the viewport&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;observer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;IntersectionObserver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obsCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obsOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;observe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="javascript" />
+      
+        <category term="dom" />
+      
+
+      
+        <summary type="html">Some more notes about the DOM, from the course I’m working on “The Complete JavaScript Course 2022: From Zero to Expert” on Udemy. This post is more about DOM methods and strategies for common use cases.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Notes about the DOM</title>
+      <link href="http://localhost:4000/DOM-notes" rel="alternate" type="text/html" title="Notes about the DOM" />
+      <published>2022-10-31T18:30:00-06:00</published>
+      <updated>2022-10-31T18:30:00-06:00</updated>
+      <id>http://localhost:4000/DOM-notes</id>
+      <content type="html" xml:base="http://localhost:4000/DOM-notes">&lt;p&gt;As I mentioned in my last post, I’ve been getting back into my JavaScript course on Udemy called “The Complete JavaScript Course 2022: From Zero to Expert”.&lt;/p&gt;
+
+&lt;p&gt;Here is a messy post with notes about the DOM. It’s really just a quick reference for myself. I added a few notes from &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model&quot;&gt;this reference on MDN&lt;/a&gt; as well.&lt;/p&gt;
+
+&lt;p&gt;The DOM is where JavaScript interacts with the browser (or, HTML documents rendered in the browser). It is an API with lots of built in methods and properties. We can use JavaScript to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;create, update, delete HTML elements&lt;/li&gt;
+  &lt;li&gt;set styles, classes, attributes&lt;/li&gt;
+  &lt;li&gt;listen and respond to events&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We can do all of this because a &lt;strong&gt;DOM tree&lt;/strong&gt; is generated from the HTML document&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a DOM tree is made out of nodes&lt;/li&gt;
+  &lt;li&gt;these include things like addEventListener, createElement, querySelector, .innerHTML&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are different types of DOM nodes&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;including HTML elements, text&lt;/li&gt;
+  &lt;li&gt;every node is of type &lt;strong&gt;node&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;node type is like a base class that its children are based off&lt;/li&gt;
+  &lt;li&gt;nodes are represented by JavaScript objects, which include different methods and properties&lt;/li&gt;
+  &lt;li&gt;children of the &lt;strong&gt;node type&lt;/strong&gt; include: element, text, comment, document&lt;/li&gt;
+  &lt;li&gt;everything in the HTML, including comments, has to go in the DOM&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Inheritence&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;all child types get access to their parents’ properties and methods, including the node type&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;about-the-different-types-of-nodes&quot;&gt;About the different types of nodes&lt;/h3&gt;
+
+&lt;p&gt;Document type&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the root of the dom tree&lt;/li&gt;
+  &lt;li&gt;includes methods like querySelector(), createElement(), etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Element type&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;base class for HTML elements&lt;/li&gt;
+  &lt;li&gt;its child type is HTMLElement, which has other child types for each type of element that exists in HTML, like buttons, divs, images, etc&lt;/li&gt;
+  &lt;li&gt;this is because different HTML elements have different attributes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;EventTarget&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;any object that may have an event listener on it&lt;/li&gt;
+  &lt;li&gt;is a parent to the node type, and window type&lt;/li&gt;
+  &lt;li&gt;meaning you can call addEventListener() on every type of node&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Window type&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;this is a global object, on the same level as node type&lt;/li&gt;
+  &lt;li&gt;represents the window that JavaScript is running in&lt;/li&gt;
+  &lt;li&gt;has its own methods and properties, including some familiar ones like window.scroll(), .location(), .innerHeight(), etc&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="JavaScript" />
+      
+        <category term="dom" />
+      
+
+      
+        <summary type="html">As I mentioned in my last post, I’ve been getting back into my JavaScript course on Udemy called “The Complete JavaScript Course 2022: From Zero to Expert”.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</title>
