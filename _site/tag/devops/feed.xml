@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/devops/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-11-12T21:32:38-07:00</updated>
+  <updated>2022-11-21T21:59:00-07:00</updated>
   <id>http://localhost:4000/tag/devops/feed.xml</id>
 
   
@@ -42,6 +42,86 @@
   
   
 
+  
+    <entry>
+      <title type="html">Deploying full stack MERN apps with Render</title>
+      <link href="http://localhost:4000/mern-deploy-render" rel="alternate" type="text/html" title="Deploying full stack MERN apps with Render" />
+      <published>2022-11-21T20:30:00-07:00</published>
+      <updated>2022-11-21T20:30:00-07:00</updated>
+      <id>http://localhost:4000/mern-deploy-render</id>
+      <content type="html" xml:base="http://localhost:4000/mern-deploy-render">&lt;p&gt;Due to the recent changes with Heroku removing its free tier, I decided to move a few of my portfolio apps over to Render.&lt;/p&gt;
+
+&lt;p&gt;While I understand that companies want to make money, I can’t justify spending money, even a small amount, every month just to host demo portfolio apps that probably no one looks at except me.&lt;/p&gt;
+
+&lt;p&gt;This isn’t a tutorial. I just wanted to mention a few things I ran into while deploying my apps that could help someone (or me) in the future.&lt;/p&gt;
+
+&lt;p&gt;I came across Render when looking for a platform to deploy Node.js/Express/MongoDB apps. This &lt;a href=&quot;https://www.freecodecamp.org/news/how-to-deploy-nodejs-application-with-render/&quot;&gt;freeCodeCamp article&lt;/a&gt; provided a great walkthrough of what to do to deploy the back end of the app. &lt;a href=&quot;https://dev.to/gregpetropoulos/render-deployment-free-tier-of-mern-app-52mk&quot;&gt;This blog post&lt;/a&gt; was also helpful, since it explained how to set up a full stack app.&lt;/p&gt;
+
+&lt;h3 id=&quot;you-need-a-front-end-and-back-end-site&quot;&gt;You need a front end and back end site&lt;/h3&gt;
+
+&lt;p&gt;One thing that was nice about Heroku was I could upload the front and back end in one project. It was easy for the front end to make requests to the back end using simple routes.&lt;/p&gt;
+
+&lt;p&gt;For my first app in Render, I set up a “Web Service” and connected my GitHub repo. This worked very well and was up and running quickly. When I opened the link, however, I just got “not found”. All I was doing by visiting the link was making a request to the root of the app “/”. I added “/getArticles” to the url, which is a route in my app, and then received the data I was expecting. Great! Except all I was getting was raw JSON and there was no front end. This had to be done separately.&lt;/p&gt;
+
+&lt;p&gt;So, I set up a “Static Site”, pointing to the front end code in my repo. I realized that I would need to make requests to the same url I had just used in the browser. This was relatively simple to do. I just added an env variable in Render, and referred to it in my front end code.&lt;/p&gt;
+
+&lt;h3 id=&quot;cors&quot;&gt;CORS&lt;/h3&gt;
+
+&lt;p&gt;Of course, because I now had different urls for the front end and back end, I was now running into CORS issues. This is because the default behavior of CORS is to not allow requests to go through if they are being sent from a different origin than the app receiving the request.&lt;/p&gt;
+
+&lt;p&gt;This was fixed by installing a CORS package in the back end, giving permission to the front end url.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//inside the server.js file&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;cors&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//real link is an env variable in Render&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;cors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;origin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ORIGIN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I spent much longer on this than necessary. I kept getting the same CORS error over and over.&lt;/p&gt;
+
+&lt;p&gt;This was because I added an extra “/” on the end of my url, like this: &lt;code class=&quot;highlighter-rouge&quot;&gt;https://juliachack-dev-blog.netlify.app/&lt;/code&gt;, when the real origin had no “/” on the end &lt;code class=&quot;highlighter-rouge&quot;&gt;https://juliachack-dev-blog.netlify.app&lt;/code&gt;. A silly mistake, but it was the reason my app and the origin “didn’t match”.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;It seems like a bit too much work to have to set up two different deployments for one full stack app, and it’s possible I’m missing something. Maybe there is another way that I didn’t see. Otherwise, maybe one day it will require only one deployment. Overall it was a good experience setting up my apps on Render.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="deployment" />
+      
+        <category term="devops" />
+      
+        <category term="node.js" />
+      
+        <category term="cors" />
+      
+
+      
+        <summary type="html">Due to the recent changes with Heroku removing its free tier, I decided to move a few of my portfolio apps over to Render.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">How I configured ESLint and Prettier for React at work</title>

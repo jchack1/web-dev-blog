@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/dom/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-11-12T21:32:38-07:00</updated>
+  <updated>2022-11-21T21:59:00-07:00</updated>
   <id>http://localhost:4000/tag/dom/feed.xml</id>
 
   
@@ -50,6 +50,8 @@
       <updated>2022-11-12T18:30:00-07:00</updated>
       <id>http://localhost:4000/DOM-methods</id>
       <content type="html" xml:base="http://localhost:4000/DOM-methods">&lt;p&gt;Some more notes about the DOM, from the course I’m working on “The Complete JavaScript Course 2022: From Zero to Expert” on Udemy. This post is more about DOM methods and strategies for common use cases.&lt;/p&gt;
+
+&lt;p&gt;Once again this is a bit messy, since it’s just a quick reference for myself on all the things we can do with the DOM.&lt;/p&gt;
 
 &lt;h3 id=&quot;selecting&quot;&gt;Selecting&lt;/h3&gt;
 

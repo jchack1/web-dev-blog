@@ -11,7 +11,7 @@
 
 
 
-    <title>Debugging serverless: 'AWSLambdaFullAccess does not exist'</title>
+    <title>Deploying full stack MERN apps with Render</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/lambda-fullaccess-bug" />
+    <link rel="canonical" href="http://localhost:4000/mern-deploy-render" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Debugging serverless: 'AWSLambdaFullAccess does not exist'" />
-    <meta property="og:description" content="I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today. Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node" />
-    <meta property="og:url" content="http://localhost:4000/lambda-fullaccess-bug" />
+    <meta property="og:title" content="Deploying full stack MERN apps with Render" />
+    <meta property="og:description" content="Due to the recent changes with Heroku removing its free tier, I decided to move a few of my portfolio apps over to Render. While I understand that companies want to make money, I can’t justify spending money, even a small amount, every month just to host demo portfolio apps" />
+    <meta property="og:url" content="http://localhost:4000/mern-deploy-render" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-08-30T18:30:00-06:00" />
-    <meta property="article:modified_time" content="2022-08-30T18:30:00-06:00" />
-    <meta property="article:tag" content="Debugging" />
+    <meta property="article:published_time" content="2022-11-21T20:30:00-07:00" />
+    <meta property="article:modified_time" content="2022-11-21T20:30:00-07:00" />
+    <meta property="article:tag" content="Deployment" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Debugging serverless: 'AWSLambdaFullAccess does not exist'" />
-    <meta name="twitter:description" content="I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today. Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node" />
+    <meta name="twitter:title" content="Deploying full stack MERN apps with Render" />
+    <meta name="twitter:description" content="Due to the recent changes with Heroku removing its free tier, I decided to move a few of my portfolio apps over to Render. While I understand that companies want to make money, I can’t justify spending money, even a small amount, every month just to host demo portfolio apps" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Debugging" />
+    <meta name="twitter:data2" content="Deployment" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/lambda-fullaccess-bug",
+    "url": "http://localhost:4000/mern-deploy-render",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/lambda-fullaccess-bug"
+        "@id": "http://localhost:4000/mern-deploy-render"
     },
-    "description": "I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today. Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node"
+    "description": "Due to the recent changes with Heroku removing its free tier, I decided to move a few of my portfolio apps over to Render. While I understand that companies want to make money, I can’t justify spending money, even a small amount, every month just to host demo portfolio apps"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Debugging serverless: 'AWSLambdaFullAccess does not exist'" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Deploying full stack MERN apps with Render" href="/feed.xml" />
 
 
 </head>
@@ -153,61 +153,76 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="30 August 2022">30 August 2022</time>
+                    <time class="post-full-meta-date" datetime="21 November 2022">21 November 2022</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/debugging/'>DEBUGGING</a>,
+                               <a href='/tag/deployment/'>DEPLOYMENT</a>,
                             
                         
                             
-                               <a href='/tag/aws/'>AWS</a>,
+                               <a href='/tag/devops/'>DEVOPS</a>,
                             
                         
                             
-                               <a href='/tag/serverless/'>SERVERLESS</a>
+                               <a href='/tag/node.js/'>NODE.JS</a>,
+                            
+                        
+                            
+                               <a href='/tag/cors/'>CORS</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Debugging serverless: 'AWSLambdaFullAccess does not exist'</h1>
+                <h1 class="post-full-title">Deploying full stack MERN apps with Render</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.</p>
+                    <p>Due to the recent changes with Heroku removing its free tier, I decided to move a few of my portfolio apps over to Render.</p>
 
-<p>Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node 14 - or so I thought. It turns out there were a few I missed, mostly in projects that are not worked on often.</p>
+<p>While I understand that companies want to make money, I can’t justify spending money, even a small amount, every month just to host demo portfolio apps that probably no one looks at except me.</p>
 
-<p>A year is a long time to not deploy a serverless app into AWS. I updated the runtime to Node 14, and attempted to deploy. There were several errors, one after the other, that I managed to fix. The last error I received had me stuck for a while.</p>
+<p>This isn’t a tutorial. I just wanted to mention a few things I ran into while deploying my apps that could help someone (or me) in the future.</p>
 
-<p><code class="highlighter-rouge"> CREATE_FAILED: CodeDeployServiceRole (AWS::IAM::Role) Policy arn:aws:iam::aws:policy/AWSLambdaFullAccess does not exist or is not attachable</code></p>
+<p>I came across Render when looking for a platform to deploy Node.js/Express/MongoDB apps. This <a href="https://www.freecodecamp.org/news/how-to-deploy-nodejs-application-with-render/">freeCodeCamp article</a> provided a great walkthrough of what to do to deploy the back end of the app. <a href="https://dev.to/gregpetropoulos/render-deployment-free-tier-of-mern-app-52mk">This blog post</a> was also helpful, since it explained how to set up a full stack app.</p>
 
-<p>While there was some CodeDeploy code in the app, there was never any line of code where we explicitly set “AWSLambdaFullAccess”. I tried commenting out the CodeDeploy code under the IAM role section:</p>
+<h3 id="you-need-a-front-end-and-back-end-site">You need a front end and back end site</h3>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">Effect</span><span class="pi">:</span> <span class="s">Allow</span>
-  <span class="na">Action</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">codedeploy:*</span>
-  <span class="na">Resource</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s2">"</span><span class="s">*"</span>
+<p>One thing that was nice about Heroku was I could upload the front and back end in one project. It was easy for the front end to make requests to the back end using simple routes.</p>
+
+<p>For my first app in Render, I set up a “Web Service” and connected my GitHub repo. This worked very well and was up and running quickly. When I opened the link, however, I just got “not found”. All I was doing by visiting the link was making a request to the root of the app “/”. I added “/getArticles” to the url, which is a route in my app, and then received the data I was expecting. Great! Except all I was getting was raw JSON and there was no front end. This had to be done separately.</p>
+
+<p>So, I set up a “Static Site”, pointing to the front end code in my repo. I realized that I would need to make requests to the same url I had just used in the browser. This was relatively simple to do. I just added an env variable in Render, and referred to it in my front end code.</p>
+
+<h3 id="cors">CORS</h3>
+
+<p>Of course, because I now had different urls for the front end and back end, I was now running into CORS issues. This is because the default behavior of CORS is to not allow requests to go through if they are being sent from a different origin than the app receiving the request.</p>
+
+<p>This was fixed by installing a CORS package in the back end, giving permission to the front end url.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//inside the server.js file</span>
+
+<span class="kd">const</span> <span class="nx">cors</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"cors"</span><span class="p">);</span>
+
+<span class="c1">//real link is an env variable in Render</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
+  <span class="nx">cors</span><span class="p">({</span>
+    <span class="na">origin</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ORIGIN</span><span class="p">,</span>
+  <span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div></div>
 
-<p>But that didn’t do anything.</p>
+<p>I spent much longer on this than necessary. I kept getting the same CORS error over and over.</p>
 
-<p>After some googling, I saw that the AWSLambdaFullAccess policy had been deprecated, and AWSLambda_FullAccess was its replacement. I vaguely remembered seeing this in an AWS email sometime in the past year. The problem must be connected to this, somehow.</p>
+<p>This was because I added an extra “/” on the end of my url, like this: <code class="highlighter-rouge">https://juliachack-dev-blog.netlify.app/</code>, when the real origin had no “/” on the end <code class="highlighter-rouge">https://juliachack-dev-blog.netlify.app</code>. A silly mistake, but it was the reason my app and the origin “didn’t match”.</p>
 
-<p>I checked the serverless-generated cloudformation files in my .serverless folder. There was code for the creation of a AWSLambdaFullAccess policy. But none of our own code was telling it to do that. I thought maybe I had an old version of serverless, but I recently updated my local environment to version 3, and my serverless.yml file didn’t specify a framework version, so that couldn’t be it.</p>
+<h3 id="conclusion">Conclusion</h3>
 
-<p>After lots of trial and error, and more googling, I went back to a <a href="https://github.com/serverless/components/issues/918">github issues page</a> where someone else reported the same issue. At first glace I didn’t see a solution for my problem, but I scrolled a little further and found something helpful.</p>
-
-<h3 id="solution">Solution</h3>
-
-<p>One commenter said their issue was that they had an old version of a plugin “serverless-plugin-canary-deployments”. We had that plugin, too. I thought I had checked the plugin versions and found they were the same across our different microservices, and these microservices never gave the same error. Regardless, I updated that npm package to the latest version and deployed. This time it worked!</p>
-
-<p>It’s possible to receive this same error and have an entirely different issue causing the problem, but this worked for me. Perhaps we can generalize this and say that if you are getting an error related to a deprecation, have a look at the versions of your dependencies.</p>
+<p>It seems like a bit too much work to have to set up two different deployments for one full stack app, and it’s possible I’m missing something. Maybe there is another way that I didn’t see. Otherwise, maybe one day it will require only one deployment. Overall it was a good experience setting up my apps on Render.</p>
 
                 </div>
             </section>
@@ -263,7 +278,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/debugging/">Debugging</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/deployment/">Deployment</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -277,65 +292,6 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/dynamo-db-pagination">DynamoDB scans and pagination</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/serverless-event-bug">Debugging serverless - Eventbridge rule already exists</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/forEach-async-await">Debugging - forEach with async/await</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
                                     
                                   
                                 
@@ -376,45 +332,70 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
                                     
                                         
                                         
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
+                                            <li><a href="/new-jekyll-site-3">New jekyll site part 3 - errors with deployment</a></li>
                                         
                                     
                                   
@@ -422,26 +403,11 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
-                                  
                                 
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
-                                  
                                 
-                                  
-                                    
-                                        
-                                        
-                                    
                                   
                                 
                                   
@@ -455,9 +421,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/debugging/">
+                            <a href="/tag/deployment/">
                                 
-                                    See all 10 posts  →
+                                    See all 1 posts  →
                                 
                             </a>
                         </footer>
@@ -467,60 +433,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/increment-decrement">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Computer-science</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Javascript</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">What's the difference between 'i++' and '++i'</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -529,29 +441,21 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/dynamo-db-pagination">
+            <a class="post-card-content-link" href="/DOM-methods">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Dynamodb</span>
+                               <span class="post-card-tags">Javascript</span>
                             
                         
                             
-                               <span class="post-card-tags">Database</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Debugging</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Aws</span>
+                                <span class="post-card-tags">Dom</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">DynamoDB scans and pagination</h2>
+                    <h2 class="post-card-title">The DOM</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -602,7 +506,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Debugging serverless: 'AWSLambdaFullAccess does not exist'</div>
+    <div class="floating-header-title">Deploying full stack MERN apps with Render</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -610,7 +514,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Debugging+serverless%3A+%27AWSLambdaFullAccess+does+not+exist%27&amp;url=lambda-fullaccess-bug"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Deploying+full+stack+MERN+apps+with+Render&amp;url=mern-deploy-render"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -619,7 +523,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=lambda-fullaccess-bug"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=mern-deploy-render"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
