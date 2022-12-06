@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/design/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-12-05T22:18:07-07:00</updated>
+  <updated>2022-12-05T22:23:14-07:00</updated>
   <id>http://localhost:4000/tag/design/feed.xml</id>
 
   
@@ -149,15 +149,15 @@ Their recommendation was to start with a font size of 16px and go from there, de
       <id>http://localhost:4000/usability</id>
       <content type="html" xml:base="http://localhost:4000/usability">&lt;p&gt;I am back working on my Udemy course, “Master Digital Product Design: UX Research and UI Design”. In this post I will add some notes on usability.&lt;/p&gt;
 
-&lt;p&gt;Usability Heuristics, I have learned, is a way of saying “rule of thumb”.  So these are not usability rules exactly; they are usability suggestions and best practices.&lt;/p&gt;
+&lt;p&gt;Usability Heuristics, I have learned, is a way of saying “rule of thumb”. So these are not usability rules exactly; they are usability suggestions and best practices.&lt;/p&gt;
 
-&lt;p&gt;While going through these lectures I have been cringing a bit. Recently I realized I am becoming more interested in and passionate about good user experience and easing frustration for the user. The designer in me knows how important these points are. However, I know I have broken some of these best practices as a developer.  It has been difficult for me to implement my features in the best possible way when task requirements are unclear, on large systems I did not create myself. I came across roadblocks and had to get around them somehow, and then I was irritated with myself for not implementing the feature in the “best” way. But in those sitations, I did what I could.&lt;/p&gt;
+&lt;p&gt;While going through these lectures I have been cringing a bit. Recently I realized I am becoming more interested in and passionate about good user experience and easing frustration for the user. The designer in me knows how important these points are. However, I know I have broken some of these best practices as a developer. It has been difficult for me to implement my features in the best possible way when task requirements are unclear, on large systems I did not create myself. I came across roadblocks and had to get around them somehow, and then I was irritated with myself for not implementing the feature in the “best” way. But in those sitations, I did what I could.&lt;/p&gt;
 
 &lt;p&gt;Nevertheless, I’m still enjoying learning about UX and UI.&lt;/p&gt;
 
 &lt;h2 id=&quot;useful-links&quot;&gt;Useful links&lt;/h2&gt;
 
-&lt;p&gt;This site &lt;a href=&quot;http://ui-patterns.com/patterns&quot;&gt;UI-patterns.com&lt;/a&gt; has in-depth descriptions and examples of many design patterns you see in user interface design, including cards, modals, dropdown menus, and more.&lt;/p&gt;
+&lt;p&gt;This site &lt;a href=&quot;https://ui-patterns.com/patterns&quot;&gt;UI-patterns.com&lt;/a&gt; has in-depth descriptions and examples of many design patterns you see in user interface design, including cards, modals, dropdown menus, and more.&lt;/p&gt;
 
 &lt;p&gt;This &lt;a href=&quot;https://contrastchecker.com/&quot;&gt;contrast checker&lt;/a&gt; site allows you to check the foreground and background colors on your site against various conditions, to make sure the level of contrast is acceptable. You could use this while auditing your sites.&lt;/p&gt;
 
@@ -188,6 +188,7 @@ Their recommendation was to start with a font size of 16px and go from there, de
 &lt;p&gt;These are different from usability heuristics. Heuristics are vague, but an audit is more of a checklist. These are rules you come up with as part of your design process. Creating the audit can be time-consuming, but filling it out should be relatively quick and simple. Audits should contain specific yes or no questions that anyone can fill in while reviewing the product. No opinions should be allowed.&lt;/p&gt;
 
 &lt;p&gt;Example questions on the checklist (from a real checklist shown in the course):&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Does every display begin with a title or header that describes screen contents?&lt;/li&gt;
   &lt;li&gt;Is there visual feeback in menus or dialog boxes about which choice the cursor is on now?&lt;/li&gt;
@@ -203,6 +204,7 @@ Their recommendation was to start with a font size of 16px and go from there, de
 &lt;p&gt;A &lt;strong&gt;usability test&lt;/strong&gt; is when you give a user a task and observe what they do. You look for responses in their faces, and you need to be impartial and not influence the user’s behavior. Get users to talk out their thought process while using the product - that way you don’t have to guess.&lt;/p&gt;
 
 &lt;p&gt;Reasons to do usability testing with experienced users as well as new users:&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;experienced users may not even be experts in the software; users often fiddle their way through until they complete what they need to do, without mastering the product&lt;/li&gt;
   &lt;li&gt;products tested with only first time users can sometimes be set up really well to guide users through set up and early stages, but tasks they attempt later on may be very frustrating because they haven’t been given as much attention&lt;/li&gt;
@@ -212,6 +214,7 @@ Their recommendation was to start with a font size of 16px and go from there, de
 &lt;p&gt;Test as early as you can! Don’t wait until you have a finished design.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Click testing: &lt;/strong&gt; a quantitative method for testing, where users are given a task and you can see where they click in your design&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;you can test a large number of people and get data about how they are navigating your product&lt;/li&gt;
   &lt;li&gt;however, you just don’t know how they were feeling while they were going the test, so it is hard to gauge the reason they clicked where they did, and how big of a problem it is when a user does something “incorrectly”&lt;/li&gt;

@@ -96,7 +96,7 @@ There are also "set" methods for all of the above, so you can update a date
 Formatting with different languages:
 
 - use `Intl.DateTimeFormat()` function to choose a language (locale), then `.format()` to format the date according to the chosen language
-- [this link gives a list of codes](http://www.lingoes.net/en/translator/langcode.htm)
+- [this link gives a list of codes](https://www.lingoes.net/en/translator/langcode.htm)
 - you can [read more about this API on MDN here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)
 
 ```js
