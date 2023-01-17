@@ -11,7 +11,7 @@
 
 
 
-    <title>Reviewing API calls</title>
+    <title>Notes about asynchronous JavaScript</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,24 +36,24 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/api-review" />
+    <link rel="canonical" href="http://localhost:4000/async-javascript" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Reviewing API calls" />
-    <meta property="og:description" content="Today in my Web Developer course I am reviewing how to use APIs. This was a topic I really struggled with the first time around while in school. I just couldn’t wrap my head around it. I think I struggled because javascript was still so new to me, and I" />
-    <meta property="og:url" content="http://localhost:4000/api-review" />
+    <meta property="og:title" content="Notes about asynchronous JavaScript" />
+    <meta property="og:description" content="I work with async JavaScript a lot, but I wonder if I know everything about it that I need to. I’m working through my Udemy course again (“The Complete JavaScript Course 2023: From Zero to Expert”) and will share some notes below. AJAX and XML AJAX: Asynchronous JavaScript and XML" />
+    <meta property="og:url" content="http://localhost:4000/async-javascript" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-05-18T16:30:00-06:00" />
-    <meta property="article:modified_time" content="2020-05-18T16:30:00-06:00" />
+    <meta property="article:published_time" content="2023-01-16T16:30:00-07:00" />
+    <meta property="article:modified_time" content="2023-01-16T16:30:00-07:00" />
     <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Reviewing API calls" />
-    <meta name="twitter:description" content="Today in my Web Developer course I am reviewing how to use APIs. This was a topic I really struggled with the first time around while in school. I just couldn’t wrap my head around it. I think I struggled because javascript was still so new to me, and I" />
+    <meta name="twitter:title" content="Notes about asynchronous JavaScript" />
+    <meta name="twitter:description" content="I work with async JavaScript a lot, but I wonder if I know everything about it that I need to. I’m working through my Udemy course again (“The Complete JavaScript Course 2023: From Zero to Expert”) and will share some notes below. AJAX and XML AJAX: Asynchronous JavaScript and XML" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/api-review",
+    "url": "http://localhost:4000/async-javascript",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/api-review"
+        "@id": "http://localhost:4000/async-javascript"
     },
-    "description": "Today in my Web Developer course I am reviewing how to use APIs. This was a topic I really struggled with the first time around while in school. I just couldn’t wrap my head around it. I think I struggled because javascript was still so new to me, and I"
+    "description": "I work with async JavaScript a lot, but I wonder if I know everything about it that I need to. I’m working through my Udemy course again (“The Complete JavaScript Course 2023: From Zero to Expert”) and will share some notes below. AJAX and XML AJAX: Asynchronous JavaScript and XML"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Reviewing API calls" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Notes about asynchronous JavaScript" href="/feed.xml" />
 
 
 </head>
@@ -153,122 +153,219 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="18 May 2020">18 May 2020</time>
+                    <time class="post-full-meta-date" datetime="16 January 2023">16 January 2023</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/javascript/'>JAVASCRIPT</a>,
-                            
-                        
-                            
-                               <a href='/tag/node.js/'>NODE.JS</a>,
-                            
-                        
-                            
-                               <a href='/tag/api/'>API</a>
+                               <a href='/tag/javascript/'>JAVASCRIPT</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Reviewing API calls</h1>
+                <h1 class="post-full-title">Notes about asynchronous JavaScript</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>Today in my Web Developer course I am reviewing how to use APIs.</p>
+                    <p>I work with async JavaScript a lot, but I wonder if I know everything about it that I need to.</p>
 
-<p>This was a topic I really struggled with the first time around while in school.  I just couldn’t wrap my head around it. I think I struggled because javascript was still so new to me, and I could not seem to figure out how to get the data I needed from an API call.</p>
+<p>I’m working through my Udemy course again (“The Complete JavaScript Course 2023: From Zero to Expert”) and will share some notes below.</p>
 
-<p>This time around it’s making a bit more sense, so here are some important points I picked up from the API section of this course, and a little explanation of the process of completing these exercises.</p>
+<h3 id="ajax-and-xml">AJAX and XML</h3>
 
-<p>For this exercise we needed to get the sunset time for Hawaii from a weather API. The course uses the yahoo weather API, but it has since been retired. I decided to use OpenWeather API, which I believe some of my classmates used for their API assignments back in the fall.</p>
-
-<p>To get started you need to sign up, and an API key will be generated for you. You can generate more API keys as needed. The docs explain how to make an API call. I decided to make my API call using the city ID, and all city IDs can be found in a downloadable JSON file.  I chose Lahaina, Maui.  The format for calling the API by city ID is as follows:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>api.openweathermap.org/data/2.5/weather?id={city id}&amp;appid={your api key}
-</code></pre></div></div>
-
-<p>As you can see, you plug in the city ID and your API key.  My URL looked like this (note I have included a fake API key for privacy):</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;appid=12345abcde
-</code></pre></div></div>
-
-<p>My course used the “request” package to handle requests in Node.js, however that package has since been deprecated. I used it for the exercise because it still works, though for a real project I would try to find something that is currently being updated and maintained.</p>
-
-<p>To test if you’re receiving data, the code looked like this:</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">request</span><span class="p">(</span><span class="s2">"https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;appid=12345abcde"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">===</span> <span class="mi">200</span><span class="p">){</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div></div>
-
-<p>However, the data you get back in the console is actually a string. We can prove this by printing “typeof body” to the console. We need to access our data from a javascript object, not a string. All you need to do is use “JSON.parse(body)”:</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">request</span><span class="p">(</span><span class="s2">"https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;appid=12345abcde"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">===</span> <span class="mi">200</span><span class="p">){</span>
-        <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div></div>
-
-<p>Now, to get my sunset data. To know the structure of the JSON object I made the API request in the browser. In chrome I have an extension called JSON Viewer, which makes the JSON easier to read. This was the part of the JSON data I needed, to know how my sunset time was nested:</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"sys"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"type"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s2">"id"</span><span class="p">:</span> <span class="mi">7875</span><span class="p">,</span>
-    <span class="s2">"country"</span><span class="p">:</span> <span class="s2">"US"</span><span class="p">,</span>
-    <span class="s2">"sunrise"</span><span class="p">:</span> <span class="mi">1590335183</span><span class="p">,</span>
-    <span class="s2">"sunset"</span><span class="p">:</span> <span class="mi">1590382873</span>
-  <span class="p">},</span>
-</code></pre></div></div>
-
-<p>So I just need to get the data, in this case using the square bracket notation []:</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">request</span><span class="p">(</span><span class="s2">"https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;appid=12345abcde"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">===</span> <span class="mi">200</span><span class="p">){</span>
-        <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-        <span class="kd">var</span> <span class="nx">sunset</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="s2">"sys"</span><span class="p">][</span><span class="s2">"sunset"</span><span class="p">];</span>
-
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sunset</span><span class="p">);</span>
-
-    <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div></div>
-
-<p>However, this just prints a long string of numbers, not a date. Checking the docs I can see that, when using a JSON object, it gives the time in unix format, which is basically the number of seconds that have passed since 00:00:00 UTC on 1 January 1970. The simplest seeming suggestion to parse this format on stack overflow was to use Moment.js.</p>
-
-<p>Once I figured out how to get an hour:minute format, I printed it to the console. But the time didn’t look right. If I am looking for the sunset in Lahaina, in May, it most likely wouldn’t be 22:58 - nearly 11pm! -  which is what my program told me. When I looked it up, it was in fact 18:59. This four hour difference is actually the time difference between Lahaina and my own timezone, MDT. Somehow I am getting the time that the sun sets in Lahaina, in MDT.  I had to dig in a bit more to find out why this was happening. Is it coming from my API, or from Moment.js?</p>
-
-<p>I ended up spending a few days away from this exercise, and came back with a fresher mind. After a couple searches I found that you need to include the city’s timezone hardcoded. Stack overflow suggested a method called utcOffset(). Hawaii’s timezone is GMT-10, so I plugged that into the method. You can also see how unix time was handled:</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">request</span><span class="p">(</span><span class="s2">"https://api.openweathermap.org/data/2.5/weather?id=5849996&amp;appid=12345abcde"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">===</span> <span class="mi">200</span><span class="p">){</span>
-        <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-        <span class="kd">var</span> <span class="nx">sunsetUnix</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="s2">"sys"</span><span class="p">][</span><span class="s2">"sunset"</span><span class="p">];</span>
-        
-        <span class="kd">var</span> <span class="nx">sunset</span> <span class="o">=</span> <span class="nx">moment</span><span class="p">.</span><span class="nx">unix</span><span class="p">(</span><span class="nx">sunsetUnix</span><span class="p">).</span><span class="nx">utcOffset</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">);</span>
-        
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sunset</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="s2">"HH:mm"</span><span class="p">));</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-
-</code></pre></div></div>
-
-<p>Finally, this gave me the correct sunset time.</p>
-
-<p>I was glad I managed to figure this out, and that it wasn’t as difficult as I was expecting. I was almost ready to just move on with my course not having figured it out. Maybe it wouldn’t have mattered since this timezone issue doesn’t really have much to do with APIs. However, sticking with it until it was solved reminded me of two things:</p>
+<p>AJAX: Asynchronous JavaScript and XML</p>
 
 <ul>
-  <li>the importance of stepping away from the code when you are stuck; it gives your mind a rest and allows your subconscious to continue looking for creative ways to solve the problem</li>
-  <li>that (at least for my own personal projects) I can solve any problem if I set my mind to it</li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX">MDN page</a></li>
+  <li>make requests to servers and updates to the UI without having to refresh the page</li>
 </ul>
 
+<p>The old way: XML. We used to use XML, but JSON is now most common. It’s easier to use JSON data in JavaScript code, plus it’s smaller in size than XML.</p>
+
+<ul>
+  <li>you can get any type of data, not just XML - <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">MDN</a></li>
+</ul>
+
+<p>How that works:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+
+<span class="nx">request</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span> <span class="c1">//whatever url you are fetching from</span>
+<span class="nx">request</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+
+<span class="c1">//use callback function to do something once we get the data</span>
+<span class="nx">request</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"load"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">repsonseText</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="promises">Promises</h3>
+
+<p>The above code works fine when you only need to make one request. However, what if you need to make multiple requests? What if they need to be made in a particular order, or subsequent requests rely on earlier ones? In this situation you end up with callbacks inside of callbacks inside of callbacks - callback hell. The code becomes unmanagable at this point.</p>
+
+<p>Since ES6 you can avoid this by using promises:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//no need for event listeners or callbacks</span>
+<span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span> <span class="c1">//whatever url you are fetching from</span>
+</code></pre></div></div>
+
+<p>This code returns a promise. Promises are used as placeholders for the result of the async request. The fetch API used above builds (creates) the promise for us to consume.</p>
+
+<p>Promise lifecycle/states:</p>
+
+<ul>
+  <li>pending: waiting for the value to be returned</li>
+  <li>settled: async task finished
+    <ul>
+      <li>fulfilled: a value was returned to us</li>
+      <li>rejected: some error happened</li>
+    </ul>
+  </li>
+</ul>
+
+<p>We can more easily chain promises using the ES6 <code class="highlighter-rouge">.then</code> method.</p>
+
+<p>To handle errors/rejected promises, we use the <code class="highlighter-rouge">.catch</code> method. It will catch errors that occur anywhere in the <code class="highlighter-rouge">.then</code> promise chain.</p>
+
+<p>There is also a <code class="highlighter-rouge">.finally</code> method, that is run no matter what happens with the promise.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//when the promise is settled, use .then and .catch</span>
+<span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">//need to parse the data</span>
+    <span class="c1">//this is also a promise, so we need another .then</span>
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">//do something with the data</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">//do something with the error</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">finally</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">//do something no matter what</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+
+<p>You can also handle specific errors with:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">throw</span> <span class="nx">New</span> <span class="nb">Error</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">.catch</code> method will catch these errors too.</p>
+
+<h3 id="the-event-loop">The event loop</h3>
+
+<p>How does the JavaScript runtime work?</p>
+
+<ul>
+  <li>JS engine includes the heap (where things are stored in memory) and the call stack (where the code is executed)</li>
+  <li>JS is single threaded - meaning it handles one operation at a time. JavaScript doesn’t multitask.</li>
+  <li>runtime also includes various web APIs, like DOM, fetch, event, geolocation, etc. These are not a part of the language, just provided to the JS engine to use</li>
+  <li>Callback queue: a data structure that holds callback functions that are attached to events. When the call stack is empty, the <strong>event loop </strong> takes callbacks from the queue and adds them to the call stack.
+    <ul>
+      <li>when an event is emitted, it is placed in the callback queue</li>
+      <li>the first item in the queue is taken by the event loop and placed on the call stack</li>
+    </ul>
+  </li>
+  <li>this is how we can have asynchronous behavior in JavaScript</li>
+  <li>Microtasks queue: for promises. Acts similarly to callback queue, but actually has priority over it.</li>
+</ul>
+
+<p>Concurrency model: how JS handles multiple tasks in a <strong>non-blocking</strong> (not waiting for other operations to finish running) way. The question is, how can this actually happen if the language is single threaded?</p>
+
+<p>Some async tasks run in the Web APIs environment, not on the call stack. For example, loading an image, fetching data, etc. So it’s not happening on our thread of execution.</p>
+
+<h3 id="creating-a-promise">Creating a promise</h3>
+
+<p>Use the promise constructor. It takes in an executor function with two parameters: resolve and reject.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myPromise</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resolve</span><span class="p">(</span><span class="s2">"You win!"</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">reject</span><span class="p">(</span><span class="s2">"You lose!"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">myPromise</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">)).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>Promisifying: to convert callback behavior into promise behavior. We can then consume the promise like above instead of using callbacks.</p>
+
+<h3 id="asyncawait">Async/await</h3>
+
+<p>Place <code class="highlighter-rouge">async</code> in front of function keyword. The function will return a promise. <code class="highlighter-rouge">await</code> statements are placed inside the function.</p>
+
+<p><code class="highlighter-rouge">await</code> stops code execution and waits until the promise is returned. But, because of the <code class="highlighter-rouge">async</code> keyword, this is happening inside an asynchronous function, and this execution is happening in the background. The call stack is not being blocked while waiting for this promise. Everything is happening behind the scenes, it’s just this syntax makes it look synchronous. Promises are still being used.</p>
+
+<p>Now you can assign resolved values from promises to variables, like we’ll see below.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myFetchFunction</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">//below, res is the resolved value of the promise</span>
+  <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`https://mylink.com`</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">myFetchFunction</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">await</code> keyword can currently only be used inside of async functions. You could wrap your code inside of an IIFE to get around this if needed.</p>
+
+<h3 id="trycatch">Try/catch</h3>
+
+<p>Use try/catch blocks for error handling. This is comparable to the <code class="highlighter-rouge">.then</code> and <code class="highlighter-rouge">.catch</code> syntax, but when we use async/await, there is nothing to chain the <code class="highlighter-rouge">.catch</code> onto.</p>
+
+<p>Wrap your code in a try block. If an error occurs in the try block, the catch block code is executed.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myFetchFunction</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`https://mylink.com`</span><span class="p">);</span>
+
+    <span class="c1">//error gets caught in the catch block</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">"Problem getting data"</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">myFetchFunction</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h3 id="awaiting-multiple-promises-at-once">Awaiting multiple promises at once</h3>
+
+<p>What do you do when you are waiting for several promises at once, but you don’t need them to arrive in order? If you are making several requests, one after the other in your code, they will be fetched one after the other.</p>
+
+<p>You can use <code class="highlighter-rouge">Promise.all()</code> to make sure they’re fetched concurrently. Place all your promises in an array:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kr">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+  <span class="nx">getJSON</span><span class="p">(</span><span class="s2">`https://mylink.com/1`</span><span class="p">),</span>
+  <span class="nx">getJSON</span><span class="p">(</span><span class="s2">`https://mylink.com/2`</span><span class="p">),</span>
+  <span class="nx">getJSON</span><span class="p">(</span><span class="s2">`https://mylink.com/3`</span><span class="p">),</span>
+<span class="p">]);</span>
+</code></pre></div></div>
+
+<p>Now, these requests will be running at the same time, instead of synchronously.</p>
+
+<p>The only problem is if one fails, the whole operation fails.</p>
+
+<h4 id="some-other-options">Some other options</h4>
+
+<p><code class="highlighter-rouge">Promise.race()</code>: resolved when the first one is resolved</p>
+
+<p><code class="highlighter-rouge">Promise.allSettled()</code>: you get the results of all promises, even if they are rejected</p>
+
+<p><code class="highlighter-rouge">Promise.any()</code>: similar to Promise.race, but ignores promises that reject</p>
 
                 </div>
             </section>
@@ -339,11 +436,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                        
-                                        
-                                            <li><a href="/async-javascript">Notes about asynchronous JavaScript</a></li>
-                                        
-                                    
                                   
                                 
                                   
@@ -372,23 +464,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
+                                            <li><a href="/clone-object">How to clone a JavaScript object</a></li>
                                         
                                     
                                   
@@ -398,37 +474,6 @@ into the {body} of the default.hbs template -->
                                         
                                         
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
@@ -447,21 +492,6 @@ into the {body} of the default.hbs template -->
                                         
                                         
                                     
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
@@ -496,6 +526,73 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
                                     
                                   
                                 
@@ -555,60 +652,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/errors-csproj">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Csharp</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Dotnet</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">500 server error and the csproj file</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -617,25 +660,29 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/jquery-notes">
+            <a class="post-card-content-link" href="/mern-deploy-render">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Javascript</span>
+                               <span class="post-card-tags">Deployment</span>
                             
                         
                             
-                               <span class="post-card-tags">Jquery</span>
+                               <span class="post-card-tags">Devops</span>
                             
                         
                             
-                                <span class="post-card-tags">Dom</span>
+                               <span class="post-card-tags">Node.js</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Cors</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">Notes on jQuery</h2>
+                    <h2 class="post-card-title">Deploying full stack MERN apps with Render</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -686,7 +733,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Reviewing API calls</div>
+    <div class="floating-header-title">Notes about asynchronous JavaScript</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -694,7 +741,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Reviewing+API+calls&amp;url=api-review"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Notes+about+asynchronous+JavaScript&amp;url=async-javascript"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -703,7 +750,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=api-review"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=async-javascript"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
