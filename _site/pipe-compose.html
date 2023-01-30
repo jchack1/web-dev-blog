@@ -11,7 +11,7 @@
 
 
 
-    <title>React refs</title>
+    <title>Writing pipe and compose functions - advanced JavaScript</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/react-ref" />
+    <link rel="canonical" href="http://localhost:4000/pipe-compose" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="React refs" />
-    <meta property="og:description" content="For a new personal project I needed to use a React ref in order to obtain some information from the DOM. I have never needed to use them before and this is what I learned. What was I trying to do? I am working on an “art canvas” app, where" />
-    <meta property="og:url" content="http://localhost:4000/react-ref" />
+    <meta property="og:title" content="Writing pipe and compose functions - advanced JavaScript" />
+    <meta property="og:description" content="I recently went down a rabbit hole while learning about pipe and compose functions in JavaScript. This is a fairly advanced topic and needs a lot of prerequisite knowledge to grasp. I was testing my knowledge by going over technical JavaScript questions on https://30secondsofinterviews.org/ when I came across this one:" />
+    <meta property="og:url" content="http://localhost:4000/pipe-compose" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2021-11-27T18:30:00-07:00" />
-    <meta property="article:modified_time" content="2021-11-27T18:30:00-07:00" />
-    <meta property="article:tag" content="React" />
+    <meta property="article:published_time" content="2023-01-30T12:30:00-07:00" />
+    <meta property="article:modified_time" content="2023-01-30T12:30:00-07:00" />
+    <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="React refs" />
-    <meta name="twitter:description" content="For a new personal project I needed to use a React ref in order to obtain some information from the DOM. I have never needed to use them before and this is what I learned. What was I trying to do? I am working on an “art canvas” app, where" />
+    <meta name="twitter:title" content="Writing pipe and compose functions - advanced JavaScript" />
+    <meta name="twitter:description" content="I recently went down a rabbit hole while learning about pipe and compose functions in JavaScript. This is a fairly advanced topic and needs a lot of prerequisite knowledge to grasp. I was testing my knowledge by going over technical JavaScript questions on https://30secondsofinterviews.org/ when I came across this one:" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="React" />
+    <meta name="twitter:data2" content="Javascript" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/react-ref",
+    "url": "http://localhost:4000/pipe-compose",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/react-ref"
+        "@id": "http://localhost:4000/pipe-compose"
     },
-    "description": "For a new personal project I needed to use a React ref in order to obtain some information from the DOM. I have never needed to use them before and this is what I learned. What was I trying to do? I am working on an “art canvas” app, where"
+    "description": "I recently went down a rabbit hole while learning about pipe and compose functions in JavaScript. This is a fairly advanced topic and needs a lot of prerequisite knowledge to grasp. I was testing my knowledge by going over technical JavaScript questions on https://30secondsofinterviews.org/ when I came across this one:"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="React refs" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Writing pipe and compose functions - advanced JavaScript" href="/feed.xml" />
 
 
 </head>
@@ -153,77 +153,183 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="27 November 2021">27 November 2021</time>
+                    <time class="post-full-meta-date" datetime="30 January 2023">30 January 2023</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/react/'>REACT</a>
+                               <a href='/tag/javascript/'>JAVASCRIPT</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">React refs</h1>
+                <h1 class="post-full-title">Writing pipe and compose functions - advanced JavaScript</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>For a new personal project I needed to use a React ref in order to obtain some information from the DOM. I have never needed to use them before and this is what I learned.</p>
+                    <p>I recently went down a rabbit hole while learning about pipe and compose functions in JavaScript. This is a fairly advanced topic and needs a lot of prerequisite knowledge to grasp.</p>
 
-<h3 id="what-was-i-trying-to-do">What was I trying to do?</h3>
+<p>I was testing my knowledge by going over technical JavaScript questions on https://30secondsofinterviews.org/ when I came across this one: “Create a function pipe that performs left-to-right function composition by returning a function that accepts one argument.
+“</p>
 
-<p>I am working on an “art canvas” app, where I have a div in the middle of the screen that shows a shape in place of my cursor.</p>
+<p>The term “pipe” was vaguely familiar, as was “function composition”, but I honestly had no idea what this question was asking me for. I started by googling “left-to-right function composition”.</p>
 
-<p>It is basically a web browser version of Microsoft Paint and is totally unnecessary, but it is a fun way for me to practice front-end skills and hopefully learn D3.js.</p>
+<p>This led to several tutorials about writing <strong>pipe</strong> and <strong>compose</strong> functions. I saw a lot of <code class="highlighter-rouge">reduce</code> and <code class="highlighter-rouge">reduceRight</code> functions being used. I hadn’t seen reduceRight before. These pipe and compose examples used an arrow-function syntax I didn’t quite understand either, and it looked something like this:</p>
 
-<p>Anyway, I needed a way to calculate the distance between the viewport and the edges of my “canvas”, so I could render my shape wherever the cursor was hovering on the canvas div.</p>
+<p><code class="highlighter-rouge">const multiply = x =&gt; y =&gt; x * y</code></p>
 
-<p>In vanilla JavaScript I can get the canvas div by using document.querySelector() or other similar document methods. Using element.getBoundingClientRect() will then give you information about the canvas div including its position within the viewport.</p>
+<p>What’s with this extra parameter?</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"#main-canvas"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">rect</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">getBoundingClientRect</span><span class="p">();</span>
+<p>Seeing it all written out like this wasn’t making sense, so I found myself watching a tutorial on youtube about pipe and compose. The instructor used the above syntax in his video and called this a <strong>curried function</strong>, and directed viewers towards a video on that topic. That video made reference to <strong>pure functions</strong> and <strong>functional programming</strong> and said these were important topics to understand curried functions.</p>
+
+<p>All of that to say there was a lot to learn before even being able to tackle the original question. I’ll go over everything I learned briefly below, because I know I’ll need to come back to this one day.</p>
+
+<p>Here’s a quick list to summarize:</p>
+
+<ul>
+  <li>pure functions and functional programming</li>
+  <li><code class="highlighter-rouge">reduce</code> and <code class="highlighter-rouge">reduceRight</code></li>
+  <li>curried functions</li>
+  <li>pipe/compose and function composition</li>
+</ul>
+
+<h3 id="pure-functions-and-functional-programming">Pure functions and functional programming</h3>
+
+<p>These topics are related to each other.</p>
+
+<p>Pure functions are those that will produce the same result given the same arguments, and will not affect anything in the global scope (no side effects). They won’t change the state of anything outside of it. They won’t mutate variables elsewhere in the program. To achieve this, you generally need to keep your functions as small as you can, using simple, reusable blocks of code.</p>
+
+<p>Functional programming builds software using pure functions. It is declarative rather than imperative.</p>
+
+<p>Wait… what does that mean?</p>
+
+<h4 id="imperative-vs-declarative-programming">Imperative vs Declarative programming</h4>
+
+<p><strong>Imperative</strong> programming focuses on <em>how</em> the program works, the process of getting your result. <strong>Declarative</strong> programming focuses on <em>what</em> you are getting out of the program. Imperative is about the steps involved, declarative is about the end result. Imperative uses more control flow in its code.</p>
+
+<p>We could write a whole article on that, maybe a whole course, but let’s move on.</p>
+
+<p>My understanding of functional programming is that we create a lot of simpler functions that can accomplish one main task, and we use those functions together throughout our program to do more complex things. It’s like making a larger program with smaller building blocks of code. Your program will look less like instructions to the computer with lots of control flow, and more like a series of expressions, of functions being called.</p>
+
+<p>Again, to be more accurate we could do an even deeper dive into this topic, this is just a general idea that was helpful for me.</p>
+
+<h3 id="reduce-and-reduce-right">Reduce and reduce right</h3>
+
+<p>Reduce is a difficult method to understand. Basically what it does is takes in an array, and for each item in the array, it runs some code, and adds the result to an accumulator - “reducing” it down to another value.</p>
+
+<p>The go to example of this always seems to be a “sum” function</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">accumulator</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">accumulator</span> <span class="o">+</span> <span class="nx">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>Once I have the x and y values, I can subtract them from my mouse position values, and have my shape appear in the correct place on the screen.</p>
+<p>In this example, we perform reduce on the array. Reduce takes in an accumulator, the thing you’re boiling it all down to, and the array item (x). For each array item we run this code: <code class="highlighter-rouge">accumulator + x</code>, and that value is returned from that iteration. On the first iteration, we have to initialize the value to something. In this case, since we are just adding some numbers together, we set it to 0. In the first iteration, the accumulator is 0, so we are doing “0 + 1”, and returning a value of 1. The value of the accumulator is now 1. We keep doing this until we have gone through each item in the array.</p>
 
-<p>However with React, in order to access DOM nodes in this way, I needed to use refs.</p>
+<p>Notice that reduce goes through the array in order from <strong>left to right</strong>. We start with the left-most value, at the 0 index.</p>
 
-<h3 id="what-are-refs">What are refs?</h3>
+<p>In reduceRight, we do the opposite. We start with the last value in the array. As far as I can tell that’s the only way they are different.</p>
 
-<p>Note: these days I use React Hooks, which enable me to use function components instead of class components. I’ll explain refs in the context of function components.</p>
+<p>Reduce is used for “pipe” functions and reduceRight is used for “compose” functions, which we’ll see later.</p>
 
-<p>As mentioned above, one of the biggest use cases for refs is when you want to access something in the DOM. Refs are similar to state in that their value can persist across component re-renders. The difference, though, is that a change in the value of your ref does not cause the component to re-render, whereas for state it does.</p>
+<h3 id="curried-functions">Curried functions.</h3>
 
-<p>First, you create a variable with the useRef hook:</p>
+<p>This can get a bit complicated so I’ll summarize as best as I can. This video and this article were very helpful for me to figure this out.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">inputRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">();</span>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=I4MebkHvj8g">https://www.youtube.com/watch?v=I4MebkHvj8g</a></li>
+  <li><a href="https://medium.com/dailyjs/why-the-fudge-should-i-use-currying-84e4000c8743">https://medium.com/dailyjs/why-the-fudge-should-i-use-currying-84e4000c8743</a></li>
+</ul>
+
+<p>If I try to describe it in my own words, currying functions is when you create a function that takes in multiple parameters separately, and these are used in separate steps of your function.</p>
+
+<p>Most functions I’ve seen up until now take in all arguments at once, then run some code, returning one final result.</p>
+
+<p>This doesn’t happen for curried functions. Within your function, the first argument is used in some code that returns another function. The function that is returned can use the second argument input into the function. And so on. If you were to write it all out line by line, you would end up with a lot of nested functions.</p>
+
+<p>If you only give the function one parameter, the function can’t complete fully. The result returned is just another function, that can take another parameter to produce a result. This is called a <strong>partial application</strong></p>
+
+<p>There are some good use cases for this, explained in the article. For example, you could use the first part of the function to do some expensive calculation or fetch, save that to a variable, then use the resulting partial application with different parameters.</p>
+
+<p>This probably doesn’t make a lot of sense without examples so please see the resources above.</p>
+
+<p>For now I’ll try to explain it with the multiplication example above.</p>
+
+<p><code class="highlighter-rouge">const multiply = x =&gt; y =&gt; x * y</code></p>
+
+<p>To completely use this function, you might try something like <code class="highlighter-rouge">const myNumber = multiply(2)(3) //6</code></p>
+
+<p>You can place the arguments directly after each other, invoking it immediately</p>
+
+<p>But let’s go step by step. What does <code class="highlighter-rouge">multiply(2)</code> give us?</p>
+
+<p><code class="highlighter-rouge">const times2 = multiply(2) // y =&gt; 2 * y</code></p>
+
+<p>It returns a function where 2 is multiplied by our y parameter</p>
+
+<p>The next step is passing in the y value</p>
+
+<p><code class="highlighter-rouge">const myNumber = times2(3) //6</code></p>
+
+<p>Let’s say we know that we might need to multiply a lot of different values by 2. We can partially apply the curried function with 2 as the first parameter. We are then left with a function that can multiply any value we give it by 2.</p>
+
+<p>Also, not that this is very important, but “curried/currying” has nothing to do with the food. It comes from the logistician Haskell Curry.</p>
+
+<h3 id="pipe-and-compose">Pipe and compose</h3>
+
+<p>Another video by the same youtuber was helpful: <a href="https://www.youtube.com/watch?v=kclGXphtmVg">https://www.youtube.com/watch?v=kclGXphtmVg</a></p>
+
+<p>Now we can put everything we’ve learned together to create pipe and compose functions.</p>
+
+<p>Pipe and compose functions both take in several simple pure functions, and “compose” them together to create a more complex function. This more complex function would ideally have just one parameter.</p>
+
+<p>Both are curried functions that take in arguments at separate steps. The first argument is an array consisting of the pure functions. The second argument is the value of the single parameter the function will be acting upon.</p>
+
+<p>For pipe, the <code class="highlighter-rouge">reduce</code> function is used to accumulate the array of pure functions from left to right. For compose, the <code class="highlighter-rouge">reduceRight</code> function is used to accumulate the pure functions from right to left. That’s all that is meant by left to right and right to left in this context.</p>
+
+<p>Here’s how you would write the pipe function:</p>
+
+<p><code class="highlighter-rouge"> const pipe = (...fns) =&gt; val =&gt; fns.reduce((acc, fn) =&gt; fn(acc), val)</code></p>
+
+<p>And here are our pure functions and what we want our resulting function to look like:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">square</span> <span class="o">=</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span> <span class="o">*</span> <span class="nx">v</span><span class="p">;</span>
+<span class="kd">const</span> <span class="kr">double</span> <span class="o">=</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">addOne</span> <span class="o">=</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">pipe</span><span class="p">(</span><span class="nx">square</span><span class="p">,</span> <span class="kr">double</span><span class="p">,</span> <span class="nx">addOne</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>Then you add the ref attribute to the component you are targeting.</p>
+<p><code class="highlighter-rouge">…fns</code> is your array of pure functions. It will look like: <code class="highlighter-rouge">[square, double, addOne]</code></p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">MainCanvas</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">inputRef</span><span class="p">}</span> <span class="nx">onMouseMove</span><span class="o">=</span><span class="p">{</span><span class="nx">handleMouseMove</span><span class="p">}</span><span class="o">&gt;&lt;</span><span class="sr">/MainCanvas</span><span class="err">&gt;
-</span></code></pre></div></div>
+<p><code class="highlighter-rouge">val</code> is the argument that will be passed into the resulting function.</p>
 
-<p>This gets our MainCanvas element and saves it to our ref variable above. inputRef is a JavaScript object, and we access our element using the “current” property. As you can see below, I can perform DOM related functions on the element, like getBoundingClientRect(), which gives me the x and y values I need.</p>
+<p><code class="highlighter-rouge">acc</code> is the accumulator, and <code class="highlighter-rouge">fn</code> is the current pure function from our array that reduce is iterating upon.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">handleMouseMove</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">{</span><span class="nx">clientX</span><span class="p">,</span> <span class="nx">clientY</span><span class="p">}</span> <span class="o">=</span> <span class="nx">event</span><span class="p">;</span>
+<p>The accumulator is initially set to <code class="highlighter-rouge">val</code>.</p>
 
-  <span class="kd">const</span> <span class="nx">displacementX</span> <span class="o">=</span> <span class="nx">inputRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">getBoundingClientRect</span><span class="p">().</span><span class="nx">x</span><span class="p">;</span>
-  <span class="kd">const</span> <span class="nx">displacementY</span> <span class="o">=</span> <span class="nx">inputRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">getBoundingClientRect</span><span class="p">().</span><span class="nx">y</span><span class="p">;</span>
+<p>That means the first iteration, going left to right in our array, will look like: <code class="highlighter-rouge">square(val)</code>. <code class="highlighter-rouge">acc</code> is now equal to <code class="highlighter-rouge">square(val)</code></p>
 
-  <span class="nx">updateMousePositionX</span><span class="p">(</span><span class="nx">clientX</span> <span class="o">-</span> <span class="nx">displacementX</span><span class="p">);</span>
-  <span class="nx">updateMousePositionY</span><span class="p">(</span><span class="nx">clientY</span> <span class="o">-</span> <span class="nx">displacementY</span><span class="p">);</span>
-<span class="p">};</span>
-</code></pre></div></div>
+<p><code class="highlighter-rouge">acc</code> is the now the argument for our next function, which is <code class="highlighter-rouge">double</code>. We get <code class="highlighter-rouge">double(square(val))</code>. That’s the new value of the accumulator.</p>
+
+<p>Next we use <code class="highlighter-rouge">addOne(acc)</code>, which ends up looking like <code class="highlighter-rouge">addOne(double(square(val)))</code></p>
+
+<h4 id="lets-look-at-those-steps-again-but-with-val--3">let’s look at those steps again but with <code class="highlighter-rouge">val = 3</code></h4>
+
+<ol>
+  <li>square(3) = 9</li>
+  <li>double(9) = 18</li>
+  <li>addOne(18) = 19</li>
+</ol>
+
+<p>If we want to use a compose pattern instead of pipe, we would reverse the order of the pure functions in the array, and use <code class="highlighter-rouge">reduceRight</code> instead of reduce.</p>
 
 <h3 id="conclusion">Conclusion</h3>
 
-<p>There is, of course, a lot more information out there on refs and how they can be used.</p>
-
-<p>I recommend checking out the <a href="https://reactjs.org/docs/hooks-reference.html#useref">React hooks docs</a> as well as <a href="https://www.youtube.com/watch?v=t2ypzz6gJm0">this youtube video</a> for more detailed information, as it was very helpful for me.</p>
+<p>There is of course a lot more complexity here than I’ve explained, and it’s possible my explanations are not 100% accurate. I personally found it difficult to understand the concepts when they were written with such technical language, and without the steps being explained. You can find all of that online already, so I didn’t want to just repeat that information. Definitely check out some other explanations in articles and videos for more detail.</p>
 
                 </div>
             </section>
@@ -279,7 +385,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/react/">React</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -293,34 +399,15 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
+                                    
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/async-javascript">Notes about asynchronous JavaScript</a></li>
+                                        
                                     
                                   
                                 
@@ -330,34 +417,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/debugging-graphs">Debugging front-end graph libraries - recharts</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/mern-flashcard-app">MERN stack - flashcard app</a></li>
+                                            <li><a href="/DOM-methods">The DOM</a></li>
                                         
                                     
                                   
@@ -366,7 +426,28 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/redux">Learning Redux</a></li>
+                                            <li><a href="/DOM-notes">Notes about the DOM</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
                                         
                                     
                                   
@@ -387,6 +468,8 @@ into the {body} of the default.hbs template -->
                                         
                                         
                                     
+                                  
+                                
                                   
                                 
                                   
@@ -423,7 +506,41 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                    
+                                  
                                 
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -440,6 +557,50 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                 
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -455,9 +616,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/react/">
+                            <a href="/tag/javascript/">
                                 
-                                    See all 6 posts  →
+                                    See all 17 posts  →
                                 
                             </a>
                         </footer>
@@ -467,60 +628,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/forEach-async-await">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Javascript</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Debugging</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Debugging - forEach with async/await</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -529,29 +636,17 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/ec2-ssh">
+            <a class="post-card-content-link" href="/async-javascript">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Aws</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Ec2</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Linux</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Debugging</span>
+                                <span class="post-card-tags">Javascript</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">How I lost, and regained, ssh access to my AWS EC2</h2>
+                    <h2 class="post-card-title">Notes about asynchronous JavaScript</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -602,7 +697,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">React refs</div>
+    <div class="floating-header-title">Writing pipe and compose functions - advanced JavaScript</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -610,7 +705,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=React+refs&amp;url=react-ref"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Writing+pipe+and+compose+functions+-+advanced+JavaScript&amp;url=pipe-compose"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -619,7 +714,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=react-ref"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=pipe-compose"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
