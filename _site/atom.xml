@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>I asked ChatGPT to help speed up my React code</title>
+        
+          <description>&lt;p&gt;I finally got around to trying ChatGPT. I’m sure there are many ways of using this technology, but I think it can be a great assistant to help &lt;em&gt;you&lt;/em&gt; improve your own code. Today I’ll share how I used it in my workflow.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 13 Feb 2023 12:30:00 -0700</pubDate>
+        <link>
+        http://localhost:4000/trying-chatgpt</link>
+        <guid isPermaLink="true">http://localhost:4000/trying-chatgpt</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Writing pipe and compose functions - advanced JavaScript</title>
         
           <description>&lt;p&gt;I recently went down a rabbit hole while learning about pipe and compose functions in JavaScript. This is a fairly advanced topic and needs a lot of prerequisite knowledge to grasp.&lt;/p&gt;
