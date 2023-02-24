@@ -11,7 +11,7 @@
 
 
 
-    <title>Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</title>
+    <title>Getting item count from DynamoDB query, with pagination</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/dino-clone" />
+    <link rel="canonical" href="http://localhost:4000/dynamodb-query-count-pagination" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game" />
-    <meta property="og:description" content="I learned some new things about vanilla javascript while following a tutorial for creating the chrome dino game. Data attributes Data attributes are used to store extra information on an HTML element. They always start with “data-“ and are added to an HTML element like any other attribute. They are" />
-    <meta property="og:url" content="http://localhost:4000/dino-clone" />
+    <meta property="og:title" content="Getting item count from DynamoDB query, with pagination" />
+    <meta property="og:description" content="At work I had another bug that ended up having to do with database pagination in DynamoDB. I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task. I noticed that the next task was sometimes not" />
+    <meta property="og:url" content="http://localhost:4000/dynamodb-query-count-pagination" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-05-16T18:30:00-06:00" />
-    <meta property="article:modified_time" content="2022-05-16T18:30:00-06:00" />
-    <meta property="article:tag" content="Javascript" />
+    <meta property="article:published_time" content="2023-02-22T20:30:00-07:00" />
+    <meta property="article:modified_time" content="2023-02-22T20:30:00-07:00" />
+    <meta property="article:tag" content="Dynamodb" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game" />
-    <meta name="twitter:description" content="I learned some new things about vanilla javascript while following a tutorial for creating the chrome dino game. Data attributes Data attributes are used to store extra information on an HTML element. They always start with “data-“ and are added to an HTML element like any other attribute. They are" />
+    <meta name="twitter:title" content="Getting item count from DynamoDB query, with pagination" />
+    <meta name="twitter:description" content="At work I had another bug that ended up having to do with database pagination in DynamoDB. I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task. I noticed that the next task was sometimes not" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Javascript" />
+    <meta name="twitter:data2" content="Dynamodb" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/dino-clone",
+    "url": "http://localhost:4000/dynamodb-query-count-pagination",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/dino-clone"
+        "@id": "http://localhost:4000/dynamodb-query-count-pagination"
     },
-    "description": "I learned some new things about vanilla javascript while following a tutorial for creating the chrome dino game. Data attributes Data attributes are used to store extra information on an HTML element. They always start with “data-“ and are added to an HTML element like any other attribute. They are"
+    "description": "At work I had another bug that ended up having to do with database pagination in DynamoDB. I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task. I noticed that the next task was sometimes not"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Getting item count from DynamoDB query, with pagination" href="/feed.xml" />
 
 
 </head>
@@ -153,101 +153,96 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="16 May 2022">16 May 2022</time>
+                    <time class="post-full-meta-date" datetime="22 February 2023">22 February 2023</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/javascript/'>JAVASCRIPT</a>,
+                               <a href='/tag/dynamodb/'>DYNAMODB</a>,
                             
                         
                             
-                               <a href='/tag/css/'>CSS</a>,
+                               <a href='/tag/database/'>DATABASE</a>,
                             
                         
                             
-                               <a href='/tag/dom/'>DOM</a>
+                               <a href='/tag/debugging/'>DEBUGGING</a>,
+                            
+                        
+                            
+                               <a href='/tag/aws/'>AWS</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</h1>
+                <h1 class="post-full-title">Getting item count from DynamoDB query, with pagination</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>I learned some new things about vanilla javascript while following a <a href="https://www.youtube.com/watch?v=47eXVRJKdkU">tutorial for creating the chrome dino game</a>.</p>
+                    <p>At work I had another bug that ended up having to do with database pagination in DynamoDB.</p>
 
-<h3 id="data-attributes">Data attributes</h3>
+<p>I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task.</p>
 
-<p>Data attributes are used to store extra information on an HTML element. They always start with “data-“ and are added to an HTML element like any other attribute. They are meant to be used for data that will not be shown on the screen, or picked up by a screen reader, just for data associated with a particular element.</p>
+<p>I noticed that the next task was sometimes not being completed, especially if there were a large number of items. When I checked the database manually in the AWS console, all of the correct items were there, so we should be able to move onto the next task.</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"score"</span> <span class="na">data-score</span><span class="nt">&gt;&lt;/div&gt;</span>
+<p>The number of items being returned was supposed to be 186. I noticed that in the console, the number of items would flash 177 before displaying the correct 186. The function that is checking the number of items was also logging 177. I thought maybe DynamoDB had to do more than one fetch to get all the items, and that second fetch wasn’t happening in my code.</p>
+
+<p>Turns out that was correct. If the data you’re querying reaches 1MB or greater, you need to query again to get the rest, so I needed to do this to get an accurate count. This meant I needed to add <code class="highlighter-rouge">LastEvaluatedKey</code> somewhere in my code like the last time this issue came up.</p>
+
+<p>When I saw the 1MB value in the AWS docs, I started thinking that I don’t actually need to return all this data if all I’m going to do is count it. These resources helped me to understand how to get the count, rather than the data, and how to paginate it.</p>
+
+<ul>
+  <li><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Count">AWS DynamoDB query count</a></li>
+  <li><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.Pagination.html">AWS DynamoDB pagination</a></li>
+  <li><a href="https://stackoverflow.com/questions/27316643/how-to-get-item-count-from-dynamodb">Stackoverflow post about getting the count only</a></li>
+</ul>
+
+<p>I ended up with the code below (changed somewhat for privacy, all the concepts still apply):</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">getItemCount</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">itemId</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">TableName</span><span class="p">:</span> <span class="s2">`my-table`</span><span class="p">,</span>
+      <span class="na">KeyConditionExpression</span><span class="p">:</span> <span class="s2">"PK = :pk AND begins_with(SK, :sk)"</span><span class="p">,</span>
+      <span class="na">ExpressionAttributeValues</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">":pk"</span><span class="p">:</span> <span class="nx">itemId</span><span class="p">,</span>
+        <span class="s2">":sk"</span><span class="p">:</span> <span class="s2">"item"</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="na">Select</span><span class="p">:</span> <span class="s2">"COUNT"</span><span class="p">,</span>
+      <span class="na">ExclusiveStartKey</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="p">};</span>
+
+    <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">result</span><span class="p">;</span>
+
+    <span class="k">do</span> <span class="p">{</span>
+      <span class="nx">result</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">dynamo</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">params</span><span class="p">).</span><span class="nx">promise</span><span class="p">();</span>
+
+      <span class="nx">count</span> <span class="o">+=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">Count</span><span class="p">;</span>
+      <span class="nx">params</span><span class="p">.</span><span class="nx">ExclusiveStartKey</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">LastEvaluatedKey</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">LastEvaluatedKey</span> <span class="o">!==</span> <span class="s2">"undefined"</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">count</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
-<p>The data attributes for an element are collectively called a “dataset”. You can access the dataset using javascript like this:</p>
+<h3 id="explanation">Explanation</h3>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">scoreDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"#score"</span><span class="p">);</span>
+<p>As seen in a previous post, we make use of a do/while loop. We query the database with the same params, but with each query we need to add a value to <code class="highlighter-rouge">ExclusiveStartKey</code>. That value should be the <code class="highlighter-rouge">LastEvaluatedKey</code> that was returned from the previous operation. <code class="highlighter-rouge">LastEvaluatedKey</code> is where the previous query left off, so that’s where we need to start the next query. When there is no <code class="highlighter-rouge">LastEvaluatedKey</code>, meaning it is “undefined”, we have retrieved all the results and can exit the loop.</p>
 
-<span class="kd">const</span> <span class="nx">scoreDataset</span> <span class="o">=</span> <span class="nx">scoreDiv</span><span class="p">.</span><span class="nx">dataset</span><span class="p">;</span>
-</code></pre></div></div>
+<p>To get the count without returning the data, we need to add <code class="highlighter-rouge">Select: "COUNT"</code> to our params. We increment the count each time our query returns results, so our final value is the total count.</p>
 
-<p>Data attributes are great for selecting DOM elements in our javascript code. The easiest way to access elements with data attributes is to use the query selector method, adding your data attribute inside square brackets:</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">scoreDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"[data-score]"</span><span class="p">);</span>
-</code></pre></div></div>
-
-<h3 id="css-variables-and-calc-method">CSS variables and calc() method</h3>
-
-<p>When I started learning CSS there weren’t a lot of ways to use variables in your stylesheets - you had to use SASS, which would compile into CSS. There are now more options built into CSS to use variables and functions, including the calc() method.</p>
-
-<p>This method is fairly straight-forward. You pass some values into calc(), and the value returned from it becomes the value of your CSS property.</p>
-
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.my-class</span> <span class="p">{</span>
-  <span class="py">--bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
-  <span class="nl">bottom</span><span class="p">:</span> <span class="n">calc</span><span class="p">(</span><span class="n">var</span><span class="p">(</span><span class="n">--bottom</span><span class="p">)</span> <span class="err">*</span> <span class="m">1%</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>In this example we are also passing a variable into calc.</p>
-
-<p>Variables, or custom properties, are useful for values that repeat often in your stylesheet. We also used them in the dino game code when we needed to manipulate a value using javascript.</p>
-
-<p>Variables are declared in your stylesheet with a double hyphen <code class="highlighter-rouge">"--"</code> preceding the variable name, and are accessed using the var() function.</p>
-
-<p>In the dino game code we often selected our elements using data attributes and changed their custom CSS properties in our javascript code. This is how we were able to make the game interactive.</p>
-
-<h3 id="css-getpropertyvalue-and-setproperty">CSS getPropertyValue() and setProperty()</h3>
-
-<p>These are built in functions that allow you to get the value of a CSS property, and set or change the value of a CSS property.</p>
-
-<p>They are used on your elements once they are selected in your javascript code.</p>
-
-<p>We also needed to use a window method called <strong>getComputedStyle()</strong>, which returns an object containing all the CSS properties for an element.</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">scoreDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"[data-score]"</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">myValue</span> <span class="o">=</span> <span class="nx">getComputedStyle</span><span class="p">(</span><span class="nx">scoreDiv</span><span class="p">).</span><span class="nx">getPropertyValue</span><span class="p">(</span><span class="s2">"margin"</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>The object returned from getComputedStyle() is read only, so when you want to update a value, you use setProperty() on the element’s style property like this:</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//pass in the property and its new value</span>
-<span class="nx">scoreDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="s2">"margin"</span><span class="p">,</span> <span class="s2">"20px"</span><span class="p">);</span>
-</code></pre></div></div>
-
-<h3 id="getboundingclientrect">getBoundingClientRect()</h3>
-
-<p>This one isn’t new to me, but I had never used it in a game before. This function returns an object with information on the size of an element and its position within the viewport.</p>
-
-<p>In the dino game we get these values for both the dino and the cacti. Whenever any of the position values are the same, that means a collision has occurred, and the game is over.</p>
+<p>I also added <code class="highlighter-rouge">ExclusiveStartKey: null</code> to the params. This is because I am using typescript, and it wouldn’t let me add a new field that wasn’t defined from the beginning. Having the start key as null doesn’t affect the first query, and allows us to update the params object later in our code. You don’t have to do this in regular javascript.</p>
 
 <h3 id="conclusion">Conclusion</h3>
 
-<p>I don’t often work with vanilla javascript anymore since I spend most of my time using React. It’s important to understand the basics and it’s been really helpful to fill some gaps in my knowledge regarding working with the DOM, so I can make my code more interactive.</p>
+<p>It’s important to keep pagination in mind when fetching large amounts of data, and understand the limitations of the database you’re working with. As I learned, it can cause unforeseen bugs that are difficult to track down. It’s encouraging to me to realize I’m now picking up on these patterns.</p>
 
                 </div>
             </section>
@@ -303,7 +298,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/dynamodb/">Dynamodb</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -317,68 +312,6 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/trying-chatgpt">I asked ChatGPT to help speed up my React code</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/pipe-compose">Writing pipe and compose functions - advanced JavaScript</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/async-javascript">Notes about asynchronous JavaScript</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
                                     
                                   
                                 
@@ -387,21 +320,26 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
                                     
                                         
                                         
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
+                                            <li><a href="/dynamo-db-pagination">DynamoDB scans and pagination</a></li>
                                         
                                     
                                   
@@ -433,24 +371,11 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
-                                  
                                 
-                                  
-                                    
-                                        
-                                        
-                                    
                                   
                                 
                                   
@@ -464,10 +389,11 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -493,24 +419,7 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
-                                  
                                 
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
                                   
                                 
                                   
@@ -524,10 +433,7 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
@@ -543,9 +449,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/javascript/">
+                            <a href="/tag/dynamodb/">
                                 
-                                    See all 18 posts  →
+                                    See all 1 posts  →
                                 
                             </a>
                         </footer>
@@ -555,68 +461,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/dynamo-db-pagination">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Dynamodb</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Database</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Debugging</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Aws</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">DynamoDB scans and pagination</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -625,7 +469,7 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/data-structures-javascript">
+            <a class="post-card-content-link" href="/trying-chatgpt">
                 <header class="post-card-header">
                     
                         
@@ -634,12 +478,16 @@ into the {body} of the default.hbs template -->
                             
                         
                             
-                                <span class="post-card-tags">Data-structures</span>
+                               <span class="post-card-tags">Chatgpt</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Ai</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">More data structures - JavaScript</h2>
+                    <h2 class="post-card-title">I asked ChatGPT to help speed up my React code</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -690,7 +538,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</div>
+    <div class="floating-header-title">Getting item count from DynamoDB query, with pagination</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -698,7 +546,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Things+I+learned+about+the+DOM+and+vanilla+JavaScript+from+cloning+the+chrome+dinosaur+game&amp;url=dino-clone"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Getting+item+count+from+DynamoDB+query%2C+with+pagination&amp;url=dynamodb-query-count-pagination"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -707,7 +555,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=dino-clone"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=dynamodb-query-count-pagination"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

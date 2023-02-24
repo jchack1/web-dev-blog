@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-13T14:34:41-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">I asked ChatGPT to help speed up my React code</title><link href="http://localhost:4000/trying-chatgpt" rel="alternate" type="text/html" title="I asked ChatGPT to help speed up my React code" /><published>2023-02-13T12:30:00-07:00</published><updated>2023-02-13T12:30:00-07:00</updated><id>http://localhost:4000/trying-chatgpt</id><content type="html" xml:base="http://localhost:4000/trying-chatgpt">&lt;p&gt;I finally got around to trying ChatGPT. I’m sure there are many ways of using this technology, but I think it can be a great assistant to help &lt;em&gt;you&lt;/em&gt; improve your own code. Today I’ll share how I used it in my workflow.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-23T20:17:31-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Getting item count from DynamoDB query, with pagination</title><link href="http://localhost:4000/dynamodb-query-count-pagination" rel="alternate" type="text/html" title="Getting item count from DynamoDB query, with pagination" /><published>2023-02-22T20:30:00-07:00</published><updated>2023-02-22T20:30:00-07:00</updated><id>http://localhost:4000/dynamodb-query-count-pagination</id><content type="html" xml:base="http://localhost:4000/dynamodb-query-count-pagination">&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;
+
+&lt;p&gt;I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task.&lt;/p&gt;
+
+&lt;p&gt;I noticed that the next task was sometimes not being completed, especially if there were a large number of items. When I checked the database manually in the AWS console, all of the correct items were there, so we should be able to move onto the next task.&lt;/p&gt;
+
+&lt;p&gt;The number of items being returned was supposed to be 186. I noticed that in the console, the number of items would flash 177 before displaying the correct 186. The function that is checking the number of items was also logging 177. I thought maybe DynamoDB had to do more than one fetch to get all the items, and that second fetch wasn’t happening in my code.&lt;/p&gt;
+
+&lt;p&gt;Turns out that was correct. If the data you’re querying reaches 1MB or greater, you need to query again to get the rest, so I needed to do this to get an accurate count. This meant I needed to add &lt;code class=&quot;highlighter-rouge&quot;&gt;LastEvaluatedKey&lt;/code&gt; somewhere in my code like the last time this issue came up.&lt;/p&gt;
+
+&lt;p&gt;When I saw the 1MB value in the AWS docs, I started thinking that I don’t actually need to return all this data if all I’m going to do is count it. These resources helped me to understand how to get the count, rather than the data, and how to paginate it.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Count&quot;&gt;AWS DynamoDB query count&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.Pagination.html&quot;&gt;AWS DynamoDB pagination&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/27316643/how-to-get-item-count-from-dynamodb&quot;&gt;Stackoverflow post about getting the count only&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I ended up with the code below (changed somewhat for privacy, all the concepts still apply):&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getItemCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;TableName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`my-table`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;KeyConditionExpression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;PK = :pk AND begins_with(SK, :sk)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;ExpressionAttributeValues&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;:pk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;itemId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;:sk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;item&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;Select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;COUNT&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;ExclusiveStartKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dynamo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+      &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ExclusiveStartKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LastEvaluatedKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LastEvaluatedKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
+
+&lt;p&gt;As seen in a previous post, we make use of a do/while loop. We query the database with the same params, but with each query we need to add a value to &lt;code class=&quot;highlighter-rouge&quot;&gt;ExclusiveStartKey&lt;/code&gt;. That value should be the &lt;code class=&quot;highlighter-rouge&quot;&gt;LastEvaluatedKey&lt;/code&gt; that was returned from the previous operation. &lt;code class=&quot;highlighter-rouge&quot;&gt;LastEvaluatedKey&lt;/code&gt; is where the previous query left off, so that’s where we need to start the next query. When there is no &lt;code class=&quot;highlighter-rouge&quot;&gt;LastEvaluatedKey&lt;/code&gt;, meaning it is “undefined”, we have retrieved all the results and can exit the loop.&lt;/p&gt;
+
+&lt;p&gt;To get the count without returning the data, we need to add &lt;code class=&quot;highlighter-rouge&quot;&gt;Select: &quot;COUNT&quot;&lt;/code&gt; to our params. We increment the count each time our query returns results, so our final value is the total count.&lt;/p&gt;
+
+&lt;p&gt;I also added &lt;code class=&quot;highlighter-rouge&quot;&gt;ExclusiveStartKey: null&lt;/code&gt; to the params. This is because I am using typescript, and it wouldn’t let me add a new field that wasn’t defined from the beginning. Having the start key as null doesn’t affect the first query, and allows us to update the params object later in our code. You don’t have to do this in regular javascript.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;It’s important to keep pagination in mind when fetching large amounts of data, and understand the limitations of the database you’re working with. As I learned, it can cause unforeseen bugs that are difficult to track down. It’s encouraging to me to realize I’m now picking up on these patterns.&lt;/p&gt;</content><author><name></name></author><category term="dynamodb" /><category term="database" /><category term="debugging" /><category term="aws" /><summary type="html">At work I had another bug that ended up having to do with database pagination in DynamoDB.</summary></entry><entry><title type="html">I asked ChatGPT to help speed up my React code</title><link href="http://localhost:4000/trying-chatgpt" rel="alternate" type="text/html" title="I asked ChatGPT to help speed up my React code" /><published>2023-02-13T12:30:00-07:00</published><updated>2023-02-13T12:30:00-07:00</updated><id>http://localhost:4000/trying-chatgpt</id><content type="html" xml:base="http://localhost:4000/trying-chatgpt">&lt;p&gt;I finally got around to trying ChatGPT. I’m sure there are many ways of using this technology, but I think it can be a great assistant to help &lt;em&gt;you&lt;/em&gt; improve your own code. Today I’ll share how I used it in my workflow.&lt;/p&gt;
 
 &lt;p&gt;The pokedex app I made a few months ago was loading really slowly, and I was struggling to speed it up. Since this is just a small demo app I figured it would be a good use case to test out ChatGPT.&lt;/p&gt;
 
@@ -1106,33 +1166,4 @@
 
 &lt;p&gt;If you need help remembering which operation does which, think of it this way. If the “++” comes &lt;em&gt;before&lt;/em&gt; the i, incrementation happens before it is returned. If the “++” comes &lt;em&gt;after&lt;/em&gt; the i, the incrementation happens after it is returned.&lt;/p&gt;
 
-&lt;p&gt;Of course, this applies to other operations, including decrementation.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="javascript" /><summary type="html">I have always been familiar with incrementing a variable using i++, but recently came across ++i. It took me a while to truly understand the difference.</summary></entry><entry><title type="html">Debugging serverless: ‘AWSLambdaFullAccess does not exist’</title><link href="http://localhost:4000/lambda-fullaccess-bug" rel="alternate" type="text/html" title="Debugging serverless: 'AWSLambdaFullAccess does not exist'" /><published>2022-08-30T18:30:00-06:00</published><updated>2022-08-30T18:30:00-06:00</updated><id>http://localhost:4000/lambda-fullaccess-bug</id><content type="html" xml:base="http://localhost:4000/lambda-fullaccess-bug">&lt;p&gt;I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.&lt;/p&gt;
-
-&lt;p&gt;Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node 14 - or so I thought. It turns out there were a few I missed, mostly in projects that are not worked on often.&lt;/p&gt;
-
-&lt;p&gt;A year is a long time to not deploy a serverless app into AWS. I updated the runtime to Node 14, and attempted to deploy. There were several errors, one after the other, that I managed to fix. The last error I received had me stuck for a while.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; CREATE_FAILED: CodeDeployServiceRole (AWS::IAM::Role) Policy arn:aws:iam::aws:policy/AWSLambdaFullAccess does not exist or is not attachable&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;While there was some CodeDeploy code in the app, there was never any line of code where we explicitly set “AWSLambdaFullAccess”. I tried commenting out the CodeDeploy code under the IAM role section:&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Effect&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Allow&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;Action&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;codedeploy:*&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;Resource&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;But that didn’t do anything.&lt;/p&gt;
-
-&lt;p&gt;After some googling, I saw that the AWSLambdaFullAccess policy had been deprecated, and AWSLambda_FullAccess was its replacement. I vaguely remembered seeing this in an AWS email sometime in the past year. The problem must be connected to this, somehow.&lt;/p&gt;
-
-&lt;p&gt;I checked the serverless-generated cloudformation files in my .serverless folder. There was code for the creation of a AWSLambdaFullAccess policy. But none of our own code was telling it to do that. I thought maybe I had an old version of serverless, but I recently updated my local environment to version 3, and my serverless.yml file didn’t specify a framework version, so that couldn’t be it.&lt;/p&gt;
-
-&lt;p&gt;After lots of trial and error, and more googling, I went back to a &lt;a href=&quot;https://github.com/serverless/components/issues/918&quot;&gt;github issues page&lt;/a&gt; where someone else reported the same issue. At first glace I didn’t see a solution for my problem, but I scrolled a little further and found something helpful.&lt;/p&gt;
-
-&lt;h3 id=&quot;solution&quot;&gt;Solution&lt;/h3&gt;
-
-&lt;p&gt;One commenter said their issue was that they had an old version of a plugin “serverless-plugin-canary-deployments”. We had that plugin, too. I thought I had checked the plugin versions and found they were the same across our different microservices, and these microservices never gave the same error. Regardless, I updated that npm package to the latest version and deployed. This time it worked!&lt;/p&gt;
-
-&lt;p&gt;It’s possible to receive this same error and have an entirely different issue causing the problem, but this worked for me. Perhaps we can generalize this and say that if you are getting an error related to a deprecation, have a look at the versions of your dependencies.&lt;/p&gt;</content><author><name></name></author><category term="debugging" /><category term="aws" /><category term="serverless" /><summary type="html">I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.</summary></entry></feed>
+&lt;p&gt;Of course, this applies to other operations, including decrementation.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="javascript" /><summary type="html">I have always been familiar with incrementing a variable using i++, but recently came across ++i. It took me a while to truly understand the difference.</summary></entry></feed>
