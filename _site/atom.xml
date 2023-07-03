@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Binary math - addition problem</title>
+        
+          <description>&lt;p&gt;Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 02 Jul 2023 22:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/binary-math</link>
+        <guid isPermaLink="true">http://localhost:4000/binary-math</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Getting item count from DynamoDB query, with pagination</title>
         
           <description>&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;

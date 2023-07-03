@@ -1,4 +1,105 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-23T20:17:31-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Getting item count from DynamoDB query, with pagination</title><link href="http://localhost:4000/dynamodb-query-count-pagination" rel="alternate" type="text/html" title="Getting item count from DynamoDB query, with pagination" /><published>2023-02-22T20:30:00-07:00</published><updated>2023-02-22T20:30:00-07:00</updated><id>http://localhost:4000/dynamodb-query-count-pagination</id><content type="html" xml:base="http://localhost:4000/dynamodb-query-count-pagination">&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-03T13:37:40-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Binary math - addition problem</title><link href="http://localhost:4000/binary-math" rel="alternate" type="text/html" title="Binary math - addition problem" /><published>2023-07-02T22:30:00-06:00</published><updated>2023-07-02T22:30:00-06:00</updated><id>http://localhost:4000/binary-math</id><content type="html" xml:base="http://localhost:4000/binary-math">&lt;p&gt;Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.&lt;/p&gt;
+
+&lt;p&gt;The problem was to simply add two binary numbers - the inputs, &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt; were strings, and the output needed to be a string as well.&lt;/p&gt;
+
+&lt;p&gt;There are better explantions about binary and math out there, these are just some notes in my own words to help me in the future. Crash Course on youtube has a great series on computer science, and they &lt;a href=&quot;https://www.youtube.com/watch?v=1GSjbWt0c9M&quot;&gt;have an excellent video explaining binary here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-binary-works&quot;&gt;How binary works&lt;/h3&gt;
+
+&lt;p&gt;Every day we deal with the decimal number system, which has 10 digits we can work with: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. We also call this base 10. Binary has only two digits, 0 and 1. We can call it base 2.&lt;/p&gt;
+
+&lt;p&gt;When we are solving a simple addition problem on paper, we start with the 1’s place, working from right to left. We add the numbers in the 1’s place, and if the sum is 10 or greater, we have to carry a value. We add that value to the numbers in the next column, the 10’s place, and continue from there. Each column increases by a factor of 10, since we are in base 10.&lt;/p&gt;
+
+&lt;p&gt;We can use the same method with the binary system, it’s just the value of each column is different. Since we are in base 2, each column increases by a factor of 2. Instead of 1, 10, 100, 1000… we have, again from right to left, 1, 2, 4, 8, 16, 32, and so on. You add the columns in the same way.&lt;/p&gt;
+
+&lt;h3 id=&quot;adding&quot;&gt;Adding&lt;/h3&gt;
+
+&lt;p&gt;Let’s say you are adding the following binary numbers:&lt;/p&gt;
+
+&lt;p&gt;111
++10&lt;/p&gt;
+
+&lt;p&gt;The right-most column is the 1’s column. 1 + 0 is 1, so your first value is 1. There is nothing to carry.&lt;/p&gt;
+
+&lt;p&gt;Onto the next column, we have 1 and 1. This adds to 2 (10 in binary), so our value we write down is 0 and we carry the 1 to the next column (remember, we only have 0 and 1 to represent our values). Then for our next calculation, we add 1 plus our carried over 1 to get 2 (10 in binary). There are no more columns, so we write down 10.&lt;/p&gt;
+
+&lt;p&gt;This gives us 1001.&lt;/p&gt;
+
+&lt;h3 id=&quot;converting-to-base-10&quot;&gt;Converting to base 10&lt;/h3&gt;
+
+&lt;p&gt;In the example above, our result spans the 8, 4, 2, and 1 columns.&lt;/p&gt;
+
+&lt;p&gt;Because we have a 1 in the 1 column, and a 1 in the 8 column, we can add those together to get a base 10 value of 9.&lt;/p&gt;
+
+&lt;h3 id=&quot;my-initial-solution&quot;&gt;My initial solution&lt;/h3&gt;
+
+&lt;p&gt;I figured I would just loop through each column of the strings I was given, trying to replicate the on-paper addition process. I ended up with this:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//a and b are strings&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//returns a string&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;addBinary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;carryValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;longestStringLength&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;//as many iterations as the length of the longest string - that's how many places our binary number has&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;longestStringLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//iterate over string from right to left - it's highest index to lowest&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;carryValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;//add calc to the beginning of binaryStr, carry value if needed&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;carryValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;carryValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;//account for a carried over value from last opertion, if there is one, otherwise return&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;carryValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;a-better-or-shorter-solution&quot;&gt;A better (or shorter) solution&lt;/h3&gt;
+
+&lt;p&gt;I looked at some other solutions and found that JavaScript has prefixes to convert other number systems to base 10. In this case, we add “0b” to the beginning of our strings, convert to numbers, add together, and return a string.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;addBinary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BigInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0b&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BigInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0b&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BigInt&lt;/code&gt; was used here to handle potential large inputs. Also, to return a string in binary rather than base 10, we add a radix to the &lt;code class=&quot;highlighter-rouge&quot;&gt;toString()&lt;/code&gt; method. 2 means base 2 in this case.&lt;/p&gt;
+
+&lt;h3 id=&quot;prefixes&quot;&gt;Prefixes&lt;/h3&gt;
+
+&lt;p&gt;There are prefixes for other number systems too:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0o&lt;/code&gt; for octal&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0x&lt;/code&gt; for hexadecimal&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;e&lt;/code&gt; for exponents&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The letter after the leading zero can be uppercase or lowercase.&lt;/p&gt;
+
+&lt;h3 id=&quot;tostring-radix&quot;&gt;toString() radix&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;toString()&lt;/code&gt;, be definition, returns a string value that represents a number. It is meant to convert a number to a string, so it makes sense that you can convert between different number systems at the same time. Including a radix is optional, and defaults to 10, but it can be any value between 2 and 36.&lt;/p&gt;</content><author><name></name></author><category term="binary" /><category term="computer-science" /><category term="javascript" /><summary type="html">Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.</summary></entry><entry><title type="html">Getting item count from DynamoDB query, with pagination</title><link href="http://localhost:4000/dynamodb-query-count-pagination" rel="alternate" type="text/html" title="Getting item count from DynamoDB query, with pagination" /><published>2023-02-22T20:30:00-07:00</published><updated>2023-02-22T20:30:00-07:00</updated><id>http://localhost:4000/dynamodb-query-count-pagination</id><content type="html" xml:base="http://localhost:4000/dynamodb-query-count-pagination">&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;
 
 &lt;p&gt;I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task.&lt;/p&gt;
 
@@ -1125,45 +1226,4 @@
 &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clone&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;It’s important to note that this doesn’t work in all cases, because there are some javascript objects that cannot go through &lt;code class=&quot;highlighter-rouge&quot;&gt;JSON.stringify()&lt;/code&gt;, like functions and DOM objects. You would need to use shallow copies in this case. You can read more about this in the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/Deep_copy&quot;&gt;MDN docs&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">There are several different methods that can be used to clone an object in javascript.</summary></entry><entry><title type="html">What’s the difference between ‘i++’ and ‘++i’</title><link href="http://localhost:4000/increment-decrement" rel="alternate" type="text/html" title="What's the difference between 'i++' and '++i'" /><published>2022-10-02T18:30:00-06:00</published><updated>2022-10-02T18:30:00-06:00</updated><id>http://localhost:4000/increment-decrement</id><content type="html" xml:base="http://localhost:4000/increment-decrement">&lt;p&gt;I have always been familiar with incrementing a variable using &lt;code class=&quot;highlighter-rouge&quot;&gt;i++&lt;/code&gt;, but recently came across &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt;. It took me a while to truly understand the difference.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;i++&lt;/code&gt; is used as a shorthand for writing &lt;code class=&quot;highlighter-rouge&quot;&gt;i = i + 1&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt; does the same. The difference between the two is in what value is returned from this operation.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;returnIncrementPrefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;returnIncrementPostfix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// returns 6&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In the example above, we use the prefix &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt;. When 5 is used as an argument in this function, 6 is returned. Knowing that &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt; increments by one, this seems to make sense.&lt;/p&gt;
-
-&lt;p&gt;What happens when we use the postfix?&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;returnIncrementPostfix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;returnIncrementPostfix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// returns 5&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The above code returns a value of 5. At first this doesn’t make sense. We are supposed to be incrementing by 1, right? Shouldn’t this also equal 6?&lt;/p&gt;
-
-&lt;p&gt;Nope! In the first example, these steps occur:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;i is incremented by 1, giving i a value of 6&lt;/li&gt;
-  &lt;li&gt;i is returned&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We are returned the value of i &lt;em&gt;after&lt;/em&gt; it has been incremented.&lt;/p&gt;
-
-&lt;p&gt;In the second example using the postfix, i is being returned &lt;em&gt;before&lt;/em&gt; it is incremented. The operation doesn’t happen until after 5 has been returned to us.&lt;/p&gt;
-
-&lt;p&gt;It’s all about the order in which the steps occur.&lt;/p&gt;
-
-&lt;h4 id=&quot;tip-for-remembering&quot;&gt;Tip for remembering&lt;/h4&gt;
-
-&lt;p&gt;If you need help remembering which operation does which, think of it this way. If the “++” comes &lt;em&gt;before&lt;/em&gt; the i, incrementation happens before it is returned. If the “++” comes &lt;em&gt;after&lt;/em&gt; the i, the incrementation happens after it is returned.&lt;/p&gt;
-
-&lt;p&gt;Of course, this applies to other operations, including decrementation.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="javascript" /><summary type="html">I have always been familiar with incrementing a variable using i++, but recently came across ++i. It took me a while to truly understand the difference.</summary></entry></feed>
+&lt;p&gt;It’s important to note that this doesn’t work in all cases, because there are some javascript objects that cannot go through &lt;code class=&quot;highlighter-rouge&quot;&gt;JSON.stringify()&lt;/code&gt;, like functions and DOM objects. You would need to use shallow copies in this case. You can read more about this in the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/Deep_copy&quot;&gt;MDN docs&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">There are several different methods that can be used to clone an object in javascript.</summary></entry></feed>
