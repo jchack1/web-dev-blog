@@ -11,7 +11,7 @@
 
 
 
-    <title>Debugging - forEach with async/await</title>
+    <title>Algorithms: Boyer-Moore</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/forEach-async-await" />
+    <link rel="canonical" href="http://localhost:4000/boyer-moore" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Debugging - forEach with async/await" />
-    <meta property="og:description" content="This week I learned that you do not use forEach loops with async/await. I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app. We use async and await to deal with" />
-    <meta property="og:url" content="http://localhost:4000/forEach-async-await" />
+    <meta property="og:title" content="Algorithms: Boyer-Moore" />
+    <meta property="og:description" content="Today I learned about a new algorithm while working on a leetcode coding problem. The problem was to find the majority element in an array of numbers (nums) of length n - meaning, return the element that appears half the time or more (n / 2). Your input is guaranteed" />
+    <meta property="og:url" content="http://localhost:4000/boyer-moore" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2021-12-07T18:30:00-07:00" />
-    <meta property="article:modified_time" content="2021-12-07T18:30:00-07:00" />
-    <meta property="article:tag" content="Javascript" />
+    <meta property="article:published_time" content="2023-07-07T22:30:00-06:00" />
+    <meta property="article:modified_time" content="2023-07-07T22:30:00-06:00" />
+    <meta property="article:tag" content="Coding-problems" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Debugging - forEach with async/await" />
-    <meta name="twitter:description" content="This week I learned that you do not use forEach loops with async/await. I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app. We use async and await to deal with" />
+    <meta name="twitter:title" content="Algorithms: Boyer-Moore" />
+    <meta name="twitter:description" content="Today I learned about a new algorithm while working on a leetcode coding problem. The problem was to find the majority element in an array of numbers (nums) of length n - meaning, return the element that appears half the time or more (n / 2). Your input is guaranteed" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Javascript" />
+    <meta name="twitter:data2" content="Coding-problems" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/forEach-async-await",
+    "url": "http://localhost:4000/boyer-moore",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/forEach-async-await"
+        "@id": "http://localhost:4000/boyer-moore"
     },
-    "description": "This week I learned that you do not use forEach loops with async/await. I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app. We use async and await to deal with"
+    "description": "Today I learned about a new algorithm while working on a leetcode coding problem. The problem was to find the majority element in an array of numbers (nums) of length n - meaning, return the element that appears half the time or more (n / 2). Your input is guaranteed"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Debugging - forEach with async/await" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Algorithms: Boyer-Moore" href="/feed.xml" />
 
 
 </head>
@@ -153,71 +153,103 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 7 December 2021"> 7 December 2021</time>
+                    <time class="post-full-meta-date" datetime=" 7 July 2023"> 7 July 2023</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/javascript/'>JAVASCRIPT</a>,
+                               <a href='/tag/coding-problems/'>CODING-PROBLEMS</a>,
                             
                         
                             
-                               <a href='/tag/debugging/'>DEBUGGING</a>
+                               <a href='/tag/algorithms/'>ALGORITHMS</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Debugging - forEach with async/await</h1>
+                <h1 class="post-full-title">Algorithms: Boyer-Moore</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>This week I learned that you do not use forEach loops with async/await.</p>
+                    <p>Today I learned about a new algorithm while working on a leetcode coding problem.</p>
 
-<p>I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app.</p>
+<p>The problem was to find the majority element in an array of numbers (<code class="highlighter-rouge">nums</code>) of length <code class="highlighter-rouge">n</code> - meaning, return the element that appears half the time or more (<code class="highlighter-rouge">n / 2</code>). Your input is guaranteed to have a majority element.</p>
 
-<p>We use async and await to deal with promises when interacting with the database. While investigating the updating issue, I noticed that most of the time, my “put” operations were not going through. No error was being returned - the puts were just not happening. Not a lot to go on when debugging. The code also seemed to stop running when it hit the function that was supposed to return the promise.</p>
+<h3 id="my-first-attempt">My first attempt</h3>
 
-<p>What’s interesting, though, is that <em>sometimes</em> the operations would actually go through. I’d notice that my item had updated and the rest of the code had run. But I hadn’t made any changes to the code. This suggested to me that it may be an issue with the way I implemented async and await.</p>
+<p>I figured I could loop through all the elements of the <code class="highlighter-rouge">nums</code> array, and for each one, filter the array to contain elements equal to the current value. If the length of the filtered array is the same or more than the majority (<code class="highlighter-rouge">n / 2</code>), return that element.</p>
 
-<h3 id="what-the-code-originally-looked-like">What the code originally looked like</h3>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * @param {number[]} nums
+ * @return {number}
+ */</span>
+<span class="kd">var</span> <span class="nx">majorityElement</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">nums</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">num</span> <span class="k">of</span> <span class="nx">nums</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">justNum</span> <span class="o">=</span> <span class="nx">nums</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">===</span> <span class="nx">num</span><span class="p">);</span>
 
-<p>I had no reason before to think that a forEach loop couldn’t be used with async/await. I figured that if you awaited something in the body of the forEach callback, it would work as long as you placed an async in front of your callback, kind of like this:</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">newTeamName</span> <span class="o">=</span> <span class="s2">"Team B"</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">employees</span> <span class="o">=</span> <span class="nx">getEmployeesByTeamName</span><span class="p">({</span><span class="na">teamName</span><span class="p">:</span> <span class="s2">"Team A"</span><span class="p">});</span>
-
-<span class="nx">employees</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="nx">employee</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kr">await</span> <span class="nx">updateEmployeeTeam</span><span class="p">({</span><span class="na">teamName</span><span class="p">:</span> <span class="nx">newTeamName</span><span class="p">,</span> <span class="na">employeeId</span><span class="p">:</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">id</span><span class="p">});</span>
-<span class="p">});</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">justNum</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">nums</span><span class="p">.</span><span class="nx">length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">num</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
-<h3 id="what-the-problem-is">What the problem is</h3>
+<p>This worked for most of the test cases, but with a very long array, I got a timeout error.</p>
 
-<p>Here are a couple articles that helped me understand, as well as the MDN doc for forEach:</p>
+<h3 id="the-solution">The solution</h3>
+
+<p>I looked at some of the comments in the discussion, and they mentioned that this problem related to the Moore’s voting algorithm (or Boyer Moore algorithm).</p>
+
+<p><a href="https://iq.opengenus.org/boyer-moore-majority-vote-algorithm/">I looked it up</a>.</p>
+
+<p>Usually you perform two passes over your elements. During your first pass you:</p>
 
 <ul>
-  <li><a href="https://zellwk.com/blog/async-await-in-loops/">https://zellwk.com/blog/async-await-in-loops/</a></li>
-  <li><a href="https://www.hacksparrow.com/javascript/foreach-in-promise-async-function.html">https://www.hacksparrow.com/javascript/foreach-in-promise-async-function.html</a></li>
-  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach</a></li>
+  <li>initialize a variable for your <code class="highlighter-rouge">element</code>, and another for <code class="highlighter-rouge">count</code>. Set <code class="highlighter-rouge">count</code> to 0</li>
+  <li>for each element <code class="highlighter-rouge">x</code>, do the following checks</li>
+  <li>if <code class="highlighter-rouge">count</code> = 0, assign <code class="highlighter-rouge">element = x</code> and increment <code class="highlighter-rouge">count</code> by 1</li>
+  <li>else if: if <code class="highlighter-rouge">element</code> = x, increment <code class="highlighter-rouge">count</code></li>
+  <li>else: decrement <code class="highlighter-rouge">count</code> by 1</li>
 </ul>
 
-<p>Essentially, forEach came before async/await and is not built for it. Async/await doesn’t work with callback based loops. You aren’t actually awaiting the callback. The code just keeps running and doesn’t wait for promises to complete.</p>
+<p>The <code class="highlighter-rouge">element</code> value you are left with should occur the most often out of all elements.</p>
 
-<p>For my work scenario, most of the time I could not get the data back from the database before the forEach loop moved on the to next line of code. I assume that for the times that my code <em>did</em> work, it was just by chance that I got the data quickly enough that execution had not moved onto the next line yet. Of course, this was a very rare event.</p>
+<p>Then you would do a second pass over your elements, to check if <code class="highlighter-rouge">element</code> in fact makes up the majority of your elements:</p>
 
-<h3 id="what-to-do-instead">What to do instead</h3>
+<ul>
+  <li>initialize a variable for <code class="highlighter-rouge">count</code>, set to 0</li>
+  <li>for each element, increment <code class="highlighter-rouge">count</code> if it is the same as the <code class="highlighter-rouge">element</code> from earlier</li>
+  <li>if in the end, <code class="highlighter-rouge">count</code> is greater than or equal to <code class="highlighter-rouge">n/2</code>, this is the majority element</li>
+</ul>
 
-<p>Just use a for loop. The code will pause and wait for your promise synchronously, as you’d expect. In my case I used a for…of loop, like below:</p>
+<h3 id="my-final-solution">My final solution</h3>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">newTeamName</span> <span class="o">=</span> <span class="s2">"Team B"</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">employees</span> <span class="o">=</span> <span class="nx">getEmployeesByTeamName</span><span class="p">({</span><span class="na">teamName</span><span class="p">:</span> <span class="s2">"Team A"</span><span class="p">});</span>
+<p>I figured I only needed the first pass for my solution, because we were guaranteed a majority element. The second pass only confirmed we had one, so it was not necessary in this case. This time it passed all tests.</p>
 
-<span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">employee</span> <span class="k">of</span> <span class="nx">employees</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">await</span> <span class="nx">updateEmployeeTeam</span><span class="p">({</span><span class="na">teamName</span><span class="p">:</span> <span class="nx">newTeamName</span><span class="p">,</span> <span class="na">employeeId</span><span class="p">:</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">id</span><span class="p">});</span>
-<span class="p">}</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * @param {number[]} nums
+ * @return {number}
+ */</span>
+<span class="kd">var</span> <span class="nx">majorityElement</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">nums</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">elem</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">num</span> <span class="k">of</span> <span class="nx">nums</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">count</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">elem</span> <span class="o">=</span> <span class="nx">num</span><span class="p">;</span>
+      <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">elem</span> <span class="o">===</span> <span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">count</span><span class="o">--</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">elem</span><span class="p">;</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
                 </div>
@@ -274,7 +306,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/coding-problems/">Coding-problems</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -287,6 +319,8 @@ into the {body} of the default.hbs template -->
                             <ul>
                                 
                                 
+                                  
+                                    
                                   
                                 
                                   
@@ -301,65 +335,11 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                            <li><a href="/trying-chatgpt">I asked ChatGPT to help speed up my React code</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/pipe-compose">Writing pipe and compose functions - advanced JavaScript</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
                                 
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
-                                  
                                 
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
                                   
                                 
                                   
@@ -367,23 +347,21 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
-                                  
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
                                 
                                   
-                                    
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -413,24 +391,11 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
-                                  
                                 
-                                  
-                                    
-                                        
-                                        
-                                    
                                   
                                 
                                   
@@ -444,10 +409,11 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -473,25 +439,6 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
                                 
                                   
                                 
@@ -499,15 +446,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                 
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
                                   
                                 
                                   
@@ -523,9 +461,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/javascript/">
+                            <a href="/tag/coding-problems/">
                                 
-                                    See all 19 posts  →
+                                    See all 1 posts  →
                                 
                             </a>
                         </footer>
@@ -535,64 +473,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/serverless-event-bug">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Aws</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Debugging</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Serverless</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Debugging serverless - Eventbridge rule already exists</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -601,17 +481,29 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/react-ref">
+            <a class="post-card-content-link" href="/binary-math">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">React</span>
+                               <span class="post-card-tags">Binary</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Computer-science</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Javascript</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Coding-problems</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">React refs</h2>
+                    <h2 class="post-card-title">Binary math - addition problem</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -662,7 +554,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Debugging - forEach with async/await</div>
+    <div class="floating-header-title">Algorithms: Boyer-Moore</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -670,7 +562,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Debugging+-+forEach+with+async%2Fawait&amp;url=forEach-async-await"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Algorithms%3A+Boyer-Moore&amp;url=boyer-moore"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -679,7 +571,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=forEach-async-await"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=boyer-moore"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

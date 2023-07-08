@@ -2,7 +2,7 @@
 layout: post
 title: "Binary math - addition problem"
 date: 2023-07-02 22:30
-tags: binary computer-science javascript
+tags: binary computer-science javascript coding-problems
 navigation: true
 class: post-template
 current: post

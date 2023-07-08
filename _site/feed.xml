@@ -1,4 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-03T13:37:40-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Binary math - addition problem</title><link href="http://localhost:4000/binary-math" rel="alternate" type="text/html" title="Binary math - addition problem" /><published>2023-07-02T22:30:00-06:00</published><updated>2023-07-02T22:30:00-06:00</updated><id>http://localhost:4000/binary-math</id><content type="html" xml:base="http://localhost:4000/binary-math">&lt;p&gt;Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-07T23:19:51-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Algorithms: Boyer-Moore</title><link href="http://localhost:4000/boyer-moore" rel="alternate" type="text/html" title="Algorithms: Boyer-Moore" /><published>2023-07-07T22:30:00-06:00</published><updated>2023-07-07T22:30:00-06:00</updated><id>http://localhost:4000/boyer-moore</id><content type="html" xml:base="http://localhost:4000/boyer-moore">&lt;p&gt;Today I learned about a new algorithm while working on a leetcode coding problem.&lt;/p&gt;
+
+&lt;p&gt;The problem was to find the majority element in an array of numbers (&lt;code class=&quot;highlighter-rouge&quot;&gt;nums&lt;/code&gt;) of length &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; - meaning, return the element that appears half the time or more (&lt;code class=&quot;highlighter-rouge&quot;&gt;n / 2&lt;/code&gt;). Your input is guaranteed to have a majority element.&lt;/p&gt;
+
+&lt;h3 id=&quot;my-first-attempt&quot;&gt;My first attempt&lt;/h3&gt;
+
+&lt;p&gt;I figured I could loop through all the elements of the &lt;code class=&quot;highlighter-rouge&quot;&gt;nums&lt;/code&gt; array, and for each one, filter the array to contain elements equal to the current value. If the length of the filtered array is the same or more than the majority (&lt;code class=&quot;highlighter-rouge&quot;&gt;n / 2&lt;/code&gt;), return that element.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * @param {number[]} nums
+ * @return {number}
+ */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;majorityElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;justNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;justNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This worked for most of the test cases, but with a very long array, I got a timeout error.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-solution&quot;&gt;The solution&lt;/h3&gt;
+
+&lt;p&gt;I looked at some of the comments in the discussion, and they mentioned that this problem related to the Moore’s voting algorithm (or Boyer Moore algorithm).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://iq.opengenus.org/boyer-moore-majority-vote-algorithm/&quot;&gt;I looked it up&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Usually you perform two passes over your elements. During your first pass you:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;initialize a variable for your &lt;code class=&quot;highlighter-rouge&quot;&gt;element&lt;/code&gt;, and another for &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt;. Set &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt; to 0&lt;/li&gt;
+  &lt;li&gt;for each element &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;, do the following checks&lt;/li&gt;
+  &lt;li&gt;if &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt; = 0, assign &lt;code class=&quot;highlighter-rouge&quot;&gt;element = x&lt;/code&gt; and increment &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt; by 1&lt;/li&gt;
+  &lt;li&gt;else if: if &lt;code class=&quot;highlighter-rouge&quot;&gt;element&lt;/code&gt; = x, increment &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;else: decrement &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt; by 1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;element&lt;/code&gt; value you are left with should occur the most often out of all elements.&lt;/p&gt;
+
+&lt;p&gt;Then you would do a second pass over your elements, to check if &lt;code class=&quot;highlighter-rouge&quot;&gt;element&lt;/code&gt; in fact makes up the majority of your elements:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;initialize a variable for &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt;, set to 0&lt;/li&gt;
+  &lt;li&gt;for each element, increment &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt; if it is the same as the &lt;code class=&quot;highlighter-rouge&quot;&gt;element&lt;/code&gt; from earlier&lt;/li&gt;
+  &lt;li&gt;if in the end, &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt; is greater than or equal to &lt;code class=&quot;highlighter-rouge&quot;&gt;n/2&lt;/code&gt;, this is the majority element&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;my-final-solution&quot;&gt;My final solution&lt;/h3&gt;
+
+&lt;p&gt;I figured I only needed the first pass for my solution, because we were guaranteed a majority element. The second pass only confirmed we had one, so it was not necessary in this case. This time it passed all tests.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * @param {number[]} nums
+ * @return {number}
+ */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;majorityElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;elem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;elem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;elem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;elem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="coding-problems" /><category term="algorithms" /><summary type="html">Today I learned about a new algorithm while working on a leetcode coding problem.</summary></entry><entry><title type="html">Binary math - addition problem</title><link href="http://localhost:4000/binary-math" rel="alternate" type="text/html" title="Binary math - addition problem" /><published>2023-07-02T22:30:00-06:00</published><updated>2023-07-02T22:30:00-06:00</updated><id>http://localhost:4000/binary-math</id><content type="html" xml:base="http://localhost:4000/binary-math">&lt;p&gt;Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.&lt;/p&gt;
 
 &lt;p&gt;The problem was to simply add two binary numbers - the inputs, &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt; were strings, and the output needed to be a string as well.&lt;/p&gt;
 
@@ -99,7 +175,7 @@
 
 &lt;h3 id=&quot;tostring-radix&quot;&gt;toString() radix&lt;/h3&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;toString()&lt;/code&gt;, be definition, returns a string value that represents a number. It is meant to convert a number to a string, so it makes sense that you can convert between different number systems at the same time. Including a radix is optional, and defaults to 10, but it can be any value between 2 and 36.&lt;/p&gt;</content><author><name></name></author><category term="binary" /><category term="computer-science" /><category term="javascript" /><summary type="html">Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.</summary></entry><entry><title type="html">Getting item count from DynamoDB query, with pagination</title><link href="http://localhost:4000/dynamodb-query-count-pagination" rel="alternate" type="text/html" title="Getting item count from DynamoDB query, with pagination" /><published>2023-02-22T20:30:00-07:00</published><updated>2023-02-22T20:30:00-07:00</updated><id>http://localhost:4000/dynamodb-query-count-pagination</id><content type="html" xml:base="http://localhost:4000/dynamodb-query-count-pagination">&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;toString()&lt;/code&gt;, be definition, returns a string value that represents a number. It is meant to convert a number to a string, so it makes sense that you can convert between different number systems at the same time. Including a radix is optional, and defaults to 10, but it can be any value between 2 and 36.&lt;/p&gt;</content><author><name></name></author><category term="binary" /><category term="computer-science" /><category term="javascript" /><category term="coding-problems" /><summary type="html">Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.</summary></entry><entry><title type="html">Getting item count from DynamoDB query, with pagination</title><link href="http://localhost:4000/dynamodb-query-count-pagination" rel="alternate" type="text/html" title="Getting item count from DynamoDB query, with pagination" /><published>2023-02-22T20:30:00-07:00</published><updated>2023-02-22T20:30:00-07:00</updated><id>http://localhost:4000/dynamodb-query-count-pagination</id><content type="html" xml:base="http://localhost:4000/dynamodb-query-count-pagination">&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;
 
 &lt;p&gt;I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task.&lt;/p&gt;
 
@@ -1176,54 +1252,4 @@
 &lt;ul&gt;
   &lt;li&gt;runs a callback function over and over, according to the timer interval you pass as an argument&lt;/li&gt;
   &lt;li&gt;stop it using &lt;code class=&quot;highlighter-rouge&quot;&gt;clearInterval()&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">Doing math and working with dates can sometimes be challenging in programming.</summary></entry><entry><title type="html">How to clone a JavaScript object</title><link href="http://localhost:4000/clone-object" rel="alternate" type="text/html" title="How to clone a JavaScript object" /><published>2022-10-18T18:30:00-06:00</published><updated>2022-10-18T18:30:00-06:00</updated><id>http://localhost:4000/clone-object</id><content type="html" xml:base="http://localhost:4000/clone-object">&lt;p&gt;There are several different methods that can be used to clone an object in javascript.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-spread-operator&quot;&gt;The spread operator&lt;/h3&gt;
-
-&lt;p&gt;The spread operator &lt;code class=&quot;highlighter-rouge&quot;&gt;...&lt;/code&gt; was an ES6 addition and it’s very useful for cloning. It creates a &lt;em&gt;shallow copy&lt;/em&gt; of the object.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;orange&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;peach&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clone&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;objectassign&quot;&gt;Object.assign()&lt;/h3&gt;
-
-&lt;p&gt;Also an addition from ES6 is &lt;code class=&quot;highlighter-rouge&quot;&gt;Object.assign()&lt;/code&gt;, where properties from a source object are copied to a target object. This also creates a shallow copy of the original object.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;orange&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;peach&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clone&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//first argument is the target&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;shallow-vs-deep-copies&quot;&gt;Shallow vs deep copies&lt;/h3&gt;
-
-&lt;p&gt;The difference between shallow and deep copies is that shallow copies share the same references as the original object, but a deep copy has entirely new references. This will often not make a differnce to your code, but it can be important in some cases.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;When you need the original object’s values to remain the same, and you are going to be changing the values of the cloned object.&lt;/li&gt;
-  &lt;li&gt;When you have a nested object.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;making-a-deep-copy&quot;&gt;Making a deep copy&lt;/h3&gt;
-
-&lt;p&gt;To create a deep copy we can use &lt;code class=&quot;highlighter-rouge&quot;&gt;JSON.parse()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;JSON.stringify()&lt;/code&gt; together.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;orange&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;peach&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clone&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It’s important to note that this doesn’t work in all cases, because there are some javascript objects that cannot go through &lt;code class=&quot;highlighter-rouge&quot;&gt;JSON.stringify()&lt;/code&gt;, like functions and DOM objects. You would need to use shallow copies in this case. You can read more about this in the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/Deep_copy&quot;&gt;MDN docs&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">There are several different methods that can be used to clone an object in javascript.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">Doing math and working with dates can sometimes be challenging in programming.</summary></entry></feed>
