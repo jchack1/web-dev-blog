@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-07T23:19:51-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Algorithms: Boyer-Moore</title><link href="http://localhost:4000/boyer-moore" rel="alternate" type="text/html" title="Algorithms: Boyer-Moore" /><published>2023-07-07T22:30:00-06:00</published><updated>2023-07-07T22:30:00-06:00</updated><id>http://localhost:4000/boyer-moore</id><content type="html" xml:base="http://localhost:4000/boyer-moore">&lt;p&gt;Today I learned about a new algorithm while working on a leetcode coding problem.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-08T20:01:26-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Another way to delete element from a string</title><link href="http://localhost:4000/delete-from-string" rel="alternate" type="text/html" title="Another way to delete element from a string" /><published>2023-07-08T15:30:00-06:00</published><updated>2023-07-08T15:30:00-06:00</updated><id>http://localhost:4000/delete-from-string</id><content type="html" xml:base="http://localhost:4000/delete-from-string">&lt;p&gt;When I have solved a problem on leetcode I like to look at other users’ solutions to learn other ways of solving the problem.&lt;/p&gt;
+
+&lt;p&gt;Today I learned a different way of deleting elements from a string.&lt;/p&gt;
+
+&lt;p&gt;Often when I am working with strings and I need to delete parts of a string, I will convert to an array using &lt;code class=&quot;highlighter-rouge&quot;&gt;split(&quot;&quot;)&lt;/code&gt; and then delete at a specific index using &lt;code class=&quot;highlighter-rouge&quot;&gt;splice(index, 1)&lt;/code&gt;. Splice mutates arrays in place, so it can be helpful if I need to keep track of the value after several deletions.&lt;/p&gt;
+
+&lt;p&gt;This time the coding problem was to check if one string was an anagram of another (meaning, all letters in string A are used in string B exactly once, and no other letters are added).&lt;/p&gt;
+
+&lt;p&gt;Someone’s solution used &lt;code class=&quot;highlighter-rouge&quot;&gt;replaceAll(x, &quot;&quot;)&lt;/code&gt;. In this case, you need to know exactly what value(s) you want to delete, rather than an index, and as the name suggests it will replace all the values that match your first argument. Replacing a value with an empty string &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;&quot;&lt;/code&gt; effectively deletes it. Somehow that’s something I’ve never really thought about before, even knowing that empty strings are falsy values.&lt;/p&gt;
+
+&lt;p&gt;My solution involved splitting, sorting, and rejoining each string, and then comparing the results, which still does the job:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isAnagram&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;However, the other person’s solution saves a lot of steps, using only a while loop and the &lt;code class=&quot;highlighter-rouge&quot;&gt;replaceAll()&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;p&gt;Basically, while &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt; are the same length, get the first letter of &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;, and remove it from both &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt; wherever it is encountered. If the strings continue to be the same length after this, repeat. If they are ever not the same length, that means they don’t have all the same letters, so they are not anagrams. Otherwise, once both strings reach a length of 0, you have determined all the letters in each string matched, so you have an anagram.&lt;/p&gt;
+
+&lt;p&gt;There were a lot of possible solutions, but I liked this one for its simplicity.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="coding-problems" /><summary type="html">When I have solved a problem on leetcode I like to look at other users’ solutions to learn other ways of solving the problem.</summary></entry><entry><title type="html">Algorithms: Boyer-Moore</title><link href="http://localhost:4000/boyer-moore" rel="alternate" type="text/html" title="Algorithms: Boyer-Moore" /><published>2023-07-07T22:30:00-06:00</published><updated>2023-07-07T22:30:00-06:00</updated><id>http://localhost:4000/boyer-moore</id><content type="html" xml:base="http://localhost:4000/boyer-moore">&lt;p&gt;Today I learned about a new algorithm while working on a leetcode coding problem.&lt;/p&gt;
 
 &lt;p&gt;The problem was to find the majority element in an array of numbers (&lt;code class=&quot;highlighter-rouge&quot;&gt;nums&lt;/code&gt;) of length &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; - meaning, return the element that appears half the time or more (&lt;code class=&quot;highlighter-rouge&quot;&gt;n / 2&lt;/code&gt;). Your input is guaranteed to have a majority element.&lt;/p&gt;
 
@@ -1080,176 +1103,4 @@
   &lt;li&gt;this is a global object, on the same level as node type&lt;/li&gt;
   &lt;li&gt;represents the window that JavaScript is running in&lt;/li&gt;
   &lt;li&gt;has its own methods and properties, including some familiar ones like window.scroll(), .location(), .innerHeight(), etc&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="javascript" /><category term="dom" /><summary type="html">As I mentioned in my last post, I’ve been getting back into my JavaScript course on Udemy called “The Complete JavaScript Course 2022: From Zero to Expert”.</summary></entry><entry><title type="html">Working with JavaScript numbers and dates</title><link href="http://localhost:4000/javascript-numbers-dates" rel="alternate" type="text/html" title="Working with JavaScript numbers and dates" /><published>2022-10-30T18:30:00-06:00</published><updated>2022-10-30T18:30:00-06:00</updated><id>http://localhost:4000/javascript-numbers-dates</id><content type="html" xml:base="http://localhost:4000/javascript-numbers-dates">&lt;p&gt;Doing math and working with dates can sometimes be challenging in programming.&lt;/p&gt;
-
-&lt;p&gt;I’ve been getting back into my JavaScript course on Udemy called “The Complete JavaScript Course 2022: From Zero to Expert”, in order to level up my skills. Here are some notes about numbers, dates, and methods we can use in JavaScript to work with numbers and dates.&lt;/p&gt;
-
-&lt;h3 id=&quot;conversion-parsing&quot;&gt;Conversion, parsing&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Number()&lt;/code&gt;: converts to a number&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; : a kind of type coercion that you place in front of what you’d like to convert. Acts just like &lt;code class=&quot;highlighter-rouge&quot;&gt;Number()&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Number.parseInt()&lt;/code&gt;: if a string begins with a number(specifically an integer), it will return the number to you. Make sure you include the radix (or base, eg base 10, or base 2 (binary)).&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Number.parseFloat()&lt;/code&gt;: if a string begins with a number(in this case, a floating point number, meaning it has a decimal), it will return the number to you, including what’s after the decimal.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Number.isNaN()&lt;/code&gt;: check if something is not a number. Remember that NaN is its own type of value, so you could even put a string into this method, and it will return false, because it is &lt;em&gt;not&lt;/em&gt; NaN, it is a string.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Notes on NaN &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN&quot;&gt;from MDN&lt;/a&gt;: NaN is returned when a math operation results in something we can’t represent or is undefined. It is also returned when we try to convert something into a number that can’t be. - &lt;code class=&quot;highlighter-rouge&quot;&gt;Number(&quot;257abc&quot;)&lt;/code&gt; returns NaN, since it can’t be turned into a number&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Number.isFinite()&lt;/code&gt;: another, better way to check if something is a floating point number&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Number.isInteger()&lt;/code&gt;: to check if something is an integer, no decimal&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;remainders&quot;&gt;Remainders&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;use &lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt; to get the remainder of a division operation&lt;/li&gt;
-  &lt;li&gt;good when you need to do something every nth time&lt;/li&gt;
-  &lt;li&gt;good to use when determining if a number is even or odd
-    &lt;ul&gt;
-      &lt;li&gt;if you divide a number by 2, and the remainder is 0, the number is even. If the remainder is 1, the number is odd&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;numeric-separators&quot;&gt;Numeric separators&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;use &lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt; to separate digits in a number, to make it easier to read&lt;/li&gt;
-  &lt;li&gt;for example you can use them to separate by the thousands place
-    &lt;ul&gt;
-      &lt;li&gt;2,000,000 becomes 2_000_000&lt;/li&gt;
-      &lt;li&gt;JavaScript ignores the underscores&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;cannot be placed:
-    &lt;ul&gt;
-      &lt;li&gt;before or after a decimal point&lt;/li&gt;
-      &lt;li&gt;at beginning or end of number&lt;/li&gt;
-      &lt;li&gt;in a string that needs to be converted to a number - will result in NaN&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;bigint&quot;&gt;BigInt&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;there is a limit to the biggest number JavaScript can represent - the max safe integer
-    &lt;ul&gt;
-      &lt;li&gt;2 to the power of (53 -1)&lt;/li&gt;
-      &lt;li&gt;anything larger is unsafe&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;BigInt can store these larger numbers&lt;/li&gt;
-  &lt;li&gt;add &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; to the end of your number&lt;/li&gt;
-  &lt;li&gt;can also use BigInt function&lt;/li&gt;
-  &lt;li&gt;you can’t do operations that mix regular numbers and BigInt - make sure the regular number is converted to a BigInt before doing a calculation&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//n&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;569875621352789786315346578967&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//BigInt&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;BigInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;685789746533216578964321321234&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;dates&quot;&gt;Dates&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;new Date()&lt;/code&gt; gives you the current date and time&lt;/li&gt;
-  &lt;li&gt;you can pass strings and numbers into the Date constructor and JavaScript will parse them&lt;/li&gt;
-  &lt;li&gt;unix timestamps (number of milliseconds since Jan 1 1970) can be passed into it as well&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;There are methods you can use on dates&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getFullYear()&lt;/code&gt; returns the year&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getMonth()&lt;/code&gt; - returns as a number, remember it is 0 based&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getDate()&lt;/code&gt; - returns the day of the month&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getDay()&lt;/code&gt; - returns day of the week as a number also 0 based, starting on Sunday&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getHours()&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getMinutes()&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getSeconds()&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;toISOString()&lt;/code&gt; - converts to a string&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getTime()&lt;/code&gt; - returns unix timestamp in milliseconds&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Date.now()&lt;/code&gt; - gives us the timestamp for right now&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;There are also “set” methods for all of the above, so you can update a date&lt;/p&gt;
-
-&lt;h3 id=&quot;operations-with-dates&quot;&gt;Operations with dates&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;you can convert a JavaScript date to a timestamp in milliseconds by converting it to a number&lt;/li&gt;
-  &lt;li&gt;if you wanted to subtract two dates, and return the number of days in between them, you’d need to divide them by a numerical value &lt;code class=&quot;highlighter-rouge&quot;&gt;1000 * 60 * 60 * 24&lt;/code&gt; - converts milliseconds to seconds (1000), then to minutes (60), then hours (60), then days (24)&lt;/li&gt;
-  &lt;li&gt;do these kinds of conversions depending on whether you want values in days, minutes, hours, etc&lt;/li&gt;
-  &lt;li&gt;if you need to do more complicated operations, can get a library like Moment.js&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;internationalization-api&quot;&gt;Internationalization API&lt;/h3&gt;
-
-&lt;h4 id=&quot;dates-1&quot;&gt;Dates&lt;/h4&gt;
-
-&lt;p&gt;Formatting with different languages:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;use &lt;code class=&quot;highlighter-rouge&quot;&gt;Intl.DateTimeFormat()&lt;/code&gt; function to choose a language (locale), then &lt;code class=&quot;highlighter-rouge&quot;&gt;.format()&lt;/code&gt; to format the date according to the chosen language&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.lingoes.net/en/translator/langcode.htm&quot;&gt;this link gives a list of codes&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;you can &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat&quot;&gt;read more about this API on MDN here&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;today&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Intl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DateTimeFormat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;en-GB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;today&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;you can add an “options” object into the formatter to get the date and time, and format how you choose&lt;/li&gt;
-  &lt;li&gt;numeric gives a number, long gives you a string - see above MDN link for more options&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;today&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;hour&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;numeric&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;minute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;numeric&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;day&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;numeric&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;month&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;long&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//pass options as an argument&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Intl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DateTimeFormat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;en-GB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;today&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;you can also get it from the user’s browser instead of setting it manually: &lt;code class=&quot;highlighter-rouge&quot;&gt;const locale = navigator.language&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;this is ideal if you will have international users&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;numbers&quot;&gt;Numbers&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;use &lt;code class=&quot;highlighter-rouge&quot;&gt;Intl.NumberFormat().format()&lt;/code&gt; to change number formatting based on location&lt;/li&gt;
-  &lt;li&gt;eg. using commas vs decimal points as separators&lt;/li&gt;
-  &lt;li&gt;can also pass in an option object, where you can format units (like mph, temperature, percent, currency)&lt;/li&gt;
-  &lt;li&gt;have to set the currency in ‘options’, which you can’t get from locale alone&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;settimeout-and-setinterval&quot;&gt;setTimeout and setInterval&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout()&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;first argument is a callback function, and the second argument is the amount of time to pass before running the function&lt;/li&gt;
-  &lt;li&gt;pass additional arguments (that your callback function needs) after the time argument&lt;/li&gt;
-  &lt;li&gt;line of code is read, JavaScript makes note of it and counts down the time in the background, while the rest of your code runs. JavaScript does NOT wait for setTimeout to finish before executing the rest of your code&lt;/li&gt;
-  &lt;li&gt;can use &lt;code class=&quot;highlighter-rouge&quot;&gt;clearTimeout()&lt;/code&gt; to delete the timer in certain situations. You would assign your setTimeout function to a variable, then pass that variable into &lt;code class=&quot;highlighter-rouge&quot;&gt;clearTimeout()&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval()&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;runs a callback function over and over, according to the timer interval you pass as an argument&lt;/li&gt;
-  &lt;li&gt;stop it using &lt;code class=&quot;highlighter-rouge&quot;&gt;clearInterval()&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">Doing math and working with dates can sometimes be challenging in programming.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><category term="javascript" /><category term="dom" /><summary type="html">As I mentioned in my last post, I’ve been getting back into my JavaScript course on Udemy called “The Complete JavaScript Course 2022: From Zero to Expert”.</summary></entry></feed>

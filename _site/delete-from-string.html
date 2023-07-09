@@ -11,7 +11,7 @@
 
 
 
-    <title>Working with JavaScript numbers and dates</title>
+    <title>Another way to delete element from a string</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,24 +36,24 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/javascript-numbers-dates" />
+    <link rel="canonical" href="http://localhost:4000/delete-from-string" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Working with JavaScript numbers and dates" />
-    <meta property="og:description" content="Doing math and working with dates can sometimes be challenging in programming. I’ve been getting back into my JavaScript course on Udemy called “The Complete JavaScript Course 2022: From Zero to Expert”, in order to level up my skills. Here are some notes about numbers, dates, and methods we can" />
-    <meta property="og:url" content="http://localhost:4000/javascript-numbers-dates" />
+    <meta property="og:title" content="Another way to delete element from a string" />
+    <meta property="og:description" content="When I have solved a problem on leetcode I like to look at other users’ solutions to learn other ways of solving the problem. Today I learned a different way of deleting elements from a string. Often when I am working with strings and I need to delete parts of" />
+    <meta property="og:url" content="http://localhost:4000/delete-from-string" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-10-30T18:30:00-06:00" />
-    <meta property="article:modified_time" content="2022-10-30T18:30:00-06:00" />
+    <meta property="article:published_time" content="2023-07-08T15:30:00-06:00" />
+    <meta property="article:modified_time" content="2023-07-08T15:30:00-06:00" />
     <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Working with JavaScript numbers and dates" />
-    <meta name="twitter:description" content="Doing math and working with dates can sometimes be challenging in programming. I’ve been getting back into my JavaScript course on Udemy called “The Complete JavaScript Course 2022: From Zero to Expert”, in order to level up my skills. Here are some notes about numbers, dates, and methods we can" />
+    <meta name="twitter:title" content="Another way to delete element from a string" />
+    <meta name="twitter:description" content="When I have solved a problem on leetcode I like to look at other users’ solutions to learn other ways of solving the problem. Today I learned a different way of deleting elements from a string. Often when I am working with strings and I need to delete parts of" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/javascript-numbers-dates",
+    "url": "http://localhost:4000/delete-from-string",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/javascript-numbers-dates"
+        "@id": "http://localhost:4000/delete-from-string"
     },
-    "description": "Doing math and working with dates can sometimes be challenging in programming. I’ve been getting back into my JavaScript course on Udemy called “The Complete JavaScript Course 2022: From Zero to Expert”, in order to level up my skills. Here are some notes about numbers, dates, and methods we can"
+    "description": "When I have solved a problem on leetcode I like to look at other users’ solutions to learn other ways of solving the problem. Today I learned a different way of deleting elements from a string. Often when I am working with strings and I need to delete parts of"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Working with JavaScript numbers and dates" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Another way to delete element from a string" href="/feed.xml" />
 
 
 </head>
@@ -153,196 +153,51 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="30 October 2022">30 October 2022</time>
+                    <time class="post-full-meta-date" datetime=" 8 July 2023"> 8 July 2023</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/javascript/'>JAVASCRIPT</a>
+                               <a href='/tag/javascript/'>JAVASCRIPT</a>,
+                            
+                        
+                            
+                               <a href='/tag/coding-problems/'>CODING-PROBLEMS</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Working with JavaScript numbers and dates</h1>
+                <h1 class="post-full-title">Another way to delete element from a string</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>Doing math and working with dates can sometimes be challenging in programming.</p>
+                    <p>When I have solved a problem on leetcode I like to look at other users’ solutions to learn other ways of solving the problem.</p>
 
-<p>I’ve been getting back into my JavaScript course on Udemy called “The Complete JavaScript Course 2022: From Zero to Expert”, in order to level up my skills. Here are some notes about numbers, dates, and methods we can use in JavaScript to work with numbers and dates.</p>
+<p>Today I learned a different way of deleting elements from a string.</p>
 
-<h3 id="conversion-parsing">Conversion, parsing</h3>
+<p>Often when I am working with strings and I need to delete parts of a string, I will convert to an array using <code class="highlighter-rouge">split("")</code> and then delete at a specific index using <code class="highlighter-rouge">splice(index, 1)</code>. Splice mutates arrays in place, so it can be helpful if I need to keep track of the value after several deletions.</p>
 
-<ul>
-  <li><code class="highlighter-rouge">Number()</code>: converts to a number</li>
-  <li><code class="highlighter-rouge">+</code> : a kind of type coercion that you place in front of what you’d like to convert. Acts just like <code class="highlighter-rouge">Number()</code></li>
-  <li><code class="highlighter-rouge">Number.parseInt()</code>: if a string begins with a number(specifically an integer), it will return the number to you. Make sure you include the radix (or base, eg base 10, or base 2 (binary)).</li>
-  <li><code class="highlighter-rouge">Number.parseFloat()</code>: if a string begins with a number(in this case, a floating point number, meaning it has a decimal), it will return the number to you, including what’s after the decimal.</li>
-  <li><code class="highlighter-rouge">Number.isNaN()</code>: check if something is not a number. Remember that NaN is its own type of value, so you could even put a string into this method, and it will return false, because it is <em>not</em> NaN, it is a string.</li>
-</ul>
+<p>This time the coding problem was to check if one string was an anagram of another (meaning, all letters in string A are used in string B exactly once, and no other letters are added).</p>
 
-<p>Notes on NaN <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN">from MDN</a>: NaN is returned when a math operation results in something we can’t represent or is undefined. It is also returned when we try to convert something into a number that can’t be. - <code class="highlighter-rouge">Number("257abc")</code> returns NaN, since it can’t be turned into a number</p>
+<p>Someone’s solution used <code class="highlighter-rouge">replaceAll(x, "")</code>. In this case, you need to know exactly what value(s) you want to delete, rather than an index, and as the name suggests it will replace all the values that match your first argument. Replacing a value with an empty string <code class="highlighter-rouge">""</code> effectively deletes it. Somehow that’s something I’ve never really thought about before, even knowing that empty strings are falsy values.</p>
 
-<ul>
-  <li><code class="highlighter-rouge">Number.isFinite()</code>: another, better way to check if something is a floating point number</li>
-  <li><code class="highlighter-rouge">Number.isInteger()</code>: to check if something is an integer, no decimal</li>
-</ul>
+<p>My solution involved splitting, sorting, and rejoining each string, and then comparing the results, which still does the job:</p>
 
-<h3 id="remainders">Remainders</h3>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">isAnagram</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">""</span><span class="p">).</span><span class="nx">sort</span><span class="p">().</span><span class="nx">join</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span> <span class="o">===</span> <span class="nx">b</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">""</span><span class="p">).</span><span class="nx">sort</span><span class="p">().</span><span class="nx">join</span><span class="p">(</span><span class="s2">""</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
 
-<ul>
-  <li>use <code class="highlighter-rouge">%</code> to get the remainder of a division operation</li>
-  <li>good when you need to do something every nth time</li>
-  <li>good to use when determining if a number is even or odd
-    <ul>
-      <li>if you divide a number by 2, and the remainder is 0, the number is even. If the remainder is 1, the number is odd</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="numeric-separators">Numeric separators</h3>
-
-<ul>
-  <li>use <code class="highlighter-rouge">_</code> to separate digits in a number, to make it easier to read</li>
-  <li>for example you can use them to separate by the thousands place
-    <ul>
-      <li>2,000,000 becomes 2_000_000</li>
-      <li>JavaScript ignores the underscores</li>
-    </ul>
-  </li>
-  <li>cannot be placed:
-    <ul>
-      <li>before or after a decimal point</li>
-      <li>at beginning or end of number</li>
-      <li>in a string that needs to be converted to a number - will result in NaN</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="bigint">BigInt</h3>
-
-<ul>
-  <li>there is a limit to the biggest number JavaScript can represent - the max safe integer
-    <ul>
-      <li>2 to the power of (53 -1)</li>
-      <li>anything larger is unsafe</li>
-    </ul>
-  </li>
-  <li>BigInt can store these larger numbers</li>
-  <li>add <code class="highlighter-rouge">n</code> to the end of your number</li>
-  <li>can also use BigInt function</li>
-  <li>you can’t do operations that mix regular numbers and BigInt - make sure the regular number is converted to a BigInt before doing a calculation</li>
-</ul>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//n</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">569875621352789786315346578967</span><span class="nx">n</span><span class="p">);</span>
-
-<span class="c1">//BigInt</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">BigInt</span><span class="p">(</span><span class="mi">685789746533216578964321321234</span><span class="p">));</span>
-</code></pre></div></div>
-
-<h3 id="dates">Dates</h3>
-
-<ul>
-  <li><code class="highlighter-rouge">new Date()</code> gives you the current date and time</li>
-  <li>you can pass strings and numbers into the Date constructor and JavaScript will parse them</li>
-  <li>unix timestamps (number of milliseconds since Jan 1 1970) can be passed into it as well</li>
-</ul>
-
-<p>There are methods you can use on dates</p>
-
-<ul>
-  <li><code class="highlighter-rouge">getFullYear()</code> returns the year</li>
-  <li><code class="highlighter-rouge">getMonth()</code> - returns as a number, remember it is 0 based</li>
-  <li><code class="highlighter-rouge">getDate()</code> - returns the day of the month</li>
-  <li><code class="highlighter-rouge">getDay()</code> - returns day of the week as a number also 0 based, starting on Sunday</li>
-  <li><code class="highlighter-rouge">getHours()</code></li>
-  <li><code class="highlighter-rouge">getMinutes()</code></li>
-  <li><code class="highlighter-rouge">getSeconds()</code></li>
-  <li><code class="highlighter-rouge">toISOString()</code> - converts to a string</li>
-  <li><code class="highlighter-rouge">getTime()</code> - returns unix timestamp in milliseconds</li>
-  <li><code class="highlighter-rouge">Date.now()</code> - gives us the timestamp for right now</li>
-</ul>
-
-<p>There are also “set” methods for all of the above, so you can update a date</p>
-
-<h3 id="operations-with-dates">Operations with dates</h3>
-
-<ul>
-  <li>you can convert a JavaScript date to a timestamp in milliseconds by converting it to a number</li>
-  <li>if you wanted to subtract two dates, and return the number of days in between them, you’d need to divide them by a numerical value <code class="highlighter-rouge">1000 * 60 * 60 * 24</code> - converts milliseconds to seconds (1000), then to minutes (60), then hours (60), then days (24)</li>
-  <li>do these kinds of conversions depending on whether you want values in days, minutes, hours, etc</li>
-  <li>if you need to do more complicated operations, can get a library like Moment.js</li>
-</ul>
-
-<h3 id="internationalization-api">Internationalization API</h3>
-
-<h4 id="dates-1">Dates</h4>
-
-<p>Formatting with different languages:</p>
-
-<ul>
-  <li>use <code class="highlighter-rouge">Intl.DateTimeFormat()</code> function to choose a language (locale), then <code class="highlighter-rouge">.format()</code> to format the date according to the chosen language</li>
-  <li><a href="https://www.lingoes.net/en/translator/langcode.htm">this link gives a list of codes</a></li>
-  <li>you can <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat">read more about this API on MDN here</a></li>
-</ul>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">today</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-<span class="nx">label</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">-</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">DateTimeFormat</span><span class="p">(</span><span class="s2">"en-GB"</span><span class="p">).</span><span class="nx">format</span><span class="p">(</span><span class="nx">today</span><span class="p">);</span>
-</code></pre></div></div>
-
-<ul>
-  <li>you can add an “options” object into the formatter to get the date and time, and format how you choose</li>
-  <li>numeric gives a number, long gives you a string - see above MDN link for more options</li>
-</ul>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">today</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-
-<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">hour</span><span class="p">:</span> <span class="s2">"numeric"</span><span class="p">,</span>
-  <span class="na">minute</span><span class="p">:</span> <span class="s2">"numeric"</span><span class="p">,</span>
-  <span class="na">day</span><span class="p">:</span> <span class="s2">"numeric"</span><span class="p">,</span>
-  <span class="na">month</span><span class="p">:</span> <span class="s2">"long"</span><span class="p">,</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
 <span class="p">};</span>
-
-<span class="c1">//pass options as an argument</span>
-<span class="nx">label</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">-</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">DateTimeFormat</span><span class="p">(</span><span class="s2">"en-GB"</span><span class="p">,</span> <span class="nx">options</span><span class="p">).</span><span class="nx">format</span><span class="p">(</span><span class="nx">today</span><span class="p">);</span>
 </code></pre></div></div>
 
-<ul>
-  <li>you can also get it from the user’s browser instead of setting it manually: <code class="highlighter-rouge">const locale = navigator.language</code></li>
-  <li>this is ideal if you will have international users</li>
-</ul>
+<p>However, the other person’s solution saves a lot of steps, using only a while loop and the <code class="highlighter-rouge">replaceAll()</code> method.</p>
 
-<h4 id="numbers">Numbers</h4>
+<p>Basically, while <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code> are the same length, get the first letter of <code class="highlighter-rouge">a</code>, and remove it from both <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code> wherever it is encountered. If the strings continue to be the same length after this, repeat. If they are ever not the same length, that means they don’t have all the same letters, so they are not anagrams. Otherwise, once both strings reach a length of 0, you have determined all the letters in each string matched, so you have an anagram.</p>
 
-<ul>
-  <li>use <code class="highlighter-rouge">Intl.NumberFormat().format()</code> to change number formatting based on location</li>
-  <li>eg. using commas vs decimal points as separators</li>
-  <li>can also pass in an option object, where you can format units (like mph, temperature, percent, currency)</li>
-  <li>have to set the currency in ‘options’, which you can’t get from locale alone</li>
-</ul>
-
-<h3 id="settimeout-and-setinterval">setTimeout and setInterval</h3>
-
-<p><code class="highlighter-rouge">setTimeout()</code></p>
-
-<ul>
-  <li>first argument is a callback function, and the second argument is the amount of time to pass before running the function</li>
-  <li>pass additional arguments (that your callback function needs) after the time argument</li>
-  <li>line of code is read, JavaScript makes note of it and counts down the time in the background, while the rest of your code runs. JavaScript does NOT wait for setTimeout to finish before executing the rest of your code</li>
-  <li>can use <code class="highlighter-rouge">clearTimeout()</code> to delete the timer in certain situations. You would assign your setTimeout function to a variable, then pass that variable into <code class="highlighter-rouge">clearTimeout()</code></li>
-</ul>
-
-<p><code class="highlighter-rouge">setInterval()</code></p>
-
-<ul>
-  <li>runs a callback function over and over, according to the timer interval you pass as an argument</li>
-  <li>stop it using <code class="highlighter-rouge">clearInterval()</code></li>
-</ul>
+<p>There were a lot of possible solutions, but I liked this one for its simplicity.</p>
 
                 </div>
             </section>
@@ -413,11 +268,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                        
-                                        
-                                            <li><a href="/delete-from-string">Another way to delete element from a string</a></li>
-                                        
-                                    
                                   
                                 
                                   
@@ -446,21 +296,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
+                                            <li><a href="/pipe-compose">Writing pipe and compose functions - advanced JavaScript</a></li>
                                         
                                     
                                   
@@ -473,6 +309,25 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
                                     
                                   
                                 
@@ -666,60 +521,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/DOM-notes">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Javascript</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Dom</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Notes about the DOM</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -728,17 +529,21 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/clone-object">
+            <a class="post-card-content-link" href="/boyer-moore">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Javascript</span>
+                               <span class="post-card-tags">Coding-problems</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Algorithms</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">How to clone a JavaScript object</h2>
+                    <h2 class="post-card-title">Algorithms: Boyer-Moore</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -789,7 +594,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Working with JavaScript numbers and dates</div>
+    <div class="floating-header-title">Another way to delete element from a string</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -797,7 +602,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Working+with+JavaScript+numbers+and+dates&amp;url=javascript-numbers-dates"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Another+way+to+delete+element+from+a+string&amp;url=delete-from-string"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -806,7 +611,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=javascript-numbers-dates"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=delete-from-string"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
