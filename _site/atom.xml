@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Does linked list have a cycle - slow/fast pointer algorithm</title>
+        
+          <description>&lt;p&gt;Today’s leetcode problem involved a linked list.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 19 Jul 2023 15:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/linked-list-has-cycle</link>
+        <guid isPermaLink="true">http://localhost:4000/linked-list-has-cycle</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Another way to delete element from a string</title>
         
           <description>&lt;p&gt;When I have solved a problem on leetcode I like to look at other users’ solutions to learn other ways of solving the problem.&lt;/p&gt;

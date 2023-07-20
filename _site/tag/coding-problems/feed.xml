@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/coding-problems/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2023-07-08T20:01:26-06:00</updated>
+  <updated>2023-07-20T00:05:17-06:00</updated>
   <id>http://localhost:4000/tag/coding-problems/feed.xml</id>
 
   
@@ -42,6 +42,168 @@
   
   
 
+  
+    <entry>
+      <title type="html">Does linked list have a cycle - slow/fast pointer algorithm</title>
+      <link href="http://localhost:4000/linked-list-has-cycle" rel="alternate" type="text/html" title="Does linked list have a cycle - slow/fast pointer algorithm" />
+      <published>2023-07-19T15:30:00-06:00</published>
+      <updated>2023-07-19T15:30:00-06:00</updated>
+      <id>http://localhost:4000/linked-list-has-cycle</id>
+      <content type="html" xml:base="http://localhost:4000/linked-list-has-cycle">&lt;p&gt;Today’s leetcode problem involved a linked list.&lt;/p&gt;
+
+&lt;p&gt;I understand the basic concept of a linked list, but I have never dealt with them with real code. There is no built-in JavaScript data structure for linked lists, so you need to come up with it yourself.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-a-linked-list&quot;&gt;What is a linked list?&lt;/h3&gt;
+
+&lt;p&gt;A linked list is a list of elements (nodes) where each element contains a piece of data and a pointer (reference) to the next element in the list. We need this reference to the next element because linked lists are not stored contiguously in memory.&lt;/p&gt;
+
+&lt;p&gt;You can contrast this with arrays, where each element &lt;em&gt;is&lt;/em&gt; stored sequentially in memory. This is why an array can contain only elements and no other references. In other programming languages, arrays are fixed in size when they are created, but this is not the case in JavaScript, where you can add and remove elements at any time. For other languages, a linked list would be more flexible because new elements can be added and stored anywhere in memory, and they would also be more efficient because they only take up memory for elements in use.&lt;/p&gt;
+
+&lt;p&gt;The first node in a linked list is called the &lt;strong&gt;head&lt;/strong&gt;. Every node will point to the next, until you reach the end of the list, where the next element is &lt;code class=&quot;highlighter-rouge&quot;&gt;null&lt;/code&gt;. Unless, the list contains a cycle, like in today’s problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;linked-list-cycle-problem&quot;&gt;Linked list cycle problem&lt;/h3&gt;
+
+&lt;p&gt;A &lt;strong&gt;cycle&lt;/strong&gt; occurs when a node points to a previous element in the list, so a node can be reached again. Basically the &lt;strong&gt;tail&lt;/strong&gt; node doesn’t point to &lt;code class=&quot;highlighter-rouge&quot;&gt;null&lt;/code&gt;, but points to a node we’ve already seen.&lt;/p&gt;
+
+&lt;p&gt;Today’s problem was to determine whether or not a linked list has a cycle.&lt;/p&gt;
+
+&lt;p&gt;Not seeing any algorithms for linked lists before, I figured I could iterate through the list and if I didn’t find a pointer equal to &lt;code class=&quot;highlighter-rouge&quot;&gt;null&lt;/code&gt;, then there was a cycle. Or, thinking the pointer would be like an array-like numerical index, I could keep a count of the nodes I had already iterated through, and assume we had a cycle if the pointer was a value less than the count.&lt;/p&gt;
+
+&lt;p&gt;Neither of those worked. I became a bit frustrated because I wasn’t sure what the leetcode input actually looked like. I tried to console log it and got nothing, but their input looked to me like an array, which was confusing, and probably why I thought I could just iterate through it.&lt;/p&gt;
+
+&lt;p&gt;I started to look in the discussion and saw many users working with slow and fast pointers.&lt;/p&gt;
+
+&lt;h3 id=&quot;slow-and-fast-pointers&quot;&gt;Slow and fast pointers&lt;/h3&gt;
+
+&lt;p&gt;Also called the Hare and Tortoise or Floyd’s algorithm.&lt;/p&gt;
+
+&lt;p&gt;You traverse the linked list using two pointers at once. You start both pointers on the head node. The “slow” pointer will go through the list one node at a time, while the “fast” pointer will go through the list two nodes at a time. If there is a cycle, there will be a point in time where the slow and fast pointers have landed on the same node - the faster one will have looped back around and met up with the slow one.&lt;/p&gt;
+
+&lt;p&gt;I really liked &lt;a href=&quot;https://medium.com/@dev.adrishs/linked-list-cycle-in-javascript-leetcode-141-142-54c2177c600a&quot;&gt;this explanation&lt;/a&gt; with the tortoise and hare diagram.&lt;/p&gt;
+
+&lt;p&gt;You can check if this is the case by checking if the slow and fast pointers are equal to each other.&lt;/p&gt;
+
+&lt;p&gt;If there is no cycle, the pointers will never get the chance to meet up.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-code&quot;&gt;The code&lt;/h3&gt;
+
+&lt;p&gt;Leetcode has their own way of inputting a linked list data structure into JavaScript questions. I could never get a visual in the console, but it is essentially an object that looks something like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;// example from the above linked medium article&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can’t iterate over this with a for loop, so these problems often use while loops and your fast and slow pointers are defined outside of it.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hasCycle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;slow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fast&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fast&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;slow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;fast&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Start off by making &lt;code class=&quot;highlighter-rouge&quot;&gt;slow&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;fast&lt;/code&gt; equal to the &lt;code class=&quot;highlighter-rouge&quot;&gt;head&lt;/code&gt; node. They are starting off in the same place.&lt;/p&gt;
+
+&lt;p&gt;While your &lt;code class=&quot;highlighter-rouge&quot;&gt;fast&lt;/code&gt; pointer exists and its &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; pointer is not null, you can move your pointers forward.&lt;/p&gt;
+
+&lt;p&gt;Then you can check if they are equal to the same node. If they are, you have a cycle, and can return true.&lt;/p&gt;
+
+&lt;p&gt;At any point you end up with &lt;code class=&quot;highlighter-rouge&quot;&gt;fast&lt;/code&gt; or its &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; pointer being null, it means you’ve reached the end of the list, and there is no cycle, so you can return false.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-different-solution&quot;&gt;A different solution&lt;/h3&gt;
+
+&lt;p&gt;Another solution I came across used a &lt;code class=&quot;highlighter-rouge&quot;&gt;set&lt;/code&gt; to store all values we traversed. If your current node matched a node already in the set, you have a cycle, as you’ve seen it before.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hasCycle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextNode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nextNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;has&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nextNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nextNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;nextNode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This logic makes a little more sense in my brain, but it seems like you could potentially use a lot of memory if you added nearly every node to your set. This solution put me in the bottom % of memory usage in leetcode. It seems like the slow/fast algorithm is the way to go.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="javascript" />
+      
+        <category term="coding-problems" />
+      
+        <category term="algorithms" />
+      
+
+      
+        <summary type="html">Today’s leetcode problem involved a linked list.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Another way to delete element from a string</title>

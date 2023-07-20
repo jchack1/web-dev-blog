@@ -11,7 +11,7 @@
 
 
 
-    <title>Debugging front-end graph libraries - recharts</title>
+    <title>Does linked list have a cycle - slow/fast pointer algorithm</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/debugging-graphs" />
+    <link rel="canonical" href="http://localhost:4000/linked-list-has-cycle" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Debugging front-end graph libraries - recharts" />
-    <meta property="og:description" content="My company does a lot of data analytics, which means on the front end we work with a lot of graphs. Today I’ll talk about some difficulties I had debugging a new dashboard on our platform, which was built using recharts graphs. The task We needed a set of graphs" />
-    <meta property="og:url" content="http://localhost:4000/debugging-graphs" />
+    <meta property="og:title" content="Does linked list have a cycle - slow/fast pointer algorithm" />
+    <meta property="og:description" content="Today’s leetcode problem involved a linked list. I understand the basic concept of a linked list, but I have never dealt with them with real code. There is no built-in JavaScript data structure for linked lists, so you need to come up with it yourself. What is a linked list?" />
+    <meta property="og:url" content="http://localhost:4000/linked-list-has-cycle" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2021-08-06T14:30:00-06:00" />
-    <meta property="article:modified_time" content="2021-08-06T14:30:00-06:00" />
-    <meta property="article:tag" content="Debugging" />
+    <meta property="article:published_time" content="2023-07-19T15:30:00-06:00" />
+    <meta property="article:modified_time" content="2023-07-19T15:30:00-06:00" />
+    <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Debugging front-end graph libraries - recharts" />
-    <meta name="twitter:description" content="My company does a lot of data analytics, which means on the front end we work with a lot of graphs. Today I’ll talk about some difficulties I had debugging a new dashboard on our platform, which was built using recharts graphs. The task We needed a set of graphs" />
+    <meta name="twitter:title" content="Does linked list have a cycle - slow/fast pointer algorithm" />
+    <meta name="twitter:description" content="Today’s leetcode problem involved a linked list. I understand the basic concept of a linked list, but I have never dealt with them with real code. There is no built-in JavaScript data structure for linked lists, so you need to come up with it yourself. What is a linked list?" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Debugging" />
+    <meta name="twitter:data2" content="Javascript" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/debugging-graphs",
+    "url": "http://localhost:4000/linked-list-has-cycle",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/debugging-graphs"
+        "@id": "http://localhost:4000/linked-list-has-cycle"
     },
-    "description": "My company does a lot of data analytics, which means on the front end we work with a lot of graphs. Today I’ll talk about some difficulties I had debugging a new dashboard on our platform, which was built using recharts graphs. The task We needed a set of graphs"
+    "description": "Today’s leetcode problem involved a linked list. I understand the basic concept of a linked list, but I have never dealt with them with real code. There is no built-in JavaScript data structure for linked lists, so you need to come up with it yourself. What is a linked list?"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Debugging front-end graph libraries - recharts" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Does linked list have a cycle - slow/fast pointer algorithm" href="/feed.xml" />
 
 
 </head>
@@ -153,87 +153,156 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 6 August 2021"> 6 August 2021</time>
+                    <time class="post-full-meta-date" datetime="19 July 2023">19 July 2023</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/debugging/'>DEBUGGING</a>,
+                               <a href='/tag/javascript/'>JAVASCRIPT</a>,
                             
                         
                             
-                               <a href='/tag/react/'>REACT</a>
+                               <a href='/tag/coding-problems/'>CODING-PROBLEMS</a>,
+                            
+                        
+                            
+                               <a href='/tag/algorithms/'>ALGORITHMS</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Debugging front-end graph libraries - recharts</h1>
+                <h1 class="post-full-title">Does linked list have a cycle - slow/fast pointer algorithm</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>My company does a lot of data analytics, which means on the front end we work with a lot of graphs. Today I’ll talk about some difficulties I had debugging a new dashboard on our platform, which was built using recharts graphs.</p>
+                    <p>Today’s leetcode problem involved a linked list.</p>
 
-<h3 id="the-task">The task</h3>
+<p>I understand the basic concept of a linked list, but I have never dealt with them with real code. There is no built-in JavaScript data structure for linked lists, so you need to come up with it yourself.</p>
 
-<p>We needed a set of graphs to represent some new metrics. Without giving away what the graph is actually communicating, I’ll say the x-axis went from “good” on the left side, to “bad” on the far right. We wanted a gradient going from left to right, changing from a “good” colour to a “bad” colour, to represent this concept and help users visually see the problems they are facing.</p>
+<h3 id="what-is-a-linked-list">What is a linked list?</h3>
 
-<h3 id="the-problem">The problem</h3>
+<p>A linked list is a list of elements (nodes) where each element contains a piece of data and a pointer (reference) to the next element in the list. We need this reference to the next element because linked lists are not stored contiguously in memory.</p>
 
-<p>I experimented with an Area chart in the recharts sandbox. The gradient was quick to figure out and I ended up with a nice blue-purple-orange gradient.</p>
+<p>You can contrast this with arrays, where each element <em>is</em> stored sequentially in memory. This is why an array can contain only elements and no other references. In other programming languages, arrays are fixed in size when they are created, but this is not the case in JavaScript, where you can add and remove elements at any time. For other languages, a linked list would be more flexible because new elements can be added and stored anywhere in memory, and they would also be more efficient because they only take up memory for elements in use.</p>
 
-<p>To create a gradient with recharts, you need to put the code under “defs”:</p>
+<p>The first node in a linked list is called the <strong>head</strong>. Every node will point to the next, until you reach the end of the list, where the next element is <code class="highlighter-rouge">null</code>. Unless, the list contains a cycle, like in today’s problem.</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;defs&gt;</span>
-  <span class="nt">&lt;linearGradient</span> <span class="na">id=</span><span class="s">"uv"</span> <span class="na">x1=</span><span class="s">"0"</span> <span class="na">y1=</span><span class="s">"0"</span> <span class="na">x2=</span><span class="s">"1"</span> <span class="na">y2=</span><span class="s">"0"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;stop</span> <span class="na">offset=</span><span class="s">"5%"</span> <span class="na">stopColor=</span><span class="s">"#008eff"</span> <span class="na">stopOpacity=</span><span class="s">"{0.9}"</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;stop</span> <span class="na">offset=</span><span class="s">"40%"</span> <span class="na">stopColor=</span><span class="s">"#833f97"</span> <span class="na">stopOpacity=</span><span class="s">"{0.9}"</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;stop</span> <span class="na">offset=</span><span class="s">"95%"</span> <span class="na">stopColor=</span><span class="s">"#ff4800"</span> <span class="na">stopOpacity=</span><span class="s">"{0.9}"</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/linearGradient&gt;</span>
-<span class="nt">&lt;/defs&gt;</span>
+<h3 id="linked-list-cycle-problem">Linked list cycle problem</h3>
+
+<p>A <strong>cycle</strong> occurs when a node points to a previous element in the list, so a node can be reached again. Basically the <strong>tail</strong> node doesn’t point to <code class="highlighter-rouge">null</code>, but points to a node we’ve already seen.</p>
+
+<p>Today’s problem was to determine whether or not a linked list has a cycle.</p>
+
+<p>Not seeing any algorithms for linked lists before, I figured I could iterate through the list and if I didn’t find a pointer equal to <code class="highlighter-rouge">null</code>, then there was a cycle. Or, thinking the pointer would be like an array-like numerical index, I could keep a count of the nodes I had already iterated through, and assume we had a cycle if the pointer was a value less than the count.</p>
+
+<p>Neither of those worked. I became a bit frustrated because I wasn’t sure what the leetcode input actually looked like. I tried to console log it and got nothing, but their input looked to me like an array, which was confusing, and probably why I thought I could just iterate through it.</p>
+
+<p>I started to look in the discussion and saw many users working with slow and fast pointers.</p>
+
+<h3 id="slow-and-fast-pointers">Slow and fast pointers</h3>
+
+<p>Also called the Hare and Tortoise or Floyd’s algorithm.</p>
+
+<p>You traverse the linked list using two pointers at once. You start both pointers on the head node. The “slow” pointer will go through the list one node at a time, while the “fast” pointer will go through the list two nodes at a time. If there is a cycle, there will be a point in time where the slow and fast pointers have landed on the same node - the faster one will have looped back around and met up with the slow one.</p>
+
+<p>I really liked <a href="https://medium.com/@dev.adrishs/linked-list-cycle-in-javascript-leetcode-141-142-54c2177c600a">this explanation</a> with the tortoise and hare diagram.</p>
+
+<p>You can check if this is the case by checking if the slow and fast pointers are equal to each other.</p>
+
+<p>If there is no cycle, the pointers will never get the chance to meet up.</p>
+
+<h3 id="the-code">The code</h3>
+
+<p>Leetcode has their own way of inputting a linked list data structure into JavaScript questions. I could never get a visual in the console, but it is essentially an object that looks something like this:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// example from the above linked medium article</span>
+
+<span class="kd">const</span> <span class="nx">list</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">head</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">data</span><span class="p">:</span> <span class="mi">6</span>
+        <span class="na">next</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">data</span><span class="p">:</span> <span class="mi">10</span>
+            <span class="na">next</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">data</span><span class="p">:</span> <span class="mi">12</span>
+                <span class="na">next</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="na">data</span><span class="p">:</span> <span class="mi">3</span>
+                    <span class="na">next</span><span class="p">:</span> <span class="kc">null</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">;</span>
+
 </code></pre></div></div>
 
-<p>You use the “id” field inside the linearGradient tag inside the Area tag property “fill”:</p>
+<p>You can’t iterate over this with a for loop, so these problems often use while loops and your fast and slow pointers are defined outside of it.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">Area</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"monotone"</span> <span class="nx">dataKey</span><span class="o">=</span><span class="s2">"percent"</span> <span class="nx">stroke</span><span class="o">=</span><span class="s2">"#8884d8"</span> <span class="nx">fill</span><span class="o">=</span><span class="s2">"url(#uv)"</span> <span class="o">/&gt;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */</span>
+
+<span class="cm">/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */</span>
+<span class="kd">var</span> <span class="nx">hasCycle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">head</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">slow</span> <span class="o">=</span> <span class="nx">head</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">fast</span> <span class="o">=</span> <span class="nx">head</span><span class="p">;</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nx">fast</span> <span class="o">&amp;&amp;</span> <span class="nx">fast</span><span class="p">.</span><span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">slow</span> <span class="o">=</span> <span class="nx">slow</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
+    <span class="nx">fast</span> <span class="o">=</span> <span class="nx">fast</span><span class="p">.</span><span class="nx">next</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">slow</span> <span class="o">===</span> <span class="nx">fast</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
-<p>This looked great, so I copied it into my code and tried it out in the proper dashboard in our app.</p>
+<p>Start off by making <code class="highlighter-rouge">slow</code> and <code class="highlighter-rouge">fast</code> equal to the <code class="highlighter-rouge">head</code> node. They are starting off in the same place.</p>
 
-<p><strong>The problem was, in the app, there was no gradient - the area fill was just gray.</strong></p>
+<p>While your <code class="highlighter-rouge">fast</code> pointer exists and its <code class="highlighter-rouge">next</code> pointer is not null, you can move your pointers forward.</p>
 
-<h3 id="things-i-tried">Things I tried</h3>
+<p>Then you can check if they are equal to the same node. If they are, you have a cycle, and can return true.</p>
 
-<p>First I tried inputing other values into the “fill” property, including colour names like “red” or “blue”. These colours worked.</p>
+<p>At any point you end up with <code class="highlighter-rouge">fast</code> or its <code class="highlighter-rouge">next</code> pointer being null, it means you’ve reached the end of the list, and there is no cycle, so you can return false.</p>
 
-<p>I wasn’t sure if using gradients was a recently added feature in recharts, so I checked what version of recharts we had. Our package.json had an old beta version of recharts, while the sandbox had the newest version. I updated our version and re-installed. Upon starting the app I saw the same problem - no gradient.</p>
+<h3 id="a-different-solution">A different solution</h3>
 
-<p>Perhaps it wasn’t just the recharts version - we had an old version of react, react-scripts, and react-dom. I went through the process of trying to update these to a new version, but did not complete it, as I had a lot of conflicting versions of packages. I just re-installed the original versions, with the exception of the updated recharts, as the new version didn’t affect our app negatively.</p>
+<p>Another solution I came across used a <code class="highlighter-rouge">set</code> to store all values we traversed. If your current node matched a node already in the set, you have a cycle, as you’ve seen it before.</p>
 
-<p>These graphs were nested inside many components, so I tried taking the AreaChart code and pasting it at the top of the code for our main overview page. Unexpectedly, the graph had a gradient! This told me there wasn’t anything wrong with the versions of my packages at this point, and the problem was within my app itself.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">hasCycle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">head</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">head</span> <span class="o">||</span> <span class="o">!</span><span class="nx">head</span><span class="p">.</span><span class="nx">next</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
 
-<p>Back on the actual dashboard page, I tried putting the graph in different places. Strangely, the gradient showed up when the graph was placed higher up on the page, but not when it was further down the page. I placed my graph at the very top of the dashboard, and I noticed that while this gradient worked, one of the old graphs below was losing its gradient.</p>
+  <span class="kd">let</span> <span class="kd">set</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
 
-<h3 id="solution">Solution</h3>
+  <span class="kd">let</span> <span class="nx">nextNode</span> <span class="o">=</span> <span class="nx">head</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
 
-<p>I was trying to put two graphs with gradients on the same page. This should work fine, except the linear gradient ids for both graphs were the same - neither I nor the previous developer had changed the id names when we copied the code from recharts.</p>
+  <span class="k">while</span> <span class="p">(</span><span class="nx">nextNode</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="kd">set</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">nextNode</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//below, id="uv". both gradients had this same id
+    <span class="kd">set</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">nextNode</span><span class="p">);</span>
 
-<span class="nt">&lt;linearGradient</span> <span class="na">id=</span><span class="s">"uv"</span> <span class="na">x1=</span><span class="s">"0"</span> <span class="na">y1=</span><span class="s">"0"</span> <span class="na">x2=</span><span class="s">"1"</span> <span class="na">y2=</span><span class="s">"0"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;stop</span> <span class="na">offset=</span><span class="s">"5%"</span> <span class="na">stopColor=</span><span class="s">"#008eff"</span> <span class="na">stopOpacity=</span><span class="s">"{0.9}"</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;stop</span> <span class="na">offset=</span><span class="s">"40%"</span> <span class="na">stopColor=</span><span class="s">"#833f97"</span> <span class="na">stopOpacity=</span><span class="s">"{0.9}"</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;stop</span> <span class="na">offset=</span><span class="s">"95%"</span> <span class="na">stopColor=</span><span class="s">"#ff4800"</span> <span class="na">stopOpacity=</span><span class="s">"{0.9}"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/linearGradient&gt;</span>
+    <span class="nx">nextNode</span> <span class="o">=</span> <span class="nx">nextNode</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
-<p>Both graphs were trying to use a linear gradient with id=”uv”. This caused the bug, since ids are supposed to be unique, and the graph lower on the page didn’t know which gradient it needed.</p>
-
-<p>This was easily fixed by updating the ids to unique values.</p>
-
-<p>I kind of wish I didn’t have to go through all that work before figuring out this simple issue, but at least in the future when I see a similar problem I’ll have a better idea of where to look first.</p>
+<p>This logic makes a little more sense in my brain, but it seems like you could potentially use a lot of memory if you added nearly every node to your set. This solution put me in the bottom % of memory usage in leetcode. It seems like the slow/fast algorithm is the way to go.</p>
 
                 </div>
             </section>
@@ -289,7 +358,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/debugging/">Debugging</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -303,9 +372,16 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
+                                    
                                   
                                 
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/delete-from-string">Another way to delete element from a string</a></li>
+                                        
+                                    
                                   
                                 
                                   
@@ -314,25 +390,9 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/dynamodb-query-count-pagination">Getting item count from DynamoDB query, with pagination</a></li>
+                                            <li><a href="/binary-math">Binary math - addition problem</a></li>
                                         
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
@@ -341,22 +401,9 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/lambda-fullaccess-bug">Debugging serverless: 'AWSLambdaFullAccess does not exist'</a></li>
+                                            <li><a href="/trying-chatgpt">I asked ChatGPT to help speed up my React code</a></li>
                                         
                                     
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/dynamo-db-pagination">DynamoDB scans and pagination</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
@@ -384,6 +431,30 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -391,33 +462,17 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -456,25 +511,10 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
                                     
                                         
                                         
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
                                   
                                 
                                   
@@ -489,6 +529,85 @@ into the {body} of the default.hbs template -->
                                         
                                         
                                     
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
                                   
                                 
                                   
@@ -502,9 +621,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/debugging/">
+                            <a href="/tag/javascript/">
                                 
-                                    See all 11 posts  →
+                                    See all 21 posts  →
                                 
                             </a>
                         </footer>
@@ -514,68 +633,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/ec2-ssh">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Aws</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Ec2</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Linux</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Debugging</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">How I lost, and regained, ssh access to my AWS EC2</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -584,21 +641,21 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/data-structures-3">
+            <a class="post-card-content-link" href="/delete-from-string">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Computer-science</span>
+                               <span class="post-card-tags">Javascript</span>
                             
                         
                             
-                                <span class="post-card-tags">Data-structures</span>
+                                <span class="post-card-tags">Coding-problems</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">Learning data structures - advanced structures (trees)</h2>
+                    <h2 class="post-card-title">Another way to delete element from a string</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -649,7 +706,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Debugging front-end graph libraries - recharts</div>
+    <div class="floating-header-title">Does linked list have a cycle - slow/fast pointer algorithm</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -657,7 +714,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Debugging+front-end+graph+libraries+-+recharts&amp;url=debugging-graphs"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Does+linked+list+have+a+cycle+-+slow%2Ffast+pointer+algorithm&amp;url=linked-list-has-cycle"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -666,7 +723,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=debugging-graphs"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=linked-list-has-cycle"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
