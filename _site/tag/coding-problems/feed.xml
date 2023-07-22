@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/coding-problems/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2023-07-20T00:05:17-06:00</updated>
+  <updated>2023-07-22T00:14:10-06:00</updated>
   <id>http://localhost:4000/tag/coding-problems/feed.xml</id>
 
   
@@ -42,6 +42,107 @@
   
   
 
+  
+    <entry>
+      <title type="html">Reverse a linked list in JavaScript</title>
+      <link href="http://localhost:4000/reverse-linked-list" rel="alternate" type="text/html" title="Reverse a linked list in JavaScript" />
+      <published>2023-07-21T15:30:00-06:00</published>
+      <updated>2023-07-21T15:30:00-06:00</updated>
+      <id>http://localhost:4000/reverse-linked-list</id>
+      <content type="html" xml:base="http://localhost:4000/reverse-linked-list">&lt;p&gt;Today’s leetcode problem involved linked lists again. This time the task was to reverse one.&lt;/p&gt;
+
+&lt;p&gt;I honestly had no idea how to do this and had to look it up. Below is the code I ended up with, and an explanation.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reverseList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;previous&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//because when we start there is no previous&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;//while current node is not null&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//keep track of what our next node is&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;//first time through, the new end of our list is null&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;previous&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;//our new previous is the one we just looked at&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;previous&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;//move on to the next node&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;//previous is now new head&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;previous&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To help me explain, here is a simple diagram of a linked list.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/images/linkedListDiagram.svg&quot; style=&quot;max-width: 500px;&quot; alt=&quot;diagram of a linked list with three nodes&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This code presents an iterative approach to the problem. You could also solve it recursively.&lt;/p&gt;
+
+&lt;p&gt;For this method, you iterate over each node using a &lt;code class=&quot;highlighter-rouge&quot;&gt;while&lt;/code&gt; loop, and change the pointers for each node.&lt;/p&gt;
+
+&lt;h4 id=&quot;initialize-the-variables&quot;&gt;Initialize the variables&lt;/h4&gt;
+
+&lt;p&gt;To use the while loop, you need to set a &lt;code class=&quot;highlighter-rouge&quot;&gt;current&lt;/code&gt; variable. The loop will run while this is not null, or until we reach the end of the list, which will have no next pointer.&lt;/p&gt;
+
+&lt;p&gt;We also need to keep track of the &lt;code class=&quot;highlighter-rouge&quot;&gt;previous&lt;/code&gt; node in the list, as well as the &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; one. &lt;code class=&quot;highlighter-rouge&quot;&gt;previous&lt;/code&gt; is set to null at the beginning, since we’re on the first node, and we’ll deal with the &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; value in the loop&lt;/p&gt;
+
+&lt;h4 id=&quot;setting-next-and-resetting-currents-pointer&quot;&gt;Setting next and resetting current’s pointer&lt;/h4&gt;
+
+&lt;p&gt;It’s crucial to save the &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; variable first thing during a new iteration. That’s because the following step replaces the pointer for &lt;code class=&quot;highlighter-rouge&quot;&gt;current&lt;/code&gt;, so we lost whatever next used to be.&lt;/p&gt;
+
+&lt;p&gt;Let’s keep track of our variables for the linked list diagram above.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; now equals node &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then, update &lt;code class=&quot;highlighter-rouge&quot;&gt;current&lt;/code&gt;’s pointer to &lt;code class=&quot;highlighter-rouge&quot;&gt;previous&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;current.next&lt;/code&gt; now equals &lt;code class=&quot;highlighter-rouge&quot;&gt;null&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;resetting-the-variables-for-the-next-iteration&quot;&gt;Resetting the variables for the next iteration&lt;/h4&gt;
+
+&lt;p&gt;For our next iteration, &lt;code class=&quot;highlighter-rouge&quot;&gt;previous&lt;/code&gt; will be whatever node we just updated in this iteration.&lt;/p&gt;
+
+&lt;p&gt;So, &lt;code class=&quot;highlighter-rouge&quot;&gt;previous&lt;/code&gt; now equals the &lt;code class=&quot;highlighter-rouge&quot;&gt;current&lt;/code&gt; node, which in this case is node &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;current&lt;/code&gt; node for our next iteration is what we saved earlier in our &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; variable, which is &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;end-of-list&quot;&gt;End of list&lt;/h4&gt;
+
+&lt;p&gt;Once we reach the end, we’ll have &lt;code class=&quot;highlighter-rouge&quot;&gt;previous&lt;/code&gt; equal to our last node, &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;. This is the new head. The pointers have all been reversed, so we return the new head node. It’s the start of the reversed linked list.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="javascript" />
+      
+        <category term="coding-problems" />
+      
+        <category term="algorithms" />
+      
+
+      
+        <summary type="html">Today’s leetcode problem involved linked lists again. This time the task was to reverse one.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Does linked list have a cycle - slow/fast pointer algorithm</title>
