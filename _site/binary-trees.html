@@ -11,7 +11,7 @@
 
 
 
-    <title>Last ditch effort – I deleted my database</title>
+    <title>Binary trees; isSameTree problem</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/deleting-my-database" />
+    <link rel="canonical" href="http://localhost:4000/binary-trees" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Last ditch effort – I deleted my database" />
-    <meta property="og:description" content="I have been working on my Udemy courses again, currently hoping to finish my MVC course. Sometimes I really don’t like .NET. I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course" />
-    <meta property="og:url" content="http://localhost:4000/deleting-my-database" />
+    <meta property="og:title" content="Binary trees; isSameTree problem" />
+    <meta property="og:description" content="It’s time to dive into some binary tree coding problems. But I think I need to learn more about binary trees, and how to tackle these kinds of problems first, so I actually have a chance of getting them right. Resources: This was a quick, helpful video that summarized binary" />
+    <meta property="og:url" content="http://localhost:4000/binary-trees" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-04-11T18:30:00-06:00" />
-    <meta property="article:modified_time" content="2020-04-11T18:30:00-06:00" />
-    <meta property="article:tag" content="Dotnet" />
+    <meta property="article:published_time" content="2023-07-28T15:30:00-06:00" />
+    <meta property="article:modified_time" content="2023-07-28T15:30:00-06:00" />
+    <meta property="article:tag" content="Algorithms" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Last ditch effort – I deleted my database" />
-    <meta name="twitter:description" content="I have been working on my Udemy courses again, currently hoping to finish my MVC course. Sometimes I really don’t like .NET. I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course" />
+    <meta name="twitter:title" content="Binary trees; isSameTree problem" />
+    <meta name="twitter:description" content="It’s time to dive into some binary tree coding problems. But I think I need to learn more about binary trees, and how to tackle these kinds of problems first, so I actually have a chance of getting them right. Resources: This was a quick, helpful video that summarized binary" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Dotnet" />
+    <meta name="twitter:data2" content="Algorithms" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/deleting-my-database",
+    "url": "http://localhost:4000/binary-trees",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/deleting-my-database"
+        "@id": "http://localhost:4000/binary-trees"
     },
-    "description": "I have been working on my Udemy courses again, currently hoping to finish my MVC course. Sometimes I really don’t like .NET. I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course"
+    "description": "It’s time to dive into some binary tree coding problems. But I think I need to learn more about binary trees, and how to tackle these kinds of problems first, so I actually have a chance of getting them right. Resources: This was a quick, helpful video that summarized binary"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Last ditch effort – I deleted my database" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Binary trees; isSameTree problem" href="/feed.xml" />
 
 
 </head>
@@ -153,66 +153,140 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="11 April 2020">11 April 2020</time>
+                    <time class="post-full-meta-date" datetime="28 July 2023">28 July 2023</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/dotnet/'>DOTNET</a>,
+                               <a href='/tag/algorithms/'>ALGORITHMS</a>,
                             
                         
                             
-                               <a href='/tag/database/'>DATABASE</a>,
+                               <a href='/tag/data-structures/'>DATA-STRUCTURES</a>,
                             
                         
                             
-                               <a href='/tag/migrations/'>MIGRATIONS</a>
+                               <a href='/tag/coding-problems/'>CODING-PROBLEMS</a>,
+                            
+                        
+                            
+                               <a href='/tag/recursion/'>RECURSION</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Last ditch effort – I deleted my database</h1>
+                <h1 class="post-full-title">Binary trees; isSameTree problem</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>I have been working on my Udemy courses again, currently hoping to finish my MVC course.</p>
+                    <p>It’s time to dive into some binary tree coding problems.</p>
 
-<p>Sometimes I really don’t like .NET.  I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course though, because I’m sure it will be useful at my next job, or somewhere down the line.</p>
+<p>But I think I need to learn more about binary trees, and how to tackle these kinds of problems first, so I actually have a chance of getting them right.</p>
 
-<p>Since I was away from this course for a while I forgot where I was and some of what I had learned. I started a new section, followed all the instructions exactly, attempting to create a dropdown menu. Of course, none of the options showed up in the menu.</p>
+<p>Resources:</p>
 
-<p>The first thing I did was check the code for typos. There were none. I thought this was a mistake so I checked again, and compared it to the instructor’s code on github. Nope, still correct.</p>
-
-<p>Perhaps I made an error with the earlier exercises in the course. There were no review videos, and I had to use some of the code from github. This was necessary in order to have the same code as the instructor throughout the course.  If it was an error with my migrations, a topic I still don’t quite get, maybe the dropdown menu items just didn’t make it into my database.</p>
-
-<p>I’m also not yet an expert in SQL, so I just used the below query to check the table for my data:</p>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">TOP</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="p">[</span><span class="n">Name</span><span class="p">]</span>
-<span class="k">FROM</span> <span class="p">[</span><span class="n">MembershipTypes</span><span class="p">]</span>
-</code></pre></div></div>
-
-<p>This showed me the rows that were in my table, and the menu items were there.</p>
-
-<p>At this point I spent about 2 days trying various things to fix the problem. I tried to simply update the database, using the update-database command in package manager console. Didn’t work. I realized some of my files may have been missing from the earlier exercises, so I added the code to my solution. Also didn’t help. I updated the DbContext to what I saw on the github code. Didn’t help, at least not immediately. After lots of experimenting and searching, I was ready to start a new solution and rebuild it from scratch, which meant having to watch a few hours of video again. It would maybe help solidify what I was learning but that was not ideal.</p>
-
-<p><a href="https://stackoverflow.com/questions/16035333/how-to-delete-and-recreate-from-scratch-an-existing-ef-code-first-database">Somewhere on Stack Overflow</a> someone suggested to manually delete the database to start fresh. I decided to try this, but I did not follow their instructions exactly.</p>
-
-<p>Here are my steps:</p>
 <ul>
-  <li>deleted the database connections in Server Explorer</li>
-  <li>deleted the database files under the App_Data folder in Solution Explorer</li>
-  <li>made a change in the code - I made change in one of the models and saved, but it didn’t matter what changed, just that something <em>had</em> changed; this was important for the next step to work properly</li>
-  <li>added a new migration using “add-migration” in package manager console</li>
-  <li>then “update-database”</li>
-  <li>cleaned and built my solution again</li>
+  <li>This was a quick, <a href="https://www.youtube.com/watch?v=GzJoqJO1zdI">helpful video</a> that summarized binary trees nicely</li>
+  <li>This <a href="https://www.youtube.com/watch?v=5cU1ILGy6dM">video from freeCodeCamp</a> describes how to deal with binary search trees in JavaScript</li>
+  <li>This <a href="https://www.freecodecamp.org/news/binary-search-tree-traversal-inorder-preorder-post-order-for-bst/">article from freeCodeCamp</a> summarizing tree traversal</li>
 </ul>
 
-<p>Then I opened the page I had originally been working on.  The dropdown was now working properly and all menu items showed up!</p>
+<h3 id="compared-to-other-data-structures---linked-lists">Compared to other data structures - linked lists</h3>
 
-<p>I can’t help but feel there is still going to be something wrong with my database, migrations, or project in general and it will come back to bite me later on. But for now I will continue on with the course and take this as a learning opportunity.</p>
+<p>Like linked lists, trees are made up of nodes that have data and pointers.</p>
+
+<p>I’ve delved a bit into singly linked-lists, whose nodes have one pointer. In comparison, trees can have multiple pointers to the next nodes. In the case of a binary tree, a node points towards a maximum of 2 child nodes. Each node can have a <code class="highlighter-rouge">left</code> and <code class="highlighter-rouge">right</code> pointer, comparable to the <code class="highlighter-rouge">next</code> pointer in a linked list.</p>
+
+<p>The top node of the tree is called the <code class="highlighter-rouge">root</code> node, comparable to the <code class="highlighter-rouge">head</code> node of a linked list. Nodes with no children are called <code class="highlighter-rouge">leaf</code> nodes. The path from the root to a leaf is called a <code class="highlighter-rouge">branch</code>.</p>
+
+<h3 id="traversing-a-binary-tree">Traversing a binary tree</h3>
+
+<p>For starters, there are two main approaches to code a tree traversal:</p>
+
+<ul>
+  <li>using a <code class="highlighter-rouge">while</code> loop and an “on” pointer (like for linked lists, using a “current” pointer with a while loop)</li>
+  <li>recursion</li>
+</ul>
+
+<p>When you use recursion it’s called branching recursion. Since a node can have multiple children, your stack frame can be branching too.</p>
+
+<p>Often you need to visit every node in the tree, but how do I know what order to visit in? There are three main types of traversal:</p>
+
+<ul>
+  <li><strong>in-order traversal</strong>: visit left subtree, then root, then right subtree. Like you’ve moving across the tree from left to right. If you printed out each node as you visted them, they would be in ascending order from left-most to right-most node.</li>
+  <li><strong>pre-order traversal</strong>: visit root, then left subtree, then right subtree. Like you’ve moving from top of tree to bottom (root to leaf). Use if you need to explore the tree from root to leaf, good for making copies of trees.</li>
+  <li><strong>post-order traversal</strong>: visit left subtree, right subtree, then root. Like you’re travelling from the bottom up (leaf to root). Use if you need to explore leaves before roots. Good for deleting a tree.</li>
+</ul>
+
+<h3 id="coding-problem-issametree-solved-with-recursion">Coding problem: isSameTree, solved with recursion</h3>
+
+<p>The first coding problem I worked on to practice binary trees was, given two trees <code class="highlighter-rouge">p</code> and <code class="highlighter-rouge">q</code>, determine if they are the same. If they are the same, they have the same structure AND values at each node.</p>
+
+<p>I decided to try solving this recursively. Sometimes I still struggle with recursion, due to its nested nature. One thing that helps me is to remember that I should always be returning whatever data type the final result is looking for. In this case, we are looking for a boolean, so my base cases must all return true or false. It’s also helpful to think of recursion as repeating sub-problems. What is the sub-problem you are trying to solve here, over and over again?</p>
+
+<p>In this case, the sub-problem is checking if the current nodes p and q are equal.</p>
+
+<p>After checking base cases, you need some logic for checking your next values. That’s where your recursive calls come in. Then, you need to do something with the result of those calls. The outer function could return at this point, or maybe you need to add the result to another data structure you’re keeping track of, like a memo object.</p>
+
+<p>This is what I came up with, and it submitted to leetcode successfully:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */</span>
+<span class="cm">/**
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {boolean}
+ */</span>
+<span class="kd">var</span> <span class="nx">isSameTree</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">q</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//base cases</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">p</span> <span class="o">===</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="nx">q</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">((</span><span class="nx">p</span> <span class="o">===</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="nx">q</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="nx">q</span> <span class="o">===</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="nx">p</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">val</span> <span class="o">!==</span> <span class="nx">q</span><span class="p">.</span><span class="nx">val</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+
+  <span class="c1">//continue exploring tree</span>
+  <span class="k">if</span> <span class="p">(</span>
+    <span class="nx">isSameTree</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">q</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="o">===</span> <span class="kc">false</span> <span class="o">||</span>
+    <span class="nx">isSameTree</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">q</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="o">===</span> <span class="kc">false</span>
+  <span class="p">)</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>First, the base cases:</p>
+
+<ul>
+  <li>both p and q are null: in this case return true, because they are equal, and we have reached a leaf node. This branch has nothing else to explore and if we got this far, it is the same for p and q</li>
+  <li>one of p <strong>or</strong> q, <strong>not both</strong>, is null: if one node is null and the other is not, they are not <em>structurally</em> equal, so return false</li>
+  <li>check if the <strong>values</strong> of p and q are equal. If not, return false. Otherwise, the nodes so far are equal and there is more tree to explore, so we can move on.</li>
+</ul>
+
+<p>Next step: recursive calls</p>
+
+<ul>
+  <li>we need explore the left and right subtrees for our p and q nodes. If either of these returns false, it means p and q were not equal.</li>
+  <li>this is where you start to see branching recursion come into play, since you have to check the left and right child of every node.</li>
+</ul>
+
+<p>Finally, if we got through all of that and never encountered unequal structure or values, we can return true.</p>
+
+<h3 id="next-steps">Next steps</h3>
+
+<p>I definitely need more practice with binary trees, so I’ll continue learning and practicing and will update here if I find anything notable.</p>
 
                 </div>
             </section>
@@ -268,7 +342,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/dotnet/">Dotnet</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/algorithms/">Algorithms</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -282,103 +356,25 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
+                                    
                                   
                                 
                                   
-                                
+                                    
+                                        
+                                        
+                                            <li><a href="/reverse-linked-list">Reverse a linked list in JavaScript</a></li>
+                                        
+                                    
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
+                                    
+                                        
+                                        
+                                            <li><a href="/linked-list-has-cycle">Does linked list have a cycle - slow/fast pointer algorithm</a></li>
+                                        
+                                    
                                   
                                 
                                   
@@ -387,31 +383,8 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/database-error">'There is already an object named ___ in the database' and 'Column names in each table must be unique'</a></li>
+                                            <li><a href="/boyer-moore">Algorithms: Boyer-Moore</a></li>
                                         
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/errors-csproj">500 server error and the csproj file</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
                                     
                                   
                                 
@@ -424,40 +397,121 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                            <li><a href="/importance-of-hard-refresh">The importance of a hard refresh</a></li>
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -465,9 +519,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/dotnet/">
+                            <a href="/tag/algorithms/">
                                 
-                                    See all 7 posts  →
+                                    See all 3 posts  →
                                 
                             </a>
                         </footer>
@@ -477,60 +531,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/dom-notes">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Javascript</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Dom</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Notes on the DOM</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -539,25 +539,25 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/new-jekyll-site-3">
+            <a class="post-card-content-link" href="/reverse-linked-list">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Jekyll</span>
+                               <span class="post-card-tags">Javascript</span>
                             
                         
                             
-                               <span class="post-card-tags">Debugging</span>
+                               <span class="post-card-tags">Coding-problems</span>
                             
                         
                             
-                                <span class="post-card-tags">Deployment</span>
+                                <span class="post-card-tags">Algorithms</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">New jekyll site part 3 - errors with deployment</h2>
+                    <h2 class="post-card-title">Reverse a linked list in JavaScript</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -608,7 +608,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Last ditch effort – I deleted my database</div>
+    <div class="floating-header-title">Binary trees; isSameTree problem</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -616,7 +616,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Last+ditch+effort+%E2%80%93+I+deleted+my+database&amp;url=deleting-my-database"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Binary+trees%3B+isSameTree+problem&amp;url=binary-trees"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -625,7 +625,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=deleting-my-database"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=binary-trees"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

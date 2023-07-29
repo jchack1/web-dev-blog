@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="https://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/tag/recursion/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2023-07-28T19:37:34-06:00</updated>
+  <id>http://localhost:4000/tag/recursion/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Julia Hack | </title>
+  
+
+  
+    <subtitle>Web development blog</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Binary trees; isSameTree problem</title>
+      <link href="http://localhost:4000/binary-trees" rel="alternate" type="text/html" title="Binary trees; isSameTree problem" />
+      <published>2023-07-28T15:30:00-06:00</published>
+      <updated>2023-07-28T15:30:00-06:00</updated>
+      <id>http://localhost:4000/binary-trees</id>
+      <content type="html" xml:base="http://localhost:4000/binary-trees">&lt;p&gt;It’s time to dive into some binary tree coding problems.&lt;/p&gt;
+
+&lt;p&gt;But I think I need to learn more about binary trees, and how to tackle these kinds of problems first, so I actually have a chance of getting them right.&lt;/p&gt;
+
+&lt;p&gt;Resources:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This was a quick, &lt;a href=&quot;https://www.youtube.com/watch?v=GzJoqJO1zdI&quot;&gt;helpful video&lt;/a&gt; that summarized binary trees nicely&lt;/li&gt;
+  &lt;li&gt;This &lt;a href=&quot;https://www.youtube.com/watch?v=5cU1ILGy6dM&quot;&gt;video from freeCodeCamp&lt;/a&gt; describes how to deal with binary search trees in JavaScript&lt;/li&gt;
+  &lt;li&gt;This &lt;a href=&quot;https://www.freecodecamp.org/news/binary-search-tree-traversal-inorder-preorder-post-order-for-bst/&quot;&gt;article from freeCodeCamp&lt;/a&gt; summarizing tree traversal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;compared-to-other-data-structures---linked-lists&quot;&gt;Compared to other data structures - linked lists&lt;/h3&gt;
+
+&lt;p&gt;Like linked lists, trees are made up of nodes that have data and pointers.&lt;/p&gt;
+
+&lt;p&gt;I’ve delved a bit into singly linked-lists, whose nodes have one pointer. In comparison, trees can have multiple pointers to the next nodes. In the case of a binary tree, a node points towards a maximum of 2 child nodes. Each node can have a &lt;code class=&quot;highlighter-rouge&quot;&gt;left&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;right&lt;/code&gt; pointer, comparable to the &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; pointer in a linked list.&lt;/p&gt;
+
+&lt;p&gt;The top node of the tree is called the &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; node, comparable to the &lt;code class=&quot;highlighter-rouge&quot;&gt;head&lt;/code&gt; node of a linked list. Nodes with no children are called &lt;code class=&quot;highlighter-rouge&quot;&gt;leaf&lt;/code&gt; nodes. The path from the root to a leaf is called a &lt;code class=&quot;highlighter-rouge&quot;&gt;branch&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;traversing-a-binary-tree&quot;&gt;Traversing a binary tree&lt;/h3&gt;
+
+&lt;p&gt;For starters, there are two main approaches to code a tree traversal:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;using a &lt;code class=&quot;highlighter-rouge&quot;&gt;while&lt;/code&gt; loop and an “on” pointer (like for linked lists, using a “current” pointer with a while loop)&lt;/li&gt;
+  &lt;li&gt;recursion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When you use recursion it’s called branching recursion. Since a node can have multiple children, your stack frame can be branching too.&lt;/p&gt;
+
+&lt;p&gt;Often you need to visit every node in the tree, but how do I know what order to visit in? There are three main types of traversal:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;in-order traversal&lt;/strong&gt;: visit left subtree, then root, then right subtree. Like you’ve moving across the tree from left to right. If you printed out each node as you visted them, they would be in ascending order from left-most to right-most node.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;pre-order traversal&lt;/strong&gt;: visit root, then left subtree, then right subtree. Like you’ve moving from top of tree to bottom (root to leaf). Use if you need to explore the tree from root to leaf, good for making copies of trees.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;post-order traversal&lt;/strong&gt;: visit left subtree, right subtree, then root. Like you’re travelling from the bottom up (leaf to root). Use if you need to explore leaves before roots. Good for deleting a tree.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;coding-problem-issametree-solved-with-recursion&quot;&gt;Coding problem: isSameTree, solved with recursion&lt;/h3&gt;
+
+&lt;p&gt;The first coding problem I worked on to practice binary trees was, given two trees &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;q&lt;/code&gt;, determine if they are the same. If they are the same, they have the same structure AND values at each node.&lt;/p&gt;
+
+&lt;p&gt;I decided to try solving this recursively. Sometimes I still struggle with recursion, due to its nested nature. One thing that helps me is to remember that I should always be returning whatever data type the final result is looking for. In this case, we are looking for a boolean, so my base cases must all return true or false. It’s also helpful to think of recursion as repeating sub-problems. What is the sub-problem you are trying to solve here, over and over again?&lt;/p&gt;
+
+&lt;p&gt;In this case, the sub-problem is checking if the current nodes p and q are equal.&lt;/p&gt;
+
+&lt;p&gt;After checking base cases, you need some logic for checking your next values. That’s where your recursive calls come in. Then, you need to do something with the result of those calls. The outer function could return at this point, or maybe you need to add the result to another data structure you’re keeping track of, like a memo object.&lt;/p&gt;
+
+&lt;p&gt;This is what I came up with, and it submitted to leetcode successfully:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;/**
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {boolean}
+ */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isSameTree&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;//base cases&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;//continue exploring tree&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;isSameTree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;isSameTree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;First, the base cases:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;both p and q are null: in this case return true, because they are equal, and we have reached a leaf node. This branch has nothing else to explore and if we got this far, it is the same for p and q&lt;/li&gt;
+  &lt;li&gt;one of p &lt;strong&gt;or&lt;/strong&gt; q, &lt;strong&gt;not both&lt;/strong&gt;, is null: if one node is null and the other is not, they are not &lt;em&gt;structurally&lt;/em&gt; equal, so return false&lt;/li&gt;
+  &lt;li&gt;check if the &lt;strong&gt;values&lt;/strong&gt; of p and q are equal. If not, return false. Otherwise, the nodes so far are equal and there is more tree to explore, so we can move on.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Next step: recursive calls&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;we need explore the left and right subtrees for our p and q nodes. If either of these returns false, it means p and q were not equal.&lt;/li&gt;
+  &lt;li&gt;this is where you start to see branching recursion come into play, since you have to check the left and right child of every node.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally, if we got through all of that and never encountered unequal structure or values, we can return true.&lt;/p&gt;
+
+&lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;/h3&gt;
+
+&lt;p&gt;I definitely need more practice with binary trees, so I’ll continue learning and practicing and will update here if I find anything notable.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="algorithms" />
+      
+        <category term="data-structures" />
+      
+        <category term="coding-problems" />
+      
+        <category term="recursion" />
+      
+
+      
+        <summary type="html">It’s time to dive into some binary tree coding problems.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

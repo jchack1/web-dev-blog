@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Binary trees; isSameTree problem</title>
+        
+          <description>&lt;p&gt;It’s time to dive into some binary tree coding problems.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 28 Jul 2023 15:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/binary-trees</link>
+        <guid isPermaLink="true">http://localhost:4000/binary-trees</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Reverse a linked list in JavaScript</title>
         
           <description>&lt;p&gt;Today’s leetcode problem involved linked lists again. This time the task was to reverse one.&lt;/p&gt;
