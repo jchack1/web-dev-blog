@@ -11,7 +11,7 @@
 
 
 
-    <title>Getting item count from DynamoDB query, with pagination</title>
+    <title>Ordering elements in a PDF, and dealing with an ATS</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/dynamodb-query-count-pagination" />
+    <link rel="canonical" href="http://localhost:4000/pdfs-and-ats" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Getting item count from DynamoDB query, with pagination" />
-    <meta property="og:description" content="At work I had another bug that ended up having to do with database pagination in DynamoDB. I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task. I noticed that the next task was sometimes not" />
-    <meta property="og:url" content="http://localhost:4000/dynamodb-query-count-pagination" />
+    <meta property="og:title" content="Ordering elements in a PDF, and dealing with an ATS" />
+    <meta property="og:description" content="We’re stepping away from the world of programming for a moment to talk about a design-related topic. I’ve recently been working on my resume and have been learning a lot of new things. The last time I was in school I took a career class, with a few days dedicated" />
+    <meta property="og:url" content="http://localhost:4000/pdfs-and-ats" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2023-02-22T20:30:00-07:00" />
-    <meta property="article:modified_time" content="2023-02-22T20:30:00-07:00" />
-    <meta property="article:tag" content="Dynamodb" />
+    <meta property="article:published_time" content="2023-09-12T15:30:00-06:00" />
+    <meta property="article:modified_time" content="2023-09-12T15:30:00-06:00" />
+    <meta property="article:tag" content="Design" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Getting item count from DynamoDB query, with pagination" />
-    <meta name="twitter:description" content="At work I had another bug that ended up having to do with database pagination in DynamoDB. I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task. I noticed that the next task was sometimes not" />
+    <meta name="twitter:title" content="Ordering elements in a PDF, and dealing with an ATS" />
+    <meta name="twitter:description" content="We’re stepping away from the world of programming for a moment to talk about a design-related topic. I’ve recently been working on my resume and have been learning a lot of new things. The last time I was in school I took a career class, with a few days dedicated" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Dynamodb" />
+    <meta name="twitter:data2" content="Design" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/dynamodb-query-count-pagination",
+    "url": "http://localhost:4000/pdfs-and-ats",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/dynamodb-query-count-pagination"
+        "@id": "http://localhost:4000/pdfs-and-ats"
     },
-    "description": "At work I had another bug that ended up having to do with database pagination in DynamoDB. I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task. I noticed that the next task was sometimes not"
+    "description": "We’re stepping away from the world of programming for a moment to talk about a design-related topic. I’ve recently been working on my resume and have been learning a lot of new things. The last time I was in school I took a career class, with a few days dedicated"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Getting item count from DynamoDB query, with pagination" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Ordering elements in a PDF, and dealing with an ATS" href="/feed.xml" />
 
 
 </head>
@@ -153,96 +153,58 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="22 February 2023">22 February 2023</time>
+                    <time class="post-full-meta-date" datetime="12 September 2023">12 September 2023</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/dynamodb/'>DYNAMODB</a>,
-                            
-                        
-                            
-                               <a href='/tag/database/'>DATABASE</a>,
-                            
-                        
-                            
-                               <a href='/tag/debugging/'>DEBUGGING</a>,
-                            
-                        
-                            
-                               <a href='/tag/aws/'>AWS</a>
+                               <a href='/tag/design/'>DESIGN</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Getting item count from DynamoDB query, with pagination</h1>
+                <h1 class="post-full-title">Ordering elements in a PDF, and dealing with an ATS</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>At work I had another bug that ended up having to do with database pagination in DynamoDB.</p>
+                    <p>We’re stepping away from the world of programming for a moment to talk about a design-related topic.</p>
 
-<p>I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task.</p>
+<p>I’ve recently been working on my resume and have been learning a lot of new things.</p>
 
-<p>I noticed that the next task was sometimes not being completed, especially if there were a large number of items. When I checked the database manually in the AWS console, all of the correct items were there, so we should be able to move onto the next task.</p>
+<p>The last time I was in school I took a career class, with a few days dedicated to resumes. They showed us all the latest trends in resume designs, and I thought I came up with something fairly eye-catching. If I’m honest, it was just a template from Canva that I adjusted a bit, so it wasn’t my original design, but I found the software very easy to work with. I liked the drag-and-drop functionality and the end result. It produced a nice PDF with a two-column layout.</p>
 
-<p>The number of items being returned was supposed to be 186. I noticed that in the console, the number of items would flash 177 before displaying the correct 186. The function that is checking the number of items was also logging 177. I thought maybe DynamoDB had to do more than one fetch to get all the items, and that second fetch wasn’t happening in my code.</p>
+<p>I ended up getting my next two jobs through my school or people I knew, so this resume worked fine. I have been updating the same resume with new skills and work experience ever since, up until recently.</p>
 
-<p>Turns out that was correct. If the data you’re querying reaches 1MB or greater, you need to query again to get the rest, so I needed to do this to get an accurate count. This meant I needed to add <code class="highlighter-rouge">LastEvaluatedKey</code> somewhere in my code like the last time this issue came up.</p>
+<p>I happened to bring this up with a friend that had her resume reviewed by the career services at her university, so I asked her to have a look at mine. One of her main criticisms was the two column layout. If I were to use it to apply to jobs online, applicant tracking systems may not be able to read it, because these systems read documents left to right. I looked into this a little more and this seems to be the consensus about two-column layouts, although it’s possible some systems are sophisticated enough to read them anyway.</p>
 
-<p>When I saw the 1MB value in the AWS docs, I started thinking that I don’t actually need to return all this data if all I’m going to do is count it. These resources helped me to understand how to get the count, rather than the data, and how to paginate it.</p>
+<p>Assuming most systems aren’t at that level of sophistication, though, it means the text from the left and right column will be jumbled together. Of course the systems wouldn’t be able to parse this.</p>
 
-<ul>
-  <li><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Count">AWS DynamoDB query count</a></li>
-  <li><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.Pagination.html">AWS DynamoDB pagination</a></li>
-  <li><a href="https://stackoverflow.com/questions/27316643/how-to-get-item-count-from-dynamodb">Stackoverflow post about getting the count only</a></li>
-</ul>
+<h3 id="first-attempt-at-fixing-it---creating-a-one-column-layout">First attempt at fixing it - creating a one-column layout</h3>
 
-<p>I ended up with the code below (changed somewhat for privacy, all the concepts still apply):</p>
+<p>I used Canva again to make a one-column resume. I ran it through a resume checker to see if it scored well, and it did not. It couldn’t find important sections of my resume that I had included. I was very confused as to why, since now it should be in a more readable format, right?</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">getItemCount</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">itemId</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="na">TableName</span><span class="p">:</span> <span class="s2">`my-table`</span><span class="p">,</span>
-      <span class="na">KeyConditionExpression</span><span class="p">:</span> <span class="s2">"PK = :pk AND begins_with(SK, :sk)"</span><span class="p">,</span>
-      <span class="na">ExpressionAttributeValues</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">":pk"</span><span class="p">:</span> <span class="nx">itemId</span><span class="p">,</span>
-        <span class="s2">":sk"</span><span class="p">:</span> <span class="s2">"item"</span><span class="p">,</span>
-      <span class="p">},</span>
-      <span class="na">Select</span><span class="p">:</span> <span class="s2">"COUNT"</span><span class="p">,</span>
-      <span class="na">ExclusiveStartKey</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="p">};</span>
+<h3 id="second-attempt---creating-the-template-myself-in-illustrator">Second attempt - creating the template myself in Illustrator</h3>
 
-    <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kd">let</span> <span class="nx">result</span><span class="p">;</span>
+<p>I thought maybe Canva was doing something weird with the formatting, so I decided to create a new resume from scratch using Adobe Illustrator, creating every element from scratch myself.</p>
 
-    <span class="k">do</span> <span class="p">{</span>
-      <span class="nx">result</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">dynamo</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">params</span><span class="p">).</span><span class="nx">promise</span><span class="p">();</span>
+<p>I ran the new document through the resume checker, and found a similar result. Some parts of my resume were coming through as expected, like my contact information, but some sections were still missing. I googled the problem, and some of the solutions mentioned the order the elements are created in the document can cause things to appear out of order, and to check what happens when you copy the text from the PDF into Notepad.</p>
 
-      <span class="nx">count</span> <span class="o">+=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">Count</span><span class="p">;</span>
-      <span class="nx">params</span><span class="p">.</span><span class="nx">ExclusiveStartKey</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">LastEvaluatedKey</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">LastEvaluatedKey</span> <span class="o">!==</span> <span class="s2">"undefined"</span><span class="p">);</span>
+<p>When I copied the text into Notepad, it was a mess. Everything was completely out of order, even though it appeared normal in the PDF. Text didn’t properly follow the headings, which is why the resume checker couldn’t locate it.</p>
 
-    <span class="k">return</span> <span class="nx">count</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div></div>
+<h3 id="third-attempt---re-ordering-the-elements-before-export">Third attempt - re-ordering the elements before export</h3>
 
-<h3 id="explanation">Explanation</h3>
+<p>The way I chose to fix this was by going into the layers panel in Illustrator and manually putting the elements in the correct order. I could see that the order they were in before this fix matched the way they showed up in Notepad, so this would likely fix my problem.</p>
 
-<p>As seen in a previous post, we make use of a do/while loop. We query the database with the same params, but with each query we need to add a value to <code class="highlighter-rouge">ExclusiveStartKey</code>. That value should be the <code class="highlighter-rouge">LastEvaluatedKey</code> that was returned from the previous operation. <code class="highlighter-rouge">LastEvaluatedKey</code> is where the previous query left off, so that’s where we need to start the next query. When there is no <code class="highlighter-rouge">LastEvaluatedKey</code>, meaning it is “undefined”, we have retrieved all the results and can exit the loop.</p>
-
-<p>To get the count without returning the data, we need to add <code class="highlighter-rouge">Select: "COUNT"</code> to our params. We increment the count each time our query returns results, so our final value is the total count.</p>
-
-<p>I also added <code class="highlighter-rouge">ExclusiveStartKey: null</code> to the params. This is because I am using typescript, and it wouldn’t let me add a new field that wasn’t defined from the beginning. Having the start key as null doesn’t affect the first query, and allows us to update the params object later in our code. You don’t have to do this in regular javascript.</p>
+<p>After exporting the new document, I pasted the text into Notepad again, and this time the order was correct.</p>
 
 <h3 id="conclusion">Conclusion</h3>
 
-<p>It’s important to keep pagination in mind when fetching large amounts of data, and understand the limitations of the database you’re working with. As I learned, it can cause unforeseen bugs that are difficult to track down. It’s encouraging to me to realize I’m now picking up on these patterns.</p>
+<p>Despite not being a programming problem, this issue felt a lot like the normal debugging I do day-to-day. I find it so frustrating that these problems you cannot easily see could completely throw off someone’s job search, and they may not even realize it.</p>
+
+<p>There is a lot of advice given about resumes, and it seems to change constantly. This is a whole separate skill set than a developer skillset. It would be easy to feel like these automated rejections are rejecting your developer skillset and experience, or even you as a person. But it’s truly not that personal. The entities reading this curated summary of your work life aren’t even human. All I can say is keep learning new skills and trying your best.</p>
 
                 </div>
             </section>
@@ -298,7 +260,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/dynamodb/">Dynamodb</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/design/">Design</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -312,51 +274,6 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/dynamo-db-pagination">DynamoDB scans and pagination</a></li>
-                                        
                                     
                                   
                                 
@@ -422,6 +339,75 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                 
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/design-fonts">Helpful design notes - fonts</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/usability">Usability - notes from design course</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/ux-3">UX design notes part 3</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -465,9 +451,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/dynamodb/">
+                            <a href="/tag/design/">
                                 
-                                    See all 1 posts  →
+                                    See all 5 posts  →
                                 
                             </a>
                         </footer>
@@ -477,68 +463,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/binary-math">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Binary</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Computer-science</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Javascript</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Coding-problems</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Binary math - addition problem</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -547,25 +471,29 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/trying-chatgpt">
+            <a class="post-card-content-link" href="/hash-tables-javascript">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Javascript</span>
+                               <span class="post-card-tags">Algorithms</span>
                             
                         
                             
-                               <span class="post-card-tags">Chatgpt</span>
+                               <span class="post-card-tags">Data-structures</span>
                             
                         
                             
-                                <span class="post-card-tags">Ai</span>
+                               <span class="post-card-tags">Coding-problems</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Javascript</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">I asked ChatGPT to help speed up my React code</h2>
+                    <h2 class="post-card-title">Implementing hash tables in JavaScript</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -616,7 +544,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Getting item count from DynamoDB query, with pagination</div>
+    <div class="floating-header-title">Ordering elements in a PDF, and dealing with an ATS</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -624,7 +552,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Getting+item+count+from+DynamoDB+query%2C+with+pagination&amp;url=dynamodb-query-count-pagination"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Ordering+elements+in+a+PDF%2C+and+dealing+with+an+ATS&amp;url=pdfs-and-ats"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -633,7 +561,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=dynamodb-query-count-pagination"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=pdfs-and-ats"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
