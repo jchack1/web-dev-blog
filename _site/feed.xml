@@ -1,4 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-12T18:28:38-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Ordering elements in a PDF, and dealing with an ATS</title><link href="http://localhost:4000/pdfs-and-ats" rel="alternate" type="text/html" title="Ordering elements in a PDF, and dealing with an ATS" /><published>2023-09-12T15:30:00-06:00</published><updated>2023-09-12T15:30:00-06:00</updated><id>http://localhost:4000/pdfs-and-ats</id><content type="html" xml:base="http://localhost:4000/pdfs-and-ats">&lt;p&gt;We’re stepping away from the world of programming for a moment to talk about a design-related topic.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-11-21T17:56:54-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Developing a chat app using AWS AppSync</title><link href="http://localhost:4000/appsync-chat-app" rel="alternate" type="text/html" title="Developing a chat app using AWS AppSync" /><published>2023-11-21T16:30:00-07:00</published><updated>2023-11-21T16:30:00-07:00</updated><id>http://localhost:4000/appsync-chat-app</id><content type="html" xml:base="http://localhost:4000/appsync-chat-app">&lt;p&gt;I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.&lt;/p&gt;
+
+&lt;p&gt;There were some new features rolled out in AppSync since I started my work project, so I wanted to try them out. It also gave me the opportunity to learn more about setting up authentication with Amplify and Cognito, which I had never tackled before, as authentication had been set up at work by another developer.&lt;/p&gt;
+
+&lt;p&gt;Everything below has also been included on my portfolio site.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-i-chose-to-use-appsync&quot;&gt;Why I chose to use AppSync&lt;/h3&gt;
+
+&lt;p&gt;To create a chat app you need to ensure messages appear on the screen in real time. There needs to be a bi-directional relationship between the front-end and database, and the front-end must display messages immediately upon their creation without refreshing the page. One option for this could have been to use Apollo Client WebSocket Link.&lt;/p&gt;
+
+&lt;p&gt;I attempted this with my original work project. The front-end set-up was simple, but I quickly realized that setting up a web-socket on a serverless app built with AWS Lambda would be challenging. This required manual set-up of the web-socket, creating a new connection each time a user logged in, and storing the connection information in the database. It was much simpler to use AppSync, which removed all of this manual work.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-nitty-gritty-of-my-appsync-experience&quot;&gt;The nitty-gritty of my AppSync experience&lt;/h3&gt;
+
+&lt;p&gt;AppSync allows you to create a GraphQL API that connects to your backend datasources. Resolvers are the functions in your API that handle incoming requests. For my projects, resolvers generally will receive a request, get something from or put something into a DynamoDB database, and return some data to the front-end. A few times I used Lambda functions, connected to DynamoDB, as my datasource, which I will elaborate on later.&lt;/p&gt;
+
+&lt;p&gt;AppSync initially used VTL (Velocity Template Language), which is a Java-based language, to write mapping template code (basically equivalent to resolvers). When I began the original project, AWS just began to roll out JavaScript-based resolvers in a limited capacity. Since it was such a new functionality, and all the AppSync tutorials by my favorite devs on social media were using VTL, I decided to use VTL as well. It was time consuming for me to learn, and debugging in AppSync was often difficult, but eventually I figured it out and delivered a working app to my team.&lt;/p&gt;
+
+&lt;p&gt;When it came time for me to create my own project, JavaScript could be used with any type of resolver. I assumed this would make my life easier and coding this project would be faster. This was not the case. JavaScript is not run on a browser or Node.js runtime, but on a special &lt;code class=&quot;highlighter-rouge&quot;&gt;APPSYNC_JS&lt;/code&gt; runtime, and there are limits on what JavaScript features may be used. For example, &lt;code class=&quot;highlighter-rouge&quot;&gt;try/catch&lt;/code&gt; statements are not supported, making error handling challenging; you need to use their built-in functions. &lt;code class=&quot;highlighter-rouge&quot;&gt;async/await&lt;/code&gt; and promises are also not supported. While I understand the logic behind this - awaiting promises is too time-consuming and your AppSync API is supposed to be fast - this presented challenges for my multi-step code.&lt;/p&gt;
+
+&lt;p&gt;Pipeline resolvers are made for this scenario. This could have worked, except there were some cases when I needed to query multiple items from the database using a global secondary index (GSI). There is a built-in AppSync function called &lt;code class=&quot;highlighter-rouge&quot;&gt;BatchGet&lt;/code&gt; which I tried to use, however it will only allow you to get items using the primary key, no secondary indexes, so it didn’t work for me.&lt;/p&gt;
+
+&lt;p&gt;At this point I could have re-worked my data structures, but instead I put my JavaScript code into Lambda functions and used them as the datasource. I was able to use the JavaScript functionality I was familiar with and write the exact DynamoDB queries I needed. For my purposes this worked fine, and I never noticed any performance issues.&lt;/p&gt;
+
+&lt;h3 id=&quot;take-aways-and-future-updates&quot;&gt;Take-aways and future updates&lt;/h3&gt;
+
+&lt;p&gt;Overall I enjoyed learning AppSync. It’s a big time-saver to not have to manually set up web-sockets. Writing the resolvers was the most challenging aspect, since there seemed to be a lot of restrictions on what could be included in your code. I often received errors that said “there is a problem with the code” but nothing more, so debugging was difficult.&lt;/p&gt;
+
+&lt;p&gt;Working with GraphQL is a great experience since it helps me think of my code in terms of inputs and outputs, and it always makes me want to work more with types, specifically using TypeScript. I would have written the backend for this chat app in TypeScript, but I struggled with importing my own types into the code. Again, I got the “there is a problem with the code” error, so it wasn’t clear what exactly the problem was.&lt;/p&gt;
+
+&lt;p&gt;It seems as if AppSync wants you to use it to auto-generate all your types, schemas, and datasources, when I want to write it all myself. In the future I’d like to revisit this; I’d like to see if the developers make this process easier, or dive deeper into the docs to find out if I missed any key details for TypeScript implementation. Perhaps in this environment of AI and cloud services, I need to better embrace the ability of these kinds of services to auto-generate my code and infrastructure for me, if I want to produce software quickly.&lt;/p&gt;
+
+&lt;h3 id=&quot;helpful-resources&quot;&gt;Helpful resources&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mavi888/web-client-appsync-test/tree/master&quot;&gt;Foobar Serverless github repo and accompanying youtube video&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/sid88in/serverless-appsync-plugin/tree/master/doc&quot;&gt;serverless-appsync-plugin docs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/appsync/latest/devguide/what-is-appsync.html&quot;&gt;AWS AppSync developer guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="aws" /><category term="serverless" /><category term="appsync" /><summary type="html">I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.</summary></entry><entry><title type="html">Ordering elements in a PDF, and dealing with an ATS</title><link href="http://localhost:4000/pdfs-and-ats" rel="alternate" type="text/html" title="Ordering elements in a PDF, and dealing with an ATS" /><published>2023-09-12T15:30:00-06:00</published><updated>2023-09-12T15:30:00-06:00</updated><id>http://localhost:4000/pdfs-and-ats</id><content type="html" xml:base="http://localhost:4000/pdfs-and-ats">&lt;p&gt;We’re stepping away from the world of programming for a moment to talk about a design-related topic.&lt;/p&gt;
 
 &lt;p&gt;I’ve recently been working on my resume and have been learning a lot of new things.&lt;/p&gt;
 
@@ -791,114 +829,4 @@
 
 &lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
 
-&lt;p&gt;It’s important to keep pagination in mind when fetching large amounts of data, and understand the limitations of the database you’re working with. As I learned, it can cause unforeseen bugs that are difficult to track down. It’s encouraging to me to realize I’m now picking up on these patterns.&lt;/p&gt;</content><author><name></name></author><category term="dynamodb" /><category term="database" /><category term="debugging" /><category term="aws" /><summary type="html">At work I had another bug that ended up having to do with database pagination in DynamoDB.</summary></entry><entry><title type="html">I asked ChatGPT to help speed up my React code</title><link href="http://localhost:4000/trying-chatgpt" rel="alternate" type="text/html" title="I asked ChatGPT to help speed up my React code" /><published>2023-02-13T12:30:00-07:00</published><updated>2023-02-13T12:30:00-07:00</updated><id>http://localhost:4000/trying-chatgpt</id><content type="html" xml:base="http://localhost:4000/trying-chatgpt">&lt;p&gt;I finally got around to trying ChatGPT. I’m sure there are many ways of using this technology, but I think it can be a great assistant to help &lt;em&gt;you&lt;/em&gt; improve your own code. Today I’ll share how I used it in my workflow.&lt;/p&gt;
-
-&lt;p&gt;The pokedex app I made a few months ago was loading really slowly, and I was struggling to speed it up. Since this is just a small demo app I figured it would be a good use case to test out ChatGPT.&lt;/p&gt;
-
-&lt;p&gt;The problem seemed to be localized to one file, where I was fetching the data for each pokemon and mapping it onto the screen. I asked ChatGPT “This React code is loading slowly. How can I speed it up?”, and pasted all the code from my file.&lt;/p&gt;
-
-&lt;p&gt;I won’t share it all here, but this function is what originally fetched the data:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fetchPokemonData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pokemonNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pokemon&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pokemonNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//do a fetch&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`https://pokeapi.co/api/v2/pokemon/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;axios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;c1&quot;&gt;//save this pokemon's data to sessionStorage&lt;/span&gt;
-
-      &lt;span class=&quot;nx&quot;&gt;sessionStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;abilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;abilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;sprites&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sprites&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getCachedData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;allPokemon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Looking back now, I can see that using a for loop and making an API call in each iteration isn’t the most efficient way of doing this.&lt;/p&gt;
-
-&lt;p&gt;ChatGPT responded with a list of potential fixes:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;There are several ways to improve the performance of this code:&lt;/p&gt;
-
-  &lt;p&gt;1.Use local storage instead of session storage: Local storage has a larger size limit compared to session storage and can persist data even after the browser is closed. This will eliminate the need for making repeated API calls for the same data.&lt;/p&gt;
-
-  &lt;p&gt;2.Reduce the number of API calls: You can reduce the number of API calls by fetching data for multiple Pokemon in a single call instead of making separate API calls for each Pokemon.&lt;/p&gt;
-
-  &lt;p&gt;3.Use memoization: You can memoize the result of expensive calculations so that they are only re-computed when their inputs change. This can significantly improve performance in cases where the same calculation is performed multiple times with the same inputs.&lt;/p&gt;
-
-  &lt;p&gt;4.Use conditional rendering: You can use conditional rendering to avoid unnecessary rendering of components. For example, you can avoid rendering the Loading component once the data has been loaded.&lt;/p&gt;
-
-  &lt;p&gt;5.Use code splitting: You can split the code into smaller chunks so that only the necessary code is loaded and the rest can be loaded as needed, improving the initial loading time of the page.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Some of these didn’t quite work for me. I specifically wanted session storage, not local storage, because I didn’t want users to have to clear their browsing data to get rid of the pokemon data. Session storage clears when the window is closed. Memoization could have worked, but I was already using session storage and it seemed unnecessary to re-write the storage related code. Besides, it seemed like the problem had more to do with the fetch itself.&lt;/p&gt;
-
-&lt;p&gt;I asked ChatGPT how I could reduce the API calls, and it told me to use &lt;code class=&quot;highlighter-rouge&quot;&gt;Promise.all()&lt;/code&gt;. I don’t know how I didn’t think of that before.&lt;/p&gt;
-
-&lt;p&gt;It even gave me some new code, and explained how it worked.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;You can fetch multiple Pokemon at once by making multiple API calls in parallel using Promise.all(). Here’s how you can modify the fetchPokemonData function to do this:&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fetchPokemonData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pokemonNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;requests&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pokemonNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`https://pokeapi.co/api/v2/pokemon/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;axios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;responses&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;responses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;sessionStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;abilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;abilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;sprites&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sprites&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;getCachedData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;allPokemon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;This will send multiple requests in parallel, and once all of them have resolved, the data will be saved in sessionStorage and getCachedData will be called to retrieve the data.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;All I had to do was update this one function. I tried it out, and the load time was so much faster.&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h3&gt;
-
-&lt;p&gt;The prospect of AI taking our jobs is a bit scary, and as ethical technologists it is important that we don’t create harmful AI.&lt;/p&gt;
-
-&lt;p&gt;That being said, I do think there is promise for AI acting as a helper, rather than something that takes over our work. I recently heard someone compare AI to the original desktop computers. People feared that computers would make many jobs obsolete, and I suppose for some it has. But we generally use computers to assist us with tasks, rather than do it all for us. I think AI can be used in the same way. Work has become less analog and more digital, for better or worse. Work has changed and evolved over time with the help of technology.&lt;/p&gt;
-
-&lt;p&gt;ChatGPT didn’t make the app for me, I did. It helped me like a coworker might help me - I came to it with a problem, and it gave me some pointers to improve. I’ve absolutely had coworkers write some code for me to use while helping me with a problem. ChatGPT also didn’t have just one answer to help me. It gave me suggestions, which I needed to analyze myself to determine which one could work best given my requirements.&lt;/p&gt;
-
-&lt;p&gt;Which brings me to another important point - you (or your managers) need to know what the requirements are to make anything. ChatGPT can’t make an entire software system by itself (yet…?).&lt;/p&gt;
-
-&lt;p&gt;I think it can also be helpful for my learning. Now I can look into how &lt;code class=&quot;highlighter-rouge&quot;&gt;Promise.all()&lt;/code&gt; works and use it more in the future. I was reminded of some faster alternatives to for loops as well.&lt;/p&gt;
-
-&lt;p&gt;I still think AI shouldn’t replace human contact or asking other humans for help, but I’m happy to have another tool in my toolbox.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="chatgpt" /><category term="ai" /><summary type="html">I finally got around to trying ChatGPT. I’m sure there are many ways of using this technology, but I think it can be a great assistant to help you improve your own code. Today I’ll share how I used it in my workflow.</summary></entry></feed>
+&lt;p&gt;It’s important to keep pagination in mind when fetching large amounts of data, and understand the limitations of the database you’re working with. As I learned, it can cause unforeseen bugs that are difficult to track down. It’s encouraging to me to realize I’m now picking up on these patterns.&lt;/p&gt;</content><author><name></name></author><category term="dynamodb" /><category term="database" /><category term="debugging" /><category term="aws" /><summary type="html">At work I had another bug that ended up having to do with database pagination in DynamoDB.</summary></entry></feed>

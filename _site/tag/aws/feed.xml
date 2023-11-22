@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/aws/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2023-09-12T18:28:38-06:00</updated>
+  <updated>2023-11-21T17:56:54-07:00</updated>
   <id>http://localhost:4000/tag/aws/feed.xml</id>
 
   
@@ -42,6 +42,82 @@
   
   
 
+  
+    <entry>
+      <title type="html">Developing a chat app using AWS AppSync</title>
+      <link href="http://localhost:4000/appsync-chat-app" rel="alternate" type="text/html" title="Developing a chat app using AWS AppSync" />
+      <published>2023-11-21T16:30:00-07:00</published>
+      <updated>2023-11-21T16:30:00-07:00</updated>
+      <id>http://localhost:4000/appsync-chat-app</id>
+      <content type="html" xml:base="http://localhost:4000/appsync-chat-app">&lt;p&gt;I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.&lt;/p&gt;
+
+&lt;p&gt;There were some new features rolled out in AppSync since I started my work project, so I wanted to try them out. It also gave me the opportunity to learn more about setting up authentication with Amplify and Cognito, which I had never tackled before, as authentication had been set up at work by another developer.&lt;/p&gt;
+
+&lt;p&gt;Everything below has also been included on my portfolio site.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-i-chose-to-use-appsync&quot;&gt;Why I chose to use AppSync&lt;/h3&gt;
+
+&lt;p&gt;To create a chat app you need to ensure messages appear on the screen in real time. There needs to be a bi-directional relationship between the front-end and database, and the front-end must display messages immediately upon their creation without refreshing the page. One option for this could have been to use Apollo Client WebSocket Link.&lt;/p&gt;
+
+&lt;p&gt;I attempted this with my original work project. The front-end set-up was simple, but I quickly realized that setting up a web-socket on a serverless app built with AWS Lambda would be challenging. This required manual set-up of the web-socket, creating a new connection each time a user logged in, and storing the connection information in the database. It was much simpler to use AppSync, which removed all of this manual work.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-nitty-gritty-of-my-appsync-experience&quot;&gt;The nitty-gritty of my AppSync experience&lt;/h3&gt;
+
+&lt;p&gt;AppSync allows you to create a GraphQL API that connects to your backend datasources. Resolvers are the functions in your API that handle incoming requests. For my projects, resolvers generally will receive a request, get something from or put something into a DynamoDB database, and return some data to the front-end. A few times I used Lambda functions, connected to DynamoDB, as my datasource, which I will elaborate on later.&lt;/p&gt;
+
+&lt;p&gt;AppSync initially used VTL (Velocity Template Language), which is a Java-based language, to write mapping template code (basically equivalent to resolvers). When I began the original project, AWS just began to roll out JavaScript-based resolvers in a limited capacity. Since it was such a new functionality, and all the AppSync tutorials by my favorite devs on social media were using VTL, I decided to use VTL as well. It was time consuming for me to learn, and debugging in AppSync was often difficult, but eventually I figured it out and delivered a working app to my team.&lt;/p&gt;
+
+&lt;p&gt;When it came time for me to create my own project, JavaScript could be used with any type of resolver. I assumed this would make my life easier and coding this project would be faster. This was not the case. JavaScript is not run on a browser or Node.js runtime, but on a special &lt;code class=&quot;highlighter-rouge&quot;&gt;APPSYNC_JS&lt;/code&gt; runtime, and there are limits on what JavaScript features may be used. For example, &lt;code class=&quot;highlighter-rouge&quot;&gt;try/catch&lt;/code&gt; statements are not supported, making error handling challenging; you need to use their built-in functions. &lt;code class=&quot;highlighter-rouge&quot;&gt;async/await&lt;/code&gt; and promises are also not supported. While I understand the logic behind this - awaiting promises is too time-consuming and your AppSync API is supposed to be fast - this presented challenges for my multi-step code.&lt;/p&gt;
+
+&lt;p&gt;Pipeline resolvers are made for this scenario. This could have worked, except there were some cases when I needed to query multiple items from the database using a global secondary index (GSI). There is a built-in AppSync function called &lt;code class=&quot;highlighter-rouge&quot;&gt;BatchGet&lt;/code&gt; which I tried to use, however it will only allow you to get items using the primary key, no secondary indexes, so it didn’t work for me.&lt;/p&gt;
+
+&lt;p&gt;At this point I could have re-worked my data structures, but instead I put my JavaScript code into Lambda functions and used them as the datasource. I was able to use the JavaScript functionality I was familiar with and write the exact DynamoDB queries I needed. For my purposes this worked fine, and I never noticed any performance issues.&lt;/p&gt;
+
+&lt;h3 id=&quot;take-aways-and-future-updates&quot;&gt;Take-aways and future updates&lt;/h3&gt;
+
+&lt;p&gt;Overall I enjoyed learning AppSync. It’s a big time-saver to not have to manually set up web-sockets. Writing the resolvers was the most challenging aspect, since there seemed to be a lot of restrictions on what could be included in your code. I often received errors that said “there is a problem with the code” but nothing more, so debugging was difficult.&lt;/p&gt;
+
+&lt;p&gt;Working with GraphQL is a great experience since it helps me think of my code in terms of inputs and outputs, and it always makes me want to work more with types, specifically using TypeScript. I would have written the backend for this chat app in TypeScript, but I struggled with importing my own types into the code. Again, I got the “there is a problem with the code” error, so it wasn’t clear what exactly the problem was.&lt;/p&gt;
+
+&lt;p&gt;It seems as if AppSync wants you to use it to auto-generate all your types, schemas, and datasources, when I want to write it all myself. In the future I’d like to revisit this; I’d like to see if the developers make this process easier, or dive deeper into the docs to find out if I missed any key details for TypeScript implementation. Perhaps in this environment of AI and cloud services, I need to better embrace the ability of these kinds of services to auto-generate my code and infrastructure for me, if I want to produce software quickly.&lt;/p&gt;
+
+&lt;h3 id=&quot;helpful-resources&quot;&gt;Helpful resources&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mavi888/web-client-appsync-test/tree/master&quot;&gt;Foobar Serverless github repo and accompanying youtube video&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/sid88in/serverless-appsync-plugin/tree/master/doc&quot;&gt;serverless-appsync-plugin docs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/appsync/latest/devguide/what-is-appsync.html&quot;&gt;AWS AppSync developer guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="aws" />
+      
+        <category term="serverless" />
+      
+        <category term="appsync" />
+      
+
+      
+        <summary type="html">I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Getting item count from DynamoDB query, with pagination</title>
@@ -911,140 +987,6 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
 
       
         <summary type="html">AWS Cloudformation is a really great AWS service for creating “infrastructure as code”.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Deploying simple React app with Serverless / AWS</title>
-      <link href="http://localhost:4000/deploy-react-serverless-aws" rel="alternate" type="text/html" title="Deploying simple React app with Serverless / AWS " />
-      <published>2020-10-29T18:30:00-06:00</published>
-      <updated>2020-10-29T18:30:00-06:00</updated>
-      <id>http://localhost:4000/deploy-react-serverless-aws</id>
-      <content type="html" xml:base="http://localhost:4000/deploy-react-serverless-aws">&lt;p&gt;I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless.&lt;/p&gt;
-
-&lt;p&gt;This is assuming you already have an AWS account, and have installed Serverless, the AWS SDK, and set up your AWS credentials on your machine.Simply put, though:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;To install Serverless I ran this command: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i serverless -g&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;To install the AWS SDK I ran this command: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i aws-sdk -g&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Once you’ve set up an AWS account you can set up a new user in IAM, and save your credentials on your machine. &lt;a href=&quot;https://www.youtube.com/watch?v=w-OHgML58eg&amp;amp;t=1s&quot;&gt;This video shows that set-up&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In this case I already had a project made, which I set up using &lt;code class=&quot;highlighter-rouge&quot;&gt;create-react-app&lt;/code&gt;. You can also set up a new serverless app by creating a new folder and running &lt;code class=&quot;highlighter-rouge&quot;&gt;serverless create --template aws-nodejs&lt;/code&gt;. This is assuming you are using Node.js in the backend. There are many different runtimes you can use and templates available. You can also run &lt;code class=&quot;highlighter-rouge&quot;&gt;create-react-app&lt;/code&gt; after creating your serverless template. The order you do this doesn’t seem to matter, as long as you have all the files you need.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.serverless.com/framework/docs/providers/aws/guide/services/&quot;&gt;This article from Serverless explains services, and all associated files, very well&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;To deploy static pages to an S3 bucket on AWS, I installed serverless-finch in my project using &lt;code class=&quot;highlighter-rouge&quot;&gt;npm i --save-dev serverless-finch&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;When deploying a React app it is important to run the command &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run build&lt;/code&gt;, so you get a build folder in your project directory. This is where all your static files end up including your index.html, which S3 needs to find in order to deploy your site.&lt;/p&gt;
-
-&lt;h3 id=&quot;inside-the-serverlessyml-file&quot;&gt;Inside the serverless.yml file&lt;/h3&gt;
-
-&lt;p&gt;Setting up a new serverless app will give you a handler file (in my case, handler.js), a .gitignore, and a serverless.yml file. serverless.yml is where you configure your service. Serverless uses this file to work with AWS to deploy your app.&lt;/p&gt;
-
-&lt;p&gt;The following is what I have in my serverless.yml file:&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;react-practice&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;provider&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;aws&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${opt:stage, 'dev'}&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;runtime&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;nodejs12.x&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;region&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;us-west-2&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;functions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;handler.hello&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;#    The following are a few example events you can configure&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;#    NOTE: Please make sure to change your handler code to work with those events&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;#    Check the event documentation for details&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;hello&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;get&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;serverless-finch&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;custom&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;bucketName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;julia-practice-react1&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;distributionFolder&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/build&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;errorDocument&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;index.html&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;“service” essentially means project. It’s where you define all your functions, resources, events, plugins, and so on. Here you give the service a name.&lt;/p&gt;
-
-&lt;p&gt;Under “provider” is where you specify that you are using AWS and configure your runtime, region, stage, etc. Stage refers to stage of development which includes development, QA, or production. Here the “dev” stage is default, if you don’t specify a stage when you deploy.&lt;/p&gt;
-
-&lt;p&gt;Under each function you can have events. These are events that trigger the function to execute. In this example, and HTTP “get” request is triggering the “hello” function to execute.&lt;/p&gt;
-
-&lt;p&gt;If you have a “resources” section, these are the resources that your functions use when they execute. These could include database tables.&lt;/p&gt;
-
-&lt;p&gt;Note that under “plugins” I added “serverless-finch”.&lt;/p&gt;
-
-&lt;p&gt;Under “custom” and “client” we configure S3.&lt;/p&gt;
-
-&lt;p&gt;bucketName the bucket where S3 will place our files. It must be a globally unique name, meaning no one else in the world have have a bucket with this name.&lt;/p&gt;
-
-&lt;p&gt;distributionFolder is where S3 should look for our files. For React we use “/build”, since that’s where our index.html is.&lt;/p&gt;
-
-&lt;p&gt;S3 also requires you have an errorDocument specified. Since this is just a simple app I didn’t make one and just left it as index.html.&lt;/p&gt;
-
-&lt;h4 id=&quot;what-serverless-does-with-the-serverlessyml-file&quot;&gt;What Serverless does with the serverless.yml file&lt;/h4&gt;
-
-&lt;p&gt;Serverless takes the serverless.yml file and translates it into an AWS CloudFormation template.&lt;/p&gt;
-
-&lt;p&gt;CloudFormation is an AWS service that allows you to manage all your AWS services/resources. You would write a template describing everything you want, and CloudFormation configures it for you.&lt;/p&gt;
-
-&lt;p&gt;This sounds like an improvement over configuring everything yourself in the AWS management console, though these files can still get pretty long and take time to create. That’s where Serverless comes in. Serverless takes your serverless.yml file and creates CloudFormation templates for you.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.serverless.com/framework/docs/providers/aws/guide/deploying/&quot;&gt;Here’s an article describing deployment with Serverless&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;deployment&quot;&gt;Deployment&lt;/h3&gt;
-
-&lt;p&gt;Note: you can set up different commands in the “scripts” section of your package.json file.&lt;/p&gt;
-
-&lt;p&gt;For backend stuff, especially for Lambda functions, run &lt;code class=&quot;highlighter-rouge&quot;&gt;sls deploy --aws-profile={whatever name you set up in your aws credentials file}&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;To deploy the client side, into your S3 bucket, run this command &lt;code class=&quot;highlighter-rouge&quot;&gt;sls client deploy --aws-profile={whatever name you set up in your aws credentials file}&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Your screen should look something like this if successful. You will see a link you can go to and view the site.
-&lt;img src=&quot;../assets/images/sls-cli.jpg&quot; style=&quot;max-width: 500px;&quot; alt=&quot;serverless cli successful&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;errors&quot;&gt;Errors&lt;/h3&gt;
-
-&lt;p&gt;I got an error reading “Serverless Error: Access Denied”. This seemed strange because I never got this error for the backend deploy, so I thought it must have to do with S3. I fixed this by making my bucket public, but I don’t think this is very secure so I need to look into this further.&lt;/p&gt;
-
-&lt;p&gt;Another error said that I was not in the correct region. This was because my bucket and my serverless.yml file “region” did not match. I just had to quickly update my .yml file and there error was solved. I could now see my site.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="react" />
-      
-        <category term="aws" />
-      
-        <category term="serverless" />
-      
-
-      
-        <summary type="html">I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless.</summary>
       
 
       
