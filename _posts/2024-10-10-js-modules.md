@@ -54,6 +54,6 @@ if (someCondition) {
 
 ### Helpful links
 
-[https://blog.logrocket.com/commonjs-vs-es-modules-node-js/](https://blog.logrocket.com/commonjs-vs-es-modules-node-js/)
-[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
-[https://www.youtube.com/watch?v=d-0uCi61rtg](https://www.youtube.com/watch?v=d-0uCi61rtg)
+- [https://blog.logrocket.com/commonjs-vs-es-modules-node-js/](https://blog.logrocket.com/commonjs-vs-es-modules-node-js/)
+- [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+- [https://www.youtube.com/watch?v=d-0uCi61rtg](https://www.youtube.com/watch?v=d-0uCi61rtg)

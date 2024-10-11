@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/javascript/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2024-10-10T18:07:47-06:00</updated>
+  <updated>2024-10-10T18:30:35-06:00</updated>
   <id>http://localhost:4000/tag/javascript/feed.xml</id>
 
   
@@ -93,9 +93,11 @@
 
 &lt;h3 id=&quot;helpful-links&quot;&gt;Helpful links&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://blog.logrocket.com/commonjs-vs-es-modules-node-js/&quot;&gt;https://blog.logrocket.com/commonjs-vs-es-modules-node-js/&lt;/a&gt;
-&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules&lt;/a&gt;
-&lt;a href=&quot;https://www.youtube.com/watch?v=d-0uCi61rtg&quot;&gt;https://www.youtube.com/watch?v=d-0uCi61rtg&lt;/a&gt;&lt;/p&gt;</content>
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.logrocket.com/commonjs-vs-es-modules-node-js/&quot;&gt;https://blog.logrocket.com/commonjs-vs-es-modules-node-js/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=d-0uCi61rtg&quot;&gt;https://www.youtube.com/watch?v=d-0uCi61rtg&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
 
       
       
