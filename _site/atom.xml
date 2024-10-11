@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>JavaScript modules - CommonJS vs ES modules</title>
+        
+          <description>&lt;h3 id=&quot;why-do-we-need-modules-in-javascript&quot;&gt;Why do we need modules in JavaScript?&lt;/h3&gt;
+
+</description>
+        
+        <pubDate>Thu, 10 Oct 2024 16:30:00 -0600</pubDate>
+        <link>
+        http://localhost:4000/js-modules</link>
+        <guid isPermaLink="true">http://localhost:4000/js-modules</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Developing a chat app using AWS AppSync</title>
         
           <description>&lt;p&gt;I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.&lt;/p&gt;

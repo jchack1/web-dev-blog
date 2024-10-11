@@ -11,7 +11,7 @@
 
 
 
-    <title>Last ditch effort – I deleted my database</title>
+    <title>JavaScript modules - CommonJS vs ES modules</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/deleting-my-database" />
+    <link rel="canonical" href="http://localhost:4000/js-modules" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Last ditch effort – I deleted my database" />
-    <meta property="og:description" content="I have been working on my Udemy courses again, currently hoping to finish my MVC course. Sometimes I really don’t like .NET. I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course" />
-    <meta property="og:url" content="http://localhost:4000/deleting-my-database" />
+    <meta property="og:title" content="JavaScript modules - CommonJS vs ES modules" />
+    <meta property="og:description" content="Why do we need modules in JavaScript? There are a lot of good reasons to separate our code into modules. Each module should have a specific use. This makes the code reusable across your whole application, and easier to maintain and debug. This can also help you to avoid repetition" />
+    <meta property="og:url" content="http://localhost:4000/js-modules" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-04-11T18:30:00-06:00" />
-    <meta property="article:modified_time" content="2020-04-11T18:30:00-06:00" />
-    <meta property="article:tag" content="Dotnet" />
+    <meta property="article:published_time" content="2024-10-10T16:30:00-06:00" />
+    <meta property="article:modified_time" content="2024-10-10T16:30:00-06:00" />
+    <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Last ditch effort – I deleted my database" />
-    <meta name="twitter:description" content="I have been working on my Udemy courses again, currently hoping to finish my MVC course. Sometimes I really don’t like .NET. I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course" />
+    <meta name="twitter:title" content="JavaScript modules - CommonJS vs ES modules" />
+    <meta name="twitter:description" content="Why do we need modules in JavaScript? There are a lot of good reasons to separate our code into modules. Each module should have a specific use. This makes the code reusable across your whole application, and easier to maintain and debug. This can also help you to avoid repetition" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Dotnet" />
+    <meta name="twitter:data2" content="Javascript" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/deleting-my-database",
+    "url": "http://localhost:4000/js-modules",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/deleting-my-database"
+        "@id": "http://localhost:4000/js-modules"
     },
-    "description": "I have been working on my Udemy courses again, currently hoping to finish my MVC course. Sometimes I really don’t like .NET. I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course"
+    "description": "Why do we need modules in JavaScript? There are a lot of good reasons to separate our code into modules. Each module should have a specific use. This makes the code reusable across your whole application, and easier to maintain and debug. This can also help you to avoid repetition"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Last ditch effort – I deleted my database" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="JavaScript modules - CommonJS vs ES modules" href="/feed.xml" />
 
 
 </head>
@@ -153,66 +153,70 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="11 April 2020">11 April 2020</time>
+                    <time class="post-full-meta-date" datetime="10 October 2024">10 October 2024</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/dotnet/'>DOTNET</a>,
-                            
-                        
-                            
-                               <a href='/tag/database/'>DATABASE</a>,
-                            
-                        
-                            
-                               <a href='/tag/migrations/'>MIGRATIONS</a>
+                               <a href='/tag/javascript/'>JAVASCRIPT</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Last ditch effort – I deleted my database</h1>
+                <h1 class="post-full-title">JavaScript modules - CommonJS vs ES modules</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>I have been working on my Udemy courses again, currently hoping to finish my MVC course.</p>
+                    <h3 id="why-do-we-need-modules-in-javascript">Why do we need modules in JavaScript?</h3>
 
-<p>Sometimes I really don’t like .NET.  I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course though, because I’m sure it will be useful at my next job, or somewhere down the line.</p>
+<p>There are a lot of good reasons to separate our code into modules.</p>
 
-<p>Since I was away from this course for a while I forgot where I was and some of what I had learned. I started a new section, followed all the instructions exactly, attempting to create a dropdown menu. Of course, none of the options showed up in the menu.</p>
+<p>Each module should have a specific use. This makes the code reusable across your whole application, and easier to maintain and debug. This can also help you to avoid repetition in your code.</p>
 
-<p>The first thing I did was check the code for typos. There were none. I thought this was a mistake so I checked again, and compared it to the instructor’s code on github. Nope, still correct.</p>
+<p>Another reason is we don’t want to add all of our variables to the global namespace. You could end up having variables of the same name conflicting with one another. Each module has its own scope, with variables and functions that are not visible to outside code unless specifically exported.</p>
 
-<p>Perhaps I made an error with the earlier exercises in the course. There were no review videos, and I had to use some of the code from github. This was necessary in order to have the same code as the instructor throughout the course.  If it was an error with my migrations, a topic I still don’t quite get, maybe the dropdown menu items just didn’t make it into my database.</p>
+<h3 id="different-types-of-module-solutions">Different types of module solutions</h3>
 
-<p>I’m also not yet an expert in SQL, so I just used the below query to check the table for my data:</p>
+<p>Modules in JavaScript evolved over time, so developers came up with different solutions independently. We’ll talk about a couple popular solutions here.</p>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">TOP</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="p">[</span><span class="n">Name</span><span class="p">]</span>
-<span class="k">FROM</span> <span class="p">[</span><span class="n">MembershipTypes</span><span class="p">]</span>
+<h4 id="commonjs">CommonJS</h4>
+
+<p>Whenever you see <code class="highlighter-rouge">module.exports</code> and <code class="highlighter-rouge">require()</code> used together it is from CommonJS. You will see this in Node.js, but not in the browser.</p>
+
+<p><code class="highlighter-rouge">require()</code> is used to import code from another file, which was exported using <code class="highlighter-rouge">module.exports</code>. Multiple things can be exported from a module using an object.</p>
+
+<p>With CommonJS, modules are loaded <em>synchronously</em>, meaning the whole module needs to be loaded before the code can execute.</p>
+
+<h4 id="es-modules">ES Modules</h4>
+
+<p>This is being used when you see <code class="highlighter-rouge">export default</code> and <code class="highlighter-rouge">import</code> in an app.</p>
+
+<p>Instead of <code class="highlighter-rouge">require</code> we use <code class="highlighter-rouge">import</code>, and instead of <code class="highlighter-rouge">module.exports</code> we use <code class="highlighter-rouge">export default</code>.</p>
+
+<p>ES modules are used mainly in the browser, but can be used server-side as well. It seems as though the goal is to make ESModules the standard for both server and browser as time goes on. In your HTML, you can import modules in your script tag, as long as you specify the <code class="highlighter-rouge">type</code> attribute to <code class="highlighter-rouge">module</code>.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"myModule.js"</span> <span class="na">type=</span><span class="s">"module"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div></div>
 
-<p>This showed me the rows that were in my table, and the menu items were there.</p>
+<p>Sometimes you can get CORS errors if you try to open your HTML page as a file in your browser. You can use the npm package “serve” to host your page locally. Also, if you are using a framework with ES6 modules, this shouldn’t be an issue you need to fix yourself.</p>
 
-<p>At this point I spent about 2 days trying various things to fix the problem. I tried to simply update the database, using the update-database command in package manager console. Didn’t work. I realized some of my files may have been missing from the earlier exercises, so I added the code to my solution. Also didn’t help. I updated the DbContext to what I saw on the github code. Didn’t help, at least not immediately. After lots of experimenting and searching, I was ready to start a new solution and rebuild it from scratch, which meant having to watch a few hours of video again. It would maybe help solidify what I was learning but that was not ideal.</p>
+<p>ES6 Modules also offer the ability to load modules asynchronously through dynamic imports. They can be used like this:</p>
 
-<p><a href="https://stackoverflow.com/questions/16035333/how-to-delete-and-recreate-from-scratch-an-existing-ef-code-first-database">Somewhere on Stack Overflow</a> someone suggested to manually delete the database to start fresh. I decided to try this, but I did not follow their instructions exactly.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">someCondition</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span><span class="nx">myFunction</span><span class="p">}</span> <span class="o">=</span> <span class="kr">await</span> <span class="k">import</span><span class="p">(</span><span class="s2">"/my-module.js"</span><span class="p">);</span>
 
-<p>Here are my steps:</p>
-<ul>
-  <li>deleted the database connections in Server Explorer</li>
-  <li>deleted the database files under the App_Data folder in Solution Explorer</li>
-  <li>made a change in the code - I made change in one of the models and saved, but it didn’t matter what changed, just that something <em>had</em> changed; this was important for the next step to work properly</li>
-  <li>added a new migration using “add-migration” in package manager console</li>
-  <li>then “update-database”</li>
-  <li>cleaned and built my solution again</li>
-</ul>
+  <span class="nx">myFunction</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<p>Then I opened the page I had originally been working on.  The dropdown was now working properly and all menu items showed up!</p>
+<h3 id="helpful-links">Helpful links</h3>
 
-<p>I can’t help but feel there is still going to be something wrong with my database, migrations, or project in general and it will come back to bite me later on. But for now I will continue on with the course and take this as a learning opportunity.</p>
+<p><a href="https://blog.logrocket.com/commonjs-vs-es-modules-node-js/">https://blog.logrocket.com/commonjs-vs-es-modules-node-js/</a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules</a>
+<a href="https://www.youtube.com/watch?v=d-0uCi61rtg">https://www.youtube.com/watch?v=d-0uCi61rtg</a></p>
 
                 </div>
             </section>
@@ -268,7 +272,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/dotnet/">Dotnet</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -282,7 +286,7 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
+                                    
                                   
                                 
                                   
@@ -290,7 +294,108 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                            <li><a href="/hash-tables-javascript">Implementing hash tables in JavaScript</a></li>
+                                        
+                                    
+                                  
                                 
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/reverse-linked-list">Reverse a linked list in JavaScript</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/linked-list-has-cycle">Does linked list have a cycle - slow/fast pointer algorithm</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -298,71 +403,26 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                    
+                                  
                                 
+                                  
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -395,48 +455,6 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/database-error">'There is already an object named ___ in the database' and 'Column names in each table must be unique'</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/errors-csproj">500 server error and the csproj file</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/importance-of-hard-refresh">The importance of a hard refresh</a></li>
-                                        
                                     
                                   
                                 
@@ -455,6 +473,45 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
                                     
                                         
                                         
@@ -466,6 +523,38 @@ into the {body} of the default.hbs template -->
                                         
                                         
                                     
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -473,9 +562,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/dotnet/">
+                            <a href="/tag/javascript/">
                                 
-                                    See all 7 posts  →
+                                    See all 24 posts  →
                                 
                             </a>
                         </footer>
@@ -485,60 +574,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/dom-notes">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Javascript</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Dom</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Notes on the DOM</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -547,25 +582,25 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/new-jekyll-site-3">
+            <a class="post-card-content-link" href="/appsync-chat-app">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Jekyll</span>
+                               <span class="post-card-tags">Aws</span>
                             
                         
                             
-                               <span class="post-card-tags">Debugging</span>
+                               <span class="post-card-tags">Serverless</span>
                             
                         
                             
-                                <span class="post-card-tags">Deployment</span>
+                                <span class="post-card-tags">Appsync</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">New jekyll site part 3 - errors with deployment</h2>
+                    <h2 class="post-card-title">Developing a chat app using AWS AppSync</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -616,7 +651,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Last ditch effort – I deleted my database</div>
+    <div class="floating-header-title">JavaScript modules - CommonJS vs ES modules</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -624,7 +659,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Last+ditch+effort+%E2%80%93+I+deleted+my+database&amp;url=deleting-my-database"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=JavaScript+modules+-+CommonJS+vs+ES+modules&amp;url=js-modules"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -633,7 +668,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=deleting-my-database"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=js-modules"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

@@ -1,4 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-11-21T17:56:54-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Developing a chat app using AWS AppSync</title><link href="http://localhost:4000/appsync-chat-app" rel="alternate" type="text/html" title="Developing a chat app using AWS AppSync" /><published>2023-11-21T16:30:00-07:00</published><updated>2023-11-21T16:30:00-07:00</updated><id>http://localhost:4000/appsync-chat-app</id><content type="html" xml:base="http://localhost:4000/appsync-chat-app">&lt;p&gt;I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-10T18:07:47-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">JavaScript modules - CommonJS vs ES modules</title><link href="http://localhost:4000/js-modules" rel="alternate" type="text/html" title="JavaScript modules - CommonJS vs ES modules" /><published>2024-10-10T16:30:00-06:00</published><updated>2024-10-10T16:30:00-06:00</updated><id>http://localhost:4000/js-modules</id><content type="html" xml:base="http://localhost:4000/js-modules">&lt;h3 id=&quot;why-do-we-need-modules-in-javascript&quot;&gt;Why do we need modules in JavaScript?&lt;/h3&gt;
+
+&lt;p&gt;There are a lot of good reasons to separate our code into modules.&lt;/p&gt;
+
+&lt;p&gt;Each module should have a specific use. This makes the code reusable across your whole application, and easier to maintain and debug. This can also help you to avoid repetition in your code.&lt;/p&gt;
+
+&lt;p&gt;Another reason is we don’t want to add all of our variables to the global namespace. You could end up having variables of the same name conflicting with one another. Each module has its own scope, with variables and functions that are not visible to outside code unless specifically exported.&lt;/p&gt;
+
+&lt;h3 id=&quot;different-types-of-module-solutions&quot;&gt;Different types of module solutions&lt;/h3&gt;
+
+&lt;p&gt;Modules in JavaScript evolved over time, so developers came up with different solutions independently. We’ll talk about a couple popular solutions here.&lt;/p&gt;
+
+&lt;h4 id=&quot;commonjs&quot;&gt;CommonJS&lt;/h4&gt;
+
+&lt;p&gt;Whenever you see &lt;code class=&quot;highlighter-rouge&quot;&gt;module.exports&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;require()&lt;/code&gt; used together it is from CommonJS. You will see this in Node.js, but not in the browser.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;require()&lt;/code&gt; is used to import code from another file, which was exported using &lt;code class=&quot;highlighter-rouge&quot;&gt;module.exports&lt;/code&gt;. Multiple things can be exported from a module using an object.&lt;/p&gt;
+
+&lt;p&gt;With CommonJS, modules are loaded &lt;em&gt;synchronously&lt;/em&gt;, meaning the whole module needs to be loaded before the code can execute.&lt;/p&gt;
+
+&lt;h4 id=&quot;es-modules&quot;&gt;ES Modules&lt;/h4&gt;
+
+&lt;p&gt;This is being used when you see &lt;code class=&quot;highlighter-rouge&quot;&gt;export default&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; in an app.&lt;/p&gt;
+
+&lt;p&gt;Instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt; we use &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;, and instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;module.exports&lt;/code&gt; we use &lt;code class=&quot;highlighter-rouge&quot;&gt;export default&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;ES modules are used mainly in the browser, but can be used server-side as well. It seems as though the goal is to make ESModules the standard for both server and browser as time goes on. In your HTML, you can import modules in your script tag, as long as you specify the &lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt; attribute to &lt;code class=&quot;highlighter-rouge&quot;&gt;module&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myModule.js&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;module&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Sometimes you can get CORS errors if you try to open your HTML page as a file in your browser. You can use the npm package “serve” to host your page locally. Also, if you are using a framework with ES6 modules, this shouldn’t be an issue you need to fix yourself.&lt;/p&gt;
+
+&lt;p&gt;ES6 Modules also offer the ability to load modules asynchronously through dynamic imports. They can be used like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;someCondition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myFunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/my-module.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;myFunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;helpful-links&quot;&gt;Helpful links&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://blog.logrocket.com/commonjs-vs-es-modules-node-js/&quot;&gt;https://blog.logrocket.com/commonjs-vs-es-modules-node-js/&lt;/a&gt;
+&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules&lt;/a&gt;
+&lt;a href=&quot;https://www.youtube.com/watch?v=d-0uCi61rtg&quot;&gt;https://www.youtube.com/watch?v=d-0uCi61rtg&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">Why do we need modules in JavaScript?</summary></entry><entry><title type="html">Developing a chat app using AWS AppSync</title><link href="http://localhost:4000/appsync-chat-app" rel="alternate" type="text/html" title="Developing a chat app using AWS AppSync" /><published>2023-11-21T16:30:00-07:00</published><updated>2023-11-21T16:30:00-07:00</updated><id>http://localhost:4000/appsync-chat-app</id><content type="html" xml:base="http://localhost:4000/appsync-chat-app">&lt;p&gt;I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.&lt;/p&gt;
 
 &lt;p&gt;There were some new features rolled out in AppSync since I started my work project, so I wanted to try them out. It also gave me the opportunity to learn more about setting up authentication with Amplify and Cognito, which I had never tackled before, as authentication had been set up at work by another developer.&lt;/p&gt;
 
@@ -769,64 +815,4 @@
 
 &lt;h3 id=&quot;tostring-radix&quot;&gt;toString() radix&lt;/h3&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;toString()&lt;/code&gt;, be definition, returns a string value that represents a number. It is meant to convert a number to a string, so it makes sense that you can convert between different number systems at the same time. Including a radix is optional, and defaults to 10, but it can be any value between 2 and 36.&lt;/p&gt;</content><author><name></name></author><category term="binary" /><category term="computer-science" /><category term="javascript" /><category term="coding-problems" /><summary type="html">Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.</summary></entry><entry><title type="html">Getting item count from DynamoDB query, with pagination</title><link href="http://localhost:4000/dynamodb-query-count-pagination" rel="alternate" type="text/html" title="Getting item count from DynamoDB query, with pagination" /><published>2023-02-22T20:30:00-07:00</published><updated>2023-02-22T20:30:00-07:00</updated><id>http://localhost:4000/dynamodb-query-count-pagination</id><content type="html" xml:base="http://localhost:4000/dynamodb-query-count-pagination">&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;
-
-&lt;p&gt;I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task.&lt;/p&gt;
-
-&lt;p&gt;I noticed that the next task was sometimes not being completed, especially if there were a large number of items. When I checked the database manually in the AWS console, all of the correct items were there, so we should be able to move onto the next task.&lt;/p&gt;
-
-&lt;p&gt;The number of items being returned was supposed to be 186. I noticed that in the console, the number of items would flash 177 before displaying the correct 186. The function that is checking the number of items was also logging 177. I thought maybe DynamoDB had to do more than one fetch to get all the items, and that second fetch wasn’t happening in my code.&lt;/p&gt;
-
-&lt;p&gt;Turns out that was correct. If the data you’re querying reaches 1MB or greater, you need to query again to get the rest, so I needed to do this to get an accurate count. This meant I needed to add &lt;code class=&quot;highlighter-rouge&quot;&gt;LastEvaluatedKey&lt;/code&gt; somewhere in my code like the last time this issue came up.&lt;/p&gt;
-
-&lt;p&gt;When I saw the 1MB value in the AWS docs, I started thinking that I don’t actually need to return all this data if all I’m going to do is count it. These resources helped me to understand how to get the count, rather than the data, and how to paginate it.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Count&quot;&gt;AWS DynamoDB query count&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.Pagination.html&quot;&gt;AWS DynamoDB pagination&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/27316643/how-to-get-item-count-from-dynamodb&quot;&gt;Stackoverflow post about getting the count only&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I ended up with the code below (changed somewhat for privacy, all the concepts still apply):&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getItemCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;TableName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`my-table`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;KeyConditionExpression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;PK = :pk AND begins_with(SK, :sk)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;ExpressionAttributeValues&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;:pk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;itemId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;:sk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;item&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;Select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;COUNT&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;ExclusiveStartKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dynamo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-      &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ExclusiveStartKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LastEvaluatedKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LastEvaluatedKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
-
-&lt;p&gt;As seen in a previous post, we make use of a do/while loop. We query the database with the same params, but with each query we need to add a value to &lt;code class=&quot;highlighter-rouge&quot;&gt;ExclusiveStartKey&lt;/code&gt;. That value should be the &lt;code class=&quot;highlighter-rouge&quot;&gt;LastEvaluatedKey&lt;/code&gt; that was returned from the previous operation. &lt;code class=&quot;highlighter-rouge&quot;&gt;LastEvaluatedKey&lt;/code&gt; is where the previous query left off, so that’s where we need to start the next query. When there is no &lt;code class=&quot;highlighter-rouge&quot;&gt;LastEvaluatedKey&lt;/code&gt;, meaning it is “undefined”, we have retrieved all the results and can exit the loop.&lt;/p&gt;
-
-&lt;p&gt;To get the count without returning the data, we need to add &lt;code class=&quot;highlighter-rouge&quot;&gt;Select: &quot;COUNT&quot;&lt;/code&gt; to our params. We increment the count each time our query returns results, so our final value is the total count.&lt;/p&gt;
-
-&lt;p&gt;I also added &lt;code class=&quot;highlighter-rouge&quot;&gt;ExclusiveStartKey: null&lt;/code&gt; to the params. This is because I am using typescript, and it wouldn’t let me add a new field that wasn’t defined from the beginning. Having the start key as null doesn’t affect the first query, and allows us to update the params object later in our code. You don’t have to do this in regular javascript.&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;It’s important to keep pagination in mind when fetching large amounts of data, and understand the limitations of the database you’re working with. As I learned, it can cause unforeseen bugs that are difficult to track down. It’s encouraging to me to realize I’m now picking up on these patterns.&lt;/p&gt;</content><author><name></name></author><category term="dynamodb" /><category term="database" /><category term="debugging" /><category term="aws" /><summary type="html">At work I had another bug that ended up having to do with database pagination in DynamoDB.</summary></entry></feed>
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;toString()&lt;/code&gt;, be definition, returns a string value that represents a number. It is meant to convert a number to a string, so it makes sense that you can convert between different number systems at the same time. Including a radix is optional, and defaults to 10, but it can be any value between 2 and 36.&lt;/p&gt;</content><author><name></name></author><category term="binary" /><category term="computer-science" /><category term="javascript" /><category term="coding-problems" /><summary type="html">Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.</summary></entry></feed>
