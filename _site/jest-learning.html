@@ -11,7 +11,7 @@
 
 
 
-    <title>New jekyll site part 3 - errors with deployment</title>
+    <title>Learning Jest - some basics</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/new-jekyll-site-3" />
+    <link rel="canonical" href="http://localhost:4000/jest-learning" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="New jekyll site part 3 - errors with deployment" />
-    <meta property="og:description" content="I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed. Of course there have" />
-    <meta property="og:url" content="http://localhost:4000/new-jekyll-site-3" />
+    <meta property="og:title" content="Learning Jest - some basics" />
+    <meta property="og:description" content="I’m starting to get into testing with Jest for a work project. We landed on using Jest and React Testing Library with our React project, as it works nicely (so I’ve heard) with apps set up with create-react-app. I realize there are new build tools like Vite (with testing library" />
+    <meta property="og:url" content="http://localhost:4000/jest-learning" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-04-08T16:03:00-06:00" />
-    <meta property="article:modified_time" content="2020-04-08T16:03:00-06:00" />
-    <meta property="article:tag" content="Jekyll" />
+    <meta property="article:published_time" content="2024-10-17T16:30:00-06:00" />
+    <meta property="article:modified_time" content="2024-10-17T16:30:00-06:00" />
+    <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="New jekyll site part 3 - errors with deployment" />
-    <meta name="twitter:description" content="I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed. Of course there have" />
+    <meta name="twitter:title" content="Learning Jest - some basics" />
+    <meta name="twitter:description" content="I’m starting to get into testing with Jest for a work project. We landed on using Jest and React Testing Library with our React project, as it works nicely (so I’ve heard) with apps set up with create-react-app. I realize there are new build tools like Vite (with testing library" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Jekyll" />
+    <meta name="twitter:data2" content="Javascript" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/new-jekyll-site-3",
+    "url": "http://localhost:4000/jest-learning",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/new-jekyll-site-3"
+        "@id": "http://localhost:4000/jest-learning"
     },
-    "description": "I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed. Of course there have"
+    "description": "I’m starting to get into testing with Jest for a work project. We landed on using Jest and React Testing Library with our React project, as it works nicely (so I’ve heard) with apps set up with create-react-app. I realize there are new build tools like Vite (with testing library"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="New jekyll site part 3 - errors with deployment" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Learning Jest - some basics" href="/feed.xml" />
 
 
 </head>
@@ -153,64 +153,202 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 8 April 2020"> 8 April 2020</time>
+                    <time class="post-full-meta-date" datetime="17 October 2024">17 October 2024</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/jekyll/'>JEKYLL</a>,
+                               <a href='/tag/javascript/'>JAVASCRIPT</a>,
                             
                         
                             
-                               <a href='/tag/debugging/'>DEBUGGING</a>,
-                            
-                        
-                            
-                               <a href='/tag/deployment/'>DEPLOYMENT</a>
+                               <a href='/tag/testing/'>TESTING</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">New jekyll site part 3 - errors with deployment</h1>
+                <h1 class="post-full-title">Learning Jest - some basics</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.</p>
+                    <p>I’m starting to get into testing with Jest for a work project.</p>
 
-<p>Of course there have been errors with this as well. As expected.</p>
+<p>We landed on using Jest and React Testing Library with our React project, as it works nicely (so I’ve heard) with apps set up with create-react-app.</p>
 
-<p>I created my github repo and pushed my code using command line. I used the following commands and this worked without errors:</p>
+<p>I realize there are new build tools like Vite (with testing library Vitest), and that create-react-app is not getting new updates these days, but this is what works best with our current project set-up.</p>
+
+<p>So, here are some notes on the basics I learned about Jest. This follows what was taught in the Learn React Testing course on Codecademy.</p>
+
+<h3 id="setting-up-your-tests">Setting up your tests</h3>
+
+<p>Jest is meant primarily for unit testing. For our project we are planning to use it to test utility functions and other smaller pieces of code.</p>
+
+<p>You can keep the tests in the same folder with the file it is testing, or have a separate directory, called <code class="highlighter-rouge">__tests__</code>. I like this option so all the tests are in one place and not cluttering the rest of the code. You can copy the file structure of the project in the tests folder to make it easy to navigate.</p>
+
+<p>When creating a test file, name it the same thing as the file you are testing. Files must end with .test.js, .spec.js, or be located in the <code class="highlighter-rouge">__tests__/</code> directory.</p>
+
+<p>For example, if the function you’re testing is <code class="highlighter-rouge">getVehicleSpeed.js</code>, the test file would be called <code class="highlighter-rouge">getVehicleSpeed.test.js</code></p>
+
+<p>In your terminal, running the command <code class="highlighter-rouge">npm test</code> runs your tests in watch mode, so the tests will run every time you save. When the tests run, they print the results to the console. There are different flags you can use with this command, like <code class="highlighter-rouge">npm test -- --coverage</code> which gives a detailed breakdown of how much of your code is covered by tests.</p>
+
+<h3 id="unit-testing">Unit testing</h3>
+
+<p>Now getting a bit more into the implementation…</p>
+
+<p>For unit testing, we are testing individual functions. In Jest you can use the <code class="highlighter-rouge">it()</code> or <code class="highlighter-rouge">test()</code> function - they do the same thing.</p>
+
+<p><code class="highlighter-rouge">it()</code> takes three arguments:</p>
+
+<ol>
+  <li>a string describing the expected result of the test</li>
+  <li>a callback function with testing logic</li>
+  <li>an optional timeout</li>
+</ol>
+
+<h3 id="how-to-set-up-the-test-file">How to set up the test file</h3>
+
+<p>Import the functions you are testing into your test file.</p>
+
+<p>In this file we use <strong>assertions</strong> which define the expected behavior of the function.</p>
+
+<p>An example of this is the built-in <code class="highlighter-rouge">expect()</code> function. Whatever we pass into <code class="highlighter-rouge">expect()</code> is an expression we want to test.</p>
+
+<p>Assertions are ususally used with matcher methods like <code class="highlighter-rouge">toBe()</code>, into which we pass the expected result</p>
+
+<p>In the callback function of <code class="highlighter-rouge">it()</code>, follow this pattern: Arrange, Act, Assert</p>
+
+<p><strong>Arrange:</strong> setting up your variables and conditions</p>
+
+<p><strong>Act:</strong> invoke the function you are testing, using variables from the “arrange” stage as input. Save the result of this function to a variable</p>
+
+<p><strong>Assert:</strong> check if we got the expected result by using methods like <code class="highlighter-rouge">expect()</code> and <code class="highlighter-rouge">toEqual()</code></p>
+
+<h4 id="matcher-methods">Matcher methods</h4>
+
+<p>Matcher methods are ways of testing our assertions, where we put the result we’re expecting</p>
+
+<p>Common ones include:</p>
+
 <ul>
-  <li>git init</li>
-  <li>git add .</li>
-  <li>git commit -m “first commit”</li>
-  <li>git remote add origin https://github.com/jchack1/julia-blog2.git</li>
-  <li>git push -u origin master</li>
+  <li>toBeDefined</li>
+  <li>toEqual - does deep equality checks</li>
+  <li>toBe - compares primitive values</li>
+  <li>toBeTruthy</li>
+  <li>not - gives oppositve result</li>
+  <li>toContain - check that an item is in an array</li>
 </ul>
 
-<p>I decided to deploy with Netlify, which is my go to for any deployment. It’s usually pretty straightforward, <a href="https://www.netlify.com/blog/2015/10/28/a-step-by-step-guide-jekyll-3.0-on-netlify/">and you can find the instructions for deploying Jekyll with Netlify here.</a>  I selected my github repo and clicked deploy. After a few minutes I got an error, saying the build failed.</p>
+<p>Example:</p>
 
-<p>That is because Netlify was looking for the _site folder.  I checked my files and I saw that I did not have this.  By now I’m getting pretty frustrated with this theme because it feels like there was a lot missing and unexplained. Why isn’t there a _site folder?</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">add</span> <span class="k">from</span> <span class="s2">"./add"</span><span class="p">;</span>
 
-<p>I went to the <a href="https://jekyllrb.com/docs/step-by-step/01-setup/">Jekyll docs</a> looking for any information about the _site folder.  I saw that when you use the command “jekyll build”, Jekyll builds the site and outputs it to a directory called _site, which is viewable in the browser at localhost:4000. I have used the “jekyll build” command many times so far, so I was unsure why it’s not in my files.  And why I was able to serve my site to localhost:4000.  I decided to see what would happen if I make a new Jekyll folder from scratch and run “jekyll build”. In my previous sites I always had a _site folder and never gave any thought to how it was created.</p>
+<span class="nx">it</span><span class="p">(</span><span class="s2">"adds 1 and 2 to equal 3"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
-<p>This time I decided to just follow my old notes rather than just copy-paste from my theme. I went into the Jekyll folder I already have on my machine and opened command line. I used the following commands:</p>
-<ul>
-  <li>jekyll new julia-blog3</li>
-  <li>cd julia-blog3</li>
-  <li>bundle exec jekyll build</li>
-</ul>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
 
-<p>I watched the files in the folders and there it was. Once I used the jekyll build command, my _site folder appeared. Perhaps this was my mistake from the beginning. I never intiallized my folder properly.</p>
+  <span class="kd">const</span> <span class="nx">expected</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 
-<p>I decided to check both folders now, to see if I could either update my blog scripts to create the _site file, or if I’d need to copy everything over into my new folder. Whatever I tried in my old folder did not work, so I ended up copying everything over into my new folder. I set up gulp, which was really quick this time since I knew what I was doing. When I executed “bundle exec jekyll build” I now ended up with a _site folder, and it was filled with the proper files.</p>
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">expected</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
 
-<p>Now I will upload this new folder to github and deploy. It should work now that I have a proper _site folder.</p>
+<h3 id="api-callsasync-tests">API calls/async tests</h3>
 
-<p>I just have to remember to always “bundle exec jekyll build” and “bundle exec jekyll serve”(to generate files in _site folder) when I make changes. But only after I execute “gulp”. Hopefully I will quickly get used to this workflow.</p>
+<p>When using asychronous code with callbacks, don’t add assertions to callback functions. They don’t work. Jest doesn’t know that it should wait for a test to fail before moving on to the next test.</p>
+
+<p>We can use <code class="highlighter-rouge">done()</code> as a parameter of our <code class="highlighter-rouge">it()</code> function. This is called after the expect() assertion. Jest knows to wait until <code class="highlighter-rouge">done()</code> is called before ending the test. So basically, for async calls, add <code class="highlighter-rouge">done()</code> after the function call. It is good to do this inside a try/catch, so we can catch any errors, and pass them to <code class="highlighter-rouge">done(error)</code>. If we didn’t have this, done would never be reached, so the test would eventually fail due to a timeout error.</p>
+
+<p>Example:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fetchUserData</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./api"</span><span class="p">);</span>
+
+<span class="nx">it</span><span class="p">(</span><span class="s2">"fetches user data asynchronously"</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">userId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">fetchUserData</span><span class="p">(</span><span class="nx">userId</span><span class="p">,</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">({</span><span class="na">id</span><span class="p">:</span> <span class="nx">userId</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"John Doe"</span><span class="p">});</span>
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">done</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>If using async/await, don’t need to use <code class="highlighter-rouge">done()</code> - just use async/await for code that returns promises:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fetchUserData</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./api"</span><span class="p">);</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s2">"fetches user data asynchronously"</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">userId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetchUserData</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">({</span><span class="na">id</span><span class="p">:</span> <span class="nx">userId</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"John Doe"</span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="mocking-api-calls">Mocking api calls</h3>
+
+<p>This is for testing the functions that call the api, not testing the api itself.</p>
+
+<p>We bypass the api and return values instead. In our tests, we create a mock function and use it in place of our real function.</p>
+
+<p>This is done in case there are issues getting the data from the api. I think we are assuming that there is a lot of code involved in our function, and the api call is a small part of it that we don’t want blocking our tests from working properly.</p>
+
+<p>Steps for creating the mock function:</p>
+
+<ol>
+  <li>Create a directory <strong>mocks</strong> - test will look for it here</li>
+  <li>Create a file with the same name as the function being mocked</li>
+  <li>Create a module, use jest.fn() to create the function we want to mock</li>
+  <li>Export module</li>
+</ol>
+
+<p>The mock function looks like this:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">httpRequest</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({</span>
+    <span class="na">status</span><span class="p">:</span> <span class="s2">``</span><span class="p">,</span>
+
+    <span class="na">data</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">httpRequest</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Steps to use a mock function in your test file:</p>
+
+<ol>
+  <li>import the real function into the test file</li>
+  <li>wrap <code class="highlighter-rouge">jest.mock()</code> around the file path of the real file</li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//import the actual function</span>
+<span class="k">import</span> <span class="nx">httpRequest</span> <span class="k">from</span> <span class="s2">"./utils/http-request"</span><span class="p">;</span>
+
+<span class="c1">//before the it() function, we tell the test file we want to use our mock function, instead of the one we imported</span>
+<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s2">"./utils/http-request"</span><span class="p">);</span>
+
+<span class="c1">//then inside your it(), call the function by the name it was imported as</span>
+<span class="nx">it</span><span class="p">(</span><span class="s2">"testing http request"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">///some code here</span>
+
+  <span class="nx">httpRequest</span><span class="p">.</span><span class="nx">mockResolvedValueOnce</span><span class="p">(</span><span class="nx">resolvedValue</span><span class="p">);</span>
+
+  <span class="c1">//more code below</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Truthfully, I am a bit confused by we need to place a mocks folder near the function we are testing in the code. I’d like to keep everything in the <code class="highlighter-rouge">__tests__</code> directory. I found <a href="https://stackoverflow.com/questions/51303189/how-to-move-mocks-folder-in-jest-to-test">this stackoverflow post</a> that could help work around this, but haven’t looked into it yet.</p>
+
+<p>Overall, it seems pretty straight-forward. We’ll see how well it works once we actually get started.</p>
 
                 </div>
             </section>
@@ -266,7 +404,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/jekyll/">Jekyll</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -280,7 +418,16 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
+                                    
+                                  
                                 
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/js-modules">JavaScript modules - CommonJS vs ES modules</a></li>
+                                        
+                                    
                                   
                                 
                                   
@@ -288,7 +435,106 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                            <li><a href="/hash-tables-javascript">Implementing hash tables in JavaScript</a></li>
+                                        
+                                    
+                                  
                                 
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/reverse-linked-list">Reverse a linked list in JavaScript</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -296,89 +542,26 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                    
+                                  
                                 
+                                  
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -409,15 +592,7 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                    
                                         
-                                        
-                                            <li><a href="/new-jekyll-site-2">New jekyll site part 2 - errors with Gulp</a></li>
                                         
                                     
                                   
@@ -426,7 +601,12 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/making-another-jekyll-site">Making a new jekyll site - this one, actually</a></li>
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
                                         
                                     
                                   
@@ -445,17 +625,85 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/first-post">Welcome to my new web dev blog!</a></li>
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
                                         
                                     
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/jekyll/">
+                            <a href="/tag/javascript/">
                                 
-                                    See all 3 posts  →
+                                    See all 25 posts  →
                                 
                             </a>
                         </footer>
@@ -465,64 +713,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/deleting-my-database">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Dotnet</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Database</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Migrations</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Last ditch effort – I deleted my database</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -531,17 +721,17 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/csharpdefinitions">
+            <a class="post-card-content-link" href="/js-modules">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Csharp</span>
+                                <span class="post-card-tags">Javascript</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">C# definitions cheatsheet</h2>
+                    <h2 class="post-card-title">JavaScript modules - CommonJS vs ES modules</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -592,7 +782,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">New jekyll site part 3 - errors with deployment</div>
+    <div class="floating-header-title">Learning Jest - some basics</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -600,7 +790,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=New+jekyll+site+part+3+-+errors+with+deployment&amp;url=new-jekyll-site-3"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Learning+Jest+-+some+basics&amp;url=jest-learning"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -609,7 +799,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=new-jekyll-site-3"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=jest-learning"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

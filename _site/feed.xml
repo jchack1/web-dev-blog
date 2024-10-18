@@ -1,4 +1,178 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-10T18:30:35-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">JavaScript modules - CommonJS vs ES modules</title><link href="http://localhost:4000/js-modules" rel="alternate" type="text/html" title="JavaScript modules - CommonJS vs ES modules" /><published>2024-10-10T16:30:00-06:00</published><updated>2024-10-10T16:30:00-06:00</updated><id>http://localhost:4000/js-modules</id><content type="html" xml:base="http://localhost:4000/js-modules">&lt;h3 id=&quot;why-do-we-need-modules-in-javascript&quot;&gt;Why do we need modules in JavaScript?&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-17T18:26:32-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Learning Jest - some basics</title><link href="http://localhost:4000/jest-learning" rel="alternate" type="text/html" title="Learning Jest - some basics" /><published>2024-10-17T16:30:00-06:00</published><updated>2024-10-17T16:30:00-06:00</updated><id>http://localhost:4000/jest-learning</id><content type="html" xml:base="http://localhost:4000/jest-learning">&lt;p&gt;I’m starting to get into testing with Jest for a work project.&lt;/p&gt;
+
+&lt;p&gt;We landed on using Jest and React Testing Library with our React project, as it works nicely (so I’ve heard) with apps set up with create-react-app.&lt;/p&gt;
+
+&lt;p&gt;I realize there are new build tools like Vite (with testing library Vitest), and that create-react-app is not getting new updates these days, but this is what works best with our current project set-up.&lt;/p&gt;
+
+&lt;p&gt;So, here are some notes on the basics I learned about Jest. This follows what was taught in the Learn React Testing course on Codecademy.&lt;/p&gt;
+
+&lt;h3 id=&quot;setting-up-your-tests&quot;&gt;Setting up your tests&lt;/h3&gt;
+
+&lt;p&gt;Jest is meant primarily for unit testing. For our project we are planning to use it to test utility functions and other smaller pieces of code.&lt;/p&gt;
+
+&lt;p&gt;You can keep the tests in the same folder with the file it is testing, or have a separate directory, called &lt;code class=&quot;highlighter-rouge&quot;&gt;__tests__&lt;/code&gt;. I like this option so all the tests are in one place and not cluttering the rest of the code. You can copy the file structure of the project in the tests folder to make it easy to navigate.&lt;/p&gt;
+
+&lt;p&gt;When creating a test file, name it the same thing as the file you are testing. Files must end with .test.js, .spec.js, or be located in the &lt;code class=&quot;highlighter-rouge&quot;&gt;__tests__/&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;For example, if the function you’re testing is &lt;code class=&quot;highlighter-rouge&quot;&gt;getVehicleSpeed.js&lt;/code&gt;, the test file would be called &lt;code class=&quot;highlighter-rouge&quot;&gt;getVehicleSpeed.test.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In your terminal, running the command &lt;code class=&quot;highlighter-rouge&quot;&gt;npm test&lt;/code&gt; runs your tests in watch mode, so the tests will run every time you save. When the tests run, they print the results to the console. There are different flags you can use with this command, like &lt;code class=&quot;highlighter-rouge&quot;&gt;npm test -- --coverage&lt;/code&gt; which gives a detailed breakdown of how much of your code is covered by tests.&lt;/p&gt;
+
+&lt;h3 id=&quot;unit-testing&quot;&gt;Unit testing&lt;/h3&gt;
+
+&lt;p&gt;Now getting a bit more into the implementation…&lt;/p&gt;
+
+&lt;p&gt;For unit testing, we are testing individual functions. In Jest you can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;it()&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;test()&lt;/code&gt; function - they do the same thing.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;it()&lt;/code&gt; takes three arguments:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;a string describing the expected result of the test&lt;/li&gt;
+  &lt;li&gt;a callback function with testing logic&lt;/li&gt;
+  &lt;li&gt;an optional timeout&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;how-to-set-up-the-test-file&quot;&gt;How to set up the test file&lt;/h3&gt;
+
+&lt;p&gt;Import the functions you are testing into your test file.&lt;/p&gt;
+
+&lt;p&gt;In this file we use &lt;strong&gt;assertions&lt;/strong&gt; which define the expected behavior of the function.&lt;/p&gt;
+
+&lt;p&gt;An example of this is the built-in &lt;code class=&quot;highlighter-rouge&quot;&gt;expect()&lt;/code&gt; function. Whatever we pass into &lt;code class=&quot;highlighter-rouge&quot;&gt;expect()&lt;/code&gt; is an expression we want to test.&lt;/p&gt;
+
+&lt;p&gt;Assertions are ususally used with matcher methods like &lt;code class=&quot;highlighter-rouge&quot;&gt;toBe()&lt;/code&gt;, into which we pass the expected result&lt;/p&gt;
+
+&lt;p&gt;In the callback function of &lt;code class=&quot;highlighter-rouge&quot;&gt;it()&lt;/code&gt;, follow this pattern: Arrange, Act, Assert&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Arrange:&lt;/strong&gt; setting up your variables and conditions&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Act:&lt;/strong&gt; invoke the function you are testing, using variables from the “arrange” stage as input. Save the result of this function to a variable&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Assert:&lt;/strong&gt; check if we got the expected result by using methods like &lt;code class=&quot;highlighter-rouge&quot;&gt;expect()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;toEqual()&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;matcher-methods&quot;&gt;Matcher methods&lt;/h4&gt;
+
+&lt;p&gt;Matcher methods are ways of testing our assertions, where we put the result we’re expecting&lt;/p&gt;
+
+&lt;p&gt;Common ones include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;toBeDefined&lt;/li&gt;
+  &lt;li&gt;toEqual - does deep equality checks&lt;/li&gt;
+  &lt;li&gt;toBe - compares primitive values&lt;/li&gt;
+  &lt;li&gt;toBeTruthy&lt;/li&gt;
+  &lt;li&gt;not - gives oppositve result&lt;/li&gt;
+  &lt;li&gt;toContain - check that an item is in an array&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;./add&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;adds 1 and 2 to equal 3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;expected&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toBe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;expected&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;api-callsasync-tests&quot;&gt;API calls/async tests&lt;/h3&gt;
+
+&lt;p&gt;When using asychronous code with callbacks, don’t add assertions to callback functions. They don’t work. Jest doesn’t know that it should wait for a test to fail before moving on to the next test.&lt;/p&gt;
+
+&lt;p&gt;We can use &lt;code class=&quot;highlighter-rouge&quot;&gt;done()&lt;/code&gt; as a parameter of our &lt;code class=&quot;highlighter-rouge&quot;&gt;it()&lt;/code&gt; function. This is called after the expect() assertion. Jest knows to wait until &lt;code class=&quot;highlighter-rouge&quot;&gt;done()&lt;/code&gt; is called before ending the test. So basically, for async calls, add &lt;code class=&quot;highlighter-rouge&quot;&gt;done()&lt;/code&gt; after the function call. It is good to do this inside a try/catch, so we can catch any errors, and pass them to &lt;code class=&quot;highlighter-rouge&quot;&gt;done(error)&lt;/code&gt;. If we didn’t have this, done would never be reached, so the test would eventually fail due to a timeout error.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fetchUserData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./api&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;fetches user data asynchronously&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;userId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;fetchUserData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;userId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;John Doe&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If using async/await, don’t need to use &lt;code class=&quot;highlighter-rouge&quot;&gt;done()&lt;/code&gt; - just use async/await for code that returns promises:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fetchUserData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./api&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;fetches user data asynchronously&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;userId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fetchUserData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;userId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;John Doe&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;mocking-api-calls&quot;&gt;Mocking api calls&lt;/h3&gt;
+
+&lt;p&gt;This is for testing the functions that call the api, not testing the api itself.&lt;/p&gt;
+
+&lt;p&gt;We bypass the api and return values instead. In our tests, we create a mock function and use it in place of our real function.&lt;/p&gt;
+
+&lt;p&gt;This is done in case there are issues getting the data from the api. I think we are assuming that there is a lot of code involved in our function, and the api call is a small part of it that we don’t want blocking our tests from working properly.&lt;/p&gt;
+
+&lt;p&gt;Steps for creating the mock function:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create a directory &lt;strong&gt;mocks&lt;/strong&gt; - test will look for it here&lt;/li&gt;
+  &lt;li&gt;Create a file with the same name as the function being mocked&lt;/li&gt;
+  &lt;li&gt;Create a module, use jest.fn() to create the function we want to mock&lt;/li&gt;
+  &lt;li&gt;Export module&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The mock function looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;httpRequest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;``&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+    &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;httpRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Steps to use a mock function in your test file:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;import the real function into the test file&lt;/li&gt;
+  &lt;li&gt;wrap &lt;code class=&quot;highlighter-rouge&quot;&gt;jest.mock()&lt;/code&gt; around the file path of the real file&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//import the actual function&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;httpRequest&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;./utils/http-request&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//before the it() function, we tell the test file we want to use our mock function, instead of the one we imported&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;jest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./utils/http-request&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//then inside your it(), call the function by the name it was imported as&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;testing http request&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;///some code here&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;httpRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockResolvedValueOnce&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolvedValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;//more code below&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Truthfully, I am a bit confused by we need to place a mocks folder near the function we are testing in the code. I’d like to keep everything in the &lt;code class=&quot;highlighter-rouge&quot;&gt;__tests__&lt;/code&gt; directory. I found &lt;a href=&quot;https://stackoverflow.com/questions/51303189/how-to-move-mocks-folder-in-jest-to-test&quot;&gt;this stackoverflow post&lt;/a&gt; that could help work around this, but haven’t looked into it yet.&lt;/p&gt;
+
+&lt;p&gt;Overall, it seems pretty straight-forward. We’ll see how well it works once we actually get started.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="testing" /><summary type="html">I’m starting to get into testing with Jest for a work project.</summary></entry><entry><title type="html">JavaScript modules - CommonJS vs ES modules</title><link href="http://localhost:4000/js-modules" rel="alternate" type="text/html" title="JavaScript modules - CommonJS vs ES modules" /><published>2024-10-10T16:30:00-06:00</published><updated>2024-10-10T16:30:00-06:00</updated><id>http://localhost:4000/js-modules</id><content type="html" xml:base="http://localhost:4000/js-modules">&lt;h3 id=&quot;why-do-we-need-modules-in-javascript&quot;&gt;Why do we need modules in JavaScript?&lt;/h3&gt;
 
 &lt;p&gt;There are a lot of good reasons to separate our code into modules.&lt;/p&gt;
 
@@ -716,105 +890,4 @@
 
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;elem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="coding-problems" /><category term="algorithms" /><summary type="html">Today I learned about a new algorithm while working on a leetcode coding problem.</summary></entry><entry><title type="html">Binary math - addition problem</title><link href="http://localhost:4000/binary-math" rel="alternate" type="text/html" title="Binary math - addition problem" /><published>2023-07-02T22:30:00-06:00</published><updated>2023-07-02T22:30:00-06:00</updated><id>http://localhost:4000/binary-math</id><content type="html" xml:base="http://localhost:4000/binary-math">&lt;p&gt;Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.&lt;/p&gt;
-
-&lt;p&gt;The problem was to simply add two binary numbers - the inputs, &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt; were strings, and the output needed to be a string as well.&lt;/p&gt;
-
-&lt;p&gt;There are better explantions about binary and math out there, these are just some notes in my own words to help me in the future. Crash Course on youtube has a great series on computer science, and they &lt;a href=&quot;https://www.youtube.com/watch?v=1GSjbWt0c9M&quot;&gt;have an excellent video explaining binary here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;how-binary-works&quot;&gt;How binary works&lt;/h3&gt;
-
-&lt;p&gt;Every day we deal with the decimal number system, which has 10 digits we can work with: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. We also call this base 10. Binary has only two digits, 0 and 1. We can call it base 2.&lt;/p&gt;
-
-&lt;p&gt;When we are solving a simple addition problem on paper, we start with the 1’s place, working from right to left. We add the numbers in the 1’s place, and if the sum is 10 or greater, we have to carry a value. We add that value to the numbers in the next column, the 10’s place, and continue from there. Each column increases by a factor of 10, since we are in base 10.&lt;/p&gt;
-
-&lt;p&gt;We can use the same method with the binary system, it’s just the value of each column is different. Since we are in base 2, each column increases by a factor of 2. Instead of 1, 10, 100, 1000… we have, again from right to left, 1, 2, 4, 8, 16, 32, and so on. You add the columns in the same way.&lt;/p&gt;
-
-&lt;h3 id=&quot;adding&quot;&gt;Adding&lt;/h3&gt;
-
-&lt;p&gt;Let’s say you are adding the following binary numbers:&lt;/p&gt;
-
-&lt;p&gt;111
-+10&lt;/p&gt;
-
-&lt;p&gt;The right-most column is the 1’s column. 1 + 0 is 1, so your first value is 1. There is nothing to carry.&lt;/p&gt;
-
-&lt;p&gt;Onto the next column, we have 1 and 1. This adds to 2 (10 in binary), so our value we write down is 0 and we carry the 1 to the next column (remember, we only have 0 and 1 to represent our values). Then for our next calculation, we add 1 plus our carried over 1 to get 2 (10 in binary). There are no more columns, so we write down 10.&lt;/p&gt;
-
-&lt;p&gt;This gives us 1001.&lt;/p&gt;
-
-&lt;h3 id=&quot;converting-to-base-10&quot;&gt;Converting to base 10&lt;/h3&gt;
-
-&lt;p&gt;In the example above, our result spans the 8, 4, 2, and 1 columns.&lt;/p&gt;
-
-&lt;p&gt;Because we have a 1 in the 1 column, and a 1 in the 8 column, we can add those together to get a base 10 value of 9.&lt;/p&gt;
-
-&lt;h3 id=&quot;my-initial-solution&quot;&gt;My initial solution&lt;/h3&gt;
-
-&lt;p&gt;I figured I would just loop through each column of the strings I was given, trying to replicate the on-paper addition process. I ended up with this:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//a and b are strings&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//returns a string&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;addBinary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;carryValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;longestStringLength&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;//as many iterations as the length of the longest string - that's how many places our binary number has&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;longestStringLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//iterate over string from right to left - it's highest index to lowest&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;carryValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;//add calc to the beginning of binaryStr, carry value if needed&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;carryValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;carryValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;//account for a carried over value from last opertion, if there is one, otherwise return&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;carryValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;binaryStr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;a-better-or-shorter-solution&quot;&gt;A better (or shorter) solution&lt;/h3&gt;
-
-&lt;p&gt;I looked at some other solutions and found that JavaScript has prefixes to convert other number systems to base 10. In this case, we add “0b” to the beginning of our strings, convert to numbers, add together, and return a string.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;addBinary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BigInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0b&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BigInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0b&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BigInt&lt;/code&gt; was used here to handle potential large inputs. Also, to return a string in binary rather than base 10, we add a radix to the &lt;code class=&quot;highlighter-rouge&quot;&gt;toString()&lt;/code&gt; method. 2 means base 2 in this case.&lt;/p&gt;
-
-&lt;h3 id=&quot;prefixes&quot;&gt;Prefixes&lt;/h3&gt;
-
-&lt;p&gt;There are prefixes for other number systems too:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0o&lt;/code&gt; for octal&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0x&lt;/code&gt; for hexadecimal&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;e&lt;/code&gt; for exponents&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The letter after the leading zero can be uppercase or lowercase.&lt;/p&gt;
-
-&lt;h3 id=&quot;tostring-radix&quot;&gt;toString() radix&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;toString()&lt;/code&gt;, be definition, returns a string value that represents a number. It is meant to convert a number to a string, so it makes sense that you can convert between different number systems at the same time. Including a radix is optional, and defaults to 10, but it can be any value between 2 and 36.&lt;/p&gt;</content><author><name></name></author><category term="binary" /><category term="computer-science" /><category term="javascript" /><category term="coding-problems" /><summary type="html">Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="coding-problems" /><category term="algorithms" /><summary type="html">Today I learned about a new algorithm while working on a leetcode coding problem.</summary></entry></feed>
