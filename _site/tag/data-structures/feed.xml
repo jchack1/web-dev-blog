@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/data-structures/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2024-10-17T18:26:32-06:00</updated>
+  <updated>2024-10-19T22:18:49-06:00</updated>
   <id>http://localhost:4000/tag/data-structures/feed.xml</id>
 
   
@@ -42,6 +42,132 @@
   
   
 
+  
+    <entry>
+      <title type="html">Revisiting Data Structures and Algorithms - Big O Notation</title>
+      <link href="http://localhost:4000/big-o" rel="alternate" type="text/html" title="Revisiting Data Structures and Algorithms - Big O Notation" />
+      <published>2024-10-19T17:30:00-06:00</published>
+      <updated>2024-10-19T17:30:00-06:00</updated>
+      <id>http://localhost:4000/big-o</id>
+      <content type="html" xml:base="http://localhost:4000/big-o">&lt;p&gt;I am learning about data structures and algorithms again.&lt;/p&gt;
+
+&lt;p&gt;A while ago I wanted to try Leetcode to get better at solving code problems. It was good practice, but I found that if I picked random problems to work on, I could usually come with a solution, but the problems sometimes are testing your knowledge of specific algorithms. How am I supposed to get the “correct” answer if I have never studied the algorithm? I don’t want to just google the answer to every question, this defeats the whole purpose.&lt;/p&gt;
+
+&lt;p&gt;I figured I should try learning more algorithms, and once I learn them, &lt;em&gt;then&lt;/em&gt; I should practice them.&lt;/p&gt;
+
+&lt;p&gt;This time around for data structures and algorithms, I found a course that teaches this topic for JavaScript. The first lesson is on Big O Notation.&lt;/p&gt;
+
+&lt;p&gt;This course is the JavaScript Algorithms and Data Structures Masterclass on Udemy.&lt;/p&gt;
+
+&lt;p&gt;I generally understand the concepts behind Big O, but I sometimes struggle to analyze the time and space complexity for different solutions to a problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;counting-operations&quot;&gt;Counting operations&lt;/h3&gt;
+
+&lt;p&gt;The idea here is that to analyze a solution, you need to have a general idea of how much time (or space) it is taking. Going through the code, you &lt;strong&gt;count all of the operations and assignments&lt;/strong&gt; that are taking place.&lt;/p&gt;
+
+&lt;p&gt;You don’t need the most accurate tally. It’s about noticing general trends. Let’s say your function takes an argument &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt;, a number. If you notice that your code often does something &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; times, it will take longer to complete as the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; grows.&lt;/p&gt;
+
+&lt;h3 id=&quot;big-o-notation&quot;&gt;Big O Notation&lt;/h3&gt;
+
+&lt;p&gt;Describes the relationship of the input size of a function, and time it takes to run. It’s about describing overall trends. We are talking about the worst case scenario, or the upper bounds. For example, if you have an input of a large array, and the function is searching that array for a specific item, we have to assume that we need to search the whole array, even if in reality, the item is found earlier.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Time complexity&lt;/strong&gt; is the time it takes an algorithm to run.&lt;/p&gt;
+
+&lt;p&gt;Some examples:&lt;/p&gt;
+
+&lt;p&gt;O(1) is constant - it means that no matter what &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; is, the time will be about the same.&lt;/p&gt;
+
+&lt;p&gt;O(n) is linear - as &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; grows, the time takes longer&lt;/p&gt;
+
+&lt;p&gt;O(n^2) is quadratic - as &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; grows, the time increases exponentially&lt;/p&gt;
+
+&lt;h3 id=&quot;simplifying&quot;&gt;Simplifying&lt;/h3&gt;
+
+&lt;p&gt;Let’s say there are 10 operations that happen in this function, &lt;code class=&quot;highlighter-rouge&quot;&gt;10n&lt;/code&gt;. We don’t need to worry about the 10, and just simplify to &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt;. We just care about what happens as the input grows.&lt;/p&gt;
+
+&lt;p&gt;In general, constants don’t matter, and we can get rid of them. It’s about comparing the different algorithms to each other.&lt;/p&gt;
+
+&lt;p&gt;Example: O(n^2 + 5n + 8) simplifies to n^2. This is because if you plug in a large number for &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt;, 5n and 8 are tiny in comparison to n^2, so we can ignore them.&lt;/p&gt;
+
+&lt;p&gt;Rule of thumb:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;arthimetic operations are constant&lt;/li&gt;
+  &lt;li&gt;variable assignment is constant&lt;/li&gt;
+  &lt;li&gt;accessing items in an array by index, or object by key, is constant&lt;/li&gt;
+  &lt;li&gt;loops: the complexity is the length of the loop times the complexity of whatever is inside the loop - that’s why we multiply n for nested loops&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Just need to worry about what happens as &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; grows - not what happens when &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; is small.&lt;/p&gt;
+
+&lt;h3 id=&quot;space-complexity&quot;&gt;Space complexity&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Space complexity&lt;/strong&gt; - the space, or memory, required by an algorithm.&lt;/p&gt;
+
+&lt;p&gt;Rules of thumb:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;most primitive, except for strings, are constant space - booleans, numbers, undefined, and null&lt;/li&gt;
+  &lt;li&gt;strings are O(n), &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; being the length of the string&lt;/li&gt;
+  &lt;li&gt;reference types are also O(n) - for arrays, &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; is the length, and for objects,&lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; is the number of keys&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;logarithms&quot;&gt;Logarithms&lt;/h3&gt;
+
+&lt;p&gt;Reminder of how logs work: logs are the inverse of exponentiation.&lt;/p&gt;
+
+&lt;p&gt;They work like this:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;log2(value) = exponent =&amp;gt; 2^exponent = value&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Rule of thumb: The logarithm of a number roughly measures the number of times you can divide that number by its base before you get a value that’s less than or equal to one.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;log2(8) = 3
+
+// divide 8 by 2 as many times as you can before geting to 1 (or less)
+
+8 / 2 = 4
+4 / 2 = 2
+2 / 2 = 1
+
+// it took 3 operations, so the answer is 3.
+
+//Also, 2 to the power of 3 = 8 (2 * 2 * 2)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs/x2ec2f6f830c9fb89:log-intro/a/intro-to-logarithms&quot;&gt;Here’s a khanacedemy article&lt;/a&gt; explaining logarithms in a beginner friendly way.&lt;/p&gt;
+
+&lt;p&gt;O(log(n)) is one of the best ones you can have, second to constant time. On a graph, it is essentially the opposite of an exponential graph - after an initial increase, the curve flattens out.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="computer-science" />
+      
+        <category term="data-structures" />
+      
+
+      
+        <summary type="html">I am learning about data structures and algorithms again.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Implementing hash tables in JavaScript</title>
