@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/computer-science/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2024-10-19T22:18:49-06:00</updated>
+  <updated>2024-10-19T22:53:02-06:00</updated>
   <id>http://localhost:4000/tag/computer-science/feed.xml</id>
 
   
@@ -42,6 +42,83 @@
   
   
 
+  
+    <entry>
+      <title type="html">Big O For JavaScript Objects and Arrays</title>
+      <link href="http://localhost:4000/object-array-efficiency" rel="alternate" type="text/html" title="Big O For JavaScript Objects and Arrays" />
+      <published>2024-10-19T18:30:00-06:00</published>
+      <updated>2024-10-19T18:30:00-06:00</updated>
+      <id>http://localhost:4000/object-array-efficiency</id>
+      <content type="html" xml:base="http://localhost:4000/object-array-efficiency">&lt;p&gt;Quick post to summarize different operations on objects and arrays.&lt;/p&gt;
+
+&lt;p&gt;This content came from a lesson in JavaScript Algorithms and Data Structures Masterclass on Udemy.&lt;/p&gt;
+
+&lt;h3 id=&quot;objects&quot;&gt;Objects&lt;/h3&gt;
+
+&lt;p&gt;Objects are unordered collections of key-value pairs. If you have the key, you can retrive the value immediately without searching the entire object. This is constant time, O(1).&lt;/p&gt;
+
+&lt;p&gt;It’s the same thing for inserting new items. Order doesn’t come into play, you’re just adding a new item into the object, so it’s constant time.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Object.keys()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Object.entries()&lt;/code&gt;: since this converts an object to an array, so you can iterate over it, it is O(n) time. That’s because you have to go through every item in the object in order to create the new array.&lt;/p&gt;
+
+&lt;p&gt;Objects are great for when order doesn’t matter and you just need to look things up.&lt;/p&gt;
+
+&lt;h3 id=&quot;arrays&quot;&gt;Arrays&lt;/h3&gt;
+
+&lt;p&gt;Arrays are more useful for when you need order and/or fast access. If you know the index of the item you’re looking for, you don’t have to search the whole array - you can retrieve it right away, making it constant time O(1).&lt;/p&gt;
+
+&lt;p&gt;Searching the entire array is O(n), because we are considering the worst case scenario - that the item you’re looking for it at the very end, and you have to go through all the other items first.&lt;/p&gt;
+
+&lt;p&gt;Insert or removing an item depends on &lt;em&gt;where&lt;/em&gt; in the array you are adding/removing from.&lt;/p&gt;
+
+&lt;p&gt;If you are adding to the end (&lt;code class=&quot;highlighter-rouge&quot;&gt;push()&lt;/code&gt;) or removing from the end (&lt;code class=&quot;highlighter-rouge&quot;&gt;pop()&lt;/code&gt;), you don’t have to touch any other items in the array. These are constant time O(1).&lt;/p&gt;
+
+&lt;p&gt;However, if you are adding (&lt;code class=&quot;highlighter-rouge&quot;&gt;unshift()&lt;/code&gt;) or removing (&lt;code class=&quot;highlighter-rouge&quot;&gt;shift()&lt;/code&gt;) from the beginning of the array, you now have to re-index every other item in that array.&lt;/p&gt;
+
+&lt;p&gt;Let’s say you added one item to the beginning. It is now index 0. The next item in the array, that was previously index 0, now has to be re-indexed to 1. And so on. Since you are updating every item in the new array, time complexity is O(n).&lt;/p&gt;
+
+&lt;p&gt;In general, any built in JavaScript method that acts on (potentially) every item of an array is O(n), including:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;splice()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;slice()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;concat()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;filter()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;map()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;forEach()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sort()&lt;/code&gt; is O(n log(n)) - because there are comparisons and other complex operations going on for each element in the array:&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="computer-science" />
+      
+        <category term="data-structures" />
+      
+        <category term="javascript" />
+      
+
+      
+        <summary type="html">Quick post to summarize different operations on objects and arrays.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Revisiting Data Structures and Algorithms - Big O Notation</title>

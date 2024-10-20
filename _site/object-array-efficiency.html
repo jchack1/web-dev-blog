@@ -11,7 +11,7 @@
 
 
 
-    <title>New jekyll site part 3 - errors with deployment</title>
+    <title>Big O For JavaScript Objects and Arrays</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Web development blog" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/new-jekyll-site-3" />
+    <link rel="canonical" href="http://localhost:4000/object-array-efficiency" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Julia Hack" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="New jekyll site part 3 - errors with deployment" />
-    <meta property="og:description" content="I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed. Of course there have" />
-    <meta property="og:url" content="http://localhost:4000/new-jekyll-site-3" />
+    <meta property="og:title" content="Big O For JavaScript Objects and Arrays" />
+    <meta property="og:description" content="Quick post to summarize different operations on objects and arrays. This content came from a lesson in JavaScript Algorithms and Data Structures Masterclass on Udemy. Objects Objects are unordered collections of key-value pairs. If you have the key, you can retrive the value immediately without searching the entire object. This" />
+    <meta property="og:url" content="http://localhost:4000/object-array-efficiency" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-04-08T16:03:00-06:00" />
-    <meta property="article:modified_time" content="2020-04-08T16:03:00-06:00" />
-    <meta property="article:tag" content="Jekyll" />
+    <meta property="article:published_time" content="2024-10-19T18:30:00-06:00" />
+    <meta property="article:modified_time" content="2024-10-19T18:30:00-06:00" />
+    <meta property="article:tag" content="Computer-science" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="New jekyll site part 3 - errors with deployment" />
-    <meta name="twitter:description" content="I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed. Of course there have" />
+    <meta name="twitter:title" content="Big O For JavaScript Objects and Arrays" />
+    <meta name="twitter:description" content="Quick post to summarize different operations on objects and arrays. This content came from a lesson in JavaScript Algorithms and Data Structures Masterclass on Udemy. Objects Objects are unordered collections of key-value pairs. If you have the key, you can retrive the value immediately without searching the entire object. This" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Julia Hack" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Jekyll" />
+    <meta name="twitter:data2" content="Computer-science" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "Julia Hack",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/new-jekyll-site-3",
+    "url": "http://localhost:4000/object-array-efficiency",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/new-jekyll-site-3"
+        "@id": "http://localhost:4000/object-array-efficiency"
     },
-    "description": "I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed. Of course there have"
+    "description": "Quick post to summarize different operations on objects and arrays. This content came from a lesson in JavaScript Algorithms and Data Structures Masterclass on Udemy. Objects Objects are unordered collections of key-value pairs. If you have the key, you can retrive the value immediately without searching the entire object. This"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="New jekyll site part 3 - errors with deployment" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Big O For JavaScript Objects and Arrays" href="/feed.xml" />
 
 
 </head>
@@ -153,64 +153,71 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 8 April 2020"> 8 April 2020</time>
+                    <time class="post-full-meta-date" datetime="19 October 2024">19 October 2024</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/jekyll/'>JEKYLL</a>,
+                               <a href='/tag/computer-science/'>COMPUTER-SCIENCE</a>,
                             
                         
                             
-                               <a href='/tag/debugging/'>DEBUGGING</a>,
+                               <a href='/tag/data-structures/'>DATA-STRUCTURES</a>,
                             
                         
                             
-                               <a href='/tag/deployment/'>DEPLOYMENT</a>
+                               <a href='/tag/javascript/'>JAVASCRIPT</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">New jekyll site part 3 - errors with deployment</h1>
+                <h1 class="post-full-title">Big O For JavaScript Objects and Arrays</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.</p>
+                    <p>Quick post to summarize different operations on objects and arrays.</p>
 
-<p>Of course there have been errors with this as well. As expected.</p>
+<p>This content came from a lesson in JavaScript Algorithms and Data Structures Masterclass on Udemy.</p>
 
-<p>I created my github repo and pushed my code using command line. I used the following commands and this worked without errors:</p>
+<h3 id="objects">Objects</h3>
+
+<p>Objects are unordered collections of key-value pairs. If you have the key, you can retrive the value immediately without searching the entire object. This is constant time, O(1).</p>
+
+<p>It’s the same thing for inserting new items. Order doesn’t come into play, you’re just adding a new item into the object, so it’s constant time.</p>
+
+<p><code class="highlighter-rouge">Object.keys()</code> and <code class="highlighter-rouge">Object.entries()</code>: since this converts an object to an array, so you can iterate over it, it is O(n) time. That’s because you have to go through every item in the object in order to create the new array.</p>
+
+<p>Objects are great for when order doesn’t matter and you just need to look things up.</p>
+
+<h3 id="arrays">Arrays</h3>
+
+<p>Arrays are more useful for when you need order and/or fast access. If you know the index of the item you’re looking for, you don’t have to search the whole array - you can retrieve it right away, making it constant time O(1).</p>
+
+<p>Searching the entire array is O(n), because we are considering the worst case scenario - that the item you’re looking for it at the very end, and you have to go through all the other items first.</p>
+
+<p>Insert or removing an item depends on <em>where</em> in the array you are adding/removing from.</p>
+
+<p>If you are adding to the end (<code class="highlighter-rouge">push()</code>) or removing from the end (<code class="highlighter-rouge">pop()</code>), you don’t have to touch any other items in the array. These are constant time O(1).</p>
+
+<p>However, if you are adding (<code class="highlighter-rouge">unshift()</code>) or removing (<code class="highlighter-rouge">shift()</code>) from the beginning of the array, you now have to re-index every other item in that array.</p>
+
+<p>Let’s say you added one item to the beginning. It is now index 0. The next item in the array, that was previously index 0, now has to be re-indexed to 1. And so on. Since you are updating every item in the new array, time complexity is O(n).</p>
+
+<p>In general, any built in JavaScript method that acts on (potentially) every item of an array is O(n), including:</p>
+
 <ul>
-  <li>git init</li>
-  <li>git add .</li>
-  <li>git commit -m “first commit”</li>
-  <li>git remote add origin https://github.com/jchack1/julia-blog2.git</li>
-  <li>git push -u origin master</li>
+  <li><code class="highlighter-rouge">splice()</code></li>
+  <li><code class="highlighter-rouge">slice()</code></li>
+  <li><code class="highlighter-rouge">concat()</code></li>
+  <li><code class="highlighter-rouge">filter()</code></li>
+  <li><code class="highlighter-rouge">map()</code></li>
+  <li><code class="highlighter-rouge">forEach()</code></li>
 </ul>
 
-<p>I decided to deploy with Netlify, which is my go to for any deployment. It’s usually pretty straightforward, <a href="https://www.netlify.com/blog/2015/10/28/a-step-by-step-guide-jekyll-3.0-on-netlify/">and you can find the instructions for deploying Jekyll with Netlify here.</a>  I selected my github repo and clicked deploy. After a few minutes I got an error, saying the build failed.</p>
-
-<p>That is because Netlify was looking for the _site folder.  I checked my files and I saw that I did not have this.  By now I’m getting pretty frustrated with this theme because it feels like there was a lot missing and unexplained. Why isn’t there a _site folder?</p>
-
-<p>I went to the <a href="https://jekyllrb.com/docs/step-by-step/01-setup/">Jekyll docs</a> looking for any information about the _site folder.  I saw that when you use the command “jekyll build”, Jekyll builds the site and outputs it to a directory called _site, which is viewable in the browser at localhost:4000. I have used the “jekyll build” command many times so far, so I was unsure why it’s not in my files.  And why I was able to serve my site to localhost:4000.  I decided to see what would happen if I make a new Jekyll folder from scratch and run “jekyll build”. In my previous sites I always had a _site folder and never gave any thought to how it was created.</p>
-
-<p>This time I decided to just follow my old notes rather than just copy-paste from my theme. I went into the Jekyll folder I already have on my machine and opened command line. I used the following commands:</p>
-<ul>
-  <li>jekyll new julia-blog3</li>
-  <li>cd julia-blog3</li>
-  <li>bundle exec jekyll build</li>
-</ul>
-
-<p>I watched the files in the folders and there it was. Once I used the jekyll build command, my _site folder appeared. Perhaps this was my mistake from the beginning. I never intiallized my folder properly.</p>
-
-<p>I decided to check both folders now, to see if I could either update my blog scripts to create the _site file, or if I’d need to copy everything over into my new folder. Whatever I tried in my old folder did not work, so I ended up copying everything over into my new folder. I set up gulp, which was really quick this time since I knew what I was doing. When I executed “bundle exec jekyll build” I now ended up with a _site folder, and it was filled with the proper files.</p>
-
-<p>Now I will upload this new folder to github and deploy. It should work now that I have a proper _site folder.</p>
-
-<p>I just have to remember to always “bundle exec jekyll build” and “bundle exec jekyll serve”(to generate files in _site folder) when I make changes. But only after I execute “gulp”. Hopefully I will quickly get used to this workflow.</p>
+<p><code class="highlighter-rouge">sort()</code> is O(n log(n)) - because there are comparisons and other complex operations going on for each element in the array:</p>
 
                 </div>
             </section>
@@ -266,7 +273,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Julia Hack &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/jekyll/">Jekyll</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/computer-science/">Computer-science</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -280,115 +287,16 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
+                                    
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
+                                    
+                                        
+                                        
+                                            <li><a href="/big-o">Revisiting Data Structures and Algorithms - Big O Notation</a></li>
+                                        
+                                    
                                   
                                 
                                   
@@ -413,26 +321,19 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                    
                                         
                                         
-                                            <li><a href="/new-jekyll-site-2">New jekyll site part 2 - errors with Gulp</a></li>
+                                            <li><a href="/binary-math">Binary math - addition problem</a></li>
                                         
                                     
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                            <li><a href="/making-another-jekyll-site">Making a new jekyll site - this one, actually</a></li>
-                                        
-                                    
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -449,17 +350,138 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/first-post">Welcome to my new web dev blog!</a></li>
+                                            <li><a href="/increment-decrement">What's the difference between 'i++' and '++i'</a></li>
                                         
                                     
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/jekyll/">
+                            <a href="/tag/computer-science/">
                                 
-                                    See all 3 posts  →
+                                    See all 6 posts  →
                                 
                             </a>
                         </footer>
@@ -469,64 +491,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template no-image">
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/deleting-my-database">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Dotnet</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Database</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Migrations</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Last ditch effort – I deleted my database</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -535,17 +499,21 @@ into the {body} of the default.hbs template -->
     <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/csharpdefinitions">
+            <a class="post-card-content-link" href="/big-o">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Csharp</span>
+                               <span class="post-card-tags">Computer-science</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Data-structures</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">C# definitions cheatsheet</h2>
+                    <h2 class="post-card-title">Revisiting Data Structures and Algorithms - Big O Notation</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -596,7 +564,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">New jekyll site part 3 - errors with deployment</div>
+    <div class="floating-header-title">Big O For JavaScript Objects and Arrays</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <path
@@ -604,7 +572,7 @@ into the {body} of the default.hbs template -->
   />
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=New+jekyll+site+part+3+-+errors+with+deployment&amp;url=new-jekyll-site-3"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Big+O+For+JavaScript+Objects+and+Arrays&amp;url=object-array-efficiency"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path
@@ -613,7 +581,7 @@ into the {body} of the default.hbs template -->
 </svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=new-jekyll-site-3"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=object-array-efficiency"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <path

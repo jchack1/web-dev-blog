@@ -1,4 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-19T22:18:49-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Revisiting Data Structures and Algorithms - Big O Notation</title><link href="http://localhost:4000/big-o" rel="alternate" type="text/html" title="Revisiting Data Structures and Algorithms - Big O Notation" /><published>2024-10-19T17:30:00-06:00</published><updated>2024-10-19T17:30:00-06:00</updated><id>http://localhost:4000/big-o</id><content type="html" xml:base="http://localhost:4000/big-o">&lt;p&gt;I am learning about data structures and algorithms again.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-19T22:53:02-06:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Big O For JavaScript Objects and Arrays</title><link href="http://localhost:4000/object-array-efficiency" rel="alternate" type="text/html" title="Big O For JavaScript Objects and Arrays" /><published>2024-10-19T18:30:00-06:00</published><updated>2024-10-19T18:30:00-06:00</updated><id>http://localhost:4000/object-array-efficiency</id><content type="html" xml:base="http://localhost:4000/object-array-efficiency">&lt;p&gt;Quick post to summarize different operations on objects and arrays.&lt;/p&gt;
+
+&lt;p&gt;This content came from a lesson in JavaScript Algorithms and Data Structures Masterclass on Udemy.&lt;/p&gt;
+
+&lt;h3 id=&quot;objects&quot;&gt;Objects&lt;/h3&gt;
+
+&lt;p&gt;Objects are unordered collections of key-value pairs. If you have the key, you can retrive the value immediately without searching the entire object. This is constant time, O(1).&lt;/p&gt;
+
+&lt;p&gt;It’s the same thing for inserting new items. Order doesn’t come into play, you’re just adding a new item into the object, so it’s constant time.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Object.keys()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Object.entries()&lt;/code&gt;: since this converts an object to an array, so you can iterate over it, it is O(n) time. That’s because you have to go through every item in the object in order to create the new array.&lt;/p&gt;
+
+&lt;p&gt;Objects are great for when order doesn’t matter and you just need to look things up.&lt;/p&gt;
+
+&lt;h3 id=&quot;arrays&quot;&gt;Arrays&lt;/h3&gt;
+
+&lt;p&gt;Arrays are more useful for when you need order and/or fast access. If you know the index of the item you’re looking for, you don’t have to search the whole array - you can retrieve it right away, making it constant time O(1).&lt;/p&gt;
+
+&lt;p&gt;Searching the entire array is O(n), because we are considering the worst case scenario - that the item you’re looking for it at the very end, and you have to go through all the other items first.&lt;/p&gt;
+
+&lt;p&gt;Insert or removing an item depends on &lt;em&gt;where&lt;/em&gt; in the array you are adding/removing from.&lt;/p&gt;
+
+&lt;p&gt;If you are adding to the end (&lt;code class=&quot;highlighter-rouge&quot;&gt;push()&lt;/code&gt;) or removing from the end (&lt;code class=&quot;highlighter-rouge&quot;&gt;pop()&lt;/code&gt;), you don’t have to touch any other items in the array. These are constant time O(1).&lt;/p&gt;
+
+&lt;p&gt;However, if you are adding (&lt;code class=&quot;highlighter-rouge&quot;&gt;unshift()&lt;/code&gt;) or removing (&lt;code class=&quot;highlighter-rouge&quot;&gt;shift()&lt;/code&gt;) from the beginning of the array, you now have to re-index every other item in that array.&lt;/p&gt;
+
+&lt;p&gt;Let’s say you added one item to the beginning. It is now index 0. The next item in the array, that was previously index 0, now has to be re-indexed to 1. And so on. Since you are updating every item in the new array, time complexity is O(n).&lt;/p&gt;
+
+&lt;p&gt;In general, any built in JavaScript method that acts on (potentially) every item of an array is O(n), including:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;splice()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;slice()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;concat()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;filter()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;map()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;forEach()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sort()&lt;/code&gt; is O(n log(n)) - because there are comparisons and other complex operations going on for each element in the array:&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><category term="javascript" /><summary type="html">Quick post to summarize different operations on objects and arrays.</summary></entry><entry><title type="html">Revisiting Data Structures and Algorithms - Big O Notation</title><link href="http://localhost:4000/big-o" rel="alternate" type="text/html" title="Revisiting Data Structures and Algorithms - Big O Notation" /><published>2024-10-19T17:30:00-06:00</published><updated>2024-10-19T17:30:00-06:00</updated><id>http://localhost:4000/big-o</id><content type="html" xml:base="http://localhost:4000/big-o">&lt;p&gt;I am learning about data structures and algorithms again.&lt;/p&gt;
 
 &lt;p&gt;A while ago I wanted to try Leetcode to get better at solving code problems. It was good practice, but I found that if I picked random problems to work on, I could usually come with a solution, but the problems sometimes are testing your knowledge of specific algorithms. How am I supposed to get the “correct” answer if I have never studied the algorithm? I don’t want to just google the answer to every question, this defeats the whole purpose.&lt;/p&gt;
 
@@ -881,27 +920,4 @@
 &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This logic makes a little more sense in my brain, but it seems like you could potentially use a lot of memory if you added nearly every node to your set. This solution put me in the bottom % of memory usage in leetcode. It seems like the slow/fast algorithm is the way to go.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="coding-problems" /><category term="algorithms" /><summary type="html">Today’s leetcode problem involved a linked list.</summary></entry><entry><title type="html">Another way to delete element from a string</title><link href="http://localhost:4000/delete-from-string" rel="alternate" type="text/html" title="Another way to delete element from a string" /><published>2023-07-08T15:30:00-06:00</published><updated>2023-07-08T15:30:00-06:00</updated><id>http://localhost:4000/delete-from-string</id><content type="html" xml:base="http://localhost:4000/delete-from-string">&lt;p&gt;When I have solved a problem on leetcode I like to look at other users’ solutions to learn other ways of solving the problem.&lt;/p&gt;
-
-&lt;p&gt;Today I learned a different way of deleting elements from a string.&lt;/p&gt;
-
-&lt;p&gt;Often when I am working with strings and I need to delete parts of a string, I will convert to an array using &lt;code class=&quot;highlighter-rouge&quot;&gt;split(&quot;&quot;)&lt;/code&gt; and then delete at a specific index using &lt;code class=&quot;highlighter-rouge&quot;&gt;splice(index, 1)&lt;/code&gt;. Splice mutates arrays in place, so it can be helpful if I need to keep track of the value after several deletions.&lt;/p&gt;
-
-&lt;p&gt;This time the coding problem was to check if one string was an anagram of another (meaning, all letters in string A are used in string B exactly once, and no other letters are added).&lt;/p&gt;
-
-&lt;p&gt;Someone’s solution used &lt;code class=&quot;highlighter-rouge&quot;&gt;replaceAll(x, &quot;&quot;)&lt;/code&gt;. In this case, you need to know exactly what value(s) you want to delete, rather than an index, and as the name suggests it will replace all the values that match your first argument. Replacing a value with an empty string &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;&quot;&lt;/code&gt; effectively deletes it. Somehow that’s something I’ve never really thought about before, even knowing that empty strings are falsy values.&lt;/p&gt;
-
-&lt;p&gt;My solution involved splitting, sorting, and rejoining each string, and then comparing the results, which still does the job:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isAnagram&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;However, the other person’s solution saves a lot of steps, using only a while loop and the &lt;code class=&quot;highlighter-rouge&quot;&gt;replaceAll()&lt;/code&gt; method.&lt;/p&gt;
-
-&lt;p&gt;Basically, while &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt; are the same length, get the first letter of &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;, and remove it from both &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt; wherever it is encountered. If the strings continue to be the same length after this, repeat. If they are ever not the same length, that means they don’t have all the same letters, so they are not anagrams. Otherwise, once both strings reach a length of 0, you have determined all the letters in each string matched, so you have an anagram.&lt;/p&gt;
-
-&lt;p&gt;There were a lot of possible solutions, but I liked this one for its simplicity.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="coding-problems" /><summary type="html">When I have solved a problem on leetcode I like to look at other users’ solutions to learn other ways of solving the problem.</summary></entry></feed>
+&lt;p&gt;This logic makes a little more sense in my brain, but it seems like you could potentially use a lot of memory if you added nearly every node to your set. This solution put me in the bottom % of memory usage in leetcode. It seems like the slow/fast algorithm is the way to go.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="coding-problems" /><category term="algorithms" /><summary type="html">Today’s leetcode problem involved a linked list.</summary></entry></feed>
