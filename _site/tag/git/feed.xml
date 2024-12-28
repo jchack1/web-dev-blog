@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/version-control/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/tag/git/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
   <updated>2024-12-27T17:12:56-07:00</updated>
-  <id>http://localhost:4000/tag/version-control/feed.xml</id>
+  <id>http://localhost:4000/tag/git/feed.xml</id>
 
   
   
@@ -248,62 +248,6 @@
 
       
         <summary type="html">In order to get a better idea of how to manage our branches in github at work, we took a LinkedIn Learning course on git workflows. Here are some notes I took during the course.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">When Sourcetree didn’t work - ‘fatal: authentication failed’ error</title>
-      <link href="http://localhost:4000/sourcetree-authentication-error" rel="alternate" type="text/html" title="When Sourcetree didn't work - 'fatal: authentication failed' error" />
-      <published>2020-06-05T12:30:00-06:00</published>
-      <updated>2020-06-05T12:30:00-06:00</updated>
-      <id>http://localhost:4000/sourcetree-authentication-error</id>
-      <content type="html" xml:base="http://localhost:4000/sourcetree-authentication-error">&lt;p&gt;I know I shouldn’t feel incompetent every time I struggle with some kind of error or bug; dealing with frustration comes with being a developer, and I chose this. This issue, however, frustrated me more than I care to admit.&lt;/p&gt;
-
-&lt;p&gt;This week I had to change the password on my work PC. Something I believe I have done many times before with no consequences.&lt;/p&gt;
-
-&lt;p&gt;A few days later I wanted to push some code in Sourcetree. Before commiting my changes I needed to do a pull. When I did so, I got the following error:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../assets/images/sourcetree-error.jpg&quot; style=&quot;max-width: 500px;&quot; alt=&quot;sourcetree error message&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;“fatal: Authentication failed for …”, plus a message from git at the top.&lt;/p&gt;
-
-&lt;p&gt;Seeing “authentication” made me think it was probably due to changing my password. I logged into our remote Bitbucket server with the new password. That worked fine. I came back to Sourcetree. Same error occured. I exited and reopened the program. Same error when I try to pull.&lt;/p&gt;
-
-&lt;p&gt;I started asking coworkers and searching online for solutions. There was actually a solution on the &lt;a href=&quot;https://community.atlassian.com/t5/Sourcetree-questions/Getting-quot-fatal-Authentication-failed-for-quot-error/qaq-p/624663&quot;&gt;Atlassian community forum&lt;/a&gt; that involved navigating from C: -&amp;gt; User -&amp;gt; [myusername] -&amp;gt; AppData -&amp;gt; Local -&amp;gt; Atlassian -&amp;gt; Sourcetree and finding the “passwd” file, and deleting it. You should then be prompted to input your updated password. Great!&lt;/p&gt;
-
-&lt;p&gt;I got stuck on “AppData” which was conveniently not showing up in the folder where I was expecting it. I figured this was because I was using a work PC, and I didn’t have this folder, or perhaps lacked proper permissions. I kept looking for other solutions, getting suggestions from coworkers, and nothing worked.&lt;/p&gt;
-
-&lt;p&gt;A coworker also suggested the above solution. Once again I could not find the AppData file.  This time, though, I decided to just search for “passwd” in the search bar for C drive. And the file showed up with the file path shown above. For whatever reason I couldn’t see it in the other view in file explorer.&lt;/p&gt;
-
-&lt;p&gt;I deleted this file and tried to pull again. A modal popped up asking for my new password. This time the pull worked, no errors. Of course it did.&lt;/p&gt;
-
-&lt;p&gt;I don’t think there is a moral to this story. I’ll just use this post in the future as instructions for when I inevitably deal with this error again.&lt;/p&gt;
-
-&lt;p&gt;Yeah, let’s just go with that.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="version-control" />
-      
-
-      
-        <summary type="html">I know I shouldn’t feel incompetent every time I struggle with some kind of error or bug; dealing with frustration comes with being a developer, and I chose this. This issue, however, frustrated me more than I care to admit.</summary>
       
 
       
