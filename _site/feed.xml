@@ -1,4 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-27T17:12:56-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Learning Git Workflows</title><link href="http://localhost:4000/github-workflows" rel="alternate" type="text/html" title="Learning Git Workflows" /><published>2024-12-27T16:30:00-07:00</published><updated>2024-12-27T16:30:00-07:00</updated><id>http://localhost:4000/github-workflows</id><content type="html" xml:base="http://localhost:4000/github-workflows">&lt;p&gt;In order to get a better idea of how to manage our branches in github at work, we took a LinkedIn Learning course on git workflows. Here are some notes I took during the course.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-29T22:51:18-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Problem solving strategy for code problems</title><link href="http://localhost:4000/algorithm-problem-solving" rel="alternate" type="text/html" title="Problem solving strategy for code problems" /><published>2025-01-29T16:30:00-07:00</published><updated>2025-01-29T16:30:00-07:00</updated><id>http://localhost:4000/algorithm-problem-solving</id><content type="html" xml:base="http://localhost:4000/algorithm-problem-solving">&lt;p&gt;I’m continuing to work on the JavaScript Algorithms and Data Structures course on Udemy. Here are some notes outlining the recommended problem solving strategy.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-an-algorithm&quot;&gt;What is an algorithm?&lt;/h3&gt;
+
+&lt;p&gt;Essentially, a set of steps to accomplish a task.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-1-understanding-the-problem&quot;&gt;Step 1: Understanding the problem&lt;/h3&gt;
+
+&lt;p&gt;Ask clarifying questions&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;can I restate in my own words?&lt;/li&gt;
+  &lt;li&gt;what are the inputs?&lt;/li&gt;
+  &lt;li&gt;what are the outputs?&lt;/li&gt;
+  &lt;li&gt;can the outputs be determined from the inputs? do I have enough info already?&lt;/li&gt;
+  &lt;li&gt;how should I label the important data?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;step-2-look-at-concrete-examples&quot;&gt;Step 2: Look at concrete examples&lt;/h3&gt;
+
+&lt;p&gt;Can help you understand the problem, and whether your solution will work as you expect&lt;/p&gt;
+
+&lt;p&gt;Some real life examples:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;user stories&lt;/li&gt;
+  &lt;li&gt;unit tests&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;How to do this:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;write down simple examples with the inputs and outputs&lt;/li&gt;
+  &lt;li&gt;then some more complex examples&lt;/li&gt;
+  &lt;li&gt;now you have it and can look back on it as you work&lt;/li&gt;
+  &lt;li&gt;think about edge cases, examples with empty inputs or invalid inputs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For example: write a function which takes in a string and returns counts of each character in the string&lt;/p&gt;
+
+&lt;p&gt;A couple simple examples: &lt;code class=&quot;highlighter-rouge&quot;&gt;charCount(&quot;aaaa&quot;) // {a: 4}&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;charCount(&quot;hello&quot;) // {h:1 e:1, l:2, o:1}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;A question that comes to mind: do we want to have all the letters in the alphabet, and just increment the ones used? Like: {a: 0, b: 0, c: 0, …}. Or, only include the letters in the string. Would need to clarify this.&lt;/p&gt;
+
+&lt;p&gt;More complex: &lt;code class=&quot;highlighter-rouge&quot;&gt;charCount(&quot;my phone number is 1234567890)&lt;/code&gt; - now we think, what do we do about spaces? What about numbers? Would we want this to return an error?&lt;/p&gt;
+
+&lt;p&gt;Or &lt;code class=&quot;highlighter-rouge&quot;&gt;charCount(&quot;Hello&quot;)&lt;/code&gt; - are we storing uppercase and lowercase? Or converting uppercase to lowercase? Again, would need to clarify.&lt;/p&gt;
+
+&lt;p&gt;What about empty strings and null values, like &lt;code class=&quot;highlighter-rouge&quot;&gt;charCount(&quot;&quot;)&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;chartCount(null)&lt;/code&gt;- how do we handle it?&lt;/p&gt;
+
+&lt;p&gt;This shows us how looking at different inputs can help understand how we need to solve the problem. Start with what seems simple, then the edge cases.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-3-break-it-down&quot;&gt;Step 3: Break it down&lt;/h3&gt;
+
+&lt;p&gt;Write down the steps of the problem. Can use comments as your guide. Also, if you were in a code interview, you can ask them if you’re on the right track and get a hint.&lt;/p&gt;
+
+&lt;p&gt;Helps you think about the code before you write it, and catch any issues before you start.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-4-solve-or-simplify&quot;&gt;Step 4: Solve or simplify&lt;/h3&gt;
+
+&lt;p&gt;Solve the problem, and if you can’t, solve a simpler problem. Ignore what is giving you a hard time for a while, and focus on what you understand, then come back to it later. Often you’ll begin to understand the more difficult part as you go and you can come back to it.&lt;/p&gt;
+
+&lt;p&gt;In addition, if it were during an interview, you’re not stuck at the beginning and running out of time with nothing to show for it. At least you solved the rest of the problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-5-look-back-and-refactor&quot;&gt;Step 5: Look back and refactor&lt;/h3&gt;
+
+&lt;p&gt;Go line by line, talk about what you don’t like, how easy it is to understand.&lt;/p&gt;
+
+&lt;p&gt;Ask these questions. If you were in an interview, ask them out loud&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;can you check the result?&lt;/li&gt;
+  &lt;li&gt;can you derive the result differently?&lt;/li&gt;
+  &lt;li&gt;google if there is a faster way of doing it&lt;/li&gt;
+  &lt;li&gt;can you understand it at a glace? how intuitive and readable is it?&lt;/li&gt;
+  &lt;li&gt;can you use this solution for another problem? reusability in your code is a good thing&lt;/li&gt;
+  &lt;li&gt;can you improve the performance?&lt;/li&gt;
+  &lt;li&gt;any other ways to refactor? does it follow the style guides of the company? is it formatted well?&lt;/li&gt;
+  &lt;li&gt;how do others solve this problem? Even ask an interviewer this&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="computer-science" /><category term="problem-solving" /><category term="coding-problems" /><summary type="html">I’m continuing to work on the JavaScript Algorithms and Data Structures course on Udemy. Here are some notes outlining the recommended problem solving strategy.</summary></entry><entry><title type="html">Learning Git Workflows</title><link href="http://localhost:4000/github-workflows" rel="alternate" type="text/html" title="Learning Git Workflows" /><published>2024-12-27T16:30:00-07:00</published><updated>2024-12-27T16:30:00-07:00</updated><id>http://localhost:4000/github-workflows</id><content type="html" xml:base="http://localhost:4000/github-workflows">&lt;p&gt;In order to get a better idea of how to manage our branches in github at work, we took a LinkedIn Learning course on git workflows. Here are some notes I took during the course.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Git workflow:&lt;/strong&gt; an agreement amongst a dev team that defines how source code is managed&lt;/p&gt;
 
@@ -908,67 +988,4 @@
 
 &lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;/h3&gt;
 
-&lt;p&gt;I definitely need more practice with binary trees, so I’ll continue learning and practicing and will update here if I find anything notable.&lt;/p&gt;</content><author><name></name></author><category term="algorithms" /><category term="data-structures" /><category term="coding-problems" /><category term="recursion" /><summary type="html">It’s time to dive into some binary tree coding problems.</summary></entry><entry><title type="html">Reverse a linked list in JavaScript</title><link href="http://localhost:4000/reverse-linked-list" rel="alternate" type="text/html" title="Reverse a linked list in JavaScript" /><published>2023-07-21T15:30:00-06:00</published><updated>2023-07-21T15:30:00-06:00</updated><id>http://localhost:4000/reverse-linked-list</id><content type="html" xml:base="http://localhost:4000/reverse-linked-list">&lt;p&gt;Today’s leetcode problem involved linked lists again. This time the task was to reverse one.&lt;/p&gt;
-
-&lt;p&gt;I honestly had no idea how to do this and had to look it up. Below is the code I ended up with, and an explanation.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reverseList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;previous&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//because when we start there is no previous&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;//while current node is not null&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//keep track of what our next node is&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;//first time through, the new end of our list is null&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;previous&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;//our new previous is the one we just looked at&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;previous&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;//move on to the next node&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;//previous is now new head&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;previous&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To help me explain, here is a simple diagram of a linked list.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../assets/images/linkedListDiagram.svg&quot; style=&quot;max-width: 500px;&quot; alt=&quot;diagram of a linked list with three nodes&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;This code presents an iterative approach to the problem. You could also solve it recursively.&lt;/p&gt;
-
-&lt;p&gt;For this method, you iterate over each node using a &lt;code class=&quot;highlighter-rouge&quot;&gt;while&lt;/code&gt; loop, and change the pointers for each node.&lt;/p&gt;
-
-&lt;h4 id=&quot;initialize-the-variables&quot;&gt;Initialize the variables&lt;/h4&gt;
-
-&lt;p&gt;To use the while loop, you need to set a &lt;code class=&quot;highlighter-rouge&quot;&gt;current&lt;/code&gt; variable. The loop will run while this is not null, or until we reach the end of the list, which will have no next pointer.&lt;/p&gt;
-
-&lt;p&gt;We also need to keep track of the &lt;code class=&quot;highlighter-rouge&quot;&gt;previous&lt;/code&gt; node in the list, as well as the &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; one. &lt;code class=&quot;highlighter-rouge&quot;&gt;previous&lt;/code&gt; is set to null at the beginning, since we’re on the first node, and we’ll deal with the &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; value in the loop&lt;/p&gt;
-
-&lt;h4 id=&quot;setting-next-and-resetting-currents-pointer&quot;&gt;Setting next and resetting current’s pointer&lt;/h4&gt;
-
-&lt;p&gt;It’s crucial to save the &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; variable first thing during a new iteration. That’s because the following step replaces the pointer for &lt;code class=&quot;highlighter-rouge&quot;&gt;current&lt;/code&gt;, so we lost whatever next used to be.&lt;/p&gt;
-
-&lt;p&gt;Let’s keep track of our variables for the linked list diagram above.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; now equals node &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Then, update &lt;code class=&quot;highlighter-rouge&quot;&gt;current&lt;/code&gt;’s pointer to &lt;code class=&quot;highlighter-rouge&quot;&gt;previous&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;current.next&lt;/code&gt; now equals &lt;code class=&quot;highlighter-rouge&quot;&gt;null&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;resetting-the-variables-for-the-next-iteration&quot;&gt;Resetting the variables for the next iteration&lt;/h4&gt;
-
-&lt;p&gt;For our next iteration, &lt;code class=&quot;highlighter-rouge&quot;&gt;previous&lt;/code&gt; will be whatever node we just updated in this iteration.&lt;/p&gt;
-
-&lt;p&gt;So, &lt;code class=&quot;highlighter-rouge&quot;&gt;previous&lt;/code&gt; now equals the &lt;code class=&quot;highlighter-rouge&quot;&gt;current&lt;/code&gt; node, which in this case is node &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;current&lt;/code&gt; node for our next iteration is what we saved earlier in our &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; variable, which is &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;end-of-list&quot;&gt;End of list&lt;/h4&gt;
-
-&lt;p&gt;Once we reach the end, we’ll have &lt;code class=&quot;highlighter-rouge&quot;&gt;previous&lt;/code&gt; equal to our last node, &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;. This is the new head. The pointers have all been reversed, so we return the new head node. It’s the start of the reversed linked list.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="coding-problems" /><category term="algorithms" /><summary type="html">Today’s leetcode problem involved linked lists again. This time the task was to reverse one.</summary></entry></feed>
+&lt;p&gt;I definitely need more practice with binary trees, so I’ll continue learning and practicing and will update here if I find anything notable.&lt;/p&gt;</content><author><name></name></author><category term="algorithms" /><category term="data-structures" /><category term="coding-problems" /><category term="recursion" /><summary type="html">It’s time to dive into some binary tree coding problems.</summary></entry></feed>

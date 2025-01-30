@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Problem solving strategy for code problems</title>
+        
+          <description>&lt;p&gt;I’m continuing to work on the JavaScript Algorithms and Data Structures course on Udemy. Here are some notes outlining the recommended problem solving strategy.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 29 Jan 2025 16:30:00 -0700</pubDate>
+        <link>
+        http://localhost:4000/algorithm-problem-solving</link>
+        <guid isPermaLink="true">http://localhost:4000/algorithm-problem-solving</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Learning Git Workflows</title>
         
           <description>&lt;p&gt;In order to get a better idea of how to manage our branches in github at work, we took a LinkedIn Learning course on git workflows. Here are some notes I took during the course.&lt;/p&gt;

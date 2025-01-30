@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/computer-science/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2024-12-27T17:12:56-07:00</updated>
+  <updated>2025-01-29T22:51:18-07:00</updated>
   <id>http://localhost:4000/tag/computer-science/feed.xml</id>
 
   
@@ -42,6 +42,124 @@
   
   
 
+  
+    <entry>
+      <title type="html">Problem solving strategy for code problems</title>
+      <link href="http://localhost:4000/algorithm-problem-solving" rel="alternate" type="text/html" title="Problem solving strategy for code problems" />
+      <published>2025-01-29T16:30:00-07:00</published>
+      <updated>2025-01-29T16:30:00-07:00</updated>
+      <id>http://localhost:4000/algorithm-problem-solving</id>
+      <content type="html" xml:base="http://localhost:4000/algorithm-problem-solving">&lt;p&gt;I’m continuing to work on the JavaScript Algorithms and Data Structures course on Udemy. Here are some notes outlining the recommended problem solving strategy.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-an-algorithm&quot;&gt;What is an algorithm?&lt;/h3&gt;
+
+&lt;p&gt;Essentially, a set of steps to accomplish a task.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-1-understanding-the-problem&quot;&gt;Step 1: Understanding the problem&lt;/h3&gt;
+
+&lt;p&gt;Ask clarifying questions&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;can I restate in my own words?&lt;/li&gt;
+  &lt;li&gt;what are the inputs?&lt;/li&gt;
+  &lt;li&gt;what are the outputs?&lt;/li&gt;
+  &lt;li&gt;can the outputs be determined from the inputs? do I have enough info already?&lt;/li&gt;
+  &lt;li&gt;how should I label the important data?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;step-2-look-at-concrete-examples&quot;&gt;Step 2: Look at concrete examples&lt;/h3&gt;
+
+&lt;p&gt;Can help you understand the problem, and whether your solution will work as you expect&lt;/p&gt;
+
+&lt;p&gt;Some real life examples:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;user stories&lt;/li&gt;
+  &lt;li&gt;unit tests&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;How to do this:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;write down simple examples with the inputs and outputs&lt;/li&gt;
+  &lt;li&gt;then some more complex examples&lt;/li&gt;
+  &lt;li&gt;now you have it and can look back on it as you work&lt;/li&gt;
+  &lt;li&gt;think about edge cases, examples with empty inputs or invalid inputs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For example: write a function which takes in a string and returns counts of each character in the string&lt;/p&gt;
+
+&lt;p&gt;A couple simple examples: &lt;code class=&quot;highlighter-rouge&quot;&gt;charCount(&quot;aaaa&quot;) // {a: 4}&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;charCount(&quot;hello&quot;) // {h:1 e:1, l:2, o:1}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;A question that comes to mind: do we want to have all the letters in the alphabet, and just increment the ones used? Like: {a: 0, b: 0, c: 0, …}. Or, only include the letters in the string. Would need to clarify this.&lt;/p&gt;
+
+&lt;p&gt;More complex: &lt;code class=&quot;highlighter-rouge&quot;&gt;charCount(&quot;my phone number is 1234567890)&lt;/code&gt; - now we think, what do we do about spaces? What about numbers? Would we want this to return an error?&lt;/p&gt;
+
+&lt;p&gt;Or &lt;code class=&quot;highlighter-rouge&quot;&gt;charCount(&quot;Hello&quot;)&lt;/code&gt; - are we storing uppercase and lowercase? Or converting uppercase to lowercase? Again, would need to clarify.&lt;/p&gt;
+
+&lt;p&gt;What about empty strings and null values, like &lt;code class=&quot;highlighter-rouge&quot;&gt;charCount(&quot;&quot;)&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;chartCount(null)&lt;/code&gt;- how do we handle it?&lt;/p&gt;
+
+&lt;p&gt;This shows us how looking at different inputs can help understand how we need to solve the problem. Start with what seems simple, then the edge cases.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-3-break-it-down&quot;&gt;Step 3: Break it down&lt;/h3&gt;
+
+&lt;p&gt;Write down the steps of the problem. Can use comments as your guide. Also, if you were in a code interview, you can ask them if you’re on the right track and get a hint.&lt;/p&gt;
+
+&lt;p&gt;Helps you think about the code before you write it, and catch any issues before you start.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-4-solve-or-simplify&quot;&gt;Step 4: Solve or simplify&lt;/h3&gt;
+
+&lt;p&gt;Solve the problem, and if you can’t, solve a simpler problem. Ignore what is giving you a hard time for a while, and focus on what you understand, then come back to it later. Often you’ll begin to understand the more difficult part as you go and you can come back to it.&lt;/p&gt;
+
+&lt;p&gt;In addition, if it were during an interview, you’re not stuck at the beginning and running out of time with nothing to show for it. At least you solved the rest of the problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-5-look-back-and-refactor&quot;&gt;Step 5: Look back and refactor&lt;/h3&gt;
+
+&lt;p&gt;Go line by line, talk about what you don’t like, how easy it is to understand.&lt;/p&gt;
+
+&lt;p&gt;Ask these questions. If you were in an interview, ask them out loud&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;can you check the result?&lt;/li&gt;
+  &lt;li&gt;can you derive the result differently?&lt;/li&gt;
+  &lt;li&gt;google if there is a faster way of doing it&lt;/li&gt;
+  &lt;li&gt;can you understand it at a glace? how intuitive and readable is it?&lt;/li&gt;
+  &lt;li&gt;can you use this solution for another problem? reusability in your code is a good thing&lt;/li&gt;
+  &lt;li&gt;can you improve the performance?&lt;/li&gt;
+  &lt;li&gt;any other ways to refactor? does it follow the style guides of the company? is it formatted well?&lt;/li&gt;
+  &lt;li&gt;how do others solve this problem? Even ask an interviewer this&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="computer-science" />
+      
+        <category term="problem-solving" />
+      
+        <category term="coding-problems" />
+      
+
+      
+        <summary type="html">I’m continuing to work on the JavaScript Algorithms and Data Structures course on Udemy. Here are some notes outlining the recommended problem solving strategy.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Big O For JavaScript Objects and Arrays</title>
