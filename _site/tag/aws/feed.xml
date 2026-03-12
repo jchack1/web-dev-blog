@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/aws/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/aws/feed.xml</id>
+  <link href="/tag/aws/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/aws/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Developing a chat app using AWS AppSync</title>
-      <link href="http://localhost:4000/appsync-chat-app" rel="alternate" type="text/html" title="Developing a chat app using AWS AppSync" />
+      <link href="/appsync-chat-app" rel="alternate" type="text/html" title="Developing a chat app using AWS AppSync" />
       <published>2023-11-21T16:30:00-07:00</published>
       <updated>2023-11-21T16:30:00-07:00</updated>
-      <id>http://localhost:4000/appsync-chat-app</id>
-      <content type="html" xml:base="http://localhost:4000/appsync-chat-app">&lt;p&gt;I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.&lt;/p&gt;
+      <id>/appsync-chat-app</id>
+      <content type="html" xml:base="/appsync-chat-app">&lt;p&gt;I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.&lt;/p&gt;
 
 &lt;p&gt;There were some new features rolled out in AppSync since I started my work project, so I wanted to try them out. It also gave me the opportunity to learn more about setting up authentication with Amplify and Cognito, which I had never tackled before, as authentication had been set up at work by another developer.&lt;/p&gt;
 
@@ -121,11 +121,11 @@
   
     <entry>
       <title type="html">Getting item count from DynamoDB query, with pagination</title>
-      <link href="http://localhost:4000/dynamodb-query-count-pagination" rel="alternate" type="text/html" title="Getting item count from DynamoDB query, with pagination" />
+      <link href="/dynamodb-query-count-pagination" rel="alternate" type="text/html" title="Getting item count from DynamoDB query, with pagination" />
       <published>2023-02-22T20:30:00-07:00</published>
       <updated>2023-02-22T20:30:00-07:00</updated>
-      <id>http://localhost:4000/dynamodb-query-count-pagination</id>
-      <content type="html" xml:base="http://localhost:4000/dynamodb-query-count-pagination">&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;
+      <id>/dynamodb-query-count-pagination</id>
+      <content type="html" xml:base="/dynamodb-query-count-pagination">&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;
 
 &lt;p&gt;I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task.&lt;/p&gt;
 
@@ -221,11 +221,11 @@
   
     <entry>
       <title type="html">Debugging serverless: ‘AWSLambdaFullAccess does not exist’</title>
-      <link href="http://localhost:4000/lambda-fullaccess-bug" rel="alternate" type="text/html" title="Debugging serverless: 'AWSLambdaFullAccess does not exist'" />
+      <link href="/lambda-fullaccess-bug" rel="alternate" type="text/html" title="Debugging serverless: 'AWSLambdaFullAccess does not exist'" />
       <published>2022-08-30T18:30:00-06:00</published>
       <updated>2022-08-30T18:30:00-06:00</updated>
-      <id>http://localhost:4000/lambda-fullaccess-bug</id>
-      <content type="html" xml:base="http://localhost:4000/lambda-fullaccess-bug">&lt;p&gt;I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.&lt;/p&gt;
+      <id>/lambda-fullaccess-bug</id>
+      <content type="html" xml:base="/lambda-fullaccess-bug">&lt;p&gt;I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.&lt;/p&gt;
 
 &lt;p&gt;Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node 14 - or so I thought. It turns out there were a few I missed, mostly in projects that are not worked on often.&lt;/p&gt;
 
@@ -288,11 +288,11 @@
   
     <entry>
       <title type="html">DynamoDB scans and pagination</title>
-      <link href="http://localhost:4000/dynamo-db-pagination" rel="alternate" type="text/html" title="DynamoDB scans and pagination" />
+      <link href="/dynamo-db-pagination" rel="alternate" type="text/html" title="DynamoDB scans and pagination" />
       <published>2022-08-22T18:30:00-06:00</published>
       <updated>2022-08-22T18:30:00-06:00</updated>
-      <id>http://localhost:4000/dynamo-db-pagination</id>
-      <content type="html" xml:base="http://localhost:4000/dynamo-db-pagination">&lt;p&gt;Today I was working on a task that involved archiving some old data in DynamoDB. I didn’t want to permanently delete my data, so I needed to retrieve the data, create a new record in the archive database, and delete the record from the original database.&lt;/p&gt;
+      <id>/dynamo-db-pagination</id>
+      <content type="html" xml:base="/dynamo-db-pagination">&lt;p&gt;Today I was working on a task that involved archiving some old data in DynamoDB. I didn’t want to permanently delete my data, so I needed to retrieve the data, create a new record in the archive database, and delete the record from the original database.&lt;/p&gt;
 
 &lt;p&gt;These records were never meant to be queried all at once. Normally in the app you would query these records for one user at a time. My PK and SK were not set up to get all of these records as one batch, which meant I needed to scan the database and filter out all of these records in my retrieval step, rather than doing a more efficient query.&lt;/p&gt;
 
@@ -369,11 +369,11 @@
   
     <entry>
       <title type="html">Debugging serverless - Eventbridge rule already exists</title>
-      <link href="http://localhost:4000/serverless-event-bug" rel="alternate" type="text/html" title="Debugging serverless - Eventbridge rule already exists" />
+      <link href="/serverless-event-bug" rel="alternate" type="text/html" title="Debugging serverless - Eventbridge rule already exists" />
       <published>2022-01-31T18:30:00-07:00</published>
       <updated>2022-01-31T18:30:00-07:00</updated>
-      <id>http://localhost:4000/serverless-event-bug</id>
-      <content type="html" xml:base="http://localhost:4000/serverless-event-bug">&lt;p&gt;I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.&lt;/p&gt;
+      <id>/serverless-event-bug</id>
+      <content type="html" xml:base="/serverless-event-bug">&lt;p&gt;I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.&lt;/p&gt;
 
 &lt;p&gt;This is the error message, with the real function and service names changed:&lt;/p&gt;
 
@@ -443,11 +443,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">How I lost, and regained, ssh access to my AWS EC2</title>
-      <link href="http://localhost:4000/ec2-ssh" rel="alternate" type="text/html" title="How I lost, and regained, ssh access to my AWS EC2" />
+      <link href="/ec2-ssh" rel="alternate" type="text/html" title="How I lost, and regained, ssh access to my AWS EC2" />
       <published>2021-08-11T14:30:00-06:00</published>
       <updated>2021-08-11T14:30:00-06:00</updated>
-      <id>http://localhost:4000/ec2-ssh</id>
-      <content type="html" xml:base="http://localhost:4000/ec2-ssh">&lt;p&gt;This is a long story so I will leave out extra details to keep it (somewhat) brief.&lt;/p&gt;
+      <id>/ec2-ssh</id>
+      <content type="html" xml:base="/ec2-ssh">&lt;p&gt;This is a long story so I will leave out extra details to keep it (somewhat) brief.&lt;/p&gt;
 
 &lt;p&gt;I was working with an AWS EC2 instance with wordpress installed. When you host your own wordpress sites, you need to keep up with server maintenance. I needed to update the PHP version for security reasons and I found a tutorial that told me to update ubuntu first. Once the update was complete, I no longer had ssh access to my EC2.&lt;/p&gt;
 
@@ -543,11 +543,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">AWS Lambda</title>
-      <link href="http://localhost:4000/lambda" rel="alternate" type="text/html" title="AWS Lambda" />
+      <link href="/lambda" rel="alternate" type="text/html" title="AWS Lambda" />
       <published>2021-04-11T14:30:00-06:00</published>
       <updated>2021-04-11T14:30:00-06:00</updated>
-      <id>http://localhost:4000/lambda</id>
-      <content type="html" xml:base="http://localhost:4000/lambda">&lt;p&gt;AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.&lt;/p&gt;
+      <id>/lambda</id>
+      <content type="html" xml:base="/lambda">&lt;p&gt;AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.&lt;/p&gt;
 
 &lt;p&gt;There are so many options to choose from when setting up your sevices with AWS. Until now in my Udemy course, a lot of what we have seen involves some sort of servers. A lot of time was spent talking about EC2s, which is basically a computer/server in the cloud that runs your apps.&lt;/p&gt;
 
@@ -732,11 +732,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">AWS SNS</title>
-      <link href="http://localhost:4000/sns" rel="alternate" type="text/html" title="AWS SNS" />
+      <link href="/sns" rel="alternate" type="text/html" title="AWS SNS" />
       <published>2021-03-28T13:30:00-06:00</published>
       <updated>2021-03-28T13:30:00-06:00</updated>
-      <id>http://localhost:4000/sns</id>
-      <content type="html" xml:base="http://localhost:4000/sns">&lt;p&gt;Here is what I am learning about AWS SNS (Simple Notification Service), using my Udemy course as a jumping off point.&lt;/p&gt;
+      <id>/sns</id>
+      <content type="html" xml:base="/sns">&lt;p&gt;Here is what I am learning about AWS SNS (Simple Notification Service), using my Udemy course as a jumping off point.&lt;/p&gt;
 
 &lt;p&gt;I have already seen SNS to a small degree at work. I was tasked with creating alarms that would send notifications to our Slack channel if there were any errors in one of our services.&lt;/p&gt;
 
@@ -794,11 +794,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">AWS SQS</title>
-      <link href="http://localhost:4000/sqs" rel="alternate" type="text/html" title="AWS SQS" />
+      <link href="/sqs" rel="alternate" type="text/html" title="AWS SQS" />
       <published>2021-03-22T18:30:00-06:00</published>
       <updated>2021-03-22T18:30:00-06:00</updated>
-      <id>http://localhost:4000/sqs</id>
-      <content type="html" xml:base="http://localhost:4000/sqs">&lt;p&gt;SQS is one of several AWS services that allows communication between your AWS resources. Today I am learning about it in my Udemy course. Here are some notes.&lt;/p&gt;
+      <id>/sqs</id>
+      <content type="html" xml:base="/sqs">&lt;p&gt;SQS is one of several AWS services that allows communication between your AWS resources. Today I am learning about it in my Udemy course. Here are some notes.&lt;/p&gt;
 
 &lt;p&gt;SQS (Simple Queue Service) accepts messages from one microservice and delivers them to another. Your microservices do not communicate directly - this is asynchronous communication. SQS is able to scale up or down depending on traffic.&lt;/p&gt;
 
@@ -893,11 +893,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">AWS Cloudformation - intrinsic functions</title>
-      <link href="http://localhost:4000/cloudformation-intrinsic-functions" rel="alternate" type="text/html" title="AWS Cloudformation - intrinsic functions" />
+      <link href="/cloudformation-intrinsic-functions" rel="alternate" type="text/html" title="AWS Cloudformation - intrinsic functions" />
       <published>2021-03-15T14:30:00-06:00</published>
       <updated>2021-03-15T14:30:00-06:00</updated>
-      <id>http://localhost:4000/cloudformation-intrinsic-functions</id>
-      <content type="html" xml:base="http://localhost:4000/cloudformation-intrinsic-functions">&lt;p&gt;AWS Cloudformation is a really great AWS service for creating “infrastructure as code”.&lt;/p&gt;
+      <id>/cloudformation-intrinsic-functions</id>
+      <content type="html" xml:base="/cloudformation-intrinsic-functions">&lt;p&gt;AWS Cloudformation is a really great AWS service for creating “infrastructure as code”.&lt;/p&gt;
 
 &lt;p&gt;If you have ever dabbled in AWS it’s possible that you have been creating your resources in the browser in the AWS console. I will say I enjoy creating my resources this way because I am a visual person and sometimes enjoy using a GUI. However, when working on real-world projects that involve other developers and AWS accounts and environments, it would become tedious to manually create these over and over again in the console. And it would be awful to have to re-create them in the case that they are accidentally deleted.&lt;/p&gt;
 

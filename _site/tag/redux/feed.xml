@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/redux/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/redux/feed.xml</id>
+  <link href="/tag/redux/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/redux/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Learning Redux</title>
-      <link href="http://localhost:4000/redux" rel="alternate" type="text/html" title="Learning Redux" />
+      <link href="/redux" rel="alternate" type="text/html" title="Learning Redux" />
       <published>2021-01-11T14:30:00-07:00</published>
       <updated>2021-01-11T14:30:00-07:00</updated>
-      <id>http://localhost:4000/redux</id>
-      <content type="html" xml:base="http://localhost:4000/redux">&lt;p&gt;Currently I am learning redux to help me build a small react application. I am following along with &lt;a href=&quot;https://www.youtube.com/watch?v=93p3LxR9xfM&quot;&gt;Brad Traversy’s 2018 tutorial on redux found here&lt;/a&gt;. I am taking notes while following this tutorial.&lt;/p&gt;
+      <id>/redux</id>
+      <content type="html" xml:base="/redux">&lt;p&gt;Currently I am learning redux to help me build a small react application. I am following along with &lt;a href=&quot;https://www.youtube.com/watch?v=93p3LxR9xfM&quot;&gt;Brad Traversy’s 2018 tutorial on redux found here&lt;/a&gt;. I am taking notes while following this tutorial.&lt;/p&gt;
 
 &lt;p&gt;I also found &lt;a href=&quot;https://www.youtube.com/watch?v=oD3miHerQbY&quot;&gt;this 5 minute tutorial from freeCodeCamp&lt;/a&gt; to be a really simple explanation of redux and it helped me understand the basic concepts before jumping into the complicated stuff.&lt;/p&gt;
 

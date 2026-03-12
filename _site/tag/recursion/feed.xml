@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/recursion/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/recursion/feed.xml</id>
+  <link href="/tag/recursion/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/recursion/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Binary trees; isSameTree problem</title>
-      <link href="http://localhost:4000/binary-trees" rel="alternate" type="text/html" title="Binary trees; isSameTree problem" />
+      <link href="/binary-trees" rel="alternate" type="text/html" title="Binary trees; isSameTree problem" />
       <published>2023-07-28T15:30:00-06:00</published>
       <updated>2023-07-28T15:30:00-06:00</updated>
-      <id>http://localhost:4000/binary-trees</id>
-      <content type="html" xml:base="http://localhost:4000/binary-trees">&lt;p&gt;It’s time to dive into some binary tree coding problems.&lt;/p&gt;
+      <id>/binary-trees</id>
+      <content type="html" xml:base="/binary-trees">&lt;p&gt;It’s time to dive into some binary tree coding problems.&lt;/p&gt;
 
 &lt;p&gt;But I think I need to learn more about binary trees, and how to tackle these kinds of problems first, so I actually have a chance of getting them right.&lt;/p&gt;
 

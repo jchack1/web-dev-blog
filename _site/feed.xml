@@ -1,4 +1,523 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-29T22:51:18-07:00</updated><id>http://localhost:4000/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">Problem solving strategy for code problems</title><link href="http://localhost:4000/algorithm-problem-solving" rel="alternate" type="text/html" title="Problem solving strategy for code problems" /><published>2025-01-29T16:30:00-07:00</published><updated>2025-01-29T16:30:00-07:00</updated><id>http://localhost:4000/algorithm-problem-solving</id><content type="html" xml:base="http://localhost:4000/algorithm-problem-solving">&lt;p&gt;I’m continuing to work on the JavaScript Algorithms and Data Structures course on Udemy. Here are some notes outlining the recommended problem solving strategy.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-03-12T17:18:20-06:00</updated><id>/</id><title type="html">Julia Hack</title><subtitle>Web development blog</subtitle><entry><title type="html">How Electron apps can handle excel downloads</title><link href="/electron-file-downloads" rel="alternate" type="text/html" title="How Electron apps can handle excel downloads" /><published>2026-03-10T17:30:00-06:00</published><updated>2026-03-10T17:30:00-06:00</updated><id>/electron-file-downloads</id><content type="html" xml:base="/electron-file-downloads">&lt;p&gt;I’m getting into Electron for some work projects and have recently been learning more about how it works.&lt;/p&gt;
+
+&lt;p&gt;I asked an AI agent, using OpenCode, to break down an existing project’s structure, particularly regarding how we can download an excel file from our API. Here’s what it gave me. Normally I wouldn’t just copy/paste text from an AI, but I actually found the explanation helpful, so I want to keep it here for my future reference. At the end, after the AI content, I will share some of my thoughts on using AI in this way.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-excel-file-downloads-work-ai-agents-take&quot;&gt;How Excel File Downloads Work (AI agent’s take)&lt;/h2&gt;
+
+&lt;h2 id=&quot;what-is-electron&quot;&gt;What Is Electron?&lt;/h2&gt;
+
+&lt;p&gt;Before diving in, here’s a quick explanation: Electron is a framework that lets you build desktop apps using web technologies (HTML, CSS, JavaScript/TypeScript). An Electron app has two main parts:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Main Process&lt;/strong&gt;: The “backend” that runs on your computer, with full access to your file system, dialog boxes, and other system features&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Renderer Process&lt;/strong&gt;: The “frontend” (your React app) that displays the user interface&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These two processes can’t talk to each other directly—they communicate through a special mechanism called &lt;strong&gt;IPC&lt;/strong&gt; (Inter-Process Communication).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;key-electron-concepts-explained&quot;&gt;Key Electron Concepts Explained&lt;/h2&gt;
+
+&lt;h3 id=&quot;what-is-ipc&quot;&gt;What Is IPC?&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;IPC&lt;/strong&gt; stands for &lt;strong&gt;Inter-Process Communication&lt;/strong&gt;. It’s a way for two separate processes to talk to each other.&lt;/p&gt;
+
+&lt;p&gt;In Electron:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The renderer (your React app) is like a website running in a sandboxed browser&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The main process is like a Node.js server with full system access&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;They can’t directly access each other’s variables or functions&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;IPC is the “telephone line” that lets them send messages back and forth&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Think of it like this: the renderer is a customer (your React app) and the main process is a bank teller. The customer can’t walk into the vault directly—they must ask the teller to do things for them. IPC is the request system that passes messages between them.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-are-ipc-handlers&quot;&gt;What Are IPC Handlers?&lt;/h3&gt;
+
+&lt;p&gt;An &lt;strong&gt;IPC handler&lt;/strong&gt; is a function in the main process that “handles” requests coming from the renderer. It’s like a receptionist who receives requests and routes them to the right person.&lt;/p&gt;
+
+&lt;p&gt;In this app, handlers are defined in files like &lt;code class=&quot;highlighter-rouge&quot;&gt;excelOperations.js&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// This is an IPC handler - it waits for requests named 'saveExcelBlob'&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;ipcMain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;saveExcelBlob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Do something with the file (show dialog, save to disk, etc.)&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;File saved successfully&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The handler does three things:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Listens&lt;/strong&gt; for a specific request name (&lt;code class=&quot;highlighter-rouge&quot;&gt;'saveExcelBlob'&lt;/code&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Processes&lt;/strong&gt; the request (shows dialog, writes file, etc.)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Responds&lt;/strong&gt; back to the renderer with a result&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;how-are-ipc-handlers-registered&quot;&gt;How Are IPC Handlers Registered?&lt;/h3&gt;
+
+&lt;p&gt;In this app, IPC handlers are registered in &lt;code class=&quot;highlighter-rouge&quot;&gt;main.js&lt;/code&gt; when the app starts. Here’s how it works:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt;: Import the handler functions at the top of &lt;code class=&quot;highlighter-rouge&quot;&gt;main.js&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;registerExcelOperationsHandlers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./ipcHandlers/excelOperations&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 2&lt;/strong&gt;: Call them when creating the main window, passing in the window object:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createMainWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mainWindow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BrowserWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({...});&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Register handlers here&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;registerExcelOperationsHandlers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mainWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 3&lt;/strong&gt;: Inside the handler file (&lt;code class=&quot;highlighter-rouge&quot;&gt;excelOperations.js&lt;/code&gt;), the function registers each handler with &lt;code class=&quot;highlighter-rouge&quot;&gt;ipcMain.handle()&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;registerExcelOperationsHandlers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mainWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;ipcMain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;saveExcel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tableData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fileTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// handler code&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;ipcMain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;saveExcelBlob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// handler code&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;mainWindow&lt;/code&gt; parameter is passed because some dialogs need to be associated with a window (they’re “modal” to that window).&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-the-context-bridge&quot;&gt;What Is the Context Bridge?&lt;/h3&gt;
+
+&lt;p&gt;The &lt;strong&gt;context bridge&lt;/strong&gt; is a safety feature that controls what the renderer can access. Without it, the renderer would have &lt;strong&gt;no way&lt;/strong&gt; to communicate with the main process (completely isolated for security).&lt;/p&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;preload.js&lt;/code&gt;, the context bridge is set up like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contextBridge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ipcRenderer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;electron&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;contextBridge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exposeInMainWorld&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;electron&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;saveExcelBlob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;ipcRenderer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;invoke&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;saveExcelBlob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here’s what each part does:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;contextBridge&lt;/code&gt;&lt;/strong&gt;: Electron’s API for safely exposing things to the renderer&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;exposeInMainWorld('electron', {...})&lt;/code&gt;&lt;/strong&gt;: Makes this object available as &lt;code class=&quot;highlighter-rouge&quot;&gt;window.electron&lt;/code&gt; in your React code&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ipcRenderer.invoke()&lt;/code&gt;&lt;/strong&gt;: Sends a message to the main process and waits for a response&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The key security benefit: &lt;strong&gt;you choose exactly what to expose&lt;/strong&gt;. In this app, the renderer can only call the specific functions listed in the preload script. It can’t:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Access the file system directly&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Open dialogs directly&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Run any other Node.js code&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is called &lt;strong&gt;context isolation&lt;/strong&gt;—the renderer’s JavaScript environment is isolated from Node.js, and it can only communicate through the bridge you explicitly create.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary-of-the-relationship&quot;&gt;Summary of the Relationship&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;main.js
+
+   │
+   ├── imports handler functions from ipcHandlers/*.js
+   │
+
+   ▼
+
+registerExcelOperationsHandlers(mainWindow)
+
+   │
+   ├── registers ipcMain.handle() for each operation
+   │
+
+   ▼
+
+excelOperations.js defines handlers like:
+
+   │
+   ├── 'saveExcel'    → writes table data to Excel
+   ├── 'saveExcel2'   → writes JSON to Excel
+   └── 'saveExcelBlob' → saves base64 data to file
+
+       │
+
+       ◄─────────────── receives requests via IPC
+
+preload.js
+
+   │
+   ├── creates window.electron.saveExcelBlob()
+   │
+
+   ▼
+
+React code (useDownloadJobsExcel.ts)
+
+   │
+   └── calls window.electron.saveExcelBlob()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;the-complete-download-flow&quot;&gt;The Complete Download Flow&lt;/h2&gt;
+
+&lt;p&gt;Here’s what happens when you click a button to download an Excel file of jobs:&lt;/p&gt;
+
+&lt;h3 id=&quot;step-1-user-initiates-download-react-hook&quot;&gt;Step 1: User Initiates Download (React Hook)&lt;/h3&gt;
+
+&lt;p&gt;The process starts in &lt;code class=&quot;highlighter-rouge&quot;&gt;useDownloadJobsExcel.ts&lt;/code&gt;, which is a React hook that manages the download functionality:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// The hook provides a function that gets called when user clicks the download button&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;downloadjobsExcel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clientName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// ... validation and loading state handling&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// This calls the API to get the Excel data&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blobResult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exportjobsByClientID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Convert the blob to base64 (more on this later)&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arrayBufferToBase64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arrayBuffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Call the Electron &quot;saveExcelBlob&quot; function to show a save dialog&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;electron&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;saveExcelBlob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;base64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Key point&lt;/strong&gt;: The React code runs in the “renderer” (frontend), but it can’t directly access your file system or show save dialogs. That’s why it needs Electron’s help.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;step-2-fetching-data-from-the-api&quot;&gt;Step 2: Fetching Data from the API&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;exportjobsByClientID&lt;/code&gt; function in &lt;code class=&quot;highlighter-rouge&quot;&gt;jobAPI.ts&lt;/code&gt; makes an HTTP request to the backend API:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exportjobsByClientID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;clientID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Blob&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// The API returns raw binary data (a &quot;Blob&quot;), not JSON&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;baseUrl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/api/jobs/client/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/export`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;GET&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+      &lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;authorization&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`Bearer &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+        &lt;span class=&quot;na&quot;&gt;sessionid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sessionid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Convert the response to a Blob (binary data)&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blob&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;blob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: This function uses &lt;code class=&quot;highlighter-rouge&quot;&gt;fetch&lt;/code&gt; directly instead of the usual &lt;code class=&quot;highlighter-rouge&quot;&gt;fetchData&lt;/code&gt; helper because it needs raw binary data (the Excel file), not JSON.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;step-3-converting-data-for-electron&quot;&gt;Step 3: Converting Data for Electron&lt;/h3&gt;
+
+&lt;p&gt;Back in the React hook, the binary blob is converted to a &lt;strong&gt;base64 string&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Why convert to base64?&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Electron's IPC (communication between processes) has trouble sending raw binary data.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Base64 is a way to represent binary data as text characters.&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arrayBufferToBase64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arrayBuffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;step-4-calling-electron-via-the-preload-bridge&quot;&gt;Step 4: Calling Electron via the Preload Bridge&lt;/h3&gt;
+
+&lt;p&gt;The React code calls &lt;code class=&quot;highlighter-rouge&quot;&gt;window.electron.saveExcelBlob(base64, fileName)&lt;/code&gt;. But wait—what is &lt;code class=&quot;highlighter-rouge&quot;&gt;window.electron&lt;/code&gt;?&lt;/p&gt;
+
+&lt;p&gt;This is defined in &lt;code class=&quot;highlighter-rouge&quot;&gt;preload.js&lt;/code&gt;, which acts as a bridge between the renderer and main processes:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// In preload.js&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;contextBridge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exposeInMainWorld&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;electron&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// This exposes the saveExcelBlob function to the renderer&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;saveExcelBlob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;ipcRenderer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;invoke&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;saveExcelBlob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;What does this do?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;contextBridge.exposeInMainWorld&lt;/code&gt; makes functions available in your React app’s &lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt; object&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ipcRenderer.invoke&lt;/code&gt; sends a message to the main process, asking it to run the &lt;code class=&quot;highlighter-rouge&quot;&gt;'saveExcelBlob'&lt;/code&gt; handler&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;step-5-main-process-handles-the-request&quot;&gt;Step 5: Main Process Handles the Request&lt;/h3&gt;
+
+&lt;p&gt;The main process (in &lt;code class=&quot;highlighter-rouge&quot;&gt;main.js&lt;/code&gt;) has already registered a handler for &lt;code class=&quot;highlighter-rouge&quot;&gt;'saveExcelBlob'&lt;/code&gt;. This is set up in &lt;code class=&quot;highlighter-rouge&quot;&gt;excelOperations.js&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// In excelOperations.js (registered in main.js)&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;ipcMain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;saveExcelBlob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 1. Show a &quot;Save As&quot; dialog so user can choose where to save&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;showSaveDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;defaultPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+    &lt;span class=&quot;na&quot;&gt;filters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Excel Files&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;extensions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;xlsx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}],&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// 2. If user didn't cancel, write the file to the chosen location&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;canceled&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Convert base64 back to binary buffer&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buffer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;base64&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Write to the file system&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fsPromises&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;writeFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;File saved successfully&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;What happens here:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dialog.showSaveDialog()&lt;/code&gt; opens a native OS dialog where you choose where to save the file&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The base64 data is converted back to a binary Buffer&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;fsPromises.writeFile()&lt;/code&gt; saves the file to the chosen path&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;summary-diagram&quot;&gt;Summary Diagram&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;┌─────────────────────────────────────────────────────────────────┐
+
+│                      RENDERER PROCESS (React)                  │
+
+│                                                                 │
+
+│  1. userDownloadjobsExcel()                               │
+
+│         │                                                       │
+
+│         ▼                                                       │
+
+│  2. exportjobsByClientID() ──────► API Server             │
+
+│         │                        (gets Excel as Blob)           │
+
+│         ▼                                                       │
+
+│  3. Convert Blob → ArrayBuffer → Base64                        │
+
+│         │                                                       │
+
+│         ▼                                                       │
+
+│  4. window.electron.saveExcelBlob(base64, filename)           │
+
+│         │                                                       │
+
+│         └────────────── ipcRenderer.invoke() ─────────────┐   │
+
+└─────────────────────────────────────────────────────────────┘   │
+
+                                                              │
+
+                              ┌────────────────────────────────┘
+
+                              │
+
+                              ▼
+
+┌─────────────────────────────────────────────────────────────────┐
+
+│                       MAIN PROCESS (Node.js)                    │
+
+│                                                                 │
+
+│  5. ipcMain.handle('saveExcelBlob', ...)                      │
+
+│         │                                                       │
+
+│         ▼                                                       │
+
+│  6. dialog.showSaveDialog() ──► User sees &quot;Save As&quot; dialog     │
+
+│         │                                                       │
+
+│         ▼                                                       │
+
+│  7. Buffer.from(base64, 'base64') ──► Convert back to binary   │
+
+│         │                                                       │
+
+│         ▼                                                       │
+
+│  8. fsPromises.writeFile() ──► File saved to disk!            │
+
+└─────────────────────────────────────────────────────────────────┘
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;why-is-this-architecture-necessary&quot;&gt;Why Is This Architecture Necessary?&lt;/h2&gt;
+
+&lt;p&gt;You might wonder why there are so many steps. Here’s why:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Security&lt;/strong&gt;: Electron apps run web code, which could be dangerous if it had direct access to your file system. By default, the renderer process can’t access files.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Context Isolation&lt;/strong&gt;: The preload script carefully exposes only specific functions to the renderer, preventing malicious code from causing harm.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;IPC Serialization&lt;/strong&gt;: When sending data between processes, it must be serializable. Raw binary data doesn’t serialize well, so we convert to base64.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;key-files-involved&quot;&gt;Key Files Involved&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;File&lt;/td&gt;
+      &lt;td&gt;Purpose&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;|——|———|&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;useDownloadJobsExcel.ts&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;React hook that orchestrates the download&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jobAPI.ts&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Makes HTTP request to get Excel data from API&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;preload.js&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Bridge that exposes Electron functions to React&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;excelOperations.js&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Main process handlers for file operations&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;main.js&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Electron app entry point that registers handlers&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;end-of-ai-generated-content---my-take--reflection-on-using-ai-agents-to-analyze-and-learn-about-a-codebase&quot;&gt;End of AI generated content - my take / reflection on using AI agents to analyze and learn about a codebase&lt;/h2&gt;
+
+&lt;p&gt;This is a bit tangential to the original topic of Electron.&lt;/p&gt;
+
+&lt;p&gt;I was surprised at how well the agent analyzed the codebase given my original prompt, which probably could have been written better. I don’t remember exactly what I asked, but it was probably something along the lines of “given these files a,b, and c, explain to me how file downloads are done in an electron app - assume I don’t know very much about electron”.&lt;/p&gt;
+
+&lt;p&gt;The output it gave me, with the explanations of IPC, renderer, and main processes, was quite helpful for my learning, especially seeing the real files involved.&lt;/p&gt;
+
+&lt;p&gt;Sometimes I’m concerned about whether coding with AI will take the fun out of it - after all, I got into this mostly because I loved tinkering around making front-ends. That was fully hands-on.&lt;/p&gt;
+
+&lt;p&gt;I couldn’t help but feel, however, that having tools like this that could help explain a codebase to me would have been a complete &lt;strong&gt;gamechanger&lt;/strong&gt; when I was starting out as a junior, feeling lost in legacy codebases without much documentation. If I could make my own documentation with these tools, I would have been up to speed a lot faster.&lt;/p&gt;
+
+&lt;p&gt;I think a lot of these CEOs who are saying that junior/entry level roles are not going to be needed any more are not considering this - sure, you could delegate junior level work to an AI. But, AI can assist a junior to be more productive (as long as they are still given the space to learn hands-on) than in previous generations. And then there’s the (hopefully obvious) point - we need juniors to get our next mid and senior level developers.&lt;/p&gt;
+
+&lt;p&gt;Ok, getting off my soapbox now. It’s been interesting trying out these new tools. I’ll probably end up making more posts about using AI tools while building projects.&lt;/p&gt;</content><author><name></name></author><category term="electron" /><category term="react" /><category term="downloads" /><summary type="html">I’m getting into Electron for some work projects and have recently been learning more about how it works.</summary></entry><entry><title type="html">Problem solving strategy for code problems</title><link href="/algorithm-problem-solving" rel="alternate" type="text/html" title="Problem solving strategy for code problems" /><published>2025-01-29T16:30:00-07:00</published><updated>2025-01-29T16:30:00-07:00</updated><id>/algorithm-problem-solving</id><content type="html" xml:base="/algorithm-problem-solving">&lt;p&gt;I’m continuing to work on the JavaScript Algorithms and Data Structures course on Udemy. Here are some notes outlining the recommended problem solving strategy.&lt;/p&gt;
 
 &lt;h3 id=&quot;what-is-an-algorithm&quot;&gt;What is an algorithm?&lt;/h3&gt;
 
@@ -78,7 +597,7 @@
   &lt;li&gt;can you improve the performance?&lt;/li&gt;
   &lt;li&gt;any other ways to refactor? does it follow the style guides of the company? is it formatted well?&lt;/li&gt;
   &lt;li&gt;how do others solve this problem? Even ask an interviewer this&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="computer-science" /><category term="problem-solving" /><category term="coding-problems" /><summary type="html">I’m continuing to work on the JavaScript Algorithms and Data Structures course on Udemy. Here are some notes outlining the recommended problem solving strategy.</summary></entry><entry><title type="html">Learning Git Workflows</title><link href="http://localhost:4000/github-workflows" rel="alternate" type="text/html" title="Learning Git Workflows" /><published>2024-12-27T16:30:00-07:00</published><updated>2024-12-27T16:30:00-07:00</updated><id>http://localhost:4000/github-workflows</id><content type="html" xml:base="http://localhost:4000/github-workflows">&lt;p&gt;In order to get a better idea of how to manage our branches in github at work, we took a LinkedIn Learning course on git workflows. Here are some notes I took during the course.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="computer-science" /><category term="problem-solving" /><category term="coding-problems" /><summary type="html">I’m continuing to work on the JavaScript Algorithms and Data Structures course on Udemy. Here are some notes outlining the recommended problem solving strategy.</summary></entry><entry><title type="html">Learning Git Workflows</title><link href="/github-workflows" rel="alternate" type="text/html" title="Learning Git Workflows" /><published>2024-12-27T16:30:00-07:00</published><updated>2024-12-27T16:30:00-07:00</updated><id>/github-workflows</id><content type="html" xml:base="/github-workflows">&lt;p&gt;In order to get a better idea of how to manage our branches in github at work, we took a LinkedIn Learning course on git workflows. Here are some notes I took during the course.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Git workflow:&lt;/strong&gt; an agreement amongst a dev team that defines how source code is managed&lt;/p&gt;
 
@@ -253,7 +772,7 @@
   &lt;li&gt;targeted - to certain user segments&lt;/li&gt;
   &lt;li&gt;rollout - increase % of users gradually&lt;/li&gt;
   &lt;li&gt;can be added with simple if statements, or with a library&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="git" /><category term="version-control" /><summary type="html">In order to get a better idea of how to manage our branches in github at work, we took a LinkedIn Learning course on git workflows. Here are some notes I took during the course.</summary></entry><entry><title type="html">Big O For JavaScript Objects and Arrays</title><link href="http://localhost:4000/object-array-efficiency" rel="alternate" type="text/html" title="Big O For JavaScript Objects and Arrays" /><published>2024-10-19T18:30:00-06:00</published><updated>2024-10-19T18:30:00-06:00</updated><id>http://localhost:4000/object-array-efficiency</id><content type="html" xml:base="http://localhost:4000/object-array-efficiency">&lt;p&gt;Quick post to summarize different operations on objects and arrays.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="git" /><category term="version-control" /><summary type="html">In order to get a better idea of how to manage our branches in github at work, we took a LinkedIn Learning course on git workflows. Here are some notes I took during the course.</summary></entry><entry><title type="html">Big O For JavaScript Objects and Arrays</title><link href="/object-array-efficiency" rel="alternate" type="text/html" title="Big O For JavaScript Objects and Arrays" /><published>2024-10-19T18:30:00-06:00</published><updated>2024-10-19T18:30:00-06:00</updated><id>/object-array-efficiency</id><content type="html" xml:base="/object-array-efficiency">&lt;p&gt;Quick post to summarize different operations on objects and arrays.&lt;/p&gt;
 
 &lt;p&gt;This content came from a lesson in JavaScript Algorithms and Data Structures Masterclass on Udemy.&lt;/p&gt;
 
@@ -292,7 +811,7 @@
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;forEach()&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sort()&lt;/code&gt; is O(n log(n)) - because there are comparisons and other complex operations going on for each element in the array:&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><category term="javascript" /><summary type="html">Quick post to summarize different operations on objects and arrays.</summary></entry><entry><title type="html">Revisiting Data Structures and Algorithms - Big O Notation</title><link href="http://localhost:4000/big-o" rel="alternate" type="text/html" title="Revisiting Data Structures and Algorithms - Big O Notation" /><published>2024-10-19T17:30:00-06:00</published><updated>2024-10-19T17:30:00-06:00</updated><id>http://localhost:4000/big-o</id><content type="html" xml:base="http://localhost:4000/big-o">&lt;p&gt;I am learning about data structures and algorithms again.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sort()&lt;/code&gt; is O(n log(n)) - because there are comparisons and other complex operations going on for each element in the array:&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><category term="javascript" /><summary type="html">Quick post to summarize different operations on objects and arrays.</summary></entry><entry><title type="html">Revisiting Data Structures and Algorithms - Big O Notation</title><link href="/big-o" rel="alternate" type="text/html" title="Revisiting Data Structures and Algorithms - Big O Notation" /><published>2024-10-19T17:30:00-06:00</published><updated>2024-10-19T17:30:00-06:00</updated><id>/big-o</id><content type="html" xml:base="/big-o">&lt;p&gt;I am learning about data structures and algorithms again.&lt;/p&gt;
 
 &lt;p&gt;A while ago I wanted to try Leetcode to get better at solving code problems. It was good practice, but I found that if I picked random problems to work on, I could usually come with a solution, but the problems sometimes are testing your knowledge of specific algorithms. How am I supposed to get the “correct” answer if I have never studied the algorithm? I don’t want to just google the answer to every question, this defeats the whole purpose.&lt;/p&gt;
 
@@ -382,7 +901,7 @@
 
 &lt;p&gt;&lt;a href=&quot;https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs/x2ec2f6f830c9fb89:log-intro/a/intro-to-logarithms&quot;&gt;Here’s a khanacedemy article&lt;/a&gt; explaining logarithms in a beginner friendly way.&lt;/p&gt;
 
-&lt;p&gt;O(log(n)) is one of the best ones you can have, second to constant time. On a graph, it is essentially the opposite of an exponential graph - after an initial increase, the curve flattens out.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><summary type="html">I am learning about data structures and algorithms again.</summary></entry><entry><title type="html">Learning Jest - some basics</title><link href="http://localhost:4000/jest-learning" rel="alternate" type="text/html" title="Learning Jest - some basics" /><published>2024-10-17T16:30:00-06:00</published><updated>2024-10-17T16:30:00-06:00</updated><id>http://localhost:4000/jest-learning</id><content type="html" xml:base="http://localhost:4000/jest-learning">&lt;p&gt;I’m starting to get into testing with Jest for a work project.&lt;/p&gt;
+&lt;p&gt;O(log(n)) is one of the best ones you can have, second to constant time. On a graph, it is essentially the opposite of an exponential graph - after an initial increase, the curve flattens out.&lt;/p&gt;</content><author><name></name></author><category term="computer-science" /><category term="data-structures" /><summary type="html">I am learning about data structures and algorithms again.</summary></entry><entry><title type="html">Learning Jest - some basics</title><link href="/jest-learning" rel="alternate" type="text/html" title="Learning Jest - some basics" /><published>2024-10-17T16:30:00-06:00</published><updated>2024-10-17T16:30:00-06:00</updated><id>/jest-learning</id><content type="html" xml:base="/jest-learning">&lt;p&gt;I’m starting to get into testing with Jest for a work project.&lt;/p&gt;
 
 &lt;p&gt;We landed on using Jest and React Testing Library with our React project, as it works nicely (so I’ve heard) with apps set up with create-react-app.&lt;/p&gt;
 
@@ -556,7 +1075,7 @@
 
 &lt;p&gt;Truthfully, I am a bit confused by we need to place a mocks folder near the function we are testing in the code. I’d like to keep everything in the &lt;code class=&quot;highlighter-rouge&quot;&gt;__tests__&lt;/code&gt; directory. I found &lt;a href=&quot;https://stackoverflow.com/questions/51303189/how-to-move-mocks-folder-in-jest-to-test&quot;&gt;this stackoverflow post&lt;/a&gt; that could help work around this, but haven’t looked into it yet.&lt;/p&gt;
 
-&lt;p&gt;Overall, it seems pretty straight-forward. We’ll see how well it works once we actually get started.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="testing" /><summary type="html">I’m starting to get into testing with Jest for a work project.</summary></entry><entry><title type="html">JavaScript modules - CommonJS vs ES modules</title><link href="http://localhost:4000/js-modules" rel="alternate" type="text/html" title="JavaScript modules - CommonJS vs ES modules" /><published>2024-10-10T16:30:00-06:00</published><updated>2024-10-10T16:30:00-06:00</updated><id>http://localhost:4000/js-modules</id><content type="html" xml:base="http://localhost:4000/js-modules">&lt;h3 id=&quot;why-do-we-need-modules-in-javascript&quot;&gt;Why do we need modules in JavaScript?&lt;/h3&gt;
+&lt;p&gt;Overall, it seems pretty straight-forward. We’ll see how well it works once we actually get started.&lt;/p&gt;</content><author><name></name></author><category term="javascript" /><category term="testing" /><summary type="html">I’m starting to get into testing with Jest for a work project.</summary></entry><entry><title type="html">JavaScript modules - CommonJS vs ES modules</title><link href="/js-modules" rel="alternate" type="text/html" title="JavaScript modules - CommonJS vs ES modules" /><published>2024-10-10T16:30:00-06:00</published><updated>2024-10-10T16:30:00-06:00</updated><id>/js-modules</id><content type="html" xml:base="/js-modules">&lt;h3 id=&quot;why-do-we-need-modules-in-javascript&quot;&gt;Why do we need modules in JavaScript?&lt;/h3&gt;
 
 &lt;p&gt;There are a lot of good reasons to separate our code into modules.&lt;/p&gt;
 
@@ -604,7 +1123,7 @@
   &lt;li&gt;&lt;a href=&quot;https://blog.logrocket.com/commonjs-vs-es-modules-node-js/&quot;&gt;https://blog.logrocket.com/commonjs-vs-es-modules-node-js/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=d-0uCi61rtg&quot;&gt;https://www.youtube.com/watch?v=d-0uCi61rtg&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">Why do we need modules in JavaScript?</summary></entry><entry><title type="html">Developing a chat app using AWS AppSync</title><link href="http://localhost:4000/appsync-chat-app" rel="alternate" type="text/html" title="Developing a chat app using AWS AppSync" /><published>2023-11-21T16:30:00-07:00</published><updated>2023-11-21T16:30:00-07:00</updated><id>http://localhost:4000/appsync-chat-app</id><content type="html" xml:base="http://localhost:4000/appsync-chat-app">&lt;p&gt;I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">Why do we need modules in JavaScript?</summary></entry><entry><title type="html">Developing a chat app using AWS AppSync</title><link href="/appsync-chat-app" rel="alternate" type="text/html" title="Developing a chat app using AWS AppSync" /><published>2023-11-21T16:30:00-07:00</published><updated>2023-11-21T16:30:00-07:00</updated><id>/appsync-chat-app</id><content type="html" xml:base="/appsync-chat-app">&lt;p&gt;I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.&lt;/p&gt;
 
 &lt;p&gt;There were some new features rolled out in AppSync since I started my work project, so I wanted to try them out. It also gave me the opportunity to learn more about setting up authentication with Amplify and Cognito, which I had never tackled before, as authentication had been set up at work by another developer.&lt;/p&gt;
 
@@ -642,7 +1161,7 @@
   &lt;li&gt;&lt;a href=&quot;https://github.com/mavi888/web-client-appsync-test/tree/master&quot;&gt;Foobar Serverless github repo and accompanying youtube video&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/sid88in/serverless-appsync-plugin/tree/master/doc&quot;&gt;serverless-appsync-plugin docs&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/appsync/latest/devguide/what-is-appsync.html&quot;&gt;AWS AppSync developer guide&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="aws" /><category term="serverless" /><category term="appsync" /><summary type="html">I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.</summary></entry><entry><title type="html">Ordering elements in a PDF, and dealing with an ATS</title><link href="http://localhost:4000/pdfs-and-ats" rel="alternate" type="text/html" title="Ordering elements in a PDF, and dealing with an ATS" /><published>2023-09-12T15:30:00-06:00</published><updated>2023-09-12T15:30:00-06:00</updated><id>http://localhost:4000/pdfs-and-ats</id><content type="html" xml:base="http://localhost:4000/pdfs-and-ats">&lt;p&gt;We’re stepping away from the world of programming for a moment to talk about a design-related topic.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="aws" /><category term="serverless" /><category term="appsync" /><summary type="html">I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.</summary></entry><entry><title type="html">Ordering elements in a PDF, and dealing with an ATS</title><link href="/pdfs-and-ats" rel="alternate" type="text/html" title="Ordering elements in a PDF, and dealing with an ATS" /><published>2023-09-12T15:30:00-06:00</published><updated>2023-09-12T15:30:00-06:00</updated><id>/pdfs-and-ats</id><content type="html" xml:base="/pdfs-and-ats">&lt;p&gt;We’re stepping away from the world of programming for a moment to talk about a design-related topic.&lt;/p&gt;
 
 &lt;p&gt;I’ve recently been working on my resume and have been learning a lot of new things.&lt;/p&gt;
 
@@ -676,7 +1195,7 @@
 
 &lt;p&gt;Despite not being a programming problem, this issue felt a lot like the normal debugging I do day-to-day. I find it so frustrating that these problems you cannot easily see could completely throw off someone’s job search, and they may not even realize it.&lt;/p&gt;
 
-&lt;p&gt;There is a lot of advice given about resumes, and it seems to change constantly. This is a whole separate skill set than a developer skillset. It would be easy to feel like these automated rejections are rejecting your developer skillset and experience, or even you as a person. But it’s truly not that personal. The entities reading this curated summary of your work life aren’t even human. All I can say is keep learning new skills and trying your best.&lt;/p&gt;</content><author><name></name></author><category term="design" /><summary type="html">We’re stepping away from the world of programming for a moment to talk about a design-related topic.</summary></entry><entry><title type="html">Implementing hash tables in JavaScript</title><link href="http://localhost:4000/hash-tables-javascript" rel="alternate" type="text/html" title="Implementing hash tables in JavaScript" /><published>2023-08-10T15:30:00-06:00</published><updated>2023-08-10T15:30:00-06:00</updated><id>http://localhost:4000/hash-tables-javascript</id><content type="html" xml:base="http://localhost:4000/hash-tables-javascript">&lt;p&gt;Hash tables are a commonly used data structure and, apparently, are commonly asked about in interviews.&lt;/p&gt;
+&lt;p&gt;There is a lot of advice given about resumes, and it seems to change constantly. This is a whole separate skill set than a developer skillset. It would be easy to feel like these automated rejections are rejecting your developer skillset and experience, or even you as a person. But it’s truly not that personal. The entities reading this curated summary of your work life aren’t even human. All I can say is keep learning new skills and trying your best.&lt;/p&gt;</content><author><name></name></author><category term="design" /><summary type="html">We’re stepping away from the world of programming for a moment to talk about a design-related topic.</summary></entry><entry><title type="html">Implementing hash tables in JavaScript</title><link href="/hash-tables-javascript" rel="alternate" type="text/html" title="Implementing hash tables in JavaScript" /><published>2023-08-10T15:30:00-06:00</published><updated>2023-08-10T15:30:00-06:00</updated><id>/hash-tables-javascript</id><content type="html" xml:base="/hash-tables-javascript">&lt;p&gt;Hash tables are a commonly used data structure and, apparently, are commonly asked about in interviews.&lt;/p&gt;
 
 &lt;p&gt;Hash tables store data in key-value pairs. They should be used when you are looking for very quick look-ups. Generally, if you search a hash table for a particular key, it should be able to find it for you without having to search the entire data structure, giving look-ups O(1) time.&lt;/p&gt;
 
@@ -884,108 +1403,4 @@
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="algorithms" /><category term="data-structures" /><category term="coding-problems" /><category term="javascript" /><summary type="html">Hash tables are a commonly used data structure and, apparently, are commonly asked about in interviews.</summary></entry><entry><title type="html">Binary trees; isSameTree problem</title><link href="http://localhost:4000/binary-trees" rel="alternate" type="text/html" title="Binary trees; isSameTree problem" /><published>2023-07-28T15:30:00-06:00</published><updated>2023-07-28T15:30:00-06:00</updated><id>http://localhost:4000/binary-trees</id><content type="html" xml:base="http://localhost:4000/binary-trees">&lt;p&gt;It’s time to dive into some binary tree coding problems.&lt;/p&gt;
-
-&lt;p&gt;But I think I need to learn more about binary trees, and how to tackle these kinds of problems first, so I actually have a chance of getting them right.&lt;/p&gt;
-
-&lt;p&gt;Resources:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;This was a quick, &lt;a href=&quot;https://www.youtube.com/watch?v=GzJoqJO1zdI&quot;&gt;helpful video&lt;/a&gt; that summarized binary trees nicely&lt;/li&gt;
-  &lt;li&gt;This &lt;a href=&quot;https://www.youtube.com/watch?v=5cU1ILGy6dM&quot;&gt;video from freeCodeCamp&lt;/a&gt; describes how to deal with binary search trees in JavaScript&lt;/li&gt;
-  &lt;li&gt;This &lt;a href=&quot;https://www.freecodecamp.org/news/binary-search-tree-traversal-inorder-preorder-post-order-for-bst/&quot;&gt;article from freeCodeCamp&lt;/a&gt; summarizing tree traversal&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;compared-to-other-data-structures---linked-lists&quot;&gt;Compared to other data structures - linked lists&lt;/h3&gt;
-
-&lt;p&gt;Like linked lists, trees are made up of nodes that have data and pointers.&lt;/p&gt;
-
-&lt;p&gt;I’ve delved a bit into singly linked-lists, whose nodes have one pointer. In comparison, trees can have multiple pointers to the next nodes. In the case of a binary tree, a node points towards a maximum of 2 child nodes. Each node can have a &lt;code class=&quot;highlighter-rouge&quot;&gt;left&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;right&lt;/code&gt; pointer, comparable to the &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; pointer in a linked list.&lt;/p&gt;
-
-&lt;p&gt;The top node of the tree is called the &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; node, comparable to the &lt;code class=&quot;highlighter-rouge&quot;&gt;head&lt;/code&gt; node of a linked list. Nodes with no children are called &lt;code class=&quot;highlighter-rouge&quot;&gt;leaf&lt;/code&gt; nodes. The path from the root to a leaf is called a &lt;code class=&quot;highlighter-rouge&quot;&gt;branch&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;traversing-a-binary-tree&quot;&gt;Traversing a binary tree&lt;/h3&gt;
-
-&lt;p&gt;For starters, there are two main approaches to code a tree traversal:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;using a &lt;code class=&quot;highlighter-rouge&quot;&gt;while&lt;/code&gt; loop and an “on” pointer (like for linked lists, using a “current” pointer with a while loop)&lt;/li&gt;
-  &lt;li&gt;recursion&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;When you use recursion it’s called branching recursion. Since a node can have multiple children, your stack frame can be branching too.&lt;/p&gt;
-
-&lt;p&gt;Often you need to visit every node in the tree, but how do I know what order to visit in? There are three main types of traversal:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;in-order traversal&lt;/strong&gt;: visit left subtree, then root, then right subtree. Like you’ve moving across the tree from left to right. If you printed out each node as you visted them, they would be in ascending order from left-most to right-most node.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;pre-order traversal&lt;/strong&gt;: visit root, then left subtree, then right subtree. Like you’ve moving from top of tree to bottom (root to leaf). Use if you need to explore the tree from root to leaf, good for making copies of trees.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;post-order traversal&lt;/strong&gt;: visit left subtree, right subtree, then root. Like you’re travelling from the bottom up (leaf to root). Use if you need to explore leaves before roots. Good for deleting a tree.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;coding-problem-issametree-solved-with-recursion&quot;&gt;Coding problem: isSameTree, solved with recursion&lt;/h3&gt;
-
-&lt;p&gt;The first coding problem I worked on to practice binary trees was, given two trees &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;q&lt;/code&gt;, determine if they are the same. If they are the same, they have the same structure AND values at each node.&lt;/p&gt;
-
-&lt;p&gt;I decided to try solving this recursively. Sometimes I still struggle with recursion, due to its nested nature. One thing that helps me is to remember that I should always be returning whatever data type the final result is looking for. In this case, we are looking for a boolean, so my base cases must all return true or false. It’s also helpful to think of recursion as repeating sub-problems. What is the sub-problem you are trying to solve here, over and over again?&lt;/p&gt;
-
-&lt;p&gt;In this case, the sub-problem is checking if the current nodes p and q are equal.&lt;/p&gt;
-
-&lt;p&gt;After checking base cases, you need some logic for checking your next values. That’s where your recursive calls come in. Then, you need to do something with the result of those calls. The outer function could return at this point, or maybe you need to add the result to another data structure you’re keeping track of, like a memo object.&lt;/p&gt;
-
-&lt;p&gt;This is what I came up with, and it submitted to leetcode successfully:&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;/**
- * @param {TreeNode} p
- * @param {TreeNode} q
- * @return {boolean}
- */&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isSameTree&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;//base cases&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;//continue exploring tree&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;isSameTree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;isSameTree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;First, the base cases:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;both p and q are null: in this case return true, because they are equal, and we have reached a leaf node. This branch has nothing else to explore and if we got this far, it is the same for p and q&lt;/li&gt;
-  &lt;li&gt;one of p &lt;strong&gt;or&lt;/strong&gt; q, &lt;strong&gt;not both&lt;/strong&gt;, is null: if one node is null and the other is not, they are not &lt;em&gt;structurally&lt;/em&gt; equal, so return false&lt;/li&gt;
-  &lt;li&gt;check if the &lt;strong&gt;values&lt;/strong&gt; of p and q are equal. If not, return false. Otherwise, the nodes so far are equal and there is more tree to explore, so we can move on.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Next step: recursive calls&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;we need explore the left and right subtrees for our p and q nodes. If either of these returns false, it means p and q were not equal.&lt;/li&gt;
-  &lt;li&gt;this is where you start to see branching recursion come into play, since you have to check the left and right child of every node.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Finally, if we got through all of that and never encountered unequal structure or values, we can return true.&lt;/p&gt;
-
-&lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;/h3&gt;
-
-&lt;p&gt;I definitely need more practice with binary trees, so I’ll continue learning and practicing and will update here if I find anything notable.&lt;/p&gt;</content><author><name></name></author><category term="algorithms" /><category term="data-structures" /><category term="coding-problems" /><category term="recursion" /><summary type="html">It’s time to dive into some binary tree coding problems.</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="algorithms" /><category term="data-structures" /><category term="coding-problems" /><category term="javascript" /><summary type="html">Hash tables are a commonly used data structure and, apparently, are commonly asked about in interviews.</summary></entry></feed>

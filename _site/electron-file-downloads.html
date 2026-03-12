@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>How Electron apps can handle excel downloads</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="Web development blog" />
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/png" />
+    <link rel="canonical" href="/electron-file-downloads" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Julia Hack" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How Electron apps can handle excel downloads" />
+    <meta property="og:description" content="I’m getting into Electron for some work projects and have recently been learning more about how it works. I asked an AI agent, using OpenCode, to break down an existing project’s structure, particularly regarding how we can download an excel file from our API. Here’s what it gave me. Normally" />
+    <meta property="og:url" content="/electron-file-downloads" />
+    <meta property="og:image" content="/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2026-03-10T17:30:00-06:00" />
+    <meta property="article:modified_time" content="2026-03-10T17:30:00-06:00" />
+    <meta property="article:tag" content="Electron" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How Electron apps can handle excel downloads" />
+    <meta name="twitter:description" content="I’m getting into Electron for some work projects and have recently been learning more about how it works. I asked an AI agent, using OpenCode, to break down an existing project’s structure, particularly regarding how we can download an excel file from our API. Here’s what it gave me. Normally" />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image" content="/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Julia Hack" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Electron" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Julia Hack",
+        "logo": "/assets/images/blog-icon.png"
+    },
+    "url": "/electron-file-downloads",
+    "image": {
+        "@type": "ImageObject",
+        "url": "/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/electron-file-downloads"
+    },
+    "description": "I’m getting into Electron for some work projects and have recently been learning more about how it works. I asked an AI agent, using OpenCode, to break down an existing project’s structure, particularly regarding how we can download an excel file from our API. Here’s what it gave me. Normally"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="How Electron apps can handle excel downloads" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/"><img src="/assets/images/blog-icon.png" alt="Julia Hack" /></a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-home" role="menuitem"><a href="/topics/">Topics</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-contact" role="menuitem"><a href="/contact/">Contact</a></li>
+
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="10 March 2026">10 March 2026</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/electron/'>ELECTRON</a>,
+                            
+                        
+                            
+                               <a href='/tag/react/'>REACT</a>,
+                            
+                        
+                            
+                               <a href='/tag/downloads/'>DOWNLOADS</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">How Electron apps can handle excel downloads</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>I’m getting into Electron for some work projects and have recently been learning more about how it works.</p>
+
+<p>I asked an AI agent, using OpenCode, to break down an existing project’s structure, particularly regarding how we can download an excel file from our API. Here’s what it gave me. Normally I wouldn’t just copy/paste text from an AI, but I actually found the explanation helpful, so I want to keep it here for my future reference. At the end, after the AI content, I will share some of my thoughts on using AI in this way.</p>
+
+<h2 id="how-excel-file-downloads-work-ai-agents-take">How Excel File Downloads Work (AI agent’s take)</h2>
+
+<h2 id="what-is-electron">What Is Electron?</h2>
+
+<p>Before diving in, here’s a quick explanation: Electron is a framework that lets you build desktop apps using web technologies (HTML, CSS, JavaScript/TypeScript). An Electron app has two main parts:</p>
+
+<ul>
+  <li>
+    <p><strong>Main Process</strong>: The “backend” that runs on your computer, with full access to your file system, dialog boxes, and other system features</p>
+  </li>
+  <li>
+    <p><strong>Renderer Process</strong>: The “frontend” (your React app) that displays the user interface</p>
+  </li>
+</ul>
+
+<p>These two processes can’t talk to each other directly—they communicate through a special mechanism called <strong>IPC</strong> (Inter-Process Communication).</p>
+
+<hr />
+
+<h2 id="key-electron-concepts-explained">Key Electron Concepts Explained</h2>
+
+<h3 id="what-is-ipc">What Is IPC?</h3>
+
+<p><strong>IPC</strong> stands for <strong>Inter-Process Communication</strong>. It’s a way for two separate processes to talk to each other.</p>
+
+<p>In Electron:</p>
+
+<ul>
+  <li>
+    <p>The renderer (your React app) is like a website running in a sandboxed browser</p>
+  </li>
+  <li>
+    <p>The main process is like a Node.js server with full system access</p>
+  </li>
+  <li>
+    <p>They can’t directly access each other’s variables or functions</p>
+  </li>
+  <li>
+    <p>IPC is the “telephone line” that lets them send messages back and forth</p>
+  </li>
+</ul>
+
+<p>Think of it like this: the renderer is a customer (your React app) and the main process is a bank teller. The customer can’t walk into the vault directly—they must ask the teller to do things for them. IPC is the request system that passes messages between them.</p>
+
+<h3 id="what-are-ipc-handlers">What Are IPC Handlers?</h3>
+
+<p>An <strong>IPC handler</strong> is a function in the main process that “handles” requests coming from the renderer. It’s like a receptionist who receives requests and routes them to the right person.</p>
+
+<p>In this app, handlers are defined in files like <code class="highlighter-rouge">excelOperations.js</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This is an IPC handler - it waits for requests named 'saveExcelBlob'</span>
+
+<span class="nx">ipcMain</span><span class="p">.</span><span class="nx">handle</span><span class="p">(</span><span class="s2">"saveExcelBlob"</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Do something with the file (show dialog, save to disk, etc.)</span>
+
+  <span class="k">return</span> <span class="p">{</span> <span class="na">error</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="na">message</span><span class="p">:</span> <span class="s2">"File saved successfully"</span> <span class="p">};</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>The handler does three things:</p>
+
+<ol>
+  <li>
+    <p><strong>Listens</strong> for a specific request name (<code class="highlighter-rouge">'saveExcelBlob'</code>)</p>
+  </li>
+  <li>
+    <p><strong>Processes</strong> the request (shows dialog, writes file, etc.)</p>
+  </li>
+  <li>
+    <p><strong>Responds</strong> back to the renderer with a result</p>
+  </li>
+</ol>
+
+<h3 id="how-are-ipc-handlers-registered">How Are IPC Handlers Registered?</h3>
+
+<p>In this app, IPC handlers are registered in <code class="highlighter-rouge">main.js</code> when the app starts. Here’s how it works:</p>
+
+<p><strong>Step 1</strong>: Import the handler functions at the top of <code class="highlighter-rouge">main.js</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span>
+  <span class="nx">registerExcelOperationsHandlers</span><span class="p">,</span>
+<span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./ipcHandlers/excelOperations"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Step 2</strong>: Call them when creating the main window, passing in the window object:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nx">createMainWindow</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">mainWindow</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserWindow</span><span class="p">({...});</span>
+
+    <span class="c1">// Register handlers here</span>
+
+    <span class="nx">registerExcelOperationsHandlers</span><span class="p">(</span><span class="nx">mainWindow</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p><strong>Step 3</strong>: Inside the handler file (<code class="highlighter-rouge">excelOperations.js</code>), the function registers each handler with <code class="highlighter-rouge">ipcMain.handle()</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">registerExcelOperationsHandlers</span> <span class="o">=</span> <span class="p">(</span><span class="nx">mainWindow</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">ipcMain</span><span class="p">.</span><span class="nx">handle</span><span class="p">(</span><span class="s2">"saveExcel"</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">tableData</span><span class="p">,</span> <span class="nx">fileTitle</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// handler code</span>
+  <span class="p">});</span>
+
+  <span class="nx">ipcMain</span><span class="p">.</span><span class="nx">handle</span><span class="p">(</span><span class="s2">"saveExcelBlob"</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// handler code</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">mainWindow</code> parameter is passed because some dialogs need to be associated with a window (they’re “modal” to that window).</p>
+
+<h3 id="what-is-the-context-bridge">What Is the Context Bridge?</h3>
+
+<p>The <strong>context bridge</strong> is a safety feature that controls what the renderer can access. Without it, the renderer would have <strong>no way</strong> to communicate with the main process (completely isolated for security).</p>
+
+<p>In <code class="highlighter-rouge">preload.js</code>, the context bridge is set up like this:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">contextBridge</span><span class="p">,</span> <span class="nx">ipcRenderer</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"electron"</span><span class="p">);</span>
+
+<span class="nx">contextBridge</span><span class="p">.</span><span class="nx">exposeInMainWorld</span><span class="p">(</span><span class="s2">"electron"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">saveExcelBlob</span><span class="p">:</span> <span class="p">(</span><span class="nx">buffer</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="nx">ipcRenderer</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">"saveExcelBlob"</span><span class="p">,</span> <span class="nx">buffer</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">),</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Here’s what each part does:</p>
+
+<ul>
+  <li>
+    <p><strong><code class="highlighter-rouge">contextBridge</code></strong>: Electron’s API for safely exposing things to the renderer</p>
+  </li>
+  <li>
+    <p><strong><code class="highlighter-rouge">exposeInMainWorld('electron', {...})</code></strong>: Makes this object available as <code class="highlighter-rouge">window.electron</code> in your React code</p>
+  </li>
+  <li>
+    <p><strong><code class="highlighter-rouge">ipcRenderer.invoke()</code></strong>: Sends a message to the main process and waits for a response</p>
+  </li>
+</ul>
+
+<p>The key security benefit: <strong>you choose exactly what to expose</strong>. In this app, the renderer can only call the specific functions listed in the preload script. It can’t:</p>
+
+<ul>
+  <li>
+    <p>Access the file system directly</p>
+  </li>
+  <li>
+    <p>Open dialogs directly</p>
+  </li>
+  <li>
+    <p>Run any other Node.js code</p>
+  </li>
+</ul>
+
+<p>This is called <strong>context isolation</strong>—the renderer’s JavaScript environment is isolated from Node.js, and it can only communicate through the bridge you explicitly create.</p>
+
+<h3 id="summary-of-the-relationship">Summary of the Relationship</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>main.js
+
+   │
+   ├── imports handler functions from ipcHandlers/*.js
+   │
+
+   ▼
+
+registerExcelOperationsHandlers(mainWindow)
+
+   │
+   ├── registers ipcMain.handle() for each operation
+   │
+
+   ▼
+
+excelOperations.js defines handlers like:
+
+   │
+   ├── 'saveExcel'    → writes table data to Excel
+   ├── 'saveExcel2'   → writes JSON to Excel
+   └── 'saveExcelBlob' → saves base64 data to file
+
+       │
+
+       ◄─────────────── receives requests via IPC
+
+preload.js
+
+   │
+   ├── creates window.electron.saveExcelBlob()
+   │
+
+   ▼
+
+React code (useDownloadJobsExcel.ts)
+
+   │
+   └── calls window.electron.saveExcelBlob()
+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="the-complete-download-flow">The Complete Download Flow</h2>
+
+<p>Here’s what happens when you click a button to download an Excel file of jobs:</p>
+
+<h3 id="step-1-user-initiates-download-react-hook">Step 1: User Initiates Download (React Hook)</h3>
+
+<p>The process starts in <code class="highlighter-rouge">useDownloadJobsExcel.ts</code>, which is a React hook that manages the download functionality:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// The hook provides a function that gets called when user clicks the download button</span>
+
+<span class="kd">const</span> <span class="nx">downloadjobsExcel</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">clientID</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">clientName</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// ... validation and loading state handling</span>
+
+  <span class="c1">// This calls the API to get the Excel data</span>
+  <span class="kd">const</span> <span class="nx">blobResult</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">exportjobsByClientID</span><span class="p">(</span><span class="nx">clientID</span><span class="p">);</span>
+
+  <span class="c1">// Convert the blob to base64 (more on this later)</span>
+  <span class="kd">const</span> <span class="nx">base64</span> <span class="o">=</span> <span class="nx">arrayBufferToBase64</span><span class="p">(</span><span class="nx">arrayBuffer</span><span class="p">);</span>
+
+  <span class="c1">// Call the Electron "saveExcelBlob" function to show a save dialog</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="kr">await</span> <span class="nb">window</span><span class="p">.</span><span class="nx">electron</span><span class="p">.</span><span class="nx">saveExcelBlob</span><span class="p">(</span><span class="nx">base64</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><strong>Key point</strong>: The React code runs in the “renderer” (frontend), but it can’t directly access your file system or show save dialogs. That’s why it needs Electron’s help.</p>
+
+<hr />
+
+<h3 id="step-2-fetching-data-from-the-api">Step 2: Fetching Data from the API</h3>
+
+<p>The <code class="highlighter-rouge">exportjobsByClientID</code> function in <code class="highlighter-rouge">jobAPI.ts</code> makes an HTTP request to the backend API:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">exportjobsByClientID</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span>
+  <span class="nx">clientID</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+<span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Blob</span> <span class="o">|</span> <span class="nb">Error</span><span class="o">&gt;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// The API returns raw binary data (a "Blob"), not JSON</span>
+
+  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span>
+    <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/api/jobs/client/</span><span class="p">${</span><span class="nx">clientID</span><span class="p">}</span><span class="s2">/export`</span><span class="p">,</span>
+    <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">authorization</span><span class="p">:</span> <span class="s2">`Bearer </span><span class="p">${</span><span class="nx">token</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+
+        <span class="na">sessionid</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">sessionid</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+  <span class="p">);</span>
+
+  <span class="c1">// Convert the response to a Blob (binary data)</span>
+
+  <span class="kd">const</span> <span class="nx">blob</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">blob</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="nx">blob</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><strong>Note</strong>: This function uses <code class="highlighter-rouge">fetch</code> directly instead of the usual <code class="highlighter-rouge">fetchData</code> helper because it needs raw binary data (the Excel file), not JSON.</p>
+
+<hr />
+
+<h3 id="step-3-converting-data-for-electron">Step 3: Converting Data for Electron</h3>
+
+<p>Back in the React hook, the binary blob is converted to a <strong>base64 string</strong>:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Why convert to base64?</span>
+<span class="c1">// Electron's IPC (communication between processes) has trouble sending raw binary data.</span>
+<span class="c1">// Base64 is a way to represent binary data as text characters.</span>
+<span class="kd">const</span> <span class="nx">base64</span> <span class="o">=</span> <span class="nx">arrayBufferToBase64</span><span class="p">(</span><span class="nx">arrayBuffer</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="step-4-calling-electron-via-the-preload-bridge">Step 4: Calling Electron via the Preload Bridge</h3>
+
+<p>The React code calls <code class="highlighter-rouge">window.electron.saveExcelBlob(base64, fileName)</code>. But wait—what is <code class="highlighter-rouge">window.electron</code>?</p>
+
+<p>This is defined in <code class="highlighter-rouge">preload.js</code>, which acts as a bridge between the renderer and main processes:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// In preload.js</span>
+
+<span class="nx">contextBridge</span><span class="p">.</span><span class="nx">exposeInMainWorld</span><span class="p">(</span><span class="s2">"electron"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="c1">// This exposes the saveExcelBlob function to the renderer</span>
+
+  <span class="na">saveExcelBlob</span><span class="p">:</span> <span class="p">(</span><span class="nx">buffer</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="nx">ipcRenderer</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">"saveExcelBlob"</span><span class="p">,</span> <span class="nx">buffer</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">),</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><strong>What does this do?</strong></p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">contextBridge.exposeInMainWorld</code> makes functions available in your React app’s <code class="highlighter-rouge">window</code> object</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">ipcRenderer.invoke</code> sends a message to the main process, asking it to run the <code class="highlighter-rouge">'saveExcelBlob'</code> handler</p>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="step-5-main-process-handles-the-request">Step 5: Main Process Handles the Request</h3>
+
+<p>The main process (in <code class="highlighter-rouge">main.js</code>) has already registered a handler for <code class="highlighter-rouge">'saveExcelBlob'</code>. This is set up in <code class="highlighter-rouge">excelOperations.js</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// In excelOperations.js (registered in main.js)</span>
+
+<span class="nx">ipcMain</span><span class="p">.</span><span class="nx">handle</span><span class="p">(</span><span class="s2">"saveExcelBlob"</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// 1. Show a "Save As" dialog so user can choose where to save</span>
+
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">dialog</span><span class="p">.</span><span class="nx">showSaveDialog</span><span class="p">({</span>
+    <span class="na">defaultPath</span><span class="p">:</span> <span class="nx">fileName</span><span class="p">,</span>
+
+    <span class="na">filters</span><span class="p">:</span> <span class="p">[{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"Excel Files"</span><span class="p">,</span> <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s2">"xlsx"</span><span class="p">]</span> <span class="p">}],</span>
+  <span class="p">});</span>
+
+  <span class="c1">// 2. If user didn't cancel, write the file to the chosen location</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">result</span><span class="p">.</span><span class="nx">canceled</span> <span class="o">&amp;&amp;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">filePath</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Convert base64 back to binary buffer</span>
+    <span class="kd">const</span> <span class="nx">buffer</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s2">"base64"</span><span class="p">);</span>
+
+    <span class="c1">// Write to the file system</span>
+    <span class="kr">await</span> <span class="nx">fsPromises</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">filePath</span><span class="p">,</span> <span class="nx">buffer</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="p">{</span> <span class="na">error</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="na">message</span><span class="p">:</span> <span class="s2">"File saved successfully"</span> <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><strong>What happens here:</strong></p>
+
+<ol>
+  <li>
+    <p><code class="highlighter-rouge">dialog.showSaveDialog()</code> opens a native OS dialog where you choose where to save the file</p>
+  </li>
+  <li>
+    <p>The base64 data is converted back to a binary Buffer</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">fsPromises.writeFile()</code> saves the file to the chosen path</p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="summary-diagram">Summary Diagram</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌─────────────────────────────────────────────────────────────────┐
+
+│                      RENDERER PROCESS (React)                  │
+
+│                                                                 │
+
+│  1. userDownloadjobsExcel()                               │
+
+│         │                                                       │
+
+│         ▼                                                       │
+
+│  2. exportjobsByClientID() ──────► API Server             │
+
+│         │                        (gets Excel as Blob)           │
+
+│         ▼                                                       │
+
+│  3. Convert Blob → ArrayBuffer → Base64                        │
+
+│         │                                                       │
+
+│         ▼                                                       │
+
+│  4. window.electron.saveExcelBlob(base64, filename)           │
+
+│         │                                                       │
+
+│         └────────────── ipcRenderer.invoke() ─────────────┐   │
+
+└─────────────────────────────────────────────────────────────┘   │
+
+                                                              │
+
+                              ┌────────────────────────────────┘
+
+                              │
+
+                              ▼
+
+┌─────────────────────────────────────────────────────────────────┐
+
+│                       MAIN PROCESS (Node.js)                    │
+
+│                                                                 │
+
+│  5. ipcMain.handle('saveExcelBlob', ...)                      │
+
+│         │                                                       │
+
+│         ▼                                                       │
+
+│  6. dialog.showSaveDialog() ──► User sees "Save As" dialog     │
+
+│         │                                                       │
+
+│         ▼                                                       │
+
+│  7. Buffer.from(base64, 'base64') ──► Convert back to binary   │
+
+│         │                                                       │
+
+│         ▼                                                       │
+
+│  8. fsPromises.writeFile() ──► File saved to disk!            │
+
+└─────────────────────────────────────────────────────────────────┘
+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="why-is-this-architecture-necessary">Why Is This Architecture Necessary?</h2>
+
+<p>You might wonder why there are so many steps. Here’s why:</p>
+
+<ol>
+  <li>
+    <p><strong>Security</strong>: Electron apps run web code, which could be dangerous if it had direct access to your file system. By default, the renderer process can’t access files.</p>
+  </li>
+  <li>
+    <p><strong>Context Isolation</strong>: The preload script carefully exposes only specific functions to the renderer, preventing malicious code from causing harm.</p>
+  </li>
+  <li>
+    <p><strong>IPC Serialization</strong>: When sending data between processes, it must be serializable. Raw binary data doesn’t serialize well, so we convert to base64.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="key-files-involved">Key Files Involved</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>File</td>
+      <td>Purpose</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>|——|———|</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">useDownloadJobsExcel.ts</code></td>
+      <td>React hook that orchestrates the download</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">jobAPI.ts</code></td>
+      <td>Makes HTTP request to get Excel data from API</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">preload.js</code></td>
+      <td>Bridge that exposes Electron functions to React</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">excelOperations.js</code></td>
+      <td>Main process handlers for file operations</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">main.js</code></td>
+      <td>Electron app entry point that registers handlers</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="end-of-ai-generated-content---my-take--reflection-on-using-ai-agents-to-analyze-and-learn-about-a-codebase">End of AI generated content - my take / reflection on using AI agents to analyze and learn about a codebase</h2>
+
+<p>This is a bit tangential to the original topic of Electron.</p>
+
+<p>I was surprised at how well the agent analyzed the codebase given my original prompt, which probably could have been written better. I don’t remember exactly what I asked, but it was probably something along the lines of “given these files a,b, and c, explain to me how file downloads are done in an electron app - assume I don’t know very much about electron”.</p>
+
+<p>The output it gave me, with the explanations of IPC, renderer, and main processes, was quite helpful for my learning, especially seeing the real files involved.</p>
+
+<p>Sometimes I’m concerned about whether coding with AI will take the fun out of it - after all, I got into this mostly because I loved tinkering around making front-ends. That was fully hands-on.</p>
+
+<p>I couldn’t help but feel, however, that having tools like this that could help explain a codebase to me would have been a complete <strong>gamechanger</strong> when I was starting out as a junior, feeling lost in legacy codebases without much documentation. If I could make my own documentation with these tools, I would have been up to speed a lot faster.</p>
+
+<p>I think a lot of these CEOs who are saying that junior/entry level roles are not going to be needed any more are not considering this - sure, you could delegate junior level work to an AI. But, AI can assist a junior to be more productive (as long as they are still given the space to learn hands-on) than in previous generations. And then there’s the (hopefully obvious) point - we need juniors to get our next mid and senior level developers.</p>
+
+<p>Ok, getting off my soapbox now. It’s been interesting trying out these new tools. I’ll probably end up making more posts about using AI tools while building projects.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/algorithm-problem-solving">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Computer-science</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Problem-solving</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Coding-problems</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Problem solving strategy for code problems</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="/">
+            
+                <img src="/assets/images/favicon.ico" alt="Julia Hack icon" />
+            
+            <span>Julia Hack</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">How Electron apps can handle excel downloads</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path
+    d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"
+  />
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=How+Electron+apps+can+handle+excel+downloads&amp;url=electron-file-downloads"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <path
+    d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"
+  />
+</svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=electron-file-downloads"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <path
+    d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"
+  />
+</svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="/">Julia Hack</a> &copy; 2026</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    <a href="https://github.com/jchack1" target="_blank" rel="noopener">Github</a>
+                    <a href="https://linkedin.com/in/juliahack" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    <!--  -->
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/serverless/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/serverless/feed.xml</id>
+  <link href="/tag/serverless/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/serverless/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Developing a chat app using AWS AppSync</title>
-      <link href="http://localhost:4000/appsync-chat-app" rel="alternate" type="text/html" title="Developing a chat app using AWS AppSync" />
+      <link href="/appsync-chat-app" rel="alternate" type="text/html" title="Developing a chat app using AWS AppSync" />
       <published>2023-11-21T16:30:00-07:00</published>
       <updated>2023-11-21T16:30:00-07:00</updated>
-      <id>http://localhost:4000/appsync-chat-app</id>
-      <content type="html" xml:base="http://localhost:4000/appsync-chat-app">&lt;p&gt;I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.&lt;/p&gt;
+      <id>/appsync-chat-app</id>
+      <content type="html" xml:base="/appsync-chat-app">&lt;p&gt;I recently created a chat app at work using AWS AppSync, and then decided to re-create it on my own time.&lt;/p&gt;
 
 &lt;p&gt;There were some new features rolled out in AppSync since I started my work project, so I wanted to try them out. It also gave me the opportunity to learn more about setting up authentication with Amplify and Cognito, which I had never tackled before, as authentication had been set up at work by another developer.&lt;/p&gt;
 
@@ -121,11 +121,11 @@
   
     <entry>
       <title type="html">Debugging serverless: ‘AWSLambdaFullAccess does not exist’</title>
-      <link href="http://localhost:4000/lambda-fullaccess-bug" rel="alternate" type="text/html" title="Debugging serverless: 'AWSLambdaFullAccess does not exist'" />
+      <link href="/lambda-fullaccess-bug" rel="alternate" type="text/html" title="Debugging serverless: 'AWSLambdaFullAccess does not exist'" />
       <published>2022-08-30T18:30:00-06:00</published>
       <updated>2022-08-30T18:30:00-06:00</updated>
-      <id>http://localhost:4000/lambda-fullaccess-bug</id>
-      <content type="html" xml:base="http://localhost:4000/lambda-fullaccess-bug">&lt;p&gt;I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.&lt;/p&gt;
+      <id>/lambda-fullaccess-bug</id>
+      <content type="html" xml:base="/lambda-fullaccess-bug">&lt;p&gt;I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.&lt;/p&gt;
 
 &lt;p&gt;Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node 14 - or so I thought. It turns out there were a few I missed, mostly in projects that are not worked on often.&lt;/p&gt;
 
@@ -188,11 +188,11 @@
   
     <entry>
       <title type="html">Debugging serverless - Eventbridge rule already exists</title>
-      <link href="http://localhost:4000/serverless-event-bug" rel="alternate" type="text/html" title="Debugging serverless - Eventbridge rule already exists" />
+      <link href="/serverless-event-bug" rel="alternate" type="text/html" title="Debugging serverless - Eventbridge rule already exists" />
       <published>2022-01-31T18:30:00-07:00</published>
       <updated>2022-01-31T18:30:00-07:00</updated>
-      <id>http://localhost:4000/serverless-event-bug</id>
-      <content type="html" xml:base="http://localhost:4000/serverless-event-bug">&lt;p&gt;I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.&lt;/p&gt;
+      <id>/serverless-event-bug</id>
+      <content type="html" xml:base="/serverless-event-bug">&lt;p&gt;I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.&lt;/p&gt;
 
 &lt;p&gt;This is the error message, with the real function and service names changed:&lt;/p&gt;
 
@@ -262,11 +262,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">AWS Lambda</title>
-      <link href="http://localhost:4000/lambda" rel="alternate" type="text/html" title="AWS Lambda" />
+      <link href="/lambda" rel="alternate" type="text/html" title="AWS Lambda" />
       <published>2021-04-11T14:30:00-06:00</published>
       <updated>2021-04-11T14:30:00-06:00</updated>
-      <id>http://localhost:4000/lambda</id>
-      <content type="html" xml:base="http://localhost:4000/lambda">&lt;p&gt;AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.&lt;/p&gt;
+      <id>/lambda</id>
+      <content type="html" xml:base="/lambda">&lt;p&gt;AWS Lambda is huge for me at work. Our app architecture is primarily based on Lambda and the Serverless model.&lt;/p&gt;
 
 &lt;p&gt;There are so many options to choose from when setting up your sevices with AWS. Until now in my Udemy course, a lot of what we have seen involves some sort of servers. A lot of time was spent talking about EC2s, which is basically a computer/server in the cloud that runs your apps.&lt;/p&gt;
 
@@ -451,11 +451,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">Deploying simple React app with Serverless / AWS</title>
-      <link href="http://localhost:4000/deploy-react-serverless-aws" rel="alternate" type="text/html" title="Deploying simple React app with Serverless / AWS " />
+      <link href="/deploy-react-serverless-aws" rel="alternate" type="text/html" title="Deploying simple React app with Serverless / AWS " />
       <published>2020-10-29T18:30:00-06:00</published>
       <updated>2020-10-29T18:30:00-06:00</updated>
-      <id>http://localhost:4000/deploy-react-serverless-aws</id>
-      <content type="html" xml:base="http://localhost:4000/deploy-react-serverless-aws">&lt;p&gt;I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless.&lt;/p&gt;
+      <id>/deploy-react-serverless-aws</id>
+      <content type="html" xml:base="/deploy-react-serverless-aws">&lt;p&gt;I am learning Serverless and AWS for work. Here is what I did to deploy a basic app with Serverless.&lt;/p&gt;
 
 &lt;p&gt;This is assuming you already have an AWS account, and have installed Serverless, the AWS SDK, and set up your AWS credentials on your machine.Simply put, though:&lt;/p&gt;
 

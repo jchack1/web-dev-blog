@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/debugging/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/debugging/feed.xml</id>
+  <link href="/tag/debugging/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/debugging/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Getting item count from DynamoDB query, with pagination</title>
-      <link href="http://localhost:4000/dynamodb-query-count-pagination" rel="alternate" type="text/html" title="Getting item count from DynamoDB query, with pagination" />
+      <link href="/dynamodb-query-count-pagination" rel="alternate" type="text/html" title="Getting item count from DynamoDB query, with pagination" />
       <published>2023-02-22T20:30:00-07:00</published>
       <updated>2023-02-22T20:30:00-07:00</updated>
-      <id>http://localhost:4000/dynamodb-query-count-pagination</id>
-      <content type="html" xml:base="http://localhost:4000/dynamodb-query-count-pagination">&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;
+      <id>/dynamodb-query-count-pagination</id>
+      <content type="html" xml:base="/dynamodb-query-count-pagination">&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;
 
 &lt;p&gt;I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task.&lt;/p&gt;
 
@@ -145,11 +145,11 @@
   
     <entry>
       <title type="html">Debugging serverless: ‘AWSLambdaFullAccess does not exist’</title>
-      <link href="http://localhost:4000/lambda-fullaccess-bug" rel="alternate" type="text/html" title="Debugging serverless: 'AWSLambdaFullAccess does not exist'" />
+      <link href="/lambda-fullaccess-bug" rel="alternate" type="text/html" title="Debugging serverless: 'AWSLambdaFullAccess does not exist'" />
       <published>2022-08-30T18:30:00-06:00</published>
       <updated>2022-08-30T18:30:00-06:00</updated>
-      <id>http://localhost:4000/lambda-fullaccess-bug</id>
-      <content type="html" xml:base="http://localhost:4000/lambda-fullaccess-bug">&lt;p&gt;I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.&lt;/p&gt;
+      <id>/lambda-fullaccess-bug</id>
+      <content type="html" xml:base="/lambda-fullaccess-bug">&lt;p&gt;I don’t write down the solutions to bugs often enough, so here is how I solved a serverless bug today.&lt;/p&gt;
 
 &lt;p&gt;Maintenance tasks are never quite as simple as they appear at first glance. Last year I updated all our lambda functions at work from Node 12 (and lower) to Node 14 - or so I thought. It turns out there were a few I missed, mostly in projects that are not worked on often.&lt;/p&gt;
 
@@ -212,11 +212,11 @@
   
     <entry>
       <title type="html">DynamoDB scans and pagination</title>
-      <link href="http://localhost:4000/dynamo-db-pagination" rel="alternate" type="text/html" title="DynamoDB scans and pagination" />
+      <link href="/dynamo-db-pagination" rel="alternate" type="text/html" title="DynamoDB scans and pagination" />
       <published>2022-08-22T18:30:00-06:00</published>
       <updated>2022-08-22T18:30:00-06:00</updated>
-      <id>http://localhost:4000/dynamo-db-pagination</id>
-      <content type="html" xml:base="http://localhost:4000/dynamo-db-pagination">&lt;p&gt;Today I was working on a task that involved archiving some old data in DynamoDB. I didn’t want to permanently delete my data, so I needed to retrieve the data, create a new record in the archive database, and delete the record from the original database.&lt;/p&gt;
+      <id>/dynamo-db-pagination</id>
+      <content type="html" xml:base="/dynamo-db-pagination">&lt;p&gt;Today I was working on a task that involved archiving some old data in DynamoDB. I didn’t want to permanently delete my data, so I needed to retrieve the data, create a new record in the archive database, and delete the record from the original database.&lt;/p&gt;
 
 &lt;p&gt;These records were never meant to be queried all at once. Normally in the app you would query these records for one user at a time. My PK and SK were not set up to get all of these records as one batch, which meant I needed to scan the database and filter out all of these records in my retrieval step, rather than doing a more efficient query.&lt;/p&gt;
 
@@ -293,11 +293,11 @@
   
     <entry>
       <title type="html">Debugging serverless - Eventbridge rule already exists</title>
-      <link href="http://localhost:4000/serverless-event-bug" rel="alternate" type="text/html" title="Debugging serverless - Eventbridge rule already exists" />
+      <link href="/serverless-event-bug" rel="alternate" type="text/html" title="Debugging serverless - Eventbridge rule already exists" />
       <published>2022-01-31T18:30:00-07:00</published>
       <updated>2022-01-31T18:30:00-07:00</updated>
-      <id>http://localhost:4000/serverless-event-bug</id>
-      <content type="html" xml:base="http://localhost:4000/serverless-event-bug">&lt;p&gt;I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.&lt;/p&gt;
+      <id>/serverless-event-bug</id>
+      <content type="html" xml:base="/serverless-event-bug">&lt;p&gt;I recently came across a bug while deploying a serverless microservice using github actions. I may have seen this error before at some point, but I never wrote down the solution, so here is how I solved it this time.&lt;/p&gt;
 
 &lt;p&gt;This is the error message, with the real function and service names changed:&lt;/p&gt;
 
@@ -367,11 +367,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">Debugging - forEach with async/await</title>
-      <link href="http://localhost:4000/forEach-async-await" rel="alternate" type="text/html" title="Debugging - forEach with async/await" />
+      <link href="/forEach-async-await" rel="alternate" type="text/html" title="Debugging - forEach with async/await" />
       <published>2021-12-07T18:30:00-07:00</published>
       <updated>2021-12-07T18:30:00-07:00</updated>
-      <id>http://localhost:4000/forEach-async-await</id>
-      <content type="html" xml:base="http://localhost:4000/forEach-async-await">&lt;p&gt;This week I learned that you do not use forEach loops with async/await.&lt;/p&gt;
+      <id>/forEach-async-await</id>
+      <content type="html" xml:base="/forEach-async-await">&lt;p&gt;This week I learned that you do not use forEach loops with async/await.&lt;/p&gt;
 
 &lt;p&gt;I was working on a CRUD microservice at work. It uses AWS Lambda functions with Node.js. I was having trouble with the update and delete functions in the app.&lt;/p&gt;
 
@@ -447,11 +447,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">How I lost, and regained, ssh access to my AWS EC2</title>
-      <link href="http://localhost:4000/ec2-ssh" rel="alternate" type="text/html" title="How I lost, and regained, ssh access to my AWS EC2" />
+      <link href="/ec2-ssh" rel="alternate" type="text/html" title="How I lost, and regained, ssh access to my AWS EC2" />
       <published>2021-08-11T14:30:00-06:00</published>
       <updated>2021-08-11T14:30:00-06:00</updated>
-      <id>http://localhost:4000/ec2-ssh</id>
-      <content type="html" xml:base="http://localhost:4000/ec2-ssh">&lt;p&gt;This is a long story so I will leave out extra details to keep it (somewhat) brief.&lt;/p&gt;
+      <id>/ec2-ssh</id>
+      <content type="html" xml:base="/ec2-ssh">&lt;p&gt;This is a long story so I will leave out extra details to keep it (somewhat) brief.&lt;/p&gt;
 
 &lt;p&gt;I was working with an AWS EC2 instance with wordpress installed. When you host your own wordpress sites, you need to keep up with server maintenance. I needed to update the PHP version for security reasons and I found a tutorial that told me to update ubuntu first. Once the update was complete, I no longer had ssh access to my EC2.&lt;/p&gt;
 
@@ -547,11 +547,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">Debugging front-end graph libraries - recharts</title>
-      <link href="http://localhost:4000/debugging-graphs" rel="alternate" type="text/html" title="Debugging front-end graph libraries - recharts" />
+      <link href="/debugging-graphs" rel="alternate" type="text/html" title="Debugging front-end graph libraries - recharts" />
       <published>2021-08-06T14:30:00-06:00</published>
       <updated>2021-08-06T14:30:00-06:00</updated>
-      <id>http://localhost:4000/debugging-graphs</id>
-      <content type="html" xml:base="http://localhost:4000/debugging-graphs">&lt;p&gt;My company does a lot of data analytics, which means on the front end we work with a lot of graphs. Today I’ll talk about some difficulties I had debugging a new dashboard on our platform, which was built using recharts graphs.&lt;/p&gt;
+      <id>/debugging-graphs</id>
+      <content type="html" xml:base="/debugging-graphs">&lt;p&gt;My company does a lot of data analytics, which means on the front end we work with a lot of graphs. Today I’ll talk about some difficulties I had debugging a new dashboard on our platform, which was built using recharts graphs.&lt;/p&gt;
 
 &lt;h3 id=&quot;the-task&quot;&gt;The task&lt;/h3&gt;
 
@@ -642,11 +642,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">Dealing with memory leaks</title>
-      <link href="http://localhost:4000/memoryleaks" rel="alternate" type="text/html" title="Dealing with memory leaks" />
+      <link href="/memoryleaks" rel="alternate" type="text/html" title="Dealing with memory leaks" />
       <published>2020-08-10T18:30:00-06:00</published>
       <updated>2020-08-10T18:30:00-06:00</updated>
-      <id>http://localhost:4000/memoryleaks</id>
-      <content type="html" xml:base="http://localhost:4000/memoryleaks">&lt;p&gt;While working on a particularly difficult task at work I ended up learning a lot about memory leaks.&lt;/p&gt;
+      <id>/memoryleaks</id>
+      <content type="html" xml:base="/memoryleaks">&lt;p&gt;While working on a particularly difficult task at work I ended up learning a lot about memory leaks.&lt;/p&gt;
 
 &lt;p&gt;I am actually still working on this task.  To summarize, I needed to create a button that copies items in a table. We are using the javascript library Knockout.js.&lt;/p&gt;
 
@@ -732,11 +732,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">New jekyll site part 3 - errors with deployment</title>
-      <link href="http://localhost:4000/new-jekyll-site-3" rel="alternate" type="text/html" title="New jekyll site part 3 - errors with deployment" />
+      <link href="/new-jekyll-site-3" rel="alternate" type="text/html" title="New jekyll site part 3 - errors with deployment" />
       <published>2020-04-08T16:03:00-06:00</published>
       <updated>2020-04-08T16:03:00-06:00</updated>
-      <id>http://localhost:4000/new-jekyll-site-3</id>
-      <content type="html" xml:base="http://localhost:4000/new-jekyll-site-3">&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
+      <id>/new-jekyll-site-3</id>
+      <content type="html" xml:base="/new-jekyll-site-3">&lt;p&gt;I made my changes to CSS without any more problems and I cleaned up my markdown files, as I mentioned last time. I figured now would be as good a time as any to deploy. I can keep adding posts and making small adjustments once deployed.&lt;/p&gt;
 
 &lt;p&gt;Of course there have been errors with this as well. As expected.&lt;/p&gt;
 
@@ -802,11 +802,11 @@ myservice-events-qa|accounts-qa-deleteAccount-rule-1 already exists&lt;/em&gt;&l
   
     <entry>
       <title type="html">New jekyll site part 2 - errors with Gulp</title>
-      <link href="http://localhost:4000/new-jekyll-site-2" rel="alternate" type="text/html" title="New jekyll site part 2 - errors with Gulp" />
+      <link href="/new-jekyll-site-2" rel="alternate" type="text/html" title="New jekyll site part 2 - errors with Gulp" />
       <published>2020-04-04T17:31:00-06:00</published>
       <updated>2020-04-04T17:31:00-06:00</updated>
-      <id>http://localhost:4000/new-jekyll-site-2</id>
-      <content type="html" xml:base="http://localhost:4000/new-jekyll-site-2">&lt;p&gt;Continuing from my last post, where I began to describe the process of making this blog.&lt;/p&gt;
+      <id>/new-jekyll-site-2</id>
+      <content type="html" xml:base="/new-jekyll-site-2">&lt;p&gt;Continuing from my last post, where I began to describe the process of making this blog.&lt;/p&gt;
 
 &lt;p&gt;I’m at the point of self-isolation where I’m starting to forget what day it is.  I believe I spent the past 3 days or so trying to figure out this problem, though at this point I’ve lost track.&lt;/p&gt;
 

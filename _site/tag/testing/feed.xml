@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/testing/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/testing/feed.xml</id>
+  <link href="/tag/testing/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/testing/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Learning Jest - some basics</title>
-      <link href="http://localhost:4000/jest-learning" rel="alternate" type="text/html" title="Learning Jest - some basics" />
+      <link href="/jest-learning" rel="alternate" type="text/html" title="Learning Jest - some basics" />
       <published>2024-10-17T16:30:00-06:00</published>
       <updated>2024-10-17T16:30:00-06:00</updated>
-      <id>http://localhost:4000/jest-learning</id>
-      <content type="html" xml:base="http://localhost:4000/jest-learning">&lt;p&gt;I’m starting to get into testing with Jest for a work project.&lt;/p&gt;
+      <id>/jest-learning</id>
+      <content type="html" xml:base="/jest-learning">&lt;p&gt;I’m starting to get into testing with Jest for a work project.&lt;/p&gt;
 
 &lt;p&gt;We landed on using Jest and React Testing Library with our React project, as it works nicely (so I’ve heard) with apps set up with create-react-app.&lt;/p&gt;
 

@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/sql/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/sql/feed.xml</id>
+  <link href="/tag/sql/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/sql/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Learning SQL Part 3</title>
-      <link href="http://localhost:4000/sql-part-3" rel="alternate" type="text/html" title="Learning SQL Part 3" />
+      <link href="/sql-part-3" rel="alternate" type="text/html" title="Learning SQL Part 3" />
       <published>2020-07-04T19:30:00-06:00</published>
       <updated>2020-07-04T19:30:00-06:00</updated>
-      <id>http://localhost:4000/sql-part-3</id>
-      <content type="html" xml:base="http://localhost:4000/sql-part-3">&lt;p&gt;The previous post was getting a little long, so here is the last of the notes from my &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;t=3445s&quot;&gt;freecodecamp course in SQL&lt;/a&gt;.&lt;/p&gt;
+      <id>/sql-part-3</id>
+      <content type="html" xml:base="/sql-part-3">&lt;p&gt;The previous post was getting a little long, so here is the last of the notes from my &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;t=3445s&quot;&gt;freecodecamp course in SQL&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;triggers&quot;&gt;Triggers&lt;/h3&gt;
 
@@ -160,11 +160,11 @@
   
     <entry>
       <title type="html">Learning SQL Part 2</title>
-      <link href="http://localhost:4000/sql-part-2" rel="alternate" type="text/html" title="Learning SQL Part 2" />
+      <link href="/sql-part-2" rel="alternate" type="text/html" title="Learning SQL Part 2" />
       <published>2020-07-04T15:30:00-06:00</published>
       <updated>2020-07-04T15:30:00-06:00</updated>
-      <id>http://localhost:4000/sql-part-2</id>
-      <content type="html" xml:base="http://localhost:4000/sql-part-2">&lt;p&gt;Here are more notes from my SQL course on youtube.&lt;/p&gt;
+      <id>/sql-part-2</id>
+      <content type="html" xml:base="/sql-part-2">&lt;p&gt;Here are more notes from my SQL course on youtube.&lt;/p&gt;
 
 &lt;p&gt;I’m going to disect the below query:&lt;/p&gt;
 
@@ -383,11 +383,11 @@ _ means “one character”&lt;/p&gt;
   
     <entry>
       <title type="html">Learning SQL</title>
-      <link href="http://localhost:4000/learning-sql" rel="alternate" type="text/html" title="Learning SQL" />
+      <link href="/learning-sql" rel="alternate" type="text/html" title="Learning SQL" />
       <published>2020-07-01T18:30:00-06:00</published>
       <updated>2020-07-01T18:30:00-06:00</updated>
-      <id>http://localhost:4000/learning-sql</id>
-      <content type="html" xml:base="http://localhost:4000/learning-sql">&lt;p&gt;Another set of notes while I am doing a course, this time in SQL.&lt;/p&gt;
+      <id>/learning-sql</id>
+      <content type="html" xml:base="/learning-sql">&lt;p&gt;Another set of notes while I am doing a course, this time in SQL.&lt;/p&gt;
 
 &lt;p&gt;This time I am following &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;list=WL&amp;amp;index=111&amp;amp;t=1s&quot;&gt;this freeCodeCamp SQL tutorial on youtube&lt;/a&gt;.&lt;/p&gt;
 
@@ -615,11 +615,11 @@ _ means “one character”&lt;/p&gt;
   
     <entry>
       <title type="html">‘There is already an object named ___ in the database’ and ‘Column names in each table must be unique’</title>
-      <link href="http://localhost:4000/database-error" rel="alternate" type="text/html" title="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" />
+      <link href="/database-error" rel="alternate" type="text/html" title="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" />
       <published>2020-06-08T12:30:00-06:00</published>
       <updated>2020-06-08T12:30:00-06:00</updated>
-      <id>http://localhost:4000/database-error</id>
-      <content type="html" xml:base="http://localhost:4000/database-error">&lt;p&gt;There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.&lt;/p&gt;
+      <id>/database-error</id>
+      <content type="html" xml:base="/database-error">&lt;p&gt;There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.&lt;/p&gt;
 
 &lt;p&gt;I’ll do my best to explain without using any data/table names/etc from my work application.&lt;/p&gt;
 

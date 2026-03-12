@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/design/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/design/feed.xml</id>
+  <link href="/tag/design/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/design/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Ordering elements in a PDF, and dealing with an ATS</title>
-      <link href="http://localhost:4000/pdfs-and-ats" rel="alternate" type="text/html" title="Ordering elements in a PDF, and dealing with an ATS" />
+      <link href="/pdfs-and-ats" rel="alternate" type="text/html" title="Ordering elements in a PDF, and dealing with an ATS" />
       <published>2023-09-12T15:30:00-06:00</published>
       <updated>2023-09-12T15:30:00-06:00</updated>
-      <id>http://localhost:4000/pdfs-and-ats</id>
-      <content type="html" xml:base="http://localhost:4000/pdfs-and-ats">&lt;p&gt;We’re stepping away from the world of programming for a moment to talk about a design-related topic.&lt;/p&gt;
+      <id>/pdfs-and-ats</id>
+      <content type="html" xml:base="/pdfs-and-ats">&lt;p&gt;We’re stepping away from the world of programming for a moment to talk about a design-related topic.&lt;/p&gt;
 
 &lt;p&gt;I’ve recently been working on my resume and have been learning a lot of new things.&lt;/p&gt;
 
@@ -113,11 +113,11 @@
   
     <entry>
       <title type="html">Helpful design notes - fonts</title>
-      <link href="http://localhost:4000/design-fonts" rel="alternate" type="text/html" title="Helpful design notes - fonts" />
+      <link href="/design-fonts" rel="alternate" type="text/html" title="Helpful design notes - fonts" />
       <published>2021-03-02T15:30:00-07:00</published>
       <updated>2021-03-02T15:30:00-07:00</updated>
-      <id>http://localhost:4000/design-fonts</id>
-      <content type="html" xml:base="http://localhost:4000/design-fonts">&lt;p&gt;It’s been a while since we had a new post on design so here we go.&lt;/p&gt;
+      <id>/design-fonts</id>
+      <content type="html" xml:base="/design-fonts">&lt;p&gt;It’s been a while since we had a new post on design so here we go.&lt;/p&gt;
 
 &lt;p&gt;Today I’m back working on my UX Design / Adobe XD course so I thought I’d make some notes here with some helpful tips. Today is mostly about fonts.&lt;/p&gt;
 
@@ -211,11 +211,11 @@ Their recommendation was to start with a font size of 16px and go from there, de
   
     <entry>
       <title type="html">Usability - notes from design course</title>
-      <link href="http://localhost:4000/usability" rel="alternate" type="text/html" title="Usability - notes from design course" />
+      <link href="/usability" rel="alternate" type="text/html" title="Usability - notes from design course" />
       <published>2020-09-07T14:30:00-06:00</published>
       <updated>2020-09-07T14:30:00-06:00</updated>
-      <id>http://localhost:4000/usability</id>
-      <content type="html" xml:base="http://localhost:4000/usability">&lt;p&gt;I am back working on my Udemy course, “Master Digital Product Design: UX Research and UI Design”. In this post I will add some notes on usability.&lt;/p&gt;
+      <id>/usability</id>
+      <content type="html" xml:base="/usability">&lt;p&gt;I am back working on my Udemy course, “Master Digital Product Design: UX Research and UI Design”. In this post I will add some notes on usability.&lt;/p&gt;
 
 &lt;p&gt;Usability Heuristics, I have learned, is a way of saying “rule of thumb”. So these are not usability rules exactly; they are usability suggestions and best practices.&lt;/p&gt;
 
@@ -317,11 +317,11 @@ Their recommendation was to start with a font size of 16px and go from there, de
   
     <entry>
       <title type="html">UX design notes part 3</title>
-      <link href="http://localhost:4000/ux-3" rel="alternate" type="text/html" title="UX design notes part 3" />
+      <link href="/ux-3" rel="alternate" type="text/html" title="UX design notes part 3" />
       <published>2020-07-22T19:30:00-06:00</published>
       <updated>2020-07-22T19:30:00-06:00</updated>
-      <id>http://localhost:4000/ux-3</id>
-      <content type="html" xml:base="http://localhost:4000/ux-3">&lt;p&gt;Optimal Sort: helps you with information architecture, card sorting&lt;/p&gt;
+      <id>/ux-3</id>
+      <content type="html" xml:base="/ux-3">&lt;p&gt;Optimal Sort: helps you with information architecture, card sorting&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;test how people think content should be organized&lt;/li&gt;
@@ -421,11 +421,11 @@ Their recommendation was to start with a font size of 16px and go from there, de
   
     <entry>
       <title type="html">UX design notes part 2</title>
-      <link href="http://localhost:4000/ux-2" rel="alternate" type="text/html" title="UX design notes part 2" />
+      <link href="/ux-2" rel="alternate" type="text/html" title="UX design notes part 2" />
       <published>2020-07-09T19:30:00-06:00</published>
       <updated>2020-07-09T19:30:00-06:00</updated>
-      <id>http://localhost:4000/ux-2</id>
-      <content type="html" xml:base="http://localhost:4000/ux-2">&lt;p&gt;More notes from my Udemy course in UX design.&lt;/p&gt;
+      <id>/ux-2</id>
+      <content type="html" xml:base="/ux-2">&lt;p&gt;More notes from my Udemy course in UX design.&lt;/p&gt;
 
 &lt;h3 id=&quot;design-process&quot;&gt;Design process&lt;/h3&gt;
 
@@ -600,11 +600,11 @@ Analysis and testing are convergent, need to focus on most important details, lo
   
     <entry>
       <title type="html">Notes from UX design Udemy course</title>
-      <link href="http://localhost:4000/starting-ux-course" rel="alternate" type="text/html" title="Notes from UX design Udemy course" />
+      <link href="/starting-ux-course" rel="alternate" type="text/html" title="Notes from UX design Udemy course" />
       <published>2020-07-01T12:30:00-06:00</published>
       <updated>2020-07-01T12:30:00-06:00</updated>
-      <id>http://localhost:4000/starting-ux-course</id>
-      <content type="html" xml:base="http://localhost:4000/starting-ux-course">&lt;p&gt;I really love design. It was an area I did well in during school and my instructor commented on this a few times. I want to improve my skills and build a portfolio in case this is an area I want to pursue in the future, so I started a design course on Udemy.&lt;/p&gt;
+      <id>/starting-ux-course</id>
+      <content type="html" xml:base="/starting-ux-course">&lt;p&gt;I really love design. It was an area I did well in during school and my instructor commented on this a few times. I want to improve my skills and build a portfolio in case this is an area I want to pursue in the future, so I started a design course on Udemy.&lt;/p&gt;
 
 &lt;p&gt;This course is Master Digital Product Design: UX Research and UI Design.  I’m already a few minutes in and the instructor is telling us to not take anything said as concrete advice. So, I’ll write some notes while I’m going through the course while keeping this idea in mind.&lt;/p&gt;
 

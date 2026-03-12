@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/database/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/database/feed.xml</id>
+  <link href="/tag/database/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/database/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Getting item count from DynamoDB query, with pagination</title>
-      <link href="http://localhost:4000/dynamodb-query-count-pagination" rel="alternate" type="text/html" title="Getting item count from DynamoDB query, with pagination" />
+      <link href="/dynamodb-query-count-pagination" rel="alternate" type="text/html" title="Getting item count from DynamoDB query, with pagination" />
       <published>2023-02-22T20:30:00-07:00</published>
       <updated>2023-02-22T20:30:00-07:00</updated>
-      <id>http://localhost:4000/dynamodb-query-count-pagination</id>
-      <content type="html" xml:base="http://localhost:4000/dynamodb-query-count-pagination">&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;
+      <id>/dynamodb-query-count-pagination</id>
+      <content type="html" xml:base="/dynamodb-query-count-pagination">&lt;p&gt;At work I had another bug that ended up having to do with database pagination in DynamoDB.&lt;/p&gt;
 
 &lt;p&gt;I needed to check if our database had a certain number of items saved. If it did, the program can move onto another task.&lt;/p&gt;
 
@@ -145,11 +145,11 @@
   
     <entry>
       <title type="html">DynamoDB scans and pagination</title>
-      <link href="http://localhost:4000/dynamo-db-pagination" rel="alternate" type="text/html" title="DynamoDB scans and pagination" />
+      <link href="/dynamo-db-pagination" rel="alternate" type="text/html" title="DynamoDB scans and pagination" />
       <published>2022-08-22T18:30:00-06:00</published>
       <updated>2022-08-22T18:30:00-06:00</updated>
-      <id>http://localhost:4000/dynamo-db-pagination</id>
-      <content type="html" xml:base="http://localhost:4000/dynamo-db-pagination">&lt;p&gt;Today I was working on a task that involved archiving some old data in DynamoDB. I didn’t want to permanently delete my data, so I needed to retrieve the data, create a new record in the archive database, and delete the record from the original database.&lt;/p&gt;
+      <id>/dynamo-db-pagination</id>
+      <content type="html" xml:base="/dynamo-db-pagination">&lt;p&gt;Today I was working on a task that involved archiving some old data in DynamoDB. I didn’t want to permanently delete my data, so I needed to retrieve the data, create a new record in the archive database, and delete the record from the original database.&lt;/p&gt;
 
 &lt;p&gt;These records were never meant to be queried all at once. Normally in the app you would query these records for one user at a time. My PK and SK were not set up to get all of these records as one batch, which meant I needed to scan the database and filter out all of these records in my retrieval step, rather than doing a more efficient query.&lt;/p&gt;
 
@@ -226,11 +226,11 @@
   
     <entry>
       <title type="html">MERN stack - flashcard app</title>
-      <link href="http://localhost:4000/mern-flashcard-app" rel="alternate" type="text/html" title="MERN stack - flashcard app" />
+      <link href="/mern-flashcard-app" rel="alternate" type="text/html" title="MERN stack - flashcard app" />
       <published>2021-02-22T18:30:00-07:00</published>
       <updated>2021-02-22T18:30:00-07:00</updated>
-      <id>http://localhost:4000/mern-flashcard-app</id>
-      <content type="html" xml:base="http://localhost:4000/mern-flashcard-app">&lt;p&gt;My latest project was a full stack MERN app.&lt;/p&gt;
+      <id>/mern-flashcard-app</id>
+      <content type="html" xml:base="/mern-flashcard-app">&lt;p&gt;My latest project was a full stack MERN app.&lt;/p&gt;
 
 &lt;p&gt;I am pretty confident when I am doing front end work but I know I need more practice with back end, especially databases. At work I use AWS for all backend services, particularly Lambda and DynamoDB. For personal projects I like to use Node.js, Express, and MongoDB, as this was what I began learning in school, and I believe these are still good skills to practice.&lt;/p&gt;
 
@@ -510,11 +510,11 @@
   
     <entry>
       <title type="html">Learning SQL Part 3</title>
-      <link href="http://localhost:4000/sql-part-3" rel="alternate" type="text/html" title="Learning SQL Part 3" />
+      <link href="/sql-part-3" rel="alternate" type="text/html" title="Learning SQL Part 3" />
       <published>2020-07-04T19:30:00-06:00</published>
       <updated>2020-07-04T19:30:00-06:00</updated>
-      <id>http://localhost:4000/sql-part-3</id>
-      <content type="html" xml:base="http://localhost:4000/sql-part-3">&lt;p&gt;The previous post was getting a little long, so here is the last of the notes from my &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;t=3445s&quot;&gt;freecodecamp course in SQL&lt;/a&gt;.&lt;/p&gt;
+      <id>/sql-part-3</id>
+      <content type="html" xml:base="/sql-part-3">&lt;p&gt;The previous post was getting a little long, so here is the last of the notes from my &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;t=3445s&quot;&gt;freecodecamp course in SQL&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;triggers&quot;&gt;Triggers&lt;/h3&gt;
 
@@ -625,11 +625,11 @@
   
     <entry>
       <title type="html">Learning SQL Part 2</title>
-      <link href="http://localhost:4000/sql-part-2" rel="alternate" type="text/html" title="Learning SQL Part 2" />
+      <link href="/sql-part-2" rel="alternate" type="text/html" title="Learning SQL Part 2" />
       <published>2020-07-04T15:30:00-06:00</published>
       <updated>2020-07-04T15:30:00-06:00</updated>
-      <id>http://localhost:4000/sql-part-2</id>
-      <content type="html" xml:base="http://localhost:4000/sql-part-2">&lt;p&gt;Here are more notes from my SQL course on youtube.&lt;/p&gt;
+      <id>/sql-part-2</id>
+      <content type="html" xml:base="/sql-part-2">&lt;p&gt;Here are more notes from my SQL course on youtube.&lt;/p&gt;
 
 &lt;p&gt;I’m going to disect the below query:&lt;/p&gt;
 
@@ -848,11 +848,11 @@ _ means “one character”&lt;/p&gt;
   
     <entry>
       <title type="html">Learning SQL</title>
-      <link href="http://localhost:4000/learning-sql" rel="alternate" type="text/html" title="Learning SQL" />
+      <link href="/learning-sql" rel="alternate" type="text/html" title="Learning SQL" />
       <published>2020-07-01T18:30:00-06:00</published>
       <updated>2020-07-01T18:30:00-06:00</updated>
-      <id>http://localhost:4000/learning-sql</id>
-      <content type="html" xml:base="http://localhost:4000/learning-sql">&lt;p&gt;Another set of notes while I am doing a course, this time in SQL.&lt;/p&gt;
+      <id>/learning-sql</id>
+      <content type="html" xml:base="/learning-sql">&lt;p&gt;Another set of notes while I am doing a course, this time in SQL.&lt;/p&gt;
 
 &lt;p&gt;This time I am following &lt;a href=&quot;https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;amp;list=WL&amp;amp;index=111&amp;amp;t=1s&quot;&gt;this freeCodeCamp SQL tutorial on youtube&lt;/a&gt;.&lt;/p&gt;
 
@@ -1080,11 +1080,11 @@ _ means “one character”&lt;/p&gt;
   
     <entry>
       <title type="html">‘There is already an object named ___ in the database’ and ‘Column names in each table must be unique’</title>
-      <link href="http://localhost:4000/database-error" rel="alternate" type="text/html" title="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" />
+      <link href="/database-error" rel="alternate" type="text/html" title="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" />
       <published>2020-06-08T12:30:00-06:00</published>
       <updated>2020-06-08T12:30:00-06:00</updated>
-      <id>http://localhost:4000/database-error</id>
-      <content type="html" xml:base="http://localhost:4000/database-error">&lt;p&gt;There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.&lt;/p&gt;
+      <id>/database-error</id>
+      <content type="html" xml:base="/database-error">&lt;p&gt;There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.&lt;/p&gt;
 
 &lt;p&gt;I’ll do my best to explain without using any data/table names/etc from my work application.&lt;/p&gt;
 
@@ -1168,11 +1168,11 @@ _ means “one character”&lt;/p&gt;
   
     <entry>
       <title type="html">Learning about databases in Udemy course</title>
-      <link href="http://localhost:4000/learning-about-databases" rel="alternate" type="text/html" title="Learning about databases in Udemy course" />
+      <link href="/learning-about-databases" rel="alternate" type="text/html" title="Learning about databases in Udemy course" />
       <published>2020-05-30T18:30:00-06:00</published>
       <updated>2020-05-30T18:30:00-06:00</updated>
-      <id>http://localhost:4000/learning-about-databases</id>
-      <content type="html" xml:base="http://localhost:4000/learning-about-databases">&lt;p&gt;I often feel I need to drill this information into my head a few times before I really get it, so here are some more notes with basic definitions surrounding databases.&lt;/p&gt;
+      <id>/learning-about-databases</id>
+      <content type="html" xml:base="/learning-about-databases">&lt;p&gt;I often feel I need to drill this information into my head a few times before I really get it, so here are some more notes with basic definitions surrounding databases.&lt;/p&gt;
 
 &lt;p&gt;These notes are from the database section of my Web Developer Bootcamp Udemy course, and also include some of my own notes about connecting to MongoDB Atlas.&lt;/p&gt;
 
@@ -1327,11 +1327,11 @@ _ means “one character”&lt;/p&gt;
   
     <entry>
       <title type="html">Last ditch effort – I deleted my database</title>
-      <link href="http://localhost:4000/deleting-my-database" rel="alternate" type="text/html" title="Last ditch effort – I deleted my database" />
+      <link href="/deleting-my-database" rel="alternate" type="text/html" title="Last ditch effort – I deleted my database" />
       <published>2020-04-11T18:30:00-06:00</published>
       <updated>2020-04-11T18:30:00-06:00</updated>
-      <id>http://localhost:4000/deleting-my-database</id>
-      <content type="html" xml:base="http://localhost:4000/deleting-my-database">&lt;p&gt;I have been working on my Udemy courses again, currently hoping to finish my MVC course.&lt;/p&gt;
+      <id>/deleting-my-database</id>
+      <content type="html" xml:base="/deleting-my-database">&lt;p&gt;I have been working on my Udemy courses again, currently hoping to finish my MVC course.&lt;/p&gt;
 
 &lt;p&gt;Sometimes I really don’t like .NET.  I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course though, because I’m sure it will be useful at my next job, or somewhere down the line.&lt;/p&gt;
 
@@ -1399,11 +1399,11 @@ _ means “one character”&lt;/p&gt;
   
     <entry>
       <title type="html">Entity Framework, workflows, databases, and migrations</title>
-      <link href="http://localhost:4000/entityframework" rel="alternate" type="text/html" title="Entity Framework, workflows, databases, and migrations" />
+      <link href="/entityframework" rel="alternate" type="text/html" title="Entity Framework, workflows, databases, and migrations" />
       <published>2020-03-18T17:50:00-06:00</published>
       <updated>2020-03-18T17:50:00-06:00</updated>
-      <id>http://localhost:4000/entityframework</id>
-      <content type="html" xml:base="http://localhost:4000/entityframework">&lt;p&gt;When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.&lt;/p&gt;
+      <id>/entityframework</id>
+      <content type="html" xml:base="/entityframework">&lt;p&gt;When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.&lt;/p&gt;
 
 &lt;h3 id=&quot;entity-framework-a-tool-we-use-to-access-a-database&quot;&gt;Entity Framework: a tool we use to access a database&lt;/h3&gt;
 &lt;ul&gt;

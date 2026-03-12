@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/git/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/git/feed.xml</id>
+  <link href="/tag/git/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/git/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Learning Git Workflows</title>
-      <link href="http://localhost:4000/github-workflows" rel="alternate" type="text/html" title="Learning Git Workflows" />
+      <link href="/github-workflows" rel="alternate" type="text/html" title="Learning Git Workflows" />
       <published>2024-12-27T16:30:00-07:00</published>
       <updated>2024-12-27T16:30:00-07:00</updated>
-      <id>http://localhost:4000/github-workflows</id>
-      <content type="html" xml:base="http://localhost:4000/github-workflows">&lt;p&gt;In order to get a better idea of how to manage our branches in github at work, we took a LinkedIn Learning course on git workflows. Here are some notes I took during the course.&lt;/p&gt;
+      <id>/github-workflows</id>
+      <content type="html" xml:base="/github-workflows">&lt;p&gt;In order to get a better idea of how to manage our branches in github at work, we took a LinkedIn Learning course on git workflows. Here are some notes I took during the course.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Git workflow:&lt;/strong&gt; an agreement amongst a dev team that defines how source code is managed&lt;/p&gt;
 

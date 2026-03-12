@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/binary/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/binary/feed.xml</id>
+  <link href="/tag/binary/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/binary/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Binary math - addition problem</title>
-      <link href="http://localhost:4000/binary-math" rel="alternate" type="text/html" title="Binary math - addition problem" />
+      <link href="/binary-math" rel="alternate" type="text/html" title="Binary math - addition problem" />
       <published>2023-07-02T22:30:00-06:00</published>
       <updated>2023-07-02T22:30:00-06:00</updated>
-      <id>http://localhost:4000/binary-math</id>
-      <content type="html" xml:base="http://localhost:4000/binary-math">&lt;p&gt;Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.&lt;/p&gt;
+      <id>/binary-math</id>
+      <content type="html" xml:base="/binary-math">&lt;p&gt;Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.&lt;/p&gt;
 
 &lt;p&gt;The problem was to simply add two binary numbers - the inputs, &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt; were strings, and the output needed to be a string as well.&lt;/p&gt;
 

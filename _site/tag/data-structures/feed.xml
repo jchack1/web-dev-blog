@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/data-structures/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/data-structures/feed.xml</id>
+  <link href="/tag/data-structures/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/data-structures/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Big O For JavaScript Objects and Arrays</title>
-      <link href="http://localhost:4000/object-array-efficiency" rel="alternate" type="text/html" title="Big O For JavaScript Objects and Arrays" />
+      <link href="/object-array-efficiency" rel="alternate" type="text/html" title="Big O For JavaScript Objects and Arrays" />
       <published>2024-10-19T18:30:00-06:00</published>
       <updated>2024-10-19T18:30:00-06:00</updated>
-      <id>http://localhost:4000/object-array-efficiency</id>
-      <content type="html" xml:base="http://localhost:4000/object-array-efficiency">&lt;p&gt;Quick post to summarize different operations on objects and arrays.&lt;/p&gt;
+      <id>/object-array-efficiency</id>
+      <content type="html" xml:base="/object-array-efficiency">&lt;p&gt;Quick post to summarize different operations on objects and arrays.&lt;/p&gt;
 
 &lt;p&gt;This content came from a lesson in JavaScript Algorithms and Data Structures Masterclass on Udemy.&lt;/p&gt;
 
@@ -122,11 +122,11 @@
   
     <entry>
       <title type="html">Revisiting Data Structures and Algorithms - Big O Notation</title>
-      <link href="http://localhost:4000/big-o" rel="alternate" type="text/html" title="Revisiting Data Structures and Algorithms - Big O Notation" />
+      <link href="/big-o" rel="alternate" type="text/html" title="Revisiting Data Structures and Algorithms - Big O Notation" />
       <published>2024-10-19T17:30:00-06:00</published>
       <updated>2024-10-19T17:30:00-06:00</updated>
-      <id>http://localhost:4000/big-o</id>
-      <content type="html" xml:base="http://localhost:4000/big-o">&lt;p&gt;I am learning about data structures and algorithms again.&lt;/p&gt;
+      <id>/big-o</id>
+      <content type="html" xml:base="/big-o">&lt;p&gt;I am learning about data structures and algorithms again.&lt;/p&gt;
 
 &lt;p&gt;A while ago I wanted to try Leetcode to get better at solving code problems. It was good practice, but I found that if I picked random problems to work on, I could usually come with a solution, but the problems sometimes are testing your knowledge of specific algorithms. How am I supposed to get the “correct” answer if I have never studied the algorithm? I don’t want to just google the answer to every question, this defeats the whole purpose.&lt;/p&gt;
 
@@ -248,11 +248,11 @@
   
     <entry>
       <title type="html">Implementing hash tables in JavaScript</title>
-      <link href="http://localhost:4000/hash-tables-javascript" rel="alternate" type="text/html" title="Implementing hash tables in JavaScript" />
+      <link href="/hash-tables-javascript" rel="alternate" type="text/html" title="Implementing hash tables in JavaScript" />
       <published>2023-08-10T15:30:00-06:00</published>
       <updated>2023-08-10T15:30:00-06:00</updated>
-      <id>http://localhost:4000/hash-tables-javascript</id>
-      <content type="html" xml:base="http://localhost:4000/hash-tables-javascript">&lt;p&gt;Hash tables are a commonly used data structure and, apparently, are commonly asked about in interviews.&lt;/p&gt;
+      <id>/hash-tables-javascript</id>
+      <content type="html" xml:base="/hash-tables-javascript">&lt;p&gt;Hash tables are a commonly used data structure and, apparently, are commonly asked about in interviews.&lt;/p&gt;
 
 &lt;p&gt;Hash tables store data in key-value pairs. They should be used when you are looking for very quick look-ups. Generally, if you search a hash table for a particular key, it should be able to find it for you without having to search the entire data structure, giving look-ups O(1) time.&lt;/p&gt;
 
@@ -496,11 +496,11 @@
   
     <entry>
       <title type="html">Binary trees; isSameTree problem</title>
-      <link href="http://localhost:4000/binary-trees" rel="alternate" type="text/html" title="Binary trees; isSameTree problem" />
+      <link href="/binary-trees" rel="alternate" type="text/html" title="Binary trees; isSameTree problem" />
       <published>2023-07-28T15:30:00-06:00</published>
       <updated>2023-07-28T15:30:00-06:00</updated>
-      <id>http://localhost:4000/binary-trees</id>
-      <content type="html" xml:base="http://localhost:4000/binary-trees">&lt;p&gt;It’s time to dive into some binary tree coding problems.&lt;/p&gt;
+      <id>/binary-trees</id>
+      <content type="html" xml:base="/binary-trees">&lt;p&gt;It’s time to dive into some binary tree coding problems.&lt;/p&gt;
 
 &lt;p&gt;But I think I need to learn more about binary trees, and how to tackle these kinds of problems first, so I actually have a chance of getting them right.&lt;/p&gt;
 
@@ -640,11 +640,11 @@
   
     <entry>
       <title type="html">More data structures - JavaScript</title>
-      <link href="http://localhost:4000/data-structures-javascript" rel="alternate" type="text/html" title="More data structures - JavaScript" />
+      <link href="/data-structures-javascript" rel="alternate" type="text/html" title="More data structures - JavaScript" />
       <published>2022-03-11T15:30:00-07:00</published>
       <updated>2022-03-11T15:30:00-07:00</updated>
-      <id>http://localhost:4000/data-structures-javascript</id>
-      <content type="html" xml:base="http://localhost:4000/data-structures-javascript">&lt;p&gt;Last year I began learning more about data structures. I found myself often wondering how the theory I was learning would apply to JavaScript, the language I code in most frequently.&lt;/p&gt;
+      <id>/data-structures-javascript</id>
+      <content type="html" xml:base="/data-structures-javascript">&lt;p&gt;Last year I began learning more about data structures. I found myself often wondering how the theory I was learning would apply to JavaScript, the language I code in most frequently.&lt;/p&gt;
 
 &lt;p&gt;Currently I am going through a &lt;a href=&quot;https://www.youtube.com/watch?v=t2CEgPsws3U&amp;amp;list=WL&amp;amp;index=21&amp;amp;t=3s&quot;&gt;tutorial on JavaScript data structures&lt;/a&gt;, and I will make some notes here as I learn.&lt;/p&gt;
 
@@ -824,11 +824,11 @@
   
     <entry>
       <title type="html">Learning data structures - advanced structures (trees)</title>
-      <link href="http://localhost:4000/data-structures-3" rel="alternate" type="text/html" title="Learning data structures - advanced structures (trees)" />
+      <link href="/data-structures-3" rel="alternate" type="text/html" title="Learning data structures - advanced structures (trees)" />
       <published>2021-07-07T14:30:00-06:00</published>
       <updated>2021-07-07T14:30:00-06:00</updated>
-      <id>http://localhost:4000/data-structures-3</id>
-      <content type="html" xml:base="http://localhost:4000/data-structures-3">&lt;p&gt;This is the last section of intro to data structures. We are now getting into non-linear data structures.&lt;/p&gt;
+      <id>/data-structures-3</id>
+      <content type="html" xml:base="/data-structures-3">&lt;p&gt;This is the last section of intro to data structures. We are now getting into non-linear data structures.&lt;/p&gt;
 
 &lt;p&gt;Everything up to this point has been a linear structure. The next data structures to cover are trees.&lt;/p&gt;
 
@@ -932,11 +932,11 @@
   
     <entry>
       <title type="html">Learning data structures - intermediate structures</title>
-      <link href="http://localhost:4000/data-structures-2" rel="alternate" type="text/html" title="Learning data structures - intermediate structures" />
+      <link href="/data-structures-2" rel="alternate" type="text/html" title="Learning data structures - intermediate structures" />
       <published>2021-06-10T14:30:00-06:00</published>
       <updated>2021-06-10T14:30:00-06:00</updated>
-      <id>http://localhost:4000/data-structures-2</id>
-      <content type="html" xml:base="http://localhost:4000/data-structures-2">&lt;p&gt;Now we are getting into some intermediate topics in data structures.&lt;/p&gt;
+      <id>/data-structures-2</id>
+      <content type="html" xml:base="/data-structures-2">&lt;p&gt;Now we are getting into some intermediate topics in data structures.&lt;/p&gt;
 
 &lt;p&gt;Again I am following along with the &lt;a href=&quot;https://www.youtube.com/watch?v=zg9ih6SVACc&amp;amp;t=3551s&quot;&gt;freeCodeCamp video&lt;/a&gt; on data structures as I learn.&lt;/p&gt;
 
@@ -1113,11 +1113,11 @@
   
     <entry>
       <title type="html">Learning data structures - performance and basic structures</title>
-      <link href="http://localhost:4000/data-structures" rel="alternate" type="text/html" title="Learning data structures - performance and basic structures" />
+      <link href="/data-structures" rel="alternate" type="text/html" title="Learning data structures - performance and basic structures" />
       <published>2021-05-23T14:30:00-06:00</published>
       <updated>2021-05-23T14:30:00-06:00</updated>
-      <id>http://localhost:4000/data-structures</id>
-      <content type="html" xml:base="http://localhost:4000/data-structures">&lt;p&gt;It felt like it was about time to dive deeper into data structures.&lt;/p&gt;
+      <id>/data-structures</id>
+      <content type="html" xml:base="/data-structures">&lt;p&gt;It felt like it was about time to dive deeper into data structures.&lt;/p&gt;
 
 &lt;p&gt;This is one of those topics that I knew I needed to learn in more depth eventually, but didn’t get around to until now. I was working on a difficult programming problem where I had to convert some data from one structure to another for my front end to be able to use it. I was frustrated because I felt like I had a gap in my knowledge - how do I create and work with these data structures efficiently? Through a lot of trial and error I figured it out, but it likely would have been easier if I had more knowledge of the specific structures I was using - in this case, objects and maps in Javascript.&lt;/p&gt;
 

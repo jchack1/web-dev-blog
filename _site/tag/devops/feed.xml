@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/devops/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/devops/feed.xml</id>
+  <link href="/tag/devops/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/devops/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Deploying full stack MERN apps with Render</title>
-      <link href="http://localhost:4000/mern-deploy-render" rel="alternate" type="text/html" title="Deploying full stack MERN apps with Render" />
+      <link href="/mern-deploy-render" rel="alternate" type="text/html" title="Deploying full stack MERN apps with Render" />
       <published>2022-11-21T20:30:00-07:00</published>
       <updated>2022-11-21T20:30:00-07:00</updated>
-      <id>http://localhost:4000/mern-deploy-render</id>
-      <content type="html" xml:base="http://localhost:4000/mern-deploy-render">&lt;p&gt;Due to the recent changes with Heroku removing its free tier, I decided to move a few of my portfolio apps over to Render.&lt;/p&gt;
+      <id>/mern-deploy-render</id>
+      <content type="html" xml:base="/mern-deploy-render">&lt;p&gt;Due to the recent changes with Heroku removing its free tier, I decided to move a few of my portfolio apps over to Render.&lt;/p&gt;
 
 &lt;p&gt;While I understand that companies want to make money, I can’t justify spending money, even a small amount, every month just to host demo portfolio apps that probably no one looks at except me.&lt;/p&gt;
 
@@ -125,11 +125,11 @@
   
     <entry>
       <title type="html">How I configured ESLint and Prettier for React at work</title>
-      <link href="http://localhost:4000/eslint-prettier-react" rel="alternate" type="text/html" title="How I configured ESLint and Prettier for React at work " />
+      <link href="/eslint-prettier-react" rel="alternate" type="text/html" title="How I configured ESLint and Prettier for React at work " />
       <published>2020-10-29T17:30:00-06:00</published>
       <updated>2020-10-29T17:30:00-06:00</updated>
-      <id>http://localhost:4000/eslint-prettier-react</id>
-      <content type="html" xml:base="http://localhost:4000/eslint-prettier-react">&lt;p&gt;At work we are doing some set-up on our projects so we can work better as a team, especially as we grow. It made sense to look into linting and formatting we can use across our projects, so our code is consistent and we don’t have to spend time thinking about correct formatting as we code.&lt;/p&gt;
+      <id>/eslint-prettier-react</id>
+      <content type="html" xml:base="/eslint-prettier-react">&lt;p&gt;At work we are doing some set-up on our projects so we can work better as a team, especially as we grow. It made sense to look into linting and formatting we can use across our projects, so our code is consistent and we don’t have to spend time thinking about correct formatting as we code.&lt;/p&gt;
 
 &lt;p&gt;We decided we wanted to implement ESLint for linting (looking for code quality issues) and Prettier for formatting (code format/style like quotes, tabs, etc). We specifically wanted to add config files to the projects where we can store our settings, so the settings are just there in our project and we don’t have to change too many settings in our code editor.&lt;/p&gt;
 
@@ -234,11 +234,11 @@
   
     <entry>
       <title type="html">How to fully delete Visual Studio Code from Windows 10</title>
-      <link href="http://localhost:4000/how-to-fully-delete-vscode" rel="alternate" type="text/html" title="How to fully delete Visual Studio Code from Windows 10" />
+      <link href="/how-to-fully-delete-vscode" rel="alternate" type="text/html" title="How to fully delete Visual Studio Code from Windows 10" />
       <published>2020-10-27T14:30:00-06:00</published>
       <updated>2020-10-27T14:30:00-06:00</updated>
-      <id>http://localhost:4000/how-to-fully-delete-vscode</id>
-      <content type="html" xml:base="http://localhost:4000/how-to-fully-delete-vscode">&lt;p&gt;Recently I was messing around in my VS Code settings trying to get some new extensions to work. Long story short, I was following along with a tutorial, clicked a few things I probably shouldn’t have, and suddenly I could not see the settings UI screen.&lt;/p&gt;
+      <id>/how-to-fully-delete-vscode</id>
+      <content type="html" xml:base="/how-to-fully-delete-vscode">&lt;p&gt;Recently I was messing around in my VS Code settings trying to get some new extensions to work. Long story short, I was following along with a tutorial, clicked a few things I probably shouldn’t have, and suddenly I could not see the settings UI screen.&lt;/p&gt;
 
 &lt;p&gt;I figured it would be best to just uninstall VS Code and start over fresh, so I went to “Add or remove programs” in system settings to uninstall the program. Seemed simple enough, but when I re-installed VS Code, all my extensions were still there, and my settings were still not right.  So VS Code must be saving data elsewhere on the machine and it is not being deleted when the program is uninstalled.&lt;/p&gt;
 

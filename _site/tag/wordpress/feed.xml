@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/wordpress/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/wordpress/feed.xml</id>
+  <link href="/tag/wordpress/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/wordpress/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Using WordPress again - getting started</title>
-      <link href="http://localhost:4000/wordpress-set-up" rel="alternate" type="text/html" title="Using WordPress again - getting started" />
+      <link href="/wordpress-set-up" rel="alternate" type="text/html" title="Using WordPress again - getting started" />
       <published>2020-06-27T12:30:00-06:00</published>
       <updated>2020-06-27T12:30:00-06:00</updated>
-      <id>http://localhost:4000/wordpress-set-up</id>
-      <content type="html" xml:base="http://localhost:4000/wordpress-set-up">&lt;p&gt;We learned WordPress in school briefly as part of our CMS course. I could possibly get to work on some small freelance WordPress projects in the near future so I am relearning WordPress again with the site builder Oxygen.&lt;/p&gt;
+      <id>/wordpress-set-up</id>
+      <content type="html" xml:base="/wordpress-set-up">&lt;p&gt;We learned WordPress in school briefly as part of our CMS course. I could possibly get to work on some small freelance WordPress projects in the near future so I am relearning WordPress again with the site builder Oxygen.&lt;/p&gt;
 
 &lt;h3 id=&quot;setting-up-wordpress-and-installing-a-new-site&quot;&gt;Setting up Wordpress and installing a new site&lt;/h3&gt;
 

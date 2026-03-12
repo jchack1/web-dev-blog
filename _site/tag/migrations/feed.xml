@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/migrations/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/migrations/feed.xml</id>
+  <link href="/tag/migrations/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/migrations/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">‘There is already an object named ___ in the database’ and ‘Column names in each table must be unique’</title>
-      <link href="http://localhost:4000/database-error" rel="alternate" type="text/html" title="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" />
+      <link href="/database-error" rel="alternate" type="text/html" title="'There is already an object named ___ in the database' and 'Column names in each table must be unique'" />
       <published>2020-06-08T12:30:00-06:00</published>
       <updated>2020-06-08T12:30:00-06:00</updated>
-      <id>http://localhost:4000/database-error</id>
-      <content type="html" xml:base="http://localhost:4000/database-error">&lt;p&gt;There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.&lt;/p&gt;
+      <id>/database-error</id>
+      <content type="html" xml:base="/database-error">&lt;p&gt;There were migrations performed on our application at work this week, which meant my database was out of date and the application would not load on my local machine.&lt;/p&gt;
 
 &lt;p&gt;I’ll do my best to explain without using any data/table names/etc from my work application.&lt;/p&gt;
 
@@ -133,11 +133,11 @@
   
     <entry>
       <title type="html">Last ditch effort – I deleted my database</title>
-      <link href="http://localhost:4000/deleting-my-database" rel="alternate" type="text/html" title="Last ditch effort – I deleted my database" />
+      <link href="/deleting-my-database" rel="alternate" type="text/html" title="Last ditch effort – I deleted my database" />
       <published>2020-04-11T18:30:00-06:00</published>
       <updated>2020-04-11T18:30:00-06:00</updated>
-      <id>http://localhost:4000/deleting-my-database</id>
-      <content type="html" xml:base="http://localhost:4000/deleting-my-database">&lt;p&gt;I have been working on my Udemy courses again, currently hoping to finish my MVC course.&lt;/p&gt;
+      <id>/deleting-my-database</id>
+      <content type="html" xml:base="/deleting-my-database">&lt;p&gt;I have been working on my Udemy courses again, currently hoping to finish my MVC course.&lt;/p&gt;
 
 &lt;p&gt;Sometimes I really don’t like .NET.  I’m not sure if it’s needlessly complicated or if I just need to learn more to help myself understand. I didn’t want to give up on my course though, because I’m sure it will be useful at my next job, or somewhere down the line.&lt;/p&gt;
 
@@ -205,11 +205,11 @@
   
     <entry>
       <title type="html">Entity Framework, workflows, databases, and migrations</title>
-      <link href="http://localhost:4000/entityframework" rel="alternate" type="text/html" title="Entity Framework, workflows, databases, and migrations" />
+      <link href="/entityframework" rel="alternate" type="text/html" title="Entity Framework, workflows, databases, and migrations" />
       <published>2020-03-18T17:50:00-06:00</published>
       <updated>2020-03-18T17:50:00-06:00</updated>
-      <id>http://localhost:4000/entityframework</id>
-      <content type="html" xml:base="http://localhost:4000/entityframework">&lt;p&gt;When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.&lt;/p&gt;
+      <id>/entityframework</id>
+      <content type="html" xml:base="/entityframework">&lt;p&gt;When I began my Udemy course on .NET MVC, as well as my web development practicum, there were a lot of terms I was unfamiliar with - things that perhaps seem very simple to more advanced developers.  I was constantly having to google new terms I came across, and often the language used in the articles I read was not beginner enough for me.  In this post I will simply share some definitions and bits of information I found helpful when I was just starting to learn about .NET.&lt;/p&gt;
 
 &lt;h3 id=&quot;entity-framework-a-tool-we-use-to-access-a-database&quot;&gt;Entity Framework: a tool we use to access a database&lt;/h3&gt;
 &lt;ul&gt;

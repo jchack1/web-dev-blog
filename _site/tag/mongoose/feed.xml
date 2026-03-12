@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/mongoose/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/mongoose/feed.xml</id>
+  <link href="/tag/mongoose/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/mongoose/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">MERN stack - flashcard app</title>
-      <link href="http://localhost:4000/mern-flashcard-app" rel="alternate" type="text/html" title="MERN stack - flashcard app" />
+      <link href="/mern-flashcard-app" rel="alternate" type="text/html" title="MERN stack - flashcard app" />
       <published>2021-02-22T18:30:00-07:00</published>
       <updated>2021-02-22T18:30:00-07:00</updated>
-      <id>http://localhost:4000/mern-flashcard-app</id>
-      <content type="html" xml:base="http://localhost:4000/mern-flashcard-app">&lt;p&gt;My latest project was a full stack MERN app.&lt;/p&gt;
+      <id>/mern-flashcard-app</id>
+      <content type="html" xml:base="/mern-flashcard-app">&lt;p&gt;My latest project was a full stack MERN app.&lt;/p&gt;
 
 &lt;p&gt;I am pretty confident when I am doing front end work but I know I need more practice with back end, especially databases. At work I use AWS for all backend services, particularly Lambda and DynamoDB. For personal projects I like to use Node.js, Express, and MongoDB, as this was what I began learning in school, and I believe these are still good skills to practice.&lt;/p&gt;
 
@@ -329,11 +329,11 @@
   
     <entry>
       <title type="html">Learning about databases in Udemy course</title>
-      <link href="http://localhost:4000/learning-about-databases" rel="alternate" type="text/html" title="Learning about databases in Udemy course" />
+      <link href="/learning-about-databases" rel="alternate" type="text/html" title="Learning about databases in Udemy course" />
       <published>2020-05-30T18:30:00-06:00</published>
       <updated>2020-05-30T18:30:00-06:00</updated>
-      <id>http://localhost:4000/learning-about-databases</id>
-      <content type="html" xml:base="http://localhost:4000/learning-about-databases">&lt;p&gt;I often feel I need to drill this information into my head a few times before I really get it, so here are some more notes with basic definitions surrounding databases.&lt;/p&gt;
+      <id>/learning-about-databases</id>
+      <content type="html" xml:base="/learning-about-databases">&lt;p&gt;I often feel I need to drill this information into my head a few times before I really get it, so here are some more notes with basic definitions surrounding databases.&lt;/p&gt;
 
 &lt;p&gt;These notes are from the database section of my Web Developer Bootcamp Udemy course, and also include some of my own notes about connecting to MongoDB Atlas.&lt;/p&gt;
 

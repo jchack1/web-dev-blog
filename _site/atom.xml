@@ -4,7 +4,22 @@
     <title> - Articles</title>
     <description>Web development blog</description>
     <link>
-    http://localhost:4000</link>
+    </link>
+    
+      
+      <item>
+        <title>How Electron apps can handle excel downloads</title>
+        
+          <description>&lt;p&gt;I’m getting into Electron for some work projects and have recently been learning more about how it works.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 10 Mar 2026 17:30:00 -0600</pubDate>
+        <link>
+        /electron-file-downloads</link>
+        <guid isPermaLink="true">/electron-file-downloads</guid>
+      </item>
+      
     
       
       <item>
@@ -16,8 +31,8 @@
         
         <pubDate>Wed, 29 Jan 2025 16:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/algorithm-problem-solving</link>
-        <guid isPermaLink="true">http://localhost:4000/algorithm-problem-solving</guid>
+        /algorithm-problem-solving</link>
+        <guid isPermaLink="true">/algorithm-problem-solving</guid>
       </item>
       
     
@@ -31,8 +46,8 @@
         
         <pubDate>Fri, 27 Dec 2024 16:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/github-workflows</link>
-        <guid isPermaLink="true">http://localhost:4000/github-workflows</guid>
+        /github-workflows</link>
+        <guid isPermaLink="true">/github-workflows</guid>
       </item>
       
     
@@ -46,8 +61,8 @@
         
         <pubDate>Sat, 19 Oct 2024 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/object-array-efficiency</link>
-        <guid isPermaLink="true">http://localhost:4000/object-array-efficiency</guid>
+        /object-array-efficiency</link>
+        <guid isPermaLink="true">/object-array-efficiency</guid>
       </item>
       
     
@@ -61,8 +76,8 @@
         
         <pubDate>Sat, 19 Oct 2024 17:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/big-o</link>
-        <guid isPermaLink="true">http://localhost:4000/big-o</guid>
+        /big-o</link>
+        <guid isPermaLink="true">/big-o</guid>
       </item>
       
     
@@ -76,8 +91,8 @@
         
         <pubDate>Thu, 17 Oct 2024 16:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/jest-learning</link>
-        <guid isPermaLink="true">http://localhost:4000/jest-learning</guid>
+        /jest-learning</link>
+        <guid isPermaLink="true">/jest-learning</guid>
       </item>
       
     
@@ -91,8 +106,8 @@
         
         <pubDate>Thu, 10 Oct 2024 16:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/js-modules</link>
-        <guid isPermaLink="true">http://localhost:4000/js-modules</guid>
+        /js-modules</link>
+        <guid isPermaLink="true">/js-modules</guid>
       </item>
       
     
@@ -106,8 +121,8 @@
         
         <pubDate>Tue, 21 Nov 2023 16:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/appsync-chat-app</link>
-        <guid isPermaLink="true">http://localhost:4000/appsync-chat-app</guid>
+        /appsync-chat-app</link>
+        <guid isPermaLink="true">/appsync-chat-app</guid>
       </item>
       
     
@@ -121,8 +136,8 @@
         
         <pubDate>Tue, 12 Sep 2023 15:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/pdfs-and-ats</link>
-        <guid isPermaLink="true">http://localhost:4000/pdfs-and-ats</guid>
+        /pdfs-and-ats</link>
+        <guid isPermaLink="true">/pdfs-and-ats</guid>
       </item>
       
     
@@ -136,8 +151,8 @@
         
         <pubDate>Thu, 10 Aug 2023 15:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/hash-tables-javascript</link>
-        <guid isPermaLink="true">http://localhost:4000/hash-tables-javascript</guid>
+        /hash-tables-javascript</link>
+        <guid isPermaLink="true">/hash-tables-javascript</guid>
       </item>
       
     
@@ -151,8 +166,8 @@
         
         <pubDate>Fri, 28 Jul 2023 15:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/binary-trees</link>
-        <guid isPermaLink="true">http://localhost:4000/binary-trees</guid>
+        /binary-trees</link>
+        <guid isPermaLink="true">/binary-trees</guid>
       </item>
       
     
@@ -166,8 +181,8 @@
         
         <pubDate>Fri, 21 Jul 2023 15:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/reverse-linked-list</link>
-        <guid isPermaLink="true">http://localhost:4000/reverse-linked-list</guid>
+        /reverse-linked-list</link>
+        <guid isPermaLink="true">/reverse-linked-list</guid>
       </item>
       
     
@@ -181,8 +196,8 @@
         
         <pubDate>Wed, 19 Jul 2023 15:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/linked-list-has-cycle</link>
-        <guid isPermaLink="true">http://localhost:4000/linked-list-has-cycle</guid>
+        /linked-list-has-cycle</link>
+        <guid isPermaLink="true">/linked-list-has-cycle</guid>
       </item>
       
     
@@ -196,8 +211,8 @@
         
         <pubDate>Sat, 08 Jul 2023 15:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/delete-from-string</link>
-        <guid isPermaLink="true">http://localhost:4000/delete-from-string</guid>
+        /delete-from-string</link>
+        <guid isPermaLink="true">/delete-from-string</guid>
       </item>
       
     
@@ -211,8 +226,8 @@
         
         <pubDate>Fri, 07 Jul 2023 22:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/boyer-moore</link>
-        <guid isPermaLink="true">http://localhost:4000/boyer-moore</guid>
+        /boyer-moore</link>
+        <guid isPermaLink="true">/boyer-moore</guid>
       </item>
       
     
@@ -226,8 +241,8 @@
         
         <pubDate>Sun, 02 Jul 2023 22:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/binary-math</link>
-        <guid isPermaLink="true">http://localhost:4000/binary-math</guid>
+        /binary-math</link>
+        <guid isPermaLink="true">/binary-math</guid>
       </item>
       
     
@@ -241,8 +256,8 @@
         
         <pubDate>Wed, 22 Feb 2023 20:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/dynamodb-query-count-pagination</link>
-        <guid isPermaLink="true">http://localhost:4000/dynamodb-query-count-pagination</guid>
+        /dynamodb-query-count-pagination</link>
+        <guid isPermaLink="true">/dynamodb-query-count-pagination</guid>
       </item>
       
     
@@ -256,8 +271,8 @@
         
         <pubDate>Mon, 13 Feb 2023 12:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/trying-chatgpt</link>
-        <guid isPermaLink="true">http://localhost:4000/trying-chatgpt</guid>
+        /trying-chatgpt</link>
+        <guid isPermaLink="true">/trying-chatgpt</guid>
       </item>
       
     
@@ -271,8 +286,8 @@
         
         <pubDate>Mon, 30 Jan 2023 12:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/pipe-compose</link>
-        <guid isPermaLink="true">http://localhost:4000/pipe-compose</guid>
+        /pipe-compose</link>
+        <guid isPermaLink="true">/pipe-compose</guid>
       </item>
       
     
@@ -286,8 +301,8 @@
         
         <pubDate>Mon, 16 Jan 2023 16:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/async-javascript</link>
-        <guid isPermaLink="true">http://localhost:4000/async-javascript</guid>
+        /async-javascript</link>
+        <guid isPermaLink="true">/async-javascript</guid>
       </item>
       
     
@@ -301,8 +316,8 @@
         
         <pubDate>Mon, 21 Nov 2022 20:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/mern-deploy-render</link>
-        <guid isPermaLink="true">http://localhost:4000/mern-deploy-render</guid>
+        /mern-deploy-render</link>
+        <guid isPermaLink="true">/mern-deploy-render</guid>
       </item>
       
     
@@ -316,8 +331,8 @@
         
         <pubDate>Sat, 12 Nov 2022 18:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/DOM-methods</link>
-        <guid isPermaLink="true">http://localhost:4000/DOM-methods</guid>
+        /DOM-methods</link>
+        <guid isPermaLink="true">/DOM-methods</guid>
       </item>
       
     
@@ -331,8 +346,8 @@
         
         <pubDate>Mon, 31 Oct 2022 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/DOM-notes</link>
-        <guid isPermaLink="true">http://localhost:4000/DOM-notes</guid>
+        /DOM-notes</link>
+        <guid isPermaLink="true">/DOM-notes</guid>
       </item>
       
     
@@ -346,8 +361,8 @@
         
         <pubDate>Sun, 30 Oct 2022 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/javascript-numbers-dates</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-numbers-dates</guid>
+        /javascript-numbers-dates</link>
+        <guid isPermaLink="true">/javascript-numbers-dates</guid>
       </item>
       
     
@@ -361,8 +376,8 @@
         
         <pubDate>Tue, 18 Oct 2022 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/clone-object</link>
-        <guid isPermaLink="true">http://localhost:4000/clone-object</guid>
+        /clone-object</link>
+        <guid isPermaLink="true">/clone-object</guid>
       </item>
       
     
@@ -376,8 +391,8 @@
         
         <pubDate>Sun, 02 Oct 2022 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/increment-decrement</link>
-        <guid isPermaLink="true">http://localhost:4000/increment-decrement</guid>
+        /increment-decrement</link>
+        <guid isPermaLink="true">/increment-decrement</guid>
       </item>
       
     
@@ -391,8 +406,8 @@
         
         <pubDate>Tue, 30 Aug 2022 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/lambda-fullaccess-bug</link>
-        <guid isPermaLink="true">http://localhost:4000/lambda-fullaccess-bug</guid>
+        /lambda-fullaccess-bug</link>
+        <guid isPermaLink="true">/lambda-fullaccess-bug</guid>
       </item>
       
     
@@ -406,8 +421,8 @@
         
         <pubDate>Mon, 22 Aug 2022 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/dynamo-db-pagination</link>
-        <guid isPermaLink="true">http://localhost:4000/dynamo-db-pagination</guid>
+        /dynamo-db-pagination</link>
+        <guid isPermaLink="true">/dynamo-db-pagination</guid>
       </item>
       
     
@@ -421,8 +436,8 @@
         
         <pubDate>Mon, 16 May 2022 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/dino-clone</link>
-        <guid isPermaLink="true">http://localhost:4000/dino-clone</guid>
+        /dino-clone</link>
+        <guid isPermaLink="true">/dino-clone</guid>
       </item>
       
     
@@ -436,8 +451,8 @@
         
         <pubDate>Fri, 11 Mar 2022 15:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/data-structures-javascript</link>
-        <guid isPermaLink="true">http://localhost:4000/data-structures-javascript</guid>
+        /data-structures-javascript</link>
+        <guid isPermaLink="true">/data-structures-javascript</guid>
       </item>
       
     
@@ -451,8 +466,8 @@
         
         <pubDate>Mon, 31 Jan 2022 18:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/serverless-event-bug</link>
-        <guid isPermaLink="true">http://localhost:4000/serverless-event-bug</guid>
+        /serverless-event-bug</link>
+        <guid isPermaLink="true">/serverless-event-bug</guid>
       </item>
       
     
@@ -466,8 +481,8 @@
         
         <pubDate>Tue, 07 Dec 2021 18:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/forEach-async-await</link>
-        <guid isPermaLink="true">http://localhost:4000/forEach-async-await</guid>
+        /forEach-async-await</link>
+        <guid isPermaLink="true">/forEach-async-await</guid>
       </item>
       
     
@@ -481,8 +496,8 @@
         
         <pubDate>Sat, 27 Nov 2021 18:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/react-ref</link>
-        <guid isPermaLink="true">http://localhost:4000/react-ref</guid>
+        /react-ref</link>
+        <guid isPermaLink="true">/react-ref</guid>
       </item>
       
     
@@ -496,8 +511,8 @@
         
         <pubDate>Wed, 11 Aug 2021 14:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/ec2-ssh</link>
-        <guid isPermaLink="true">http://localhost:4000/ec2-ssh</guid>
+        /ec2-ssh</link>
+        <guid isPermaLink="true">/ec2-ssh</guid>
       </item>
       
     
@@ -511,8 +526,8 @@
         
         <pubDate>Fri, 06 Aug 2021 14:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/debugging-graphs</link>
-        <guid isPermaLink="true">http://localhost:4000/debugging-graphs</guid>
+        /debugging-graphs</link>
+        <guid isPermaLink="true">/debugging-graphs</guid>
       </item>
       
     
@@ -526,8 +541,8 @@
         
         <pubDate>Wed, 07 Jul 2021 14:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/data-structures-3</link>
-        <guid isPermaLink="true">http://localhost:4000/data-structures-3</guid>
+        /data-structures-3</link>
+        <guid isPermaLink="true">/data-structures-3</guid>
       </item>
       
     
@@ -541,8 +556,8 @@
         
         <pubDate>Tue, 06 Jul 2021 14:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/nextjs-google-analytics</link>
-        <guid isPermaLink="true">http://localhost:4000/nextjs-google-analytics</guid>
+        /nextjs-google-analytics</link>
+        <guid isPermaLink="true">/nextjs-google-analytics</guid>
       </item>
       
     
@@ -556,8 +571,8 @@
         
         <pubDate>Thu, 10 Jun 2021 14:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/data-structures-2</link>
-        <guid isPermaLink="true">http://localhost:4000/data-structures-2</guid>
+        /data-structures-2</link>
+        <guid isPermaLink="true">/data-structures-2</guid>
       </item>
       
     
@@ -571,8 +586,8 @@
         
         <pubDate>Sun, 23 May 2021 14:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/data-structures</link>
-        <guid isPermaLink="true">http://localhost:4000/data-structures</guid>
+        /data-structures</link>
+        <guid isPermaLink="true">/data-structures</guid>
       </item>
       
     
@@ -586,8 +601,8 @@
         
         <pubDate>Sun, 11 Apr 2021 14:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/lambda</link>
-        <guid isPermaLink="true">http://localhost:4000/lambda</guid>
+        /lambda</link>
+        <guid isPermaLink="true">/lambda</guid>
       </item>
       
     
@@ -601,8 +616,8 @@
         
         <pubDate>Sun, 28 Mar 2021 13:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/sns</link>
-        <guid isPermaLink="true">http://localhost:4000/sns</guid>
+        /sns</link>
+        <guid isPermaLink="true">/sns</guid>
       </item>
       
     
@@ -616,8 +631,8 @@
         
         <pubDate>Mon, 22 Mar 2021 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/sqs</link>
-        <guid isPermaLink="true">http://localhost:4000/sqs</guid>
+        /sqs</link>
+        <guid isPermaLink="true">/sqs</guid>
       </item>
       
     
@@ -631,8 +646,8 @@
         
         <pubDate>Mon, 15 Mar 2021 14:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/cloudformation-intrinsic-functions</link>
-        <guid isPermaLink="true">http://localhost:4000/cloudformation-intrinsic-functions</guid>
+        /cloudformation-intrinsic-functions</link>
+        <guid isPermaLink="true">/cloudformation-intrinsic-functions</guid>
       </item>
       
     
@@ -646,8 +661,8 @@
         
         <pubDate>Tue, 02 Mar 2021 15:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/design-fonts</link>
-        <guid isPermaLink="true">http://localhost:4000/design-fonts</guid>
+        /design-fonts</link>
+        <guid isPermaLink="true">/design-fonts</guid>
       </item>
       
     
@@ -661,8 +676,8 @@
         
         <pubDate>Mon, 22 Feb 2021 18:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/mern-flashcard-app</link>
-        <guid isPermaLink="true">http://localhost:4000/mern-flashcard-app</guid>
+        /mern-flashcard-app</link>
+        <guid isPermaLink="true">/mern-flashcard-app</guid>
       </item>
       
     
@@ -676,8 +691,8 @@
         
         <pubDate>Mon, 11 Jan 2021 14:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/redux</link>
-        <guid isPermaLink="true">http://localhost:4000/redux</guid>
+        /redux</link>
+        <guid isPermaLink="true">/redux</guid>
       </item>
       
     
@@ -691,8 +706,8 @@
         
         <pubDate>Mon, 14 Dec 2020 19:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/js-methods</link>
-        <guid isPermaLink="true">http://localhost:4000/js-methods</guid>
+        /js-methods</link>
+        <guid isPermaLink="true">/js-methods</guid>
       </item>
       
     
@@ -706,8 +721,8 @@
         
         <pubDate>Mon, 23 Nov 2020 18:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/js-data-structures</link>
-        <guid isPermaLink="true">http://localhost:4000/js-data-structures</guid>
+        /js-data-structures</link>
+        <guid isPermaLink="true">/js-data-structures</guid>
       </item>
       
     
@@ -721,8 +736,8 @@
         
         <pubDate>Mon, 16 Nov 2020 18:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/react-nodejs-app</link>
-        <guid isPermaLink="true">http://localhost:4000/react-nodejs-app</guid>
+        /react-nodejs-app</link>
+        <guid isPermaLink="true">/react-nodejs-app</guid>
       </item>
       
     
@@ -736,8 +751,8 @@
         
         <pubDate>Thu, 29 Oct 2020 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/deploy-react-serverless-aws</link>
-        <guid isPermaLink="true">http://localhost:4000/deploy-react-serverless-aws</guid>
+        /deploy-react-serverless-aws</link>
+        <guid isPermaLink="true">/deploy-react-serverless-aws</guid>
       </item>
       
     
@@ -751,8 +766,8 @@
         
         <pubDate>Thu, 29 Oct 2020 17:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/eslint-prettier-react</link>
-        <guid isPermaLink="true">http://localhost:4000/eslint-prettier-react</guid>
+        /eslint-prettier-react</link>
+        <guid isPermaLink="true">/eslint-prettier-react</guid>
       </item>
       
     
@@ -766,8 +781,8 @@
         
         <pubDate>Tue, 27 Oct 2020 14:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/how-to-fully-delete-vscode</link>
-        <guid isPermaLink="true">http://localhost:4000/how-to-fully-delete-vscode</guid>
+        /how-to-fully-delete-vscode</link>
+        <guid isPermaLink="true">/how-to-fully-delete-vscode</guid>
       </item>
       
     
@@ -781,8 +796,8 @@
         
         <pubDate>Mon, 07 Sep 2020 14:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/usability</link>
-        <guid isPermaLink="true">http://localhost:4000/usability</guid>
+        /usability</link>
+        <guid isPermaLink="true">/usability</guid>
       </item>
       
     
@@ -796,8 +811,8 @@
         
         <pubDate>Mon, 10 Aug 2020 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/memoryleaks</link>
-        <guid isPermaLink="true">http://localhost:4000/memoryleaks</guid>
+        /memoryleaks</link>
+        <guid isPermaLink="true">/memoryleaks</guid>
       </item>
       
     
@@ -811,8 +826,8 @@
         
         <pubDate>Wed, 22 Jul 2020 19:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/ux-3</link>
-        <guid isPermaLink="true">http://localhost:4000/ux-3</guid>
+        /ux-3</link>
+        <guid isPermaLink="true">/ux-3</guid>
       </item>
       
     
@@ -826,8 +841,8 @@
         
         <pubDate>Thu, 09 Jul 2020 19:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/ux-2</link>
-        <guid isPermaLink="true">http://localhost:4000/ux-2</guid>
+        /ux-2</link>
+        <guid isPermaLink="true">/ux-2</guid>
       </item>
       
     
@@ -841,8 +856,8 @@
         
         <pubDate>Sat, 04 Jul 2020 19:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/sql-part-3</link>
-        <guid isPermaLink="true">http://localhost:4000/sql-part-3</guid>
+        /sql-part-3</link>
+        <guid isPermaLink="true">/sql-part-3</guid>
       </item>
       
     
@@ -856,8 +871,8 @@
         
         <pubDate>Sat, 04 Jul 2020 15:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/sql-part-2</link>
-        <guid isPermaLink="true">http://localhost:4000/sql-part-2</guid>
+        /sql-part-2</link>
+        <guid isPermaLink="true">/sql-part-2</guid>
       </item>
       
     
@@ -871,8 +886,8 @@
         
         <pubDate>Wed, 01 Jul 2020 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/learning-sql</link>
-        <guid isPermaLink="true">http://localhost:4000/learning-sql</guid>
+        /learning-sql</link>
+        <guid isPermaLink="true">/learning-sql</guid>
       </item>
       
     
@@ -886,8 +901,8 @@
         
         <pubDate>Wed, 01 Jul 2020 12:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/starting-ux-course</link>
-        <guid isPermaLink="true">http://localhost:4000/starting-ux-course</guid>
+        /starting-ux-course</link>
+        <guid isPermaLink="true">/starting-ux-course</guid>
       </item>
       
     
@@ -901,8 +916,8 @@
         
         <pubDate>Sat, 27 Jun 2020 12:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/wordpress-set-up</link>
-        <guid isPermaLink="true">http://localhost:4000/wordpress-set-up</guid>
+        /wordpress-set-up</link>
+        <guid isPermaLink="true">/wordpress-set-up</guid>
       </item>
       
     
@@ -916,8 +931,8 @@
         
         <pubDate>Mon, 08 Jun 2020 12:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/database-error</link>
-        <guid isPermaLink="true">http://localhost:4000/database-error</guid>
+        /database-error</link>
+        <guid isPermaLink="true">/database-error</guid>
       </item>
       
     
@@ -931,8 +946,8 @@
         
         <pubDate>Fri, 05 Jun 2020 12:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/sourcetree-authentication-error</link>
-        <guid isPermaLink="true">http://localhost:4000/sourcetree-authentication-error</guid>
+        /sourcetree-authentication-error</link>
+        <guid isPermaLink="true">/sourcetree-authentication-error</guid>
       </item>
       
     
@@ -946,8 +961,8 @@
         
         <pubDate>Sat, 30 May 2020 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/learning-about-databases</link>
-        <guid isPermaLink="true">http://localhost:4000/learning-about-databases</guid>
+        /learning-about-databases</link>
+        <guid isPermaLink="true">/learning-about-databases</guid>
       </item>
       
     
@@ -961,8 +976,8 @@
         
         <pubDate>Fri, 22 May 2020 12:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/errors-csproj</link>
-        <guid isPermaLink="true">http://localhost:4000/errors-csproj</guid>
+        /errors-csproj</link>
+        <guid isPermaLink="true">/errors-csproj</guid>
       </item>
       
     
@@ -976,8 +991,8 @@
         
         <pubDate>Mon, 18 May 2020 16:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/api-review</link>
-        <guid isPermaLink="true">http://localhost:4000/api-review</guid>
+        /api-review</link>
+        <guid isPermaLink="true">/api-review</guid>
       </item>
       
     
@@ -991,8 +1006,8 @@
         
         <pubDate>Mon, 20 Apr 2020 21:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/jquery-notes</link>
-        <guid isPermaLink="true">http://localhost:4000/jquery-notes</guid>
+        /jquery-notes</link>
+        <guid isPermaLink="true">/jquery-notes</guid>
       </item>
       
     
@@ -1006,8 +1021,8 @@
         
         <pubDate>Sun, 19 Apr 2020 11:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/dom-notes</link>
-        <guid isPermaLink="true">http://localhost:4000/dom-notes</guid>
+        /dom-notes</link>
+        <guid isPermaLink="true">/dom-notes</guid>
       </item>
       
     
@@ -1021,8 +1036,8 @@
         
         <pubDate>Sat, 11 Apr 2020 18:30:00 -0600</pubDate>
         <link>
-        http://localhost:4000/deleting-my-database</link>
-        <guid isPermaLink="true">http://localhost:4000/deleting-my-database</guid>
+        /deleting-my-database</link>
+        <guid isPermaLink="true">/deleting-my-database</guid>
       </item>
       
     
@@ -1036,8 +1051,8 @@
         
         <pubDate>Wed, 08 Apr 2020 16:03:00 -0600</pubDate>
         <link>
-        http://localhost:4000/new-jekyll-site-3</link>
-        <guid isPermaLink="true">http://localhost:4000/new-jekyll-site-3</guid>
+        /new-jekyll-site-3</link>
+        <guid isPermaLink="true">/new-jekyll-site-3</guid>
       </item>
       
     
@@ -1051,8 +1066,8 @@
         
         <pubDate>Mon, 06 Apr 2020 17:50:00 -0600</pubDate>
         <link>
-        http://localhost:4000/csharpdefinitions</link>
-        <guid isPermaLink="true">http://localhost:4000/csharpdefinitions</guid>
+        /csharpdefinitions</link>
+        <guid isPermaLink="true">/csharpdefinitions</guid>
       </item>
       
     
@@ -1066,8 +1081,8 @@
         
         <pubDate>Sat, 04 Apr 2020 17:31:00 -0600</pubDate>
         <link>
-        http://localhost:4000/new-jekyll-site-2</link>
-        <guid isPermaLink="true">http://localhost:4000/new-jekyll-site-2</guid>
+        /new-jekyll-site-2</link>
+        <guid isPermaLink="true">/new-jekyll-site-2</guid>
       </item>
       
     
@@ -1081,8 +1096,8 @@
         
         <pubDate>Thu, 02 Apr 2020 16:50:00 -0600</pubDate>
         <link>
-        http://localhost:4000/making-another-jekyll-site</link>
-        <guid isPermaLink="true">http://localhost:4000/making-another-jekyll-site</guid>
+        /making-another-jekyll-site</link>
+        <guid isPermaLink="true">/making-another-jekyll-site</guid>
       </item>
       
     
@@ -1096,8 +1111,8 @@
         
         <pubDate>Thu, 02 Apr 2020 12:12:00 -0600</pubDate>
         <link>
-        http://localhost:4000/importance-of-hard-refresh</link>
-        <guid isPermaLink="true">http://localhost:4000/importance-of-hard-refresh</guid>
+        /importance-of-hard-refresh</link>
+        <guid isPermaLink="true">/importance-of-hard-refresh</guid>
       </item>
       
     
@@ -1111,8 +1126,8 @@
         
         <pubDate>Thu, 02 Apr 2020 01:11:00 -0600</pubDate>
         <link>
-        http://localhost:4000/dotnet-errors-and-solutions</link>
-        <guid isPermaLink="true">http://localhost:4000/dotnet-errors-and-solutions</guid>
+        /dotnet-errors-and-solutions</link>
+        <guid isPermaLink="true">/dotnet-errors-and-solutions</guid>
       </item>
       
     
@@ -1126,8 +1141,8 @@
         
         <pubDate>Wed, 18 Mar 2020 17:50:00 -0600</pubDate>
         <link>
-        http://localhost:4000/entityframework</link>
-        <guid isPermaLink="true">http://localhost:4000/entityframework</guid>
+        /entityframework</link>
+        <guid isPermaLink="true">/entityframework</guid>
       </item>
       
     
@@ -1141,8 +1156,8 @@
         
         <pubDate>Wed, 18 Mar 2020 17:12:00 -0600</pubDate>
         <link>
-        http://localhost:4000/routing</link>
-        <guid isPermaLink="true">http://localhost:4000/routing</guid>
+        /routing</link>
+        <guid isPermaLink="true">/routing</guid>
       </item>
       
     
@@ -1156,8 +1171,8 @@
         
         <pubDate>Mon, 17 Feb 2020 22:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/learningdotnet</link>
-        <guid isPermaLink="true">http://localhost:4000/learningdotnet</guid>
+        /learningdotnet</link>
+        <guid isPermaLink="true">/learningdotnet</guid>
       </item>
       
     
@@ -1171,8 +1186,8 @@
         
         <pubDate>Mon, 17 Feb 2020 00:30:00 -0700</pubDate>
         <link>
-        http://localhost:4000/first-post</link>
-        <guid isPermaLink="true">http://localhost:4000/first-post</guid>
+        /first-post</link>
+        <guid isPermaLink="true">/first-post</guid>
       </item>
       
     

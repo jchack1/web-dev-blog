@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/computer-science/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/computer-science/feed.xml</id>
+  <link href="/tag/computer-science/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/computer-science/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">Problem solving strategy for code problems</title>
-      <link href="http://localhost:4000/algorithm-problem-solving" rel="alternate" type="text/html" title="Problem solving strategy for code problems" />
+      <link href="/algorithm-problem-solving" rel="alternate" type="text/html" title="Problem solving strategy for code problems" />
       <published>2025-01-29T16:30:00-07:00</published>
       <updated>2025-01-29T16:30:00-07:00</updated>
-      <id>http://localhost:4000/algorithm-problem-solving</id>
-      <content type="html" xml:base="http://localhost:4000/algorithm-problem-solving">&lt;p&gt;I’m continuing to work on the JavaScript Algorithms and Data Structures course on Udemy. Here are some notes outlining the recommended problem solving strategy.&lt;/p&gt;
+      <id>/algorithm-problem-solving</id>
+      <content type="html" xml:base="/algorithm-problem-solving">&lt;p&gt;I’m continuing to work on the JavaScript Algorithms and Data Structures course on Udemy. Here are some notes outlining the recommended problem solving strategy.&lt;/p&gt;
 
 &lt;h3 id=&quot;what-is-an-algorithm&quot;&gt;What is an algorithm?&lt;/h3&gt;
 
@@ -163,11 +163,11 @@
   
     <entry>
       <title type="html">Big O For JavaScript Objects and Arrays</title>
-      <link href="http://localhost:4000/object-array-efficiency" rel="alternate" type="text/html" title="Big O For JavaScript Objects and Arrays" />
+      <link href="/object-array-efficiency" rel="alternate" type="text/html" title="Big O For JavaScript Objects and Arrays" />
       <published>2024-10-19T18:30:00-06:00</published>
       <updated>2024-10-19T18:30:00-06:00</updated>
-      <id>http://localhost:4000/object-array-efficiency</id>
-      <content type="html" xml:base="http://localhost:4000/object-array-efficiency">&lt;p&gt;Quick post to summarize different operations on objects and arrays.&lt;/p&gt;
+      <id>/object-array-efficiency</id>
+      <content type="html" xml:base="/object-array-efficiency">&lt;p&gt;Quick post to summarize different operations on objects and arrays.&lt;/p&gt;
 
 &lt;p&gt;This content came from a lesson in JavaScript Algorithms and Data Structures Masterclass on Udemy.&lt;/p&gt;
 
@@ -240,11 +240,11 @@
   
     <entry>
       <title type="html">Revisiting Data Structures and Algorithms - Big O Notation</title>
-      <link href="http://localhost:4000/big-o" rel="alternate" type="text/html" title="Revisiting Data Structures and Algorithms - Big O Notation" />
+      <link href="/big-o" rel="alternate" type="text/html" title="Revisiting Data Structures and Algorithms - Big O Notation" />
       <published>2024-10-19T17:30:00-06:00</published>
       <updated>2024-10-19T17:30:00-06:00</updated>
-      <id>http://localhost:4000/big-o</id>
-      <content type="html" xml:base="http://localhost:4000/big-o">&lt;p&gt;I am learning about data structures and algorithms again.&lt;/p&gt;
+      <id>/big-o</id>
+      <content type="html" xml:base="/big-o">&lt;p&gt;I am learning about data structures and algorithms again.&lt;/p&gt;
 
 &lt;p&gt;A while ago I wanted to try Leetcode to get better at solving code problems. It was good practice, but I found that if I picked random problems to work on, I could usually come with a solution, but the problems sometimes are testing your knowledge of specific algorithms. How am I supposed to get the “correct” answer if I have never studied the algorithm? I don’t want to just google the answer to every question, this defeats the whole purpose.&lt;/p&gt;
 
@@ -366,11 +366,11 @@
   
     <entry>
       <title type="html">Binary math - addition problem</title>
-      <link href="http://localhost:4000/binary-math" rel="alternate" type="text/html" title="Binary math - addition problem" />
+      <link href="/binary-math" rel="alternate" type="text/html" title="Binary math - addition problem" />
       <published>2023-07-02T22:30:00-06:00</published>
       <updated>2023-07-02T22:30:00-06:00</updated>
-      <id>http://localhost:4000/binary-math</id>
-      <content type="html" xml:base="http://localhost:4000/binary-math">&lt;p&gt;Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.&lt;/p&gt;
+      <id>/binary-math</id>
+      <content type="html" xml:base="/binary-math">&lt;p&gt;Lately I’ve been working on some practice coding problems, and I needed to re-learn how to do math with binary numbers.&lt;/p&gt;
 
 &lt;p&gt;The problem was to simply add two binary numbers - the inputs, &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt; were strings, and the output needed to be a string as well.&lt;/p&gt;
 
@@ -507,11 +507,11 @@
   
     <entry>
       <title type="html">What’s the difference between ‘i++’ and ‘++i’</title>
-      <link href="http://localhost:4000/increment-decrement" rel="alternate" type="text/html" title="What's the difference between 'i++' and '++i'" />
+      <link href="/increment-decrement" rel="alternate" type="text/html" title="What's the difference between 'i++' and '++i'" />
       <published>2022-10-02T18:30:00-06:00</published>
       <updated>2022-10-02T18:30:00-06:00</updated>
-      <id>http://localhost:4000/increment-decrement</id>
-      <content type="html" xml:base="http://localhost:4000/increment-decrement">&lt;p&gt;I have always been familiar with incrementing a variable using &lt;code class=&quot;highlighter-rouge&quot;&gt;i++&lt;/code&gt;, but recently came across &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt;. It took me a while to truly understand the difference.&lt;/p&gt;
+      <id>/increment-decrement</id>
+      <content type="html" xml:base="/increment-decrement">&lt;p&gt;I have always been familiar with incrementing a variable using &lt;code class=&quot;highlighter-rouge&quot;&gt;i++&lt;/code&gt;, but recently came across &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt;. It took me a while to truly understand the difference.&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;i++&lt;/code&gt; is used as a shorthand for writing &lt;code class=&quot;highlighter-rouge&quot;&gt;i = i + 1&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;++i&lt;/code&gt; does the same. The difference between the two is in what value is returned from this operation.&lt;/p&gt;
 
@@ -584,11 +584,11 @@
   
     <entry>
       <title type="html">Learning data structures - advanced structures (trees)</title>
-      <link href="http://localhost:4000/data-structures-3" rel="alternate" type="text/html" title="Learning data structures - advanced structures (trees)" />
+      <link href="/data-structures-3" rel="alternate" type="text/html" title="Learning data structures - advanced structures (trees)" />
       <published>2021-07-07T14:30:00-06:00</published>
       <updated>2021-07-07T14:30:00-06:00</updated>
-      <id>http://localhost:4000/data-structures-3</id>
-      <content type="html" xml:base="http://localhost:4000/data-structures-3">&lt;p&gt;This is the last section of intro to data structures. We are now getting into non-linear data structures.&lt;/p&gt;
+      <id>/data-structures-3</id>
+      <content type="html" xml:base="/data-structures-3">&lt;p&gt;This is the last section of intro to data structures. We are now getting into non-linear data structures.&lt;/p&gt;
 
 &lt;p&gt;Everything up to this point has been a linear structure. The next data structures to cover are trees.&lt;/p&gt;
 
@@ -692,11 +692,11 @@
   
     <entry>
       <title type="html">Learning data structures - intermediate structures</title>
-      <link href="http://localhost:4000/data-structures-2" rel="alternate" type="text/html" title="Learning data structures - intermediate structures" />
+      <link href="/data-structures-2" rel="alternate" type="text/html" title="Learning data structures - intermediate structures" />
       <published>2021-06-10T14:30:00-06:00</published>
       <updated>2021-06-10T14:30:00-06:00</updated>
-      <id>http://localhost:4000/data-structures-2</id>
-      <content type="html" xml:base="http://localhost:4000/data-structures-2">&lt;p&gt;Now we are getting into some intermediate topics in data structures.&lt;/p&gt;
+      <id>/data-structures-2</id>
+      <content type="html" xml:base="/data-structures-2">&lt;p&gt;Now we are getting into some intermediate topics in data structures.&lt;/p&gt;
 
 &lt;p&gt;Again I am following along with the &lt;a href=&quot;https://www.youtube.com/watch?v=zg9ih6SVACc&amp;amp;t=3551s&quot;&gt;freeCodeCamp video&lt;/a&gt; on data structures as I learn.&lt;/p&gt;
 
@@ -873,11 +873,11 @@
   
     <entry>
       <title type="html">Learning data structures - performance and basic structures</title>
-      <link href="http://localhost:4000/data-structures" rel="alternate" type="text/html" title="Learning data structures - performance and basic structures" />
+      <link href="/data-structures" rel="alternate" type="text/html" title="Learning data structures - performance and basic structures" />
       <published>2021-05-23T14:30:00-06:00</published>
       <updated>2021-05-23T14:30:00-06:00</updated>
-      <id>http://localhost:4000/data-structures</id>
-      <content type="html" xml:base="http://localhost:4000/data-structures">&lt;p&gt;It felt like it was about time to dive deeper into data structures.&lt;/p&gt;
+      <id>/data-structures</id>
+      <content type="html" xml:base="/data-structures">&lt;p&gt;It felt like it was about time to dive deeper into data structures.&lt;/p&gt;
 
 &lt;p&gt;This is one of those topics that I knew I needed to learn in more depth eventually, but didn’t get around to until now. I was working on a difficult programming problem where I had to convert some data from one structure to another for my front end to be able to use it. I was frustrated because I felt like I had a gap in my knowledge - how do I create and work with these data structures efficiently? Through a lot of trial and error I figured it out, but it likely would have been easier if I had more knowledge of the specific structures I was using - in this case, objects and maps in Javascript.&lt;/p&gt;
 

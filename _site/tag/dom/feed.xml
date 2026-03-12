@@ -2,10 +2,10 @@
 
 <feed xmlns="https://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/dom/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2025-01-29T22:51:18-07:00</updated>
-  <id>http://localhost:4000/tag/dom/feed.xml</id>
+  <link href="/tag/dom/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2026-03-12T17:18:20-06:00</updated>
+  <id>/tag/dom/feed.xml</id>
 
   
   
@@ -45,11 +45,11 @@
   
     <entry>
       <title type="html">The DOM</title>
-      <link href="http://localhost:4000/DOM-methods" rel="alternate" type="text/html" title="The DOM" />
+      <link href="/DOM-methods" rel="alternate" type="text/html" title="The DOM" />
       <published>2022-11-12T18:30:00-07:00</published>
       <updated>2022-11-12T18:30:00-07:00</updated>
-      <id>http://localhost:4000/DOM-methods</id>
-      <content type="html" xml:base="http://localhost:4000/DOM-methods">&lt;p&gt;Some more notes about the DOM, from the course I’m working on “The Complete JavaScript Course 2022: From Zero to Expert” on Udemy. This post is more about DOM methods and strategies for common use cases.&lt;/p&gt;
+      <id>/DOM-methods</id>
+      <content type="html" xml:base="/DOM-methods">&lt;p&gt;Some more notes about the DOM, from the course I’m working on “The Complete JavaScript Course 2022: From Zero to Expert” on Udemy. This post is more about DOM methods and strategies for common use cases.&lt;/p&gt;
 
 &lt;p&gt;Once again this is a bit messy, since it’s just a quick reference for myself on all the things we can do with the DOM.&lt;/p&gt;
 
@@ -355,11 +355,11 @@
   
     <entry>
       <title type="html">Notes about the DOM</title>
-      <link href="http://localhost:4000/DOM-notes" rel="alternate" type="text/html" title="Notes about the DOM" />
+      <link href="/DOM-notes" rel="alternate" type="text/html" title="Notes about the DOM" />
       <published>2022-10-31T18:30:00-06:00</published>
       <updated>2022-10-31T18:30:00-06:00</updated>
-      <id>http://localhost:4000/DOM-notes</id>
-      <content type="html" xml:base="http://localhost:4000/DOM-notes">&lt;p&gt;As I mentioned in my last post, I’ve been getting back into my JavaScript course on Udemy called “The Complete JavaScript Course 2022: From Zero to Expert”.&lt;/p&gt;
+      <id>/DOM-notes</id>
+      <content type="html" xml:base="/DOM-notes">&lt;p&gt;As I mentioned in my last post, I’ve been getting back into my JavaScript course on Udemy called “The Complete JavaScript Course 2022: From Zero to Expert”.&lt;/p&gt;
 
 &lt;p&gt;Here is a messy post with notes about the DOM. It’s really just a quick reference for myself. I added a few notes from &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model&quot;&gt;this reference on MDN&lt;/a&gt; as well.&lt;/p&gt;
 
@@ -458,11 +458,11 @@
   
     <entry>
       <title type="html">Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game</title>
-      <link href="http://localhost:4000/dino-clone" rel="alternate" type="text/html" title="Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game" />
+      <link href="/dino-clone" rel="alternate" type="text/html" title="Things I learned about the DOM and vanilla JavaScript from cloning the chrome dinosaur game" />
       <published>2022-05-16T18:30:00-06:00</published>
       <updated>2022-05-16T18:30:00-06:00</updated>
-      <id>http://localhost:4000/dino-clone</id>
-      <content type="html" xml:base="http://localhost:4000/dino-clone">&lt;p&gt;I learned some new things about vanilla javascript while following a &lt;a href=&quot;https://www.youtube.com/watch?v=47eXVRJKdkU&quot;&gt;tutorial for creating the chrome dino game&lt;/a&gt;.&lt;/p&gt;
+      <id>/dino-clone</id>
+      <content type="html" xml:base="/dino-clone">&lt;p&gt;I learned some new things about vanilla javascript while following a &lt;a href=&quot;https://www.youtube.com/watch?v=47eXVRJKdkU&quot;&gt;tutorial for creating the chrome dino game&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;data-attributes&quot;&gt;Data attributes&lt;/h3&gt;
 
@@ -565,11 +565,11 @@
   
     <entry>
       <title type="html">Notes on jQuery</title>
-      <link href="http://localhost:4000/jquery-notes" rel="alternate" type="text/html" title="Notes on jQuery" />
+      <link href="/jquery-notes" rel="alternate" type="text/html" title="Notes on jQuery" />
       <published>2020-04-20T21:30:00-06:00</published>
       <updated>2020-04-20T21:30:00-06:00</updated>
-      <id>http://localhost:4000/jquery-notes</id>
-      <content type="html" xml:base="http://localhost:4000/jquery-notes">&lt;p&gt;I have seen jQuery all over the place, including at work, but I have never taken the time to learn it in depth.  I figured I needed to do this soon, and there happens to be a section in my current Web Developer Bootcamp Udemy course. Here are some of my notes.&lt;/p&gt;
+      <id>/jquery-notes</id>
+      <content type="html" xml:base="/jquery-notes">&lt;p&gt;I have seen jQuery all over the place, including at work, but I have never taken the time to learn it in depth.  I figured I needed to do this soon, and there happens to be a section in my current Web Developer Bootcamp Udemy course. Here are some of my notes.&lt;/p&gt;
 
 &lt;p&gt;jQuery is a javascript library that helps us manipulate the DOM.&lt;/p&gt;
 
@@ -769,11 +769,11 @@
   
     <entry>
       <title type="html">Notes on the DOM</title>
-      <link href="http://localhost:4000/dom-notes" rel="alternate" type="text/html" title="Notes on the DOM" />
+      <link href="/dom-notes" rel="alternate" type="text/html" title="Notes on the DOM" />
       <published>2020-04-19T11:30:00-06:00</published>
       <updated>2020-04-19T11:30:00-06:00</updated>
-      <id>http://localhost:4000/dom-notes</id>
-      <content type="html" xml:base="http://localhost:4000/dom-notes">&lt;p&gt;I finished my .NET MVC Udemy course and have gone back to my Web Developer Bootcamp Udemy course that I started before going to school.&lt;/p&gt;
+      <id>/dom-notes</id>
+      <content type="html" xml:base="/dom-notes">&lt;p&gt;I finished my .NET MVC Udemy course and have gone back to my Web Developer Bootcamp Udemy course that I started before going to school.&lt;/p&gt;
 
 &lt;p&gt;I should have completed this before starting my program; it would have made life so much easier if I already had some exposure to these topics.&lt;/p&gt;
 
